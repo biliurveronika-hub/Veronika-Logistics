@@ -1,0 +1,926 @@
+<!doctype html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<meta name="description" content="Демоверсія навчальної платформи курсу «Міжнародна логістика з нуля» — модулі, тарифи, доступи на строк і оплати.">
+<style>
+  html{color-scheme:light}
+  body{margin:0}
+  img{max-width:100%}
+  [hidden]{display:none!important}
+</style>
+<title>Навчальна платформа сьомого потоку</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;500;600;700&family=Onest:wght@300;400;500;600;700&display=swap">
+<style>
+  :root {
+    --black: #111111;
+    --black-2: #1C1C1C;
+    --white: #FFFFFF;
+    --paper: #F3F2EF;
+    --paper-2: #E8E7E3;
+    --accent: #FF4A17;
+    --accent-deep: #D8360B;
+    --accent-soft: #FDE7DF;
+    --grey: #8A8A85;
+    --grey-dark: #5C5C57;
+    --ok: #1F7A4C;
+    --ok-soft: #E2F0E8;
+    --maxw: 1180px;
+    --r-lg: 30px;
+    --r-md: 20px;
+    --r-sm: 12px;
+    --display: "Unbounded", "Onest", "Segoe UI", system-ui, sans-serif;
+    --body: "Onest", "Segoe UI", system-ui, -apple-system, sans-serif;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--black);
+    font-family: var(--body);
+    font-size: 16px;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3, h4 { margin: 0; font-family: var(--display); font-weight: 600; letter-spacing: -.03em; line-height: 1.05; text-wrap: balance; }
+  p { margin: 0; }
+  ul, ol { margin: 0; padding: 0; list-style: none; }
+  button { font: inherit; color: inherit; }
+
+  .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 22px; }
+  .ast { display: inline-block; vertical-align: -.08em; color: var(--accent); }
+
+  .eyebrow {
+    font-size: 12px; font-weight: 600; letter-spacing: .16em;
+    text-transform: uppercase; color: var(--accent);
+  }
+  .dim { color: var(--grey-dark); }
+  .mono-num { font-variant-numeric: tabular-nums; }
+
+  /* ---------- topbar ---------- */
+  .topbar {
+    position: sticky; top: 0; z-index: 30;
+    background: var(--black); color: var(--white);
+  }
+  .topbar .wrap {
+    display: flex; align-items: center; gap: 16px; flex-wrap: wrap;
+    padding-top: 14px; padding-bottom: 14px;
+  }
+  .brand { display: flex; align-items: center; gap: 12px; margin-right: auto; }
+  .brand-mark {
+    width: 42px; height: 42px; border-radius: 50%;
+    background: var(--accent); color: var(--white);
+    display: grid; place-items: center; flex: none;
+  }
+  .brand-name { font-family: var(--display); font-size: 16px; font-weight: 600; letter-spacing: -.02em; }
+  .brand-sub { font-size: 12.5px; color: var(--grey); }
+  .whoami { display: flex; align-items: center; gap: 10px; font-size: 13.5px; flex-wrap: wrap; }
+  .whoami .role { color: var(--grey); }
+  .whoami .name { font-weight: 600; }
+
+  main { padding: clamp(28px, 4vw, 48px) 0 80px; }
+
+  /* ---------- buttons ---------- */
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+    padding: 11px 22px; border: 1.5px solid var(--black); border-radius: 999px;
+    background: transparent; color: var(--black);
+    font-size: 14.5px; font-weight: 500; cursor: pointer;
+    transition: background .15s ease, color .15s ease, border-color .15s ease;
+  }
+  .btn:hover { background: var(--black); color: var(--white); }
+  .btn-accent { background: var(--accent); border-color: var(--accent); color: var(--white); }
+  .btn-accent:hover { background: var(--accent-deep); border-color: var(--accent-deep); color: var(--white); }
+  .btn-sm { padding: 7px 15px; font-size: 13.5px; border-width: 1.3px; }
+  .btn-light { border-color: rgba(255, 255, 255, .45); color: var(--white); }
+  .btn-light:hover { background: var(--white); color: var(--black); border-color: var(--white); }
+  .btn-quiet { border-color: var(--paper-2); background: var(--white); }
+  .btn-quiet:hover { background: var(--black); color: var(--white); border-color: var(--black); }
+  .btn-danger { border-color: var(--accent-soft); color: var(--accent-deep); background: var(--white); }
+  .btn-danger:hover { background: var(--accent-deep); border-color: var(--accent-deep); color: var(--white); }
+  a.btn { text-decoration: none; }
+  .btn:disabled { opacity: .35; cursor: not-allowed; }
+  .btn:disabled:hover { background: transparent; color: var(--black); border-color: var(--black); }
+
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+
+  select {
+    padding: 10px 14px; border: 1.5px solid var(--paper-2); border-radius: 999px;
+    background: var(--white); color: var(--black); font: inherit; font-size: 14.5px; max-width: 100%;
+  }
+
+  /* ---------- pills ---------- */
+  .pill {
+    display: inline-flex; align-items: center; gap: 7px;
+    border-radius: 999px; padding: 5px 13px;
+    font-size: 12.5px; font-weight: 600; line-height: 1.25; white-space: nowrap;
+  }
+  .pill-ok { background: var(--ok-soft); color: var(--ok); }
+  .pill-soon { background: var(--accent); color: var(--white); }
+  .pill-over { background: var(--black); color: var(--white); }
+  .pill-wait { background: var(--paper-2); color: var(--grey-dark); }
+  .pill-line { border: 1.4px solid currentColor; padding: 4px 12px; font-weight: 500; }
+
+  /* ---------- demo note ---------- */
+  .demo-note {
+    display: flex; gap: 14px; align-items: flex-start;
+    background: var(--white); border-radius: var(--r-md);
+    padding: 18px 22px; margin-top: 26px;
+    font-size: 14.2px; color: var(--grey-dark); line-height: 1.5;
+  }
+  .demo-note b { color: var(--black); font-weight: 600; }
+
+  /* ---------- login ---------- */
+  .hero-head { display: grid; gap: 14px; max-width: 60ch; margin-bottom: clamp(26px, 3.5vw, 40px); }
+  .hero-head h1 { font-size: clamp(30px, 5.2vw, 58px); font-weight: 700; letter-spacing: -.045em; }
+  .hero-head .lead { font-size: clamp(15.5px, 1.4vw, 18px); color: var(--grey-dark); }
+
+  .pick { display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); align-items: start; }
+  .pick-col { background: var(--white); border-radius: var(--r-lg); padding: 28px 26px 26px; display: grid; gap: 14px; align-content: start; }
+  .pick-col.dark { background: var(--black); color: var(--white); }
+  .pick-col h2 { font-size: 22px; }
+  .pick-col .hint { font-size: 14.2px; color: var(--grey-dark); }
+  .pick-col.dark .hint { color: var(--grey); }
+
+  .student-list { display: grid; gap: 8px; }
+  .student-row {
+    display: flex; align-items: center; gap: 14px; width: 100%;
+    padding: 13px 18px; border: 1.4px solid var(--paper-2); border-radius: 999px;
+    background: var(--paper); text-align: left; cursor: pointer;
+    transition: background .15s ease, border-color .15s ease;
+  }
+  .student-row:hover { background: var(--accent-soft); border-color: var(--accent); }
+  .student-row .s-name { font-weight: 500; font-size: 15px; }
+  .student-row .s-meta { margin-left: auto; font-size: 12.5px; color: var(--grey-dark); white-space: nowrap; }
+
+  /* ---------- student course ---------- */
+  .course-hero {
+    background: var(--black); color: var(--white); border-radius: var(--r-lg);
+    padding: clamp(26px, 3.4vw, 40px); display: grid; gap: 22px;
+  }
+  .course-hero h1 { font-size: clamp(26px, 3.8vw, 42px); font-weight: 700; letter-spacing: -.04em; }
+  .course-hero .tagrow { display: flex; flex-wrap: wrap; gap: 8px; }
+  .course-facts { display: grid; gap: 18px; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); }
+  .course-facts div { display: grid; gap: 3px; }
+  .course-facts dt { font-size: 12.5px; color: var(--grey); }
+  .course-facts dd { margin: 0; font-family: var(--display); font-size: 22px; font-weight: 600; letter-spacing: -.03em; font-variant-numeric: tabular-nums; }
+  .course-facts .hot dd { color: var(--accent); }
+
+  .progress-wrap { display: grid; gap: 9px; }
+  .progress-top { display: flex; justify-content: space-between; align-items: baseline; font-size: 13.5px; color: var(--grey); }
+  .bar { height: 8px; border-radius: 999px; background: rgba(255, 255, 255, .16); overflow: hidden; }
+  .bar > span { display: block; height: 100%; background: var(--accent); border-radius: 999px; }
+  .bar.on-paper { background: var(--paper-2); }
+
+  .locked-card {
+    background: var(--accent); color: var(--white); border-radius: var(--r-lg);
+    padding: clamp(26px, 3.4vw, 40px); display: grid; gap: 14px; max-width: 62ch;
+  }
+  .locked-card h1 { font-size: clamp(24px, 3.2vw, 36px); font-weight: 700; }
+  .locked-card p { font-size: 15.5px; line-height: 1.5; }
+
+  .modules { display: grid; gap: 12px; margin-top: 26px; }
+  .module {
+    background: var(--white); border-radius: var(--r-md); overflow: hidden;
+  }
+  .module-head {
+    display: flex; align-items: center; gap: 16px; width: 100%;
+    padding: 20px 24px; border: 0; background: var(--white); cursor: pointer; text-align: left;
+  }
+  .module-head:hover { background: var(--paper); }
+  .module-num {
+    flex: none; width: 34px; height: 34px; border-radius: 50%;
+    background: var(--paper); color: var(--black);
+    display: grid; place-items: center; font-size: 13.5px; font-weight: 600;
+    font-variant-numeric: tabular-nums;
+  }
+  .module.done .module-num { background: var(--ok); color: var(--white); }
+  .module.open .module-num { background: var(--accent); color: var(--white); }
+  .module-title { flex: 1; }
+  .module-title .t { font-family: var(--display); font-size: 17.5px; font-weight: 600; letter-spacing: -.02em; line-height: 1.2; }
+  .module-title .s { font-size: 13.5px; color: var(--grey-dark); margin-top: 3px; }
+  .module-count { font-size: 13px; color: var(--grey-dark); white-space: nowrap; font-variant-numeric: tabular-nums; }
+  .module-chev { flex: none; color: var(--grey-dark); transition: transform .18s ease; }
+  .module.open .module-chev { transform: rotate(180deg); }
+
+  .lessons { display: grid; gap: 2px; padding: 0 14px 14px; }
+  .lesson-row {
+    display: flex; align-items: center; gap: 14px; width: 100%;
+    padding: 12px 16px; border: 0; border-radius: var(--r-sm);
+    background: var(--paper); text-align: left; cursor: pointer; font-size: 14.8px;
+  }
+  .lesson-row:hover { background: var(--accent-soft); }
+  .lesson-row .box {
+    flex: none; width: 19px; height: 19px; border-radius: 6px;
+    border: 2px solid var(--paper-2); background: var(--white);
+    display: grid; place-items: center; font-size: 11px; color: var(--white);
+  }
+  .lesson-row.done .box { background: var(--ok); border-color: var(--ok); }
+  .lesson-row .lt { flex: 1; }
+  .lesson-row .ld { font-size: 12.5px; color: var(--grey-dark); white-space: nowrap; }
+
+  /* ---------- lesson view ---------- */
+  .crumbs { display: flex; align-items: center; gap: 12px; margin-bottom: 18px; font-size: 13.5px; color: var(--grey-dark); flex-wrap: wrap; }
+
+  .lesson-grid { display: grid; gap: 16px; grid-template-columns: minmax(0, 1fr) minmax(250px, 320px); align-items: start; }
+  @media (max-width: 900px) { .lesson-grid { grid-template-columns: 1fr; } }
+
+  .pane { background: var(--white); border-radius: var(--r-lg); padding: clamp(22px, 2.6vw, 32px); display: grid; gap: 22px; }
+  .pane h1 { font-size: clamp(22px, 2.6vw, 32px); font-weight: 600; }
+
+  .video-slot {
+    aspect-ratio: 16 / 9; border-radius: var(--r-md);
+    background: var(--black); color: var(--white);
+    display: grid; place-content: center; justify-items: center; gap: 12px;
+    padding: 20px; text-align: center;
+  }
+  .video-slot .cap { font-size: 13.8px; color: var(--grey); max-width: 36ch; line-height: 1.45; }
+
+  .lesson-summary { font-size: 16px; line-height: 1.55; max-width: 64ch; color: var(--grey-dark); }
+
+  .materials { display: grid; gap: 9px; }
+  .material {
+    display: flex; align-items: center; gap: 14px;
+    padding: 13px 18px; border-radius: 999px; background: var(--paper); font-size: 14.5px;
+  }
+  .material .ext {
+    font-size: 11.5px; font-weight: 600; letter-spacing: .06em;
+    border: 1.4px solid var(--paper-2); border-radius: 999px; padding: 3px 10px; color: var(--accent-deep);
+  }
+  .material .sz { margin-left: auto; font-size: 12.5px; color: var(--grey-dark); font-variant-numeric: tabular-nums; }
+
+  .pane-foot { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+  .pane-foot .nav { margin-left: auto; display: flex; gap: 8px; }
+
+  .side { background: var(--white); border-radius: var(--r-lg); padding: 22px; display: grid; gap: 14px; align-content: start; }
+  .side h2 { font-size: 16px; font-weight: 600; }
+  .side-list { display: grid; gap: 4px; }
+  .side-item {
+    display: flex; gap: 11px; align-items: flex-start; width: 100%;
+    padding: 10px 12px; border: 0; border-radius: var(--r-sm);
+    background: transparent; text-align: left; cursor: pointer; font-size: 14.2px; line-height: 1.35;
+  }
+  .side-item:hover { background: var(--paper); }
+  .side-item.active { background: var(--black); color: var(--white); }
+  .side-item .n { font-size: 12.5px; color: var(--grey-dark); font-variant-numeric: tabular-nums; min-width: 20px; }
+  .side-item.active .n { color: var(--grey); }
+  .side-item .ok { color: var(--ok); font-size: 13px; }
+  .side-item.active .ok { color: var(--accent); }
+
+  /* ---------- admin ---------- */
+  .stats { display: grid; gap: 12px; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); margin-bottom: 18px; }
+  .stat { background: var(--white); border-radius: var(--r-md); padding: 20px 22px; display: grid; gap: 4px; }
+  .stat .k { font-size: 13px; color: var(--grey-dark); line-height: 1.3; }
+  .stat .v { font-family: var(--display); font-size: 34px; font-weight: 700; letter-spacing: -.04em; line-height: 1.1; font-variant-numeric: tabular-nums; }
+  .stat.hot { background: var(--black); color: var(--white); }
+  .stat.hot .k { color: var(--grey); }
+  .stat.hot .v { color: var(--accent); }
+
+  .tabs { display: flex; gap: 8px; margin-bottom: 16px; flex-wrap: wrap; }
+  .tab {
+    padding: 9px 20px; border: 1.4px solid var(--paper-2); border-radius: 999px;
+    background: var(--white); cursor: pointer; font-size: 14.5px; font-weight: 500;
+  }
+  .tab:hover { border-color: var(--grey); }
+  .tab.active { background: var(--black); border-color: var(--black); color: var(--white); }
+
+  .panel { background: var(--white); border-radius: var(--r-lg); overflow: hidden; }
+  .panel + .panel { margin-top: 16px; }
+  .panel-head { padding: 24px 26px 0; display: grid; gap: 5px; }
+  .panel-head h2 { font-size: 21px; }
+  .panel-head .hint { font-size: 14px; color: var(--grey-dark); }
+
+  .grant-form { display: flex; flex-wrap: wrap; gap: 14px; align-items: flex-end; padding: 20px 26px 26px; }
+  .field { display: grid; gap: 6px; }
+  .field label { font-size: 12px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--grey-dark); padding-left: 14px; }
+
+  .table-scroll { overflow-x: auto; padding: 18px 26px 26px; }
+  table { width: 100%; border-collapse: collapse; font-size: 14.2px; min-width: 860px; }
+  th {
+    text-align: left; padding: 0 14px 12px; font-size: 12px; font-weight: 600;
+    letter-spacing: .1em; text-transform: uppercase; color: var(--grey-dark); white-space: nowrap;
+  }
+  td { padding: 14px; border-top: 1.2px solid var(--paper-2); vertical-align: middle; }
+  td.num { font-variant-numeric: tabular-nums; white-space: nowrap; }
+  td .sub { font-size: 12.5px; color: var(--grey-dark); }
+  td.actions { text-align: right; white-space: nowrap; }
+  td.actions .btn { margin-left: 6px; }
+
+  .empty { padding: 30px 26px 34px; color: var(--grey-dark); font-size: 14.5px; }
+
+  .program { display: grid; gap: 10px; padding: 20px 26px 26px; }
+  .prog-mod { border: 1.4px solid var(--paper-2); border-radius: var(--r-md); padding: 18px 20px; }
+  .prog-mod summary { cursor: pointer; display: flex; gap: 14px; align-items: center; }
+  .prog-mod summary .t { font-family: var(--display); font-size: 17px; font-weight: 600; letter-spacing: -.02em; flex: 1; }
+  .prog-mod summary .c { font-size: 13px; color: var(--grey-dark); white-space: nowrap; }
+  .prog-mod ol { margin: 14px 0 2px; padding-left: 0; display: grid; gap: 8px; }
+  .prog-mod li { display: flex; gap: 12px; align-items: baseline; font-size: 14.4px; }
+  .prog-mod li .n { font-size: 12.5px; color: var(--grey-dark); min-width: 26px; font-variant-numeric: tabular-nums; }
+  .prog-mod li .slots { font-size: 12.5px; color: var(--grey-dark); }
+
+  .toast {
+    position: fixed; left: 50%; bottom: 26px; transform: translateX(-50%);
+    background: var(--black); color: var(--white);
+    padding: 13px 24px; border-radius: 999px; font-size: 14.5px; z-index: 60;
+    box-shadow: 0 12px 30px -14px rgba(0, 0, 0, .6);
+  }
+
+  @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+</style>
+
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="ast" viewBox="0 0 100 100">
+    <path fill="currentColor" d="M43 0h14v34l24-17 8 12-27 15 27 15-8 12-24-17v34H43V54L19 71l-8-12 27-15-27-15 8-12 24 17z"/>
+  </symbol>
+</svg>
+
+<header class="topbar">
+  <div class="wrap">
+    <div class="brand">
+      <span class="brand-mark"><svg width="20" height="20"><use href="#ast"/></svg></span>
+      <span>
+        <span class="brand-name">Міжнародна логістика з нуля</span><br>
+        <span class="brand-sub">навчальна платформа · 7-й потік</span>
+      </span>
+    </div>
+    <a class="btn btn-sm btn-light" href="https://ouranus4.github.io/Veronika-Logistics/">← Пропозиція</a>
+    <div class="whoami" id="whoami"></div>
+  </div>
+</header>
+
+<main>
+  <div class="wrap" id="app"></div>
+</main>
+
+<script>
+(function () {
+  "use strict";
+
+  var DAY = 86400000;
+  var STORE_KEY = "portal-logistics-uk-v1";
+
+  /* ───────── дані курсу (заглушки до матеріалів Вероніки) ───────── */
+
+  var COURSE = {
+    title: "Міжнародна логістика з нуля",
+    stream: "7-й потік",
+    modules: [
+      { id: "m1", title: "Професія логіста та ринок перевезень", summary: "Хто такий логіст, як влаштований ринок і звідки беруться гроші в рейсі.", lessons: [
+        { id: "l101", title: "Вступне відео до курсу", duration: "12 хв", summary: "Як побудований курс, що ти вмітимеш у кінці та в якому порядку проходити модулі.", materials: [] },
+        { id: "l102", title: "Хто такий логіст і за що йому платять", duration: "16 хв", summary: "Різниця між експедитором, диспетчером і логістом, і хто кому виставляє рахунок.", materials: [{ name: "Презентація модуля 1", ext: "PDF", size: "2,1 МБ" }] },
+        { id: "l103", title: "Як влаштований ринок міжнародних перевезень", duration: "18 хв", summary: "Вантажовласник, експедитор, перевізник: хто на якому етапі заробляє.", materials: [] }
+      ] },
+      { id: "m2", title: "Транспортні біржі та пошук вантажу", summary: "Trans.eu, Timocom і робота із заявками.", lessons: [
+        { id: "l201", title: "Реєстрація та перші кроки на біржі", duration: "21 хв", summary: "Як виглядає кабінет, які фільтри вмикати і на що дивитись у картці вантажу.", materials: [{ name: "Презентація модуля 2", ext: "PDF", size: "3,4 МБ" }] },
+        { id: "l202", title: "Як читати заявку і не влетіти", duration: "19 хв", summary: "Червоні прапорці в описі вантажу: ставка нижче ринку, розмиті умови, невідомий замовник.", materials: [] },
+        { id: "l203", title: "Перший дзвінок замовнику", duration: "17 хв", summary: "Що спитати за перші дві хвилини, щоб зрозуміти, чи варто братись.", materials: [{ name: "Скрипт першого дзвінка", ext: "PDF", size: "480 КБ" }] },
+        { id: "l204", title: "Перевірка контрагента", duration: "15 хв", summary: "Де подивитись рейтинг, борги й чи існує компанія взагалі.", materials: [] }
+      ] },
+      { id: "m3", title: "Документи міжнародного перевезення", summary: "CMR, TIR, інвойс, пакувальний лист — що з чим має збігатись.", lessons: [
+        { id: "l301", title: "CMR: як заповнюють і хто за що відповідає", duration: "23 хв", summary: "Розбираємо накладну по графах і дивимось на типові помилки водіїв.", materials: [{ name: "Презентація модуля 3", ext: "PDF", size: "2,8 МБ" }, { name: "Зразок заповненої CMR", ext: "PDF", size: "640 КБ" }] },
+        { id: "l302", title: "Інвойс і пакувальний лист", duration: "16 хв", summary: "Які дані мають збігатись із CMR, щоб вантаж не став на кордоні.", materials: [] },
+        { id: "l303", title: "TIR, дозволи та спеціальні вантажі", duration: "20 хв", summary: "Коли потрібна книжка МДП і що робити з негабаритом.", materials: [] }
+      ] },
+      { id: "m4", title: "Митниця та кордон", summary: "Оформлення, черги, типові затримки.", lessons: [
+        { id: "l401", title: "Як проходить митне оформлення", duration: "22 хв", summary: "Послідовність дій від подання документів до випуску вантажу.", materials: [{ name: "Презентація модуля 4", ext: "PDF", size: "2,5 МБ" }] },
+        { id: "l402", title: "Через що вантаж стоїть на кордоні", duration: "18 хв", summary: "Найчастіші причини затримки і що логіст може зробити зі свого боку.", materials: [] },
+        { id: "l403", title: "Робота з митним брокером", duration: "14 хв", summary: "Що передати брокеру, щоб не бігати за документами в останній момент.", materials: [] }
+      ] },
+      { id: "m5", title: "Ставки, торг і прорахунок рейсу", summary: "Головний модуль про гроші.", lessons: [
+        { id: "l501", title: "З чого складається ставка", duration: "20 хв", summary: "Пальне, водій, амортизація, дозволи, платні дороги — і де тут твій відсоток.", materials: [{ name: "Презентація модуля 5", ext: "PDF", size: "3,1 МБ" }, { name: "Калькулятор рейсу", ext: "XLSX", size: "520 КБ" }] },
+        { id: "l502", title: "Прорахунок рейсу на прикладі", duration: "26 хв", summary: "Рахуємо повний рейс Польща — Україна від заявки до закриття.", materials: [] },
+        { id: "l503", title: "Як торгуватись і не втратити замовника", duration: "19 хв", summary: "Межа, нижче якої не можна опускатись, і чим аргументувати ставку.", materials: [] },
+        { id: "l504", title: "Сезонність і коливання ринку", duration: "15 хв", summary: "Коли ставки злітають, коли падають і як це закладати наперед.", materials: [] }
+      ] },
+      { id: "m6", title: "Робота з перевізниками", summary: "Пошук машин, домовленості, супровід рейсу.", lessons: [
+        { id: "l601", title: "Де шукати перевізника під вантаж", duration: "17 хв", summary: "Біржі, власна база, рекомендації — і чому база важливіша за біржу.", materials: [{ name: "Презентація модуля 6", ext: "PDF", size: "2,4 МБ" }] },
+        { id: "l602", title: "Домовленість і заявка-договір", duration: "18 хв", summary: "Що обов'язково прописати, щоб потім не доводити на словах.", materials: [{ name: "Шаблон заявки-договору", ext: "PDF", size: "390 КБ" }] },
+        { id: "l603", title: "Супровід рейсу від завантаження до вивантаження", duration: "21 хв", summary: "Коли писати водію, що фіксувати і як тримати замовника в курсі.", materials: [] }
+      ] },
+      { id: "m7", title: "Коли щось пішло не так", summary: "Простої, штрафи, пошкодження, претензії.", lessons: [
+        { id: "l701", title: "Простій: хто платить і скільки", duration: "16 хв", summary: "Як рахується простій і як його фіксувати, щоб отримати гроші.", materials: [{ name: "Презентація модуля 7", ext: "PDF", size: "2,2 МБ" }] },
+        { id: "l702", title: "Пошкодження вантажу", duration: "18 хв", summary: "Порядок дій: акт, фото, повідомлення страховій, строки претензії.", materials: [{ name: "Шаблон претензії", ext: "PDF", size: "280 КБ" }] },
+        { id: "l703", title: "Неплатежі та як їх уникати", duration: "15 хв", summary: "Ознаки замовника, який не заплатить, і що робити, якщо вже влип.", materials: [] }
+      ] },
+      { id: "m8", title: "Як знайти роботу або перших клієнтів", summary: "Вихід у професію після курсу.", lessons: [
+        { id: "l801", title: "Резюме логіста без досвіду", duration: "17 хв", summary: "Що писати, коли досвіду ще немає, і які слова шукає роботодавець.", materials: [{ name: "Презентація модуля 8", ext: "PDF", size: "2,0 МБ" }, { name: "Шаблон резюме", ext: "PDF", size: "310 КБ" }] },
+        { id: "l802", title: "Співбесіда в логістичну компанію", duration: "19 хв", summary: "Типові питання й тестові завдання, які дають новачкам.", materials: [] },
+        { id: "l803", title: "Перші клієнти на фрилансі", duration: "22 хв", summary: "Як працювати на себе: де брати власників авто і скільки брати за супровід.", materials: [] },
+        { id: "l804", title: "Заключне відео", duration: "9 хв", summary: "Що робити в перший тиждень після курсу, щоб знання не залишились теорією.", materials: [] }
+      ] }
+    ]
+  };
+
+  var TARIFFS = [
+    { id: "base", name: "Базовий", price: "$400", note: "доступ до всіх модулів" },
+    { id: "pro", name: "З супроводом", price: "$600", note: "перевірка домашніх і чат із Веронікою" }
+  ];
+
+  var STUDENTS = [
+    { id: "s1", name: "Олена Гринчук", email: "olena.hrynchuk@example.com" },
+    { id: "s2", name: "Андрій Ковальчук", email: "a.kovalchuk@example.com" },
+    { id: "s3", name: "Марина Бондаренко", email: "m.bondarenko@example.com" },
+    { id: "s4", name: "Тарас Мельник", email: "t.melnyk@example.com" },
+    { id: "s5", name: "Юлія Савченко", email: "y.savchenko@example.com" },
+    { id: "s6", name: "Ігор Дорошенко", email: "i.doroshenko@example.com" }
+  ];
+
+  var SEED_ENROLL = [
+    { id: "e1", studentId: "s1", tariff: "pro", paid: true, g: -34, x: 146 },
+    { id: "e2", studentId: "s2", tariff: "base", paid: true, g: -34, x: 146 },
+    { id: "e3", studentId: "s3", tariff: "pro", paid: false, g: -2, x: 178 },
+    { id: "e4", studentId: "s4", tariff: "base", paid: true, g: -172, x: 5 },
+    { id: "e5", studentId: "s5", tariff: "pro", paid: true, g: -208, x: -12 },
+    { id: "e6", studentId: "s6", tariff: "base", paid: true, g: -34, x: 146 }
+  ];
+
+  var SEED_PROGRESS = ["s1__l101", "s1__l102", "s1__l103", "s1__l201", "s1__l202", "s2__l101", "s2__l102", "s6__l101", "s4__l101", "s4__l102", "s4__l103", "s4__l201"];
+
+  /* ───────── стан ───────── */
+
+  var store = { enrollments: [], progress: {} };
+  var ui = { screen: "login", studentId: null, moduleId: null, lessonId: null, openModule: null, tab: "access", confirmId: null, grant: { studentId: "", tariff: "base", days: 180 } };
+
+  var app = document.getElementById("app");
+  var whoami = document.getElementById("whoami");
+
+  var ALL_LESSONS = [];
+  COURSE.modules.forEach(function (m) {
+    m.lessons.forEach(function (l) { ALL_LESSONS.push({ lesson: l, module: m }); });
+  });
+
+  /* ───────── утиліти ───────── */
+
+  function esc(s) {
+    return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) {
+      return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
+    });
+  }
+  function startOfToday() { var d = new Date(); d.setHours(0, 0, 0, 0); return d.getTime(); }
+  function addDays(base, days) { var d = new Date(base); d.setDate(d.getDate() + days); d.setHours(12, 0, 0, 0); return d.toISOString(); }
+  function fmtDate(iso) {
+    var d = new Date(iso);
+    if (isNaN(d)) return "—";
+    var p = function (n) { return n < 10 ? "0" + n : "" + n; };
+    return p(d.getDate()) + "." + p(d.getMonth() + 1) + "." + d.getFullYear();
+  }
+  function daysLeft(iso) { return Math.ceil((new Date(iso).getTime() - startOfToday()) / DAY); }
+  function plural(n, one, few, many) {
+    var a = Math.abs(n) % 100, b = a % 10;
+    if (a > 10 && a < 20) return many;
+    if (b > 1 && b < 5) return few;
+    if (b === 1) return one;
+    return many;
+  }
+  function daysWord(n) { return n + " " + plural(n, "день", "дні", "днів"); }
+  function lessonsWord(n) { return n + " " + plural(n, "урок", "уроки", "уроків"); }
+
+  function byId(list, id) { for (var i = 0; i < list.length; i++) if (list[i].id === id) return list[i]; return null; }
+  function tariffOf(id) { return byId(TARIFFS, id) || TARIFFS[0]; }
+  function enrollmentOf(studentId) {
+    for (var i = 0; i < store.enrollments.length; i++) if (store.enrollments[i].studentId === studentId) return store.enrollments[i];
+    return null;
+  }
+  function statusOf(enr) {
+    var left = daysLeft(enr.expiresAt);
+    if (left < 0) return { key: "over", label: "завершився", cls: "pill-over", left: left };
+    if (left <= 7) return { key: "soon", label: "спливає", cls: "pill-soon", left: left };
+    return { key: "ok", label: "активний", cls: "pill-ok", left: left };
+  }
+  function isDone(studentId, lessonId) { return !!store.progress[studentId + "__" + lessonId]; }
+  function doneInModule(studentId, m) {
+    var n = 0;
+    m.lessons.forEach(function (l) { if (isDone(studentId, l.id)) n++; });
+    return n;
+  }
+  function doneTotal(studentId) {
+    var n = 0;
+    ALL_LESSONS.forEach(function (x) { if (isDone(studentId, x.lesson.id)) n++; });
+    return n;
+  }
+
+  function toast(msg) {
+    var old = document.querySelector(".toast");
+    if (old) old.remove();
+    var el = document.createElement("div");
+    el.className = "toast";
+    el.setAttribute("role", "status");
+    el.textContent = msg;
+    document.body.appendChild(el);
+    setTimeout(function () { if (el.parentNode) el.remove(); }, 2800);
+  }
+
+  var NOTE = '<div class="demo-note"><svg class="ast" width="20" height="20" style="flex:none;margin-top:2px"><use href="#ast"/></svg><div>' +
+    '<b>Це демоверсія.</b> Вхід спрощений, без паролів. Назви модулів, відео та презентації — приклад: сюди стануть твоя програма й твої матеріали. ' +
+    'Видача доступу, строки, тарифи, оплати й прогрес працюють по-справжньому і зберігаються у цьому браузері — ' +
+    'кнопка «Скинути демо» в панелі адміністратора поверне все як було.</div></div>';
+
+  /* ───────── збереження ───────── */
+
+  function buildEnrollments() {
+    return SEED_ENROLL.map(function (e) {
+      return { id: e.id, studentId: e.studentId, tariff: e.tariff, paid: e.paid, grantedAt: addDays(new Date(), e.g), expiresAt: addDays(new Date(), e.x) };
+    });
+  }
+  function buildProgress() {
+    var p = {};
+    SEED_PROGRESS.forEach(function (k) { p[k] = true; });
+    return p;
+  }
+  function save() {
+    try { localStorage.setItem(STORE_KEY, JSON.stringify({ v: 1, enrollments: store.enrollments, progress: store.progress })); } catch (e) {}
+  }
+  function load() {
+    var raw = null;
+    try { raw = localStorage.getItem(STORE_KEY); } catch (e) {}
+    if (raw) {
+      try {
+        var s = JSON.parse(raw);
+        if (s && Array.isArray(s.enrollments)) { store.enrollments = s.enrollments; store.progress = s.progress || {}; return; }
+      } catch (e) {}
+    }
+    store.enrollments = buildEnrollments();
+    store.progress = buildProgress();
+  }
+  function resetDemo() {
+    try { localStorage.removeItem(STORE_KEY); } catch (e) {}
+    store.enrollments = buildEnrollments();
+    store.progress = buildProgress();
+    ui.confirmId = null;
+    render();
+    toast("Демо повернуто до початкового стану");
+  }
+
+  /* ───────── дії ───────── */
+
+  function grant(studentId, tariff, days) {
+    var enr = enrollmentOf(studentId);
+    if (enr) {
+      enr.tariff = tariff;
+      enr.grantedAt = new Date().toISOString();
+      enr.expiresAt = addDays(new Date(), days);
+      enr.paid = false;
+    } else {
+      store.enrollments.push({
+        id: "e" + Date.now(), studentId: studentId, tariff: tariff, paid: false,
+        grantedAt: new Date().toISOString(), expiresAt: addDays(new Date(), days)
+      });
+    }
+    save(); render();
+  }
+  function extend(enr, days) {
+    var base = Math.max(Date.now(), new Date(enr.expiresAt).getTime());
+    enr.expiresAt = addDays(new Date(base), days);
+    save(); render();
+  }
+  function markPaid(enr) { enr.paid = true; save(); render(); toast("Оплату зафіксовано"); }
+  function revoke(enr) {
+    store.enrollments = store.enrollments.filter(function (e) { return e.id !== enr.id; });
+    ui.confirmId = null;
+    save(); render();
+    toast("Доступ відкликано");
+  }
+  function toggleLesson(studentId, lessonId) {
+    var key = studentId + "__" + lessonId;
+    if (store.progress[key]) delete store.progress[key]; else store.progress[key] = true;
+    save(); render();
+  }
+
+  /* ───────── шапка ───────── */
+
+  function renderWhoami() {
+    if (ui.screen === "login") { whoami.innerHTML = ""; return; }
+    if (ui.screen === "admin") {
+      whoami.innerHTML = '<span class="role">Адміністратор</span>' +
+        '<button class="btn btn-sm btn-light" data-act="reset">Скинути демо</button>' +
+        '<button class="btn btn-sm btn-light" data-act="logout">Вийти</button>';
+    } else {
+      var s = byId(STUDENTS, ui.studentId);
+      whoami.innerHTML = '<span class="role">Учень</span><span class="name">' + esc(s ? s.name : "") + '</span>' +
+        '<button class="btn btn-sm btn-light" data-act="logout">Змінити</button>';
+    }
+  }
+
+  /* ───────── екран входу ───────── */
+
+  function loginHTML() {
+    var rows = STUDENTS.map(function (s) {
+      var e = enrollmentOf(s.id);
+      var meta = e ? tariffOf(e.tariff).name + " · " + statusOf(e).label : "без доступу";
+      return '<button class="student-row" data-act="as-student" data-id="' + esc(s.id) + '">' +
+        '<span class="s-name">' + esc(s.name) + '</span>' +
+        '<span class="s-meta">' + esc(meta) + '</span></button>';
+    }).join("");
+
+    return '<div class="hero-head">' +
+        '<span class="eyebrow">Демо для Вероніки</span>' +
+        '<h1>Навчальна платформа курсу<svg class="ast" width="0.42em" height="0.42em" style="vertical-align:.42em"><use href="#ast"/></svg></h1>' +
+        '<p class="lead">Те саме, про що ми говорили в пропозиції: 8 модулів усередині, тарифи, доступи на строк і оплати — без зайвих сервісів і підрядників. Обери, з якого боку подивитись.</p>' +
+      '</div>' +
+      '<div class="pick">' +
+        '<div class="pick-col">' +
+          '<h2>Кабінет учня</h2>' +
+          '<p class="hint">Зайди від імені будь-кого з потоку — у всіх різні тарифи, строки й прогрес.</p>' +
+          '<div class="student-list">' + rows + '</div>' +
+        '</div>' +
+        '<div class="pick-col dark">' +
+          '<h2>Панель адміністратора</h2>' +
+          '<p class="hint">Тут ти видаєш доступ на строк, бачиш, у кого він спливає, хто ще не оплатив, і керуєш програмою курсу.</p>' +
+          '<button class="btn btn-accent" data-act="as-admin">Зайти як адміністратор</button>' +
+        '</div>' +
+      '</div>' + NOTE;
+  }
+
+  /* ───────── кабінет учня ───────── */
+
+  function studentHTML() {
+    var s = byId(STUDENTS, ui.studentId);
+    if (!s) { ui.screen = "login"; return loginHTML(); }
+    var e = enrollmentOf(s.id);
+
+    if (!e) {
+      return '<div class="locked-card"><h1>Доступу поки немає</h1>' +
+        '<p>Вероніка ще не відкрила тобі курс. Щойно це станеться — модулі з\'являться тут.</p></div>' + NOTE;
+    }
+
+    var st = statusOf(e);
+    if (st.key === "over") {
+      return '<div class="locked-card"><h1>Доступ завершився ' + fmtDate(e.expiresAt) + '</h1>' +
+        '<p>Матеріали 7-го потоку закриті. Напиши Вероніці — вона продовжить доступ, і всі модулі знову відкриються разом із твоїм прогресом.</p></div>' + NOTE;
+    }
+
+    var total = ALL_LESSONS.length;
+    var done = doneTotal(s.id);
+    var pct = total ? Math.round(done / total * 100) : 0;
+    var tf = tariffOf(e.tariff);
+
+    var mods = COURSE.modules.map(function (m, i) {
+      var d = doneInModule(s.id, m);
+      var open = ui.openModule === m.id;
+      var cls = "module" + (open ? " open" : "") + (d === m.lessons.length ? " done" : "");
+      var lessons = open ? '<div class="lessons">' + m.lessons.map(function (l) {
+        return '<button class="lesson-row' + (isDone(s.id, l.id) ? " done" : "") + '" data-act="open-lesson" data-id="' + esc(l.id) + '">' +
+          '<span class="box">✓</span><span class="lt">' + esc(l.title) + '</span>' +
+          '<span class="ld">' + esc(l.duration) + '</span></button>';
+      }).join("") + '</div>' : "";
+
+      return '<section class="' + cls + '">' +
+        '<button class="module-head" data-act="toggle-module" data-id="' + esc(m.id) + '">' +
+          '<span class="module-num">' + (i + 1) + '</span>' +
+          '<span class="module-title"><span class="t">' + esc(m.title) + '</span><span class="s">' + esc(m.summary) + '</span></span>' +
+          '<span class="module-count">' + d + ' / ' + m.lessons.length + '</span>' +
+          '<span class="module-chev">▾</span>' +
+        '</button>' + lessons +
+      '</section>';
+    }).join("");
+
+    return '<div class="course-hero">' +
+        '<div class="tagrow">' +
+          '<span class="pill pill-line">' + esc(COURSE.stream) + '</span>' +
+          '<span class="pill pill-line">Тариф «' + esc(tf.name) + '»</span>' +
+          '<span class="pill ' + st.cls + '">' + st.label + '</span>' +
+          '<span class="pill pill-wait">приклад наповнення</span>' +
+        '</div>' +
+        '<h1>' + esc(COURSE.title) + '</h1>' +
+        '<div class="progress-wrap">' +
+          '<div class="progress-top"><span>Пройдено ' + done + ' із ' + total + ' уроків</span><span>' + pct + '%</span></div>' +
+          '<div class="bar"><span style="width:' + pct + '%"></span></div>' +
+        '</div>' +
+        '<dl class="course-facts">' +
+          '<div><dt>Модулів</dt><dd>' + COURSE.modules.length + '</dd></div>' +
+          '<div><dt>Уроків</dt><dd>' + total + '</dd></div>' +
+          '<div><dt>Доступ до</dt><dd>' + fmtDate(e.expiresAt) + '</dd></div>' +
+          '<div class="hot"><dt>Лишилось</dt><dd>' + daysWord(st.left) + '</dd></div>' +
+        '</dl>' +
+      '</div>' +
+      '<div class="modules">' + mods + '</div>' + NOTE;
+  }
+
+  /* ───────── урок ───────── */
+
+  function lessonHTML() {
+    var s = byId(STUDENTS, ui.studentId);
+    var e = s ? enrollmentOf(s.id) : null;
+    if (!s || !e || statusOf(e).key === "over") { ui.screen = "student"; return studentHTML(); }
+
+    var idx = -1;
+    for (var i = 0; i < ALL_LESSONS.length; i++) if (ALL_LESSONS[i].lesson.id === ui.lessonId) idx = i;
+    if (idx < 0) { ui.screen = "student"; return studentHTML(); }
+
+    var lesson = ALL_LESSONS[idx].lesson;
+    var mod = ALL_LESSONS[idx].module;
+    var modIdx = COURSE.modules.indexOf(mod);
+    var numInMod = mod.lessons.indexOf(lesson) + 1;
+    var done = isDone(s.id, lesson.id);
+
+    var mats = (lesson.materials || []).map(function (m) {
+      return '<div class="material"><span class="ext">' + esc(m.ext) + '</span><span>' + esc(m.name) + '</span>' +
+        '<span class="sz">' + esc(m.size) + '</span></div>';
+    }).join("");
+
+    var side = mod.lessons.map(function (l, i) {
+      return '<button class="side-item' + (l.id === lesson.id ? " active" : "") + '" data-act="open-lesson" data-id="' + esc(l.id) + '">' +
+        '<span class="n">' + (i + 1) + '</span><span style="flex:1">' + esc(l.title) + '</span>' +
+        (isDone(s.id, l.id) ? '<span class="ok">✓</span>' : "") + '</button>';
+    }).join("");
+
+    return '<nav class="crumbs">' +
+        '<button class="btn btn-sm btn-quiet" data-act="back">← Усі модулі</button>' +
+        '<span>Модуль ' + (modIdx + 1) + " · " + esc(mod.title) + '</span>' +
+      '</nav>' +
+      '<div class="lesson-grid">' +
+        '<article class="pane">' +
+          '<div><span class="eyebrow">Урок ' + numInMod + ' з ' + mod.lessons.length + ' · ' + esc(lesson.duration) + '</span>' +
+          '<h1 style="margin-top:10px">' + esc(lesson.title) + '</h1></div>' +
+          '<div class="video-slot">' +
+            '<svg class="ast" width="40" height="40"><use href="#ast"/></svg>' +
+            '<span class="cap">Тут буде відео Вероніки. Завантажуємо файл або вставляємо посилання — плеєр той самий.</span>' +
+          '</div>' +
+          '<p class="lesson-summary">' + esc(lesson.summary) + '</p>' +
+          (mats ? '<div><span class="eyebrow">Матеріали до уроку</span><div class="materials" style="margin-top:12px">' + mats + '</div></div>' : "") +
+          '<div class="pane-foot">' +
+            '<button class="btn ' + (done ? "btn-quiet" : "btn-accent") + '" data-act="toggle-done">' + (done ? "✓ Пройдено" : "Позначити пройденим") + '</button>' +
+            '<span class="nav">' +
+              '<button class="btn btn-sm btn-quiet" data-act="open-lesson" data-id="' + esc(idx > 0 ? ALL_LESSONS[idx - 1].lesson.id : "") + '"' + (idx > 0 ? "" : " disabled") + '>← Назад</button>' +
+              '<button class="btn btn-sm btn-quiet" data-act="open-lesson" data-id="' + esc(idx < ALL_LESSONS.length - 1 ? ALL_LESSONS[idx + 1].lesson.id : "") + '"' + (idx < ALL_LESSONS.length - 1 ? "" : " disabled") + '>Далі →</button>' +
+            '</span>' +
+          '</div>' +
+        '</article>' +
+        '<aside class="side"><h2>Модуль ' + (modIdx + 1) + '</h2><div class="side-list">' + side + '</div></aside>' +
+      '</div>';
+  }
+
+  /* ───────── панель адміністратора ───────── */
+
+  function adminHTML() {
+    var rows = store.enrollments.map(function (e) {
+      var s = byId(STUDENTS, e.studentId);
+      return s ? { e: e, s: s, st: statusOf(e) } : null;
+    }).filter(Boolean);
+
+    var order = { over: 0, soon: 1, ok: 2 };
+    rows.sort(function (a, b) {
+      if (!a.e.paid !== !b.e.paid) return a.e.paid ? 1 : -1;
+      if (order[a.st.key] !== order[b.st.key]) return order[a.st.key] - order[b.st.key];
+      return a.st.left - b.st.left;
+    });
+
+    var nSoon = rows.filter(function (r) { return r.st.key === "soon"; }).length;
+    var nWait = rows.filter(function (r) { return !r.e.paid; }).length;
+    var nActive = rows.filter(function (r) { return r.st.key !== "over"; }).length;
+
+    var stats = '<div class="stats">' +
+      '<div class="stat"><span class="k">Учнів на потоці</span><span class="v">' + rows.length + '</span></div>' +
+      '<div class="stat"><span class="k">Активних доступів</span><span class="v">' + nActive + '</span></div>' +
+      '<div class="stat' + (nSoon ? " hot" : "") + '"><span class="k">Спливає за 7 днів</span><span class="v">' + nSoon + '</span></div>' +
+      '<div class="stat' + (nWait ? " hot" : "") + '"><span class="k">Очікує оплати</span><span class="v">' + nWait + '</span></div>' +
+      '</div>';
+
+    var tabs = '<div class="tabs">' +
+      '<button class="tab' + (ui.tab === "access" ? " active" : "") + '" data-act="tab" data-id="access">Доступи й оплати</button>' +
+      '<button class="tab' + (ui.tab === "program" ? " active" : "") + '" data-act="tab" data-id="program">Програма курсу</button>' +
+      '</div>';
+
+    if (ui.tab === "program") {
+      var progHTML = COURSE.modules.map(function (m, i) {
+        var items = m.lessons.map(function (l, j) {
+          var n = (l.materials || []).length;
+          return '<li><span class="n">' + (i + 1) + "." + (j + 1) + '</span><span>' + esc(l.title) +
+            ' <span class="slots">— ' + esc(l.duration) + ' · відео + ' + n + ' ' + plural(n, "файл", "файли", "файлів") + ' (заглушки)</span></span></li>';
+        }).join("");
+        return '<details class="prog-mod"' + (i === 0 ? " open" : "") + '><summary>' +
+          '<span class="module-num">' + (i + 1) + '</span><span class="t">' + esc(m.title) + '</span>' +
+          '<span class="c">' + lessonsWord(m.lessons.length) + '</span></summary><ol>' + items + '</ol></details>';
+      }).join("");
+
+      return stats + tabs + '<div class="panel">' +
+        '<div class="panel-head"><h2>8 модулів курсу</h2>' +
+        '<p class="hint">Назви модулів і уроків тут — приклад структури, щоб було видно, як це виглядає в роботі. Коли даси свою програму, вона стає на ці самі місця: назви, відео, презентації — перебудовувати нічого не треба.</p></div>' +
+        '<div class="program">' + progHTML + '</div></div>' + NOTE;
+    }
+
+    var studentOpts = STUDENTS.map(function (s) {
+      return '<option value="' + esc(s.id) + '"' + (ui.grant.studentId === s.id ? " selected" : "") + '>' + esc(s.name) + '</option>';
+    }).join("");
+    var tariffOpts = TARIFFS.map(function (t) {
+      return '<option value="' + esc(t.id) + '"' + (ui.grant.tariff === t.id ? " selected" : "") + '>' + esc(t.name + " · " + t.price) + '</option>';
+    }).join("");
+    var dayOpts = [90, 180, 365].map(function (d) {
+      return '<option value="' + d + '"' + (ui.grant.days === d ? " selected" : "") + '>' + daysWord(d) + '</option>';
+    }).join("");
+
+    var table = rows.map(function (r) {
+      var tf = tariffOf(r.e.tariff);
+      var leftTxt = r.st.key === "over" ? daysWord(-r.st.left) + " тому" : daysWord(r.st.left);
+      var confirming = ui.confirmId === r.e.id;
+      return '<tr>' +
+        '<td>' + esc(r.s.name) + '<div class="sub">' + esc(r.s.email) + '</div></td>' +
+        '<td>' + esc(tf.name) + '<div class="sub">' + esc(tf.price) + '</div></td>' +
+        '<td>' + (r.e.paid ? '<span class="pill pill-ok">оплачено</span>' : '<span class="pill pill-wait">очікує</span>') + '</td>' +
+        '<td class="num">' + fmtDate(r.e.grantedAt) + '</td>' +
+        '<td class="num">' + fmtDate(r.e.expiresAt) + '</td>' +
+        '<td class="num">' + leftTxt + '</td>' +
+        '<td><span class="pill ' + r.st.cls + '">' + r.st.label + '</span></td>' +
+        '<td class="actions">' +
+          (confirming
+            ? '<button class="btn btn-sm btn-danger" data-act="revoke-yes" data-id="' + esc(r.e.id) + '">Точно відкликати</button>' +
+              '<button class="btn btn-sm btn-quiet" data-act="revoke-no">Скасувати</button>'
+            : (r.e.paid ? "" : '<button class="btn btn-sm btn-quiet" data-act="paid" data-id="' + esc(r.e.id) + '">Оплачено</button>') +
+              '<button class="btn btn-sm btn-quiet" data-act="extend" data-id="' + esc(r.e.id) + '">+30 днів</button>' +
+              '<button class="btn btn-sm btn-quiet" data-act="revoke" data-id="' + esc(r.e.id) + '">Відкликати</button>') +
+        '</td>' +
+      '</tr>';
+    }).join("");
+
+    return stats + tabs +
+      '<div class="panel">' +
+        '<div class="panel-head"><h2>Видати доступ</h2><p class="hint">Доступ відкривається одразу й закривається сам, коли строк вийде. Оплату позначаєш вручну — або її пізніше фіксує платіжна система.</p></div>' +
+        '<div class="grant-form">' +
+          '<div class="field"><label for="g-student">Учень</label><select id="g-student">' + studentOpts + '</select></div>' +
+          '<div class="field"><label for="g-tariff">Тариф</label><select id="g-tariff">' + tariffOpts + '</select></div>' +
+          '<div class="field"><label for="g-days">Строк</label><select id="g-days">' + dayOpts + '</select></div>' +
+          '<button class="btn btn-accent" data-act="grant">Видати доступ</button>' +
+        '</div>' +
+      '</div>' +
+      '<div class="panel">' +
+        '<div class="panel-head"><h2>Учні потоку</h2><p class="hint">Згори ті, з ким треба щось робити: спершу неоплачені, далі ті, у кого спливає доступ.</p></div>' +
+        (rows.length
+          ? '<div class="table-scroll"><table><thead><tr><th>Учень</th><th>Тариф</th><th>Оплата</th><th>Видано</th><th>Діє до</th><th>Лишилось</th><th>Статус</th><th></th></tr></thead><tbody>' + table + '</tbody></table></div>'
+          : '<p class="empty">Доступів ще немає — видай перший у формі вище.</p>') +
+      '</div>' + NOTE;
+  }
+
+  /* ───────── рендер ───────── */
+
+  function render() {
+    var html;
+    if (ui.screen === "admin") html = adminHTML();
+    else if (ui.screen === "lesson") html = lessonHTML();
+    else if (ui.screen === "student") html = studentHTML();
+    else html = loginHTML();
+    app.innerHTML = html;
+    renderWhoami();
+    if (ui.screen === "admin" && ui.tab === "access") bindGrant();
+  }
+
+  function bindGrant() {
+    var s = document.getElementById("g-student"), t = document.getElementById("g-tariff"), d = document.getElementById("g-days");
+    if (!s || !t || !d) return;
+    ui.grant.studentId = s.value; ui.grant.tariff = t.value; ui.grant.days = parseInt(d.value, 10);
+    s.onchange = function () { ui.grant.studentId = s.value; };
+    t.onchange = function () { ui.grant.tariff = t.value; };
+    d.onchange = function () { ui.grant.days = parseInt(d.value, 10); };
+  }
+
+  /* ───────── події ───────── */
+
+  document.addEventListener("click", function (ev) {
+    var el = ev.target.closest ? ev.target.closest("[data-act]") : null;
+    if (!el) return;
+    var act = el.getAttribute("data-act");
+    var id = el.getAttribute("data-id");
+
+    if (act === "as-student") { ui.screen = "student"; ui.studentId = id; ui.openModule = null; render(); }
+    else if (act === "as-admin") { ui.screen = "admin"; ui.tab = "access"; render(); }
+    else if (act === "logout") { ui.screen = "login"; ui.studentId = null; ui.confirmId = null; render(); }
+    else if (act === "reset") resetDemo();
+    else if (act === "toggle-module") { ui.openModule = ui.openModule === id ? null : id; render(); }
+    else if (act === "open-lesson") {
+      if (!id) return;
+      ui.lessonId = id; ui.screen = "lesson"; render(); window.scrollTo(0, 0);
+    }
+    else if (act === "back") { ui.screen = "student"; render(); }
+    else if (act === "toggle-done") { toggleLesson(ui.studentId, ui.lessonId); }
+    else if (act === "tab") { ui.tab = id; ui.confirmId = null; render(); }
+    else if (act === "grant") {
+      if (!ui.grant.studentId) return;
+      var st = byId(STUDENTS, ui.grant.studentId);
+      grant(ui.grant.studentId, ui.grant.tariff, ui.grant.days);
+      toast("Доступ відкрито: " + (st ? st.name : "") + " · " + daysWord(ui.grant.days));
+    }
+    else if (act === "extend") {
+      var e1 = byId(store.enrollments, id);
+      if (e1) { extend(e1, 30); toast("Продовжено до " + fmtDate(e1.expiresAt)); }
+    }
+    else if (act === "paid") { var e3 = byId(store.enrollments, id); if (e3) markPaid(e3); }
+    else if (act === "revoke") { ui.confirmId = id; render(); }
+    else if (act === "revoke-no") { ui.confirmId = null; render(); }
+    else if (act === "revoke-yes") { var e2 = byId(store.enrollments, id); if (e2) revoke(e2); }
+  });
+
+  load();
+  render();
+})();
+</script>
+
+</body>
+</html>
