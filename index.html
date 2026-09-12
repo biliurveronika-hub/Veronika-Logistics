@@ -1,0 +1,716 @@
+<!doctype html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<meta name="description" content="Комерційна пропозиція для Вероніки — запуск курсу «Міжнародна логістика з нуля».">
+<style>
+  html{color-scheme:light}
+  body{margin:0}
+  img{max-width:100%}
+  [hidden]{display:none!important}
+</style>
+<title>Маршрут сьомого потоку</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;500;600;700;800&family=Onest:wght@300;400;500;600;700&display=swap">
+<style>
+  :root{
+    --black:#111111;
+    --black-2:#1C1C1C;
+    --white:#FFFFFF;
+    --paper:#F3F2EF;
+    --paper-2:#E8E7E3;
+    --accent:#FF4A17;
+    --accent-deep:#D8360B;
+    --grey:#8A8A85;
+    --grey-dark:#5C5C57;
+    --maxw:1180px;
+    --r-lg:30px;
+    --r-md:20px;
+    --r-sm:12px;
+    --display:"Unbounded","Onest","Segoe UI",system-ui,sans-serif;
+    --body:"Onest","Segoe UI",system-ui,-apple-system,sans-serif;
+  }
+  *{box-sizing:border-box}
+  body{
+    background:var(--paper);
+    color:var(--black);
+    font-family:var(--body);
+    font-size:16px;
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 22px}
+  h1,h2,h3,h4{margin:0;font-family:var(--display);font-weight:600;text-wrap:balance;letter-spacing:-.03em;line-height:.98}
+  p{margin:0}
+  ul,ol{margin:0;padding:0;list-style:none}
+  a{color:inherit}
+
+  .band{padding:clamp(56px,7vw,104px) 0}
+  .band--dark{background:var(--black);color:var(--white)}
+  .band--paper{background:var(--paper);color:var(--black)}
+  .band--white{background:var(--white);color:var(--black)}
+
+  /* ─── shared ─── */
+  .ast{display:inline-block;vertical-align:-.06em;color:var(--accent)}
+  .tagrow{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+  .tag{
+    display:inline-flex;align-items:center;gap:7px;
+    border:1.4px solid currentColor;border-radius:999px;
+    padding:6px 15px;font-size:13.5px;font-weight:500;line-height:1.2;
+  }
+  .tag--solid{background:var(--accent);border-color:var(--accent);color:var(--white)}
+  .eyebrow{font-size:12.5px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--accent)}
+  .lead{font-size:clamp(16px,1.5vw,18.5px);line-height:1.5;max-width:64ch}
+  .dim{color:var(--grey-dark)}
+  .band--dark .dim{color:var(--grey)}
+  .h2{font-size:clamp(28px,4.4vw,54px)}
+  .h3{font-size:clamp(20px,2.1vw,26px)}
+  .head{display:grid;gap:16px;margin-bottom:clamp(32px,4vw,56px);max-width:62ch}
+  .num{
+    flex:none;width:27px;height:27px;border-radius:50%;
+    background:var(--accent);color:var(--white);
+    display:grid;place-items:center;
+    font-size:13px;font-weight:700;font-family:var(--body);
+    font-variant-numeric:tabular-nums;
+  }
+  .num--dark{background:var(--black);color:var(--white)}
+  .bignum{font-family:var(--display);font-size:38px;font-weight:700;color:var(--accent);line-height:1;letter-spacing:-.04em}
+
+  .author{display:flex;align-items:center;gap:13px}
+  .ava{
+    flex:none;width:52px;height:52px;border-radius:50%;
+    background:var(--accent);color:var(--white);
+    display:grid;place-items:center;overflow:hidden;
+    font-family:var(--display);font-size:17px;font-weight:700;letter-spacing:-.02em;
+  }
+  .ava img{width:100%;height:100%;object-fit:cover;display:block}
+  .who{display:grid;gap:1px;line-height:1.25}
+  .who b{font-family:var(--display);font-size:15.5px;font-weight:600;letter-spacing:-.02em}
+  .who span{font-size:13px;color:var(--grey)}
+
+  /* ─── hero ─── */
+  .hero{background:var(--black);color:var(--white);padding:22px 0 clamp(50px,6vw,84px);overflow:hidden}
+  .hero-top{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;align-items:center;margin-bottom:clamp(40px,6vw,76px)}
+  .hero h1{
+    font-size:clamp(40px,10.4vw,142px);
+    font-weight:700;
+    line-height:.86;
+    letter-spacing:-.045em;
+  }
+  .hero h1 .ast{font-size:.78em}
+  .hero-sub{display:grid;gap:26px;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);margin-top:34px;align-items:start}
+  @media (max-width:820px){.hero-sub{grid-template-columns:1fr}}
+  .hero-sub p{font-size:clamp(16px,1.7vw,20px);line-height:1.45;max-width:46ch}
+  .hero-card{
+    background:var(--white);color:var(--black);
+    border-radius:var(--r-lg);padding:26px 26px 24px;
+    display:grid;gap:16px;
+  }
+  .hero-card .k{font-size:12.5px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--grey-dark)}
+  .facts{display:grid;grid-template-columns:repeat(2,1fr);gap:16px 18px}
+  .facts div{display:grid;gap:2px}
+  .facts dt{font-size:12.5px;color:var(--grey-dark);font-weight:500;line-height:1.3}
+  .facts dd{margin:0;font-family:var(--display);font-size:clamp(19px,2.2vw,25px);font-weight:600;letter-spacing:-.03em;font-variant-numeric:tabular-nums}
+  .facts .hot dd{color:var(--accent)}
+
+  /* ─── diagnostics ─── */
+  .diag{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(270px,1fr))}
+  .dcard{
+    background:var(--white);border-radius:var(--r-md);padding:24px 22px 26px;
+    display:grid;gap:11px;align-content:start;
+  }
+  .dcard h3{font-size:19px;font-weight:600;line-height:1.12}
+  .dcard p{font-size:14.8px;color:var(--grey-dark);line-height:1.48}
+  .dcard .tag{align-self:start;font-size:12px;padding:4px 12px}
+  .dcard--hot{background:var(--black);color:var(--white)}
+  .dcard--hot p{color:#B9B9B4}
+  .dcard--accent{background:var(--accent);color:var(--white)}
+  .dcard--accent p{color:rgba(255,255,255,.92)}
+
+  /* ─── ladder ─── */
+  .ladder{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;align-items:end}
+  .rung{
+    background:var(--white);border-radius:var(--r-md);
+    padding:20px 18px 22px;display:grid;gap:10px;align-content:start;
+  }
+  .rung:nth-child(2){margin-bottom:22px}
+  .rung:nth-child(3){margin-bottom:44px}
+  .rung:nth-child(4){margin-bottom:66px}
+  .rung:nth-child(5){margin-bottom:88px;background:var(--accent);color:var(--white)}
+  .rung h4{font-size:16.5px;font-weight:600;line-height:1.15}
+  .rung p{font-size:13.6px;line-height:1.45;color:var(--grey-dark)}
+  .rung:nth-child(5) p{color:rgba(255,255,255,.94)}
+  .rung .step-k{font-size:11.5px;font-weight:600;letter-spacing:.13em;text-transform:uppercase;color:var(--accent)}
+  .rung:nth-child(5) .step-k{color:var(--white)}
+  .rung .fmt{font-size:13px;font-weight:500;border-top:1px solid rgba(0,0,0,.12);padding-top:9px;margin-top:2px;color:var(--black)}
+  .rung:nth-child(5) .fmt{border-top-color:rgba(255,255,255,.4);color:var(--white)}
+  @media (max-width:900px){
+    .ladder{grid-template-columns:1fr}
+    .rung,.rung:nth-child(n){margin-bottom:0}
+  }
+
+  /* ─── cards ─── */
+  .grid2{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
+  .grid3{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(262px,1fr))}
+  .card{background:var(--white);border-radius:var(--r-md);padding:24px 22px;display:grid;gap:12px;align-content:start}
+  .card h3{font-size:19px;font-weight:600;line-height:1.14}
+  .card p{font-size:14.8px;color:var(--grey-dark);line-height:1.5}
+  .band--dark .card{background:var(--black-2)}
+  .band--dark .card p{color:#ADADA8}
+  .card--accent{background:var(--accent);color:var(--white)}
+  .card--accent p{color:rgba(255,255,255,.92)}
+  .list{display:grid;gap:10px}
+  .list li{display:flex;gap:11px;align-items:flex-start;font-size:15px;line-height:1.42}
+  .list--plain li{padding-left:18px;position:relative;display:block}
+  .list--plain li::before{content:"";position:absolute;left:0;top:.62em;width:8px;height:2px;background:var(--accent)}
+
+  /* ─── funnel steps ─── */
+  .steps{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(215px,1fr))}
+  .step{background:var(--paper);border-radius:var(--r-md);padding:22px 20px;display:grid;gap:10px;align-content:start;color:var(--black)}
+  .step h4{font-size:17px;font-weight:600;line-height:1.16}
+  .step p{font-size:14.2px;color:var(--grey-dark);line-height:1.45}
+  .step--last{background:var(--accent);color:var(--white)}
+  .step--last p{color:rgba(255,255,255,.93)}
+  .step--last .num{background:var(--white);color:var(--accent)}
+
+  /* ─── decomposition ─── */
+  .funnel{display:grid;gap:8px;margin-bottom:16px}
+  .frow{
+    display:flex;align-items:center;justify-content:space-between;gap:16px;
+    background:var(--white);color:var(--black);
+    border-radius:999px;padding:14px 26px;
+  }
+  .frow:nth-child(1){width:100%}
+  .frow:nth-child(2){width:88%}
+  .frow:nth-child(3){width:74%}
+  .frow:nth-child(4){width:60%}
+  .frow:nth-child(5){width:44%;background:var(--accent);color:var(--white)}
+  .frow .fn{font-size:14.6px;font-weight:500;line-height:1.25}
+  .frow .fv{font-family:var(--display);font-size:17px;font-weight:600;letter-spacing:-.02em;white-space:nowrap;font-variant-numeric:tabular-nums}
+  @media (max-width:760px){
+    .frow,.frow:nth-child(n){width:100%;border-radius:var(--r-sm);padding:13px 18px}
+  }
+  .money{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));margin-bottom:18px}
+  .mcard{background:var(--black);color:var(--white);border-radius:var(--r-md);padding:24px 24px 26px;display:grid;gap:8px;align-content:center}
+  .mcard .mk{font-size:14px;color:var(--grey);line-height:1.35}
+  .mcard .mv{font-family:var(--display);font-size:clamp(30px,3.8vw,46px);font-weight:700;letter-spacing:-.045em;line-height:1}
+  .mcard--hot{background:var(--accent)}
+  .mcard--hot .mk{color:rgba(255,255,255,.9)}
+  .mcard--note{background:var(--white);color:var(--black);align-content:start}
+  .mcard--note p{font-size:14.4px;color:var(--grey-dark);line-height:1.5}
+  .profit{
+    background:var(--black);color:var(--white);border-radius:var(--r-md);
+    padding:24px 26px;display:flex;flex-wrap:wrap;gap:14px 32px;align-items:center;justify-content:space-between;
+    margin-bottom:16px;
+  }
+  .profit .lbl{font-size:14.5px;color:var(--grey);max-width:46ch}
+  .profit .val{font-family:var(--display);font-size:clamp(28px,3.6vw,44px);font-weight:700;letter-spacing:-.04em;color:var(--accent);line-height:1}
+  .fnote{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+  .fnote div{background:var(--white);border-radius:var(--r-md);padding:20px;font-size:14.4px;color:var(--grey-dark);line-height:1.5}
+  .fnote strong{color:var(--black);font-weight:600}
+
+  /* ─── month deliverables ─── */
+  .deliver{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+  .dl{background:var(--black-2);border-radius:var(--r-md);padding:22px 20px;display:grid;gap:10px;align-content:start}
+  .dl h4{font-size:17px;font-weight:600;line-height:1.16;display:flex;gap:11px;align-items:flex-start}
+  .dl p{font-size:14.2px;color:#ADADA8;line-height:1.45}
+
+  /* ─── tariffs ─── */
+  .tariffs{display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(310px,1fr));align-items:start}
+  .tf{background:var(--white);color:var(--black);border-radius:var(--r-lg);padding:30px 28px 32px;display:grid;gap:20px;align-content:start}
+  .tf .pill{
+    justify-self:start;border-radius:999px;padding:8px 18px;
+    font-size:14px;font-weight:600;background:var(--black);color:var(--white);
+  }
+  .tf.pro .pill{background:var(--accent)}
+  .tf h3{font-size:clamp(22px,2.3vw,28px);font-weight:600;line-height:1.08}
+  .tf .why{font-size:15px;color:var(--grey-dark);line-height:1.48}
+  .tf ul{display:grid;gap:11px}
+  .tf li{display:flex;gap:11px;align-items:flex-start;font-size:15px;line-height:1.38}
+  .tf li b{font-weight:600}
+  .price{display:grid;gap:10px;margin-top:4px}
+  .price .v{font-family:var(--display);font-size:clamp(36px,4.4vw,52px);font-weight:700;letter-spacing:-.05em;line-height:1}
+  .tf.pro .price .v{color:var(--accent)}
+  .price .c{font-size:13.6px;color:var(--grey-dark);line-height:1.4}
+  .split{display:flex;flex-wrap:wrap;gap:8px}
+  .split span{
+    border:1.4px solid var(--paper-2);background:var(--paper);
+    border-radius:999px;padding:7px 14px;font-size:13.4px;font-weight:500;
+  }
+  .tf .cta{
+    justify-self:start;border-radius:999px;padding:14px 30px;
+    font-size:16px;font-weight:600;background:var(--black);color:var(--white);
+  }
+  .tf.pro .cta{background:var(--accent)}
+
+  /* ─── two col ─── */
+  .two{display:grid;gap:clamp(28px,4vw,52px);grid-template-columns:repeat(auto-fit,minmax(290px,1fr));align-items:start}
+  .check{display:grid;gap:10px}
+  .check li{display:flex;gap:12px;align-items:flex-start;font-size:15.2px;line-height:1.42}
+  .check li::before{
+    content:"";flex:none;width:17px;height:17px;margin-top:3px;
+    border:2px solid var(--accent);border-radius:5px;
+  }
+  .nope{display:grid;gap:10px}
+  .nope li{display:flex;gap:12px;align-items:flex-start;font-size:14.8px;line-height:1.42;color:var(--grey-dark)}
+  .nope li::before{content:"";flex:none;width:14px;height:2px;margin-top:11px;background:var(--grey)}
+
+  /* ─── close ─── */
+  .close-grid{display:grid;gap:18px;grid-template-columns:minmax(0,1.25fr) minmax(0,.75fr);align-items:start}
+  @media (max-width:820px){.close-grid{grid-template-columns:1fr}}
+  .close-card{background:var(--black);color:var(--white);border-radius:var(--r-lg);padding:clamp(28px,3.4vw,44px)}
+  .contact{
+    background:var(--accent);color:var(--white);border-radius:var(--r-lg);
+    padding:clamp(28px,3.4vw,40px);display:grid;gap:16px;align-content:start;
+  }
+  .contact .big{font-family:var(--display);font-size:clamp(21px,2.3vw,28px);font-weight:700;letter-spacing:-.03em;line-height:1.08}
+  .fill{background:rgba(255,255,255,.22);border-bottom:2px dashed rgba(255,255,255,.75);padding:0 6px;border-radius:4px 4px 0 0}
+  footer.page{background:var(--black);color:var(--grey);padding:26px 0 40px}
+  footer.page .wrap{display:flex;flex-wrap:wrap;gap:10px 24px;justify-content:space-between;font-size:13px}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="ast" viewBox="0 0 100 100">
+    <path fill="currentColor" d="M43 0h14v34l24-17 8 12-27 15 27 15-8 12-24-17v34H43V54L19 71l-8-12 27-15-27-15 8-12 24 17z"/>
+  </symbol>
+</svg>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="hero-top">
+      <div class="author">
+        <span class="ava">ОВ</span>
+        <span class="who"><b>Ольга Восканян</b><span>маркетолог · @marketolog_voskanian</span></span>
+      </div>
+      <div class="tagrow"><span class="tag">вересень 2026</span></div>
+    </div>
+
+    <h1>Комерційна<br>пропозиція<svg class="ast" width="0.62em" height="0.62em"><use href="#ast"/></svg></h1>
+
+    <div class="tagrow" style="margin-top:28px">
+      <span class="tag tag--solid">для експертки з міжнародної логістики</span>
+      <span class="tag">@veronika_logistics</span>
+      <span class="tag">7-й потік курсу</span>
+    </div>
+
+    <div class="hero-sub">
+      <p>Я налаштована на довгу співпрацю, а не на разовий запуск — тому працюємо помісячно, і перший місяць іде за стартовою ціною. За нього збираємо систему, якої зараз немає, і робимо максимум, щоб перші продажі сталися вже в цьому місяці.</p>
+      <div class="hero-card">
+        <span class="k">Що з'явиться за перший місяць</span>
+        <dl class="facts">
+          <div><dt>Одиниць контенту на широку аудиторію</dt><dd>12</dd></div>
+          <div><dt>Налаштована автоворонка</dt><dd>1</dd></div>
+          <div class="hot"><dt>Відео, що продає</dt><dd>1</dd></div>
+          <div><dt>Лід-магніт</dt><dd>1</dd></div>
+          <div><dt>Посадкова сторінка</dt><dd>1</dd></div>
+          <div class="hot"><dt>Навчальна платформа</dt><dd>1</dd></div>
+        </dl>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section class="band band--paper">
+  <div class="wrap">
+    <div class="head">
+      <span class="eyebrow">Точка А</span>
+      <h2 class="h2">Що я побачила у твоєму брифі та блозі</h2>
+      <p class="lead dim">Щоб продажі стали стабільними, потрібно щонайменше три воронки під різні сегменти. У цьому місяці ми будуємо першу — і саме вона показує, що працює.</p>
+    </div>
+    <div class="diag">
+      <div class="dcard">
+        <span class="tag">сильно</span>
+        <h3>6 потоків і 12 випускників, більшість уже працює</h3>
+        <p>Це найдорожче, що в тебе є. Реальні історії працевлаштування продають курс краще за будь-який креатив — але зараз вони лежать у хайлайтах, а не у воронці.</p>
+      </div>
+      <div class="dcard">
+        <span class="tag">сильно</span>
+        <h3>2 750 підписників і 284 публікації</h3>
+        <p>Тепла база, з якої реально зробити перші продажі вже цього місяця. Її ніколи не збирали в одне місце й не вели до оплати.</p>
+      </div>
+      <div class="dcard">
+        <span class="tag">сильно</span>
+        <h3>Продукт готовий: 8 модулів, презентації, вступне й заключне відео</h3>
+        <p>Не витрачаємо місяці на виробництво. Весь ресурс іде в упаковку й систему продажу — це рідкість і це економить тобі час.</p>
+      </div>
+      <div class="dcard dcard--hot">
+        <span class="tag">вузьке місце</span>
+        <h3>Немає бази в Telegram</h3>
+        <p>Підписник в Instagram — не твій контакт. Алгоритм показав або не показав. База в Telegram — єдине, що лишається з тобою між потоками й кому можна написати про старт продажів.</p>
+      </div>
+      <div class="dcard dcard--hot">
+        <span class="tag">вузьке місце</span>
+        <h3>Немає відео, яке продає замість тебе</h3>
+        <p>Зараз кожен зацікавлений — це окрема переписка з нуля. Одне відео на 10–15 хвилин закриває більшість питань до того, як людина прийде до тебе в діалог.</p>
+      </div>
+      <div class="dcard dcard--accent">
+        <span class="tag">головне</span>
+        <h3>Аудиторія ще не на тому щаблі, щоб купувати</h3>
+        <p>Більшість твоїх глядачів не думає «який курс обрати». Вони взагалі не знають, що така професія існує і що в неї можна зайти без досвіду. Тому весь контент будуємо як сходи — від «а що це таке» до «я хочу вчитись у тебе».</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band band--dark">
+  <div class="wrap">
+    <div class="head">
+      <span class="eyebrow">Головна відмінність</span>
+      <h2 class="h2">Ми заходимо з іншого боку, ніж усі конкуренти</h2>
+      <p class="lead dim">Усі курси в ніші продають одне й те саме й одним і тим самим людям — тим, хто вже вирішив стати логістом. Це найменша й найдорожча аудиторія на ринку.</p>
+    </div>
+    <div class="grid3">
+      <div class="card">
+        <h3>Що роблять конкуренти</h3>
+        <p>У всіх одна й та сама обіцянка: «навчимо професії логіста». Жодного пояснення, кому вона підходить, а кому ні, і яку задачу взагалі вирішує. Вони не пояснюють — вони одразу продають.</p>
+      </div>
+      <div class="card">
+        <h3>Чому це вузько</h3>
+        <p>Людей, які вже усвідомили, що хочуть у логістику, мало. За них б’ються всі школи одночасно, реклама на них найдорожча — і виграє той, у кого більший бюджет. Це не наша гра.</p>
+      </div>
+      <div class="card card--accent">
+        <h3>Де насправді гроші</h3>
+        <p>У широкій аудиторії, яка ще навіть не знає, що така професія існує й що саме вона вирішує їхню проблему з роботою й доходом. Цих людей у рази більше, вони ще нічиї — і саме з ними ми працюємо з першого дня.</p>
+      </div>
+    </div>
+    <div class="card" style="margin-top:14px;background:var(--black-2)">
+      <h3>Що це міняє на практиці</h3>
+      <p style="font-size:15.4px">Ми не починаємо з «обери курс». Ми починаємо з «а що це взагалі таке й чи підійде це мені» — і ведемо людину вгору щабель за щаблем. Саме тому весь контент першого місяця вибудуваний за сходами Ханта, а не як набір випадкових рілсів про логістику.</p>
+    </div>
+  </div>
+</section>
+
+<section class="band band--white">
+  <div class="wrap">
+    <div class="head">
+      <span class="eyebrow">Логіка контенту</span>
+      <h2 class="h2">Сходи Ханта<svg class="ast" width="0.32em" height="0.32em" style="vertical-align:.5em"><use href="#ast"/></svg></h2>
+      <p class="lead dim">П'ять станів, через які людина проходить до покупки. Кожна одиниця контенту піднімає її на щабель вище — і веде в одну точку: на відео, після якого стає зрозуміло, чи потрібна їй ця професія.</p>
+    </div>
+    <div class="ladder">
+      <div class="rung">
+        <span class="step-k">Щабель 01</span>
+        <h4>Навіть не знає, що є така професія</h4>
+        <p>Не шукає курс. Просто втомилась від своєї роботи й доходу.</p>
+        <p class="fmt">3 одиниці: скільки заробляє логіст, професія, про яку не розповідають у школі, один день з життя</p>
+      </div>
+      <div class="rung">
+        <span class="step-k">Щабель 02</span>
+        <h4>Зрозуміла, що варіант є, але «це не для мене»</h4>
+        <p>Думає, що потрібна освіта, англійська, зв'язки, досвід.</p>
+        <p class="fmt">3 одиниці: міфи про вхід у логістику, хто реально працює логістом, віддалено з будь-якої країни</p>
+      </div>
+      <div class="rung">
+        <span class="step-k">Щабель 03</span>
+        <h4>Порівнює способи навчитись</h4>
+        <p>Університет, самонавчання, курси, «піду працювати й розберусь».</p>
+        <p class="fmt">2 одиниці: декомпозиція вартості навчання, чому самонавчання розтягується на роки</p>
+      </div>
+      <div class="rung">
+        <span class="step-k">Щабель 04</span>
+        <h4>Обирає між курсами</h4>
+        <p>Дивиться на великі школи з рекламою й на тебе.</p>
+        <p class="fmt">2 одиниці: практик проти школи, історії твоїх випускників з іменами й результатом</p>
+      </div>
+      <div class="rung">
+        <span class="step-k">Щабель 05</span>
+        <h4>Готова купити</h4>
+        <p>Лишились питання про ціну, формат і підтримку.</p>
+        <p class="fmt">2 одиниці: що всередині 8 модулів, тарифи й дедлайн, відповіді на заперечення</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band band--dark">
+  <div class="wrap">
+    <div class="head">
+      <span class="eyebrow">Ключова тема</span>
+      <h2 class="h2">Декомпозиція професії</h2>
+      <p class="lead dim">Найсильніший контент у твоїй ніші — не мотивація, а цифри. Ми розкладаємо професію так, щоб людина сама порахувала й побачила, що твій курс — найдешевший і найшвидший вхід.</p>
+    </div>
+    <div class="grid2">
+      <div class="card">
+        <h3>Скільки коштує вивчитись інакше</h3>
+        <ul class="list list--plain">
+          <li>Університет: роки життя плюс вартість навчання й проживання</li>
+          <li>Приватні консультації діючого логіста — погодинно</li>
+          <li>Курси великих шкіл — ціна і що реально дають</li>
+          <li>Самостійно з нуля: місяці спроб і помилки, які коштують грошей уже на першому рейсі</li>
+        </ul>
+        <p>Точні цифри збираємо разом на старті — я їх не вигадую, беремо реальні прайси й твій досвід навчання в Польщі.</p>
+      </div>
+      <div class="card">
+        <h3>Скільки заробляє логіст</h3>
+        <ul class="list list--plain">
+          <li>Ставка новачка й ставка через рік роботи</li>
+          <li>Як рахується відсоток з рейсу</li>
+          <li>Скільки виходить у власника одного авто, коли він шукає вантаж сам</li>
+          <li>Скільки той самий власник платить сторонньому логісту</li>
+        </ul>
+        <p>Це закриває головне питання аудиторії й одночасно є прямим аргументом для власників транспорту — другого сегмента, під який пізніше зробимо окрему воронку.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band band--paper">
+  <div class="wrap">
+    <div class="head">
+      <span class="eyebrow">Як ми робимо контент</span>
+      <h2 class="h2">Ти говориш своїми словами</h2>
+      <p class="lead dim">Ти казала, що читати з написаного тобі незручно. Тому я збираю теми й даю приблизний сценарій — опору, а не текст. Ти адаптуєш його під себе й розповідаєш так, як розповіла б знайомій.</p>
+    </div>
+    <div class="grid3">
+      <div class="card" style="background:var(--black);color:var(--white)">
+        <span class="bignum">01</span>
+        <h3>Я збираю теми й пишу сценарії</h3>
+        <p style="color:#ADADA8">Що знімаємо, на якому щаблі сходів ця тема, з чого почати й чим закінчити. Плюс приблизний сценарій під кожну одиницю.</p>
+      </div>
+      <div class="card">
+        <span class="bignum">02</span>
+        <h3>Один знімальний день на місяць</h3>
+        <p>За один день знімаємо весь контент на місяць плюс відео, що продає. Це набагато логічніше, ніж щотижня викроювати час на зйомку окремих роликів.</p>
+      </div>
+      <div class="card">
+        <span class="bignum">03</span>
+        <h3>Ти говориш своїми словами</h3>
+        <p>Адаптуєш сценарій під себе й розповідаєш у своєму темпі. Ніякого читання з листка — це одразу видно в кадрі й убиває довіру.</p>
+      </div>
+      <div class="card card--accent">
+        <span class="bignum" style="color:#fff">04</span>
+        <h3>Кожна одиниця веде в одну точку</h3>
+        <p>Не «на профіль», а на конкретне відео, після якого людина розуміє, чи потрібна їй ця професія. Це і є вхід у воронку.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band band--white">
+  <div class="wrap">
+    <div class="head">
+      <span class="eyebrow">Воронка</span>
+      <h2 class="h2">Перша воронка: від відео до консультації</h2>
+      <p class="lead dim">Одна зібрана воронка до кінця місяця. Головне правило: усі джерела трафіку — Instagram, TikTok, кожен рілс і кожна карусель — ведуть не «на профіль», а в одну точку — у чат-бот. Звідти людина потрапляє на відео, а з нього — одразу до тебе на консультацію.</p>
+    </div>
+    <div class="steps">
+      <div class="step"><span class="num">1</span><h4>Контент</h4><p>12 одиниць за сходами Ханта в Instagram і TikTok. У кожній — один і той самий заклик перейти по посиланню.</p></div>
+      <div class="step"><span class="num">2</span><h4>Лід-магніт</h4><p>Гайд про професію: як зайти в міжнародну логістику без досвіду, з чого почати і скільки на цьому заробляють.</p></div>
+      <div class="step"><span class="num">3</span><h4>Telegram-бот</h4><p>Видає гайд і збирає базу. Далі — ланцюжок прогріву: твоя історія, міфи, кейс випускника, запрошення.</p></div>
+      <div class="step"><span class="num">4</span><h4>Відео, що продає</h4><p>Про професію й вхід у неї: як влаштована робота логіста, як цього навчитись, що всередині 8 модулів, кому підходить. Сценарій пишу я, ти адаптуєш під себе й записуєш. Знімаємо один раз — працює весь потік.</p></div>
+      <div class="step step--last"><span class="num">5</span><h4>Консультація</h4><p>Заявки приходять стабільно й у простому форматі — «хочу на консультацію». Це робить воронка, яку я налаштую. Продаж відбувається на розмові — за сценарієм, який я даю.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="band band--paper">
+  <div class="wrap">
+    <div class="head">
+      <span class="eyebrow">Декомпозиція мети</span>
+      <h2 class="h2">Скільки консультацій потрібно, щоб вийшло 20 оплат</h2>
+      <p class="lead dim">Рахуємо від грошей назад. Продаж відбувається на консультації — тому все, що ми будуємо цього місяця, працює на одне: щоб до тебе на розмову прийшла потрібна кількість підготовлених людей.</p>
+    </div>
+
+    <div class="money">
+      <div class="mcard">
+        <span class="mk">20 учнів за тарифом $400</span>
+        <span class="mv">$8 000</span>
+      </div>
+      <div class="mcard mcard--hot">
+        <span class="mk">20 учнів за тарифом $600</span>
+        <span class="mv">$12 000</span>
+      </div>
+      <div class="mcard mcard--note">
+        <p>Реальна цифра буде між цими двома — залежно від того, скільки людей візьмуть тариф із супроводом. Твої ціни для ринку низькі: закривати їх легше, але дохід росте тільки через кількість учнів — тому нам важлива саме кількість консультацій.</p>
+      </div>
+    </div>
+
+    <div class="funnel">
+      <div class="frow"><span class="fn">Охоплення контенту</span><span class="fv">&#8776; 45 000</span></div>
+      <div class="frow"><span class="fn">Переходи в чат-бот</span><span class="fv">&#8776; 1 600</span></div>
+      <div class="frow"><span class="fn">База у Telegram</span><span class="fv">&#8776; 1 000</span></div>
+      <div class="frow"><span class="fn">Проведених консультацій</span><span class="fv">мінімум 40</span></div>
+      <div class="frow"><span class="fn">Оплат</span><span class="fv">20</span></div>
+    </div>
+
+    <div class="fnote">
+      <div><strong>План-мінімум — 40 консультацій.</strong> За моїм досвідом, щоб вийшло 20 оплат, потрібно провести мінімум 40 розмов. Записів має бути більше: частина людей просто не доходить до зустрічі, і це нормально.</div>
+      <div><strong>Ти продаєш власний продукт.</strong> Знаєш його зсередини й говориш з людьми як практик — це найвища конверсія в усьому ланцюжку, і саме на неї працює вся система до неї.</div>
+      <div><strong>Це не план на один місяць.</strong> Такий обсяг набирається за 2&#8211;3 цикли. Перший місяць дає систему, перші реальні цифри по кожному кроку й перші оплати.</div>
+    </div>
+  </div>
+</section>
+
+<section class="band band--dark">
+  <div class="wrap">
+    <div class="head">
+      <span class="eyebrow">Обсяг</span>
+      <h2 class="h2">Що буде зроблено за перший місяць</h2>
+      <p class="lead dim">Без розбивки по тижнях — важливий результат на кінець місяця, а не графік всередині нього.</p>
+    </div>
+    <div class="deliver">
+      <div class="dl"><h4><span class="num">1</span>Кастдев і його аналіз</h4><p>Я даю структуру й питання, ти проводиш розмови зі своїми учнями та передаєш матеріал. Я збираю з нього карту смислів, заперечень і формулювань, якими говорить твоя аудиторія.</p></div>
+      <div class="dl"><h4><span class="num">2</span>Аналіз конкурентів</h4><p>Що продають великі школи, за скільки, чим чіпляють — і де в цьому твоє місце як практика.</p></div>
+      <div class="dl"><h4><span class="num">3</span>Стратегія і позиціонування</h4><p>Як ти звучиш у блозі, за що тебе обирають і чим ти відрізняєшся від курсів з великими бюджетами.</p></div>
+      <div class="dl"><h4><span class="num">4</span>Контент-план за сходами Ханта</h4><p>Будується на базі кастдеву й аналізу конкурентів: 12 одиниць контенту — теми, черговість, кут подачі й приблизні сценарії під кожну.</p></div>
+      <div class="dl"><h4><span class="num">5</span>Лід-магніт</h4><p>Один гайд про професію, за який людина готова залишити контакт.</p></div>
+      <div class="dl"><h4><span class="num">6</span>Telegram-бот і ланцюжок прогріву</h4><p>Збір бази, видача гайду, послідовність повідомлень до запрошення на консультацію.</p></div>
+      <div class="dl"><h4><span class="num">7</span>Сценарій і збірка відео, що продає</h4><p>Структура VSL, сценарій, порядок блоків і заклик. Записуєш ти — збираємо разом.</p></div>
+      <div class="dl"><h4><span class="num">8</span>Посадкова сторінка</h4><p>Сайт-візитка з інформацією про тебе й продажна сторінка курсу: програма, тарифи, бронювання місця.</p></div>
+      <div class="dl"><h4><span class="num">9</span>Навчальна платформа</h4><p>Покажу демоверсію: що вона вміє й як ми налаштуємо її самі — модулі, тарифи, доступи й оплати всередині, без зайвих сервісів і підрядників.</p></div>
+      <div class="dl"><h4><span class="num">10</span>Сценарій продажної консультації</h4><p>Як вести розмову, які питання ставити, як називати ціну й відпрацьовувати «дорого» та «а чи знайду роботу».</p></div>
+      <div class="dl"><h4><span class="num">11</span>Звіт і план наступного місяця</h4><p>Цифри по кожному кроку воронки й рішення, що масштабуємо далі.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="band band--paper">
+  <div class="wrap">
+    <div class="head" style="max-width:68ch">
+      <span class="eyebrow">Формат</span>
+      <h2 class="h2">Працюємо помісячно</h2>
+      <p class="lead dim">Я орієнтована на довгу співпрацю, а не на разовий запуск — тому перший місяць іде за стартовою ціною. Далі дивимось на результат і обсяг і переглядаємо умови разом.</p>
+    </div>
+    <div class="tariffs">
+      <div class="tf pro">
+        <span class="pill">Це перший місяць</span>
+        <h3>Збираємо систему й доводимо до перших оплат</h3>
+        <p class="why">З'являється все, чого зараз немає: воронка, відео, база, посадкова сторінка й контент, який веде людину до покупки.</p>
+        <ul>
+          <li><span class="num">1</span><span>Аудит, структура кастдеву й <b>аналіз результатів</b></span></li>
+          <li><span class="num">2</span><span>Аналіз конкурентів і позиціонування</span></li>
+          <li><span class="num">3</span><span>Стратегія й <b>контент-план за сходами Ханта</b></span></li>
+          <li><span class="num">4</span><span>Теми і приблизні сценарії для <b>12 одиниць контенту</b></span></li>
+          <li><span class="num">5</span><span>Сценарій і збірка <b>відео, що продає</b></span></li>
+          <li><span class="num">6</span><span>Лід-магніт, <b>Telegram-бот</b> і ланцюжок прогріву</span></li>
+          <li><span class="num">7</span><span>Одна повністю <b>налаштована автоворонка</b></span></li>
+          <li><span class="num">8</span><span><b>Посадкова сторінка</b>: візитка й продажна сторінка з тарифами</span></li>
+          <li><span class="num">9</span><span>Розбір і налаштування навчальної платформи</span></li>
+          <li><span class="num">10</span><span><b>Сценарій продажних консультацій</b> і робота із запереченнями</span></li>
+          <li><span class="num">11</span><span>Звіт по цифрах і план наступного місяця</span></li>
+        </ul>
+        <div class="price">
+          <span class="v">€750</span>
+          <div class="split">
+            <span>€375 — передоплата на старті</span>
+            <span>€375 — у кінці місяця</span>
+          </div>
+          <span class="c">Це моя стандартна ціна за розробку автоворонки й посадкової сторінки — окремою послугою. У цей же бюджет я вкладаю ще кастдев, аналіз конкурентів, стратегію, контент-план, сценарії й налаштування платформи — саме тому, що я орієнтована на довгу співпрацю, а не на один місяць. Далі переглядаємо умови разом, виходячи з результату.</span>
+        </div>
+        <span class="cta">Почнімо з цього</span>
+      </div>
+
+      <div class="tf">
+        <span class="pill">Це далі</span>
+        <h3>Масштабуємо те, що спрацювало</h3>
+        <p class="why">З другого місяця гроші йдуть не в збірку системи, а в продажі. Обсяг і вартість переглядаємо разом, виходячи з результатів першого місяця.</p>
+        <ul>
+          <li><span class="num num--dark">1</span><span>Друга й третя воронки: власники транспорту й тепла база</span></li>
+          <li><span class="num num--dark">2</span><span>Контент далі, з поступовим збільшенням обсягу</span></li>
+          <li><span class="num num--dark">3</span><span>Підключення платного трафіку з окремим спеціалістом, коли воронка дає стабільні заявки</span></li>
+          <li><span class="num num--dark">4</span><span>Збір кейсів 7-го потоку в реальному часі</span></li>
+          <li><span class="num num--dark">5</span><span>Підготовка 8-го потоку й прогрів заздалегідь</span></li>
+          <li><span class="num num--dark">6</span><span>Вебінар або автовебінар як окрема воронка</span></li>
+          <li><span class="num num--dark">7</span><span>Прогрів під офлайн-зустрічі з учнями й логістичними компаніями</span></li>
+        </ul>
+        <div class="price">
+          <span class="v">переглядаємо</span>
+          <span class="c">після звіту за перший місяць — виходячи з обсягу й результату</span>
+        </div>
+        <span class="cta">Обговоримо в кінці місяця</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band band--dark">
+  <div class="wrap">
+    <div class="head">
+      <span class="eyebrow">Ролі</span>
+      <h2 class="h2">Хто що робить</h2>
+      <p class="lead dim">Щоб не було очікувань, які не збігаються. Я закриваю стратегію, технічну частину й структуру контенту. Зйомка, монтаж і дизайн — на твоєму боці або на людині, яка тобі допомагає.</p>
+    </div>
+    <div class="grid2">
+      <div class="card">
+        <h3>Моя зона</h3>
+        <ul class="list list--plain">
+          <li><b>Стратегія:</b> позиціонування, оффер, сходи Ханта, план запуску</li>
+          <li><b>Технічна частина:</b> воронка, бот, посадкова сторінка, навчальна платформа</li>
+          <li><b>Контентна частина:</b> теми, черговість, сценарії, сценарій відео, що продає</li>
+          <li><b>Підтримка й менеджмент:</b> тримаю строки, веду процес, рахую цифри й кажу, що робити далі</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Твоя зона</h3>
+        <ul class="list list--plain">
+          <li><b>Зйомка:</b> один знімальний день на місяць — весь контент і відео за раз</li>
+          <li><b>Монтаж і дизайн:</b> ти або людина, яка тобі допомагає — я підкажу, але це не моя зона</li>
+          <li><b>Публікація</b> в Instagram і TikTok за контент-планом</li>
+          <li><b>Консультації</b> з людьми — за сценарієм, який я даю</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band band--white">
+  <div class="wrap">
+    <div class="two">
+      <div>
+        <div class="head" style="margin-bottom:0">
+          <span class="eyebrow">Підтримка</span>
+          <h2 class="h2">По чому я консультую</h2>
+          <p class="lead dim">Усе, що знаю про онлайн-продукти й їхні запуски, — показую й розповідаю. Є один виняток — таргетована реклама. Коли дійдемо до платного трафіку, або підключаємо окремого спеціаліста, або налаштовуємо самі — я покажу як і підключу до цього нейромережі.</p>
+        </div>
+      </div>
+      <div>
+        <ul class="check">
+          <li>Усе, що стосується онлайн-продукту: структура курсу, тарифи, упаковка, ціноутворення</li>
+          <li>Навчальна платформа: вибір, налаштування, доступи, оплати</li>
+          <li>Автоворонки, лід-магніти, боти й ланцюжки прогріву</li>
+          <li>Контент, сценарії й побудова сходів Ханта</li>
+          <li>Продажні консультації й відпрацювання заперечень</li>
+          <li>Аналітика: які цифри рахувати щотижня і що вони означають</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band band--paper">
+  <div class="wrap">
+    <div class="close-grid">
+      <div class="close-card">
+        <span class="eyebrow">Наступний крок</span>
+        <h2 class="h2" style="font-size:clamp(26px,3.4vw,40px);margin:12px 0 22px">Що робимо після твого «так»</h2>
+        <ul class="list">
+          <li><span class="num">1</span><span>Фіксуємо дату старту й вносимо передоплату за перший місяць.</span></li>
+          <li><span class="num">2</span><span>Я віддаю структуру кастдеву — ти починаєш розмови зі своїми учнями.</span></li>
+          <li><span class="num">3</span><span>Паралельно збираю стратегію, контент-план і теми перших відео.</span></li>
+          <li><span class="num">4</span><span>Через місяць у тебе є воронка, відео, база в Telegram, посадкова сторінка й перші оплати.</span></li>
+        </ul>
+      </div>
+      <div class="contact">
+        <svg class="ast" width="44" height="44" style="color:#fff"><use href="#ast"/></svg>
+        <p class="big">Питання, правки й «а можна інакше» — пиши, зберу другу версію під твій темп.</p>
+        <div class="tagrow">
+          <span class="tag">@marketolog_voskanian</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="page">
+  <div class="wrap">
+    <span>Пропозиція для Вероніки · курс «Міжнародна логістика з нуля»</span>
+    <span>@marketolog_voskanian</span>
+    <span>12.09.2026</span>
+  </div>
+</footer>
+
+</body>
+</html>
