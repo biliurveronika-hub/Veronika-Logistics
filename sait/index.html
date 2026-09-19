@@ -15,7 +15,7 @@
   --ink:#1B2314; --muted:#5A6450; --line:rgba(27,35,20,.12);
   --forest:#2B3620; --forest-d:#1C2414;
   --olive:#5F6F3A; --olive-2:#7E8B52; --sage:#A4AE7A; --sage-l:#CDD3B2;
-  --powder:#BDD1E6; --sea:#8FB2D4; --ios:#34C759;
+  --powder:#BDD1E6; --sky:#9DBBD9; --ice:#E3ECF4; --steel:#244A5E; --steel-d:#17313F; --sea:#8FB2D4; --ios:#34C759;
   --r-xl:40px; --r-lg:30px; --r-md:22px;
   --wrap:1280px;
   --ease:cubic-bezier(.2,.8,.2,1);
@@ -37,6 +37,7 @@ em{font-family:var(--serif);font-style:italic;font-weight:400;letter-spacing:-.0
 
 .label{display:inline-flex;align-items:center;gap:8px;padding:7px 14px 7px 10px;border-radius:999px;background:#fff;border:1px solid var(--line);font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--olive)}
 .label::before{content:"";width:7px;height:7px;border-radius:50%;background:currentColor}
+.label.blue{color:var(--steel);background:#fff}
 .label.dark{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.14);color:var(--sage)}
 h1,h2,h3{font-weight:600;letter-spacing:-.04em;line-height:1.02}
 h2{font-size:clamp(38px,5.4vw,76px);margin-top:22px}
@@ -178,6 +179,8 @@ body.loaded .hr{opacity:1;transform:none}
 .stat span{font-size:14px;color:var(--muted);margin-top:16px}
 .stat.accent{background:var(--olive);color:#fff;border-color:var(--olive)}
 .stat.accent span{color:var(--sage-l)}
+.stat.blue{background:var(--powder);border-color:var(--powder)}
+.stat.blue span{color:var(--steel)}
 
 /* ---------- about ---------- */
 .about-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:72px;margin-top:64px}
@@ -219,6 +222,29 @@ body.loaded .hr{opacity:1;transform:none}
 .lightbox img{max-width:min(1100px,100%);max-height:88vh;border-radius:14px;box-shadow:0 30px 80px rgba(0,0,0,.5)}
 .lightbox button{position:absolute;top:20px;right:20px;width:52px;height:52px;border-radius:50%;border:0;background:#fff;font-size:24px}
 
+/* ---------- 5 years -> 5 weeks ---------- */
+.squeeze{background:var(--steel);color:#fff;border-radius:var(--r-xl);margin:0 16px;overflow:hidden}
+.squeeze h2 em{color:var(--powder)}
+.squeeze .soft{color:#8FA9BD}
+.squeeze .lead{color:#C9D7E4}
+.sq-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.sq-viz{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:var(--r-lg);padding:34px}
+.sq-row{margin-bottom:30px}
+.sq-row:last-child{margin-bottom:0}
+.sq-row .top{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:12px}
+.sq-row .top b{font-size:clamp(34px,3.6vw,52px);letter-spacing:-.04em;font-weight:600;line-height:1}
+.sq-row .top span{font-size:13px;letter-spacing:.1em;text-transform:uppercase;font-weight:700;color:#9FB6C8}
+.sq-bar{height:44px;border-radius:14px;background:rgba(255,255,255,.08);overflow:hidden;display:flex;gap:4px;padding:4px}
+.sq-bar i{flex:1;border-radius:10px;background:#3A6078;transform-origin:left;transform:scaleX(0);transition:transform .7s var(--ease)}
+.sq-row.fast .sq-bar{width:18%;min-width:120px}
+.sq-row.fast .sq-bar i{background:var(--ios)}
+.sq-viz.in .sq-bar i{transform:none}
+.sq-viz .sq-arrow{display:flex;align-items:center;gap:12px;margin:-8px 0 22px;color:var(--powder);font-size:14px;font-weight:600}
+.sq-viz .sq-arrow::before{content:"";flex:1;height:1px;background:repeating-linear-gradient(90deg,var(--powder) 0 6px,transparent 6px 12px)}
+.sq-points{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:34px}
+.sq-points div{display:flex;gap:10px;align-items:center;padding:14px 16px;border-radius:16px;background:rgba(255,255,255,.07);font-size:14.5px;font-weight:500}
+.sq-points i{flex:none;width:22px;height:22px;border-radius:50%;background:var(--powder);color:var(--steel-d);display:grid;place-items:center;font-style:normal;font-size:12px;font-weight:800}
+
 /* ---------- audience ---------- */
 .cards{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:70px;align-items:start}
 .card{border-radius:var(--r-lg);padding:26px;min-height:380px;display:flex;flex-direction:column;justify-content:space-between;position:relative;overflow:hidden;transition:transform .5s var(--ease)}
@@ -235,9 +261,11 @@ body.loaded .hr{opacity:1;transform:none}
 .c-photo::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(28,36,20,0) 30%,rgba(28,36,20,.9))}
 .c-olive{background:var(--olive);color:#fff}
 .c-sand{background:var(--sand);color:var(--ink)}
+.c-blue{background:var(--powder);color:var(--steel-d)}
 
 /* ---------- quiz ---------- */
-.quiz{background:var(--sand-2)}
+.quiz{background:var(--ice)}
+.quiz h2 em{color:var(--steel)}
 .quiz-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:60px;align-items:center}
 .quiz-card{background:#fff;border-radius:var(--r-xl);padding:44px;min-height:440px;display:flex;flex-direction:column;box-shadow:0 40px 80px -40px rgba(27,35,20,.3);position:relative;overflow:hidden}
 .q-top{display:flex;justify-content:space-between;align-items:center;font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
@@ -263,6 +291,18 @@ body.loaded .hr{opacity:1;transform:none}
 .q-res p{color:var(--muted);max-width:420px}
 .q-res .acts{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:10px}
 
+.q-feed{margin-top:18px;border-radius:20px;padding:20px 22px;font-size:15px;line-height:1.5;animation:feedIn .5s var(--ease)}
+.q-feed.good{background:#EAF7EE;border:1px solid rgba(52,199,89,.35)}
+.q-feed.meh{background:var(--ice);border:1px solid rgba(36,74,94,.2)}
+.q-feed b{display:block;font-size:16px;margin-bottom:4px}
+.q-feed .who{margin-top:10px;font-size:13px;color:var(--steel);font-weight:700;letter-spacing:.04em}
+.q-next{margin-top:18px;align-self:flex-start}
+.q-opt.right{border-color:var(--ios);background:#f0faf2}
+.q-opt.wrong{border-color:#c9d3db;background:#f5f7f9;color:#8a949c}
+.q-opt:disabled{cursor:default;transform:none}
+.q-text small{display:block;font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--steel);margin-bottom:10px}
+@keyframes feedIn{from{opacity:0;transform:translateY(10px)}}
+
 /* ---------- program ---------- */
 .program{background:var(--forest-d);color:#fff;border-radius:var(--r-xl);margin:0 16px;overflow:hidden}
 .program h2 em{color:var(--sage)}
@@ -273,7 +313,7 @@ body.loaded .hr{opacity:1;transform:none}
 .map-wrap svg{position:absolute;inset:0;width:100%;height:100%}
 .map-wrap .ctry{fill:#2F3C24;stroke:#1C2414;stroke-width:.6}
 .map-wrap .ctry.hl{fill:#3E4E2C}
-.map-wrap .sea-bg{fill:#1E2817}
+.map-wrap .sea-bg{fill:#17313F}
 .map-wrap .rt-road{fill:none;stroke:var(--ios);stroke-width:3.5;stroke-linecap:round;stroke-linejoin:round}
 .map-wrap .rt-ghost{fill:none;stroke:rgba(205,211,178,.25);stroke-width:2;stroke-dasharray:3 6}
 .map-wrap .rt-ferry{fill:none;stroke:var(--sea);stroke-width:3;stroke-dasharray:2 7;stroke-linecap:round}
@@ -349,11 +389,11 @@ input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:8px;
 input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:28px;height:28px;border-radius:50%;background:#fff;box-shadow:0 3px 10px rgba(0,0,0,.2),0 0 0 1px rgba(0,0,0,.04);cursor:grab}
 input[type=range]::-moz-range-thumb{width:28px;height:28px;border-radius:50%;background:#fff;border:0;box-shadow:0 3px 10px rgba(0,0,0,.2);cursor:grab}
 .rng small{display:block;color:var(--muted);font-size:13px;margin-top:10px}
-.calc-out{background:var(--forest-d);color:#fff;border-radius:var(--r-xl);padding:44px;display:flex;flex-direction:column;justify-content:space-between;gap:30px;position:relative;overflow:hidden}
+.calc-out{background:var(--steel);color:#fff;border-radius:var(--r-xl);padding:44px;display:flex;flex-direction:column;justify-content:space-between;gap:30px;position:relative;overflow:hidden}
 .calc-out .label{align-self:flex-start}
-.calc-sum small{display:block;color:var(--sage-l);font-size:14px;margin-bottom:6px}
+.calc-sum small{display:block;color:var(--powder);font-size:14px;margin-bottom:6px}
 .calc-sum b{display:block;font-size:clamp(56px,6.5vw,96px);font-weight:600;letter-spacing:-.05em;line-height:1;font-variant-numeric:tabular-nums}
-.calc-sum b span{color:var(--ios)}
+.calc-sum b span{color:var(--powder)}
 .calc-sum .yr{margin-top:10px;color:#b8c1aa;font-size:15px}
 .calc-rows{border-top:1px solid rgba(255,255,255,.12)}
 .calc-rows div{display:flex;justify-content:space-between;padding:13px 0;border-bottom:1px solid rgba(255,255,255,.12);font-size:15px;color:#cfd6c2}
@@ -478,7 +518,7 @@ footer{background:var(--forest-d);color:#b8c1aa;padding:90px 0 34px;border-radiu
 /* ---------- responsive ---------- */
 @media (max-width:1100px){
   .menu,.road-prog{display:none}
-  .hero-grid,.about-grid,.incl-grid,.head-row,.consult-box,.join-grid,.faq-grid,.quiz-grid,.calc-box{grid-template-columns:1fr}
+  .sq-grid,.hero-grid,.about-grid,.incl-grid,.head-row,.consult-box,.join-grid,.faq-grid,.quiz-grid,.calc-box{grid-template-columns:1fr}
   .hero-visual{max-width:620px}
   .widget{left:20px}
   .stats-grid{grid-template-columns:repeat(3,1fr)}
@@ -512,7 +552,9 @@ footer{background:var(--forest-d);color:#b8c1aa;padding:90px 0 34px;border-radiu
   .cards,.modules,.case-list,.rev-grid,.why-grid,.topics,.dip-grid{grid-template-columns:1fr}
   .card{min-height:280px}.card:nth-child(even){margin-top:0}
   .about-photos .small{right:-6px;bottom:-24px}
-  .program{margin:0 8px}
+  .program,.squeeze{margin:0 8px}
+  .sq-points{grid-template-columns:1fr}
+  .sq-viz{padding:24px 18px}
   .map-wrap{aspect-ratio:4/5}
   .map-legend{padding:16px}
   .map-legend .mod-ref{margin-left:0}
@@ -630,12 +672,12 @@ footer{background:var(--forest-d);color:#b8c1aa;padding:90px 0 34px;border-radiu
     <div>
       <span class="label hr">Онлайн-курс міжнародної логістики</span>
       <h1 class="hr" style="--d:.08s">Нова професія — <em>логіст.</em> Працюйте з&nbsp;будь-якої точки світу</h1>
-      <p class="lead hr" style="--d:.16s">Вантажі по Європі їздять щодня — і кожним рейсом керує логіст. Навчу вас цієї професії з нуля: спедитор або диспетчер, робота з дому й дохід, який не залежить від міста, де ви живете.</p>
+      <p class="lead hr" style="--d:.16s">Вантажі по Європі їздять щодня — і кожним рейсом керує логіст. Навчу вас цієї професії з нуля всього за 5 тижнів: спедитор або диспетчер, робота з дому й дохід, який не залежить від міста, де ви живете.</p>
       <div class="hero-actions hr" style="--d:.24s">
         <a href="#join" class="btn btn-green">Записатися на курс <span class="arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M7 17 17 7M8 7h9v9"/></svg></span></a>
         <a href="#lesson" class="btn-play"><span class="pl"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 4l14 8-14 8z"/></svg></span>Перший урок безкоштовно</a>
       </div>
-      <a href="#quiz" class="quiz-link hr" style="--d:.3s"><b>🧭</b>Тест: чи підходить вам професія логіста? <span>→</span></a>
+      <a href="#quiz" class="quiz-link hr" style="--d:.3s"><b>🧭</b>Тест: спробуйте себе в ролі логіста <span>→</span></a>
       <div class="trust hr" style="--d:.36s">
         <img src="img/portrait.jpg" alt="">
         <div><b>Вероніка</b> · Logistics Specialist<br><small>Магістр логістики (UMCS, Польща) · 3+ роки в міжнародних перевезеннях</small></div>
@@ -668,8 +710,8 @@ footer{background:var(--forest-d);color:#b8c1aa;padding:90px 0 34px;border-radiu
 
 <div class="marquee" aria-hidden="true">
   <div class="mq">
-    <span>Нова професія</span><i>✱</i><span><em>Робота з дому</em></span><i>✱</i><span>Перевезення по всій Європі</span><i>✱</i><span><em>Від нуля до першого вантажу</em></span><i>✱</i><span>Практика замість теорії</span><i>✱</i><span><em>Без прив’язки до міста</em></span><i>✱</i>
-    <span>Нова професія</span><i>✱</i><span><em>Робота з дому</em></span><i>✱</i><span>Перевезення по всій Європі</span><i>✱</i><span><em>Від нуля до першого вантажу</em></span><i>✱</i><span>Практика замість теорії</span><i>✱</i><span><em>Без прив’язки до міста</em></span><i>✱</i>
+    <span>Нова професія</span><i>✱</i><span><em>5 років навчання — за 5 тижнів</em></span><i>✱</i><span><em>Робота з дому</em></span><i>✱</i><span>Перевезення по всій Європі</span><i>✱</i><span><em>Від нуля до першого вантажу</em></span><i>✱</i><span>Практика замість теорії</span><i>✱</i><span><em>Без прив’язки до міста</em></span><i>✱</i>
+    <span>Нова професія</span><i>✱</i><span><em>5 років навчання — за 5 тижнів</em></span><i>✱</i><span><em>Робота з дому</em></span><i>✱</i><span>Перевезення по всій Європі</span><i>✱</i><span><em>Від нуля до першого вантажу</em></span><i>✱</i><span>Практика замість теорії</span><i>✱</i><span><em>Без прив’язки до міста</em></span><i>✱</i>
   </div>
 </div>
 
@@ -680,7 +722,7 @@ footer{background:var(--forest-d);color:#b8c1aa;padding:90px 0 34px;border-radiu
     <div class="stat accent rv" style="--d:.08s"><strong data-count="25">0</strong><span>тірів одночасно в диспетчеризації</span></div>
     <div class="stat rv" style="--d:.16s"><strong>4–7</strong><span>диспетчерів у підпорядкуванні</span></div>
     <div class="stat rv" style="--d:.24s"><strong data-count="6">0</strong><span>потоків учнів уже пройшли курс</span></div>
-    <div class="stat rv" style="--d:.32s"><strong data-count="6">0</strong><span>місяців — і я вже керувала відділом диспетчерів</span></div>
+    <div class="stat blue rv" style="--d:.32s"><strong data-count="6">0</strong><span>місяців — і я вже керувала відділом диспетчерів</span></div>
   </div>
 </div>
 
@@ -724,6 +766,28 @@ footer{background:var(--forest-d);color:#b8c1aa;padding:90px 0 34px;border-radiu
   </div>
 </section>
 
+<!-- ============ 5 YEARS -> 5 WEEKS ============ -->
+<section class="squeeze" id="squeeze">
+  <div class="wrap sq-grid">
+    <div>
+      <span class="label dark" style="color:var(--powder)">Вижимка</span>
+      <h2 class="rv">5 років університету — <em>за 5 тижнів</em></h2>
+      <p class="lead rv" style="margin-top:22px">Те, що я 5 років вчила в польському університеті й перевірила на практиці в реальній компанії, я зібрала в чітку вижимку. Без зайвої теорії — лише те, що справді потрібно логісту в роботі.</p>
+      <div class="sq-points rv">
+        <div><i>✓</i>Тільки те, що працює на практиці</div>
+        <div><i>✓</i>Реальні кейси замість лекцій</div>
+        <div><i>✓</i>Маршрути, документи, біржі</div>
+        <div><i>✓</i>Від нуля до першого вантажу</div>
+      </div>
+    </div>
+    <div class="sq-viz rv" aria-label="5 років навчання в університеті стиснуто до 5 тижнів курсу">
+      <div class="sq-row"><div class="top"><b>5 років</b><span>Бакалавр + магістр</span></div><div class="sq-bar"><i style="transition-delay:0.00s"></i><i style="transition-delay:0.07s"></i><i style="transition-delay:0.14s"></i><i style="transition-delay:0.21s"></i><i style="transition-delay:0.28s"></i><i style="transition-delay:0.35s"></i><i style="transition-delay:0.42s"></i><i style="transition-delay:0.49s"></i><i style="transition-delay:0.56s"></i><i style="transition-delay:0.63s"></i></div></div>
+      <div class="sq-arrow">стискаю до суті</div>
+      <div class="sq-row fast"><div class="top"><b>5 тижнів</b><span>Курс Вероніки</span></div><div class="sq-bar"><i style="transition-delay:0.90s"></i><i style="transition-delay:1.00s"></i><i style="transition-delay:1.10s"></i><i style="transition-delay:1.20s"></i><i style="transition-delay:1.30s"></i></div></div>
+    </div>
+  </div>
+</section>
+
 <!-- ============ AUDIENCE ============ -->
 <section class="aud">
   <div class="wrap">
@@ -735,7 +799,7 @@ footer{background:var(--forest-d);color:#b8c1aa;padding:90px 0 34px;border-radiu
       <article class="card c-dark rv"><div class="top"><span class="tag">Старт</span><i class="tg sm" data-on></i></div><div><h3>Без досвіду в логістиці</h3><p>Пояснюю з самого початку: хто такий логіст, спедитор і диспетчер.</p></div></article>
       <article class="card c-photo rv" style="--d:.08s"><img src="img/desk3.jpg" alt="" loading="lazy"><div class="top"><span class="tag">Свобода</span><i class="tg sm" data-on></i></div><div style="position:relative;z-index:1"><h3>Хочете працювати з дому</h3><p>Не прив’язані до офісу чи міста — лише ноутбук і телефон.</p></div></article>
       <article class="card c-olive rv" style="--d:.16s"><div class="top"><span class="tag">Близько</span><i class="tg sm" data-on></i></div><div><h3>Чоловік — водій, а ви поруч</h3><p>Трохи чули від нього — тепер розберетесь системно й професійно.</p></div></article>
-      <article class="card c-sand rv" style="--d:.24s"><div class="top"><span class="tag">Кар’єра</span><i class="tg sm" data-on></i></div><div><h3>Шукаєте нову професію</h3><p>Резюме, співбесіда і мої поради, щоб вас взяли на позицію.</p></div></article>
+      <article class="card c-blue rv" style="--d:.24s"><div class="top"><span class="tag">Кар’єра</span><i class="tg sm" data-on></i></div><div><h3>Шукаєте нову професію</h3><p>Резюме, співбесіда і мої поради, щоб вас взяли на позицію.</p></div></article>
     </div>
   </div>
 </section>
@@ -744,12 +808,12 @@ footer{background:var(--forest-d);color:#b8c1aa;padding:90px 0 34px;border-radiu
 <section class="quiz" id="quiz">
   <div class="wrap quiz-grid">
     <div>
-      <span class="label">Тест · 1 хвилина</span>
-      <h2 class="rv">Чи підходить вам <em>професія логіста?</em></h2>
-      <p class="lead rv" style="margin-top:22px">7 коротких питань — і ви побачите, наскільки логістика збігається з вашим характером і бажаннями.</p>
+      <span class="label blue">Тест-симуляція · 2 хвилини</span>
+      <h2 class="rv">Спробуйте себе <em>в ролі логіста</em></h2>
+      <p class="lead rv" style="margin-top:22px">6 нестандартних ситуацій з реальної роботи. Оберіть, як би ви вчинили, — і подивіться, як це вирішує логіст. Спойлер: нудно не буде 😉</p>
     </div>
     <div class="quiz-card rv" id="quizCard">
-      <div class="q-top"><span id="qStep">Питання 1 з 7</span><span>🧭</span></div>
+      <div class="q-top"><span id="qStep">Ситуація 1 з 6</span><span>🧭</span></div>
       <div class="q-bar"><i id="qBar"></i></div>
       <div class="q-body" id="qBody"></div>
     </div>
@@ -965,6 +1029,7 @@ footer{background:var(--forest-d);color:#b8c1aa;padding:90px 0 34px;border-radiu
       </div>
       <div class="ever">
         <div class="row">Навчання у своєму темпі<i class="tg" data-on></i></div>
+        <div class="row">Програма на 5 тижнів<i class="tg" data-on></i></div>
         <div class="row">Вступ + 8 модулів<i class="tg" data-on></i></div>
         <div class="row">Домашки й презентації<i class="tg" data-on></i></div>
         <div class="row">Файли з маршрутами<i class="tg" data-on></i></div>
@@ -995,6 +1060,7 @@ footer{background:var(--forest-d);color:#b8c1aa;padding:90px 0 34px;border-radiu
     <div><span class="label">FAQ</span><h2 class="rv">Часті <em>питання</em></h2></div>
     <div class="rv">
       <details open><summary>Чи потрібен досвід у логістиці?<span class="pm">+</span></summary><p>Ні. Курс побудований з нуля: від того, що таке логістика і хто такі спедитор і диспетчер, до роботи з біржами й документами.</p></details>
+      <details><summary>Скільки триває навчання?<span class="pm">+</span></summary><p>Програма розрахована на 5 тижнів — це вижимка з 5 років університету і моєї практики. Проходити можна у своєму темпі.</p></details>
       <details><summary>Коли можна почати навчання?<span class="pm">+</span></summary><p>Коли вам зручно. Немає фіксованих дат — ви заходите в навчання в будь-який момент і проходите у своєму темпі.</p></details>
       <details><summary>Чи можна потім працювати з дому?<span class="pm">+</span></summary><p>Так — я сама так працюю. На курсі показую, як шукати вантажі, спілкуватися з клієнтами й вести перевезення дистанційно.</p></details>
       <details><summary>Допоможете з пошуком роботи?<span class="pm">+</span></summary><p>Модуль 8 повністю про це: складання резюме, підготовка до співбесіди і мої поради як спеціалістки.</p></details>
@@ -1133,47 +1199,64 @@ footer{background:var(--forest-d);color:#b8c1aa;padding:90px 0 34px;border-radiu
   lb.addEventListener('click', e => { if (e.target !== lbImg) closeLb(); });
   addEventListener('keydown', e => { if (e.key === 'Escape') closeLb(); });
 
-  /* ---------- quiz ---------- */
+  /* ---------- quiz: logistics simulator ---------- */
   const Q = [
-    ['🧩', 'Вам подобається шукати рішення, коли щось пішло не за планом?'],
-    ['💬', 'Вам комфортно багато спілкуватися — телефоном і в месенджерах?'],
-    ['🏡', 'Хочете працювати з дому й не залежати від офісу чи міста?'],
-    ['🗺️', 'Вам цікаво планувати: маршрути, час, послідовність дій?'],
-    ['📚', 'Готові вчити нове — документи, програми, правила перевезень?'],
-    ['⚡', 'Можете тримати в голові кілька справ одночасно?'],
-    ['🌍', 'Хочете професію, яка потрібна не лише в Україні, а й у Європі?']
+    { e: '🚧', t: 'Водій виїхав з бази без двох стоп-барів, які вимагає замовлення. До завантаження — 50 км. Ваші дії?',
+      o: ['Скасовую завантаження — без стоп-барів не можна', 'Шукаю магазин для тірів по дорозі до завантаження', 'Нехай їде — може, ніхто не помітить'], c: 1,
+      h: 'Швидка реакція вирішує все: магазин по маршруту — водій заїхав, купив планки й завантажився вчасно.', v: true },
+    { e: '⛽', t: 'Франція, ніч. У водія злили паливо, а пальне у Франції дороге. Що робите?',
+      o: ['Рахую, скільки він проїде на залишку, і шукаю найдешевшу заправку в радіусі', 'Викликаю евакуатор', 'Хай заправляється на першій-ліпшій, хоч і дорого'], c: 0,
+      h: 'Логіст рахує: залишок палива, відстань, ціни. Водій дотягнув і заправився там, де вигідніше.', v: true },
+    { e: '⏱', t: 'Терміновий вантаж, а водію не вистачає робочого часу. Тахограф порушень не пробачить.',
+      o: ['Один раз можна порушити норми', 'Прошу клієнта почекати кілька днів', 'Організовую перепинання причепа на машину, де водій має більше часу'], c: 2,
+      h: 'Водії перечепили причепи — і вантаж спокійно поїхав на вивантаження в понеділок.', v: true },
+    { e: '⛰', t: 'Маршрут Італія → Франція. Тунель Фрежюс платний. Їхати тунелем чи іншою ключовою дорогою?',
+      o: ['Завжди тунель — так швидше', 'Порівнюю ціну тунелю з часом, пальним і часом праці водія', 'Як покаже навігатор'], c: 1,
+      h: 'Для цього є формула — розбираю її в модулі 3. Іноді тунель вигідніший, іноді — ні.' },
+    { e: '📍', t: 'Клієнт на біржі просить назвати ставку за рейс, а ви не впевнені в ринку.',
+      o: ['Дивлюся ставки по напрямку й поштових індексах регіонів', 'Називаю навмання — поторгуємось потім', 'Відмовляюсь від вантажу'], c: 0,
+      h: 'Ставка залежить від регіонів завантаження й вивантаження — це модуль 5: індекси, ставки, регіони.' },
+    { e: '🤝', t: 'Польський офіс не може домовитися з україномовним перевізником — всі нервують, вантаж чекає.',
+      o: ['Шукаю іншого перевізника з нуля', 'Пишу листа й чекаю відповіді тиждень', 'Беру комунікацію на себе й домовляюсь його мовою'], c: 2,
+      h: 'Саме так я допомогла налагодити роботу з україномовними перевізниками в польській компанії. Логістика — це ще й про людей.', v: true }
   ];
-  const OPTS = [['Так, це про мене', 2], ['Скоріше так', 1], ['Ні, не зовсім', 0]];
   const qBody = document.getElementById('qBody'), qStep = document.getElementById('qStep'), qBar = document.getElementById('qBar');
+  const ARR = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M7 17 17 7M8 7h9v9"/></svg>';
   let qi = 0, score = 0;
   function swap(html){
     qBody.classList.add('out');
     setTimeout(() => { qBody.innerHTML = html; qBody.classList.remove('out'); }, 260);
   }
   function renderQ(){
-    qStep.textContent = `Питання ${qi + 1} з ${Q.length}`;
+    const q = Q[qi];
+    qStep.textContent = `Ситуація ${qi + 1} з ${Q.length}`;
     qBar.style.width = (qi / Q.length * 100) + '%';
-    swap(`<div class="q-emoji">${Q[qi][0]}</div><div class="q-text">${Q[qi][1]}</div><div class="q-opts">${OPTS.map((o, i) => `<button type="button" class="q-opt" data-w="${o[1]}">${o[0]}<i class="tg sm"></i></button>`).join('')}</div>`);
+    swap(`<div class="q-emoji">${q.e}</div><div class="q-text"><small>Ви — логіст</small>${q.t}</div><div class="q-opts">${q.o.map((o, i) => `<button type="button" class="q-opt" data-i="${i}">${o}<i class="tg sm"></i></button>`).join('')}</div>`);
   }
   qBody.addEventListener('click', e => {
-    const b = e.target.closest('.q-opt'); if (!b) return;
-    if (b.dataset.done) return;
-    qBody.querySelectorAll('.q-opt').forEach(x => x.dataset.done = 1);
-    b.classList.add('picked'); b.querySelector('.tg').classList.add('on');
-    score += +b.dataset.w; qi++;
-    setTimeout(() => qi < Q.length ? renderQ() : result(), 450);
+    if (e.target.closest('[data-restart]')) { qi = 0; score = 0; renderQ(); return; }
+    if (e.target.closest('[data-next]')) { qi++; qi < Q.length ? renderQ() : result(); return; }
+    const b = e.target.closest('.q-opt'); if (!b || b.disabled) return;
+    const q = Q[qi], pick = +b.dataset.i, ok = pick === q.c;
+    if (ok) score++;
+    qBody.querySelectorAll('.q-opt').forEach((x, i) => {
+      x.disabled = true;
+      if (i === q.c) { x.classList.add('right'); x.querySelector('.tg').classList.add('on'); }
+      else if (i === pick) x.classList.add('wrong');
+    });
+    qBar.style.width = ((qi + 1) / Q.length * 100) + '%';
+    const last = qi === Q.length - 1;
+    qBody.insertAdjacentHTML('beforeend', `<div class="q-feed ${ok ? 'good' : 'meh'}"><b>${ok ? 'Саме так діє логіст! ✅' : 'Логіст вчинив би інакше 👀'}</b>${q.h}${q.v ? '<div class="who">КЕЙС З ПРАКТИКИ ВЕРОНІКИ</div>' : ''}</div><button type="button" class="btn btn-green q-next" data-next>${last ? 'Мій результат' : 'Наступна ситуація'} <span class="arr">${ARR}</span></button>`);
   });
-  qBody.addEventListener('click', e => { if (e.target.closest('[data-restart]')) { qi = 0; score = 0; renderQ(); } });
   function result(){
-    const pct = Math.round(score / (Q.length * 2) * 100);
     qStep.textContent = 'Ваш результат'; qBar.style.width = '100%';
-    const [t, d] = pct >= 70
-      ? ['Логістика — це ваше! 🚛', 'У вас саме ті якості, які потрібні логісту: ви любите вирішувати задачі, спілкуватися й планувати. Час перетворити це на професію.']
-      : pct >= 40
-      ? ['У вас хороший потенціал 👍', 'Частина якостей логіста у вас уже є, решту можна натренувати. Почніть з безкоштовного уроку — і відчуєте, чи ваше це.']
-      : ['Спершу подивіться перший урок 🙂', 'Логістика може здатися не зовсім вашою — але краще перевірити на практиці. Перший урок безкоштовний.'];
-    swap(`<div class="q-res"><div class="q-ring"><svg viewBox="0 0 150 150"><circle class="bgc" cx="75" cy="75" r="65"/><circle class="fgc" cx="75" cy="75" r="65" id="qRing"/></svg><b>${pct}%</b></div><h3>${t}</h3><p>${d}</p><div class="acts"><a href="#join" class="btn btn-green">Записатися на курс <span class="arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M7 17 17 7M8 7h9v9"/></svg></span></a><a href="#lesson" class="btn btn-ghost">Перший урок</a><button type="button" class="btn btn-ghost" data-restart>Ще раз</button></div></div>`);
-    setTimeout(() => { const r = document.getElementById('qRing'); if (r) r.style.strokeDashoffset = 408 * (1 - pct / 100); }, 400);
+    const [t, d] = score >= 5
+      ? ['Ви мислите як логіст! 🚛', 'Ви швидко знаходите рішення — а саме так і виглядає ця робота: щодня нова країна, новий маршрут, нова задача. Жодної рутини.']
+      : score >= 3
+      ? ['Логістичний інстинкт є! 🧭', 'Частину рішень ви бачите інтуїтивно, решту — формули, дороги, правила — я покажу на курсі. Погодьтеся, це було цікаво?']
+      : ['Тепер ви знаєте, як це працює 😉', 'Жодна з цих ситуацій не вирішується навмання — саме цього я вчу на курсі. І так, логістика — це драйв, а не нудні папірці.'];
+    swap(`<div class="q-res"><div class="q-ring"><svg viewBox="0 0 150 150"><circle class="bgc" cx="75" cy="75" r="65"/><circle class="fgc" cx="75" cy="75" r="65" id="qRing"/></svg><b>${score}/${Q.length}</b></div><h3>${t}</h3><p>${d}</p><div class="acts"><a href="#join" class="btn btn-green">Записатися на курс <span class="arr">${ARR}</span></a><a href="#lesson" class="btn btn-ghost">Перший урок</a><button type="button" class="btn btn-ghost" data-restart>Ще раз</button></div></div>`);
+    setTimeout(() => { const r = document.getElementById('qRing'); if (r) r.style.strokeDashoffset = 408 * (1 - score / Q.length); }, 400);
   }
   renderQ();
 
