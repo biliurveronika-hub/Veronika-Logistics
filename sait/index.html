@@ -1251,6 +1251,28 @@ footer{background:var(--forest-d);color:#A9BCCB;padding:90px 0 34px;border-radiu
   const ease = p => 1 - Math.pow(1 - p, 3);
   const easeIO = p => p < .5 ? 4 * p * p * p : 1 - Math.pow(-2 * p + 2, 3) / 2;
 
+  /* ---------- haptics: Vibration API on Android, iOS 18+ switch fallback ---------- */
+  let hapLabel = null;
+  function iosTick(){
+    if (!hapLabel){
+      hapLabel = document.createElement('label');
+      hapLabel.setAttribute('aria-hidden', 'true');
+      hapLabel.style.cssText = 'position:fixed;left:-9999px;top:0;opacity:0;pointer-events:none';
+      const i = document.createElement('input'); i.type = 'checkbox'; i.setAttribute('switch', ''); i.tabIndex = -1;
+      hapLabel.appendChild(i); document.body.appendChild(hapLabel);
+    }
+    hapLabel.click();
+  }
+  function haptic(pattern = 10){
+    if (reduce) return;
+    try {
+      if (navigator.vibrate) { navigator.vibrate(pattern); return; }
+      const taps = Array.isArray(pattern) ? Math.ceil(pattern.length / 2) : 1;
+      iosTick();
+      for (let k = 1; k < taps; k++) setTimeout(iosTick, k * 110);
+    } catch (e) {}
+  }
+
   /* ---------- loader: truck → ferry → plane ---------- */
   const legs = [
     { path: 'pRoad', mask: 'kRoad', veh: 'vTruck', from: .04, to: .56 },
@@ -1377,7 +1399,7 @@ footer{background:var(--forest-d);color:#A9BCCB;padding:90px 0 34px;border-radiu
     jetFilter.frequency.setTargetAtTime(380 + v * 1400, t, .2);
   }
   sndBtn.addEventListener('click', () => {
-    sndOn = !sndOn;
+    sndOn = !sndOn; haptic(10);
     if (sndOn && !actx) initJet();
     if (actx) actx.state === 'suspended' && actx.resume();
     sndBtn.setAttribute('aria-pressed', sndOn);
@@ -1395,7 +1417,7 @@ footer{background:var(--forest-d);color:#A9BCCB;padding:90px 0 34px;border-radiu
   document.querySelectorAll('.mod').forEach(m => m.addEventListener('click', () => {
     const on = !m.classList.contains('active');
     document.querySelectorAll('.mod.active').forEach(x => x.classList.remove('active'));
-    m.classList.toggle('active', on);
+    m.classList.toggle('active', on); haptic(8);
   }));
 
   /* ---------- custom cursor ---------- */
@@ -1464,10 +1486,11 @@ footer{background:var(--forest-d);color:#A9BCCB;padding:90px 0 34px;border-radiu
     const t = row.querySelector('.tg');
     if (row.classList.contains('off')){
       t.classList.add('on');
-      setTimeout(() => { t.classList.remove('on'); row.classList.remove('nope'); void row.offsetWidth; row.classList.add('nope'); }, 380);
+      haptic(10);
+      setTimeout(() => { t.classList.remove('on'); row.classList.remove('nope'); void row.offsetWidth; row.classList.add('nope'); haptic([18, 50, 18]); }, 380);
       return;
     }
-    t.classList.toggle('on'); row.classList.remove('whoosh'); void row.offsetWidth; row.classList.add('whoosh');
+    t.classList.toggle('on'); row.classList.remove('whoosh'); void row.offsetWidth; row.classList.add('whoosh'); haptic(12);
     if (t.classList.contains('on')){ const r = t.getBoundingClientRect(); burst(r.left + r.width / 2, r.top + r.height / 2, 14, 70); }
   }));
 
@@ -1505,6 +1528,7 @@ footer{background:var(--forest-d);color:#A9BCCB;padding:90px 0 34px;border-radiu
     setTimeout(() => { gXp.textContent = v; }, 520);
   }
   function openGame(e){
+    haptic(15);
     if (e && e.preventDefault) e.preventDefault();
     if (!game.classList.contains('open')) lastFocus = document.activeElement;
     gi = 0; picks = []; xp = 0; gXp.textContent = 0; setProg(0);
@@ -1527,7 +1551,7 @@ footer{background:var(--forest-d);color:#A9BCCB;padding:90px 0 34px;border-radiu
     if (e.target.closest('[data-close]')) { closeGame(); return; }
     const b = e.target.closest('.g-opt'); if (!b || b.disabled) return;
     stage.querySelectorAll('.g-opt').forEach(x => { x.disabled = true; });
-    b.classList.add('picked'); b.querySelector('.tg').classList.add('on');
+    b.classList.add('picked'); b.querySelector('.tg').classList.add('on'); haptic(22);
     const r = b.getBoundingClientRect();
     burst(r.right - 40, r.top + r.height / 2, 22, 120);
     floatText(r.right - 40, r.top - 10, '+20 XP');
@@ -1540,6 +1564,7 @@ footer{background:var(--forest-d);color:#A9BCCB;padding:90px 0 34px;border-radiu
     }, 650);
   });
   function resultG(){
+    haptic([40, 60, 40, 60, 90]);
     stage.innerHTML = `<div class="g-card g-res"><div class="g-badge"><div>🏆</div></div><span class="lvl">Логіст · рівень 1 · ${xp} XP</span><h3>Професія логіста вам підходить!</h3><div class="q-list">${picks.map((p, i) => `<div style="--i:${i}">${p}<i class="tg sm" data-tgi="${i}"></i></div>`).join('')}</div><p>Освоїти логістику може кожен, хто поставив собі таку ціль. Я покажу шлях від нуля до першого вантажу — за 5 тижнів.</p><div class="acts"><a href="#join" class="btn btn-green" data-close>Записатися на курс <span class="arr">${ARR}</span></a><a href="#lesson" class="btn btn-ghost" data-close>Перший урок</a><button type="button" class="btn btn-ghost" data-restart>Зіграти ще</button></div></div>`;
     stage.querySelectorAll('[data-tgi]').forEach((t, i) => setTimeout(() => t.classList.add('on'), 800 + i * 150));
     const W = innerWidth, H = innerHeight;
@@ -1563,7 +1588,7 @@ footer{background:var(--forest-d);color:#A9BCCB;padding:90px 0 34px;border-radiu
     (function anim(now){ const p = Math.min(1, (now - t1) / 450); shown = from + (sum - from) * ease(p); $('cSum').textContent = fmt(shown); if (p < 1) requestAnimationFrame(anim); })(t1);
     clearTimeout(calc.t); calc.t = setTimeout(() => { shown = sum; $('cSum').textContent = fmt(sum); }, 520);
   }
-  document.querySelectorAll('#calc input[type=range]').forEach(r => r.addEventListener('input', calc));
+  document.querySelectorAll('#calc input[type=range]').forEach(r => { let last = r.value; r.addEventListener('input', () => { if (r.value !== last){ last = r.value; haptic(6); } calc(); }); });
   calc();
 
   /* ---------- Europe map (d3 + world-atlas) ---------- */
@@ -1635,6 +1660,7 @@ footer{background:var(--forest-d);color:#A9BCCB;padding:90px 0 34px;border-radiu
 
   /* ---------- form ---------- */
   const form = document.getElementById('leadForm');
+  form.querySelectorAll('.choice input').forEach(i => i.addEventListener('change', () => haptic(10)));
   document.querySelectorAll('[data-pick]').forEach(a => a.addEventListener('click', () => {
     form.course.checked = false; form.consult.checked = a.dataset.pick === 'consult'; form.question.checked = a.dataset.pick === 'question';
   }));
@@ -1644,7 +1670,7 @@ footer{background:var(--forest-d);color:#A9BCCB;padding:90px 0 34px;border-radiu
     ['name', 'contact'].forEach(n => { const f = form[n]; const bad = !f.value.trim(); f.style.borderColor = bad ? '#d9534f' : ''; if (bad) ok = false; });
     if (!ok) return;
     // TODO: відправити дані форми (fetch на Telegram-бот / CRM)
-    form.classList.add('sent');
+    form.classList.add('sent'); haptic([20, 50, 40]);
   });
 })();
 </script>
