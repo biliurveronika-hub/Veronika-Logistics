@@ -4,18 +4,18 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Veronika Logistics — курс логістики</title>
-<meta name="description" content="Онлайн-курс логістики від практика: спедитор і диспетчер з нуля, робота з дому, перевезення по Європі. Особисті консультації.">
-<meta name="theme-color" content="#1C2414">
+<meta name="description" content="Нова професія — логіст у міжнародних перевезеннях. Онлайн-курс з нуля від практика, робота з дому, особисті консультації.">
+<meta name="theme-color" content="#F3F4EE">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@1,400;1,500&display=swap" rel="stylesheet">
 <style>
 :root{
-  --bg:#EFF1EA; --paper:#F9FAF6; --sand:#DCDDCB; --sand-2:#E7E8DA;
+  --bg:#EFF1EA; --paper:#F9FAF6; --sand:#DCDDCB; --sand-2:#E7E8DA; --cream:#F3F4EE;
   --ink:#1B2314; --muted:#5A6450; --line:rgba(27,35,20,.12);
   --forest:#2B3620; --forest-d:#1C2414;
   --olive:#5F6F3A; --olive-2:#7E8B52; --sage:#A4AE7A; --sage-l:#CDD3B2;
-  --powder:#BDD1E6; --ios:#34C759;
+  --powder:#BDD1E6; --sea:#8FB2D4; --ios:#34C759;
   --r-xl:40px; --r-lg:30px; --r-md:22px;
   --wrap:1280px;
   --ease:cubic-bezier(.2,.8,.2,1);
@@ -30,6 +30,7 @@ main{overflow-x:clip}
 img{display:block;max-width:100%}
 a{color:inherit;text-decoration:none}
 button,input,textarea{font:inherit;color:inherit}
+button{cursor:pointer}
 .wrap{max-width:var(--wrap);margin:0 auto;padding:0 28px}
 section{padding:120px 0;position:relative}
 em{font-family:var(--serif);font-style:italic;font-weight:400;letter-spacing:-.02em}
@@ -42,6 +43,7 @@ h2{font-size:clamp(38px,5.4vw,76px);margin-top:22px}
 h2 em{color:var(--olive)}
 .soft{color:#9aa38f}
 .lead{font-size:18px;color:var(--muted);max-width:560px}
+.head-row{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:end}
 
 /* ---------- buttons ---------- */
 .btn{position:relative;display:inline-flex;align-items:center;gap:14px;padding:8px 8px 8px 28px;border-radius:999px;font-weight:600;font-size:16px;overflow:hidden;isolation:isolate;transition:transform .35s var(--ease),box-shadow .35s;border:0;cursor:pointer}
@@ -71,42 +73,26 @@ h2 em{color:var(--olive)}
 .tg.on::after,input:checked+.tg::after{transform:translateX(calc(var(--w) - var(--h)))}
 .tg.sm{--w:40px;--h:24px}
 
-/* ---------- loader ---------- */
-#loader{position:fixed;inset:0;z-index:1000;background:var(--forest-d);color:#EEF0E6;display:flex;flex-direction:column;justify-content:space-between;padding:30px 40px 40px;transition:transform 1.15s cubic-bezier(.77,0,.18,1)}
-body.loaded #loader{transform:translateY(-101%)}
-.ld-top{display:flex;justify-content:space-between;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--sage)}
-.ld-scene{width:min(760px,100%);margin:0 auto;overflow:visible}
+/* ---------- loader (light, road → sea → air) ---------- */
+#loader{position:fixed;inset:0;z-index:1000;background:var(--cream);color:var(--ink);display:flex;flex-direction:column;justify-content:space-between;padding:28px 40px 36px;transition:transform 1.4s cubic-bezier(.77,0,.18,1)}
+#loader::after{content:"";position:absolute;left:0;right:0;top:100%;height:100vh;background:var(--olive)}
+body.loaded #loader{transform:translateY(-200%)}
+.ld-top{display:flex;justify-content:space-between;align-items:center;font-size:12px;letter-spacing:.16em;text-transform:uppercase;font-weight:700;color:var(--muted)}
+.ld-now{display:flex;align-items:center;gap:10px;padding:8px 14px;border-radius:999px;background:#fff;border:1px solid var(--line);color:var(--ink)}
+.ld-now i{width:8px;height:8px;border-radius:50%;background:var(--ios);box-shadow:0 0 0 4px rgba(52,199,89,.2)}
+.ld-map{width:100%;max-width:1100px;max-height:56vh;margin:0 auto;overflow:visible}
+.ld-map text{font:700 13px Manrope,sans-serif;letter-spacing:.12em;fill:var(--ink)}
+.ld-map .pin{opacity:0;transform-box:fill-box;transform-origin:center;transform:translateY(8px);transition:opacity .4s,transform .5s var(--ease)}
+.ld-map .pin.on{opacity:1;transform:none}
 .ld-bottom{display:flex;justify-content:space-between;align-items:flex-end;gap:24px}
-.ld-brand{font-size:clamp(46px,9.5vw,150px);line-height:.92;letter-spacing:-.055em;font-weight:600}
+.ld-brand{font-size:clamp(46px,9vw,140px);line-height:.92;letter-spacing:-.055em;font-weight:600}
 .ld-brand .ln{display:block;overflow:hidden;padding-bottom:.06em}
-.ld-brand .ln span{display:inline-block;transform:translateY(110%);animation:lineUp 1.1s var(--ease) forwards .2s}
-.ld-brand .ln:nth-child(2) span{animation-delay:.38s;color:var(--sage)}
-.ld-count{font-size:clamp(40px,7vw,110px);font-weight:300;letter-spacing:-.04em;font-variant-numeric:tabular-nums;line-height:.9}
-.ld-bar{position:absolute;left:0;bottom:0;height:4px;width:100%;background:var(--ios);transform-origin:left;transform:scaleX(0)}
+.ld-brand .ln>span{display:inline-block;transform:translateY(110%);animation:lineUp 1.1s var(--ease) forwards .15s}
+.ld-brand .ln:nth-child(2)>span{animation-delay:.32s;color:var(--olive)}
+.ld-km{text-align:right}
+.ld-km b{display:block;font-size:clamp(38px,6vw,92px);font-weight:300;letter-spacing:-.04em;font-variant-numeric:tabular-nums;line-height:.95}
+.ld-km span{font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:var(--muted)}
 @keyframes lineUp{to{transform:none}}
-/* scene parts */
-.sc-stroke{fill:none;stroke:#E4E9D9;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
-.truck{animation:drive 2.3s cubic-bezier(.25,.8,.3,1) forwards}
-@keyframes drive{from{transform:translate(-230px,150px)}to{transform:translate(250px,150px)}}
-.truck-body{animation:bob .35s ease-in-out infinite alternate}
-@keyframes bob{to{transform:translateY(-1.2px)}}
-.wheel{transform-box:fill-box;transform-origin:center;animation:spin .45s linear infinite}
-@keyframes spin{to{transform:rotate(360deg)}}
-.road-dash{stroke-dasharray:22 16;animation:dash .5s linear infinite}
-@keyframes dash{to{stroke-dashoffset:38}}
-.speed line{animation:speed .6s ease-in-out infinite}
-.speed line:nth-child(2){animation-delay:.15s}.speed line:nth-child(3){animation-delay:.3s}
-@keyframes speed{0%,100%{opacity:.2;transform:translateX(0)}50%{opacity:.9;transform:translateX(-8px)}}
-.plane{animation:fly 3s cubic-bezier(.4,.1,.3,1) forwards}
-@keyframes fly{from{transform:translate(-120px,86px) rotate(-6deg)}to{transform:translate(560px,34px) rotate(-3deg)}}
-.ferry{animation:sail 3.2s cubic-bezier(.2,.7,.3,1) forwards}
-@keyframes sail{from{transform:translate(760px,206px)}to{transform:translate(430px,206px)}}
-.ferry-body{transform-box:fill-box;transform-origin:center bottom;animation:rock 1.6s ease-in-out infinite alternate}
-@keyframes rock{from{transform:rotate(-1.4deg)}to{transform:rotate(1.4deg) translateY(1px)}}
-.waves{animation:wave 1.4s linear infinite}
-@keyframes wave{to{transform:translateX(-40px)}}
-.pin-pulse{transform-box:fill-box;transform-origin:center;animation:pulse 1.8s ease-out infinite}
-@keyframes pulse{from{transform:scale(.6);opacity:1}to{transform:scale(2.2);opacity:0}}
 
 /* ---------- custom cursor ---------- */
 .cur,.cur-ring{position:fixed;top:0;left:0;pointer-events:none;z-index:950;border-radius:50%;display:none}
@@ -120,7 +106,7 @@ body.loaded #loader{transform:translateY(-101%)}
 body.loaded .road-prog{opacity:1}
 .road-prog .rl{position:absolute;left:12px;top:0;bottom:0;width:2px;background:repeating-linear-gradient(to bottom,rgba(27,35,20,.25) 0 8px,transparent 8px 14px)}
 .road-prog .rf{position:absolute;left:12px;top:0;width:2px;background:var(--olive);height:calc(var(--p,0)*100%)}
-.road-prog .rt{position:absolute;left:3px;top:calc(var(--p,0)*100% - 18px);width:20px;transition:top .1s linear}
+.road-prog .rt{position:absolute;left:3px;top:calc(var(--p,0)*100% - 18px);width:20px}
 .road-prog .re{position:absolute;left:6px;bottom:-10px;width:14px;height:14px;border-radius:50%;background:var(--ios);box-shadow:0 0 0 4px rgba(52,199,89,.2)}
 
 /* ---------- header ---------- */
@@ -132,7 +118,7 @@ header.hide{transform:translateY(-130%)}
 .logo i{width:36px;height:36px;border-radius:50%;background:var(--olive);display:grid;place-items:center;color:#fff;font-style:normal}
 .logo i svg{width:20px}
 .menu{display:flex;gap:2px;padding:5px;border-radius:999px}
-.menu a{padding:10px 17px;border-radius:999px;font-size:14.5px;font-weight:500;color:var(--muted);transition:background .25s,color .25s}
+.menu a{padding:10px 16px;border-radius:999px;font-size:14.5px;font-weight:500;color:var(--muted);transition:background .25s,color .25s}
 .menu a:hover{background:var(--ink);color:#fff}
 .nav .btn{padding:6px 6px 6px 22px;font-size:15px}
 .nav .btn .arr{width:38px;height:38px}
@@ -140,27 +126,29 @@ header.hide{transform:translateY(-130%)}
 /* ---------- hero ---------- */
 .hero{padding:140px 0 40px;min-height:100vh;display:flex;align-items:center}
 .hero-grid{display:grid;grid-template-columns:1.08fr 1fr;gap:56px;align-items:center}
-.live{display:inline-flex;align-items:center;gap:12px;padding:8px 16px 8px 8px;border-radius:999px;background:#fff;border:1px solid var(--line);font-size:14px;font-weight:600}
-.live .tg{--w:40px;--h:24px}
-.hero h1{font-size:clamp(46px,6.3vw,96px);margin:26px 0 26px}
+.hero h1{font-size:clamp(44px,5.9vw,90px);margin:26px 0 26px}
 .hero h1 em{color:var(--olive)}
 .hero .lead{margin-bottom:36px}
-.hero-actions{display:flex;flex-wrap:wrap;gap:16px;align-items:center;margin-bottom:44px}
-.trust{display:flex;align-items:center;gap:14px;font-size:14.5px;padding-top:26px;border-top:1px solid var(--line)}
+.hero-actions{display:flex;flex-wrap:wrap;gap:16px;align-items:center;margin-bottom:26px}
+.quiz-link{display:inline-flex;align-items:center;gap:12px;padding:8px 18px 8px 8px;border-radius:999px;background:#fff;border:1px solid var(--line);font-weight:600;font-size:14.5px;margin-bottom:36px;transition:border-color .3s,transform .3s var(--ease)}
+.quiz-link:hover{border-color:var(--olive);transform:translateX(4px)}
+.quiz-link b{width:32px;height:32px;border-radius:50%;background:var(--sand-2);display:grid;place-items:center;font-size:16px}
+.quiz-link span{color:var(--olive)}
+.trust{display:flex;align-items:center;gap:14px;font-size:14.5px;padding-top:24px;border-top:1px solid var(--line)}
 .trust img{width:52px;height:52px;border-radius:50%;object-fit:cover;object-position:center 22%;border:3px solid #fff;box-shadow:0 4px 14px rgba(0,0,0,.08)}
 .trust small{color:var(--muted);font-size:13.5px}
 .hero-visual{position:relative}
 .hero-photo{border-radius:var(--r-xl);overflow:hidden;aspect-ratio:4/5;background:var(--sand);position:relative}
-.hero-photo img{width:100%;height:100%;object-fit:cover;object-position:center 28%;transform:scale(1.08);transition:transform 2.2s var(--ease)}
+.hero-photo img{width:100%;height:100%;object-fit:cover;object-position:center 18%;transform:scale(1.08);transition:transform 2.2s var(--ease)}
 body.loaded .hero-photo img{transform:scale(1)}
-.widget{position:absolute;left:-54px;bottom:44px;width:300px;border-radius:26px;padding:10px 20px;background:rgba(255,255,255,.74);backdrop-filter:blur(22px) saturate(1.5);-webkit-backdrop-filter:blur(22px) saturate(1.5);border:1px solid rgba(255,255,255,.7);box-shadow:0 30px 60px -24px rgba(27,35,20,.35)}
-.w-row{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 0;font-size:15px;font-weight:600;border-bottom:1px solid rgba(27,35,20,.08)}
+.widget{position:absolute;left:-54px;bottom:40px;width:310px;border-radius:26px;padding:8px 20px;background:rgba(255,255,255,.74);backdrop-filter:blur(22px) saturate(1.5);-webkit-backdrop-filter:blur(22px) saturate(1.5);border:1px solid rgba(255,255,255,.7);box-shadow:0 30px 60px -24px rgba(27,35,20,.35)}
+.w-row{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:11px 0;font-size:15px;font-weight:600;border-bottom:1px solid rgba(27,35,20,.08)}
 .w-row:last-child{border:0}
 .w-row.off span{color:#a2a89a;font-weight:500}
 .hero-chip{position:absolute;top:28px;right:28px;display:flex;align-items:center;gap:12px;background:var(--forest-d);color:#fff;border-radius:22px;padding:14px 18px}
 .hero-chip b{font-size:28px;letter-spacing:-.04em;line-height:1;font-weight:600}
 .hero-chip span{font-size:12.5px;line-height:1.3;color:var(--sage-l)}
-.hr{opacity:0;transform:translateY(34px);transition:opacity 1s var(--ease),transform 1.1s var(--ease);transition-delay:calc(.35s + var(--d,0s))}
+.hr{opacity:0;transform:translateY(34px);transition:opacity 1s var(--ease),transform 1.1s var(--ease);transition-delay:calc(.45s + var(--d,0s))}
 body.loaded .hr{opacity:1;transform:none}
 
 /* ---------- wordmark ---------- */
@@ -173,9 +161,9 @@ body.loaded .hr{opacity:1;transform:none}
 .wm-meta{display:flex;justify-content:space-between;gap:20px;margin-top:44px;font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:600}
 
 /* ---------- marquee ---------- */
-.marquee{background:var(--forest-d);color:#E9EDDF;padding:26px 0;overflow:hidden;transform:rotate(-1.2deg);margin:0 -20px;position:relative;z-index:2}
-.mq{display:flex;width:max-content;animation:mq 38s linear infinite}
-.mq span{font-size:clamp(22px,2.6vw,34px);font-weight:500;letter-spacing:-.02em;padding:0 26px;white-space:nowrap}
+.marquee{background:var(--forest-d);color:#E9EDDF;padding:24px 0;overflow:hidden;transform:rotate(-1.2deg);margin:0 -20px;position:relative;z-index:2}
+.mq{display:flex;width:max-content;animation:mq 42s linear infinite}
+.mq span{font-size:clamp(20px,2.4vw,32px);font-weight:500;letter-spacing:-.02em;padding:0 26px;white-space:nowrap}
 .mq span em{color:var(--sage)}
 .mq i{color:var(--ios);font-style:normal;font-size:22px;align-self:center}
 @keyframes mq{to{transform:translateX(-50%)}}
@@ -186,15 +174,16 @@ body.loaded .hr{opacity:1;transform:none}
 .stat{background:var(--paper);border:1px solid var(--line);border-radius:var(--r-md);padding:28px 24px;display:flex;flex-direction:column;justify-content:space-between;min-height:190px;transition:transform .4s var(--ease),background .4s}
 .stat:hover{transform:translateY(-6px);background:#fff}
 .stat strong{font-size:clamp(46px,4.6vw,68px);font-weight:600;letter-spacing:-.05em;line-height:1;font-variant-numeric:tabular-nums}
+.stat strong small{font-size:.42em;letter-spacing:-.02em;margin-left:4px}
 .stat span{font-size:14px;color:var(--muted);margin-top:16px}
 .stat.accent{background:var(--olive);color:#fff;border-color:var(--olive)}
 .stat.accent span{color:var(--sage-l)}
 
 /* ---------- about ---------- */
 .about-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:72px;margin-top:64px}
-.about-photos{position:relative;align-self:start;position:sticky;top:110px}
+.about-photos{align-self:start;position:sticky;top:110px}
 .about-photos .big{border-radius:var(--r-xl);overflow:hidden;aspect-ratio:3/4}
-.about-photos .big img{width:100%;height:100%;object-fit:cover}
+.about-photos .big img{width:100%;height:100%;object-fit:cover;object-position:center 25%}
 .about-photos .small{position:absolute;right:-30px;bottom:-40px;width:44%;border-radius:var(--r-md);overflow:hidden;border:6px solid var(--bg);aspect-ratio:3/4}
 .about-photos .small img{width:100%;height:100%;object-fit:cover;object-position:center 35%}
 .quote{font-size:clamp(23px,2.3vw,30px);font-weight:500;letter-spacing:-.025em;line-height:1.3;margin-bottom:44px}
@@ -209,11 +198,28 @@ body.loaded .hr{opacity:1;transform:none}
 .route p{color:var(--muted);font-size:15.5px;max-width:520px}
 .fun{display:flex;gap:18px;align-items:flex-start;margin-top:8px;background:var(--forest);color:#E4E9D8;border-radius:var(--r-md);padding:26px 28px;font-size:15.5px}
 .fun b{color:#fff}
-.fun .ic{flex:none;width:44px;height:44px;border-radius:14px;background:rgba(255,255,255,.1);display:grid;place-items:center;font-size:22px}
+.fun .ic{flex:none;width:46px;height:46px;border-radius:14px;background:rgba(255,255,255,.1);display:grid;place-items:center;color:var(--sage-l)}
+.fun .ic svg{width:24px;height:24px}
+
+/* ---------- diplomas ---------- */
+.dipl{background:var(--paper);border-radius:var(--r-xl) var(--r-xl) 0 0}
+.dip-grid{display:grid;grid-template-columns:1fr 1fr 1.35fr;gap:18px;margin-top:64px;align-items:end}
+.dip{background:#fff;border:1px solid var(--line);border-radius:var(--r-lg);padding:16px;cursor:zoom-in;transition:transform .5s var(--ease),box-shadow .5s;text-align:left;border-width:1px}
+.dip:hover{transform:translateY(-8px) rotate(-.5deg);box-shadow:0 30px 60px -30px rgba(27,35,20,.35)}
+.dip .sheet{border-radius:16px;overflow:hidden;background:var(--bg);position:relative}
+.dip .sheet img{width:100%;height:auto}
+.dip .zoom{position:absolute;right:12px;bottom:12px;width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,.9);display:grid;place-items:center;color:var(--ink);box-shadow:0 6px 16px rgba(0,0,0,.12)}
+.dip .zoom svg{width:18px}
+.dip .cap{padding:18px 6px 6px}
+.dip .cap small{font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--olive)}
+.dip .cap h3{font-size:20px;letter-spacing:-.02em;margin:6px 0 4px;line-height:1.25}
+.dip .cap p{font-size:14px;color:var(--muted)}
+.lightbox{position:fixed;inset:0;z-index:980;background:rgba(28,36,20,.88);backdrop-filter:blur(8px);display:none;place-items:center;padding:30px}
+.lightbox.open{display:grid}
+.lightbox img{max-width:min(1100px,100%);max-height:88vh;border-radius:14px;box-shadow:0 30px 80px rgba(0,0,0,.5)}
+.lightbox button{position:absolute;top:20px;right:20px;width:52px;height:52px;border-radius:50%;border:0;background:#fff;font-size:24px}
 
 /* ---------- audience ---------- */
-.aud{background:var(--paper);border-radius:var(--r-xl) var(--r-xl) 0 0}
-.aud-head{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:end}
 .cards{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:70px;align-items:start}
 .card{border-radius:var(--r-lg);padding:26px;min-height:380px;display:flex;flex-direction:column;justify-content:space-between;position:relative;overflow:hidden;transition:transform .5s var(--ease)}
 .card:hover{transform:translateY(-8px) rotate(-.6deg)}
@@ -230,19 +236,62 @@ body.loaded .hr{opacity:1;transform:none}
 .c-olive{background:var(--olive);color:#fff}
 .c-sand{background:var(--sand);color:var(--ink)}
 
+/* ---------- quiz ---------- */
+.quiz{background:var(--sand-2)}
+.quiz-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:60px;align-items:center}
+.quiz-card{background:#fff;border-radius:var(--r-xl);padding:44px;min-height:440px;display:flex;flex-direction:column;box-shadow:0 40px 80px -40px rgba(27,35,20,.3);position:relative;overflow:hidden}
+.q-top{display:flex;justify-content:space-between;align-items:center;font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.q-bar{height:6px;border-radius:9px;background:var(--bg);margin:16px 0 34px;overflow:hidden}
+.q-bar i{display:block;height:100%;background:var(--ios);border-radius:9px;width:0;transition:width .6s var(--ease)}
+.q-body{flex:1;display:flex;flex-direction:column;transition:opacity .3s,transform .4s var(--ease)}
+.q-body.out{opacity:0;transform:translateX(-30px)}
+.q-emoji{font-size:40px;line-height:1;margin-bottom:18px}
+.q-text{font-size:clamp(22px,2.2vw,30px);font-weight:600;letter-spacing:-.03em;line-height:1.2;margin-bottom:30px}
+.q-opts{display:grid;gap:10px;margin-top:auto}
+.q-opt{display:flex;justify-content:space-between;align-items:center;width:100%;padding:17px 20px;border-radius:18px;border:1.5px solid var(--line);background:var(--paper);font-weight:600;font-size:16px;text-align:left;transition:border-color .25s,background .25s,transform .25s var(--ease)}
+.q-opt:hover{border-color:var(--olive);background:#fff;transform:translateX(4px)}
+.q-opt .tg{pointer-events:none}
+.q-opt.picked{border-color:var(--ios);background:#f0faf2}
+.q-res{text-align:center;display:flex;flex-direction:column;align-items:center;gap:14px;margin:auto 0}
+.q-ring{width:150px;height:150px;position:relative}
+.q-ring svg{width:100%;height:100%;transform:rotate(-90deg)}
+.q-ring circle{fill:none;stroke-width:12}
+.q-ring .bgc{stroke:var(--bg)}
+.q-ring .fgc{stroke:var(--ios);stroke-linecap:round;stroke-dasharray:408;stroke-dashoffset:408;transition:stroke-dashoffset 1.4s var(--ease)}
+.q-ring b{position:absolute;inset:0;display:grid;place-items:center;font-size:38px;letter-spacing:-.04em}
+.q-res h3{font-size:30px;letter-spacing:-.03em}
+.q-res p{color:var(--muted);max-width:420px}
+.q-res .acts{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:10px}
+
 /* ---------- program ---------- */
 .program{background:var(--forest-d);color:#fff;border-radius:var(--r-xl);margin:0 16px;overflow:hidden}
 .program h2 em{color:var(--sage)}
 .program .soft{color:#7f8a72}
-.prog-head{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;margin-bottom:64px}
-.prog-head .lead{color:#b8c1aa;margin-top:24px}
-.map{width:100%;height:auto}
-.map .land{fill:none;stroke:rgba(205,211,178,.13);stroke-width:1}
-.map .rt-base{fill:none;stroke:rgba(205,211,178,.2);stroke-width:2;stroke-dasharray:4 6}
-.map .rt{fill:none;stroke:var(--ios);stroke-width:2.5;stroke-linecap:round;stroke-dasharray:900;stroke-dashoffset:900;transition:stroke-dashoffset 3s var(--ease)}
-.map.in .rt{stroke-dashoffset:0}
-.map .city{fill:var(--forest-d);stroke:var(--sage-l);stroke-width:2}
-.map text{fill:var(--sage-l);font:600 11px Manrope,sans-serif;letter-spacing:.08em}
+.program .head-row .lead{color:#b8c1aa}
+.map-card{margin:56px 0 18px;border-radius:var(--r-lg);background:#243019;border:1px solid rgba(255,255,255,.08);overflow:hidden;position:relative}
+.map-wrap{position:relative;aspect-ratio:16/9;min-height:320px}
+.map-wrap svg{position:absolute;inset:0;width:100%;height:100%}
+.map-wrap .ctry{fill:#2F3C24;stroke:#1C2414;stroke-width:.6}
+.map-wrap .ctry.hl{fill:#3E4E2C}
+.map-wrap .sea-bg{fill:#1E2817}
+.map-wrap .rt-road{fill:none;stroke:var(--ios);stroke-width:3.5;stroke-linecap:round;stroke-linejoin:round}
+.map-wrap .rt-ghost{fill:none;stroke:rgba(205,211,178,.25);stroke-width:2;stroke-dasharray:3 6}
+.map-wrap .rt-ferry{fill:none;stroke:var(--sea);stroke-width:3;stroke-dasharray:2 7;stroke-linecap:round}
+.map-wrap .rt-tunnel{fill:none;stroke:#F2C94C;stroke-width:4;stroke-linecap:round}
+.map-wrap .city circle{fill:#1C2414;stroke:#E9EDDF;stroke-width:2}
+.map-wrap .city text{fill:#E9EDDF;font:700 12px Manrope,sans-serif;letter-spacing:.06em;paint-order:stroke;stroke:#1C2414;stroke-width:4px;stroke-linejoin:round}
+.map-wrap .city.big circle{fill:var(--ios);stroke:#fff}
+.map-wrap .cname{fill:rgba(233,237,223,.28);font:600 11px Manrope,sans-serif;letter-spacing:.2em;text-transform:uppercase}
+.map-wrap .badge rect{fill:#fff}
+.map-wrap .badge text{fill:var(--ink);font:700 11px Manrope,sans-serif}
+.map-fallback{position:absolute;inset:0;display:grid;place-items:center;color:#8d977f;font-size:14px}
+.map-legend{display:flex;flex-wrap:wrap;gap:10px 26px;padding:20px 26px;border-top:1px solid rgba(255,255,255,.08);font-size:14px;color:#cfd6c2;align-items:center}
+.map-legend i{display:inline-block;width:26px;height:4px;border-radius:4px;margin-right:10px;vertical-align:middle}
+.map-legend .l-road{background:var(--ios)}
+.map-legend .l-tun{background:#F2C94C}
+.map-legend .l-fer{background:repeating-linear-gradient(90deg,var(--sea) 0 3px,transparent 3px 8px)}
+.map-legend .l-hl{background:#3E4E2C;height:12px;width:18px;border-radius:3px}
+.map-legend .mod-ref{margin-left:auto;color:var(--sage)}
 .modules{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
 .mod{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:var(--r-md);padding:28px;transition:background .4s,transform .4s var(--ease),border-color .4s}
 .mod:hover{background:rgba(164,174,122,.1);border-color:rgba(164,174,122,.4);transform:translateY(-4px)}
@@ -288,9 +337,31 @@ body.loaded .hr{opacity:1;transform:none}
 .incl-list h3{font-size:18px;letter-spacing:-.015em;line-height:1.3}
 .incl-list p{color:var(--muted);font-size:14px}
 
+/* ---------- calculator ---------- */
+.calc-box{display:grid;grid-template-columns:1.05fr .95fr;gap:18px;margin-top:60px}
+.calc-in{background:#fff;border-radius:var(--r-xl);padding:44px;border:1px solid var(--line)}
+.rng{margin-bottom:30px}
+.rng:last-child{margin-bottom:0}
+.rng-top{display:flex;justify-content:space-between;align-items:baseline;gap:14px;margin-bottom:14px}
+.rng-top label{font-weight:600;font-size:16px}
+.rng-top output{font-size:22px;font-weight:700;letter-spacing:-.02em;color:var(--olive);font-variant-numeric:tabular-nums}
+input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:8px;border-radius:9px;background:linear-gradient(90deg,var(--ios) var(--f,50%),var(--bg) var(--f,50%));outline:none}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:28px;height:28px;border-radius:50%;background:#fff;box-shadow:0 3px 10px rgba(0,0,0,.2),0 0 0 1px rgba(0,0,0,.04);cursor:grab}
+input[type=range]::-moz-range-thumb{width:28px;height:28px;border-radius:50%;background:#fff;border:0;box-shadow:0 3px 10px rgba(0,0,0,.2);cursor:grab}
+.rng small{display:block;color:var(--muted);font-size:13px;margin-top:10px}
+.calc-out{background:var(--forest-d);color:#fff;border-radius:var(--r-xl);padding:44px;display:flex;flex-direction:column;justify-content:space-between;gap:30px;position:relative;overflow:hidden}
+.calc-out .label{align-self:flex-start}
+.calc-sum small{display:block;color:var(--sage-l);font-size:14px;margin-bottom:6px}
+.calc-sum b{display:block;font-size:clamp(56px,6.5vw,96px);font-weight:600;letter-spacing:-.05em;line-height:1;font-variant-numeric:tabular-nums}
+.calc-sum b span{color:var(--ios)}
+.calc-sum .yr{margin-top:10px;color:#b8c1aa;font-size:15px}
+.calc-rows{border-top:1px solid rgba(255,255,255,.12)}
+.calc-rows div{display:flex;justify-content:space-between;padding:13px 0;border-bottom:1px solid rgba(255,255,255,.12);font-size:15px;color:#cfd6c2}
+.calc-rows div b{color:#fff;font-variant-numeric:tabular-nums}
+.calc-note{font-size:12.5px;color:#8d977f;line-height:1.5}
+
 /* ---------- cases ---------- */
 .cases{background:var(--sand-2)}
-.cases-head{display:flex;justify-content:space-between;align-items:flex-end;gap:30px;flex-wrap:wrap}
 .case-list{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:64px}
 .case{background:#fff;border-radius:var(--r-lg);padding:30px;display:flex;flex-direction:column;gap:18px;transition:transform .5s var(--ease),box-shadow .5s}
 .case:hover{transform:translateY(-6px);box-shadow:0 30px 60px -30px rgba(27,35,20,.35)}
@@ -308,7 +379,7 @@ body.loaded .hr{opacity:1;transform:none}
 .why-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:64px}
 .col{border-radius:var(--r-xl);padding:44px}
 .col h3{font-size:28px;letter-spacing:-.03em;margin-bottom:26px;display:flex;justify-content:space-between;align-items:center;gap:10px}
-.col h3 small{font-size:12px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;padding:6px 12px;border-radius:999px}
+.col h3 small{font-size:12px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;padding:6px 12px;border-radius:999px;flex:none}
 .row{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:16px 0;border-top:1px solid var(--line);font-size:16.5px}
 .col-bad{background:#fff;color:#8b9282}
 .col-bad h3{color:#8b9282}
@@ -316,11 +387,13 @@ body.loaded .hr{opacity:1;transform:none}
 .col-good{background:var(--olive);color:#fff}
 .col-good .row{border-color:rgba(255,255,255,.2);font-weight:500}
 .col-good h3 small{background:rgba(255,255,255,.16)}
+.lol{display:inline-block;animation:lol 1.6s ease-in-out infinite;transform-origin:50% 70%}
+@keyframes lol{0%,100%{transform:rotate(0)}20%{transform:rotate(-14deg) scale(1.1)}40%{transform:rotate(12deg) scale(1.1)}60%{transform:rotate(-6deg)}}
 
 /* ---------- consult ---------- */
-.consult-box{display:grid;grid-template-columns:.85fr 1.15fr;gap:0;background:var(--forest-d);color:#fff;border-radius:var(--r-xl);overflow:hidden}
+.consult-box{display:grid;grid-template-columns:.85fr 1.15fr;background:var(--forest-d);color:#fff;border-radius:var(--r-xl);overflow:hidden}
 .consult-photo{position:relative;min-height:560px}
-.consult-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 25%}
+.consult-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 28%}
 .consult-photo .status{position:absolute;left:22px;top:22px;display:flex;align-items:center;gap:10px;padding:10px 16px 10px 10px;border-radius:999px;background:rgba(255,255,255,.82);backdrop-filter:blur(14px);color:var(--ink);font-size:14px;font-weight:600}
 .consult-text{padding:64px 60px}
 .consult-text h2 em{color:var(--sage)}
@@ -396,9 +469,6 @@ footer{background:var(--forest-d);color:#b8c1aa;padding:90px 0 34px;border-radiu
 /* ---------- reveal ---------- */
 .rv{opacity:0;transform:translateY(40px);transition:opacity 1s var(--ease),transform 1.1s var(--ease);transition-delay:var(--d,0s)}
 .rv.in{opacity:1;transform:none}
-.mask{display:block;overflow:hidden}
-.mask>span{display:inline-block;transform:translateY(105%);transition:transform 1.1s var(--ease)}
-.in .mask>span,.mask.in>span{transform:none}
 
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
@@ -408,11 +478,12 @@ footer{background:var(--forest-d);color:#b8c1aa;padding:90px 0 34px;border-radiu
 /* ---------- responsive ---------- */
 @media (max-width:1100px){
   .menu,.road-prog{display:none}
-  .hero-grid,.about-grid,.incl-grid,.aud-head,.prog-head,.consult-box,.join-grid,.faq-grid{grid-template-columns:1fr}
+  .hero-grid,.about-grid,.incl-grid,.head-row,.consult-box,.join-grid,.faq-grid,.quiz-grid,.calc-box{grid-template-columns:1fr}
   .hero-visual{max-width:620px}
   .widget{left:20px}
   .stats-grid{grid-template-columns:repeat(3,1fr)}
-  .cards{grid-template-columns:repeat(2,1fr)}
+  .cards,.dip-grid{grid-template-columns:repeat(2,1fr)}
+  .dip.wide{grid-column:1/-1}
   .modules,.case-list,.rev-grid{grid-template-columns:repeat(2,1fr)}
   .about-photos{position:relative;top:0;max-width:520px}
   .consult-photo{min-height:460px}
@@ -428,32 +499,39 @@ footer{background:var(--forest-d);color:#b8c1aa;padding:90px 0 34px;border-radiu
   .hero{padding-top:100px;min-height:auto}
   .hero h1{margin:22px 0}
   .hero-actions .btn{width:100%;justify-content:space-between}
-  .widget{left:12px;right:12px;width:auto;bottom:12px;padding:4px 16px}
-  .w-row{padding:9px 0;font-size:14px}
-  .w-row.off{display:none}
+  .hero-photo{aspect-ratio:4/4.4}
+  .hero-photo img{object-position:center 12%}
+  .widget{position:relative;left:auto;bottom:auto;width:auto;margin:-96px 12px 0;padding:4px 16px}
+  .w-row{padding:10px 0;font-size:14.5px}
   .hero-chip{top:14px;right:14px;padding:10px 14px}
   .hero-chip b{font-size:22px}
   .wm-meta{flex-direction:column;gap:6px}
+  .wm .ph{display:none}
   .stats-grid{grid-template-columns:repeat(2,1fr)}
   .stat{min-height:150px;padding:22px 18px}
-  .cards,.modules,.case-list,.rev-grid,.why-grid,.topics{grid-template-columns:1fr}
+  .cards,.modules,.case-list,.rev-grid,.why-grid,.topics,.dip-grid{grid-template-columns:1fr}
   .card{min-height:280px}.card:nth-child(even){margin-top:0}
   .about-photos .small{right:-6px;bottom:-24px}
   .program{margin:0 8px}
+  .map-wrap{aspect-ratio:4/5}
+  .map-legend{padding:16px}
+  .map-legend .mod-ref{margin-left:0}
   .lesson{padding-top:80px}
   .lesson-card{grid-template-columns:1fr;padding:30px 22px;min-height:560px}
   .play-big{width:92px;height:92px;order:-1;margin-bottom:auto}
   .lesson-card::before{background:linear-gradient(180deg,rgba(28,36,20,.25) 0%,rgba(28,36,20,.55) 40%,rgba(28,36,20,.92) 75%)}
   .lesson-card>img{object-position:center 40%}
-  .ld-scene{margin:auto 0}
+  .quiz-card,.calc-in,.calc-out{padding:30px 20px}
   .col{padding:30px 22px}
-  .col h3{font-size:23px}
+  .col h3{font-size:22px}
   .consult-text,.join-info{padding:40px 22px}
   form.lead-form{padding:34px 20px}
   details p{padding-right:0}
   summary{font-size:18px}
-  #loader{padding:22px 18px 30px}
+  #loader{padding:22px 16px 28px}
+  .ld-map{max-height:none;margin:auto 0}
   .ld-bottom{flex-direction:column;align-items:flex-start}
+  .ld-km{text-align:left}
 }
 </style>
 </head>
@@ -461,59 +539,61 @@ footer{background:var(--forest-d);color:#b8c1aa;padding:90px 0 34px;border-radiu
 
 <!-- ============ LOADER ============ -->
 <div id="loader" aria-hidden="true">
-  <div class="ld-top"><span>Veronika Logistics</span><span>Road · Sea · Air</span></div>
-  <svg class="ld-scene" viewBox="0 0 640 240">
-    <!-- plane -->
-    <g class="plane">
-      <line x1="-150" y1="4" x2="-44" y2="4" stroke="#A4AE7A" stroke-width="1.5" stroke-dasharray="3 7" stroke-linecap="round"/>
-      <path class="sc-stroke" d="M-34 -2 H18 Q34 -2 38 4 Q34 10 18 10 H-30 L-40 -14 H-32 Z" fill="#1C2414"/>
-      <path class="sc-stroke" d="M-4 6 L-18 26 H-9 L12 6 Z" fill="#1C2414"/>
-      <path class="sc-stroke" d="M-2 -1 L-12 -12 H-6 L8 -1" fill="none"/>
-      <line x1="8" y1="2" x2="26" y2="2" stroke="#A4AE7A" stroke-width="1.5" stroke-dasharray="2 4"/>
-    </g>
+  <div class="ld-top"><span>Veronika Logistics</span><span class="ld-now"><i></i><span id="ldCity">LVIV</span></span></div>
+  <svg class="ld-map" viewBox="0 0 1000 380" id="ldMap">
+    <defs>
+      <mask id="mRoad" maskUnits="userSpaceOnUse"><path id="kRoad" d="M40 300 C170 300 200 190 330 190 S500 280 590 230" fill="none" stroke="#fff" stroke-width="30" stroke-linecap="round" pathLength="1" stroke-dasharray="1 1" stroke-dashoffset="1"/></mask>
+      <mask id="mSea" maskUnits="userSpaceOnUse"><path id="kSea" d="M590 230 C640 196 690 262 750 222" fill="none" stroke="#fff" stroke-width="30" stroke-linecap="round" pathLength="1" stroke-dasharray="1 1" stroke-dashoffset="1"/></mask>
+      <mask id="mAir" maskUnits="userSpaceOnUse"><path id="kAir" d="M750 222 Q840 60 960 50" fill="none" stroke="#fff" stroke-width="20" stroke-linecap="round" pathLength="1" stroke-dasharray="1 1" stroke-dashoffset="1"/></mask>
+    </defs>
+    <!-- ghost route -->
+    <path d="M40 300 C170 300 200 190 330 190 S500 280 590 230 C640 196 690 262 750 222 Q840 60 960 50" fill="none" stroke="rgba(27,35,20,.12)" stroke-width="2" stroke-dasharray="2 8" stroke-linecap="round"/>
     <!-- road -->
-    <line class="sc-stroke" x1="0" y1="152" x2="640" y2="152" opacity=".35"/>
-    <line class="road-dash" x1="0" y1="164" x2="640" y2="164" stroke="#A4AE7A" stroke-width="2" stroke-linecap="round" opacity=".6"/>
-    <!-- truck -->
-    <g class="truck">
-      <g class="speed" stroke="#A4AE7A" stroke-width="2" stroke-linecap="round">
-        <line x1="-40" y1="-38" x2="-14" y2="-38"/><line x1="-52" y1="-26" x2="-18" y2="-26"/><line x1="-36" y1="-14" x2="-12" y2="-14"/>
-      </g>
-      <g class="truck-body">
-        <rect class="sc-stroke" x="0" y="-56" width="124" height="44" rx="5" fill="#2B3620"/>
-        <text x="62" y="-29" text-anchor="middle" fill="#CDD3B2" font-family="Manrope" font-weight="800" font-size="13" letter-spacing="2">VL</text>
-        <path class="sc-stroke" d="M128 -12 V-42 Q128 -48 134 -48 H152 L166 -31 V-12 Z" fill="#5F6F3A"/>
-        <path d="M135 -42 H150 L159 -31 H135 Z" fill="#BDD1E6" opacity=".85"/>
-        <line class="sc-stroke" x1="-2" y1="-12" x2="168" y2="-12"/>
-        <circle cx="167" cy="-19" r="2.5" fill="#FFE8A3"/>
-      </g>
-      <g><g class="wheel"><circle cx="20" cy="-5" r="8" fill="#1C2414" class="sc-stroke"/><line x1="14" y1="-5" x2="26" y2="-5" class="sc-stroke"/></g></g>
-      <g><g class="wheel"><circle cx="42" cy="-5" r="8" fill="#1C2414" class="sc-stroke"/><line x1="36" y1="-5" x2="48" y2="-5" class="sc-stroke"/></g></g>
-      <g><g class="wheel"><circle cx="102" cy="-5" r="8" fill="#1C2414" class="sc-stroke"/><line x1="96" y1="-5" x2="108" y2="-5" class="sc-stroke"/></g></g>
-      <g><g class="wheel"><circle cx="150" cy="-5" r="8" fill="#1C2414" class="sc-stroke"/><line x1="144" y1="-5" x2="156" y2="-5" class="sc-stroke"/></g></g>
+    <g mask="url(#mRoad)">
+      <path id="pRoad" d="M40 300 C170 300 200 190 330 190 S500 280 590 230" fill="none" stroke="#1B2314" stroke-width="20" stroke-linecap="round"/>
+      <path d="M40 300 C170 300 200 190 330 190 S500 280 590 230" fill="none" stroke="#F3F4EE" stroke-width="2" stroke-dasharray="12 12"/>
     </g>
     <!-- sea -->
-    <g class="waves" opacity=".55">
-      <path class="sc-stroke" d="M-40 214 q10 -6 20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0"/>
-      <path d="M-20 228 q10 -5 20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0" fill="none" stroke="#A4AE7A" stroke-width="1.4" opacity=".6"/>
+    <g mask="url(#mSea)">
+      <path id="pSea" d="M590 230 C640 196 690 262 750 222" fill="none" stroke="#BDD1E6" stroke-width="22" stroke-linecap="round"/>
+      <path d="M590 230 C640 196 690 262 750 222" fill="none" stroke="#fff" stroke-width="2.5" stroke-dasharray="3 9" stroke-linecap="round"/>
     </g>
-    <!-- ferry -->
-    <g class="ferry">
-      <g class="ferry-body">
-        <rect x="10" y="-22" width="16" height="11" fill="#A4AE7A"/><rect x="28" y="-22" width="16" height="11" fill="#BDD1E6"/><rect x="46" y="-22" width="16" height="11" fill="#7E8B52"/>
-        <rect x="19" y="-33" width="16" height="11" fill="#DCDDCB"/><rect x="37" y="-33" width="16" height="11" fill="#5F6F3A"/>
-        <rect class="sc-stroke" x="70" y="-36" width="22" height="25" rx="2" fill="#2B3620"/>
-        <line class="sc-stroke" x1="74" y1="-28" x2="88" y2="-28"/>
-        <line class="sc-stroke" x1="84" y1="-36" x2="84" y2="-46"/>
-        <path class="sc-stroke" d="M0 -11 H108 L98 6 H8 Z" fill="#2B3620"/>
+    <!-- air -->
+    <g mask="url(#mAir)"><path id="pAir" d="M750 222 Q840 60 960 50" fill="none" stroke="#5F6F3A" stroke-width="2.5" stroke-dasharray="6 8" stroke-linecap="round"/></g>
+    <!-- pins -->
+    <g class="pin" id="pin0"><circle cx="40" cy="300" r="9" fill="#34C759" stroke="#fff" stroke-width="3"/><text x="40" y="340" text-anchor="middle">LVIV</text></g>
+    <g class="pin" id="pin1"><circle cx="330" cy="190" r="8" fill="#fff" stroke="#1B2314" stroke-width="3"/><text x="330" y="160" text-anchor="middle">BERLIN</text></g>
+    <g class="pin" id="pin2"><circle cx="590" cy="230" r="8" fill="#fff" stroke="#1B2314" stroke-width="3"/><text x="580" y="275" text-anchor="middle">CALAIS</text></g>
+    <g class="pin" id="pin3"><circle cx="750" cy="222" r="8" fill="#fff" stroke="#1B2314" stroke-width="3"/><text x="760" y="266" text-anchor="middle">DOVER</text></g>
+    <g class="pin" id="pin4"><circle cx="960" cy="50" r="9" fill="#34C759" stroke="#fff" stroke-width="3"/><text x="952" y="92" text-anchor="middle">EUROPE</text></g>
+    <!-- vehicles -->
+    <g id="vTruck">
+      <g transform="translate(-26,-24)">
+        <rect x="0" y="4" width="34" height="18" rx="3" fill="#5F6F3A"/>
+        <path d="M36 22 V9 Q36 6 39 6 H46 L52 14 V22 Z" fill="#1B2314"/>
+        <path d="M40 9 H45 L49 14 H40 Z" fill="#BDD1E6"/>
+        <circle cx="9" cy="23" r="4" fill="#1B2314" stroke="#fff" stroke-width="1.5"/><circle cx="26" cy="23" r="4" fill="#1B2314" stroke="#fff" stroke-width="1.5"/><circle cx="45" cy="23" r="4" fill="#1B2314" stroke="#fff" stroke-width="1.5"/>
+      </g>
+    </g>
+    <g id="vFerry" opacity="0">
+      <g transform="translate(-26,-20)">
+        <rect x="8" y="2" width="9" height="7" fill="#A4AE7A"/><rect x="18" y="2" width="9" height="7" fill="#8FB2D4"/><rect x="13" y="-5" width="9" height="7" fill="#5F6F3A"/>
+        <rect x="32" y="-6" width="10" height="15" rx="1.5" fill="#1B2314"/>
+        <path d="M0 9 H52 L46 20 H6 Z" fill="#1B2314"/>
+      </g>
+    </g>
+    <g id="vPlane" opacity="0">
+      <g transform="translate(-4,0)">
+        <path d="M-22 -3 H12 Q22 -3 25 1 Q22 5 12 5 H-18 L-26 -12 H-20 Z" fill="#1B2314"/>
+        <path d="M-2 2 L-12 16 H-6 L8 2 Z" fill="#5F6F3A"/>
+        <path d="M0 -2 L-8 -10 H-4 L6 -2 Z" fill="#5F6F3A"/>
       </g>
     </g>
   </svg>
   <div class="ld-bottom">
     <div class="ld-brand"><span class="ln"><span>Veronika</span></span><span class="ln"><span><em>Logistics</em></span></span></div>
-    <div class="ld-count" id="ldCount">000</div>
+    <div class="ld-km"><b id="ldKm">0</b><span>км маршруту</span></div>
   </div>
-  <div class="ld-bar" id="ldBar"></div>
 </div>
 
 <div class="cur" aria-hidden="true"></div><div class="cur-ring" aria-hidden="true"></div>
@@ -524,14 +604,17 @@ footer{background:var(--forest-d);color:#b8c1aa;padding:90px 0 34px;border-radiu
   <div class="re"></div>
 </div>
 
+<div class="lightbox" id="lightbox" role="dialog" aria-label="Документ"><button type="button" aria-label="Закрити">×</button><img alt=""></div>
+
 <!-- ============ HEADER ============ -->
 <header id="hdr">
   <div class="wrap nav">
     <a href="#top" class="logo glass-pill" aria-label="Veronika Logistics"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 6h12v10H1z"/><path d="M13 9h4l4 4v3h-8"/><circle cx="5.5" cy="17.5" r="1.8"/><circle cx="17.5" cy="17.5" r="1.8"/></svg></i>veronika_logistics</a>
     <nav class="menu glass-pill">
       <a href="#about">Про мене</a>
+      <a href="#quiz">Тест</a>
       <a href="#program">Програма</a>
-      <a href="#cases">Кейси</a>
+      <a href="#calc">Дохід</a>
       <a href="#consult">Консультація</a>
       <a href="#faq">FAQ</a>
     </nav>
@@ -545,25 +628,27 @@ footer{background:var(--forest-d);color:#b8c1aa;padding:90px 0 34px;border-radiu
 <section class="hero">
   <div class="wrap hero-grid">
     <div>
-      <div class="live hr"><i class="tg on"></i>Набір відкритий — старт у будь-який день</div>
-      <h1 class="hr" style="--d:.08s">Логістика з&nbsp;нуля — <em>на&nbsp;практиці,</em> а&nbsp;не в&nbsp;теорії</h1>
-      <p class="lead hr" style="--d:.16s">Навчу працювати спедитором або диспетчером у перевезеннях по Європі — з дому, без прив’язки до міста. Все, що я роблю сама щодня, покроково й по факту.</p>
+      <span class="label hr">Онлайн-курс міжнародної логістики</span>
+      <h1 class="hr" style="--d:.08s">Нова професія — <em>логіст.</em> Працюйте з&nbsp;будь-якої точки світу</h1>
+      <p class="lead hr" style="--d:.16s">Вантажі по Європі їздять щодня — і кожним рейсом керує логіст. Навчу вас цієї професії з нуля: спедитор або диспетчер, робота з дому й дохід, який не залежить від міста, де ви живете.</p>
       <div class="hero-actions hr" style="--d:.24s">
         <a href="#join" class="btn btn-green">Записатися на курс <span class="arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M7 17 17 7M8 7h9v9"/></svg></span></a>
         <a href="#lesson" class="btn-play"><span class="pl"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 4l14 8-14 8z"/></svg></span>Перший урок безкоштовно</a>
       </div>
-      <div class="trust hr" style="--d:.32s">
+      <a href="#quiz" class="quiz-link hr" style="--d:.3s"><b>🧭</b>Тест: чи підходить вам професія логіста? <span>→</span></a>
+      <div class="trust hr" style="--d:.36s">
         <img src="img/portrait.jpg" alt="">
-        <div><b>Вероніка</b> · Logistics Specialist<br><small>Магістр логістики (Польща) · 3+ роки в міжнародних перевезеннях</small></div>
+        <div><b>Вероніка</b> · Logistics Specialist<br><small>Магістр логістики (UMCS, Польща) · 3+ роки в міжнародних перевезеннях</small></div>
       </div>
     </div>
     <div class="hero-visual hr" style="--d:.2s">
-      <div class="hero-photo"><img src="img/hero.jpg" alt="Вероніка — логіст, авторка курсу"></div>
+      <div class="hero-photo"><img src="img/consult.jpg" alt="Вероніка — логіст, авторка курсу"></div>
       <div class="hero-chip"><b>25</b><span>тірів<br>під керуванням</span></div>
       <div class="widget" id="heroWidget">
         <div class="w-row"><span>Робота з дому</span><i class="tg" data-on></i></div>
         <div class="w-row"><span>Маршрути по Європі</span><i class="tg" data-on></i></div>
         <div class="w-row"><span>Практика, а не теорія</span><i class="tg" data-on></i></div>
+        <div class="w-row off"><span>Прив’язка до офісу</span><i class="tg"></i></div>
         <div class="w-row off"><span>Стрес і хаос</span><i class="tg"></i></div>
       </div>
     </div>
@@ -583,8 +668,8 @@ footer{background:var(--forest-d);color:#b8c1aa;padding:90px 0 34px;border-radiu
 
 <div class="marquee" aria-hidden="true">
   <div class="mq">
-    <span>Тіри</span><i>✱</i><span><em>Буси</em></span><i>✱</i><span>CMR</span><i>✱</i><span><em>Пороми</em></span><i>✱</i><span>Віньєти</span><i>✱</i><span><em>Час праці водія</em></span><i>✱</i><span>Біржі вантажів</span><i>✱</i><span><em>Маршрути по Європі</em></span><i>✱</i>
-    <span>Тіри</span><i>✱</i><span><em>Буси</em></span><i>✱</i><span>CMR</span><i>✱</i><span><em>Пороми</em></span><i>✱</i><span>Віньєти</span><i>✱</i><span><em>Час праці водія</em></span><i>✱</i><span>Біржі вантажів</span><i>✱</i><span><em>Маршрути по Європі</em></span><i>✱</i>
+    <span>Нова професія</span><i>✱</i><span><em>Робота з дому</em></span><i>✱</i><span>Перевезення по всій Європі</span><i>✱</i><span><em>Від нуля до першого вантажу</em></span><i>✱</i><span>Практика замість теорії</span><i>✱</i><span><em>Без прив’язки до міста</em></span><i>✱</i>
+    <span>Нова професія</span><i>✱</i><span><em>Робота з дому</em></span><i>✱</i><span>Перевезення по всій Європі</span><i>✱</i><span><em>Від нуля до першого вантажу</em></span><i>✱</i><span>Практика замість теорії</span><i>✱</i><span><em>Без прив’язки до міста</em></span><i>✱</i>
   </div>
 </div>
 
@@ -595,7 +680,7 @@ footer{background:var(--forest-d);color:#b8c1aa;padding:90px 0 34px;border-radiu
     <div class="stat accent rv" style="--d:.08s"><strong data-count="25">0</strong><span>тірів одночасно в диспетчеризації</span></div>
     <div class="stat rv" style="--d:.16s"><strong>4–7</strong><span>диспетчерів у підпорядкуванні</span></div>
     <div class="stat rv" style="--d:.24s"><strong data-count="6">0</strong><span>потоків учнів уже пройшли курс</span></div>
-    <div class="stat rv" style="--d:.32s"><strong data-count="2.7" data-dec="1" data-suffix="K">0</strong><span>підписників в Instagram</span></div>
+    <div class="stat rv" style="--d:.32s"><strong data-count="6">0</strong><span>місяців — і я вже керувала відділом диспетчерів</span></div>
   </div>
 </div>
 
@@ -606,20 +691,35 @@ footer{background:var(--forest-d);color:#b8c1aa;padding:90px 0 34px;border-radiu
     <h2 class="rv">Привіт, я Вероніка — <em>ваш гід</em> <span class="soft">у логістиці</span></h2>
     <div class="about-grid">
       <div class="about-photos rv">
-        <div class="big"><img src="img/bw.jpg" alt="Вероніка за робочим столом" loading="lazy"></div>
+        <div class="big"><img src="img/portrait.jpg" alt="Вероніка" loading="lazy"></div>
         <div class="small"><img src="img/laptop.jpg" alt="Вероніка з ноутбуком" loading="lazy"></div>
       </div>
       <div>
         <p class="quote rv">Я весь час «варюся» в логістиці: від тірів на 24 тонни до бусів — <em>і показую, як воно працює насправді.</em></p>
         <ol class="route">
-          <li class="rv"><span class="yr">2018 — 2023</span><h3>Бакалаврат і магістратура з логістики</h3><p>Університет Марії Кюрі-Склодовської, Люблін (Польща). П’ять років навчання, диплом з дуже гарним середнім балом.</p></li>
+          <li class="rv"><span class="yr">2018 — 2021</span><h3>Бакалавр міжнародної логістики</h3><p>Університет Марії Кюрі-Склодовської (UMCS), Люблін, Польща.</p></li>
+          <li class="rv"><span class="yr">2021 — 2023</span><h3>Магістр логістики</h3><p>Магістратура в UMCS. Разом — п’ять років навчання логістики в Польщі.</p></li>
           <li class="rv"><span class="yr">2023</span><h3>Логіст у польській компанії, Львів</h3><p>Тіри на 24 тонни: 5 машин, водії й клієнти одночасно — сама брала завантаження, складала маршрути, планувала заправки й сервіси.</p></li>
-          <li class="rv"><span class="yr">Далі</span><h3>Диспетчер на 25 тірів</h3><p>25 водіїв на зв’язку, побудова й оптимізація маршрутів, планування сервісів.</p></li>
-          <li class="rv"><span class="yr">Через пів року</span><h3>Начальниця відділу диспетчерів</h3><p>Під керуванням — 4–7 людей. Вирішувала питання на місці та разом із головним офісом у Польщі.</p></li>
-          <li class="rv"><span class="yr">2024 — зараз</span><h3>Працюю з дому, навчаю й консультую</h3><p>Власні перевізники з бусами, пошук вантажів під відсоток. Окремі курси з тахографів і часу праці водія. Веду Instagram і курс — вже 6 потоків.</p></li>
+          <li class="rv"><span class="yr">Далі</span><h3>Диспетчер на 25 тірів → начальниця відділу</h3><p>25 водіїв на зв’язку, оптимізація маршрутів. Через пів року — керівниця відділу диспетчерів: 4–7 людей у підпорядкуванні.</p></li>
+          <li class="rv"><span class="yr">2024 — зараз</span><h3>Працюю з дому, навчаю й консультую</h3><p>Власні перевізники з бусами, пошук вантажів під відсоток. У 2025 — сертифікат ZF SCALAR з управління автопарком у TX-Connect. Курс пройшли вже 6 потоків.</p></li>
         </ol>
-        <div class="fun rv"><span class="ic">∑</span><div><b>До речі:</b> в 11 класі я гадки не мала, що таке логістика. Тато сказав: «Там математики не буде». Математика була кожного семестру — але я впоралась і ні краплі не шкодую.</div></div>
+        <div class="fun rv"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m11 17 2 2a1 1 0 1 0 3-3"/><path d="m14 14 2.5 2.5a1 1 0 1 0 3-3l-3.88-3.88a3 3 0 0 0-4.24 0l-.88.88a1 1 0 1 1-3-3l2.81-2.81a5.79 5.79 0 0 1 7.06-.87l.47.28a2 2 0 0 0 1.42.25L21 4"/><path d="m21 3 1 11h-2"/><path d="M3 3 2 14l6.5 6.5a1 1 0 1 0 3-3"/><path d="M3 4h8"/></svg></span><div><b>Факт:</b> у польській компанії я допомогла налагодити роботу з україномовними перевізниками, з якими польський офіс сам домовитися не міг. Логістика — це не лише маршрути, а й уміння говорити з людьми.</div></div>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ DIPLOMAS ============ -->
+<section class="dipl" id="diplomas">
+  <div class="wrap">
+    <div class="head-row">
+      <div><span class="label">Дипломи та сертифікати</span><h2 class="rv">Освіта, <em>підтверджена</em> <span class="soft">документами</span></h2></div>
+      <p class="lead rv">Два дипломи польського університету з логістики і профільний сертифікат з управління автопарком. Натисніть, щоб роздивитися.</p>
+    </div>
+    <div class="dip-grid">
+      <button class="dip rv" type="button" data-img="img/dip-master.jpg"><div class="sheet"><img src="img/dip-master.jpg" alt="Диплом магістра логістики, UMCS" loading="lazy"><span class="zoom"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5M11 8v6M8 11h6"/></svg></span></div><div class="cap"><small>Магістр · 2023</small><h3>Логістика</h3><p>Університет Марії Кюрі-Склодовської, Люблін</p></div></button>
+      <button class="dip rv" type="button" style="--d:.1s" data-img="img/dip-bachelor.jpg"><div class="sheet"><img src="img/dip-bachelor.jpg" alt="Диплом бакалавра з міжнародної логістики, UMCS" loading="lazy"><span class="zoom"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5M11 8v6M8 11h6"/></svg></span></div><div class="cap"><small>Бакалавр · 2021</small><h3>Міжнародна логістика</h3><p>Університет Марії Кюрі-Склодовської, Люблін</p></div></button>
+      <button class="dip wide rv" type="button" style="--d:.2s" data-img="img/cert-zf.jpg"><div class="sheet"><img src="img/cert-zf.jpg" alt="Сертифікат ZF SCALAR, TX-Connect" loading="lazy"><span class="zoom"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5M11 8v6M8 11h6"/></svg></span></div><div class="cap"><small>Сертифікат · 2025</small><h3>ZF SCALAR: управління автопарком у TX-Connect</h3><p>Fleet Management System · Вроцлав</p></div></button>
     </div>
   </div>
 </section>
@@ -627,15 +727,31 @@ footer{background:var(--forest-d);color:#b8c1aa;padding:90px 0 34px;border-radiu
 <!-- ============ AUDIENCE ============ -->
 <section class="aud">
   <div class="wrap">
-    <div class="aud-head">
+    <div class="head-row">
       <div><span class="label">Для кого курс</span><h2 class="rv">Професія, яку можна <em>взяти з собою</em> <span class="soft">куди завгодно</span></h2></div>
-      <p class="lead rv">Курс для тих, хто хоче працювати з ноутбука, мати стабільну професію і розуміти перевезення по Європі зсередини.</p>
+      <p class="lead rv">Курс для тих, хто хоче працювати й мати стабільну професію — навіть якщо досвіду в логістиці немає зовсім.</p>
     </div>
     <div class="cards">
       <article class="card c-dark rv"><div class="top"><span class="tag">Старт</span><i class="tg sm" data-on></i></div><div><h3>Без досвіду в логістиці</h3><p>Пояснюю з самого початку: хто такий логіст, спедитор і диспетчер.</p></div></article>
       <article class="card c-photo rv" style="--d:.08s"><img src="img/desk3.jpg" alt="" loading="lazy"><div class="top"><span class="tag">Свобода</span><i class="tg sm" data-on></i></div><div style="position:relative;z-index:1"><h3>Хочете працювати з дому</h3><p>Не прив’язані до офісу чи міста — лише ноутбук і телефон.</p></div></article>
       <article class="card c-olive rv" style="--d:.16s"><div class="top"><span class="tag">Близько</span><i class="tg sm" data-on></i></div><div><h3>Чоловік — водій, а ви поруч</h3><p>Трохи чули від нього — тепер розберетесь системно й професійно.</p></div></article>
-      <article class="card c-sand rv" style="--d:.24s"><div class="top"><span class="tag">Кар’єра</span><i class="tg sm" data-on></i></div><div><h3>Шукаєте першу роботу</h3><p>Резюме, співбесіда і мої поради, щоб вас взяли на позицію.</p></div></article>
+      <article class="card c-sand rv" style="--d:.24s"><div class="top"><span class="tag">Кар’єра</span><i class="tg sm" data-on></i></div><div><h3>Шукаєте нову професію</h3><p>Резюме, співбесіда і мої поради, щоб вас взяли на позицію.</p></div></article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ QUIZ ============ -->
+<section class="quiz" id="quiz">
+  <div class="wrap quiz-grid">
+    <div>
+      <span class="label">Тест · 1 хвилина</span>
+      <h2 class="rv">Чи підходить вам <em>професія логіста?</em></h2>
+      <p class="lead rv" style="margin-top:22px">7 коротких питань — і ви побачите, наскільки логістика збігається з вашим характером і бажаннями.</p>
+    </div>
+    <div class="quiz-card rv" id="quizCard">
+      <div class="q-top"><span id="qStep">Питання 1 з 7</span><span>🧭</span></div>
+      <div class="q-bar"><i id="qBar"></i></div>
+      <div class="q-body" id="qBody"></div>
     </div>
   </div>
 </section>
@@ -643,27 +759,19 @@ footer{background:var(--forest-d);color:#b8c1aa;padding:90px 0 34px;border-radiu
 <!-- ============ PROGRAM ============ -->
 <section class="program" id="program">
   <div class="wrap">
-    <div class="prog-head">
-      <div>
-        <span class="label dark">Програма</span>
-        <h2 class="rv">Вступ і 8 модулів — <em>від першого вантажу</em> <span class="soft">до фактури</span></h2>
-        <p class="lead rv">Кожен модуль — відео, презентація з усім, що я говорю, і домашнє завдання. На картах і реальних прикладах.</p>
+    <div class="head-row">
+      <div><span class="label dark">Програма</span><h2 class="rv">Вступ і 8 модулів — <em>від першого вантажу</em> <span class="soft">до фактури</span></h2></div>
+      <p class="lead rv">Кожен модуль — відео, презентація з усім, що я говорю, і домашнє завдання. Усе показую на реальних картах і маршрутах — як на цій.</p>
+    </div>
+    <div class="map-card rv">
+      <div class="map-wrap" id="euMap"><div class="map-fallback">Завантажую карту Європи…</div></div>
+      <div class="map-legend">
+        <span><i class="l-road"></i>Маршрут тіра Львів → Мілан</span>
+        <span><i class="l-tun"></i>Тунель Фрежюс (Франція → Італія)</span>
+        <span><i class="l-fer"></i>Пором Кале → Дувр</span>
+        <span><i class="l-hl"></i>Країни маршруту</span>
+        <span class="mod-ref">Модулі 03–04</span>
       </div>
-      <svg class="map rv" id="map" viewBox="0 0 480 280" aria-hidden="true">
-        <path class="land" d="M40 150 C60 110 90 90 130 96 C170 60 220 50 270 58 C320 40 380 50 420 80 C450 100 460 140 440 170 C420 210 380 230 330 236 C290 260 240 262 200 248 C160 250 120 236 90 214 C60 200 34 180 40 150Z"/>
-        <path class="land" d="M180 236 C190 250 196 264 200 276"/>
-        <path class="rt-base" d="M418 118 C390 100 364 92 340 92 S290 98 262 104 S170 120 110 150 M262 104 C252 150 236 190 214 222"/>
-        <path class="rt" d="M418 118 C390 100 364 92 340 92 S290 98 262 104 S170 120 110 150"/>
-        <path class="rt" d="M262 104 C252 150 236 190 214 222" style="transition-delay:1.4s"/>
-        <path id="mp" d="M418 118 C390 100 364 92 340 92 S290 98 262 104 S170 120 110 150" fill="none"/>
-        <circle r="5" fill="#34C759"><animateMotion dur="6s" repeatCount="indefinite" rotate="auto"><mpath href="#mp"/></animateMotion></circle>
-        <circle class="pin-pulse" cx="418" cy="118" r="7" fill="none" stroke="#34C759" stroke-width="2"/>
-        <circle class="city" cx="418" cy="118" r="6"/><text x="408" y="142" text-anchor="middle">LVIV</text>
-        <circle class="city" cx="340" cy="92" r="5"/><text x="340" y="78" text-anchor="middle">WARSZAWA</text>
-        <circle class="city" cx="262" cy="104" r="5"/><text x="262" y="90" text-anchor="middle">BERLIN</text>
-        <circle class="city" cx="110" cy="150" r="5"/><text x="110" y="174" text-anchor="middle">PARIS</text>
-        <circle class="city" cx="214" cy="222" r="5"/><text x="214" y="246" text-anchor="middle">MILANO</text>
-      </svg>
     </div>
     <div class="modules">
       <div class="mod intro rv"><div class="num"><b>00</b></div><h3>Вступ</h3><ul><li>Що може дати логістика</li><li>Мій власний досвід</li><li>Як працювати з дому</li></ul></div>
@@ -714,10 +822,39 @@ footer{background:var(--forest-d);color:#b8c1aa;padding:90px 0 34px;border-radiu
   </div>
 </section>
 
+<!-- ============ CALCULATOR ============ -->
+<section id="calc" style="padding-top:20px">
+  <div class="wrap">
+    <div class="head-row">
+      <div><span class="label">Калькулятор доходу</span><h2 class="rv">Скільки може <em>заробляти</em> <span class="soft">логіст?</span></h2></div>
+      <p class="lead rv">Модель спедитора, який працює з дому з перевізниками під відсоток — так, як працюю я. Посуньте повзунки й подивіться, з чого складається дохід.</p>
+    </div>
+    <!-- TODO: узгодити з Веронікою стартові значення повзунків -->
+    <div class="calc-box">
+      <div class="calc-in rv">
+        <div class="rng"><div class="rng-top"><label for="cCars">Машин у роботі</label><output id="oCars"></output></div><input type="range" id="cCars" min="1" max="10" step="1" value="3"><small>Скільки бусів або тірів ви завантажуєте</small></div>
+        <div class="rng"><div class="rng-top"><label for="cTrips">Рейсів на тиждень з однієї машини</label><output id="oTrips"></output></div><input type="range" id="cTrips" min="1" max="5" step="1" value="2"></div>
+        <div class="rng"><div class="rng-top"><label for="cRate">Середня ставка за рейс</label><output id="oRate"></output></div><input type="range" id="cRate" min="200" max="2500" step="50" value="600"></div>
+        <div class="rng"><div class="rng-top"><label for="cPct">Ваш відсоток</label><output id="oPct"></output></div><input type="range" id="cPct" min="5" max="15" step="1" value="10"><small>Частка від ставки, про яку ви домовились з перевізником</small></div>
+      </div>
+      <div class="calc-out rv" style="--d:.1s">
+        <span class="label dark">Орієнтовно на місяць</span>
+        <div class="calc-sum"><small>Ваш дохід</small><b><span>€</span><i id="cSum" style="font-style:normal">0</i></b><div class="yr">≈ €<span id="cYear">0</span> на рік</div></div>
+        <div class="calc-rows">
+          <div>Рейсів на місяць<b id="cTripsM">0</b></div>
+          <div>Ваш дохід з одного рейсу<b id="cPer">€0</b></div>
+          <div>Оборот перевезень<b id="cTurn">€0</b></div>
+        </div>
+        <p class="calc-note">Розрахунок орієнтовний і не є гарантією доходу. Реальні ставки й відсоток залежать від ринку, напрямків і домовленостей з перевізником.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ============ CASES ============ -->
 <section class="cases" id="cases">
   <div class="wrap">
-    <div class="cases-head">
+    <div class="head-row">
       <div><span class="label">Реальні кейси</span><h2 class="rv">Логіст — <em>права рука</em> <span class="soft">водія й клієнта</span></h2></div>
       <p class="lead rv">Ситуації з моєї практики, які ми розбираємо на курсі: що сталося і як це вирішити за хвилини.</p>
     </div>
@@ -751,14 +888,14 @@ footer{background:var(--forest-d);color:#b8c1aa;padding:90px 0 34px;border-radiu
 <section>
   <div class="wrap">
     <span class="label">Чому саме цей курс</span>
-    <h2 class="rv">Точно й по факту — <em>без «гороху</em> <span class="soft">з капустою»</span></h2>
+    <h2 class="rv">Точно й по факту — <em>без «гороху</em> <span class="soft">з капустою»</span> <span class="lol" aria-hidden="true">🤣</span></h2>
     <div class="why-grid">
       <div class="col col-bad rv">
-        <h3>Типові безкоштовні уроки <small>Off</small></h3>
+        <h3>Уроки інших спеціалістів з логістики <small>Off</small></h3>
         <div class="row">Відео по 7–10 хвилин, все поверхнево<i class="tg"></i></div>
         <div class="row">Теорія без реальних ситуацій<i class="tg"></i></div>
         <div class="row">Немає документів і покрокових дій<i class="tg"></i></div>
-        <div class="row">Ніхто не відповідає на питання<i class="tg"></i></div>
+        <div class="row">Без нормального зворотного зв’язку<i class="tg"></i></div>
       </div>
       <div class="col col-good rv" style="--d:.12s">
         <h3>Курс Вероніки <small>On</small></h3>
@@ -776,7 +913,7 @@ footer{background:var(--forest-d);color:#b8c1aa;padding:90px 0 34px;border-radiu
   <div class="wrap">
     <div class="consult-box rv">
       <div class="consult-photo">
-        <img src="img/consult.jpg" alt="Вероніка — консультація" loading="lazy">
+        <img src="img/hero.jpg" alt="Вероніка — консультація" loading="lazy">
         <div class="status"><i class="tg sm on"></i>Приймаю записи</div>
       </div>
       <div class="consult-text">
@@ -824,10 +961,10 @@ footer{background:var(--forest-d);color:#b8c1aa;padding:90px 0 34px;border-radiu
       <div>
         <span class="label dark" style="color:#fff">Без дедлайнів</span>
         <h2>Стартуйте, <em>коли зручно вам</em></h2>
-        <p class="lead">Жодних потоків і дат: заходите в навчання в будь-який момент і проходите у своєму темпі. Залиште заявку — я напишу вам особисто.</p>
+        <p class="lead">Жодних дат старту: заходите в навчання в будь-який момент і проходите у своєму темпі. Залиште заявку — я напишу вам особисто.</p>
       </div>
       <div class="ever">
-        <div class="row">Старт у будь-який день<i class="tg" data-on></i></div>
+        <div class="row">Навчання у своєму темпі<i class="tg" data-on></i></div>
         <div class="row">Вступ + 8 модулів<i class="tg" data-on></i></div>
         <div class="row">Домашки й презентації<i class="tg" data-on></i></div>
         <div class="row">Файли з маршрутами<i class="tg" data-on></i></div>
@@ -858,7 +995,7 @@ footer{background:var(--forest-d);color:#b8c1aa;padding:90px 0 34px;border-radiu
     <div><span class="label">FAQ</span><h2 class="rv">Часті <em>питання</em></h2></div>
     <div class="rv">
       <details open><summary>Чи потрібен досвід у логістиці?<span class="pm">+</span></summary><p>Ні. Курс побудований з нуля: від того, що таке логістика і хто такі спедитор і диспетчер, до роботи з біржами й документами.</p></details>
-      <details><summary>Коли старт навчання?<span class="pm">+</span></summary><p>Коли вам зручно. Немає потоків і дедлайнів — ви заходите в навчання в будь-який момент і проходите у своєму темпі.</p></details>
+      <details><summary>Коли можна почати навчання?<span class="pm">+</span></summary><p>Коли вам зручно. Немає фіксованих дат — ви заходите в навчання в будь-який момент і проходите у своєму темпі.</p></details>
       <details><summary>Чи можна потім працювати з дому?<span class="pm">+</span></summary><p>Так — я сама так працюю. На курсі показую, як шукати вантажі, спілкуватися з клієнтами й вести перевезення дистанційно.</p></details>
       <details><summary>Допоможете з пошуком роботи?<span class="pm">+</span></summary><p>Модуль 8 повністю про це: складання резюме, підготовка до співбесіди і мої поради як спеціалістки.</p></details>
       <details><summary>Чим консультація відрізняється від курсу?<span class="pm">+</span></summary><p>Курс дає системні знання крок за кроком. Консультація — це точкова відповідь на вашу конкретну ситуацію чи питання.</p></details>
@@ -887,30 +1024,54 @@ footer{background:var(--forest-d);color:#b8c1aa;padding:90px 0 34px;border-radiu
 (() => {
   const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
   const body = document.body;
+  const ease = p => 1 - Math.pow(1 - p, 3);
+  const easeIO = p => p < .5 ? 4 * p * p * p : 1 - Math.pow(-2 * p + 2, 3) / 2;
 
-  /* ---------- loader ---------- */
-  const cnt = document.getElementById('ldCount'), bar = document.getElementById('ldBar');
-  const MIN = reduce ? 200 : 2700;
+  /* ---------- loader: truck → ferry → plane ---------- */
+  const legs = [
+    { path: 'pRoad', mask: 'kRoad', veh: 'vTruck', from: .04, to: .56 },
+    { path: 'pSea',  mask: 'kSea',  veh: 'vFerry', from: .56, to: .76 },
+    { path: 'pAir',  mask: 'kAir',  veh: 'vPlane', from: .76, to: .98 }
+  ].map(l => ({ ...l, p: document.getElementById(l.path), m: document.getElementById(l.mask), v: document.getElementById(l.veh) }));
+  legs.forEach(l => l.len = l.p.getTotalLength());
+  const pins = [0, 1, 2, 3, 4].map(i => document.getElementById('pin' + i));
+  const pinAt = [0, .28, .56, .76, .98];
+  const cities = ['LVIV', 'BERLIN', 'CALAIS', 'DOVER', 'EUROPE'];
+  const cityEl = document.getElementById('ldCity'), kmEl = document.getElementById('ldKm');
+  const TOTAL_KM = 2480, DUR = reduce ? 200 : 3400;
   const t0 = performance.now();
   let pageLoaded = document.readyState === 'complete', finished = false;
   addEventListener('load', () => { pageLoaded = true; });
-  const ease = p => 1 - Math.pow(1 - p, 3);
+
+  function place(l, q){
+    const d = l.len * q, a = l.p.getPointAtLength(d), b = l.p.getPointAtLength(Math.min(l.len, d + 1));
+    const ang = Math.atan2(b.y - a.y, b.x - a.x) * 180 / Math.PI;
+    l.v.setAttribute('transform', `translate(${a.x},${a.y}) rotate(${ang})`);
+    l.m.setAttribute('stroke-dashoffset', 1 - q);
+  }
   function tick(now){
-    let p = Math.min(1, (now - t0) / MIN);
-    if (!pageLoaded) p = Math.min(p, .92);
-    const e = ease(p);
-    cnt.textContent = String(Math.round(e * 100)).padStart(3, '0');
-    bar.style.transform = 'scaleX(' + e + ')';
-    if (p < 1) requestAnimationFrame(tick); else finish();
+    let p = Math.min(1, (now - t0) / DUR);
+    if (!pageLoaded) p = Math.min(p, .9);
+    legs.forEach((l, i) => {
+      const q = Math.max(0, Math.min(1, (p - l.from) / (l.to - l.from)));
+      place(l, easeIO(q));
+      const active = p >= l.from && (p < l.to || i === legs.length - 1);
+      l.v.setAttribute('opacity', active ? 1 : 0);
+    });
+    let ci = 0;
+    pins.forEach((pin, i) => { if (p >= pinAt[i]) { pin.classList.add('on'); ci = i; } });
+    cityEl.textContent = cities[ci];
+    kmEl.textContent = Math.round(ease(p) * TOTAL_KM).toLocaleString('uk-UA');
+    if (p < 1) requestAnimationFrame(tick); else setTimeout(finish, reduce ? 0 : 350);
   }
   function finish(){
     if (finished) return; finished = true;
     body.classList.add('loaded'); body.classList.remove('loading');
-    setTimeout(() => document.getElementById('loader')?.remove(), 1300);
-    const hw = document.querySelectorAll('#heroWidget .tg[data-on]');
-    hw.forEach((t, i) => setTimeout(() => t.classList.add('on'), 1300 + i * 280));
+    setTimeout(() => document.getElementById('loader')?.remove(), 1500);
+    document.querySelectorAll('#heroWidget .tg[data-on]').forEach((t, i) => setTimeout(() => t.classList.add('on'), 1400 + i * 280));
   }
   requestAnimationFrame(tick);
+  setTimeout(finish, 7000); // safety net if animation frames are paused
   document.getElementById('loader').addEventListener('click', () => { pageLoaded = true; finish(); });
 
   /* ---------- reveal + toggles + counters ---------- */
@@ -928,14 +1089,11 @@ footer{background:var(--forest-d);color:#b8c1aa;padding:90px 0 34px;border-radiu
     if (!e.isIntersecting) return;
     const el = e.target;
     el.classList.add('in');
-    el.querySelectorAll?.('[data-count]').forEach(count);
-    if (el.matches('[data-count]')) count(el);
-    const tgs = el.querySelectorAll('.tg[data-on]');
-    tgs.forEach((t, i) => setTimeout(() => t.classList.add('on'), 450 + i * 220));
+    el.querySelectorAll('[data-count]').forEach(count);
+    el.querySelectorAll('.tg[data-on]').forEach((t, i) => setTimeout(() => t.classList.add('on'), 450 + i * 220));
     io.unobserve(el);
   }), { threshold: .15 });
-  document.querySelectorAll('.rv, .map').forEach(el => io.observe(el));
-  // toggles that live outside .rv blocks
+  document.querySelectorAll('.rv').forEach(el => io.observe(el));
   document.querySelectorAll('.tg[data-on]').forEach(t => {
     if (!t.closest('.rv') && !t.closest('#heroWidget')) io.observe(t.parentElement);
   });
@@ -965,10 +1123,142 @@ footer{background:var(--forest-d);color:#b8c1aa;padding:90px 0 34px;border-radiu
     let mx = -100, my = -100, rx = -100, ry = -100;
     addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; dot.style.transform = `translate(${mx}px,${my}px)`; });
     (function loop(){ rx += (mx - rx) * .16; ry += (my - ry) * .16; ring.style.transform = `translate(${rx}px,${ry}px)`; requestAnimationFrame(loop); })();
-    document.querySelectorAll('a, button, summary, .choice').forEach(el => {
-      el.addEventListener('mouseenter', () => ring.classList.add('big'));
-      el.addEventListener('mouseleave', () => ring.classList.remove('big'));
+    document.addEventListener('mouseover', e => ring.classList.toggle('big', !!e.target.closest('a, button, summary, .choice, input[type=range]')));
+  }
+
+  /* ---------- diplomas lightbox ---------- */
+  const lb = document.getElementById('lightbox'), lbImg = lb.querySelector('img');
+  document.querySelectorAll('.dip').forEach(d => d.addEventListener('click', () => { lbImg.src = d.dataset.img; lbImg.alt = d.querySelector('img').alt; lb.classList.add('open'); }));
+  const closeLb = () => lb.classList.remove('open');
+  lb.addEventListener('click', e => { if (e.target !== lbImg) closeLb(); });
+  addEventListener('keydown', e => { if (e.key === 'Escape') closeLb(); });
+
+  /* ---------- quiz ---------- */
+  const Q = [
+    ['🧩', 'Вам подобається шукати рішення, коли щось пішло не за планом?'],
+    ['💬', 'Вам комфортно багато спілкуватися — телефоном і в месенджерах?'],
+    ['🏡', 'Хочете працювати з дому й не залежати від офісу чи міста?'],
+    ['🗺️', 'Вам цікаво планувати: маршрути, час, послідовність дій?'],
+    ['📚', 'Готові вчити нове — документи, програми, правила перевезень?'],
+    ['⚡', 'Можете тримати в голові кілька справ одночасно?'],
+    ['🌍', 'Хочете професію, яка потрібна не лише в Україні, а й у Європі?']
+  ];
+  const OPTS = [['Так, це про мене', 2], ['Скоріше так', 1], ['Ні, не зовсім', 0]];
+  const qBody = document.getElementById('qBody'), qStep = document.getElementById('qStep'), qBar = document.getElementById('qBar');
+  let qi = 0, score = 0;
+  function swap(html){
+    qBody.classList.add('out');
+    setTimeout(() => { qBody.innerHTML = html; qBody.classList.remove('out'); }, 260);
+  }
+  function renderQ(){
+    qStep.textContent = `Питання ${qi + 1} з ${Q.length}`;
+    qBar.style.width = (qi / Q.length * 100) + '%';
+    swap(`<div class="q-emoji">${Q[qi][0]}</div><div class="q-text">${Q[qi][1]}</div><div class="q-opts">${OPTS.map((o, i) => `<button type="button" class="q-opt" data-w="${o[1]}">${o[0]}<i class="tg sm"></i></button>`).join('')}</div>`);
+  }
+  qBody.addEventListener('click', e => {
+    const b = e.target.closest('.q-opt'); if (!b) return;
+    if (b.dataset.done) return;
+    qBody.querySelectorAll('.q-opt').forEach(x => x.dataset.done = 1);
+    b.classList.add('picked'); b.querySelector('.tg').classList.add('on');
+    score += +b.dataset.w; qi++;
+    setTimeout(() => qi < Q.length ? renderQ() : result(), 450);
+  });
+  qBody.addEventListener('click', e => { if (e.target.closest('[data-restart]')) { qi = 0; score = 0; renderQ(); } });
+  function result(){
+    const pct = Math.round(score / (Q.length * 2) * 100);
+    qStep.textContent = 'Ваш результат'; qBar.style.width = '100%';
+    const [t, d] = pct >= 70
+      ? ['Логістика — це ваше! 🚛', 'У вас саме ті якості, які потрібні логісту: ви любите вирішувати задачі, спілкуватися й планувати. Час перетворити це на професію.']
+      : pct >= 40
+      ? ['У вас хороший потенціал 👍', 'Частина якостей логіста у вас уже є, решту можна натренувати. Почніть з безкоштовного уроку — і відчуєте, чи ваше це.']
+      : ['Спершу подивіться перший урок 🙂', 'Логістика може здатися не зовсім вашою — але краще перевірити на практиці. Перший урок безкоштовний.'];
+    swap(`<div class="q-res"><div class="q-ring"><svg viewBox="0 0 150 150"><circle class="bgc" cx="75" cy="75" r="65"/><circle class="fgc" cx="75" cy="75" r="65" id="qRing"/></svg><b>${pct}%</b></div><h3>${t}</h3><p>${d}</p><div class="acts"><a href="#join" class="btn btn-green">Записатися на курс <span class="arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M7 17 17 7M8 7h9v9"/></svg></span></a><a href="#lesson" class="btn btn-ghost">Перший урок</a><button type="button" class="btn btn-ghost" data-restart>Ще раз</button></div></div>`);
+    setTimeout(() => { const r = document.getElementById('qRing'); if (r) r.style.strokeDashoffset = 408 * (1 - pct / 100); }, 400);
+  }
+  renderQ();
+
+  /* ---------- earnings calculator ---------- */
+  const $ = id => document.getElementById(id);
+  const fmt = n => Math.round(n).toLocaleString('uk-UA');
+  let shown = 0;
+  function calc(){
+    const cars = +$('cCars').value, trips = +$('cTrips').value, rate = +$('cRate').value, pct = +$('cPct').value;
+    $('oCars').textContent = cars; $('oTrips').textContent = trips; $('oRate').textContent = '€' + fmt(rate); $('oPct').textContent = pct + '%';
+    document.querySelectorAll('#calc input[type=range]').forEach(r => r.style.setProperty('--f', ((r.value - r.min) / (r.max - r.min) * 100) + '%'));
+    const tripsM = cars * trips * 4.33, per = rate * pct / 100, sum = tripsM * per;
+    $('cTripsM').textContent = fmt(tripsM); $('cPer').textContent = '€' + fmt(per); $('cTurn').textContent = '€' + fmt(tripsM * rate); $('cYear').textContent = fmt(sum * 12);
+    const from = shown, t1 = performance.now();
+    (function anim(now){ const p = Math.min(1, (now - t1) / 450); shown = from + (sum - from) * ease(p); $('cSum').textContent = fmt(shown); if (p < 1) requestAnimationFrame(anim); })(t1);
+    clearTimeout(calc.t); calc.t = setTimeout(() => { shown = sum; $('cSum').textContent = fmt(sum); }, 520);
+  }
+  document.querySelectorAll('#calc input[type=range]').forEach(r => r.addEventListener('input', calc));
+  calc();
+
+  /* ---------- Europe map (d3 + world-atlas) ---------- */
+  const mapEl = $('euMap');
+  const loadScript = src => new Promise((ok, fail) => { const s = document.createElement('script'); s.src = src; s.onload = ok; s.onerror = fail; document.head.appendChild(s); });
+  let mapStarted = false;
+  const mio = new IntersectionObserver(es => { if (es[0].isIntersecting && !mapStarted){ mapStarted = true; mio.disconnect(); buildMap(); } }, { rootMargin: '600px' });
+  mio.observe(mapEl);
+  async function buildMap(){
+    try {
+      await loadScript('https://cdn.jsdelivr.net/npm/d3@7/dist/d3.min.js');
+      await loadScript('https://cdn.jsdelivr.net/npm/topojson-client@3/dist/topojson-client.min.js');
+      const world = await (await fetch('https://cdn.jsdelivr.net/npm/world-atlas@2/countries-50m.json')).json();
+      drawMap(world);
+    } catch (e) { mapEl.querySelector('.map-fallback').textContent = 'Карту не вдалося завантажити'; }
+  }
+  function drawMap(world){
+    mapEl.innerHTML = '';
+    const W = mapEl.clientWidth, H = mapEl.clientHeight, mobile = W < 600;
+    const countries = topojson.feature(world, world.objects.countries).features;
+    const frame = { type: 'MultiPoint', coordinates: mobile ? [[-2, 42.5], [25, 42.5], [25, 53.5], [-2, 53.5]] : [[-6, 42], [30, 42], [30, 55.5], [-6, 55.5]] };
+    const proj = d3.geoConicConformal().rotate([-12, 0]).parallels([40, 58]).fitExtent([[16, 16], [W - 16, H - 16]], frame);
+    const path = d3.geoPath(proj);
+    const svg = d3.select(mapEl).append('svg').attr('viewBox', `0 0 ${W} ${H}`).attr('role', 'img').attr('aria-label', 'Маршрут Львів — Мілан на карті Європи');
+    svg.append('rect').attr('class', 'sea-bg').attr('width', W).attr('height', H);
+    const HL = new Set(['804', '616', '276', '250', '380']);
+    svg.append('g').selectAll('path').data(countries).join('path').attr('class', d => 'ctry' + (HL.has(d.id) ? ' hl' : '')).attr('d', path);
+    const names = [['UKRAINE', 29, 49.2], ['POLAND', 19.3, 52.3], ['GERMANY', 10.2, 51.2], ['FRANCE', 2.4, 46.6], ['ITALY', 11.2, 43.9], ['UK', -1.6, 52.6]];
+    svg.append('g').selectAll('text').data(names).join('text').attr('class', 'cname').attr('text-anchor', 'middle').attr('transform', d => `translate(${proj([d[1], d[2]])})`).text(d => d[0]);
+    const P = c => proj(c);
+    const road1 = [[24.03, 49.84], [22, 50.04], [19.94, 50.06], [17.03, 51.11], [15, 51.5], [13.4, 52.52], [11, 52.2], [9.73, 52.37], [6.96, 50.94], [5.57, 50.63], [4.4, 49.5], [2.35, 48.86], [3.5, 47.3], [4.83, 45.76], [6.2, 45.5], [6.66, 45.2]];
+    const tunnel = [[6.66, 45.2], [6.95, 45.1]];
+    const road2 = [[6.95, 45.1], [7.68, 45.07], [8.6, 45.35], [9.19, 45.46]];
+    const toCalais = [[2.35, 48.86], [2.3, 49.9], [1.86, 50.95]];
+    const ferry = [[1.86, 50.95], [1.58, 51.08], [1.31, 51.13]];
+    const line = d3.line().curve(d3.curveCatmullRom.alpha(.6)).x(d => P(d)[0]).y(d => P(d)[1]);
+    svg.append('path').attr('class', 'rt-ghost').attr('d', line(toCalais));
+    svg.append('path').attr('class', 'rt-ferry').attr('d', d3.line().curve(d3.curveBasis).x(d => P(d)[0]).y(d => P(d)[1])(ferry));
+    const main = svg.append('path').attr('class', 'rt-road').attr('d', line(road1));
+    const tun = svg.append('path').attr('class', 'rt-tunnel').attr('d', line(tunnel));
+    const r2 = svg.append('path').attr('class', 'rt-road').attr('d', line(road2));
+    [main, tun, r2].forEach((p, i) => {
+      const L = p.node().getTotalLength();
+      p.attr('stroke-dasharray', L).attr('stroke-dashoffset', L).transition().delay(300 + i * 2200).duration(i === 0 ? 2200 : 700).ease(d3.easeCubicInOut).attr('stroke-dashoffset', 0);
     });
+    const cities = [['LVIV', 24.03, 49.84, 1, 'start'], ['KRAKÓW', 19.94, 50.06], ['BERLIN', 13.4, 52.52], ['KÖLN', 6.96, 50.94], ['PARIS', 2.35, 48.86], ['LYON', 4.83, 45.76], ['TORINO', 7.68, 45.07], ['MILANO', 9.19, 45.46, 1], ['CALAIS', 1.86, 50.95], ['DOVER', 1.31, 51.13]];
+    const cg = svg.append('g').selectAll('g').data(cities).join('g').attr('class', d => 'city' + (d[3] ? ' big' : '')).attr('transform', d => `translate(${P([d[1], d[2]])})`);
+    cg.append('circle').attr('r', d => d[3] ? 6.5 : 4.5);
+    cg.append('text').attr('x', d => d[0] === 'DOVER' ? -8 : 9).attr('y', d => d[0] === 'CALAIS' ? 16 : d[0] === 'TORINO' ? 16 : -8).attr('text-anchor', d => d[0] === 'DOVER' ? 'end' : 'start').text(d => d[0]);
+    const badge = (lonlat, txt, dx, dy) => {
+      const [x, y] = P(lonlat), g = svg.append('g').attr('class', 'badge').attr('transform', `translate(${x + dx},${y + dy})`);
+      const t = g.append('text').attr('x', 10).attr('y', 16).text(txt); const w = t.node().getComputedTextLength() + 20;
+      g.insert('rect', 'text').attr('width', w).attr('height', 24).attr('rx', 12);
+    };
+    badge([6.8, 45.15], '⛰ Тунель Фрежюс', mobile ? -40 : 14, 22);
+    badge([1.58, 51.08], '⛴ Пором', mobile ? -70 : -86, -40);
+    // truck moving along the whole route
+    const full = svg.append('path').attr('d', line([...road1, ...road2.slice(0)])).attr('fill', 'none').attr('stroke', 'none').node();
+    const FL = full.getTotalLength();
+    const truck = svg.append('g').html('<circle r="11" fill="#34C759" opacity=".25"/><circle r="6" fill="#fff" stroke="#34C759" stroke-width="3"/>');
+    let t0m = null;
+    (function move(now){
+      if (!t0m) t0m = now + 3400;
+      const p = Math.max(0, ((now - t0m) % 9000) / 9000), pt = full.getPointAtLength(FL * p);
+      truck.attr('transform', `translate(${pt.x},${pt.y})`).attr('opacity', now < t0m ? 0 : 1);
+      requestAnimationFrame(move);
+    })(performance.now());
   }
 
   /* ---------- form ---------- */
