@@ -193,10 +193,16 @@ body.loaded .hr{opacity:1;transform:none}
 .quote{font-size:clamp(23px,2.3vw,30px);font-weight:500;letter-spacing:-.025em;line-height:1.3;margin-bottom:44px}
 .quote em{color:var(--blue)}
 .route-wrap{position:relative}
-.route-fill{position:absolute;left:8px;top:8px;width:2px;height:calc(var(--rp,0)*(100% - 38px));background:var(--blue);border-radius:2px}
-.route-plane{position:absolute;left:-6px;top:calc(8px + var(--rp,0)*(100% - 38px) - 14px);width:30px;height:30px;border-radius:50%;background:#fff;color:var(--blue);display:grid;place-items:center;box-shadow:0 6px 18px rgba(62,110,145,.3);z-index:2}
-.route-plane svg{width:18px;height:18px;transform:rotate(180deg);animation:planeBob 1.6s ease-in-out infinite}
-@keyframes planeBob{50%{transform:rotate(180deg) translateX(2px)}}
+.snd{position:absolute;right:0;top:-6px;z-index:3;display:inline-flex;align-items:center;gap:8px;padding:8px 14px 8px 10px;border-radius:999px;border:1px solid var(--line);background:#fff;font-weight:600;font-size:13.5px;color:var(--ink);transition:background .3s,color .3s,border-color .3s}
+.snd .si{width:26px;height:26px;border-radius:50%;background:var(--ice);display:grid;place-items:center;font-size:14px}
+.snd[aria-pressed="true"]{background:var(--blue);color:#fff;border-color:var(--blue)}
+.snd[aria-pressed="true"] .si{background:rgba(255,255,255,.2);animation:bump .6s ease-in-out infinite alternate}
+@media (max-width:680px){.snd{position:relative;top:0;margin:0 0 18px}}
+.route-fill{position:absolute;left:7px;top:8px;width:4px;height:calc(var(--rp,0)*(100% - 38px));background:linear-gradient(180deg,rgba(62,110,145,0),var(--blue));border-radius:4px}
+.route-plane{position:absolute;left:-13px;top:calc(8px + var(--rp,0)*(100% - 38px) - 22px);width:44px;height:44px;border-radius:50%;background:var(--blue);color:#fff;display:grid;place-items:center;box-shadow:0 10px 24px rgba(62,110,145,.45);z-index:2}
+.route-plane::after{content:"";position:absolute;inset:-6px;border-radius:50%;border:2px solid var(--sky);animation:ring 2s ease-out infinite}
+.route-plane svg{width:24px;height:24px;transform:rotate(180deg);animation:planeBob 1.4s ease-in-out infinite}
+@keyframes planeBob{0%,100%{transform:rotate(174deg) translateX(-2px)}50%{transform:rotate(186deg) translateX(2px)}}
 .route li.passed::before{background:var(--blue);border-color:var(--blue)}
 .route{list-style:none;position:relative;margin-left:8px}
 .route::before{content:"";position:absolute;left:0;top:8px;bottom:30px;width:2px;background:repeating-linear-gradient(to bottom,var(--sky) 0 8px,transparent 8px 14px)}
@@ -317,6 +323,94 @@ body.loaded .hr{opacity:1;transform:none}
 .q-check svg{width:40px}
 @keyframes pop{from{transform:scale(0)}}
 @keyframes feedIn{from{opacity:0;transform:translateY(10px)}}
+
+/* ---------- hero widget: whoosh ---------- */
+.w-row{position:relative;cursor:pointer;transition:transform .3s var(--ease)}
+.w-row::before{content:"";position:absolute;inset:0 -12px;border-radius:12px;background:linear-gradient(90deg,transparent,rgba(52,199,89,.25),transparent);transform:translateX(-100%);opacity:0;pointer-events:none}
+.w-row.whoosh::before{animation:whoosh .7s var(--ease)}
+.w-row.whoosh{animation:nudge .5s var(--ease)}
+.w-row.nope{animation:nope .45s}
+@keyframes whoosh{0%{transform:translateX(-100%);opacity:1}100%{transform:translateX(100%);opacity:0}}
+@keyframes nudge{40%{transform:translateX(8px)}}
+@keyframes nope{20%,60%{transform:translateX(-6px)}40%,80%{transform:translateX(6px)}}
+
+/* ---------- game teaser ---------- */
+.gt{position:relative;display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center;background:linear-gradient(135deg,#9DBBD9 0%,#BDD1E6 55%,#E3ECF4 100%);border-radius:var(--r-xl);padding:64px 60px;overflow:hidden;color:var(--forest-d)}
+.gt h2 em{color:var(--forest-d)}
+.gt p{font-size:18px;max-width:520px;margin:20px 0 32px;color:#2A4A5E}
+.gt .label{background:rgba(255,255,255,.7)}
+.btn-xl{font-size:19px;padding:10px 10px 10px 32px}
+.btn-xl .arr{width:54px;height:54px}
+.btn-dark{background:var(--forest-d);color:#fff;box-shadow:0 16px 36px -12px rgba(23,49,63,.6)}
+.btn-dark .arr{background:var(--ios);color:#fff}
+.gt .btn-dark{animation:breathe 2.4s ease-in-out infinite}
+@keyframes breathe{50%{box-shadow:0 0 0 14px rgba(23,49,63,.08),0 16px 36px -12px rgba(23,49,63,.6)}}
+.gt-meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px}
+.gt-meta span{padding:8px 14px;border-radius:999px;background:rgba(255,255,255,.65);font-size:14px;font-weight:600}
+.gt-vis{position:relative;height:340px}
+.gt-card{position:absolute;background:#fff;border-radius:22px;padding:16px 18px;box-shadow:0 24px 50px -24px rgba(23,49,63,.45);font-weight:600;font-size:15px;display:flex;align-items:center;gap:12px;animation:floaty 4s ease-in-out infinite}
+.gt-card .tg{--w:40px;--h:24px}
+.gt-card:nth-child(1){top:10px;left:10%}
+.gt-card:nth-child(2){top:120px;right:0;animation-delay:-1.3s}
+.gt-card:nth-child(3){top:230px;left:0;animation-delay:-2.6s}
+.gt-badge{position:absolute;right:12%;bottom:0;width:110px;height:110px;border-radius:50%;background:var(--forest-d);color:#fff;display:grid;place-items:center;text-align:center;font-size:12px;font-weight:700;letter-spacing:.06em;line-height:1.2;animation:spinb 12s linear infinite}
+.gt-badge b{display:block;font-size:30px;letter-spacing:-.03em}
+@keyframes floaty{50%{transform:translateY(-12px)}}
+@keyframes spinb{to{transform:rotate(360deg)}}
+.gt .fl{position:absolute;font-size:30px;opacity:.55;animation:floaty 5s ease-in-out infinite;pointer-events:none}
+
+/* floating tab */
+.game-tab{position:fixed;left:18px;bottom:18px;z-index:70;display:flex;align-items:center;gap:10px;padding:10px 18px 10px 10px;border-radius:999px;border:0;background:var(--forest-d);color:#fff;font-weight:600;font-size:14.5px;box-shadow:0 16px 40px -12px rgba(23,49,63,.6);transform:translateY(160%);transition:transform .6s var(--ease)}
+body.loaded .game-tab{transform:none}
+.game-tab .gi{width:38px;height:38px;border-radius:50%;background:var(--ios);display:grid;place-items:center;font-size:19px;animation:wiggle 3s ease-in-out infinite}
+@keyframes wiggle{0%,80%,100%{transform:rotate(0)}85%{transform:rotate(-14deg)}90%{transform:rotate(12deg)}95%{transform:rotate(-6deg)}}
+
+/* game modal */
+.game{position:fixed;inset:0;z-index:990;background:linear-gradient(160deg,#EEF4F9,#DCE8F2);display:flex;flex-direction:column;opacity:0;visibility:hidden;transition:opacity .4s,visibility .4s}
+.game.open{opacity:1;visibility:visible}
+.g-top{display:flex;align-items:center;gap:18px;padding:20px 28px}
+.g-close{width:46px;height:46px;border-radius:50%;border:0;background:#fff;font-size:22px;flex:none;box-shadow:0 6px 16px rgba(0,0,0,.08)}
+.g-road{position:relative;flex:1;height:46px;border-radius:999px;background:#14232E;overflow:hidden}
+.g-road::before{content:"";position:absolute;left:18px;right:18px;top:50%;height:2px;margin-top:-1px;background:repeating-linear-gradient(90deg,rgba(255,255,255,.55) 0 14px,transparent 14px 26px);animation:roadmove .6s linear infinite}
+@keyframes roadmove{to{background-position:-26px 0}}
+.g-fill{position:absolute;left:0;top:0;bottom:0;width:calc(var(--gp,0)*100%);background:linear-gradient(90deg,rgba(52,199,89,0),rgba(52,199,89,.4));transition:width .9s var(--ease)}
+.g-truck{position:absolute;top:50%;left:calc(10px + var(--gp,0)*(100% - 90px));width:56px;transform:translateY(-58%);transition:left .9s cubic-bezier(.3,1.3,.5,1)}
+.g-truck.go{animation:jump .5s var(--ease)}
+@keyframes jump{40%{transform:translateY(-95%) rotate(-6deg)}}
+.g-flag{position:absolute;right:12px;top:50%;transform:translateY(-50%);font-size:22px}
+.g-xp{flex:none;display:flex;align-items:center;gap:6px;padding:10px 16px;border-radius:999px;background:#fff;font-weight:800;font-size:16px;box-shadow:0 6px 16px rgba(0,0,0,.06);font-variant-numeric:tabular-nums}
+.g-xp.bump{animation:bump .5s cubic-bezier(.3,1.6,.5,1)}
+@keyframes bump{40%{transform:scale(1.25)}}
+.g-stage{flex:1;display:grid;place-items:center;padding:10px 20px 40px;overflow-y:auto}
+.g-card{width:min(640px,100%);background:#fff;border-radius:34px;padding:40px;box-shadow:0 40px 80px -40px rgba(23,49,63,.4);animation:cardIn .6s cubic-bezier(.2,1.2,.3,1) both}
+.g-card.leave{animation:cardOut .45s cubic-bezier(.6,0,.8,.4) both}
+@keyframes cardIn{from{opacity:0;transform:translateX(120px) rotate(6deg) scale(.9);filter:blur(6px)}}
+@keyframes cardOut{to{opacity:0;transform:translateX(-160px) rotate(-8deg) scale(.9);filter:blur(6px)}}
+.g-step{font-size:13px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--blue)}
+.g-emoji{font-size:64px;line-height:1;margin:18px 0 14px;display:inline-block;animation:popIn .7s cubic-bezier(.3,1.7,.5,1) both .15s}
+@keyframes popIn{from{transform:scale(0) rotate(-30deg)}}
+.g-q{font-size:clamp(24px,3vw,34px);font-weight:700;letter-spacing:-.035em;line-height:1.15;margin-bottom:26px}
+.g-opts{display:grid;gap:12px}
+.g-opt{display:flex;align-items:center;gap:14px;width:100%;padding:18px 20px;border-radius:20px;border:2px solid var(--line);background:var(--paper);font-weight:600;font-size:17px;text-align:left;animation:optIn .5s cubic-bezier(.2,1.3,.4,1) both;animation-delay:calc(.25s + var(--i)*.09s);transition:border-color .2s,background .2s,transform .2s,opacity .3s}
+.g-opt:hover{border-color:var(--sky);background:#fff;transform:scale(1.02)}
+.g-opt .oe{font-size:26px}
+.g-opt .ot{flex:1}
+.g-opt.picked{border-color:var(--ios);background:#EEF9F1;animation:picked .45s cubic-bezier(.3,1.6,.5,1)}
+.g-opt:disabled{cursor:default}
+.g-opt:disabled:not(.picked){opacity:.4;transform:scale(.97)}
+@keyframes optIn{from{opacity:0;transform:translateY(24px) scale(.95)}}
+@keyframes picked{40%{transform:scale(1.05)}}
+.xp-float{position:fixed;z-index:1200;pointer-events:none;font-weight:800;font-size:22px;color:var(--ios);text-shadow:0 2px 0 #fff}
+.pt{position:fixed;z-index:1200;pointer-events:none;border-radius:2px;line-height:1}
+.g-res{text-align:center}
+.g-badge{width:150px;height:150px;margin:0 auto 22px;border-radius:50%;background:conic-gradient(var(--ios),var(--sky),var(--blue),var(--ios));display:grid;place-items:center;animation:popIn .9s cubic-bezier(.3,1.7,.5,1) both}
+.g-badge div{width:124px;height:124px;border-radius:50%;background:#fff;display:grid;place-items:center;font-size:56px}
+.g-res h3{font-size:clamp(28px,3.4vw,40px);letter-spacing:-.04em;margin-bottom:6px}
+.g-res .lvl{display:inline-block;padding:7px 14px;border-radius:999px;background:var(--forest-d);color:#fff;font-weight:700;font-size:14px;margin-bottom:22px}
+.g-res .q-list div{animation:optIn .5s var(--ease) both;animation-delay:calc(.5s + var(--i)*.15s)}
+.g-res p{color:var(--muted);margin:18px auto 24px;max-width:460px}
+.g-res .acts{display:flex;flex-wrap:wrap;gap:10px;justify-content:center}
+body.game-open{overflow:hidden}
 
 /* ---------- program ---------- */
 .program{background:var(--forest-d);color:#fff;border-radius:var(--r-xl);margin:0 16px;overflow:hidden}
@@ -562,7 +656,7 @@ footer{background:var(--forest-d);color:#A9BCCB;padding:90px 0 34px;border-radiu
   .hero-photo img{object-position:center 20%}
   .widget{position:relative;left:auto;bottom:auto;width:auto;margin:-96px 12px 0;padding:4px 16px}
   .w-row{padding:10px 0;font-size:14.5px}
-  .hero-chip{top:14px;right:14px;padding:10px 14px}
+  .hero-chip{top:12px;left:12px;right:auto;padding:8px 12px;border-radius:16px}
   .hero-chip b{font-size:22px}
   .wm-meta{flex-direction:column;gap:6px}
   .wm .ph{display:none}
@@ -572,6 +666,18 @@ footer{background:var(--forest-d);color:#A9BCCB;padding:90px 0 34px;border-radiu
   .card{min-height:280px}.card:nth-child(even){margin-top:0}
   .about-photos .small{right:-6px;bottom:-24px}
   .program,.squeeze{margin:0 8px}
+  .gt{grid-template-columns:1fr;padding:40px 22px}
+  .gt-vis{height:260px}
+  .gt-card{font-size:14px;padding:12px 14px}
+  .gt-card:nth-child(2){top:95px}.gt-card:nth-child(3){top:180px}
+  .gt-badge{width:90px;height:90px;right:4%}
+  .gt .btn-xl{width:100%;justify-content:space-between}
+  .game-tab span:not(.gi){display:none}
+  .game-tab{padding:8px}
+  .g-top{padding:14px;gap:10px}
+  .g-card{padding:28px 20px;border-radius:26px}
+  .g-emoji{font-size:48px}
+  .g-xp{padding:8px 12px;font-size:14px}
   .sq-points{grid-template-columns:1fr}
   .sq-viz{padding:24px 18px}
   .map-wrap{aspect-ratio:4/5}
@@ -665,6 +771,16 @@ footer{background:var(--forest-d);color:#A9BCCB;padding:90px 0 34px;border-radiu
   <div class="re"></div>
 </div>
 
+<div class="game" id="game" role="dialog" aria-modal="true" aria-label="Гра: чи підходить вам професія логіста">
+  <div class="g-top">
+    <button type="button" class="g-close" id="gClose" aria-label="Закрити">×</button>
+    <div class="g-road"><div class="g-fill"></div><div class="g-truck" id="gTruck"><svg viewBox="0 0 56 30"><rect x="0" y="4" width="34" height="18" rx="3" fill="#3E6E91"/><path d="M36 22V9q0-3 3-3h7l6 8v8Z" fill="#14232E"/><path d="M40 9h5l4 5h-9Z" fill="#BDD1E6"/><circle cx="9" cy="24" r="4" fill="#14232E" stroke="#fff" stroke-width="1.5"/><circle cx="26" cy="24" r="4" fill="#14232E" stroke="#fff" stroke-width="1.5"/><circle cx="45" cy="24" r="4" fill="#14232E" stroke="#fff" stroke-width="1.5"/></svg></div><span class="g-flag">🏁</span></div>
+    <div class="g-xp" id="gXpBox">⚡ <b id="gXp">0</b> XP</div>
+  </div>
+  <div class="g-stage" id="gStage"></div>
+</div>
+<button type="button" class="game-tab" data-game><span class="gi">🎮</span><span>Чи підходить вам логістика?</span></button>
+
 <div class="lightbox" id="lightbox" role="dialog" aria-label="Документ"><button type="button" aria-label="Закрити">×</button><img alt=""></div>
 
 <!-- ============ HEADER ============ -->
@@ -673,7 +789,7 @@ footer{background:var(--forest-d);color:#A9BCCB;padding:90px 0 34px;border-radiu
     <a href="#top" class="logo glass-pill" aria-label="Veronika Logistics"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 6h12v10H1z"/><path d="M13 9h4l4 4v3h-8"/><circle cx="5.5" cy="17.5" r="1.8"/><circle cx="17.5" cy="17.5" r="1.8"/></svg></i>veronika_logistics</a>
     <nav class="menu glass-pill">
       <a href="#about">Про мене</a>
-      <a href="#quiz">Тест</a>
+      <a href="#quiz" data-game>Гра-тест</a>
       <a href="#program">Програма</a>
       <a href="#calc">Дохід</a>
       <a href="#consult">Консультація</a>
@@ -696,7 +812,7 @@ footer{background:var(--forest-d);color:#A9BCCB;padding:90px 0 34px;border-radiu
         <a href="#join" class="btn btn-green">Записатися на курс <span class="arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M7 17 17 7M8 7h9v9"/></svg></span></a>
         <a href="#lesson" class="btn-play"><span class="pl"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 4l14 8-14 8z"/></svg></span>Перший урок безкоштовно</a>
       </div>
-      <a href="#quiz" class="quiz-link hr" style="--d:.3s"><b>🧭</b>Тест: чи підходить вам професія логіста? <span>→</span></a>
+      <a href="#quiz" class="quiz-link hr" style="--d:.3s" data-game><b>🧭</b>Тест: чи підходить вам професія логіста? <span>→</span></a>
       <div class="trust hr" style="--d:.36s">
         <img src="img/portrait.jpg" alt="">
         <div><b>Вероніка</b> · Logistics Specialist<br><small>Магістр логістики (UMCS, Польща) · 3+ роки в міжнародних перевезеннях</small></div>
@@ -736,7 +852,7 @@ footer{background:var(--forest-d);color:#A9BCCB;padding:90px 0 34px;border-radiu
 <!-- ============ STATS ============ -->
 <div class="stats">
   <div class="wrap stats-grid">
-    <div class="stat rv"><strong data-count="5">0</strong><span>років навчання логістики в Польщі</span></div>
+    <div class="stat rv"><strong data-count="5">0</strong><span>років: бакалавр + магістр у Польщі · ≈ €30 000 вкладено в навчання</span></div>
     <div class="stat accent rv" style="--d:.08s"><strong data-count="25">0</strong><span>тірів одночасно в диспетчеризації</span></div>
     <div class="stat rv" style="--d:.16s"><strong>4–7</strong><span>диспетчерів у підпорядкуванні</span></div>
     <div class="stat rv" style="--d:.24s"><strong data-count="6">0</strong><span>потоків учнів уже пройшли курс</span></div>
@@ -757,6 +873,7 @@ footer{background:var(--forest-d);color:#A9BCCB;padding:90px 0 34px;border-radiu
       <div>
         <p class="quote rv">Я весь час «варюся» в логістиці: від тірів на 24 тонни до бусів — <em>і показую, як воно працює насправді.</em></p>
         <div class="route-wrap" id="routeWrap">
+        <button type="button" class="snd" id="sndBtn" aria-pressed="false"><span class="si">🔈</span><span class="st">Звук польоту</span></button>
         <span class="route-fill" aria-hidden="true"></span>
         <span class="route-plane" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M21 16v-2l-8-5V3.5a1.5 1.5 0 0 0-3 0V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5z" fill="currentColor"/></svg></span>
         <ol class="route">
@@ -803,9 +920,9 @@ footer{background:var(--forest-d);color:#A9BCCB;padding:90px 0 34px;border-radiu
       </div>
     </div>
     <div class="sq-viz rv" aria-label="5 років навчання в університеті стиснуто до 5 тижнів курсу">
-      <div class="sq-row"><div class="top"><b>5 років</b><span>Бакалавр + магістр</span></div><div class="sq-bar"><i style="transition-delay:0.00s"></i><i style="transition-delay:0.07s"></i><i style="transition-delay:0.14s"></i><i style="transition-delay:0.21s"></i><i style="transition-delay:0.28s"></i><i style="transition-delay:0.35s"></i><i style="transition-delay:0.42s"></i><i style="transition-delay:0.49s"></i><i style="transition-delay:0.56s"></i><i style="transition-delay:0.63s"></i></div></div>
+      <div class="sq-row"><div class="top"><b>5 років</b><span>Бакалавр + магістр · ≈ €30 000</span></div><div class="sq-bar"><i style="transition-delay:0.00s"></i><i style="transition-delay:0.07s"></i><i style="transition-delay:0.14s"></i><i style="transition-delay:0.21s"></i><i style="transition-delay:0.28s"></i><i style="transition-delay:0.35s"></i><i style="transition-delay:0.42s"></i><i style="transition-delay:0.49s"></i><i style="transition-delay:0.56s"></i><i style="transition-delay:0.63s"></i></div></div>
       <div class="sq-arrow">стискаю до суті</div>
-      <div class="sq-row fast"><div class="top"><b>5 тижнів</b><span>Курс Вероніки</span></div><div class="sq-bar"><i style="transition-delay:0.90s"></i><i style="transition-delay:1.00s"></i><i style="transition-delay:1.10s"></i><i style="transition-delay:1.20s"></i><i style="transition-delay:1.30s"></i></div></div>
+      <div class="sq-row fast"><div class="top"><b>5 тижнів</b><span>Курс Вероніки з логістики</span></div><div class="sq-bar"><i style="transition-delay:0.90s"></i><i style="transition-delay:1.00s"></i><i style="transition-delay:1.10s"></i><i style="transition-delay:1.20s"></i><i style="transition-delay:1.30s"></i></div></div>
     </div>
   </div>
 </section>
@@ -826,18 +943,24 @@ footer{background:var(--forest-d);color:#A9BCCB;padding:90px 0 34px;border-radiu
   </div>
 </section>
 
-<!-- ============ QUIZ ============ -->
+<!-- ============ GAME TEASER ============ -->
 <section class="quiz" id="quiz">
-  <div class="wrap quiz-grid">
-    <div>
-      <span class="label blue">Тест · 1 хвилина</span>
-      <h2 class="rv">Чи підходить вам <em>професія логіста?</em></h2>
-      <p class="lead rv" style="margin-top:22px">5 простих питань про те, чого хочете саме ви. Спойлер: освоїти логістику може кожен, хто поставив собі таку ціль 😉</p>
-    </div>
-    <div class="quiz-card rv" id="quizCard">
-      <div class="q-top"><span id="qStep">Питання 1 з 5</span><span>🧭</span></div>
-      <div class="q-bar"><i id="qBar"></i></div>
-      <div class="q-body" id="qBody"></div>
+  <div class="wrap">
+    <div class="gt rv">
+      <span class="fl" style="top:8%;right:46%">📦</span><span class="fl" style="bottom:10%;left:48%;animation-delay:-2s">🗺️</span><span class="fl" style="top:40%;right:4%;animation-delay:-3.5s">✨</span>
+      <div>
+        <span class="label blue">🎮 Гра · 1 хвилина</span>
+        <h2>Чи підходить вам <em>професія логіста?</em></h2>
+        <p>5 питань — і ви дізнаєтесь свій логістичний профіль. Відповідайте, заробляйте XP і доведіть вантажівку до фінішу 🏁</p>
+        <button type="button" class="btn btn-dark btn-xl" data-game>Почати гру <span class="arr"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 4l13 8-13 8z"/></svg></span></button>
+        <div class="gt-meta"><span>🧭 5 питань</span><span>⚡ до 100 XP</span><span>🏁 Результат одразу</span></div>
+      </div>
+      <div class="gt-vis" aria-hidden="true">
+        <div class="gt-card">🏡 Робота з дому<i class="tg on"></i></div>
+        <div class="gt-card">🌍 Уся Європа<i class="tg on"></i></div>
+        <div class="gt-card">🚀 Нова професія<i class="tg on"></i></div>
+        <div class="gt-badge"><div><b>100</b>XP</div></div>
+      </div>
     </div>
   </div>
 </section>
@@ -920,8 +1043,8 @@ footer{background:var(--forest-d);color:#A9BCCB;padding:90px 0 34px;border-radiu
       <div class="calc-in rv">
         <div class="rng"><div class="rng-top"><label for="cCars">Машин у роботі</label><output id="oCars"></output></div><input type="range" id="cCars" min="1" max="10" step="1" value="3"><small>Скільки бусів або тірів ви завантажуєте</small></div>
         <div class="rng"><div class="rng-top"><label for="cTrips">Рейсів на тиждень з однієї машини</label><output id="oTrips"></output></div><input type="range" id="cTrips" min="1" max="5" step="1" value="2"></div>
-        <div class="rng"><div class="rng-top"><label for="cRate">Середня ставка за рейс</label><output id="oRate"></output></div><input type="range" id="cRate" min="200" max="2500" step="50" value="600"></div>
-        <div class="rng"><div class="rng-top"><label for="cPct">Ваш відсоток</label><output id="oPct"></output></div><input type="range" id="cPct" min="5" max="15" step="1" value="10"><small>Частка від ставки, про яку ви домовились з перевізником</small></div>
+        <div class="rng"><div class="rng-top"><label for="cRate">Середня ставка за рейс</label><output id="oRate"></output></div><input type="range" id="cRate" min="200" max="2500" step="50" value="400"></div>
+        <div class="rng"><div class="rng-top"><label for="cPct">Ваш відсоток</label><output id="oPct"></output></div><input type="range" id="cPct" min="5" max="15" step="1" value="12"><small>Частка від ставки, про яку ви домовились з перевізником</small></div>
       </div>
       <div class="calc-out rv" style="--d:.1s">
         <span class="label dark">Орієнтовно на місяць</span>
@@ -1004,7 +1127,7 @@ footer{background:var(--forest-d);color:#A9BCCB;padding:90px 0 34px;border-radiu
       </div>
       <div class="consult-text">
         <span class="label dark">Консультація</span>
-        <h2>Особиста консультація <em>з експертом</em></h2>
+        <h2>Особиста консультація <em>з Веронікою</em></h2>
         <p class="lead">Коли потрібна відповідь саме на вашу ситуацію — записуйтесь на онлайн-консультацію. Розберемо ваше питання предметно, з мого практичного досвіду.</p>
         <div class="topics">
           <div class="topic"><i>✓</i>З чого почати і як увійти в професію</div>
@@ -1156,7 +1279,6 @@ footer{background:var(--forest-d);color:#A9BCCB;padding:90px 0 34px;border-radiu
     if (finished) return; finished = true;
     body.classList.add('loaded'); body.classList.remove('loading');
     setTimeout(() => document.getElementById('loader')?.remove(), 1500);
-    document.querySelectorAll('#heroWidget .tg[data-on]').forEach((t, i) => setTimeout(() => t.classList.add('on'), 1400 + i * 280));
   }
   requestAnimationFrame(tick);
   setTimeout(finish, 7000); // safety net if animation frames are paused
@@ -1205,17 +1327,56 @@ footer{background:var(--forest-d);color:#A9BCCB;padding:90px 0 34px;border-radiu
   addEventListener('scroll', () => { if (!ticking){ ticking = true; requestAnimationFrame(onScroll); } }, { passive: true });
   onScroll();
 
-  /* ---------- plane along the timeline ---------- */
+  /* ---------- plane along the timeline (smoothed) ---------- */
   const rw = document.getElementById('routeWrap'), rItems = rw.querySelectorAll('.route li');
-  function routeProg(){
-    const r = rw.getBoundingClientRect();
-    const p = Math.max(0, Math.min(1, (innerHeight * .55 - r.top) / (r.height - 30)));
-    rw.style.setProperty('--rp', p.toFixed(4));
-    const y = p * (r.height - 38) + 8;
+  let rpCur = 0, rpRun = false;
+  const rpTarget = () => { const r = rw.getBoundingClientRect(); return Math.max(0, Math.min(1, (innerHeight * .55 - r.top) / (r.height - 30))); };
+  function rpLoop(){
+    const tgt = rpTarget();
+    const step = (tgt - rpCur) * (reduce ? 1 : .08);
+    rpCur += step;
+    jet(Math.abs(step) * 60);
+    if (Math.abs(tgt - rpCur) < .0005) rpCur = tgt;
+    rw.style.setProperty('--rp', rpCur.toFixed(4));
+    const y = rpCur * (rw.offsetHeight - 38) + 8;
     rItems.forEach(li => li.classList.toggle('passed', li.offsetTop <= y + 2));
+    if (rpCur !== tgt) requestAnimationFrame(rpLoop); else { rpRun = false; jet(0); }
   }
-  addEventListener('scroll', () => requestAnimationFrame(routeProg), { passive: true });
-  routeProg();
+  const rpKick = () => { if (!rpRun){ rpRun = true; requestAnimationFrame(rpLoop); } };
+
+  /* ---------- optional jet sound (off by default) ---------- */
+  const sndBtn = document.getElementById('sndBtn');
+  let actx = null, jetGain = null, jetFilter = null, sndOn = false;
+  function initJet(){
+    actx = new (window.AudioContext || window.webkitAudioContext)();
+    const len = actx.sampleRate * 2, buf = actx.createBuffer(1, len, actx.sampleRate), d = buf.getChannelData(0);
+    let last = 0;
+    for (let i = 0; i < len; i++){ const w = Math.random() * 2 - 1; last = (last + .02 * w) / 1.02; d[i] = last * 3.5; }
+    const src = actx.createBufferSource(); src.buffer = buf; src.loop = true;
+    jetFilter = actx.createBiquadFilter(); jetFilter.type = 'bandpass'; jetFilter.frequency.value = 500; jetFilter.Q.value = .8;
+    jetGain = actx.createGain(); jetGain.gain.value = 0;
+    src.connect(jetFilter).connect(jetGain).connect(actx.destination); src.start();
+  }
+  function jet(level){
+    if (!sndOn || !actx) return;
+    const t = actx.currentTime, v = Math.min(1, level);
+    jetGain.gain.setTargetAtTime(.04 + v * .5, t, .15);
+    jetFilter.frequency.setTargetAtTime(380 + v * 1400, t, .2);
+  }
+  sndBtn.addEventListener('click', () => {
+    sndOn = !sndOn;
+    if (sndOn && !actx) initJet();
+    if (actx) actx.state === 'suspended' && actx.resume();
+    sndBtn.setAttribute('aria-pressed', sndOn);
+    sndBtn.querySelector('.si').textContent = sndOn ? '🔊' : '🔈';
+    sndBtn.querySelector('.st').textContent = sndOn ? 'Звук увімкнено' : 'Звук польоту';
+    if (sndOn){ jet(.9); setTimeout(() => jet(0), 700); }
+    else if (jetGain) jetGain.gain.setTargetAtTime(0, actx.currentTime, .1);
+  });
+  // pause the hum when the timeline is off screen
+  new IntersectionObserver(es => es.forEach(e => { if (!e.isIntersecting && jetGain) jetGain.gain.setTargetAtTime(0, actx.currentTime, .2); })).observe(rw);
+  addEventListener('scroll', rpKick, { passive: true });
+  rpKick();
 
   /* ---------- modules: click to highlight ---------- */
   document.querySelectorAll('.mod').forEach(m => m.addEventListener('click', () => {
@@ -1240,7 +1401,64 @@ footer{background:var(--forest-d);color:#A9BCCB;padding:90px 0 34px;border-radiu
   lb.addEventListener('click', e => { if (e.target !== lbImg) closeLb(); });
   addEventListener('keydown', e => { if (e.key === 'Escape') closeLb(); });
 
-  /* ---------- quiz: is logistics for me? ---------- */
+  /* ---------- particles ---------- */
+  const COLORS = ['#34C759', '#9DBBD9', '#3E6E91', '#BDD1E6', '#F2C94C', '#17313F'];
+  function burst(x, y, n = 24, spread = 160, emojis = null){
+    if (reduce || !Element.prototype.animate) return;
+    for (let i = 0; i < n; i++){
+      const p = document.createElement('span'); p.className = 'pt';
+      if (emojis){ p.textContent = emojis[i % emojis.length]; p.style.fontSize = (18 + Math.random() * 14) + 'px'; }
+      else { const w = 6 + Math.random() * 7; p.style.width = w + 'px'; p.style.height = (w * .6) + 'px'; p.style.background = COLORS[i % COLORS.length]; }
+      p.style.left = x + 'px'; p.style.top = y + 'px';
+      document.body.appendChild(p);
+      const a = Math.random() * Math.PI * 2, d = 40 + Math.random() * spread;
+      const dx = Math.cos(a) * d, dy = Math.sin(a) * d - 60;
+      p.animate([
+        { transform: 'translate(-50%,-50%) scale(.4) rotate(0deg)', opacity: 1 },
+        { transform: `translate(calc(-50% + ${dx}px), calc(-50% + ${dy}px)) scale(1) rotate(${Math.random() * 360}deg)`, opacity: 1, offset: .45 },
+        { transform: `translate(calc(-50% + ${dx * 1.2}px), calc(-50% + ${dy + 180}px)) scale(.8) rotate(${Math.random() * 720}deg)`, opacity: 0 }
+      ], { duration: 1100 + Math.random() * 700, easing: 'cubic-bezier(.2,.8,.3,1)' }).onfinish = () => p.remove();
+      setTimeout(() => p.remove(), 2200);
+    }
+  }
+  function floatText(x, y, txt){
+    if (reduce || !Element.prototype.animate) return;
+    const f = document.createElement('span'); f.className = 'xp-float'; f.textContent = txt;
+    f.style.left = x + 'px'; f.style.top = y + 'px'; document.body.appendChild(f);
+    f.animate([{ transform: 'translate(-50%,0) scale(.6)', opacity: 0 }, { transform: 'translate(-50%,-30px) scale(1.2)', opacity: 1, offset: .3 }, { transform: 'translate(-50%,-90px) scale(1)', opacity: 0 }], { duration: 1100, easing: 'ease-out' });
+    setTimeout(() => f.remove(), 1200);
+  }
+
+  /* ---------- hero widget: whoosh when on screen + tap to toggle ---------- */
+  const hw = document.getElementById('heroWidget');
+  let hwDone = false;
+  function playWidget(){
+    if (hwDone) return; hwDone = true;
+    hw.querySelectorAll('.w-row').forEach((row, i) => {
+      const t = row.querySelector('.tg[data-on]'); if (!t) return;
+      setTimeout(() => {
+        t.classList.add('on'); row.classList.remove('whoosh'); void row.offsetWidth; row.classList.add('whoosh');
+        const r = t.getBoundingClientRect(); burst(r.left + r.width / 2, r.top + r.height / 2, 10, 60);
+      }, 300 + i * 480);
+    });
+  }
+  function whenLoaded(fn){ if (body.classList.contains('loaded')) fn(); else { const iv = setInterval(() => { if (body.classList.contains('loaded')){ clearInterval(iv); fn(); } }, 100); } }
+  const hwObs = new IntersectionObserver(es => es.forEach(e => {
+    if (e.isIntersecting){ hwObs.disconnect(); whenLoaded(() => setTimeout(playWidget, 900)); }
+  }), { threshold: .5 });
+  hwObs.observe(hw);
+  hw.querySelectorAll('.w-row').forEach(row => row.addEventListener('click', () => {
+    const t = row.querySelector('.tg');
+    if (row.classList.contains('off')){
+      t.classList.add('on');
+      setTimeout(() => { t.classList.remove('on'); row.classList.remove('nope'); void row.offsetWidth; row.classList.add('nope'); }, 380);
+      return;
+    }
+    t.classList.toggle('on'); row.classList.remove('whoosh'); void row.offsetWidth; row.classList.add('whoosh');
+    if (t.classList.contains('on')){ const r = t.getBoundingClientRect(); burst(r.left + r.width / 2, r.top + r.height / 2, 14, 70); }
+  }));
+
+  /* ---------- game: is logistics for me? ---------- */
   const Q = [
     { e: '🏡', t: 'Де вам хочеться працювати?', o: [
       ['🏡', 'З дому', 'Можна працювати з дому — я сама так працюю'],
@@ -1263,33 +1481,60 @@ footer{background:var(--forest-d);color:#A9BCCB;padding:90px 0 34px;border-radiu
       ['🕐', 'Пів дня', 'Спокійно пройдете програму за 5 тижнів'],
       ['🚀', 'Готові зануритись повністю', 'Повне занурення — і нова професія вже за 5 тижнів']] }
   ];
-  const qBody = document.getElementById('qBody'), qStep = document.getElementById('qStep'), qBar = document.getElementById('qBar');
+  const game = document.getElementById('game'), stage = document.getElementById('gStage'), gTruck = document.getElementById('gTruck'), gXp = document.getElementById('gXp'), gXpBox = document.getElementById('gXpBox');
   const ARR = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M7 17 17 7M8 7h9v9"/></svg>';
-  let qi = 0, picks = [];
-  function swap(html){
-    qBody.classList.add('out');
-    setTimeout(() => { qBody.innerHTML = html; qBody.classList.remove('out'); }, 260);
+  let gi = 0, picks = [], xp = 0, lastFocus = null;
+  const setProg = p => game.style.setProperty('--gp', p);
+  function setXp(v){
+    const from = xp; xp = v; const t1 = performance.now();
+    gXpBox.classList.remove('bump'); void gXpBox.offsetWidth; gXpBox.classList.add('bump');
+    (function a(now){ const p = Math.min(1, (now - t1) / 500); gXp.textContent = Math.round(from + (v - from) * p); if (p < 1) requestAnimationFrame(a); })(t1);
+    setTimeout(() => { gXp.textContent = v; }, 520);
   }
-  function renderQ(){
-    const q = Q[qi];
-    qStep.textContent = `Питання ${qi + 1} з ${Q.length}`;
-    qBar.style.width = (qi / Q.length * 100) + '%';
-    swap(`<div class="q-emoji">${q.e}</div><div class="q-text">${q.t}</div><div class="q-opts">${q.o.map((o, i) => `<button type="button" class="q-opt" data-i="${i}"><span class="oe">${o[0]}</span><span class="ot">${o[1]}</span><i class="tg sm"></i></button>`).join('')}</div>`);
+  function openGame(e){
+    if (e && e.preventDefault) e.preventDefault();
+    if (!game.classList.contains('open')) lastFocus = document.activeElement;
+    gi = 0; picks = []; xp = 0; gXp.textContent = 0; setProg(0);
+    game.classList.add('open'); body.classList.add('game-open');
+    renderG();
+    setTimeout(() => document.getElementById('gClose').focus(), 50);
+    const src = e && e.currentTarget && e.currentTarget.getBoundingClientRect ? e.currentTarget.getBoundingClientRect() : null;
+    if (src && src.width) burst(src.left + src.width / 2, src.top + src.height / 2, 30, 200);
   }
-  qBody.addEventListener('click', e => {
-    if (e.target.closest('[data-restart]')) { qi = 0; picks = []; renderQ(); return; }
-    const b = e.target.closest('.q-opt'); if (!b || b.disabled) return;
-    qBody.querySelectorAll('.q-opt').forEach(x => x.disabled = true);
+  function closeGame(){ game.classList.remove('open'); body.classList.remove('game-open'); if (lastFocus && lastFocus.focus) lastFocus.focus(); }
+  document.querySelectorAll('[data-game]').forEach(b => b.addEventListener('click', openGame));
+  document.getElementById('gClose').addEventListener('click', closeGame);
+  addEventListener('keydown', e => { if (e.key === 'Escape' && game.classList.contains('open')) closeGame(); });
+  function renderG(){
+    const q = Q[gi];
+    stage.innerHTML = `<div class="g-card"><div class="g-step">Питання ${gi + 1} з ${Q.length}</div><div class="g-emoji">${q.e}</div><div class="g-q">${q.t}</div><div class="g-opts">${q.o.map((o, i) => `<button type="button" class="g-opt" style="--i:${i}" data-i="${i}"><span class="oe">${o[0]}</span><span class="ot">${o[1]}</span><i class="tg sm"></i></button>`).join('')}</div></div>`;
+  }
+  stage.addEventListener('click', e => {
+    if (e.target.closest('[data-restart]')) { openGame(); return; }
+    if (e.target.closest('[data-close]')) { closeGame(); return; }
+    const b = e.target.closest('.g-opt'); if (!b || b.disabled) return;
+    stage.querySelectorAll('.g-opt').forEach(x => { x.disabled = true; });
     b.classList.add('picked'); b.querySelector('.tg').classList.add('on');
-    picks.push(Q[qi].o[+b.dataset.i][2]); qi++;
-    qBar.style.width = (qi / Q.length * 100) + '%';
-    setTimeout(() => qi < Q.length ? renderQ() : result(), 500);
+    const r = b.getBoundingClientRect();
+    burst(r.right - 40, r.top + r.height / 2, 22, 120);
+    floatText(r.right - 40, r.top - 10, '+20 XP');
+    picks.push(Q[gi].o[+b.dataset.i][2]); gi++;
+    setXp(gi * 20); setProg(gi / Q.length);
+    gTruck.classList.remove('go'); void gTruck.offsetWidth; gTruck.classList.add('go');
+    setTimeout(() => {
+      const card = stage.querySelector('.g-card'); if (card) card.classList.add('leave');
+      setTimeout(() => { gi < Q.length ? renderG() : resultG(); }, 430);
+    }, 650);
   });
-  function result(){
-    qStep.textContent = 'Ваш результат'; qBar.style.width = '100%';
-    swap(`<div class="q-res"><div class="q-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg></div><h3>Професія логіста вам підходить!</h3><div class="q-list">${picks.map(p => `<div>${p}<i class="tg sm on"></i></div>`).join('')}</div><p>Освоїти логістику може кожен, хто поставив собі таку ціль. Я покажу шлях від нуля до першого вантажу.</p><div class="acts"><a href="#join" class="btn btn-green">Записатися на курс <span class="arr">${ARR}</span></a><a href="#lesson" class="btn btn-ghost">Перший урок</a><button type="button" class="btn btn-ghost" data-restart>Ще раз</button></div></div>`);
+  function resultG(){
+    stage.innerHTML = `<div class="g-card g-res"><div class="g-badge"><div>🏆</div></div><span class="lvl">Логіст · рівень 1 · ${xp} XP</span><h3>Професія логіста вам підходить!</h3><div class="q-list">${picks.map((p, i) => `<div style="--i:${i}">${p}<i class="tg sm" data-tgi="${i}"></i></div>`).join('')}</div><p>Освоїти логістику може кожен, хто поставив собі таку ціль. Я покажу шлях від нуля до першого вантажу — за 5 тижнів.</p><div class="acts"><a href="#join" class="btn btn-green" data-close>Записатися на курс <span class="arr">${ARR}</span></a><a href="#lesson" class="btn btn-ghost" data-close>Перший урок</a><button type="button" class="btn btn-ghost" data-restart>Зіграти ще</button></div></div>`;
+    stage.querySelectorAll('[data-tgi]').forEach((t, i) => setTimeout(() => t.classList.add('on'), 800 + i * 150));
+    const W = innerWidth, H = innerHeight;
+    burst(W / 2, H * .35, 70, 360);
+    setTimeout(() => burst(W * .2, H * .5, 40, 260), 250);
+    setTimeout(() => burst(W * .8, H * .5, 40, 260), 450);
+    setTimeout(() => burst(W / 2, H * .3, 16, 220, ['🚛', '📦', '🏁', '✨', '🌍']), 600);
   }
-  renderQ();
 
   /* ---------- earnings calculator ---------- */
   const $ = id => document.getElementById(id);
