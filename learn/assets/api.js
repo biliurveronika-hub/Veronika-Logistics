@@ -22,8 +22,10 @@ async function client() {
   return sb;
 }
 
-const appUrl = () => (CONFIG.SITE_URL || location.origin) +
-  location.pathname.replace(/\/[^/]*$/, '/app.html');
+const appUrl = () => {
+  const origin = CONFIG.SITE_URL ? new URL(CONFIG.SITE_URL).origin : location.origin;
+  return origin + location.pathname.replace(/\/[^/]*$/, '/app.html');
+};
 
 function demoStudents() {
   const saved = read(LS.students, null);
