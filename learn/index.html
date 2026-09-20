@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Вхід у кабінет — Veronika Logistics</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#17313F">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@1,400;1,500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/learn.css">
+</head>
+<body>
+
+<div class="auth">
+
+  <aside class="auth-side">
+    <div class="auth-brand">Veronika<br><em>Logistics</em></div>
+    <div>
+      <span class="label dark">Кабінет учениці</span>
+      <h2 style="margin-top:18px">Ваше навчання — <em>у своєму темпі</em></h2>
+      <p>Усі модулі, презентації та домашні завдання зібрані в одному місці. Прогрес зберігається автоматично — можна повертатися з будь-якого пристрою.</p>
+      <div class="auth-list">
+        <div>Вступ + 8 модулів<i class="tg sm on"></i></div>
+        <div>Презентації до кожного уроку<i class="tg sm on"></i></div>
+        <div>Домашні завдання з перевіркою<i class="tg sm on"></i></div>
+        <div>Файли з маршрутами й документами<i class="tg sm on"></i></div>
+      </div>
+    </div>
+    <div style="font-size:13px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:#7E93A4">Онлайн-курс міжнародної логістики</div>
+  </aside>
+
+  <main class="auth-main">
+    <div class="auth-card">
+
+      <form id="loginForm" novalidate>
+        <span class="label">Вхід</span>
+        <h1>Раді бачити <em>знову</em></h1>
+        <p class="lead" id="leadTxt">Введіть пошту, на яку Вероніка відкрила вам доступ, — ми надішлемо посилання для входу. Пароль не потрібен.</p>
+
+        <div class="msg err" id="err"></div>
+
+        <label class="field">
+          <span>Ваша пошта</span>
+          <input type="email" name="email" id="email" required autocomplete="email" placeholder="your@email.com" autofocus>
+        </label>
+
+        <button class="btn btn-green" type="submit" style="width:100%" id="submitBtn">
+          Надіслати посилання
+          <span class="arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M7 17 17 7M8 7h9v9"/></svg></span>
+        </button>
+
+        <div class="demo-note" id="demoNote" hidden>
+          <b>Демо-режим</b>
+          Supabase ще не підключено, тому вхід працює без пошти, а дані зберігаються лише в цьому браузері.
+          Спробуйте: <code class="inline">demo@veronika.pl</code> (учениця) або <code class="inline">veronika@veronika.pl</code> (викладач).
+        </div>
+
+        <a href="../index.html" class="auth-back">← Повернутися на сайт</a>
+      </form>
+
+      <div class="sent" id="sent">
+        <div class="big"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg></div>
+        <h2>Перевірте пошту</h2>
+        <p>Ми надіслали посилання для входу на <b id="sentMail"></b>. Відкрийте його з цього ж пристрою — і потрапите в кабінет.</p>
+        <p class="muted" style="margin-top:18px;font-size:14px">Листа немає? Подивіться в «Спам» або <a href="#" id="again" style="color:var(--blue);font-weight:600">спробуйте ще раз</a>.</p>
+      </div>
+
+    </div>
+  </main>
+
+</div>
+
+<script type="module">
+import { API } from './assets/api.js';
+
+const form = document.getElementById('loginForm');
+const err  = document.getElementById('err');
+const sent = document.getElementById('sent');
+const btn  = document.getElementById('submitBtn');
+
+if (API.isDemo) document.getElementById('demoNote').hidden = false;
+
+/* вже увійшли — одразу в кабінет */
+API.currentUser().then(u => { if (u && !u.blocked) location.replace('app.html'); });
+
+function fail(text) {
+  err.textContent = text;
+  err.classList.add('show');
+  btn.disabled = false;
+}
+
+form.addEventListener('submit', async e => {
+  e.preventDefault();
+  err.classList.remove('show');
+  btn.disabled = true;
+  const email = document.getElementById('email').value;
+  try {
+    const res = await API.sendMagicLink(email);
+    if (res.demo) { location.href = 'app.html'; return; }
+    document.getElementById('sentMail').textContent = email.trim().toLowerCase();
+    form.style.display = 'none';
+    sent.classList.add('show');
+  } catch (ex) {
+    fail(ex.message || 'Не вдалося надіслати листа. Спробуйте ще раз.');
+  }
+});
+
+document.getElementById('again').addEventListener('click', e => {
+  e.preventDefault();
+  sent.classList.remove('show');
+  form.style.display = '';
+  btn.disabled = false;
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Адмінка — Veronika Logistics</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#EEF2F5">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@1,400;1,500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/learn.css">
+</head>
+<body>
+
+<div class="boot" id="boot"><div class="sp"></div></div>
+
+<div class="demo-bar" id="demoBar" hidden>Демо-режим · дані зберігаються лише в цьому браузері</div>
+
+<header class="app-hdr">
+  <div class="wrap app-nav">
+    <a href="app.html" class="logo glass-pill">
+      <i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 6h12v10H1z"/><path d="M13 9h4l4 4v3h-8"/><circle cx="5.5" cy="17.5" r="1.8"/><circle cx="17.5" cy="17.5" r="1.8"/></svg></i>
+      Адмінка
+    </a>
+
+    <nav class="menu glass-pill" id="menu">
+      <a href="app.html">Навчання</a>
+      <a href="#students" class="on">Учениці</a>
+      <a href="#homework">Домашні</a>
+      <a href="../index.html">Сайт ↗</a>
+    </nav>
+
+    <div style="display:flex;align-items:center;gap:10px">
+      <button class="burger glass-pill" id="burger" aria-label="Меню"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+      <div class="who glass-pill"><b id="whoName"></b><span class="av adm" id="whoAv"></span></div>
+      <button class="exit" id="exit" aria-label="Вийти"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><path d="m16 17 5-5-5-5M21 12H9"/></svg></button>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="page">
+
+    <div class="page-head">
+      <span class="label green">Тільки для Вероніки</span>
+      <h1>Учениці та <em>їхній прогрес</em></h1>
+      <p class="lead">Додайте пошту — і учениця зможе увійти в кабінет. Пароль не потрібен: вона отримує посилання для входу на цю ж пошту.</p>
+    </div>
+
+    <div class="adm-grid" id="students">
+
+      <div class="card">
+        <h3>Додати ученицю</h3>
+        <p style="margin-bottom:20px">Доступ відкривається одразу після збереження.</p>
+        <div class="msg err" id="addErr"></div>
+        <div class="msg ok" id="addOk">Ученицю додано. Можна надсилати їй посилання на кабінет.</div>
+        <form id="addForm" novalidate>
+          <label class="field"><span>Пошта *</span><input name="email" type="email" required placeholder="student@email.com"></label>
+          <label class="field"><span>Імʼя та прізвище</span><input name="full_name" placeholder="Олена Ковальчук"></label>
+          <label class="field"><span>Потік / група</span><input name="flow" placeholder="Потік 3"></label>
+          <label class="field"><span>Доступ до дати</span><input name="access_until" type="date"><small>Порожньо = без обмежень</small></label>
+          <button class="btn btn-green" type="submit" style="width:100%">Додати ученицю <span class="arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M7 17 17 7M8 7h9v9"/></svg></span></button>
+        </form>
+        <div class="copy-row">
+          <span class="muted" style="font-size:13.5px">Посилання для учениць:</span>
+          <code class="inline" id="loginUrl"></code>
+          <button class="btn-sm" id="copyUrl">Копіювати</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <div style="display:flex;justify-content:space-between;align-items:center;gap:16px;margin-bottom:20px">
+          <h3 style="margin:0">Список учениць</h3>
+          <span class="chip" id="cnt"><i></i>—</span>
+        </div>
+        <div class="tbl-wrap"><table class="tbl" id="stTbl"></table></div>
+      </div>
+
+    </div>
+
+    <div class="sec-head" id="homework" style="margin-top:70px">
+      <h2>Домашні <em>на перевірці</em></h2>
+      <span class="chip" id="hwCnt"><i></i>—</span>
+    </div>
+    <div class="adm-hw" id="hwList"></div>
+
+  </section>
+</main>
+
+<script type="module" src="assets/admin.js"></script>
+</body>
+</html>
