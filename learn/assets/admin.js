@@ -17,7 +17,10 @@ const nl2br = s => esc(s).replace(/\n/g, '<br>');
 /* скільки кроків зараз реально доступно в курсі */
 function availableSteps() {
   return COURSE.modules.reduce((n, m) =>
-    n + STEPS.filter(s => s.key === 'hw' || (s.key === 'video' ? !!m.video : !!m.deck)).length, 0);
+    n + STEPS.filter(s =>
+      s.key === 'video' ? !!m.video :
+      s.key === 'deck'  ? !!m.deck  :
+      !!m.homework).length, 0);
 }
 const plural = (n, f) => {
   const a = Math.abs(n) % 100, b = a % 10;

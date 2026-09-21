@@ -43,7 +43,10 @@ function accessState(u) {
 
 /* кроки, які реально доступні в модулі */
 function steps(m) {
-  return STEPS.filter(s => s.key === 'hw' || (s.key === 'video' ? !!m.video : !!m.deck));
+  return STEPS.filter(s =>
+    s.key === 'video' ? !!m.video :
+    s.key === 'deck'  ? !!m.deck  :
+    !!m.homework);
 }
 const key = (m, s) => m.id + ':' + s;
 const stepDone = (m, s) => !!PROG[key(m, s)];
@@ -245,7 +248,7 @@ function renderModule(id) {
 
         <div class="pane" data-pane="deck"><div class="card"><h3>Презентація</h3><p style="margin-bottom:18px">Той самий матеріал у текстовому вигляді — зручно повертатися й шукати потрібне.</p>${deckPane}</div></div>
 
-        <div class="pane" data-pane="hw"><div class="card" id="hwCard">${hwBlock(m, hw)}</div></div>
+        <div class="pane" data-pane="hw"><div class="card" id="hwCard">${m.homework ? hwBlock(m, hw) : noHw()}</div></div>
 
         <div class="pane" data-pane="files"><div class="card"><h3>Матеріали модуля</h3>${filesHtml}</div></div>
       </div>
@@ -391,6 +394,13 @@ function toast(text, bad) {
 }
 
 /* ---------------- домашнє завдання ---------------- */
+function noHw() {
+  return `
+    <h3>Домашнє завдання</h3>
+    <p>До цього уроку окремого завдання немає — воно буде в наступному модулі,
+       де ми закріпимо все разом. Подивіться відео й перегляньте презентацію.</p>`;
+}
+
 function hwBlock(m, hw) {
   const plan = planOf(USER.plan);
 
@@ -494,7 +504,7 @@ function bindHwForm(m) {
    ЕКРАН: МОЇ ДОМАШНІ
    ============================================================ */
 function renderHomework() {
-  const rows = COURSE.modules.map(m => ({ m, hw: HW[m.id] }));
+  const rows = COURSE.modules.filter(m => m.homework).map(m => ({ m, hw: HW[m.id] }));
   const sent = rows.filter(r => r.hw).length;
 
   view.innerHTML = `
@@ -503,7 +513,7 @@ function renderHomework() {
       <span class="label">Домашні завдання</span>
       <h1>Ваші <em>роботи</em></h1>
       <p class="lead">${planOf(USER.plan).feedback
-        ? `Надіслано ${sent} з ${COURSE.modules.length}. Вероніка перевіряє роботи вручну — коментар зʼявиться тут і всередині модуля.`
+        ? `Надіслано ${sent} з ${rows.length}. Вероніка перевіряє роботи вручну — коментар зʼявиться тут і всередині модуля.`
         : `Ваш тариф «${esc(planOf(USER.plan).title)}» — завдання ви виконуєте для себе. Відмічайте виконані, щоб бачити прогрес.`}</p>
     </div>
     <div class="hw-list">
