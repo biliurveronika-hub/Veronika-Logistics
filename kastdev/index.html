@@ -1,0 +1,616 @@
+<!doctype html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Сценарій зустрічі з учнями Veronika Logistics: відеовідгук для YouTube і кастдев.">
+<meta name="robots" content="noindex, nofollow">
+<style>
+  html{color-scheme:light dark}
+  :root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+  body{margin:0}
+  img{max-width:100%}
+  [hidden]{display:none!important}
+</style>
+<title>Кастдев Veronika Logistics</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@1,400;1,500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#EEF2F5; --paper:#FFFFFF; --panel:#F8FAFC;
+  --ink:#14232E; --muted:#546473; --faint:#8296A5;
+  --line:rgba(20,35,46,.13); --line-s:rgba(20,35,46,.07);
+  --blue:#3E6E91; --steel:#244A5E; --sky:#9DBBD9; --ice:#E3ECF4;
+  --olive:#5F6F3A; --sand:#DCDDCB; --green:#2FA352;
+  --dark-bg:#17313F; --dark-2:#1E3C4C; --dark-ink:#EAF1F7; --dark-muted:#A3B9C8; --dark-line:rgba(255,255,255,.14);
+  --serif:'Playfair Display',Georgia,serif;
+  --sans:'Manrope',system-ui,-apple-system,'Segoe UI',sans-serif;
+  --r:20px; --r-lg:28px;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#0E1A22; --paper:#16262F; --panel:#13222B;
+    --ink:#E7EFF5; --muted:#9CB2C1; --faint:#7C94A5;
+    --line:rgba(157,187,217,.2); --line-s:rgba(157,187,217,.1);
+    --blue:#8FB6D6; --steel:#BDD6EA; --sky:#5E8AAF; --ice:#1B2F3B;
+    --olive:#A2B471; --sand:#37402F; --green:#4CC46E;
+    --dark-bg:#132029; --dark-2:#1B2F3A; --dark-ink:#E7EFF5; --dark-muted:#9CB2C1; --dark-line:rgba(255,255,255,.1);
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0E1A22; --paper:#16262F; --panel:#13222B;
+  --ink:#E7EFF5; --muted:#9CB2C1; --faint:#7C94A5;
+  --line:rgba(157,187,217,.2); --line-s:rgba(157,187,217,.1);
+  --blue:#8FB6D6; --steel:#BDD6EA; --sky:#5E8AAF; --ice:#1B2F3B;
+  --olive:#A2B471; --sand:#37402F; --green:#4CC46E;
+  --dark-bg:#132029; --dark-2:#1B2F3A; --dark-ink:#E7EFF5; --dark-muted:#9CB2C1; --dark-line:rgba(255,255,255,.1);
+}
+
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1000px;margin:0 auto;padding-inline:20px}
+h1,h2,h3,h4{font-weight:700;letter-spacing:-.03em;line-height:1.1;text-wrap:balance;margin:0}
+em{font-family:var(--serif);font-style:italic;font-weight:400;letter-spacing:-.015em}
+p{margin:0}
+a{color:var(--blue)}
+:focus-visible{outline:2px solid var(--blue);outline-offset:3px;border-radius:4px}
+
+.eyebrow{display:inline-flex;align-items:center;gap:9px;font-size:11.5px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--blue)}
+.eyebrow::before{content:"";width:6px;height:6px;border-radius:50%;background:currentColor;flex:none}
+
+/* hero */
+.hero{padding-block:68px 52px}
+.hero h1{font-size:clamp(34px,6vw,62px);margin-top:20px}
+.hero h1 em{color:var(--blue)}
+.hero .lead{margin-top:22px;font-size:clamp(16px,2.1vw,19px);color:var(--muted);max-width:60ch}
+.facts{display:flex;flex-wrap:wrap;gap:10px;margin-top:30px}
+.fact{background:var(--paper);border:1px solid var(--line);border-radius:999px;padding:9px 18px;font-size:14px;font-weight:600;display:flex;align-items:center;gap:9px}
+.fact b{font-variant-numeric:tabular-nums;color:var(--blue)}
+
+/* generic section */
+section{padding-block:46px}
+.sec-head{margin-bottom:26px}
+.sec-head h2{font-size:clamp(24px,3.6vw,34px);margin-top:14px}
+.sec-head p{color:var(--muted);margin-top:12px;max-width:62ch}
+
+/* split: how the meeting runs */
+.split{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.half{border-radius:var(--r-lg);padding:26px 24px;border:1px solid var(--line);background:var(--paper)}
+.half.on{background:var(--dark-bg);border-color:var(--dark-bg);color:var(--dark-ink)}
+.half .tm{font-size:12px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--blue);font-variant-numeric:tabular-nums}
+.half.on .tm{color:var(--sky)}
+.half h3{font-size:22px;margin:12px 0 10px}
+.half p{font-size:15px;color:var(--muted)}
+.half.on p{color:var(--dark-muted)}
+.rec{display:inline-flex;align-items:center;gap:8px;margin-top:16px;font-size:12.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase}
+.rec i{width:9px;height:9px;border-radius:50%;background:#E04B4B;flex:none;box-shadow:0 0 0 4px rgba(224,75,75,.22)}
+.rec.off i{background:var(--faint);box-shadow:none}
+
+/* who we invite */
+.who{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.wcard{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);padding:24px}
+.wcard .tag{display:inline-block;font-size:11.5px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;padding:5px 11px;border-radius:999px;background:var(--ice);color:var(--steel)}
+.wcard h3{font-size:19px;margin:14px 0 8px}
+.wcard p{font-size:14.5px;color:var(--muted)}
+.wcard .n{margin-top:16px;padding-top:14px;border-top:1px solid var(--line-s);font-size:14px;font-weight:700;color:var(--blue)}
+.note{margin-top:14px;background:var(--panel);border:1px dashed var(--line);border-radius:var(--r);padding:18px 20px;font-size:14.5px;color:var(--muted)}
+.note b{color:var(--ink)}
+
+/* PART banner */
+.part{margin-top:14px;border-radius:var(--r-lg);overflow:hidden;background:var(--dark-bg);color:var(--dark-ink);padding:34px 30px 38px}
+.part .eyebrow{color:var(--sky)}
+.part h2{font-size:clamp(26px,4vw,40px);margin-top:16px}
+.part h2 em{color:var(--sky)}
+.part .sub{color:var(--dark-muted);margin-top:14px;max-width:62ch;font-size:15.5px}
+
+/* video timeline */
+.tl{margin-top:30px;display:grid;gap:2px}
+.tl-row{display:grid;grid-template-columns:96px 1fr;gap:20px;align-items:baseline;padding:14px 0;border-top:1px solid var(--dark-line)}
+.tl-row:last-child{border-bottom:1px solid var(--dark-line)}
+.tl-row .t{font-variant-numeric:tabular-nums;font-weight:800;font-size:14px;letter-spacing:.02em;color:var(--sky)}
+.tl-row .d b{display:block;font-size:16.5px;font-weight:700;letter-spacing:-.02em}
+.tl-row .d span{font-size:14.5px;color:var(--dark-muted)}
+
+/* checklists inside dark part */
+.chk{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:28px}
+.chk-col{background:var(--dark-2);border:1px solid var(--dark-line);border-radius:var(--r);padding:22px}
+.chk-col h4{font-size:16px;margin-bottom:14px}
+.chk-col ul{margin:0;padding:0;list-style:none;display:grid;gap:10px}
+.chk-col li{position:relative;padding-left:26px;font-size:14.5px;color:var(--dark-muted)}
+.chk-col li::before{content:"";position:absolute;left:0;top:7px;width:13px;height:13px;border-radius:4px;border:1.5px solid var(--sky)}
+.chk-col li b{color:var(--dark-ink);font-weight:600}
+
+/* question lists */
+.qbox{margin-top:28px;background:var(--dark-2);border:1px solid var(--dark-line);border-radius:var(--r-lg);padding:26px 24px;counter-reset:q}
+.qbox h4{font-size:17px;margin-bottom:6px}
+.qbox .hint{font-size:14px;color:var(--dark-muted);margin-bottom:18px}
+ol.qs{list-style:none;margin:0;padding:0;display:grid;gap:13px}
+ol.qs>li{position:relative;padding-left:46px;font-size:15.5px;line-height:1.5}
+ol.qs>li::before{counter-increment:q;content:var(--pfx,"К") counter(q);position:absolute;left:0;top:1px;font-size:11.5px;font-weight:800;letter-spacing:.04em;color:var(--blue);background:var(--ice);border-radius:7px;padding:3px 7px;font-variant-numeric:tabular-nums}
+.qbox ol.qs>li{color:var(--dark-ink)}
+.qbox ol.qs>li::before{color:var(--dark-bg);background:var(--sky)}
+ol.qs>li .why{display:block;margin-top:4px;font-size:13.5px;color:var(--faint)}
+.qbox ol.qs>li .why{color:var(--dark-muted)}
+.qbox ol.qs>li .why::before{content:"→ ";color:var(--sky)}
+ol.qs>li .why::before{content:"→ ";color:var(--blue)}
+
+.say{margin-top:24px;border-left:3px solid var(--sky);padding:4px 0 4px 20px;font-family:var(--serif);font-style:italic;font-size:18px;line-height:1.45;color:var(--dark-ink)}
+
+/* transition strip */
+.trans{margin-top:14px;background:var(--olive);color:#fff;border-radius:var(--r-lg);padding:30px}
+.trans .eyebrow{color:rgba(255,255,255,.75)}
+.trans p{margin-top:14px;font-family:var(--serif);font-style:italic;font-size:clamp(19px,2.8vw,26px);line-height:1.35}
+.trans small{display:block;margin-top:16px;font-family:var(--sans);font-style:normal;font-size:14.5px;color:rgba(255,255,255,.82);line-height:1.6}
+
+/* rules */
+.rules{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.rule{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);padding:20px 22px}
+.rule b{display:block;font-size:15.5px;margin-bottom:6px}
+.rule span{font-size:14.5px;color:var(--muted)}
+.forbid{margin-top:14px;background:var(--panel);border:1px solid var(--line);border-left:3px solid #C75B5B;border-radius:var(--r);padding:20px 22px}
+.forbid b{font-size:15px}
+.forbid ul{margin:10px 0 0;padding-left:20px;color:var(--muted);font-size:14.5px}
+.forbid li{margin-bottom:5px}
+
+/* custdev blocks with rail */
+.blocks{counter-reset:q}
+.blk{display:grid;grid-template-columns:120px 1fr;gap:26px;padding-block:26px;border-top:1px solid var(--line)}
+.blk:first-child{border-top:0}
+.blk-rail .tmm{font-variant-numeric:tabular-nums;font-weight:800;font-size:13px;color:var(--blue);letter-spacing:.02em}
+.blk-rail .dur{display:block;margin-top:5px;font-size:12.5px;color:var(--faint);font-weight:600}
+.blk-body h3{font-size:21px;margin-bottom:8px}
+.blk-body .dest{font-size:13.5px;color:var(--faint);margin-bottom:6px}
+.blk-body .dest b{color:var(--olive);font-weight:700}
+.blk-body .deep{margin:12px 0 16px;background:var(--ice);border-radius:14px;padding:13px 16px;font-size:14px;color:var(--steel)}
+.blk-body ol.qs{margin-top:14px}
+
+/* processing */
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.panel{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);padding:24px}
+.panel h3{font-size:18px;margin-bottom:12px}
+.panel p,.panel li{font-size:14.5px;color:var(--muted)}
+.panel ul{margin:0;padding-left:20px;display:grid;gap:7px}
+.fields{font-size:13.5px;line-height:2;color:var(--muted)}
+.fields span{background:var(--panel);border:1px solid var(--line-s);border-radius:7px;padding:3px 9px;margin-right:5px;white-space:nowrap;display:inline-block;color:var(--ink);font-weight:600}
+.tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:12px}
+.tags i{font-style:normal;font-size:13px;font-weight:700;padding:5px 11px;border-radius:999px;background:var(--ice);color:var(--steel)}
+
+.tblwrap{overflow-x:auto;margin-top:8px;border:1px solid var(--line);border-radius:var(--r);background:var(--paper)}
+table{border-collapse:collapse;width:100%;min-width:560px}
+th,td{text-align:left;padding:14px 18px;font-size:14.5px;border-bottom:1px solid var(--line-s);vertical-align:top}
+th{font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--faint);font-weight:800}
+tr:last-child td{border-bottom:0}
+td:first-child{color:var(--muted);width:44%}
+td b{color:var(--ink)}
+
+/* invite */
+.invite{background:var(--panel);border:1px solid var(--line);border-radius:var(--r-lg);padding:28px}
+.invite .msg{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);padding:22px 24px;margin-top:16px;font-size:15.5px;line-height:1.65;display:grid;gap:12px}
+
+/* final checklist */
+.final{background:var(--dark-bg);color:var(--dark-ink);border-radius:var(--r-lg);padding:30px;margin-bottom:20px}
+.final .eyebrow{color:var(--sky)}
+.final h2{font-size:26px;margin:14px 0 18px}
+.final ul{margin:0;padding:0;list-style:none;display:grid;gap:11px}
+.final li{position:relative;padding-left:30px;font-size:15.5px;color:var(--dark-muted)}
+.final li::before{content:"";position:absolute;left:0;top:5px;width:15px;height:15px;border-radius:5px;border:1.5px solid var(--sky)}
+.final li b{color:var(--dark-ink);font-weight:700}
+
+footer{padding-block:34px 44px;border-top:1px solid var(--line);color:var(--faint);font-size:13.5px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+
+@media (max-width:760px){
+  .split,.who,.chk,.rules,.cols{grid-template-columns:1fr}
+  .blk{grid-template-columns:1fr;gap:12px}
+  .blk-rail{display:flex;align-items:baseline;gap:10px}
+  .blk-rail .dur{margin-top:0}
+  .tl-row{grid-template-columns:72px 1fr;gap:14px}
+  .part,.trans,.final,.invite{padding:24px 20px}
+  ol.qs>li{padding-left:42px}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <header class="hero">
+    <span class="eyebrow">Veronika Logistics · внутрішній документ</span>
+    <h1>Розмова з учнями: <em>відео + кастдев</em></h1>
+    <p class="lead">Одна зустріч на 60 хвилин із кожним, хто вже купив і пройшов навчання. Перші 15 хвилин — з увімкненою камерою, знімаємо відгук для YouTube. Далі камеру вимикаємо і 45 хвилин говоримо по суті: що було до, чому купив, чого боявся, що змінилося. Саме з цієї другої частини народжуються заголовки на сайт, сценарії рілсів і відповіді в директі.</p>
+    <div class="facts">
+      <span class="fact"><b>60</b> хв одна зустріч</span>
+      <span class="fact"><b>8–12</b> розмов усього</span>
+      <span class="fact"><b>2–3</b> хв готовий ролик</span>
+      <span class="fact"><b>13</b> питань на камеру</span>
+      <span class="fact"><b>60</b> питань у кастдеві</span>
+    </div>
+  </header>
+
+  <section>
+    <div class="sec-head">
+      <span class="eyebrow">Структура зустрічі</span>
+      <h2>Спочатку камера, потім відвертість</h2>
+      <p>Порядок саме такий і не навпаки. На камеру людина зібрана і говорить «правильні» речі — це якраз те, що потрібно для ролика. Коли камера вимикається, тон міняється, і починають звучати сумніви, ціна, страхи й claims на кшталт «я взагалі думав, що це розводняк». Це і є матеріал для продажів.</p>
+    </div>
+    <div class="split">
+      <div class="half on">
+        <div class="tm">00:00 — 15:00</div>
+        <h3>Частина 1. Відео на YouTube</h3>
+        <p>13 питань під запис. Знімаємо близько 15 хвилин матеріалу, щоб змонтувати 2–3 хвилини. Знімати рівно три хвилини не вийде — потрібен запас на дублі й паузи.</p>
+        <span class="rec"><i></i> Запис увімкнено</span>
+      </div>
+      <div class="half">
+        <div class="tm">15:00 — 60:00</div>
+        <h3>Частина 2. Кастдев</h3>
+        <p>9 блоків, 60 питань. Ті самі теми, що й на камері, але вглиб і без красивих формулювань. Тут не потрібна гарна картинка — потрібні дослівні слова.</p>
+        <span class="rec off"><i></i> Тільки аудіозапис для себе</span>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <span class="eyebrow">Кого кличемо</span>
+      <h2>Тільки ті, хто купив і пройшов навчання</h2>
+      <p>Шість потоків — база достатня. Всередині цієї групи є два різні типи людей, і вони дають різну інформацію, тому рахуємо їх окремо.</p>
+    </div>
+    <div class="who">
+      <div class="wcard">
+        <span class="tag">Тип А</span>
+        <h3>Уже працює в логістиці</h3>
+        <p>Влаштувався або сам бере вантажі під відсоток. Дає кейси, цифри доходу, докази й найсильніші відгуки на камеру.</p>
+        <div class="n">5–7 осіб</div>
+      </div>
+      <div class="wcard">
+        <span class="tag">Тип Б</span>
+        <h3>Пройшов, але ще не працює</h3>
+        <p>Найважливіша група для продукту: показує, де саме ламається шлях від останнього модуля до першого заробітку. Для відео беремо тільки тих, у кого вже є хоч якийсь результат.</p>
+        <div class="n">3–5 осіб</div>
+      </div>
+    </div>
+    <div class="note"><b>Мінімум — 8 розмов.</b> Менше не дає повторюваності: одна яскрава фраза від однієї людини — це виняток, а не сегмент. Серед учнів є і дівчата, і хлопці — формулювання нижче нейтральні, під час розмови Вероніка просто говорить природно.</div>
+  </section>
+
+  <div class="part">
+    <span class="eyebrow">Частина 1 · 00:00 — 15:00</span>
+    <h2>Сценарій <em>відео-відгуку</em> для YouTube</h2>
+    <p class="sub">Мета — змонтувати ролик на 2–3 хвилини, який тримає з першої секунди. Знімаємо більше, ніж треба, і ріжемо. Питання на монтажі вирізаються повністю, тому в кадрі має залишитися тільки мова учня.</p>
+
+    <div class="tl">
+      <div class="tl-row"><div class="t">0:00 — 0:15</div><div class="d"><b>Хук</b><span>Найсильніша фраза або результат. Витягуємо її з відповідей на питання В11–В13 і ставимо на початок.</span></div></div>
+      <div class="tl-row"><div class="t">0:15 — 0:40</div><div class="d"><b>Хто це і що було до</b><span>Ім'я, місто, попередня робота, чим не влаштовувала.</span></div></div>
+      <div class="tl-row"><div class="t">0:40 — 1:10</div><div class="d"><b>Чому логістика і чому Вероніка</b><span>Як знайшов, що зачепило, що зупиняло перед оплатою.</span></div></div>
+      <div class="tl-row"><div class="t">1:10 — 1:50</div><div class="d"><b>Як проходило навчання</b><span>Конкретний модуль, конкретна деталь. Без «все було супер».</span></div></div>
+      <div class="tl-row"><div class="t">1:50 — 2:30</div><div class="d"><b>Результат у конкретиці</b><span>Перший вантаж або співбесіда, терміни, цифри.</span></div></div>
+      <div class="tl-row"><div class="t">2:30 — 3:00</div><div class="d"><b>Порада тому, хто вагається</b><span>Фінальна фраза, звернена в камеру.</span></div></div>
+    </div>
+
+    <div class="chk">
+      <div class="chk-col">
+        <h4>Надіслати учню за день</h4>
+        <ul>
+          <li><b>Горизонтальне відео</b> — телефон поставити на щось стійке, не тримати в руці</li>
+          <li><b>Сісти обличчям до вікна</b>, а не спиною — інакше буде силует</li>
+          <li><b>Тихе приміщення</b>: без телевізора, витяжки й дітей за стіною</li>
+          <li><b>Фон</b> — рівна стіна або прибрана кімната</li>
+          <li><b>Одяг</b> без дрібних смужок і чужих логотипів</li>
+          <li><b>Зарядка й вільна пам'ять</b> на телефоні</li>
+          <li><b>Записати ще й локально</b> на свій телефон — страховка від якості зв'язку</li>
+        </ul>
+      </div>
+      <div class="chk-col">
+        <h4>Правила для Вероніки в кадрі</h4>
+        <ul>
+          <li><b>Відповідь повним реченням</b>, з питанням усередині: «Мене звати Олег, до курсу я працював на складі», а не «Олег» і «на складі»</li>
+          <li><b>Пауза 2–3 секунди</b> до і після кожної відповіді — щоб було де різати</li>
+          <li><b>Не підтакувати вголос</b>: «ага», «так-так» чути на монтажі. Кивати мовчки</li>
+          <li><b>Не підказувати формулювання.</b> «Скажи, що в мене все на практиці» вб'є довіру до ролика</li>
+          <li><b>Зім'яту відповідь переписати:</b> «давай ще раз, тільки повільніше» — це нормально і так роблять усі</li>
+          <li><b>Не сперечатися</b>, якщо прозвучить щось невигідне. Просто не візьмемо в монтаж</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="qbox">
+      <h4>13 питань на камеру</h4>
+      <p class="hint">Порядок можна не міняти — він уже вибудуваний так, щоб історія на монтажі складалася сама.</p>
+      <ol class="qs" style="--pfx:'В'">
+        <li>Представся, будь ласка: як тебе звати, звідки ти і чим займаєшся зараз?</li>
+        <li>Ким ти працював до того, як прийшов у логістику?</li>
+        <li>Що тебе тоді не влаштовувало? Опиши свій звичайний день у той період.</li>
+        <li>Був якийсь момент, після якого ти сказав собі: все, треба міняти? Розкажи про нього.<span class="why">це найчастіше і стає хуком ролика</span></li>
+        <li>Чому саме логістика? Звідки вона взагалі з'явилася у твоєму житті?</li>
+        <li>Як ти мене знайшов? Що саме зачепило в тому, що ти побачив?</li>
+        <li>Що тебе зупиняло перед тим, як оплатити? Чого ти боявся?<span class="why">глядач має впізнати себе саме тут</span></li>
+        <li>Що переконало все-таки почати?</li>
+        <li>Розкажи, як проходило навчання. Який модуль дав найбільше і чому саме він?</li>
+        <li>Що було найважче?<span class="why">без цього питання ролик виглядає замовним</span></li>
+        <li>Розкажи про свій перший вантаж або першу співбесіду — як це було?</li>
+        <li>Скільки часу минуло від початку навчання до першого заробітку? Що ти вмієш зараз, чого не вмів рік тому?</li>
+        <li>Що б ти сказав людині, яка зараз вагається — йти чи не йти?</li>
+      </ol>
+      <div class="say">«І останнє, просто під запис: скажи, будь ласка, як тебе звати і що ти дозволяєш використовувати це відео на моєму YouTube, сайті та в соцмережах.»<br><span style="font-family:var(--sans);font-style:normal;font-size:14px;opacity:.75">Дозвіл на камері — надійніше за усну домовленість. Знімає питання через рік.</span></div>
+    </div>
+  </div>
+
+  <div class="trans">
+    <span class="eyebrow">Перехід між частинами</span>
+    <p>«Все, камеру вимикаю. А тепер найцікавіше — тепер я хочу почути те, що на камеру зазвичай не кажуть.»</p>
+    <small>Далі йде та частина, заради якої все й затівалося. Попередити окремо: «Мені критика корисніша за компліменти, чесно. Якщо щось було погано або незрозуміло — скажи прямо, я на цьому вчуся.»</small>
+  </div>
+
+  <section>
+    <div class="sec-head">
+      <span class="eyebrow">Частина 2 · правила</span>
+      <h2>Сім правил, які важливіші за самі питання</h2>
+    </div>
+    <div class="rules">
+      <div class="rule"><b>Питати про минуле, не про майбутнє</b><span>Не «купив би ти супровід», а «що ти робив, коли застряг». Гіпотетична відповідь — сміття.</span></div>
+      <div class="rule"><b>Не підказувати формулювання</b><span>Не «тобі сподобалось, що все на практиці?», а «що тобі найбільше запам'яталось?».</span></div>
+      <div class="rule"><b>Говорить учень 80% часу</b><span>Пауза в п'ять секунд — найкращий інструмент. Саме після неї кажуть головне.</span></div>
+      <div class="rule"><b>Три «чому» поспіль</b><span>«Хотів працювати з дому» → чому? → чому це важливо? → а що було б, якби ні?</span></div>
+      <div class="rule"><b>Вимагати конкретику</b><span>Коли саме, скільки грошей, який модуль, покажи переписку, назви конкретне відео.</span></div>
+      <div class="rule"><b>Не захищати курс у відповідь на критику</b><span>Правильна реакція одна: «О, цікаво. Розкажи детальніше». Критика — найцінніше, що можна почути.</span></div>
+      <div class="rule"><b>Записувати точні слова</b><span>«Я вже не міг тих фур із вікна бачити» — це заголовок. «Хотів змінити професію» — це ніщо.</span></div>
+      <div class="rule" style="background:var(--ice);border-color:var(--sky)"><b>І нічого не продавати</b><span>Якщо учень сам питає про новий продукт: «давай я тобі напишу після, зараз мені важливо тебе послухати».</span></div>
+    </div>
+    <div class="forbid">
+      <b>Питання, які вб'ють усю розмову</b>
+      <ul>
+        <li>«Тобі ж сподобалось, правда?»</li>
+        <li>«Мій курс кращий, ніж у інших, так?»</li>
+        <li>«Ти б мене порадив?» — замість цього питання К49 про шкалу 0–10</li>
+        <li>Будь-яке питання, у якому вже є бажана відповідь</li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <span class="eyebrow">Частина 2 · 15:00 — 60:00</span>
+      <h2>Кастдев: 9 блоків, 60 питань</h2>
+      <p>Блоки 2, 3 і 4 частково повторюють те, що вже прозвучало на камеру. Це навмисно: на камері була коротка причесана версія, тут — та сама тема вглиб. Якщо відповідь звучить як на камері, перепитати: «а якщо чесно?».</p>
+    </div>
+
+    <div class="blocks">
+
+      <div class="blk">
+        <div class="blk-rail"><div class="tmm">Блок 1</div><span class="dur">3 хвилини</span></div>
+        <div class="blk-body">
+          <h3>Контекст</h3>
+          <p class="dest">Куди піде: <b>портрет сегмента, географія й вік для таргету</b></p>
+          <ol class="qs">
+            <li>Де ти зараз живеш і з ким?</li>
+            <li>Скільки тобі років, якщо не секрет?</li>
+            <li>Яка в тебе освіта? Чи мав ти колись справу з транспортом, документами, англійською?</li>
+            <li>Скільки вільного часу в тебе було на навчання? Робота, діти, щось іще?</li>
+          </ol>
+        </div>
+      </div>
+
+      <div class="blk">
+        <div class="blk-rail"><div class="tmm">Блок 2</div><span class="dur">10 хвилин</span></div>
+        <div class="blk-body">
+          <h3>Життя до курсу: тригер і біль</h3>
+          <p class="dest">Куди піде: <b>перший екран сайту, перші три секунди рілсів</b></p>
+          <div class="deep">Найважливіший блок. Саме звідси беруться заголовки. Не відпускати тему, поки не прозвучить конкретна сцена, а не загальні слова.</div>
+          <ol class="qs">
+            <li>Згадай момент, коли ти вперше подумав «треба щось міняти». Коли це було? Що саме тоді сталося?</li>
+            <li>Що саме тебе не влаштовувало?<span class="why">далі три «чому»: чому це було важливо? а що було б, якби нічого не змінилось?</span></li>
+            <li>Що було найгіршим у той період? Опиши конкретний день.</li>
+            <li>Ти з кимось про це говорив? З ким і якими словами?<span class="why">дослівні формулювання — золото</span></li>
+            <li>Які ще варіанти ти розглядав, крім логістики? Будівництво, IT, таргет, просто пошук роботи?<span class="why">це наші справжні конкуренти за його гроші</span></li>
+            <li>Що ти вже пробував ДО мене, щоб вирішити це питання?</li>
+            <li>Чому те, що ти пробував, не спрацювало?</li>
+          </ol>
+        </div>
+      </div>
+
+      <div class="blk">
+        <div class="blk-rail"><div class="tmm">Блок 3</div><span class="dur">8 хвилин</span></div>
+        <div class="blk-body">
+          <h3>Пошук: як знайшли і що дивилися</h3>
+          <p class="dest">Куди піде: <b>канали трафіку, хештеги, теми контенту</b></p>
+          <ol class="qs">
+            <li>Як ти мене знайшов? Точно: рілс, сторіс, реклама, хтось порадив?</li>
+            <li>Якими словами ти шукав? Що саме вбивав у пошук чи в інстаграм?<span class="why">це буквально хештеги, опис профілю й назви відео</span></li>
+            <li>Скільки часу минуло від «знайшов» до «написав»? Що ти робив у цей час?</li>
+            <li>Чи були сумніви, що я реальна, а не чергові курси? У чому саме вони були?</li>
+            <li>Які ще курси або людей ти дивився? Назви конкретно.</li>
+            <li>Що в них не сподобалось? Чому не пішов туди?</li>
+            <li>Ти радився з кимось? Що тобі сказали?</li>
+          </ol>
+        </div>
+      </div>
+
+      <div class="blk">
+        <div class="blk-rail"><div class="tmm">Блок 4</div><span class="dur">10 хвилин</span></div>
+        <div class="blk-body">
+          <h3>Точка вибору: чому я</h3>
+          <p class="dest">Куди піде: <b>оффер, прогрів, скрипт продажів у директі</b></p>
+          <ol class="qs">
+            <li>Що конкретно в моєму контенті зачепило? Згадай конкретне відео або сторіс.</li>
+            <li>Що було вирішальним? Якби цього не було — ти б купив?</li>
+            <li>Що ти спитав першим, коли написав у директ? Чому саме це тебе хвилювало?</li>
+            <li>Я відповідала голосовими. Як ти це сприйняв? Що це для тебе змінило?<span class="why">перевірка головної гіпотези: особисте аудіо як інструмент конверсії</span></li>
+            <li>Перерахуй усе, чого ти боявся перед оплатою. Навіть дрібниці.<span class="why">чекати повний список — це майбутній FAQ на сайті</span></li>
+            <li>Що зняло ці страхи?</li>
+            <li>Ти дивився мій сайт? Що там було незрозуміло або чого бракувало?</li>
+            <li>Ти бачив калькулятор доходу на сайті? Ти в ці цифри повірив?<span class="why">якщо не вірять — блок працює проти нас і його треба міняти</span></li>
+            <li>Якби треба було описати мене одним реченням — як би ти сказав?</li>
+          </ol>
+        </div>
+      </div>
+
+      <div class="blk">
+        <div class="blk-rail"><div class="tmm">Блок 5</div><span class="dur">5 хвилин</span></div>
+        <div class="blk-body">
+          <h3>Гроші</h3>
+          <p class="dest">Куди піде: <b>ціна, тарифи, робота із запереченням «дорого»</b></p>
+          <ol class="qs">
+            <li>Як вирішувалося питання з оплатою? Це були твої гроші, сімейні, відкладені?</li>
+            <li>Ціна тоді здалася якою — дорого, нормально, дешево? Чому саме так?</li>
+            <li>З чим ти порівнював цю суму?<span class="why">рамка порівняння важливіша за саму цифру</span></li>
+            <li>Чи була сума, вище якої ти б точно не пішов?</li>
+            <li>Скільки часу минуло від «хочу» до оплати? Що відбувалося в цей час?</li>
+            <li>Що мало б бути в курсі, щоб він коштував удвічі більше і ти б усе одно його взяв?<span class="why">єдине гіпотетичне питання у скрипті: сигнал слабкий, але показує, в чому для людини цінність</span></li>
+          </ol>
+        </div>
+      </div>
+
+      <div class="blk">
+        <div class="blk-rail"><div class="tmm">Блок 6</div><span class="dur">8 хвилин</span></div>
+        <div class="blk-body">
+          <h3>Навчання: що зайшло і що ні</h3>
+          <p class="dest">Куди піде: <b>доопрацювання курсу, що показувати в демо</b></p>
+          <ol class="qs">
+            <li>Який модуль виявився найкориснішим? А який найнуднішим?</li>
+            <li>Де ти завис? Що саме було незрозуміло?</li>
+            <li>Був момент, коли хотілося кинути? Що тоді сталося?</li>
+            <li>Що ти зробив одразу після якогось уроку — на практиці, не в теорії?</li>
+            <li>Домашні робив? Які пропустив і чому?</li>
+            <li>Чого ти очікував, але не отримав?</li>
+            <li>Скільки реально часу зайняв курс?<span class="why">на сайті обіцяно 5 тижнів — перевіряємо, чи це правда</span></li>
+            <li>Як ти зі мною зв'язувався, коли було питання? Чи вистачало зворотного зв'язку?</li>
+            <li>Що було зайвим, що можна було б викинути?</li>
+          </ol>
+        </div>
+      </div>
+
+      <div class="blk">
+        <div class="blk-rail"><div class="tmm">Блок 7</div><span class="dur">8 хвилин</span></div>
+        <div class="blk-body">
+          <h3>Результат</h3>
+          <p class="dest">Куди піде: <b>кейси, цифри на сайт, доказова база</b></p>
+          <ol class="qs">
+            <li>Що ти вмієш зараз, чого не вмів до курсу? По пунктах.</li>
+            <li>Скільки часу минуло від закінчення курсу до першого заробітку?</li>
+            <li>Скільки вийшло за перший місяць? Можна діапазоном. А зараз у середньому?<span class="why">якщо ніяково: «хоча б приблизно, мені це треба, щоб розуміти, чи реальні мої обіцянки»</span></li>
+            <li>Що змінилося в житті, крім грошей?</li>
+            <li>Що сказали вдома, коли ти почав працювати?</li>
+            <li>Як ти зараз відповідаєш на питання «ким ти працюєш»?</li>
+            <li>За шкалою від 0 до 10 — наскільки ймовірно, що ти порадиш курс знайомому? Чому саме ця цифра? Що треба було б, щоб була 10?<span class="why">головне тут не цифра, а пояснення</span></li>
+          </ol>
+          <div class="deep"><b>Для типу Б (ще не працює)</b> замість питань К44–К45 питаємо: що тебе зараз зупиняє почати? що саме не відбулося? і — що мало б статися цього тижня, щоб ти взяв перший вантаж?</div>
+        </div>
+      </div>
+
+      <div class="blk">
+        <div class="blk-rail"><div class="tmm">Блок 8</div><span class="dur">5 хвилин</span></div>
+        <div class="blk-body">
+          <h3>Чого не вистачило і що далі</h3>
+          <p class="dest">Куди піде: <b>другий продукт, допродажі, лінійка</b></p>
+          <ol class="qs">
+            <li>Чого критично бракувало ПІСЛЯ курсу?</li>
+            <li>Що ти робив, коли застряг уже в реальній роботі? До кого йшов?</li>
+            <li>Якби в мене було щось додаткове — що б ти взяв не думаючи?<span class="why">зачитати список і спитати про кожне: місяць супроводу / чат випускників / допомога з працевлаштуванням / розбір резюме / стажування на реальних вантажах / поглиблений модуль по біржах</span></li>
+            <li>За що з цього ти б заплатив окремо? Скільки це має коштувати, на твою думку?</li>
+            <li>Хто ще з твого оточення міг би піти на цей курс? Чому вони досі не пішли?</li>
+            <li>Що тобі заважає радити мене вголос?<span class="why">питання з подвійним дном: розкриває те, що соромляться сказати прямо</span></li>
+          </ol>
+        </div>
+      </div>
+
+      <div class="blk">
+        <div class="blk-rail"><div class="tmm">Блок 9</div><span class="dur">3 хвилини</span></div>
+        <div class="blk-body">
+          <h3>Дозволи і фінал</h3>
+          <p class="dest">Куди піде: <b>текстові відгуки на сайт, докази в сторіс</b></p>
+          <ol class="qs">
+            <li>Чи можу я використати твої слова текстом на сайті та в інстаграмі? У якому вигляді ок: ім'я і фото / тільки ім'я / анонімно?</li>
+            <li>Чи є в тебе скріни з бірж, переписок з клієнтами або перших замовлень, які можна показати — без даних клієнта, звісно?</li>
+            <li>Що я не спитала, а варто було?<span class="why">останнє питання часто дає найнесподіваніше</span></li>
+          </ol>
+          <div class="deep">Закриття: «Дуже дякую, це було реально корисно. Якщо щось згадаєш пізніше — пиши, мені все цікаво. І окремо дякую за чесність там, де було не дуже.»</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <span class="eyebrow">Після розмови</span>
+      <h2>Десять хвилин, без яких усе пропаде</h2>
+      <p>Одразу після дзвінка, поки не вивітрилось: виписати 3–5 дослівних цитат і одне головне спостереження. Через день залишиться тільки відчуття «добре поговорили».</p>
+    </div>
+    <div class="cols">
+      <div class="panel">
+        <h3>Таблиця: рядок = одна людина</h3>
+        <p class="fields">
+          <span>Ім'я</span><span>Тип А/Б</span><span>Вік</span><span>Країна</span><span>Ким працював</span><span>Тригер</span><span>Слова, якими шукав</span><span>Де знайшов</span><span>З ким порівнював</span><span>Вирішальний фактор</span><span>Страхи до оплати</span><span>Що зняло страх</span><span>Результат у цифрах</span><span>NPS + чому</span><span>Чого бракувало</span><span>Що купив би ще</span><span>Дозвіл на відгук</span>
+        </p>
+      </div>
+      <div class="panel">
+        <h3>Банк цитат</h3>
+        <p>Окрема вкладка. Дослівно, без причісування, з тегами:</p>
+        <div class="tags"><i>#біль</i><i>#страх</i><i>#мрія</i><i>#ворог</i><i>#результат</i><i>#фраза_в_заголовок</i></div>
+        <p style="margin-top:16px"><b style="color:var(--ink)">Правило відбору:</b> формулювання йде в маркетинг лише тоді, коли схоже прозвучало мінімум у трьох людей. Одна яскрава фраза — це виняток, а не сегмент.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <span class="eyebrow">Що змінюємо</span>
+      <h2>Від цитати — до конкретного блоку на сайті</h2>
+    </div>
+    <div class="tblwrap">
+      <table>
+        <thead><tr><th>Що знайшли в розмовах</th><th>Що з цим робимо</th></tr></thead>
+        <tbody>
+          <tr><td>Тригер, який повторився (блок 2)</td><td><b>Перший екран лендингу</b> і хук перших трьох секунд у рілсах</td></tr>
+          <tr><td>Слова, якими шукали (К13)</td><td><b>Хештеги, опис профілю, назви відео</b></td></tr>
+          <tr><td>Реальні типи людей (блоки 1–2)</td><td>Переписати чотири картки «Для кого курс» <b>їхніми словами</b> замість наших гіпотез</td></tr>
+          <tr><td>Страхи перед оплатою (К23)</td><td><b>Новий FAQ</b> на сайті плюс серія сторіс «а якщо я…»</td></tr>
+          <tr><td>Вирішальний фактор (К20)</td><td>Головний оффер і <b>порядок аргументів у директі</b></td></tr>
+          <tr><td>Цитати з блоку 9 і відео</td><td><b>Закрити три заглушки</b> в розділі відгуків на сайті</td></tr>
+          <tr><td>Цифри доходу (К45)</td><td>Підкріпити абстрактний <b>калькулятор реальними кейсами</b></td></tr>
+          <tr><td>З ким порівнювали (К16–К17)</td><td>Блок «Чому саме цей курс» — переписати їхніми формулюваннями</td></tr>
+          <tr><td>Відповіді на К52–К53</td><td><b>Що запускати другим продуктом</b> і за скільки</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <span class="eyebrow">Як покликати</span>
+      <h2>Шаблон запрошення</h2>
+      <p>Краще голосовим — це стиль Вероніки, який уже спрацював на продажах. Про зйомку попереджаємо одразу, інакше людина злякається камери на дзвінку.</p>
+    </div>
+    <div class="invite">
+      <div class="msg">
+        <p>«Привіт! Слухай, у мене до тебе прохання. Я зараз роблю велику роботу над курсом і хочу зрозуміти, як він реально працює для людей — не по відгуках, а по-чесному.</p>
+        <p>Можеш приділити мені годину на відеодзвінок? Перші хвилин п'ятнадцять запишемо короткий відгук на відео — я потім зроблю з нього ролик, там нічого складного, просто відповіси на мої питання. А далі просто поговоримо: як у тебе все було до курсу, під час і після. Мені особливо цінно почути, що було не так — я на цьому вчуся.</p>
+        <p>За це подарую тобі [бонус / консультацію на 20 хвилин].</p>
+        <p>Коли тобі зручно — цього тижня чи наступного?»</p>
+      </div>
+      <div class="note" style="margin-top:16px">Стимул обов'язковий. Година часу — це справжня послуга, і безкоштовно її просити не варто навіть у найлояльніших.</div>
+    </div>
+  </section>
+
+  <div class="final">
+    <span class="eyebrow">Перед кожним дзвінком</span>
+    <h2>Чекліст на 30 секунд</h2>
+    <ul>
+      <li><b>Таблиця відкрита</b> для нотаток</li>
+      <li><b>Запис увімкнено</b> — після того, як спитала дозвіл</li>
+      <li><b>Учень попереджений</b> про зйомку і сидить обличчям до вікна</li>
+      <li>Перед очима головне правило: <b>говорить він, не я</b></li>
+      <li><b>Не продавати, не захищатися, не підказувати</b> відповіді</li>
+      <li>Одразу після дзвінка — <b>10 хвилин на дослівні цитати</b></li>
+    </ul>
+  </div>
+
+  <footer>
+    <span>Veronika Logistics · сценарій розмови з учнями</span>
+    <span>Частина 1 — відео · Частина 2 — кастдев</span>
+  </footer>
+
+</div>
+
+</body>
+</html>
