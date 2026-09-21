@@ -117,3 +117,22 @@ export const STEPS = [
 
 export const TOTAL_STEPS = COURSE.modules.length * STEPS.length;
 export const moduleById = id => COURSE.modules.find(m => m.id === id);
+
+/* ============================================================
+   ТАРИФИ
+   self    — учениця вчиться сама, домашні відмічає для себе
+   support — домашні йдуть Вероніці на перевірку з коментарем
+   ============================================================ */
+export const PLANS = {
+  self: {
+    id: 'self', title: 'Самостійний', short: 'без перевірки домашніх',
+    feedback: false,
+    note: 'Домашні завдання ви виконуєте для себе — я їх не перевіряю. Захочете зворотний звʼязок — напишіть мені, тариф можна змінити.'
+  },
+  support: {
+    id: 'support', title: 'Зі зворотним звʼязком', short: 'з перевіркою домашніх',
+    feedback: true,
+    note: 'Надсилайте домашні — я читаю кожну роботу й пишу коментар.'
+  }
+};
+export const planOf = p => PLANS[p] || PLANS.support;

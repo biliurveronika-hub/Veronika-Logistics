@@ -150,6 +150,9 @@ export const API = {
       full_name: st.full_name || null,
       flow: st.flow || null,
       access_until: st.access_until || null,
+      plan: st.plan === 'self' ? 'self' : 'support',
+      active: st.active !== false,
+      note: st.note || null,
       is_admin: !!st.is_admin
     };
     if (IS_DEMO) {
@@ -161,6 +164,25 @@ export const API = {
     const s = await client();
     const { error } = await s.from('students').insert(row);
     if (error) throw new Error(error.code === '23505' ? 'Така пошта вже є в списку.' : error.message);
+  },
+
+  /* змінити тариф, строк доступу, імʼя, відкрити або закрити доступ */
+  async updateStudent(email, patch) {
+    const allowed = ['full_name', 'flow', 'access_until', 'plan', 'active', 'note'];
+    const row = {};
+    allowed.forEach(k => { if (k in patch) row[k] = patch[k]; });
+    if (!Object.keys(row).length) return;
+
+    if (IS_DEMO) {
+      const all = demoStudents();
+      const st = all.find(x => x.email === email);
+      if (st) Object.assign(st, row);
+      write(LS.students, all);
+      return;
+    }
+    const s = await client();
+    const { error } = await s.from('students').update(row).eq('email', email);
+    if (error) throw new Error(error.message);
   },
 
   async removeStudent(email) {

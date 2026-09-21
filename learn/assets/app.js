@@ -3,7 +3,7 @@
    ============================================================ */
 import { CONFIG } from './config.js';
 import { API } from './api.js';
-import { COURSE, STEPS, moduleById } from './course.js';
+import { COURSE, STEPS, moduleById, planOf } from './course.js';
 
 const view   = document.getElementById('view');
 const boot   = document.getElementById('boot');
@@ -25,6 +25,21 @@ const plural = (n, f) => {
 };
 const steps_w = n => plural(n, ['крок', 'кроки', 'кроків']);
 const mods_w  = n => plural(n, ['модуль', 'модулі', 'модулів']);
+
+/* ---------------- тариф і строк доступу ---------------- */
+const dateUA = d => new Date(d).toLocaleDateString('uk-UA', { day: '2-digit', month: '2-digit', year: 'numeric' });
+const days_w = n => plural(n, ['день', 'дні', 'днів']);
+
+function accessState(u) {
+  if (u.blocked)        return { ok: false, why: 'notlisted' };
+  if (u.active === false) return { ok: false, why: 'closed' };
+  if (u.access_until) {
+    const till = new Date(u.access_until + 'T23:59:59');
+    if (till < new Date()) return { ok: false, why: 'expired', till };
+    return { ok: true, till, days: Math.ceil((till - new Date()) / 86400000) };
+  }
+  return { ok: true };
+}
 
 /* кроки, які реально доступні в модулі */
 function steps(m) {
@@ -53,6 +68,7 @@ async function refresh() {
    ЕКРАН: ДАШБОРД
    ============================================================ */
 function renderHome() {
+  const acc = accessState(USER);
   const o = overall();
   const doneMods = COURSE.modules.filter(m => modStat(m).full).length;
   const hwSent = Object.keys(HW).length;
@@ -62,7 +78,13 @@ function renderHome() {
   view.innerHTML = `
   <section class="page">
     <div class="page-head">
-      <span class="label">${esc(USER.flow || 'Навчання')}</span>
+      <div class="head-chips">
+        <span class="label">${esc(USER.flow || 'Навчання')}</span>
+        <span class="chip"><i></i>${esc(planOf(USER.plan).title)} · ${esc(planOf(USER.plan).short)}</span>
+        ${acc.till
+          ? `<span class="chip${acc.days <= 7 ? ' soon' : ''}"><i></i>Доступ до ${dateUA(USER.access_until)}${acc.days <= 14 ? ` · ${acc.days} ${days_w(acc.days)}` : ''}</span>`
+          : '<span class="chip"><i></i>Доступ без обмежень</span>'}
+      </div>
       <h1>Вітаю, <em>${esc(firstName(USER))}</em></h1>
       <p class="lead">${o.pct === 0
         ? 'Почнімо з вступу — він короткий і пояснює, як влаштований курс.'
@@ -370,6 +392,28 @@ function toast(text, bad) {
 
 /* ---------------- домашнє завдання ---------------- */
 function hwBlock(m, hw) {
+  const plan = planOf(USER.plan);
+
+  /* тариф без перевірки — завдання для себе, без надсилання */
+  if (!plan.feedback) {
+    const done = stepDone(m, 'hw');
+    return `
+      <h3>Домашнє завдання</h3>
+      <div class="hw-state self">
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#7A5A22" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg></span>
+        <span>Тариф «${esc(plan.title)}» — ${esc(plan.note)}</span>
+      </div>
+      <div class="task">${nl2br(m.homework)}</div>
+      <label class="field">
+        <span>Місце для ваших нотаток</span>
+        <textarea id="hwSelfNote" placeholder="Можна писати відповідь тут — вона залишиться у цьому браузері…"></textarea>
+        <small>Це чернетка для себе. Вона не надсилається і зберігається лише на цьому пристрої.</small>
+      </label>
+      <button type="button" class="btn ${done ? 'btn-ghost' : 'btn-green'}" id="hwSelfBtn">
+        ${done ? 'Скасувати відмітку' : 'Позначити виконаним'}${done ? '' : ' ' + iconArr}
+      </button>`;
+  }
+
   const state = !hw ? '' : hw.status === 'reviewed'
     ? `<div class="hw-state reviewed"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#1E6B34" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg></span>Вероніка перевірила вашу роботу</div>`
     : `<div class="hw-state sent"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#244A5E" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span>Надіслано — чекаємо на перевірку</div>`;
@@ -399,6 +443,30 @@ function hwBlock(m, hw) {
 }
 
 function bindHwForm(m) {
+  /* тариф без перевірки: кнопка «виконано» + чернетка в браузері */
+  const selfBtn = document.getElementById('hwSelfBtn');
+  if (selfBtn) {
+    const noteKey = 'vl_note_' + USER.email + '_' + m.id;
+    const area = document.getElementById('hwSelfNote');
+    try { area.value = localStorage.getItem(noteKey) || ''; } catch (e) {}
+    let t = null;
+    area.addEventListener('input', () => {
+      clearTimeout(t);
+      t = setTimeout(() => { try { localStorage.setItem(noteKey, area.value); } catch (e) {} }, 500);
+    });
+    selfBtn.addEventListener('click', async () => {
+      const on = !stepDone(m, 'hw');
+      if (on) PROG[key(m, 'hw')] = true; else delete PROG[key(m, 'hw')];
+      selfBtn.className = 'btn ' + (on ? 'btn-ghost' : 'btn-green');
+      selfBtn.innerHTML = on ? 'Скасувати відмітку' : 'Позначити виконаним ' + iconArr;
+      if (syncCurrent) syncCurrent();
+      if (on) toast('Домашнє відмічено виконаним');
+      try { await API.setProgress(USER.email, key(m, 'hw'), on); }
+      catch (e) { toast('Не вдалося зберегти. Перевірте інтернет.', true); }
+    });
+    return;
+  }
+
   const form = document.getElementById('hwForm');
   if (!form) return;
   form.addEventListener('submit', async e => {
@@ -434,18 +502,24 @@ function renderHomework() {
     <div class="page-head">
       <span class="label">Домашні завдання</span>
       <h1>Ваші <em>роботи</em></h1>
-      <p class="lead">Надіслано ${sent} з ${COURSE.modules.length}. Вероніка перевіряє роботи вручну — коментар зʼявиться тут і всередині модуля.</p>
+      <p class="lead">${planOf(USER.plan).feedback
+        ? `Надіслано ${sent} з ${COURSE.modules.length}. Вероніка перевіряє роботи вручну — коментар зʼявиться тут і всередині модуля.`
+        : `Ваш тариф «${esc(planOf(USER.plan).title)}» — завдання ви виконуєте для себе. Відмічайте виконані, щоб бачити прогрес.`}</p>
     </div>
     <div class="hw-list">
       ${rows.map(({ m, hw }) => `
         <a class="hw-row" href="#/m/${m.id}">
           <span class="n">${esc(m.num)}</span>
           <span><b>${esc(m.title)}</b><p>${hw ? esc(hw.answer) : esc(m.homework)}</p></span>
-          ${hw
-            ? (hw.status === 'reviewed'
-              ? '<span class="chip done"><i></i>Перевірено</span>'
-              : '<span class="chip going"><i></i>На перевірці</span>')
-            : '<span class="chip"><i></i>Не надіслано</span>'}
+          ${planOf(USER.plan).feedback
+            ? (hw
+              ? (hw.status === 'reviewed'
+                ? '<span class="chip done"><i></i>Перевірено</span>'
+                : '<span class="chip going"><i></i>На перевірці</span>')
+              : '<span class="chip"><i></i>Не надіслано</span>')
+            : (PROG[m.id + ':hw']
+              ? '<span class="chip done"><i></i>Виконано</span>'
+              : '<span class="chip"><i></i>Не виконано</span>')}
         </a>`).join('')}
     </div>
   </section>`;
@@ -513,14 +587,37 @@ function route() {
 
   USER = await API.currentUser();
   if (!USER) { location.replace('index.html'); return; }
-  if (USER.blocked) {
+
+  const acc = accessState(USER);
+  if (!acc.ok) {
     boot.classList.add('hide');
+    document.querySelector('.menu').style.display = 'none';
+    const txt = {
+      notlisted: {
+        h: 'Доступ ще не відкрито',
+        p: `Ви увійшли як ${esc(USER.email)}, але цієї пошти немає в списку учениць.<br>Напишіть Вероніці — вона додасть вас.`
+      },
+      closed: {
+        h: 'Доступ призупинено',
+        p: 'Ваш доступ до кабінету тимчасово закрито.<br>Напишіть Вероніці, щоб зʼясувати деталі — ваш прогрес і домашні збережені.'
+      },
+      expired: {
+        h: 'Строк доступу завершився',
+        p: `Доступ до курсу діяв до ${acc.till ? esc(dateUA(USER.access_until)) : ''}.<br>Напишіть Вероніці, щоб продовжити — увесь ваш прогрес збережено.`
+      }
+    }[acc.why];
     view.innerHTML = `<section class="page"><div class="empty">
       <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg></div>
-      <h3>Доступ ще не відкрито</h3>
-      <p>Ви увійшли як ${esc(USER.email)}, але цієї пошти немає в списку учениць.<br>Напишіть Вероніці — вона додасть вас.</p>
-      <p style="margin-top:22px"><a href="index.html" class="btn-sm">Увійти іншою поштою</a></p>
+      <h3>${txt.h}</h3>
+      <p>${txt.p}</p>
+      <p style="margin-top:26px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
+        <a href="https://www.instagram.com/veronika_logistics/" target="_blank" rel="noopener" class="btn-sm">Написати Вероніці ↗</a>
+        <a href="index.html" class="btn-sm">Увійти іншою поштою</a>
+      </p>
     </div></section>`;
+    document.getElementById('exit').addEventListener('click', async () => {
+      await API.signOut(); location.replace('index.html');
+    });
     return;
   }
 

@@ -9,10 +9,21 @@ create table if not exists public.students (
   email        text primary key,
   full_name    text,
   flow         text,
-  access_until date,
+  access_until date,                                  -- порожньо = без обмежень
+  plan         text not null default 'support',       -- 'self' або 'support'
+  active       boolean not null default true,         -- зняти = закрити доступ, прогрес лишається
+  note         text,                                  -- нотатка для себе: оплата, звідки прийшла
   is_admin     boolean not null default false,
   created_at   timestamptz not null default now()
 );
+
+-- якщо таблиця вже існувала з минулого запуску — додаємо нові колонки
+alter table public.students add column if not exists plan   text    not null default 'support';
+alter table public.students add column if not exists active boolean not null default true;
+alter table public.students add column if not exists note   text;
+
+alter table public.students drop constraint if exists students_plan_check;
+alter table public.students add  constraint students_plan_check check (plan in ('self', 'support'));
 
 create table if not exists public.progress (
   id         bigserial primary key,
@@ -96,6 +107,6 @@ grant execute on function public.email_allowed(text) to anon, authenticated;
 -- ---------- 5. ПЕРШИЙ АДМІН ----------
 -- Замініть пошту на свою й виконайте. Це єдиний рядок, який додається руками.
 
-insert into public.students (email, full_name, flow, is_admin)
-values ('veronika@example.com', 'Вероніка', 'Викладач', true)
-on conflict (email) do update set is_admin = true;
+insert into public.students (email, full_name, flow, plan, is_admin)
+values ('veronika@example.com', 'Вероніка', 'Викладач', 'support', true)
+on conflict (email) do update set is_admin = true, active = true;

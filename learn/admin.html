@@ -59,7 +59,12 @@
           <label class="field"><span>Пошта *</span><input name="email" type="email" required placeholder="student@email.com"></label>
           <label class="field"><span>Імʼя та прізвище</span><input name="full_name" placeholder="Олена Ковальчук"></label>
           <label class="field"><span>Потік / група</span><input name="flow" placeholder="Потік 3"></label>
+          <label class="field"><span>Тариф</span><select name="plan">
+            <option value="support">Зі зворотним звʼязком — з перевіркою домашніх</option>
+            <option value="self">Самостійний — без перевірки домашніх</option>
+          </select></label>
           <label class="field"><span>Доступ до дати</span><input name="access_until" type="date"><small>Порожньо = без обмежень</small></label>
+          <label class="field"><span>Нотатка для себе</span><input name="note" placeholder="оплата, звідки прийшла…"></label>
           <button class="btn btn-green" type="submit" style="width:100%">Додати ученицю <span class="arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M7 17 17 7M8 7h9v9"/></svg></span></button>
         </form>
         <div class="copy-row">

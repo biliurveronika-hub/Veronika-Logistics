@@ -3,7 +3,7 @@
    ============================================================ */
 import { CONFIG } from './config.js';
 import { API } from './api.js';
-import { COURSE, STEPS, moduleById } from './course.js';
+import { COURSE, STEPS, moduleById, PLANS, planOf } from './course.js';
 
 const boot = document.getElementById('boot');
 const menu = document.getElementById('menu');
@@ -28,6 +28,18 @@ const dt = s => s ? new Date(s).toLocaleDateString('uk-UA', { day: '2-digit', mo
 const dtm = s => s ? new Date(s).toLocaleString('uk-UA', { day: '2-digit', month: '2-digit', hour: '2-digit', minute: '2-digit' }) : '—';
 
 /* ---------------- учениці ---------------- */
+const iso = d => d.toISOString().slice(0, 10);
+
+function accessChip(st) {
+  if (st.active === false) return '<span class="chip soon"><i></i>Призупинено</span>';
+  if (!st.access_until)    return '<span class="chip"><i></i>Без обмежень</span>';
+  const till = new Date(st.access_until + 'T23:59:59');
+  const left = Math.ceil((till - new Date()) / 86400000);
+  if (left < 0)   return '<span class="chip soon"><i></i>Завершився ' + dt(st.access_until) + '</span>';
+  if (left <= 14) return '<span class="chip going"><i></i>' + left + ' дн. · до ' + dt(st.access_until) + '</span>';
+  return '<span class="chip done"><i></i>до ' + dt(st.access_until) + '</span>';
+}
+
 function drawStudents() {
   const total = availableSteps();
   const byMail = {};
@@ -36,28 +48,111 @@ function drawStudents() {
   document.getElementById('cnt').innerHTML = `<i></i>${STUDENTS.length} у списку`;
 
   document.getElementById('stTbl').innerHTML = `
-    <thead><tr><th>Учениця</th><th>Потік</th><th style="min-width:150px">Прогрес</th><th>Доступ</th><th></th></tr></thead>
-    <tbody>${STUDENTS.map(s => {
-      const done = byMail[s.email] || 0;
+    <thead><tr><th>Учениця</th><th>Тариф</th><th style="min-width:140px">Прогрес</th><th>Доступ</th><th></th></tr></thead>
+    <tbody>${STUDENTS.map(st => {
+      const done = byMail[st.email] || 0;
       const pct = total ? Math.round(done / total * 100) : 0;
-      return `<tr>
-        <td><b>${esc(s.full_name || '—')}</b><small>${esc(s.email)}${s.is_admin ? ' · викладач' : ''}</small></td>
-        <td>${esc(s.flow || '—')}</td>
+      const pl = planOf(st.plan);
+      return `<tr class="st-row${st.active === false ? ' off' : ''}">
+        <td><b>${esc(st.full_name || '—')}</b><small>${esc(st.email)}${st.is_admin ? ' · викладач' : ''}${st.flow ? ' · ' + esc(st.flow) : ''}</small></td>
+        <td><span class="chip${pl.feedback ? ' going' : ''}"><i></i>${esc(pl.title)}</span></td>
         <td>
           <div class="bar${pct === 100 ? ' full' : ''}"><i style="width:${pct}%"></i></div>
           <small>${pct}% · ${done} з ${total} ${steps_w(total)}</small>
         </td>
-        <td>${s.access_until ? dt(s.access_until) : 'без обмежень'}<small>додано ${dt(s.created_at)}</small></td>
-        <td style="text-align:right">${s.is_admin ? '' : `<button class="btn-sm danger" data-del="${esc(s.email)}">Видалити</button>`}</td>
-      </tr>`;
+        <td>${accessChip(st)}<small>додано ${dt(st.created_at)}</small></td>
+        <td style="text-align:right">${st.is_admin ? '' : `<button class="btn-sm" data-edit="${esc(st.email)}">Змінити</button>`}</td>
+      </tr>
+      <tr class="st-edit" data-row="${esc(st.email)}" hidden><td colspan="5">
+        <form class="edit-form" data-email="${esc(st.email)}">
+          <div class="ef-grid">
+            <label class="field"><span>Імʼя та прізвище</span><input name="full_name" value="${esc(st.full_name || '')}"></label>
+            <label class="field"><span>Потік / група</span><input name="flow" value="${esc(st.flow || '')}"></label>
+            <label class="field"><span>Тариф</span><select name="plan">
+              ${Object.values(PLANS).map(pp => `<option value="${pp.id}"${st.plan === pp.id ? ' selected' : ''}>${pp.title} — ${pp.short}</option>`).join('')}
+            </select></label>
+            <label class="field"><span>Доступ до</span><input name="access_until" type="date" value="${esc(st.access_until || '')}"><small>Порожньо = без обмежень</small></label>
+          </div>
+          <label class="field"><span>Нотатка для себе</span><input name="note" value="${esc(st.note || '')}" placeholder="оплата, звідки прийшла…"></label>
+          <div class="ef-quick">
+            <span>Продовжити:</span>
+            <button type="button" class="btn-sm" data-add="30">+1 місяць</button>
+            <button type="button" class="btn-sm" data-add="90">+3 місяці</button>
+            <button type="button" class="btn-sm" data-add="180">+6 місяців</button>
+            <button type="button" class="btn-sm" data-add="0">Без обмежень</button>
+          </div>
+          <label class="choice ef-active">
+            <span><b>Доступ відкрито</b><small>Зняти — закрити кабінет, не видаляючи прогрес</small></span>
+            <input type="checkbox" name="active" ${st.active !== false ? 'checked' : ''}><i class="tg"></i>
+          </label>
+          <div class="ef-foot">
+            <button class="btn btn-green" type="submit">Зберегти <span class="arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M7 17 17 7M8 7h9v9"/></svg></span></button>
+            <button type="button" class="btn-sm" data-close>Закрити</button>
+            <button type="button" class="btn-sm danger" data-del="${esc(st.email)}">Видалити назавжди</button>
+          </div>
+        </form>
+      </td></tr>`;
     }).join('')}</tbody>`;
 
+  /* розгорнути / згорнути картку учениці */
+  document.querySelectorAll('[data-edit]').forEach(b => b.addEventListener('click', () => {
+    const row = document.querySelector('.st-edit[data-row="' + CSS.escape(b.dataset.edit) + '"]');
+    const open = row.hidden;
+    document.querySelectorAll('.st-edit').forEach(r => { r.hidden = true; });
+    document.querySelectorAll('[data-edit]').forEach(x => { x.textContent = 'Змінити'; });
+    row.hidden = !open;
+    if (open) b.textContent = 'Згорнути';
+  }));
+  document.querySelectorAll('[data-close]').forEach(b => b.addEventListener('click', () => {
+    b.closest('.st-edit').hidden = true;
+    document.querySelectorAll('[data-edit]').forEach(x => { x.textContent = 'Змінити'; });
+  }));
+
+  /* швидке продовження строку */
+  document.querySelectorAll('[data-add]').forEach(b => b.addEventListener('click', () => {
+    const f = b.closest('form');
+    const n = Number(b.dataset.add);
+    if (!n) { f.access_until.value = ''; return; }
+    const cur = f.access_until.value ? new Date(f.access_until.value) : null;
+    const base = (cur && cur > new Date()) ? cur : new Date();
+    base.setDate(base.getDate() + n);
+    f.access_until.value = iso(base);
+  }));
+
+  /* збереження змін */
+  document.querySelectorAll('.edit-form').forEach(f => f.addEventListener('submit', async e => {
+    e.preventDefault();
+    const btn = f.querySelector('button[type=submit]');
+    btn.disabled = true;
+    try {
+      await API.updateStudent(f.dataset.email, {
+        full_name: f.full_name.value.trim() || null,
+        flow: f.flow.value.trim() || null,
+        plan: f.plan.value,
+        access_until: f.access_until.value || null,
+        note: f.note.value.trim() || null,
+        active: f.active.checked
+      });
+      STUDENTS = await API.listStudents();
+      drawStudents();
+      toast('Збережено');
+    } catch (ex) { toast(ex.message, true); btn.disabled = false; }
+  }));
+
+  /* видалення назавжди */
   document.querySelectorAll('[data-del]').forEach(b => b.addEventListener('click', async () => {
     const email = b.dataset.del;
-    if (!confirm(`Прибрати ${email} зі списку? Учениця втратить доступ до кабінету.`)) return;
+    const warn = 'Видалити ' + email + ' назавжди?\n\n' +
+      'Разом з ученицею зникнуть її прогрес і домашні.\n' +
+      'Щоб просто закрити доступ — зніміть перемикач «Доступ відкрито».';
+    if (!confirm(warn)) return;
     b.disabled = true;
-    try { await API.removeStudent(email); STUDENTS = await API.listStudents(); drawStudents(); }
-    catch (e) { alert(e.message); b.disabled = false; }
+    try {
+      await API.removeStudent(email);
+      STUDENTS = await API.listStudents();
+      drawStudents();
+      toast('Ученицю видалено');
+    } catch (e) { toast(e.message, true); b.disabled = false; }
   }));
 }
 
@@ -102,6 +197,18 @@ function drawHomework() {
   }));
 }
 
+/* ---------------- спливаюче повідомлення ---------------- */
+let toastTimer = null;
+function toast(text, bad) {
+  let el = document.getElementById('toast');
+  if (!el) { el = document.createElement('div'); el.id = 'toast'; el.className = 'toast'; document.body.appendChild(el); }
+  el.textContent = text;
+  el.classList.toggle('bad', !!bad);
+  el.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => el.classList.remove('show'), 3000);
+}
+
 /* ---------------- старт ---------------- */
 (async function start() {
   if (API.isDemo) document.getElementById('demoBar').hidden = false;
@@ -142,6 +249,8 @@ function drawHomework() {
         email: form.email.value,
         full_name: form.full_name.value.trim(),
         flow: form.flow.value.trim(),
+        plan: form.plan.value,
+        note: form.note.value.trim(),
         access_until: form.access_until.value || null
       });
       form.reset();

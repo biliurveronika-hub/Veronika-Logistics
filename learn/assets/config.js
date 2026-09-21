@@ -26,8 +26,9 @@ export const CONFIG = {
 
   /* --- 4. Демо-доступи (працюють ЛИШЕ поки не заповнено Supabase) --- */
   DEMO_STUDENTS: [
-    { email: 'demo@veronika.pl',  full_name: 'Демо Учениця', flow: 'Потік 1', is_admin: false },
-    { email: 'veronika@veronika.pl', full_name: 'Вероніка',  flow: 'Викладач', is_admin: true  }
+    { email: 'demo@veronika.pl',      full_name: 'Демо Учениця',   flow: 'Потік 1', plan: 'support', active: true, is_admin: false },
+    { email: 'demo2@veronika.pl',     full_name: 'Демо Самостійна', flow: 'Потік 1', plan: 'self',    active: true, is_admin: false },
+    { email: 'veronika@veronika.pl',  full_name: 'Вероніка',        flow: 'Викладач', plan: 'support', active: true, is_admin: true  }
   ]
 };
 

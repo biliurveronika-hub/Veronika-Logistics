@@ -404,3 +404,31 @@ code.inline{background:var(--ice);border:1px solid var(--powder);border-radius:8
   .nav-lr{grid-template-columns:1fr}
   .nav-lr a.next{text-align:left}
 }
+
+/* ============================================================
+   ТАРИФИ І СТРОК ДОСТУПУ
+   ============================================================ */
+.head-chips{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.hw-state.self{background:#FFF6E6;color:#7A5A22;border:1px solid #F1DDB8;align-items:flex-start}
+.hw-state.self .ic{margin-top:-2px}
+.hw-state.self span:last-child{font-weight:500;line-height:1.5}
+
+/* картка редагування учениці в адмінці */
+.st-row.off td b,.st-row.off td .chip{opacity:.55}
+.st-edit > td{background:var(--paper);border-bottom:1px solid var(--line);padding:22px 14px 26px}
+.ef-grid{display:grid;grid-template-columns:1fr 1fr;gap:0 16px}
+.ef-quick{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:4px 0 18px}
+.ef-quick > span{font-size:13.5px;font-weight:600;color:var(--muted)}
+.ef-active{display:flex;justify-content:space-between;align-items:center;gap:14px;cursor:pointer;
+  border-top:1px solid var(--line);margin-top:6px;padding:16px 0}
+.ef-active input{position:absolute;opacity:0;pointer-events:none}
+.ef-active b{font-weight:600;font-size:15px}
+.ef-active small{display:block;color:var(--muted);font-size:12.5px;margin-top:2px}
+.ef-foot{display:flex;flex-wrap:wrap;gap:10px;align-items:center;padding-top:18px;border-top:1px solid var(--line)}
+.ef-foot .danger{margin-left:auto}
+@media (max-width:760px){
+  .ef-grid{grid-template-columns:1fr}
+  .st-edit > td{padding:18px 12px 22px}
+  .ef-foot .danger{margin-left:0;width:100%}
+  .ef-foot .btn{width:100%;justify-content:space-between}
+}
