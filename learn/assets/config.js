@@ -15,7 +15,7 @@ export const CONFIG = {
 
   /* --- 2. BUNNY.NET STREAM (відео) ---
      Video Library → дивіться номер бібліотеки в URL панелі Bunny.   */
-  BUNNY_LIBRARY_ID: '',
+  BUNNY_LIBRARY_ID: '758767',
 
   /* --- 3. Адреса сайту для листа-входу ---
      Найпростіше лишити порожнім — адреса визначиться сама.
