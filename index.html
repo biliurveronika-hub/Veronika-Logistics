@@ -724,7 +724,7 @@ footer{background:var(--forest-d);color:#A9BCCB;padding:90px 0 34px;border-radiu
 
 <!-- ============ LOADER ============ -->
 <div id="loader" aria-hidden="true">
-  <div class="ld-top"><span>Veronika Logistics</span><span class="ld-now"><i></i><span id="ldCity">LVIV</span></span></div>
+  <div class="ld-top"><span>Veronika Logistics</span><span class="ld-now"><i></i><span id="ldCity">WROCŁAW</span></span></div>
   <svg class="ld-map" viewBox="0 0 1000 380" id="ldMap">
     <defs>
       <mask id="mRoad" maskUnits="userSpaceOnUse"><path id="kRoad" d="M40 300 C170 300 200 190 330 190 S500 280 590 230" fill="none" stroke="#fff" stroke-width="30" stroke-linecap="round" pathLength="1" stroke-dasharray="1 1" stroke-dashoffset="1"/></mask>
@@ -746,7 +746,7 @@ footer{background:var(--forest-d);color:#A9BCCB;padding:90px 0 34px;border-radiu
     <!-- air -->
     <g mask="url(#mAir)"><path id="pAir" d="M750 222 Q840 60 960 50" fill="none" stroke="#3E6E91" stroke-width="2.5" stroke-dasharray="6 8" stroke-linecap="round"/></g>
     <!-- pins -->
-    <g class="pin" id="pin0"><circle cx="40" cy="300" r="9" fill="#34C759" stroke="#fff" stroke-width="3"/><text x="40" y="340" text-anchor="middle">LVIV</text></g>
+    <g class="pin" id="pin0"><circle cx="40" cy="300" r="9" fill="#34C759" stroke="#fff" stroke-width="3"/><text x="44" y="340" text-anchor="middle">WROCŁAW</text></g>
     <g class="pin" id="pin1"><circle cx="330" cy="190" r="8" fill="#fff" stroke="#14232E" stroke-width="3"/><text x="330" y="160" text-anchor="middle">BERLIN</text></g>
     <g class="pin" id="pin2"><circle cx="590" cy="230" r="8" fill="#fff" stroke="#14232E" stroke-width="3"/><text x="580" y="275" text-anchor="middle">CALAIS</text></g>
     <g class="pin" id="pin3"><circle cx="750" cy="222" r="8" fill="#fff" stroke="#14232E" stroke-width="3"/><text x="760" y="266" text-anchor="middle">DOVER</text></g>
@@ -859,7 +859,7 @@ footer{background:var(--forest-d);color:#A9BCCB;padding:90px 0 34px;border-radiu
       <span class="l1" id="wm1">Veronika</span>
       <span class="l2" id="wm2"><span class="ph" aria-hidden="true"></span><em>Logistics</em></span>
     </div>
-    <div class="wm-meta"><span>Road · Sea · Air</span><span>Твій гід у логістиці</span><span>Lviv — Europe</span></div>
+    <div class="wm-meta"><span>Road · Sea · Air</span><span>Твій гід у логістиці</span><span>Wrocław — Europe</span></div>
   </div>
 </div>
 
@@ -900,7 +900,7 @@ footer{background:var(--forest-d);color:#A9BCCB;padding:90px 0 34px;border-radiu
         <ol class="route">
           <li class="rv"><span class="yr">2018 — 2021</span><h3>Бакалавр міжнародної логістики</h3><p>Університет Марії Кюрі-Склодовської (UMCS), Люблін, Польща.</p></li>
           <li class="rv"><span class="yr">2021 — 2023</span><h3>Магістр логістики</h3><p>Магістратура в UMCS. Разом — п’ять років навчання логістики в Польщі.</p></li>
-          <li class="rv"><span class="yr">2023</span><h3>Логіст у польській компанії, Львів</h3><p>Тіри на 24 тонни: 5 машин, водії й клієнти одночасно — сама брала завантаження, складала маршрути, планувала заправки й сервіси.</p></li>
+          <li class="rv"><span class="yr">2023</span><h3>Логіст у польській транспортній компанії</h3><p>Тіри на 24 тонни: 5 машин, водії й клієнти одночасно — сама брала завантаження, складала маршрути, планувала заправки й сервіси.</p></li>
           <li class="rv"><span class="yr">Далі</span><h3>Диспетчер на 25 тірів → начальниця відділу</h3><p>25 водіїв на зв’язку, оптимізація маршрутів. Через пів року — керівниця відділу диспетчерів: 4–7 людей у підпорядкуванні.</p></li>
           <li class="rv"><span class="yr">2024 — зараз</span><h3>Працюю з дому, навчаю й консультую</h3><p>Власні перевізники з бусами, пошук вантажів під відсоток. У 2025 — сертифікат ZF SCALAR з управління автопарком у TX-Connect. Курс пройшли вже 6 потоків.</p></li>
         </ol>
@@ -996,7 +996,7 @@ footer{background:var(--forest-d);color:#A9BCCB;padding:90px 0 34px;border-radiu
     <div class="map-card rv">
       <div class="map-wrap" id="euMap"><div class="map-fallback">Завантажую карту Європи…</div></div>
       <div class="map-legend">
-        <span><i class="l-road"></i>Маршрут тіра Львів → Мілан</span>
+        <span><i class="l-road"></i>Маршрут тіра Вроцлав → Мілан</span>
         <span><i class="l-tun"></i>Тунель Фрежюс (Франція → Італія)</span>
         <span><i class="l-fer"></i>Пором Кале → Дувр</span>
         <span><i class="l-hl"></i>Країни маршруту</span>
@@ -1291,7 +1291,7 @@ footer{background:var(--forest-d);color:#A9BCCB;padding:90px 0 34px;border-radiu
   legs.forEach(l => l.len = l.p.getTotalLength());
   const pins = [0, 1, 2, 3, 4].map(i => document.getElementById('pin' + i));
   const pinAt = [0, .28, .56, .76, .98];
-  const cities = ['LVIV', 'BERLIN', 'CALAIS', 'DOVER', 'EUROPE'];
+  const cities = ['WROCŁAW', 'BERLIN', 'CALAIS', 'DOVER', 'EUROPE'];
   const cityEl = document.getElementById('ldCity'), kmEl = document.getElementById('ldKm');
   const TOTAL_KM = 2480, DUR = reduce ? 200 : 3400;
   const t0 = performance.now();
@@ -1618,17 +1618,17 @@ footer{background:var(--forest-d);color:#A9BCCB;padding:90px 0 34px;border-radiu
     mapEl.innerHTML = '';
     const W = mapEl.clientWidth, H = mapEl.clientHeight, mobile = W < 600;
     const countries = topojson.feature(world, world.objects.countries).features;
-    const frame = { type: 'MultiPoint', coordinates: mobile ? [[-2, 42.5], [25, 42.5], [25, 53.5], [-2, 53.5]] : [[-6, 42], [30, 42], [30, 55.5], [-6, 55.5]] };
+    const frame = { type: 'MultiPoint', coordinates: mobile ? [[-4, 43], [21, 43], [21, 53.5], [-4, 53.5]] : [[-8, 42.5], [24, 42.5], [24, 55.5], [-8, 55.5]] };
     const proj = d3.geoConicConformal().rotate([-12, 0]).parallels([40, 58]).fitExtent([[16, 16], [W - 16, H - 16]], frame);
     const path = d3.geoPath(proj);
-    const svg = d3.select(mapEl).append('svg').attr('viewBox', `0 0 ${W} ${H}`).attr('role', 'img').attr('aria-label', 'Маршрут Львів — Мілан на карті Європи');
+    const svg = d3.select(mapEl).append('svg').attr('viewBox', `0 0 ${W} ${H}`).attr('role', 'img').attr('aria-label', 'Маршрут Вроцлав — Мілан на карті Європи');
     svg.append('rect').attr('class', 'sea-bg').attr('width', W).attr('height', H);
-    const HL = new Set(['804', '616', '276', '250', '380']);
+    const HL = new Set(['616', '276', '250', '380']);
     svg.append('g').selectAll('path').data(countries).join('path').attr('class', d => 'ctry' + (HL.has(d.id) ? ' hl' : '')).attr('d', path);
-    const names = [['UKRAINE', 29, 49.2], ['POLAND', 19.3, 52.3], ['GERMANY', 10.2, 51.2], ['FRANCE', 2.4, 46.6], ['ITALY', 11.2, 43.9], ['UK', -1.6, 52.6]];
+    const names = [['POLAND', 19.3, 52.3], ['GERMANY', 10.2, 51.2], ['FRANCE', 2.4, 46.6], ['ITALY', 11.2, 43.9], ['UK', -1.6, 52.6]];
     svg.append('g').selectAll('text').data(names).join('text').attr('class', 'cname').attr('text-anchor', 'middle').attr('transform', d => `translate(${proj([d[1], d[2]])})`).text(d => d[0]);
     const P = c => proj(c);
-    const road1 = [[24.03, 49.84], [22, 50.04], [19.94, 50.06], [17.03, 51.11], [15, 51.5], [13.4, 52.52], [11, 52.2], [9.73, 52.37], [6.96, 50.94], [5.57, 50.63], [4.4, 49.5], [2.35, 48.86], [3.5, 47.3], [4.83, 45.76], [6.2, 45.5], [6.66, 45.2]];
+    const road1 = [[17.03, 51.11], [15.6, 51.4], [15, 51.5], [13.4, 52.52], [11, 52.2], [9.73, 52.37], [6.96, 50.94], [5.57, 50.63], [4.4, 49.5], [2.35, 48.86], [3.5, 47.3], [4.83, 45.76], [6.2, 45.5], [6.66, 45.2]];
     const tunnel = [[6.66, 45.2], [6.95, 45.1]];
     const road2 = [[6.95, 45.1], [7.68, 45.07], [8.6, 45.35], [9.19, 45.46]];
     const toCalais = [[2.35, 48.86], [2.3, 49.9], [1.86, 50.95]];
@@ -1643,7 +1643,7 @@ footer{background:var(--forest-d);color:#A9BCCB;padding:90px 0 34px;border-radiu
       const L = p.node().getTotalLength();
       p.attr('stroke-dasharray', L).attr('stroke-dashoffset', L).transition().delay(300 + i * 2200).duration(i === 0 ? 2200 : 700).ease(d3.easeCubicInOut).attr('stroke-dashoffset', 0);
     });
-    const cities = [['LVIV', 24.03, 49.84, 1, 'start'], ['KRAKÓW', 19.94, 50.06], ['BERLIN', 13.4, 52.52], ['KÖLN', 6.96, 50.94], ['PARIS', 2.35, 48.86], ['LYON', 4.83, 45.76], ['TORINO', 7.68, 45.07], ['MILANO', 9.19, 45.46, 1], ['CALAIS', 1.86, 50.95], ['DOVER', 1.31, 51.13]];
+    const cities = [['WROCŁAW', 17.03, 51.11, 1, 'start'], ['BERLIN', 13.4, 52.52], ['KÖLN', 6.96, 50.94], ['PARIS', 2.35, 48.86], ['LYON', 4.83, 45.76], ['TORINO', 7.68, 45.07], ['MILANO', 9.19, 45.46, 1], ['CALAIS', 1.86, 50.95], ['DOVER', 1.31, 51.13]];
     const cg = svg.append('g').selectAll('g').data(cities).join('g').attr('class', d => 'city' + (d[3] ? ' big' : '')).attr('transform', d => `translate(${P([d[1], d[2]])})`);
     cg.append('circle').attr('r', d => d[3] ? 6.5 : 4.5);
     cg.append('text').attr('x', d => d[0] === 'DOVER' ? -8 : 9).attr('y', d => d[0] === 'CALAIS' ? 16 : d[0] === 'TORINO' ? 16 : -8).attr('text-anchor', d => d[0] === 'DOVER' ? 'end' : 'start').text(d => d[0]);
