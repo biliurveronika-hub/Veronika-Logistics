@@ -10,6 +10,7 @@ const boot   = document.getElementById('boot');
 const menu   = document.getElementById('menu');
 
 let USER = null, PROG = {}, HW = {};
+let syncCurrent = null;   /* оновлення прогресу відкритого модуля */
 
 /* ---------------- утиліти ---------------- */
 const esc = s => String(s ?? '').replace(/[&<>"']/g, c =>
@@ -192,6 +193,20 @@ function renderModule(id) {
       <div>
         <div class="player">${player}</div>
 
+        ${m.video ? `
+        <div class="lesson-actions${stepDone(m, 'video') ? ' on' : ''}" id="lessonActions">
+          <div class="la-txt">
+            <b>${stepDone(m, 'video') ? 'Урок переглянуто' : 'Подивилися урок?'}</b>
+            <small>${stepDone(m, 'video')
+              ? 'Крок зараховано. Можна скасувати, якщо натиснули помилково.'
+              : 'Зарахується саме, коли додивитесь до кінця — або відмітьте вручну.'}</small>
+          </div>
+          <button type="button" class="btn ${stepDone(m, 'video') ? 'btn-ghost' : 'btn-green'}" id="markBtn">
+            ${stepDone(m, 'video') ? 'Скасувати' : 'Позначити переглянутим'}
+            ${stepDone(m, 'video') ? '' : iconArr}
+          </button>
+        </div>` : ''}
+
         <div class="tabs" id="tabs">
           <button class="on" data-pane="plan">План уроку</button>
           <button data-pane="deck">Презентація</button>
@@ -251,31 +266,83 @@ function renderModule(id) {
     view.querySelectorAll('.pane').forEach(p => p.classList.toggle('on', p.dataset.pane === b.dataset.pane));
   });
 
-  /* тумблери кроків */
-  view.querySelectorAll('.tg[data-step]').forEach(t => {
-    const toggle = async () => {
-      const on = !t.classList.contains('on');
+  /* єдине місце, де оновлюється все, що показує прогрес модуля */
+  function syncModuleUI() {
+    const ns = modStat(m);
+    const rb = view.querySelector('.ring b'), rs = view.querySelector('.ring span'), rc = view.querySelector('.ring .fgc');
+    if (rb) rb.textContent = ns.pct + '%';
+    if (rs) rs.textContent = `${ns.done} з ${ns.total} ${steps_w(ns.total)}`;
+    if (rc) rc.style.strokeDashoffset = String(201 - 201 * ns.pct / 100);
+
+    view.querySelectorAll('.tg[data-step]').forEach(t => {
+      const on = stepDone(m, t.dataset.step);
       t.classList.toggle('on', on);
       t.setAttribute('aria-checked', String(on));
-      PROG[key(m, t.dataset.step)] = on || undefined;
-      if (!on) delete PROG[key(m, t.dataset.step)];
-      await API.setProgress(USER.email, key(m, t.dataset.step), on);
-      const ns = modStat(m);
-      view.querySelector('.ring b').textContent = ns.pct + '%';
-      view.querySelector('.ring span').textContent = `${ns.done} з ${ns.total} ${steps_w(ns.total)}`;
-      const c = view.querySelector('.ring .fgc');
-      c.style.strokeDashoffset = String(201 - 201 * ns.pct / 100);
-    };
-    t.addEventListener('click', toggle);
-    t.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(); } });
+    });
+
+    const la = document.getElementById('lessonActions');
+    if (la) {
+      const on = stepDone(m, 'video');
+      la.classList.toggle('on', on);
+      la.querySelector('.la-txt b').textContent = on ? 'Урок переглянуто' : 'Подивилися урок?';
+      la.querySelector('.la-txt small').textContent = on
+        ? 'Крок зараховано. Можна скасувати, якщо натиснули помилково.'
+        : 'Зарахується саме, коли додивитесь до кінця — або відмітьте вручну.';
+      const b = document.getElementById('markBtn');
+      b.className = 'btn ' + (on ? 'btn-ghost' : 'btn-green');
+      b.innerHTML = on ? 'Скасувати' : 'Позначити переглянутим ' + iconArr;
+    }
+  }
+
+  async function setStep(stepKey, on) {
+    if (stepDone(m, stepKey) === on) return;
+    if (on) PROG[key(m, stepKey)] = true; else delete PROG[key(m, stepKey)];
+    syncModuleUI();
+    try { await API.setProgress(USER.email, key(m, stepKey), on); }
+    catch (e) {
+      if (on) delete PROG[key(m, stepKey)]; else PROG[key(m, stepKey)] = true;
+      syncModuleUI();
+      toast('Не вдалося зберегти прогрес. Перевірте інтернет.', true);
+    }
+  }
+
+  /* тумблери кроків у бічній панелі */
+  view.querySelectorAll('.tg[data-step]').forEach(t => {
+    const flip = () => setStep(t.dataset.step, !stepDone(m, t.dataset.step));
+    t.addEventListener('click', flip);
+    t.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); flip(); } });
   });
+
+  /* головна кнопка під відео */
+  syncCurrent = syncModuleUI;
+
+  const markBtn = document.getElementById('markBtn');
+  if (markBtn) markBtn.addEventListener('click', () => setStep('video', !stepDone(m, 'video')));
 
   /* відкриття презентації = крок зараховано */
   const deckLink = view.querySelector('.dl[data-step="deck"]');
-  if (deckLink) deckLink.addEventListener('click', () => {
-    const t = view.querySelector('.tg[data-step="deck"]');
-    if (t && !t.classList.contains('on')) t.click();
-  });
+  if (deckLink) deckLink.addEventListener('click', () => setStep('deck', true));
+
+  /* автозарахування: слухаємо плеєр Bunny через player.js */
+  const frame = view.querySelector('.player iframe');
+  if (frame && window.playerjs) {
+    try {
+      const pl = new window.playerjs.Player(frame);
+      let counted = false;
+      const count = () => {
+        if (counted || stepDone(m, 'video')) return;
+        counted = true;
+        setStep('video', true);
+        toast('Урок зараховано');
+      };
+      pl.on('ready', () => {
+        pl.on('timeupdate', d => {
+          if (d && d.duration > 0 && d.seconds / d.duration >= 0.85) count();
+        });
+        pl.on('ended', count);
+      });
+    } catch (e) { /* плеєр не відповів — лишається кнопка вручну */ }
+  }
 
   bindHwForm(m);
 }
@@ -283,6 +350,22 @@ function renderModule(id) {
 function ringSvg(pct) {
   const off = 201 - 201 * pct / 100;
   return `<svg viewBox="0 0 74 74"><circle class="bgc" cx="37" cy="37" r="32"/><circle class="fgc" cx="37" cy="37" r="32" stroke-dasharray="201" stroke-dashoffset="${off}"/></svg>`;
+}
+
+/* ---------------- спливаюче повідомлення ---------------- */
+let toastTimer = null;
+function toast(text, bad) {
+  let el = document.getElementById('toast');
+  if (!el) {
+    el = document.createElement('div');
+    el.id = 'toast'; el.className = 'toast';
+    document.body.appendChild(el);
+  }
+  el.textContent = text;
+  el.classList.toggle('bad', !!bad);
+  el.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => el.classList.remove('show'), 3200);
 }
 
 /* ---------------- домашнє завдання ---------------- */
@@ -329,12 +412,8 @@ function bindHwForm(m) {
       await API.submitHomework(USER.email, m.id, answer, form.link.value.trim());
       await refresh();
       ok.classList.add('show');
-      const t = document.querySelector('.tg[data-step="hw"]');
-      if (t) { t.classList.add('on'); t.setAttribute('aria-checked', 'true'); }
-      const ns = modStat(m);
-      document.querySelector('.ring b').textContent = ns.pct + '%';
-      document.querySelector('.ring span').textContent = `${ns.done} з ${ns.total} ${steps_w(ns.total)}`;
-      document.querySelector('.ring .fgc').style.strokeDashoffset = String(201 - 201 * ns.pct / 100);
+      if (syncCurrent) syncCurrent();
+      toast('Домашнє надіслано Вероніці');
       btn.textContent = 'Оновити відповідь';
     } catch (ex) {
       err.textContent = ex.message; err.classList.add('show');
@@ -419,6 +498,7 @@ function route() {
   menu.classList.remove('open');
   window.scrollTo(0, 0);
 
+  syncCurrent = null;
   if (h.startsWith('/m/')) return renderModule(h.slice(3));
   if (h === '/homework')  return renderHomework();
   if (h === '/materials') return renderMaterials();
