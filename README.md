@@ -7,15 +7,18 @@
 
 | Адреса | Файл | Що це |
 |---|---|---|
-| [/](https://ouranus4.github.io/Veronika-Logistics/) | `index.html` | лендинг курсу (раніше був у `sait/`) |
-| [/learn/](https://ouranus4.github.io/Veronika-Logistics/learn/) | `learn/` | кабінет учениці та адмінка |
-| [/propozytsiya/](https://ouranus4.github.io/Veronika-Logistics/propozytsiya/) | `propozytsiya/index.html` | комерційна пропозиція (раніше була на головній) |
-| [/platforma/](https://ouranus4.github.io/Veronika-Logistics/platforma/) | `platforma/index.html` | ранє демо платформи, вересень, із заглушками |
+| [/](https://veronika-logistics.com/) | `index.html` | лендинг курсу |
+| [/learn/](https://veronika-logistics.com/learn/) | `learn/` | кабінет учениці та адмінка |
+| [/propozytsiya/](https://veronika-logistics.com/propozytsiya/) | `propozytsiya/index.html` | комерційна пропозиція (раніше була на головній) |
+| [/platforma/](https://veronika-logistics.com/platforma/) | `platforma/index.html` | ранє демо платформи, вересень, із заглушками |
 
 `propozytsiya.html` у корені — той самий вміст пропозиції без обгортки
 `<html>/<head>`, для публікації як Artifact.
 
-Фото лендингу — у `img/` (раніше `sait/img/`).
+Фото лендингу — у `img/`.
+
+Сайт відкривається на власному домені **veronika-logistics.com** (файл `CNAME`).
+Стара адреса `ouranus4.github.io/Veronika-Logistics/` перенаправляє на нього.
 
 ## Навчальна платформа
 
