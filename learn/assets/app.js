@@ -202,7 +202,16 @@ function renderModule(id) {
     ? m.files.map(f => `<a class="dl" style="margin-top:12px" href="materials/files/${encodeURI(f.file)}" target="_blank" rel="noopener">
         <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 20 3 17V4l6 3 6-3 6 3v13l-6-3-6 3Z"/><path d="M9 7v13M15 4v13"/></svg></span>
         <span><b>${esc(f.title)}</b><small>${esc(f.note || 'Додатковий матеріал')}</small></span><span class="go">↗</span></a>`).join('')
-    : `<p class="muted" style="margin-top:14px">До цього модуля окремих файлів поки немає.</p>`;
+    : '';
+
+  const linksHtml = m.links && m.links.length
+    ? m.links.map(l => `<a class="dl" style="margin-top:12px" href="${esc(l.url)}" target="_blank" rel="noopener">
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7 0l3-3a5 5 0 0 0-7-7l-1 1"/><path d="M14 11a5 5 0 0 0-7 0l-3 3a5 5 0 0 0 7 7l1-1"/></svg></span>
+        <span><b>${esc(l.title)}</b><small>${esc(l.note || 'Посилання')}</small></span><span class="go">↗</span></a>`).join('')
+    : '';
+
+  const matHtml = (linksHtml + filesHtml)
+    || `<p class="muted" style="margin-top:14px">До цього модуля окремих матеріалів поки немає.</p>`;
 
   view.innerHTML = `
   <section class="page">
@@ -250,7 +259,7 @@ function renderModule(id) {
 
         <div class="pane" data-pane="hw"><div class="card" id="hwCard">${m.homework ? hwBlock(m, hw) : noHw()}</div></div>
 
-        <div class="pane" data-pane="files"><div class="card"><h3>Матеріали модуля</h3>${filesHtml}</div></div>
+        <div class="pane" data-pane="files"><div class="card"><h3>Матеріали модуля</h3><p style="margin-bottom:4px">Сайти, карти й точки, про які я говорю в уроці.</p>${matHtml}</div></div>
       </div>
 
       <aside class="side">
@@ -541,6 +550,7 @@ function renderHomework() {
 function renderMaterials() {
   const decks = COURSE.modules.filter(m => m.deck);
   const files = COURSE.modules.flatMap(m => (m.files || []).map(f => ({ ...f, m })));
+  const links = COURSE.modules.flatMap(m => (m.links || []).map(l => ({ ...l, m })));
 
   view.innerHTML = `
   <section class="page">
@@ -559,6 +569,15 @@ function renderMaterials() {
         : `<div class="empty" style="padding:40px 10px">
              <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div>
              <h3>Презентації готуються</h3><p>Зʼявляться тут одразу після завантаження.</p></div>`}
+    </div>
+
+    <div class="card">
+      <h3 style="margin-bottom:18px">Посилання й карти</h3>
+      ${links.length
+        ? links.map(l => `<a class="dl" style="margin-bottom:12px" href="${esc(l.url)}" target="_blank" rel="noopener">
+            <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7 0l3-3a5 5 0 0 0-7-7l-1 1"/><path d="M14 11a5 5 0 0 0-7 0l-3 3a5 5 0 0 0 7 7l1-1"/></svg></span>
+            <span><b>${esc(l.title)}</b><small>Модуль ${esc(l.m.num)} · ${esc(l.note || 'посилання')}</small></span><span class="go">↗</span></a>`).join('')
+        : `<p class="muted">Посилання зʼявляться разом з модулями.</p>`}
     </div>
 
     <div class="card">
