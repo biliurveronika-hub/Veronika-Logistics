@@ -104,9 +104,13 @@ $$;
 
 grant execute on function public.email_allowed(text) to anon, authenticated;
 
--- ---------- 5. ПЕРШИЙ АДМІН ----------
--- Замініть пошту на свою й виконайте. Це єдиний рядок, який додається руками.
+-- ---------- 5. АДМІНИ ----------
+-- ⚠️ ЄДИНЕ МІСЦЕ, ЯКЕ ТРЕБА ЗМІНИТИ РУКАМИ.
+-- Замініть пошти нижче на справжні — ТІ, якими будете заходити в кабінет.
+-- Пошта має збігатися до літери, інакше адмінка не відкриється.
+-- Другий рядок можна видалити, якщо адмін один.
 
-insert into public.students (email, full_name, flow, plan, is_admin)
-values ('veronika@example.com', 'Вероніка', 'Викладач', 'support', true)
+insert into public.students (email, full_name, flow, plan, is_admin) values
+  ('ЗАМІНІТЬ-НА-ПОШТУ-ВЕРОНІКИ', 'Вероніка', 'Викладач', 'support', true),
+  ('ЗАМІНІТЬ-НА-ПОШТУ-ОЛЬГИ',   'Ольга',    'Адмін',    'support', true)
 on conflict (email) do update set is_admin = true, active = true;
