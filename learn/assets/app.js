@@ -615,7 +615,15 @@ function route() {
   if (API.isDemo) document.getElementById('demoBar').hidden = false;
 
   USER = await API.currentUser();
-  if (!USER) { location.replace('index.html'); return; }
+  if (!USER) {
+    /* передаємо причину на сторінку входу, щоб вона не мовчала */
+    const q = new URLSearchParams(location.hash.slice(1));
+    const w = q.get('error_description') || q.get('error')
+           || new URLSearchParams(location.search).get('error_description');
+    try { sessionStorage.setItem('vl_auth_error', w || 'link'); } catch (e) {}
+    location.replace('index.html');
+    return;
+  }
 
   const acc = accessState(USER);
   if (!acc.ok) {

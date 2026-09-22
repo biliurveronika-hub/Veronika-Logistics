@@ -18,7 +18,13 @@ let sb = null;
 async function client() {
   if (sb) return sb;
   const { createClient } = await import('https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm');
-  sb = createClient(CONFIG.SUPABASE_URL, CONFIG.SUPABASE_ANON_KEY);
+  /* implicit, а не pkce: посилання з листа має спрацювати в будь-якому
+     браузері, а не лише в тому, де його замовляли. Учениця відкриває пошту
+     на телефоні — лист відкривається у вбудованому браузері поштового
+     застосунку, і pkce там ламається. */
+  sb = createClient(CONFIG.SUPABASE_URL, CONFIG.SUPABASE_ANON_KEY, {
+    auth: { flowType: 'implicit', detectSessionInUrl: true, persistSession: true, autoRefreshToken: true }
+  });
   return sb;
 }
 

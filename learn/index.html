@@ -82,6 +82,18 @@ const btn  = document.getElementById('submitBtn');
 
 if (API.isDemo) document.getElementById('demoNote').hidden = false;
 
+/* прийшли з app.html без сесії — пояснюємо, що сталося */
+try {
+  const why = sessionStorage.getItem('vl_auth_error');
+  if (why) {
+    sessionStorage.removeItem('vl_auth_error');
+    err.textContent = why === 'link'
+      ? 'Посилання не спрацювало: воно діє одну годину й лише один раз. Введіть пошту ще раз — надішлемо нове.'
+      : why;
+    err.classList.add('show');
+  }
+} catch (e) {}
+
 /* вже увійшли — одразу в кабінет */
 API.currentUser().then(u => { if (u && !u.blocked) location.replace('app.html'); });
 
