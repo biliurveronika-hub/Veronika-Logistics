@@ -10,8 +10,8 @@ export const CONFIG = {
      Візьміть у Supabase → Project Settings → API
      Поки поля порожні — платформа працює в ДЕМО-режимі
      (дані зберігаються тільки в браузері, вхід без пошти).          */
-  SUPABASE_URL: '',
-  SUPABASE_ANON_KEY: '',
+  SUPABASE_URL: 'https://mhswzmirnrgivvogmobo.supabase.co',
+  SUPABASE_ANON_KEY: 'sb_publishable_2L6iqnL9nV8HUL9qbwZ9UA_uYUW_d-0',
 
   /* --- 2. BUNNY.NET STREAM (відео) ---
      Video Library → дивіться номер бібліотеки в URL панелі Bunny.   */
