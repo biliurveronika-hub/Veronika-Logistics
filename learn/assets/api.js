@@ -70,6 +70,44 @@ export const API = {
     return { demo: false };
   },
 
+  /* вхід за паролем — якщо учениця його вже створила */
+  async signInWithPassword(email, password) {
+    email = String(email || '').trim().toLowerCase();
+
+    if (IS_DEMO) {
+      const st = demoStudents().find(s => s.email.toLowerCase() === email);
+      if (!st) throw new Error('Цієї пошти немає в списку учениць.');
+      write(LS.session, st);
+      return { demo: true };
+    }
+
+    const s = await client();
+    const { error } = await s.auth.signInWithPassword({ email, password });
+    if (error) {
+      throw new Error(/credential/i.test(error.message)
+        ? 'Пошта або пароль не підходять. Якщо пароль ще не створений — лишіть поле порожнім, і ми надішлемо посилання.'
+        : error.message);
+    }
+    return { demo: false };
+  },
+
+  /* створити або змінити пароль (вже всередині кабінету) */
+  async setPassword(password) {
+    if (IS_DEMO) return true;
+    const s = await client();
+    const { error } = await s.auth.updateUser({ password, data: { has_password: true } });
+    if (error) throw new Error(error.message);
+    return true;
+  },
+
+  async hasPassword() {
+    if (IS_DEMO) return true;
+    const s = await client();
+    const { data: { session } } = await s.auth.getSession();
+    return !!(session && session.user && session.user.user_metadata
+              && session.user.user_metadata.has_password);
+  },
+
   async currentUser() {
     if (IS_DEMO) return read(LS.session, null);
     const s = await client();

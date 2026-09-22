@@ -37,7 +37,7 @@
       <form id="loginForm" novalidate>
         <span class="label">Вхід</span>
         <h1>Раді бачити <em>знову</em></h1>
-        <p class="lead" id="leadTxt">Введіть пошту, на яку Вероніка відкрила вам доступ, — ми надішлемо посилання для входу. Пароль не потрібен.</p>
+        <p class="lead" id="leadTxt">Введіть пошту, на яку Вероніка відкрила вам доступ. Є пароль — вводьте його. Немає — лишіть поле порожнім, і ми надішлемо посилання для входу.</p>
 
         <div class="msg err" id="err"></div>
 
@@ -46,8 +46,13 @@
           <input type="email" name="email" id="email" required autocomplete="email" placeholder="your@email.com" autofocus>
         </label>
 
+        <label class="field">
+          <span>Пароль <small style="text-transform:none;letter-spacing:0;font-weight:500;opacity:.7">— якщо ви його вже створили</small></span>
+          <input type="password" name="password" id="password" autocomplete="current-password" placeholder="Немає пароля? Лишіть порожнім">
+        </label>
+
         <button class="btn btn-green" type="submit" style="width:100%" id="submitBtn">
-          Надіслати посилання
+          Увійти
           <span class="arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M7 17 17 7M8 7h9v9"/></svg></span>
         </button>
 
@@ -108,7 +113,14 @@ form.addEventListener('submit', async e => {
   err.classList.remove('show');
   btn.disabled = true;
   const email = document.getElementById('email').value;
+  const pwd   = document.getElementById('password').value.trim();
   try {
+    /* пароль введено — заходимо одразу, без пошти */
+    if (pwd) {
+      await API.signInWithPassword(email, pwd);
+      location.href = 'app.html';
+      return;
+    }
     const res = await API.sendMagicLink(email);
     if (res.demo) { location.href = 'app.html'; return; }
     document.getElementById('sentMail').textContent = email.trim().toLowerCase();

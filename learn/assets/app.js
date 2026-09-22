@@ -131,6 +131,17 @@ function renderHome() {
       <span class="btn btn-green">Відкрити ${iconArr}</span>
     </a>
 
+    <div class="pwd-card" id="pwdCard" hidden>
+      <div class="pwd-txt">
+        <b id="pwdTitle">Створіть пароль</b>
+        <small id="pwdNote">Щоб наступного разу заходити одразу, не чекаючи листа на пошту.</small>
+      </div>
+      <form class="pwd-form" id="pwdForm">
+        <input type="password" id="pwdInput" minlength="6" required autocomplete="new-password" placeholder="Мінімум 6 символів">
+        <button class="btn btn-green" type="submit">Зберегти</button>
+      </form>
+    </div>
+
     <div class="sec-head">
       <h2>Програма <em>курсу</em></h2>
       <span class="chip"><i></i>${COURSE.modules.length} ${mods_w(COURSE.modules.length)} · у своєму темпі</span>
@@ -139,11 +150,47 @@ function renderHome() {
     <div class="mods">${COURSE.modules.map(cardMod).join('')}</div>
   </section>`;
 
+  bindPassword();
+
   requestAnimationFrame(() => {
     const f = document.getElementById('roadFill'), t = document.getElementById('roadTruck');
     if (f) f.style.width = o.pct + '%';
     if (t) { t.style.left = o.pct + '%'; t.style.transform = 'translateX(-' + o.pct + '%)'; }
     document.querySelectorAll('.mini i').forEach(el => { el.style.width = el.dataset.w + '%'; });
+  });
+}
+
+/* картка створення пароля — зʼявляється, поки пароля немає */
+async function bindPassword() {
+  const card = document.getElementById('pwdCard');
+  if (!card) return;
+
+  let has = false;
+  try { has = await API.hasPassword(); } catch (e) { return; }
+
+  card.hidden = false;
+  if (has) {
+    document.getElementById('pwdTitle').textContent = 'Змінити пароль';
+    document.getElementById('pwdNote').textContent  = 'Пароль уже створений. Тут можна поставити новий.';
+  }
+
+  document.getElementById('pwdForm').addEventListener('submit', async e => {
+    e.preventDefault();
+    const input = document.getElementById('pwdInput');
+    const btn = e.target.querySelector('button');
+    const val = input.value.trim();
+    if (val.length < 6) { toast('Пароль має бути щонайменше 6 символів', true); return; }
+    btn.disabled = true;
+    try {
+      await API.setPassword(val);
+      input.value = '';
+      toast('Пароль збережено. Наступного разу входьте з ним');
+      document.getElementById('pwdTitle').textContent = 'Змінити пароль';
+      document.getElementById('pwdNote').textContent  = 'Пароль уже створений. Тут можна поставити новий.';
+    } catch (ex) {
+      toast(ex.message || 'Не вдалося зберегти пароль', true);
+    }
+    btn.disabled = false;
   });
 }
 

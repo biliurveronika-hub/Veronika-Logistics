@@ -432,3 +432,25 @@ code.inline{background:var(--ice);border:1px solid var(--powder);border-radius:8
   .ef-foot .danger{margin-left:0;width:100%}
   .ef-foot .btn{width:100%;justify-content:space-between}
 }
+
+
+/* ---- картка створення пароля ---- */
+.pwd-card{
+  display:flex;align-items:center;justify-content:space-between;gap:22px;flex-wrap:wrap;
+  margin:28px 0 0;padding:22px 26px;border-radius:var(--r-lg,28px);
+  background:#fff;border:1px solid var(--line,#E4E9ED);
+}
+.pwd-txt{min-width:0}
+.pwd-txt b{display:block;font-size:17px;color:var(--forest-d,#17313F)}
+.pwd-txt small{display:block;margin-top:4px;font-size:14px;color:#6B7A83}
+.pwd-form{display:flex;gap:10px;flex-wrap:wrap}
+.pwd-form input{
+  min-width:220px;padding:13px 16px;border-radius:999px;
+  border:1px solid var(--line,#E4E9ED);background:#F7F9FA;font:inherit;font-size:15px;color:inherit;
+}
+.pwd-form input:focus{outline:none;border-color:var(--blue,#3E6E91);background:#fff}
+@media (max-width:620px){
+  .pwd-card{flex-direction:column;align-items:stretch}
+  .pwd-form{flex-direction:column}
+  .pwd-form input,.pwd-form .btn{width:100%}
+}
