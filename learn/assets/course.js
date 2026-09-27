@@ -47,6 +47,9 @@ export const COURSE = {
       video: '334085d6-f925-4dd2-93df-fd47453b0b9d', duration: '10 хв',
       deck: 'modul-02-typy-mashyn.pdf',
       homework: '1. Повторити основні типи транспорту: Plandeka Standard, Mega, SOLO, BUS.\n\n2. Визначити, який транспорт підійде для перевезення:\n· 33 EPAL палет;\n· невеликої партії товару (до 1 тонни);\n· товару висотою 2,85 м;\n· середньої партії вантажу.\n\n3. Пояснити свій вибір.',
+            links: [
+        { title: 'SimpleLoading — розрахунок завантаження', url: 'https://old.simpleloading.com/', note: 'Скільки палет поміщається в пландеку — рахує за розмірами й вагою' }
+      ],
       files: []
     },
     {
