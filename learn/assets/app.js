@@ -257,7 +257,21 @@ function renderModule(id) {
         <span><b>${esc(l.title)}</b><small>${esc(l.note || 'Посилання')}</small></span><span class="go">↗</span></a>`).join('')
     : '';
 
-  const matHtml = (linksHtml + filesHtml)
+  const mediaHtml = m.media && m.media.length
+    ? `<div class="mgrid">` + m.media.map(x => x.kind === 'video'
+        ? `<figure class="mfig">
+             <video src="materials/files/${encodeURI(x.file)}" controls preload="metadata" playsinline></video>
+             <figcaption><b>${esc(x.title)}</b><small>${esc(x.note || '')}</small></figcaption>
+           </figure>`
+        : `<figure class="mfig">
+             <a href="materials/files/${encodeURI(x.file)}" target="_blank" rel="noopener">
+               <img src="materials/files/${encodeURI(x.file)}" alt="${esc(x.title)}" loading="lazy">
+             </a>
+             <figcaption><b>${esc(x.title)}</b><small>${esc(x.note || '')}</small></figcaption>
+           </figure>`).join('') + `</div>`
+    : '';
+
+  const matHtml = (mediaHtml + linksHtml + filesHtml)
     || `<p class="muted" style="margin-top:14px">До цього модуля окремих матеріалів поки немає.</p>`;
 
   view.innerHTML = `
@@ -306,7 +320,7 @@ function renderModule(id) {
 
         <div class="pane" data-pane="hw"><div class="card" id="hwCard">${m.homework ? hwBlock(m, hw) : noHw()}</div></div>
 
-        <div class="pane" data-pane="files"><div class="card"><h3>Матеріали модуля</h3><p style="margin-bottom:4px">Сайти, карти й точки, про які я говорю в уроці.</p>${matHtml}</div></div>
+        <div class="pane" data-pane="files"><div class="card"><h3>Матеріали модуля</h3><p style="margin-bottom:4px">Фото, відео й сайти, про які я говорю в уроці.</p>${matHtml}</div></div>
       </div>
 
       <aside class="side">

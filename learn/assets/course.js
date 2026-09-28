@@ -50,6 +50,14 @@ export const COURSE = {
             links: [
         { title: 'SimpleLoading — розрахунок завантаження', url: 'https://old.simpleloading.com/', note: 'Скільки палет поміщається в пландеку — рахує за розмірами й вагою' }
       ],
+            media: [
+        { kind: 'photo', file: 'bus-35t-zavantazhennya-1.jpg', title: 'Бус 3,5 т — вигляд збоку',
+          note: 'Ящик закріплений трьома ременями, зверху бічні планки в пазах' },
+        { kind: 'photo', file: 'bus-35t-zavantazhennya-2.jpg', title: 'Бус 3,5 т — вигляд ззаду',
+          note: 'Європалети EPAL у два ряди, рохля всередині, ремені навхрест' },
+        { kind: 'video', file: 'bus-35t-zavantazhennya.mp4', title: 'Як завантажують бус 3,5 т',
+          note: 'Коротке відео з реального завантаження' }
+      ],
       files: []
     },
     {
