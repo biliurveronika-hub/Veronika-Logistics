@@ -271,7 +271,16 @@ function renderModule(id) {
            </figure>`).join('') + `</div>`
     : '';
 
-  const matHtml = (mediaHtml + linksHtml + filesHtml)
+  const notesHtml = m.notes && m.notes.length
+    ? m.notes.map(n => `<div class="note-card">
+        <b>${esc(n.title)}</b>
+        ${n.text ? `<p>${esc(n.text)}</p>` : ''}
+        ${n.list && n.list.length ? `<ul>${n.list.map(x => `<li>${esc(x)}</li>`).join('')}</ul>` : ''}
+        ${n.warn ? `<p class="note-warn">${esc(n.warn)}</p>` : ''}
+      </div>`).join('')
+    : '';
+
+  const matHtml = (notesHtml + mediaHtml + linksHtml + filesHtml)
     || `<p class="muted" style="margin-top:14px">До цього модуля окремих матеріалів поки немає.</p>`;
 
   view.innerHTML = `
@@ -320,7 +329,7 @@ function renderModule(id) {
 
         <div class="pane" data-pane="hw"><div class="card" id="hwCard">${m.homework ? hwBlock(m, hw) : noHw()}</div></div>
 
-        <div class="pane" data-pane="files"><div class="card"><h3>Матеріали модуля</h3><p style="margin-bottom:4px">Фото, відео й сайти, про які я говорю в уроці.</p>${matHtml}</div></div>
+        <div class="pane" data-pane="files"><div class="card"><h3>Матеріали модуля</h3><p style="margin-bottom:4px">Фото, відео, списки й сайти, про які я говорю в уроці.</p>${matHtml}</div></div>
       </div>
 
       <aside class="side">

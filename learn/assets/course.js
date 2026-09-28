@@ -152,7 +152,34 @@ export const COURSE = {
       video: '', duration: '',
       deck: '',
       homework: 'Пройдіть увесь ланцюг на одному вантажі: знайдіть його на біржі, напишіть текст першого повідомлення клієнту, заповніть zlecenie і CMR за зразком з уроку. Надішліть мені заповнені документи.',
-      files: []
+            notes: [
+        {
+          title: 'Перевірені фірми на Trans',
+          text: 'Невеликий список фірм, які пропонують завантаження на Trans. Вони перевірені — від них можна брати вантажі.',
+          list: [
+          'BGM Express Logistik GmbH',
+          'P&R Logistics Magdalena Rychlewska-Palot',
+          'Spedycja Tokio Trans Paweł Bykowski',
+          'Lunar Transport & Spedition Sp. z o.o.',
+          'Abakus Logistics Sp. z o.o.',
+          'Done Deliveries Sp. z o.o.',
+          'Grupa Transportowa Sp. z o.o. o/Warszawa',
+          '3ms Mariusz Ciemiński Transport i Spedycja',
+          'Desmond Tomasz Chojnacki',
+          'Mako TSL FTL Sp. z o.o.',
+          'S&M LOGISTIC BARTNICZAK',
+          'WEN ELWIRA MUSZYŃ',
+          'H2 LOGISTICS SP. Z O.O.'
+          ],
+          warn: 'Список актуальний станом на 28.09.2026. Якщо від цієї дати минуло більше ніж три місяці — перевіряйте фірму самі, перш ніж брати вантаж: коли вона зареєструвалася на Trans і які має відгуки.'
+        }
+      ],
+      files: [
+        { file: 'dokument-zlecenie-przewozu-pryklad.pdf', title: 'Zlecenie przewozu — польське замовлення',
+          note: 'Справжній документ. Ставка 500 €, оплата PRZELEW 60, Франкфурт-на-Одері → Дуйсбург' },
+        { file: 'dokument-transportauftrag-pryklad.pdf', title: 'Transportauftrag — німецьке замовлення',
+          note: 'Той самий перевізник, інший експедитор. Фрахт 500 €, Бад-Бентгайм → Берлін, оплата 30 днів або 3% сконто' }
+      ]
     },
     {
       id: '08', num: '08',

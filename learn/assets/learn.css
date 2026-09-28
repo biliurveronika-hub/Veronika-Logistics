@@ -467,3 +467,22 @@ code.inline{background:var(--ice);border:1px solid var(--powder);border-radius:8
 .mfig figcaption{padding:14px 16px 16px}
 .mfig figcaption b{display:block;font-size:15px;color:var(--forest-d,#17313F)}
 .mfig figcaption small{display:block;margin-top:3px;font-size:13.5px;line-height:1.45;color:#6B7A83}
+
+
+/* ---- текстова нотатка в матеріалах ---- */
+.note-card{margin:14px 0 4px;padding:22px 24px;border-radius:24px;background:#F7F9FA;border:1px solid var(--line,#E4E9ED)}
+.note-card > b{display:block;font-size:17px;color:var(--forest-d,#17313F)}
+.note-card > p{margin:8px 0 0;font-size:15px;line-height:1.6;color:#4A5960}
+.note-card ul{margin:14px 0 0;padding:0;list-style:none;display:grid;gap:8px}
+.note-card ul li{
+  position:relative;padding:10px 14px 10px 38px;border-radius:14px;background:#fff;
+  border:1px solid var(--line,#E4E9ED);font-size:14.5px;line-height:1.4;color:var(--forest-d,#17313F);
+}
+.note-card ul li::before{
+  content:'';position:absolute;left:16px;top:50%;width:7px;height:7px;margin-top:-3.5px;
+  border-radius:50%;background:var(--ios,#34C759);
+}
+.note-warn{
+  margin-top:16px !important;padding:14px 16px;border-radius:14px;
+  background:#FFF6E6;border:1px solid #F0DCB4;color:#6B5320 !important;font-size:14px !important;
+}
