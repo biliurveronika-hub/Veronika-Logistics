@@ -584,6 +584,56 @@ input[type=range]::-moz-range-thumb{width:28px;height:28px;border-radius:50%;bac
 .who small{color:var(--muted)}
 .ph{align-self:flex-start;background:#EAF1F7;color:var(--blue);padding:3px 9px;border-radius:6px;font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase}
 
+/* ---------- student story ---------- */
+.story{display:grid;grid-template-columns:.95fr 1.05fr;gap:0;background:#fff;border-radius:var(--r-xl);overflow:hidden;border:1px solid var(--line);box-shadow:0 40px 80px -50px rgba(23,49,63,.45)}
+.story-side{background:var(--forest-d);color:#fff;padding:46px 40px;display:flex;flex-direction:column;gap:26px}
+.story-who{display:flex;align-items:center;gap:16px}
+.story-ava{width:68px;height:68px;border-radius:50%;flex:none;display:grid;place-items:center;font-size:28px;font-weight:700;color:#fff;background:conic-gradient(from 210deg,var(--sky),var(--ios),var(--blue),var(--sky))}
+.story-who b{display:block;font-size:20px;letter-spacing:-.02em}
+.story-who small{color:var(--sky-l);font-size:14px}
+.story-stars{color:#F2C94C;letter-spacing:3px;font-size:15px}
+.story-quote{font-family:var(--serif);font-style:italic;font-size:clamp(22px,2.3vw,30px);line-height:1.25;letter-spacing:-.02em}
+.story-chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:auto}
+.story-chips span{padding:7px 13px;border-radius:999px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.14);font-size:13px;font-weight:600}
+.story-main{padding:46px 44px;display:flex;flex-direction:column;gap:24px}
+.story-main h3{font-size:24px;letter-spacing:-.03em}
+.ba{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.ba-col{border:1.5px solid var(--line);border-radius:22px;padding:18px 20px}
+.ba-col h4{font-size:12px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+.ba-col.now{border-color:rgba(52,199,89,.45);background:#F3FAF5}
+.ba-col.now h4{color:var(--ios)}
+.ba-row{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:11px 0;border-bottom:1px solid var(--line);font-size:15px;font-weight:500}
+.ba-row:last-child{border:0}
+.ba-col.was .ba-row{color:#8796A3}
+.story-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:auto}
+/* story modal */
+.smodal{position:fixed;inset:0;z-index:990;background:rgba(23,49,63,.6);backdrop-filter:blur(10px);display:flex;align-items:flex-end;justify-content:center;opacity:0;visibility:hidden;transition:opacity .4s,visibility .4s}
+.smodal.open{opacity:1;visibility:visible}
+.smodal-box{width:min(820px,100%);max-height:92vh;background:var(--paper);border-radius:34px 34px 0 0;padding:0 0 30px;overflow-y:auto;transform:translateY(40px);transition:transform .5s var(--ease)}
+.smodal.open .smodal-box{transform:none}
+.smodal-top{position:sticky;top:0;z-index:2;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:22px 30px;background:var(--paper);border-bottom:1px solid var(--line)}
+.smodal-top b{font-size:18px;letter-spacing:-.02em}
+.smodal-top small{display:block;color:var(--muted);font-size:13px;font-weight:500}
+.smodal-body{padding:10px 30px 0}
+.sblock{padding:26px 0;border-bottom:1px solid var(--line)}
+.sblock:last-child{border:0}
+.sblock h4{display:flex;align-items:center;gap:12px;font-size:13px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--blue);margin-bottom:12px}
+.sblock h4 i{width:30px;height:30px;border-radius:10px;background:var(--ice);display:grid;place-items:center;font-style:normal;font-size:15px}
+.sblock p{font-size:17px;line-height:1.6}
+.sblock p + p{margin-top:12px}
+.sblock.hl{background:#F3FAF5;border-radius:22px;padding:24px 24px;border:1px solid rgba(52,199,89,.3);margin:8px 0}
+.sblock.hl h4{color:var(--ios)}
+.smodal-cta{padding:24px 30px 0;display:flex;flex-wrap:wrap;gap:10px}
+@media (max-width:1100px){.story{grid-template-columns:1fr}}
+@media (max-width:680px){
+  .story-side,.story-main{padding:30px 22px}
+  .ba{grid-template-columns:1fr}
+  .smodal-box{max-height:94vh;border-radius:26px 26px 0 0}
+  .smodal-top,.smodal-body,.smodal-cta{padding-left:18px;padding-right:18px}
+  .sblock p{font-size:16px}
+  .story-actions .btn{width:100%;justify-content:space-between}
+}
+
 /* ---------- join ---------- */
 .join-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
 .join-info{background:var(--olive);color:#fff;border-radius:var(--r-xl);padding:56px 50px;display:flex;flex-direction:column;justify-content:space-between;gap:40px;position:relative;overflow:hidden}
@@ -1167,21 +1217,71 @@ footer{background:var(--forest-d);color:#A9BCCB;padding:90px 0 34px;border-radiu
   </div>
 </section>
 
-<!-- ============ REVIEWS (placeholders) ============ -->
+<!-- ============ REVIEWS ============ -->
 <section id="reviews" style="padding-top:40px">
   <div class="wrap">
     <div class="rev-head">
-      <div><span class="label">Відгуки</span><h2 class="rv">Що кажуть <em>учениці</em></h2></div>
+      <div><span class="label">Відгук</span><h2 class="rv">Історія <em>учениці</em></h2></div>
       <a href="https://www.instagram.com/veronika_logistics/" target="_blank" rel="noopener" class="btn btn-ghost">Більше в Instagram ↗</a>
     </div>
-    <!-- TODO: замінити на реальні відгуки -->
-    <div class="rev-grid">
-      <div class="review rv"><span class="ph">Заглушка</span><div class="stars">★★★★★</div><p>«Текст відгуку учениці буде тут.»</p><div class="who"><i></i><div><b>Ім’я</b><small>Потік №</small></div></div></div>
-      <div class="review rv" style="--d:.1s"><span class="ph">Заглушка</span><div class="stars">★★★★★</div><p>«Текст відгуку учениці буде тут.»</p><div class="who"><i></i><div><b>Ім’я</b><small>Потік №</small></div></div></div>
-      <div class="review rv" style="--d:.2s"><span class="ph">Заглушка</span><div class="stars">★★★★★</div><p>«Текст відгуку учениці буде тут.»</p><div class="who"><i></i><div><b>Ім’я</b><small>Потік №</small></div></div></div>
+    <div class="story rv" style="margin-top:56px">
+      <div class="story-side">
+        <div class="story-who">
+          <span class="story-ava">Б</span>
+          <div><b>Богдана, 31</b><small>Краків · власна транспортна компанія</small></div>
+        </div>
+        <div class="story-stars">★★★★★</div>
+        <p class="story-quote">«Логіст — це місток між замовником і водієм. Без його розрахунку часу й маршруту нічого б не було»</p>
+        <div class="story-chips">
+          <span>⚖️ Юрист з червоним дипломом</span><span>🚛 2-й рік власної компанії</span><span>🎯 Індивідуальне навчання</span><span>⏱ 3 місяці</span>
+        </div>
+      </div>
+      <div class="story-main">
+        <h3>Що змінилось за 3 місяці</h3>
+        <div class="ba">
+          <div class="ba-col was">
+            <h4>Було</h4>
+            <div class="ba-row">Робота на когось<i class="tg sm"></i></div>
+            <div class="ba-row">Одноманіття без перспектив<i class="tg sm"></i></div>
+            <div class="ba-row">Питання, в яких не розібратись<i class="tg sm"></i></div>
+          </div>
+          <div class="ba-col now">
+            <h4>Стало</h4>
+            <div class="ba-row">Транспортна біржа і клієнти<i class="tg sm" data-on></i></div>
+            <div class="ba-row">Час водія і тахограф<i class="tg sm" data-on></i></div>
+            <div class="ba-row">Завантажувальність і документи<i class="tg sm" data-on></i></div>
+          </div>
+        </div>
+        <div class="story-actions">
+          <button type="button" class="btn btn-green" data-story>Читати повну історію <span class="arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M7 17 17 7M8 7h9v9"/></svg></span></button>
+          <a href="#join" class="btn btn-ghost">Хочу так само</a>
+        </div>
+      </div>
     </div>
   </div>
 </section>
+
+<div class="smodal" id="smodal" role="dialog" aria-modal="true" aria-label="Історія Богдани">
+  <div class="smodal-box">
+    <div class="smodal-top">
+      <div style="display:flex;align-items:center;gap:12px"><span class="story-ava" style="width:46px;height:46px;font-size:20px">Б</span><div><b>Богдана, 31 · Краків</b><small>Відгук про індивідуальне навчання</small></div></div>
+      <button type="button" class="g-close" id="sClose" aria-label="Закрити">×</button>
+    </div>
+    <div class="smodal-body">
+      <div class="sblock"><h4><i>👋</i>Про себе</h4><p>Привіт, я Богдана, мені 31, і я з Кракова. На даний час працюю в транспортній компанії мого чоловіка.</p><p>До того як прийшла у логістику, я працювала на різних роботах: офіціанткою в ресторані, менеджеркою, косметологом, кухарем. За освітою я юрист з червоним дипломом.</p></div>
+      <div class="sblock"><h4><i>🔁</i>Як було до</h4><p>Кожен день на той час я мала однаковий: поспішала, аби встигнути на роботу вранці, і працювала до пізньої ночі. Цілий час одноманіття, і я не бачила перспективи розвитку себе як спеціаліста.</p></div>
+      <div class="sblock"><h4><i>🚛</i>Як з’явилась логістика</h4><p>Я одружена, і мій чоловік дуже давно працював на міжнародні транспортні компанії водієм. Теж усе було одноманітне, без перспективи для розвитку. Одного дня він вирішив, що досить працювати на когось — варто ризикнути і почати самому.</p><p>Так ми наважились відкрити власну міжнародну транспортну компанію: чоловік почав їздити водієм, а я зайнялась логістикою — оформленням документів, пошуком вантажів, перемовинами з клієнтами, бухгалтерією. Ми вже другий рік працюємо самі на себе і більше ні від кого не залежимо.</p></div>
+      <div class="sblock"><h4><i>💙</i>Чому саме Вероніка</h4><p>Вероніку я знайшла на просторах Instagram. Те, як вона викладає і подає матеріал, дуже імпонує мені: легкість і прості слова, а не сухі фрази з книжки. Тому я вибрала навчання в неї — були питання, в яких я ніяк не могла розібратись. Одразу написала, що хочу купити собі індивідуальне навчання, де ми поглибили мої знання в логістиці.</p></div>
+      <div class="sblock"><h4><i>📚</i>Як проходило навчання</h4><p>Навчання було в нас 2 рази на тиждень. Вероніка постійно висилала схеми, карти, модулі й розписані теми. Паралельно, коли пояснювала матеріал, дублювала все у повідомлення — так легше опрацьовувати вивчене.</p><p>Найцікавіший модуль був про планування маршрутів водіїв. Найважчим — тахограф: що це і як працює, трішки треба було повчити.</p></div>
+      <div class="sblock hl"><h4><i>🏁</i>Результат за 3 місяці</h4><p>Перші вантажі я починала шукати ще до навчання, але завдяки навчанню я навчилась працювати на транспортній біржі: шукати там замовлення, листуватися й контактувати з клієнтами.</p><p>Від початку навчання минуло 3 місяці. Я покращила свої знання, навчилась рахувати час водія і працювати з тахографом, рахувати завантажувальність автомобіля, правильно оформляти документи.</p></div>
+      <div class="sblock"><h4><i>🗣</i>Порада тим, хто вагається</h4><p>Для того, хто думає, йти чи не йти, однозначно скажу: ВАРТО. Сфера логістики постійно розвивається, це такий вид бізнесу, де завжди буде робота і замовлення. Поки є попит на товар — доти будуть водії їздити. А логіст — це як місток між замовником і водієм: без його правильного розрахунку часу, будування маршруту й домовленостей із замовником і водієм нічого б не було.</p></div>
+    </div>
+    <div class="smodal-cta">
+      <a href="#join" class="btn btn-green" data-sclose>Записатися на курс <span class="arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M7 17 17 7M8 7h9v9"/></svg></span></a>
+      <a href="#consult" class="btn btn-ghost" data-sclose>Індивідуальна консультація</a>
+    </div>
+  </div>
+</div>
 
 <!-- ============ JOIN ============ -->
 <section id="join" style="padding-top:20px">
@@ -1666,6 +1766,15 @@ footer{background:var(--forest-d);color:#A9BCCB;padding:90px 0 34px;border-radiu
       requestAnimationFrame(move);
     })(performance.now());
   }
+
+  /* ---------- student story modal ---------- */
+  const smodal = document.getElementById('smodal');
+  const openStory = () => { smodal.classList.add('open'); body.classList.add('game-open'); haptic(12); setTimeout(() => document.getElementById('sClose').focus(), 60); };
+  const closeStory = () => { smodal.classList.remove('open'); body.classList.remove('game-open'); };
+  document.querySelectorAll('[data-story]').forEach(b2 => b2.addEventListener('click', openStory));
+  document.getElementById('sClose').addEventListener('click', closeStory);
+  smodal.addEventListener('click', e => { if (e.target === smodal || e.target.closest('[data-sclose]')) closeStory(); });
+  addEventListener('keydown', e => { if (e.key === 'Escape' && smodal.classList.contains('open')) closeStory(); });
 
   /* ---------- form ---------- */
   const form = document.getElementById('leadForm');
