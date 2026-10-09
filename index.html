@@ -663,6 +663,12 @@ form .btn{width:100%;justify-content:space-between}
 form.sent>*:not(.ok){display:none}
 form.sent .ok{display:block}
 .privacy{font-size:12.5px;color:var(--muted);margin-top:14px;text-align:center}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
+.form-err{margin:14px 0 0;padding:14px 16px;border-radius:14px;background:#FDEDED;color:#9B2C2C;font-size:14px;line-height:1.45}
+.form-err a{text-decoration:underline}
+form .btn[disabled]{opacity:.7;pointer-events:none}
+.btn .spin{width:18px;height:18px;border-radius:50%;border:2px solid currentColor;border-top-color:transparent;animation:spin1 .7s linear infinite}
+@keyframes spin1{to{transform:rotate(360deg)}}
 
 /* ---------- faq ---------- */
 .faq-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:60px}
@@ -1313,6 +1319,8 @@ footer{background:var(--forest-d);color:#A9BCCB;padding:90px 0 34px;border-radiu
         <label class="choice">Маю питання<input type="checkbox" name="question"><i class="tg"></i></label>
       </div>
       <label class="field"><span>Ваше питання (необов’язково)</span><textarea name="msg" placeholder="Напишіть, що хочете дізнатися"></textarea></label>
+      <input class="hp" type="text" name="company" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <p class="form-err" id="formErr" hidden>Не вдалося надіслати заявку. Напишіть, будь ласка, в <a href="https://www.instagram.com/veronika_logistics/" target="_blank" rel="noopener">Instagram</a> — відповім там.</p>
       <button class="btn btn-green" type="submit">Надіслати заявку <span class="arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M7 17 17 7M8 7h9v9"/></svg></span></button>
       <p class="privacy">Натискаючи кнопку, ви погоджуєтесь на обробку контактних даних.</p>
       <div class="ok"><div class="big"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg></div><h3>Заявку надіслано!</h3><p class="hint">Вероніка напише вам найближчим часом.</p></div>
@@ -1782,13 +1790,48 @@ footer{background:var(--forest-d);color:#A9BCCB;padding:90px 0 34px;border-radiu
   document.querySelectorAll('[data-pick]').forEach(a => a.addEventListener('click', () => {
     form.course.checked = false; form.consult.checked = a.dataset.pick === 'consult'; form.question.checked = a.dataset.pick === 'question';
   }));
-  form.addEventListener('submit', e => {
+  /* приймач заявок: заявка йде на Cloudflare Worker, він пише в групу Telegram.
+     Адресу воркера підставити сюди (tools/telegram-worker.js) */
+  const LEAD_ENDPOINT = '';
+  const formErr = document.getElementById('formErr');
+  const submitBtn = form.querySelector('button[type=submit]');
+  const btnLabel = submitBtn.innerHTML;
+  form.addEventListener('submit', async e => {
     e.preventDefault();
+    if (form.company.value) return;            // пастка для ботів
     let ok = true;
     ['name', 'contact'].forEach(n => { const f = form[n]; const bad = !f.value.trim(); f.style.borderColor = bad ? '#d9534f' : ''; if (bad) ok = false; });
     if (!ok) return;
-    // TODO: відправити дані форми (fetch на Telegram-бот / CRM)
-    form.classList.add('sent'); haptic([20, 50, 40]);
+    const interests = [];
+    if (form.course.checked) interests.push('Курс');
+    if (form.consult.checked) interests.push('Консультація');
+    if (form.question.checked) interests.push('Питання');
+    formErr.hidden = true;
+    submitBtn.disabled = true;
+    submitBtn.innerHTML = 'Надсилаю… <span class="arr"><span class="spin"></span></span>';
+    try {
+      if (!LEAD_ENDPOINT) throw new Error('endpoint not set');
+      const res = await fetch(LEAD_ENDPOINT, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: form.name.value.trim().slice(0, 200),
+          contact: form.contact.value.trim().slice(0, 200),
+          interests,
+          message: form.msg.value.trim().slice(0, 2000),
+          company: form.company.value,
+          source: location.href.split('#')[0]
+        })
+      });
+      const out = await res.json().catch(() => ({}));
+      if (!res.ok || out.ok === false) throw new Error('HTTP ' + res.status);
+      form.classList.add('sent'); haptic([20, 50, 40]);
+    } catch (err) {
+      formErr.hidden = false;
+      submitBtn.disabled = false;
+      submitBtn.innerHTML = btnLabel;
+      haptic([40, 60, 40]);
+    }
   });
 })();
 </script>
