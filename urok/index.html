@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Безкоштовний урок — Що таке логістика | Veronika Logistics</title>
+<meta name="description" content="Перший урок курсу міжнародної логістики повністю й безкоштовно: ланцюг постачання, чотири типи перевезень, логіст проти диспетчера і правило каботажу.">
+<meta name="robots" content="noindex, follow">
+<meta name="theme-color" content="#EEF2F5">
+
+<meta property="og:type" content="video.other">
+<meta property="og:url" content="https://veronika-logistics.com/urok/">
+<meta property="og:title" content="Безкоштовний урок — Що таке логістика">
+<meta property="og:description" content="Перший урок курсу міжнародної логістики. 7 хвилин, без реєстрації.">
+<meta property="og:image" content="https://veronika-logistics.com/urok/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="uk_UA">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="canonical" href="https://veronika-logistics.com/urok/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://iframe.mediadelivery.net">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@1,400;1,500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#EEF2F5; --paper:#F8FAFC; --cream:#F2F5F8;
+  --ink:#14232E; --muted:#546473; --line:rgba(20,35,46,.12);
+  --forest:#244A5E; --forest-d:#17313F;
+  --blue:#3E6E91; --sky-l:#CFE0EF; --powder:#BDD1E6; --sky:#9DBBD9; --ice:#E3ECF4;
+  --ios:#34C759;
+  --r-xl:40px; --r-lg:30px; --r-md:22px;
+  --wrap:1080px;
+  --ease:cubic-bezier(.2,.8,.2,1);
+  --serif:'Playfair Display',Georgia,serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Manrope',system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;cursor:pointer}
+em{font-family:var(--serif);font-style:italic;font-weight:400;letter-spacing:-.02em}
+.wrap{max-width:var(--wrap);margin:0 auto;padding:0 24px}
+h1,h2,h3{font-weight:600;letter-spacing:-.04em;line-height:1.05}
+
+.label{display:inline-flex;align-items:center;gap:8px;padding:7px 14px 7px 10px;border-radius:999px;background:#fff;border:1px solid var(--line);font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--blue)}
+.label::before{content:"";width:7px;height:7px;border-radius:50%;background:currentColor}
+.label.dark{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.16);color:var(--sky-l)}
+
+/* ---------- кнопки ---------- */
+.btn{position:relative;display:inline-flex;align-items:center;gap:14px;padding:8px 8px 8px 28px;border-radius:999px;font-weight:600;font-size:16px;overflow:hidden;isolation:isolate;border:0;transition:transform .35s var(--ease),background .3s}
+.btn .arr{width:46px;height:46px;border-radius:50%;display:grid;place-items:center;transition:transform .45s var(--ease);flex:none}
+.btn .arr svg{width:18px;height:18px}
+.btn:hover{transform:translateY(-2px)}
+.btn:hover .arr{transform:rotate(45deg)}
+.btn::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(110deg,transparent 30%,rgba(255,255,255,.28) 50%,transparent 70%);transform:translateX(-120%);transition:transform .9s var(--ease)}
+.btn:hover::before{transform:translateX(120%)}
+.btn-dark{background:var(--forest-d);color:#fff;box-shadow:0 16px 36px -14px rgba(23,49,63,.6)}
+.btn-dark .arr{background:var(--ios);color:#fff}
+.btn-ghost{padding:15px 26px;border:1.5px solid var(--line);background:transparent;border-radius:999px;font-weight:600;font-size:15.5px;display:inline-block;transition:border-color .3s,transform .3s var(--ease)}
+.btn-ghost:hover{border-color:var(--blue);transform:translateY(-2px)}
+.btn-xl{font-size:18px;padding:10px 10px 10px 32px}
+.btn-xl .arr{width:52px;height:52px}
+
+/* ---------- шапка ---------- */
+header{position:sticky;top:0;z-index:50;padding:14px 0;background:rgba(238,242,245,.86);backdrop-filter:blur(16px) saturate(1.4);-webkit-backdrop-filter:blur(16px) saturate(1.4);border-bottom:1px solid rgba(20,35,46,.07)}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:16px}
+.logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:15.5px;letter-spacing:-.02em}
+.logo i{width:36px;height:36px;border-radius:50%;background:var(--blue);display:grid;place-items:center;color:#fff;font-style:normal;flex:none}
+.logo i svg{width:20px}
+.nav-cta{display:inline-flex;align-items:center;gap:9px;padding:9px 18px;border-radius:999px;background:#fff;border:1px solid var(--line);font-size:14.5px;font-weight:600;transition:border-color .3s,transform .3s var(--ease)}
+.nav-cta:hover{border-color:var(--blue);transform:translateY(-1px)}
+@media (max-width:520px){.nav-cta{padding:9px 14px;font-size:13.5px}.logo span{display:none}}
+
+/* ---------- перший екран ---------- */
+.hero{padding:54px 0 0;text-align:center}
+.hero h1{font-size:clamp(38px,6.4vw,70px);margin:22px 0 18px}
+.hero h1 em{color:var(--blue)}
+.hero p{font-size:17.5px;color:var(--muted);max-width:620px;margin:0 auto}
+.chips{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:28px}
+.chips span{display:inline-flex;align-items:center;gap:8px;padding:9px 16px;border-radius:999px;background:#fff;border:1px solid var(--line);font-size:14px;font-weight:600}
+.chips span i{width:7px;height:7px;border-radius:50%;background:var(--ios);flex:none}
+
+/* ---------- плеєр ---------- */
+.player-sec{padding:40px 0 0}
+.player{position:relative;border-radius:var(--r-lg);overflow:hidden;background:var(--forest-d);aspect-ratio:16/9;box-shadow:0 40px 80px -40px rgba(20,35,46,.5)}
+.player iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.under{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;margin-top:18px;font-size:14.5px;color:var(--muted)}
+.under b{color:var(--ink);font-weight:700}
+.under .dot{width:6px;height:6px;border-radius:50%;background:var(--line);display:inline-block;margin:0 10px;vertical-align:middle}
+
+/* ---------- що в уроці ---------- */
+.inside{padding:90px 0 0}
+.in-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:start;margin-top:36px}
+.in-list{list-style:none;display:grid;gap:4px}
+.in-list li{display:flex;gap:16px;align-items:flex-start;padding:18px 0;border-bottom:1px solid var(--line)}
+.in-list li:last-child{border:0}
+.in-list .n{flex:none;width:30px;height:30px;border-radius:50%;background:var(--ice);color:var(--blue);display:grid;place-items:center;font-size:13px;font-weight:800;font-variant-numeric:tabular-nums}
+.in-list h3{font-size:17.5px;letter-spacing:-.02em;line-height:1.3}
+.in-list p{font-size:15px;color:var(--muted);margin-top:4px}
+
+.take{background:var(--forest-d);color:#fff;border-radius:var(--r-lg);padding:34px 32px;position:sticky;top:96px}
+.take .label{margin-bottom:18px}
+.take h3{font-size:26px;color:#fff;line-height:1.2}
+.take p{color:#A9BCCB;font-size:15.5px;margin-top:14px}
+.take .rule{display:flex;gap:10px;margin:24px 0 0}
+.take .rule div{flex:1;border-radius:16px;padding:14px 10px;text-align:center;background:rgba(255,255,255,.07);font-size:12.5px;font-weight:600;color:#CFE0EF;line-height:1.3}
+.take .rule div b{display:block;font-size:22px;color:#fff;margin-bottom:4px;letter-spacing:-.03em}
+.take .rule div.no{background:rgba(255,255,255,.04);color:#7D95A8}
+.take .rule div.no b{color:#9DBBD9}
+.take small{display:block;margin-top:18px;font-size:13.5px;color:#7D95A8;line-height:1.5}
+
+/* ---------- що далі ---------- */
+.next{padding:90px 0 0}
+.next h2{font-size:clamp(28px,4vw,46px);margin-top:20px}
+.mods{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:36px}
+.mod{background:var(--paper);border:1px solid var(--line);border-radius:var(--r-md);padding:22px 20px;min-height:132px;display:flex;flex-direction:column;justify-content:space-between;transition:transform .4s var(--ease),background .4s}
+.mod:hover{transform:translateY(-5px);background:#fff}
+.mod .nm{font-size:12px;font-weight:800;letter-spacing:.1em;color:var(--blue)}
+.mod h3{font-size:17px;letter-spacing:-.025em;line-height:1.25;margin-top:14px}
+.mod.done{background:var(--powder);border-color:var(--powder)}
+.mod.done .nm{color:var(--forest-d)}
+.mod .tag{display:inline-flex;align-items:center;gap:7px;font-size:12.5px;font-weight:700;color:var(--forest-d);margin-top:12px}
+.mod .tag::before{content:"";width:16px;height:16px;border-radius:50%;flex:none;background:var(--ios) url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3.4' stroke-linecap='round' stroke-linejoin='round'><path d='M5 13l4 4L19 7'/></svg>") center/11px no-repeat}
+
+/* ---------- заклик ---------- */
+.cta-sec{padding:90px 0 0}
+.cta{position:relative;overflow:hidden;background:linear-gradient(135deg,#9DBBD9 0%,#BDD1E6 55%,#E3ECF4 100%);border-radius:var(--r-xl);padding:60px 56px;color:var(--forest-d)}
+.cta h2{font-size:clamp(30px,4.2vw,50px);max-width:640px;margin-top:20px}
+.cta h2 em{color:var(--forest-d)}
+.cta p{font-size:17px;max-width:540px;margin:20px 0 32px;color:#2A4A5E}
+.cta .acts{display:flex;flex-wrap:wrap;gap:14px;align-items:center}
+.cta .label{background:rgba(255,255,255,.7)}
+.cta-note{margin-top:26px;font-size:14px;color:#2A4A5E;opacity:.8}
+
+/* ---------- хто веде ---------- */
+.author{padding:90px 0 0}
+.au-grid{display:grid;grid-template-columns:260px 1fr;gap:40px;align-items:center;background:var(--paper);border:1px solid var(--line);border-radius:var(--r-lg);padding:28px}
+.au-photo{border-radius:var(--r-md);overflow:hidden;aspect-ratio:3/4}
+.au-photo img{width:100%;height:100%;object-fit:cover;object-position:center 25%}
+.au-grid h3{font-size:26px;margin:14px 0 12px}
+.au-grid p{color:var(--muted);font-size:16px;max-width:560px}
+.au-facts{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
+.au-facts span{padding:8px 14px;border-radius:999px;background:#fff;border:1px solid var(--line);font-size:13.5px;font-weight:600}
+
+/* ---------- підвал ---------- */
+footer{margin-top:90px;background:var(--forest-d);color:#A9BCCB;padding:60px 0 28px;border-radius:var(--r-xl) var(--r-xl) 0 0;overflow:hidden}
+.foot-wm{font-size:clamp(40px,9.6vw,120px);font-weight:600;letter-spacing:-.065em;line-height:.85;color:#fff;white-space:nowrap}
+.foot-wm em{color:var(--sky)}
+.foot-row{display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px;margin-top:36px;padding-top:22px;border-top:1px solid rgba(255,255,255,.12);font-size:14px}
+.foot-row a:hover{color:#fff}
+
+/* ---------- нижня панель на телефоні ---------- */
+.bar{position:fixed;left:14px;right:14px;bottom:14px;z-index:60;display:none;align-items:center;justify-content:space-between;gap:12px;padding:10px 10px 10px 20px;border-radius:22px;background:rgba(23,49,63,.93);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);color:#fff;box-shadow:0 18px 40px -16px rgba(23,49,63,.6);transform:translateY(140%);transition:transform .6s var(--ease)}
+.bar.show{transform:none}
+.bar b{font-size:14.5px;font-weight:700;line-height:1.25}
+.bar small{display:block;font-size:12.5px;color:#9DBBD9;font-weight:500}
+.bar a{flex:none;display:inline-flex;align-items:center;gap:8px;padding:11px 18px;border-radius:999px;background:var(--ios);color:#fff;font-size:14px;font-weight:700}
+
+/* ---------- поява ---------- */
+.rv{opacity:0;transform:translateY(32px);transition:opacity .9s var(--ease),transform 1s var(--ease);transition-delay:var(--d,0s)}
+.rv.in{opacity:1;transform:none}
+
+@media (max-width:900px){
+  .in-grid{grid-template-columns:1fr;gap:34px}
+  .take{position:static}
+  .mods{grid-template-columns:repeat(2,1fr)}
+  .au-grid{grid-template-columns:1fr;gap:24px}
+  .au-photo{aspect-ratio:16/10}
+  .cta{padding:44px 26px}
+  .bar{display:flex}
+  footer{padding-bottom:96px}
+}
+@media (max-width:560px){
+  .inside,.next,.cta-sec,.author{padding-top:64px}
+  .take{padding:28px 22px}
+  .take .rule{flex-wrap:wrap}
+  .take .rule div{flex:1 1 40%}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}
+  html{scroll-behavior:auto}
+  .rv{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a href="../" class="logo" aria-label="Veronika Logistics">
+      <i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 6h12v10H1z"/><path d="M13 9h4l4 4v3h-8"/><circle cx="5.5" cy="17.5" r="1.8"/><circle cx="17.5" cy="17.5" r="1.8"/></svg></i>
+      <span>veronika_logistics</span>
+    </a>
+    <a href="https://ig.me/m/veronika_logistics" target="_blank" rel="noopener" class="nav-cta">Написати Вероніці</a>
+  </div>
+</header>
+
+<main>
+
+<!-- ============ ПЕРШИЙ ЕКРАН ============ -->
+<section class="hero">
+  <div class="wrap">
+    <span class="label rv">Безкоштовний урок · 1 з 8</span>
+    <h1 class="rv" style="--d:.06s">Що таке <em>логістика</em></h1>
+    <p class="rv" style="--d:.12s">Перший урок курсу — повністю й без реєстрації. Професія простими словами: на прикладах із реальної роботи, а не за підручником.</p>
+    <div class="chips rv" style="--d:.18s">
+      <span><i></i>7 хвилин</span>
+      <span>Без реєстрації</span>
+      <span>Українською</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ПЛЕЄР ============ -->
+<section class="player-sec">
+  <div class="wrap">
+    <div class="player rv" style="--d:.1s">
+      <iframe
+        src="https://iframe.mediadelivery.net/embed/758767/43827691-4542-4af9-8def-44d67b81c11a?autoplay=false&amp;preload=true&amp;responsive=true"
+        loading="lazy"
+        title="Урок 1 — Що таке логістика"
+        allow="accelerometer;gyroscope;encrypted-media;picture-in-picture;fullscreen"
+        allowfullscreen></iframe>
+    </div>
+    <div class="under rv">
+      <span><b>Модуль 01</b><i class="dot"></i>Що таке логістика<i class="dot"></i>7 хв</span>
+      <span>Дивитись можна з телефона — відео підлаштується під екран.</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ЩО В УРОЦІ ============ -->
+<section class="inside">
+  <div class="wrap">
+    <span class="label rv">Що в уроці</span>
+    <div class="in-grid">
+      <ul class="in-list rv" style="--d:.06s">
+        <li>
+          <span class="n">1</span>
+          <div>
+            <h3>Логістика на живих прикладах</h3>
+            <p>Чому полиці в АТБ не порожні і що відбувається між заводом і покупцем. Ланцюг постачання, який ми розбираємо весь курс.</p>
+          </div>
+        </li>
+        <li>
+          <span class="n">2</span>
+          <div>
+            <h3>Чотири типи перевезень</h3>
+            <p>Авто, авіа, море, залізниця. Літак найшвидше, море найдешевше, авто найгнучкіше — і коли який обирають насправді.</p>
+          </div>
+        </li>
+        <li>
+          <span class="n">3</span>
+          <div>
+            <h3>Хто такий логіст і за що відповідає</h3>
+            <p>Від завантаження до розвантаження. Що саме ви робитимете щодня, якщо підете в цю професію.</p>
+          </div>
+        </li>
+        <li>
+          <span class="n">4</span>
+          <div>
+            <h3>Диспетчер проти спедитора</h3>
+            <p>Диспетчер веде водія, спедитор веде клієнта і ставку. Це питають на співбесіді — і на цьому сиплються.</p>
+          </div>
+        </li>
+        <li>
+          <span class="n">5</span>
+          <div>
+            <h3>Каботаж і польська «краювка»</h3>
+            <p>Внутрішні та міжнародні перевезення, хто возить каботаж і чому буси до 3,5 т — окрема історія.</p>
+          </div>
+        </li>
+      </ul>
+
+      <aside class="take rv" style="--d:.12s">
+        <span class="label dark">Головне з уроку</span>
+        <h3>Правило каботажу</h3>
+        <p>Усередині чужої країни водій може зробити максимум три рейси поспіль. Четвертий — тільки на виїзд за кордон.</p>
+        <div class="rule">
+          <div><b>1</b>рейс</div>
+          <div><b>2</b>рейси</div>
+          <div><b>3</b>рейси</div>
+          <div class="no"><b>4</b>тільки виїзд</div>
+        </div>
+        <small>Помилитесь тут — це штраф перевізнику і ваша репутація як логіста. У курсі на це є окреме домашнє завдання.</small>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ЩО ДАЛІ ============ -->
+<section class="next">
+  <div class="wrap">
+    <span class="label rv">Що далі</span>
+    <h2 class="rv" style="--d:.06s">Цей урок — <em>перший із восьми</em></h2>
+    <div class="mods">
+      <div class="mod done rv"><div><span class="nm">01</span><h3>Що таке логістика</h3></div><span class="tag">Ви щойно подивились</span></div>
+      <div class="mod rv" style="--d:.04s"><div><span class="nm">02</span><h3>Транспорт і завантаження</h3></div></div>
+      <div class="mod rv" style="--d:.08s"><div><span class="nm">03</span><h3>Ключові дороги Європи</h3></div></div>
+      <div class="mod rv" style="--d:.12s"><div><span class="nm">04</span><h3>Платні дороги</h3></div></div>
+      <div class="mod rv" style="--d:.16s"><div><span class="nm">05</span><h3>Індекси, ставки, регіони</h3></div></div>
+      <div class="mod rv" style="--d:.2s"><div><span class="nm">06</span><h3>Час праці водія</h3></div></div>
+      <div class="mod rv" style="--d:.24s"><div><span class="nm">07</span><h3>Біржі вантажів і документи</h3></div></div>
+      <div class="mod rv" style="--d:.28s"><div><span class="nm">08</span><h3>Робота й співбесіда</h3></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ЗАКЛИК ============ -->
+<section class="cta-sec" id="cta">
+  <div class="wrap">
+    <div class="cta rv">
+      <span class="label">Повне навчання</span>
+      <h2>Готові пройти <em>весь курс?</em></h2>
+      <p>Напишіть мені в директ — розкажу умови, формат і подивимось, чи підходить вам навчання. Я веду групи особисто: перевіряю домашні, відповідаю на питання, показую на своїх робочих кейсах.</p>
+      <div class="acts">
+        <a href="https://ig.me/m/veronika_logistics" target="_blank" rel="noopener" class="btn btn-dark btn-xl">
+          Отримати повне навчання
+          <span class="arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M7 17 17 7M8 7h9v9"/></svg></span>
+        </a>
+        <a href="../#program" class="btn-ghost">Подивитися програму</a>
+      </div>
+      <p class="cta-note">Відповідаю особисто, зазвичай протягом дня.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ХТО ВЕДЕ ============ -->
+<section class="author">
+  <div class="wrap">
+    <div class="au-grid rv">
+      <div class="au-photo"><img src="../img/portrait.jpg" alt="Вероніка" loading="lazy"></div>
+      <div>
+        <span class="label">Хто веде</span>
+        <h3>Вероніка — логіст у міжнародних перевезеннях</h3>
+        <p>Я прийшла в логістику без досвіду і без звʼязків, а сьогодні веду вантажі по всій Європі й працюю з дому. Цей курс — те, що я сама хотіла б почути на старті замість років набивання шишок.</p>
+        <div class="au-facts">
+          <span>Практика, а не теорія</span>
+          <span>8 модулів</span>
+          <span>Домашні з перевіркою</span>
+          <span>Підготовка до співбесіди</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-wm">Veronika <em>Logistics</em></div>
+    <div class="foot-row">
+      <span>© 2026 Veronika Logistics · Logistics Specialist</span>
+      <a href="../">Про курс →</a>
+      <a href="https://www.instagram.com/veronika_logistics/" target="_blank" rel="noopener">Instagram @veronika_logistics ↗</a>
+    </div>
+  </div>
+</footer>
+
+<div class="bar" id="bar">
+  <b>Повне навчання<small>8 модулів, група з перевіркою</small></b>
+  <a href="https://ig.me/m/veronika_logistics" target="_blank" rel="noopener">Хочу</a>
+</div>
+
+<script>
+(() => {
+  /* плавна поява блоків */
+  const items = document.querySelectorAll('.rv');
+  if (!('IntersectionObserver' in window)) {
+    items.forEach(el => el.classList.add('in'));
+  } else {
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    }, { rootMargin: '0px 0px -8% 0px' });
+    items.forEach(el => io.observe(el));
+  }
+
+  /* нижня панель на телефоні: зʼявляється, коли відео вже позаду,
+     і ховається біля основної кнопки, щоб не дублювати її */
+  const bar    = document.getElementById('bar');
+  const player = document.querySelector('.player');
+  const cta    = document.getElementById('cta');
+  if (bar && player) {
+    const onScroll = () => {
+      const past  = player.getBoundingClientRect().bottom < 0;
+      const atCta = cta && cta.getBoundingClientRect().top < innerHeight * .9;
+      bar.classList.toggle('show', past && !atCta);
+    };
+    addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+  }
+})();
+</script>
+
+</body>
+</html>
