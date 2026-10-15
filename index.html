@@ -649,8 +649,11 @@ form h3{font-size:30px;letter-spacing:-.03em;margin-bottom:8px}
 form .hint{color:var(--muted);font-size:15px;margin-bottom:30px}
 .field{display:block;margin-bottom:14px}
 .field span{display:block;font-size:13px;font-weight:600;color:var(--muted);margin-bottom:7px}
-.field input,.field textarea{width:100%;border:1.5px solid var(--line);background:var(--paper);border-radius:16px;padding:15px 18px;font-size:16px;outline:none;transition:border-color .25s,background .25s}
+.field input,.field textarea,.field select{width:100%;border:1.5px solid var(--line);background:var(--paper);border-radius:16px;padding:15px 18px;font-size:16px;outline:none;transition:border-color .25s,background .25s}
 .field input:focus,.field textarea:focus{border-color:var(--blue);background:#fff}
+/* select окремо: shorthand background вище стер би шеврон */
+.field select{appearance:none;-webkit-appearance:none;font-family:inherit;color:inherit;padding-right:46px;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23546473' stroke-width='2.2' stroke-linecap='round'><path d='M6 9l6 6 6-6'/></svg>");background-repeat:no-repeat;background-position:right 16px center;background-size:18px}
+.field select:focus{border-color:var(--blue);background-color:#fff}
 .field textarea{resize:vertical;min-height:90px}
 .choices{border:1.5px solid var(--line);border-radius:18px;padding:4px 18px;margin:20px 0 26px}
 .choice{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:13px 0;border-bottom:1px solid var(--line);cursor:pointer;font-weight:500}
@@ -777,6 +780,19 @@ footer{background:var(--forest-d);color:#A9BCCB;padding:90px 0 34px;border-radiu
 </style>
 </head>
 <body class="loading">
+
+<!-- Сторож: якщо головний скрипт упаде (старий WebView в Instagram),
+     заставка лишиться на весь екран назавжди. Через 6 с знімаємо її руками.
+     На справній сторінці це no-op: лоадер фінішує сам за ~3,4 с. -->
+<script>
+setTimeout(function () {
+  if (document.body.classList.contains('loaded')) return;
+  document.body.classList.remove('loading');
+  document.body.classList.add('loaded');
+  var l = document.getElementById('loader'); if (l) l.remove();
+  Array.prototype.forEach.call(document.querySelectorAll('.rv'), function (e) { e.classList.add('in'); });
+}, 6000);
+</script>
 
 <!-- ============ LOADER ============ -->
 <div id="loader" aria-hidden="true">
@@ -1306,12 +1322,18 @@ footer{background:var(--forest-d);color:#A9BCCB;padding:90px 0 34px;border-radiu
         <div class="row">Файли з маршрутами<i class="tg" data-on></i></div>
       </div>
     </div>
-    <!-- TODO: підключити відправку заявки (Telegram-бот / CRM / Google Forms) -->
     <form class="lead-form rv" id="leadForm" style="--d:.1s" novalidate>
       <h3>Залишити заявку</h3>
       <p class="hint">Оберіть, що вас цікавить, — і я зв’яжуся з вами.</p>
       <label class="field"><span>Ваше ім’я</span><input name="name" required autocomplete="name" placeholder="Як до вас звертатися"></label>
       <label class="field"><span>Telegram, Instagram або телефон</span><input name="contact" required placeholder="@username або +380…"></label>
+      <label class="field"><span>Коли вам зручно на звʼязок</span><select name="preferred">
+        <option>Будь-коли — напишіть мені</option>
+        <option>Будні, до 12:00</option>
+        <option>Будні, 12:00–18:00</option>
+        <option>Будні, після 18:00</option>
+        <option>Вихідні</option>
+      </select></label>
       <div class="choices">
         <label class="choice">Хочу на курс<input type="checkbox" name="course" checked><i class="tg"></i></label>
         <label class="choice">Хочу консультацію<input type="checkbox" name="consult"><i class="tg"></i></label>
@@ -1319,7 +1341,7 @@ footer{background:var(--forest-d);color:#A9BCCB;padding:90px 0 34px;border-radiu
       </div>
       <label class="field"><span>Ваше питання (необов’язково)</span><textarea name="msg" placeholder="Напишіть, що хочете дізнатися"></textarea></label>
       <input class="hp" type="text" name="company" tabindex="-1" autocomplete="off" aria-hidden="true">
-      <p class="form-err" id="formErr" hidden>Не вдалося надіслати заявку. Напишіть, будь ласка, в <a href="https://www.instagram.com/veronika_logistics/" target="_blank" rel="noopener">Instagram</a> — відповім там.</p>
+      <p class="form-err" id="formErr" hidden>Не вдалося надіслати заявку. Напишіть мені, будь ласка, в <a href="https://ig.me/m/veronika_logistics" rel="noopener">Direct</a> — відповім там.</p>
       <button class="btn btn-green" type="submit">Надіслати заявку <span class="arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M7 17 17 7M8 7h9v9"/></svg></span></button>
       <p class="privacy">Натискаючи кнопку, ви погоджуєтесь на обробку контактних даних.</p>
       <div class="ok"><div class="big"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg></div><h3>Заявку надіслано!</h3><p class="hint">Вероніка напише вам найближчим часом.</p></div>
@@ -1789,11 +1811,26 @@ footer{background:var(--forest-d);color:#A9BCCB;padding:90px 0 34px;border-radiu
   document.querySelectorAll('[data-pick]').forEach(a => a.addEventListener('click', () => {
     form.course.checked = false; form.consult.checked = a.dataset.pick === 'consult'; form.question.checked = a.dataset.pick === 'question';
   }));
-  /* прихід з директу: #konsultaciya — одразу форма з обраною консультацією.
-     Людина вже прогріта, заставку їй показувати нема сенсу. */
-  if (location.hash === '#konsultaciya') {
+  /* Прихід з директу: #konsultaciya — одразу форма з обраною консультацією.
+     Людина вже прогріта, заставку їй показувати нема сенсу.
+     ?k=1 — дубль на випадок, коли обгортка редіректу зріже фрагмент. */
+  if (/konsultaciya/i.test(location.hash) || /konsultaciya|(^|[?&])k=1/i.test(location.search)) {
     form.course.checked = false; form.consult.checked = true; form.question.checked = false;
-    document.getElementById('loader')?.click();          // пропускаємо заставку
+
+    /* текст під безкоштовну консультацію — тільки для тих, хто прийшов за цим
+       посиланням; у розмітці лишається звичайна заявка на курс */
+    form.querySelector('h3').textContent = 'Безкоштовна консультація';
+    form.querySelector('.hint').textContent = 'Заповніть — і я напишу вам, щоб узгодити час. Консультація безкоштовна.';
+    form.querySelector('button[type=submit]').firstChild.nodeValue = 'Записатися на консультацію ';
+
+    /* знімаємо заставку напряму, без залежності від порядку слухачів */
+    body.classList.remove('loading'); body.classList.add('loaded');
+    document.getElementById('loader')?.remove();
+
+    /* показуємо блок до заміру: доки .rv не отримав .in, форма зсунута на 40px */
+    form.classList.add('in');
+    document.querySelector('#join .join-info')?.classList.add('in');
+
     const toForm = () => {
       const html = document.documentElement, was = html.style.scrollBehavior;
       html.style.scrollBehavior = 'auto';   // форма далеко внизу, плавно туди їхати задовго
@@ -1824,14 +1861,20 @@ footer{background:var(--forest-d);color:#A9BCCB;padding:90px 0 34px;border-radiu
     formErr.hidden = true;
     submitBtn.disabled = true;
     submitBtn.innerHTML = 'Надсилаю… <span class="arr"><span class="spin"></span></span>';
+    /* на поганому мобільному звʼязку fetch може висіти нескінченно —
+       обриваємо, щоб кнопка не крутилась без відповіді */
+    const ac = new AbortController();
+    const killer = setTimeout(() => ac.abort(), 12000);
     try {
       if (!LEAD_ENDPOINT) throw new Error('endpoint not set');
       const res = await fetch(LEAD_ENDPOINT, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
+        signal: ac.signal,
         body: JSON.stringify({
           name: form.name.value.trim().slice(0, 200),
           contact: form.contact.value.trim().slice(0, 200),
+          preferred: form.preferred.value,
           interests,
           message: form.msg.value.trim().slice(0, 2000),
           company: form.company.value,
@@ -1845,7 +1888,11 @@ footer{background:var(--forest-d);color:#A9BCCB;padding:90px 0 34px;border-radiu
       formErr.hidden = false;
       submitBtn.disabled = false;
       submitBtn.innerHTML = btnLabel;
+      /* з відкритою клавіатурою блок помилки часто за екраном */
+      formErr.scrollIntoView({ block: 'center' });
       haptic([40, 60, 40]);
+    } finally {
+      clearTimeout(killer);
     }
   });
 })();

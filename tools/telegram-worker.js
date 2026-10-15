@@ -12,12 +12,16 @@
  *     я пропишу її у формі на сайті.
  *
  * Токен живе тільки тут, у коді сайту його немає.
+ *
+ * ⚠️ Автодеплою немає. Будь-яка зміна цього файлу = знову
+ *    Edit code → виділити все → вставити → Deploy.
  */
 
 const ALLOWED = [
   'https://veronika-logistics.com',
   'https://www.veronika-logistics.com',
   'https://ouranus4.github.io',
+  'http://localhost:5510',
   'http://localhost:5531'
 ];
 
@@ -52,12 +56,14 @@ export default {
     const interests = Array.isArray(data.interests) ? data.interests.slice(0, 5).map(i => cut(i, 40)) : [];
     const message = cut(data.message, 2000);
     const source = cut(data.source, 200);
+    const preferred = cut(data.preferred, 100);   // «коли зручно на звʼязок»
     const when = new Date().toLocaleString('uk-UA', { timeZone: 'Europe/Kyiv', dateStyle: 'short', timeStyle: 'short' });
 
     const text =
       '🚚 <b>Нова заявка з сайту</b>\n\n' +
       `👤 <b>${esc(name)}</b>\n` +
       `📱 ${esc(contact)}\n` +
+      (preferred ? `🗓 ${esc(preferred)}\n` : '') +
       `🎯 ${esc(interests.join(', ') || '—')}\n` +
       (message ? `\n💬 ${esc(message)}\n` : '') +
       `\n🕐 ${esc(when)}` +
