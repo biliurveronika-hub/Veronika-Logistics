@@ -23,6 +23,7 @@
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
+section[id],div[id]{scroll-margin-top:92px}
 body{font-family:'Manrope',system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.55;overflow-x:hidden;-webkit-font-smoothing:antialiased}
 body.loading{overflow:hidden}
 body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:900;opacity:.05;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>")}
@@ -993,9 +994,9 @@ setTimeout(function () {
       <p class="lead rv">Два дипломи польського університету з логістики і профільний сертифікат з управління автопарком. Натисніть, щоб роздивитися.</p>
     </div>
     <div class="dip-grid">
-      <button class="dip rv" type="button" data-img="img/dip-master.jpg"><div class="sheet"><img src="img/dip-master.jpg" alt="Диплом магістра логістики, UMCS" loading="lazy"><span class="zoom"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5M11 8v6M8 11h6"/></svg></span></div><div class="cap"><small>Магістр · 2023</small><h3>Логістика</h3><p>Університет Марії Кюрі-Склодовської, Люблін</p></div></button>
-      <button class="dip rv" type="button" style="--d:.1s" data-img="img/dip-bachelor.jpg"><div class="sheet"><img src="img/dip-bachelor.jpg" alt="Диплом бакалавра з міжнародної логістики, UMCS" loading="lazy"><span class="zoom"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5M11 8v6M8 11h6"/></svg></span></div><div class="cap"><small>Бакалавр · 2021</small><h3>Міжнародна логістика</h3><p>Університет Марії Кюрі-Склодовської, Люблін</p></div></button>
-      <button class="dip wide rv" type="button" style="--d:.2s" data-img="img/cert-zf.jpg"><div class="sheet"><img src="img/cert-zf.jpg" alt="Сертифікат ZF SCALAR, TX-Connect" loading="lazy"><span class="zoom"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5M11 8v6M8 11h6"/></svg></span></div><div class="cap"><small>Сертифікат · 2025</small><h3>ZF SCALAR: управління автопарком у TX-Connect</h3><p>Fleet Management System · Вроцлав</p></div></button>
+      <button class="dip rv" type="button" data-img="img/dip-master.jpg"><div class="sheet"><img src="img/dip-master.jpg" width="1100" height="1654" alt="Диплом магістра логістики, UMCS" loading="lazy"><span class="zoom"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5M11 8v6M8 11h6"/></svg></span></div><div class="cap"><small>Магістр · 2023</small><h3>Логістика</h3><p>Університет Марії Кюрі-Склодовської, Люблін</p></div></button>
+      <button class="dip rv" type="button" style="--d:.1s" data-img="img/dip-bachelor.jpg"><div class="sheet"><img src="img/dip-bachelor.jpg" width="1100" height="1622" alt="Диплом бакалавра з міжнародної логістики, UMCS" loading="lazy"><span class="zoom"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5M11 8v6M8 11h6"/></svg></span></div><div class="cap"><small>Бакалавр · 2021</small><h3>Міжнародна логістика</h3><p>Університет Марії Кюрі-Склодовської, Люблін</p></div></button>
+      <button class="dip wide rv" type="button" style="--d:.2s" data-img="img/cert-zf.jpg"><div class="sheet"><img src="img/cert-zf.jpg" width="1681" height="1100" alt="Сертифікат ZF SCALAR, TX-Connect" loading="lazy"><span class="zoom"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5M11 8v6M8 11h6"/></svg></span></div><div class="cap"><small>Сертифікат · 2025</small><h3>ZF SCALAR: управління автопарком у TX-Connect</h3><p>Fleet Management System · Вроцлав</p></div></button>
     </div>
   </div>
 </section>
@@ -1813,6 +1814,45 @@ setTimeout(function () {
   document.getElementById('sClose').addEventListener('click', closeStory);
   smodal.addEventListener('click', e => { if (e.target === smodal || e.target.closest('[data-sclose]')) closeStory(); });
   addEventListener('keydown', e => { if (e.key === 'Escape' && smodal.classList.contains('open')) closeStory(); });
+
+  /* ---------- переходи по якорях ---------- */
+  /* Нативний скрол рахує ціль на момент кліку. Поки він летить, нижче
+     можуть довантажитись фото чи карта — і сторінка приїжджає вище цілі
+     (наприклад, на історію учениці замість форми). Тому ловимо момент,
+     коли скрол зупинився, і доводимо до місця. */
+  const ANCHOR_OFFSET = 92;
+  let anchorStop = null;
+  function goToAnchor(el){
+    if (anchorStop) anchorStop();           // попередній перехід ще доводив скрол — скасовуємо
+    const target = () => Math.max(0, Math.round(el.getBoundingClientRect().top + scrollY - ANCHOR_OFFSET));
+    const jump = top => scrollTo({ top, behavior: reduce ? 'auto' : 'smooth' });
+    jump(target());
+    if (reduce) return;
+    let last = -1, still = 0, passes = 0, timer;
+    const stop = () => { clearInterval(timer); anchorStop = null; removeEventListener('wheel', stop); removeEventListener('touchstart', stop); };
+    anchorStop = stop;
+    addEventListener('wheel', stop, { passive: true, once: true });
+    addEventListener('touchstart', stop, { passive: true, once: true });
+    timer = setInterval(() => {
+      if (scrollY === last) still++; else { still = 0; last = scrollY; }
+      if (still < 3) return;                       // ще летить
+      const want = target();
+      if (Math.abs(want - scrollY) > 8 && passes++ < 5) { still = 0; jump(want); return; }
+      stop();
+    }, 90);
+    setTimeout(stop, 6000);
+  }
+  document.addEventListener('click', e => {
+    const a = e.target.closest('a[href^="#"]');
+    if (!a || e.defaultPrevented || a.hasAttribute('data-game')) return;
+    const id = a.getAttribute('href').slice(1);
+    if (!id) return;                               // href="#" — заглушка
+    const el = document.getElementById(id);
+    if (!el) return;
+    e.preventDefault();
+    history.replaceState(null, '', '#' + id);
+    goToAnchor(el);
+  });
 
   /* ---------- form ---------- */
   const form = document.getElementById('leadForm');
