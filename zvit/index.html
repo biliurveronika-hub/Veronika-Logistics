@@ -1,0 +1,393 @@
+<!doctype html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Звіт за перший місяць — Veronika Logistics</title>
+<meta name="description" content="Що зроблено за перший місяць роботи над курсом Veronika Logistics і план на наступний.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@1,400;1,500&display=swap" rel="stylesheet">
+<style>
+/* токени — ті самі, що на посадковій сторінці */
+:root{
+  --bg:#EEF2F5; --paper:#F8FAFC; --ice:#E3ECF4; --ink:#14232E; --muted:#546473; --line:rgba(20,35,46,.12);
+  --forest:#244A5E; --forest-d:#17313F; --blue:#3E6E91; --sky:#9DBBD9; --sky-l:#CFE0EF; --olive:#5F6F3A; --ios:#34C759;
+  --r-xl:40px; --r-lg:30px; --r-md:22px; --wrap:1180px;
+  --serif:'Playfair Display',Georgia,serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Manrope',system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img,video{display:block;max-width:100%}
+a{color:inherit}
+.wrap{max-width:var(--wrap);margin:0 auto;padding:0 28px}
+section{padding:96px 0}
+h1,h2,h3{font-weight:600;letter-spacing:-.04em;line-height:1.04}
+h1{font-size:clamp(44px,7.4vw,104px)}
+h2{font-size:clamp(34px,4.8vw,64px);margin-top:20px}
+h3{font-size:22px;letter-spacing:-.02em}
+em{font-family:var(--serif);font-style:italic;font-weight:400;color:var(--blue);letter-spacing:-.02em}
+.lead{font-size:19px;color:var(--muted);max-width:640px;margin-top:22px}
+.muted{color:var(--muted)}
+.tag{display:inline-flex;align-items:center;gap:8px;padding:8px 16px;border-radius:999px;background:#fff;border:1px solid var(--line);font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--blue)}
+.tag::before{content:"";width:6px;height:6px;border-radius:50%;background:currentColor}
+.tag.dark{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.18);color:var(--sky)}
+.tag.bonus-band{background:var(--ios);border-color:var(--ios);color:#fff}
+.btn{display:inline-flex;align-items:center;gap:14px;padding:8px 8px 8px 26px;border-radius:999px;font-weight:600;text-decoration:none;background:var(--sky);color:var(--forest-d);box-shadow:0 14px 34px -12px rgba(62,110,145,.55);transition:transform .3s}
+.btn:hover{transform:translateY(-2px)}
+.btn .arr{width:42px;height:42px;border-radius:50%;background:#fff;display:grid;place-items:center}
+.btn .arr svg{width:16px;height:16px}
+.btn.ghost{background:transparent;box-shadow:none;border:1.5px solid var(--line);padding:14px 22px}
+
+/* ---------- hero ---------- */
+.hero{padding:40px 0 70px}
+.top{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;margin-bottom:70px}
+.logo{display:inline-flex;align-items:center;gap:10px;background:#fff;border-radius:999px;padding:8px 18px 8px 8px;font-weight:700;box-shadow:0 10px 30px -18px rgba(20,35,46,.4)}
+.logo i{width:36px;height:36px;border-radius:50%;background:var(--blue);display:grid;place-items:center;color:#fff}
+.logo i svg{width:18px}
+.date{font-size:14px;color:var(--muted)}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:56px}
+.stat{background:#fff;border-radius:var(--r-md);padding:24px}
+.stat b{display:block;font-size:44px;letter-spacing:-.04em;line-height:1}
+.stat span{display:block;margin-top:10px;color:var(--muted);font-size:14px}
+.stat.dark{background:var(--forest-d);color:#fff}
+.stat.dark span{color:var(--sky)}
+
+/* ---------- summary ---------- */
+.summary{background:#fff;border-radius:var(--r-xl);padding:56px;display:grid;grid-template-columns:1.1fr 1fr;gap:48px;align-items:start}
+.summary p{font-size:18px}
+.summary ul{list-style:none;display:grid;gap:12px}
+.summary li{display:flex;gap:12px;align-items:flex-start;padding:14px 18px;background:var(--bg);border-radius:16px;font-weight:500}
+.summary li i{flex:none;width:22px;height:22px;border-radius:50%;background:var(--ios);display:grid;place-items:center;color:#fff;margin-top:1px}
+.summary li i svg{width:12px}
+.summary li.plus i{background:var(--blue)}
+
+/* ---------- section head ---------- */
+.head{display:grid;grid-template-columns:1.2fr 1fr;gap:40px;align-items:end;margin-bottom:46px}
+.head p{color:var(--muted);font-size:17px}
+.num{font-size:13px;font-weight:700;letter-spacing:.14em;color:var(--muted);text-transform:uppercase;margin-bottom:14px}
+
+/* ---------- screenshots ---------- */
+.shot{border-radius:20px;overflow:hidden;background:#fff;box-shadow:0 30px 60px -36px rgba(20,35,46,.45);border:1px solid var(--line);cursor:zoom-in;transition:transform .35s}
+.shot:hover{transform:translateY(-4px)}
+.shot .bar{display:flex;align-items:center;gap:6px;padding:10px 14px;background:#F3F6F9;border-bottom:1px solid var(--line)}
+.shot .bar i{width:9px;height:9px;border-radius:50%;background:#D5DDE5}
+.shot .bar span{margin-left:10px;font-size:11.5px;color:var(--muted);background:#fff;border-radius:999px;padding:3px 12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.shot img{width:100%;height:auto}
+figure{margin:0}
+figcaption{margin-top:14px;font-size:14.5px;color:var(--muted)}
+figcaption b{color:var(--ink);font-weight:600}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.big{margin-bottom:28px}
+.phone{border-radius:38px;background:var(--ink);padding:9px;box-shadow:0 30px 60px -30px rgba(20,35,46,.6);cursor:zoom-in}
+.phone img,.phone video{border-radius:30px;width:100%;aspect-ratio:9/19.5;object-fit:cover;object-position:top}
+.phone video{cursor:default;aspect-ratio:9/16;background:#000}
+.phones{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;align-items:start}
+.split{display:grid;grid-template-columns:1.6fr 1fr;gap:28px;align-items:start}
+
+/* ---------- funnel ---------- */
+.flow{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:8px 0 40px}
+.flow .st{background:#fff;border-radius:16px;padding:14px 18px;font-weight:600;font-size:15px;border:1px solid var(--line)}
+.flow .st small{display:block;font-weight:500;color:var(--muted);font-size:12.5px}
+.flow .st.end{background:var(--forest-d);color:#fff;border-color:transparent}
+.flow .st.end small{color:var(--sky)}
+.flow .ar{color:var(--blue);font-size:20px}
+.cards-sq{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.cards-sq img{border-radius:22px;box-shadow:0 24px 50px -32px rgba(20,35,46,.5);cursor:zoom-in}
+
+/* ---------- telegram ---------- */
+.tg-wrap{background:linear-gradient(160deg,#B9CFA6,#9DBB8E);border-radius:var(--r-lg);padding:40px;display:flex;justify-content:center}
+.tg{background:#fff;border-radius:18px 18px 18px 6px;padding:16px 20px;max-width:380px;width:100%;font-size:15px;line-height:1.6;box-shadow:0 10px 30px -18px rgba(0,0,0,.4)}
+.tg .from{color:#C0504D;font-weight:600;font-size:13.5px;margin-bottom:4px}
+.tg a{color:#2A7FC1;text-decoration:none}
+.tg .t{text-align:right;font-size:12px;color:#9AA5AE}
+.points{list-style:none;display:grid;gap:14px}
+.points li{background:#fff;border-radius:18px;padding:18px 20px}
+.points li b{display:block;margin-bottom:4px}
+.points li span{color:var(--muted);font-size:15px}
+
+/* ---------- bonus (platform) ---------- */
+.bonus-band{background:var(--forest-d);color:#fff;border-radius:var(--r-xl);margin:0 16px;padding:96px 0}
+.bonus-band h2{color:#fff}
+.bonus-band em{color:var(--sky)}
+.bonus-band .head p,.bonus-band figcaption{color:#A9BFD0}
+.bonus-band figcaption b{color:#fff}
+.bonus-band .shot{border-color:rgba(255,255,255,.1)}
+.note{display:flex;gap:16px;align-items:flex-start;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);border-radius:22px;padding:22px 26px;margin-bottom:46px}
+.note b{color:var(--ios)}
+.mats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:46px}
+.mats div{background:rgba(255,255,255,.06);border-radius:18px;padding:20px}
+.mats b{display:block;font-size:30px;letter-spacing:-.03em}
+.mats span{color:#A9BFD0;font-size:14px}
+
+/* ---------- plan ---------- */
+.plan{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.plan .c{background:#fff;border-radius:var(--r-md);padding:28px;display:flex;flex-direction:column;gap:12px;min-height:250px}
+.plan .c .n{font-family:var(--serif);font-style:italic;font-size:44px;color:var(--blue);line-height:1}
+.plan .c p{color:var(--muted);font-size:15px;flex:1}
+.who{display:inline-flex;align-self:flex-start;padding:6px 12px;border-radius:999px;background:var(--ice);font-size:12.5px;font-weight:600;color:var(--forest)}
+
+/* ---------- price ---------- */
+.price{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.pc{border-radius:var(--r-lg);padding:40px;background:#fff}
+.pc.dark{background:var(--forest-d);color:#fff}
+.pc .k{font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.pc.dark .k{color:var(--sky)}
+.pc .v{font-size:clamp(56px,7vw,88px);letter-spacing:-.05em;font-weight:600;line-height:1;margin:18px 0 14px}
+.pc .v s{font-size:.45em;color:#7F93A3;font-weight:500;margin-right:12px}
+.pc p{color:var(--muted)}
+.pc.dark p{color:#A9BFD0}
+.extra{margin-top:22px;background:#fff;border-radius:var(--r-md);padding:24px 28px;color:var(--muted)}
+.extra b{color:var(--ink)}
+
+footer{padding:60px 0 80px;text-align:center;color:var(--muted);font-size:14px}
+
+/* lightbox */
+.lb{position:fixed;inset:0;background:rgba(10,20,28,.88);display:none;align-items:center;justify-content:center;padding:24px;z-index:50;cursor:zoom-out}
+.lb.on{display:flex}
+.lb img{max-height:92vh;max-width:min(1400px,96vw);border-radius:14px}
+
+@media (max-width:900px){
+  section{padding:70px 0}
+  .wrap{padding:0 16px}
+  .stats{grid-template-columns:1fr 1fr}
+  .summary{grid-template-columns:1fr;padding:30px 22px;gap:28px;border-radius:var(--r-lg)}
+  .head,.grid2,.split,.price{grid-template-columns:1fr}
+  .grid3,.plan,.mats,.cards-sq{grid-template-columns:1fr}
+  .phones{grid-template-columns:1fr 1fr}
+  .bonus-band{margin:0 8px;padding:70px 0;border-radius:var(--r-lg)}
+  .tg-wrap{padding:22px}
+  .pc{padding:30px 24px}
+  .top{margin-bottom:44px}
+}
+@media (max-width:520px){ .phones{grid-template-columns:1fr} .phones .phone{max-width:300px;margin:0 auto} }
+</style>
+</head>
+<body>
+
+<!-- ============ HERO ============ -->
+<header class="hero">
+  <div class="wrap">
+    <div class="top">
+      <a class="logo" href="https://veronika-logistics.com/"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 6h13v10H1zM14 10h4l3 3v3h-7z"/><circle cx="5" cy="18" r="2"/><circle cx="17" cy="18" r="2"/></svg></i>veronika_logistics</a>
+      <span class="date">Звіт · 20 жовтня 2026 · @marketolog_voskanian</span>
+    </div>
+    <span class="tag">Перший місяць роботи</span>
+    <h1 style="margin-top:24px">Що вже <em>працює</em><br>і що робимо далі</h1>
+    <p class="lead">За місяць у тебе з'явилась система, якої раніше не було: сайт, воронка в Instagram, безкоштовний урок і заявки, що самі приходять у Telegram. А ще — власна навчальна платформа з усіма твоїми матеріалами.</p>
+    <div class="stats">
+      <div class="stat"><b>1</b><span>сайт на власному домені</span></div>
+      <div class="stat"><b>1</b><span>автоворонка в Direct</span></div>
+      <div class="stat"><b>3</b><span>змонтовані рілси</span></div>
+      <div class="stat dark"><b>9</b><span>модулів на платформі — бонусом</span></div>
+    </div>
+  </div>
+</header>
+
+<!-- ============ КОРОТКО ============ -->
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="summary">
+      <div>
+        <span class="tag">Коротко</span>
+        <h2 style="font-size:clamp(30px,3.6vw,46px)">Людина йде від рілса <em>до заявки</em> — без твоєї участі</h2>
+        <p class="muted" style="margin-top:18px">Побачила рілс → написала в директ → отримала безкоштовний урок → залишила заявку на консультацію. Тобі в Telegram приходить готова картка з номером і зручним месенджером.</p>
+      </div>
+      <ul>
+        <li><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg></i>Посадкова сторінка курсу</li>
+        <li><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg></i>Безкоштовний урок — лід-магніт</li>
+        <li><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg></i>Автоворонка-чат-бот в Instagram</li>
+        <li><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg></i>Заявки в Telegram + захист від ботів</li>
+        <li><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg></i>Сценарій кастдеву з учнями</li>
+        <li class="plus"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></i>Бонусом: навчальна платформа й монтаж рілсів</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ПОСАДКОВА ============ -->
+<section>
+  <div class="wrap">
+    <div class="head">
+      <div><div class="num">01 · Посадкова сторінка</div><h2>Сайт, який <em>продає</em> за тебе</h2></div>
+      <p>Твоя історія, дипломи, програма на карті Європи, гра-тест, калькулятор доходу, реальні кейси й відгук Богдани — усе, щоб людина повірила й залишила заявку.</p>
+    </div>
+    <figure class="big"><div class="shot" data-zoom><div class="bar"><i></i><i></i><i></i><span>veronika-logistics.com</span></div><img src="img/land-hero.jpg" alt="Перший екран сайту" loading="lazy"></div></figure>
+    <div class="grid2">
+      <figure><div class="shot" data-zoom><img src="img/land-map.jpg" alt="Програма на карті Європи" loading="lazy"></div><figcaption><b>Програма на живій карті.</b> Маршрут тіра Вроцлав → Мілан з поромом і тунелем Фрежюс.</figcaption></figure>
+      <figure><div class="shot" data-zoom><img src="img/land-quiz.jpg" alt="Гра-тест" loading="lazy"></div><figcaption><b>Гра-тест «Чи підходить вам логістика».</b> 5 питань, XP і вантажівка до фінішу — людина залипає й лишається.</figcaption></figure>
+      <figure><div class="shot" data-zoom><img src="img/land-calc.jpg" alt="Калькулятор доходу" loading="lazy"></div><figcaption><b>Калькулятор доходу.</b> Людина сама рахує, скільки може заробляти логіст.</figcaption></figure>
+      <figure><div class="shot" data-zoom><img src="img/land-diplomas.jpg" alt="Дипломи" loading="lazy"></div><figcaption><b>Дипломи й сертифікат.</b> Освіта, підтверджена документами, — відкриваються на весь екран.</figcaption></figure>
+      <figure><div class="shot" data-zoom><img src="img/land-cases.jpg" alt="Реальні кейси" loading="lazy"></div><figcaption><b>Реальні кейси</b> з твоєї практики: забуті стоп-бари, вкрадене паливо, брак годин у водія.</figcaption></figure>
+      <figure><div class="shot" data-zoom><img src="img/land-reviews.jpg" alt="Відгук Богдани" loading="lazy"></div><figcaption><b>Історія Богдани.</b> «Було → стало» замість абстрактного відгуку.</figcaption></figure>
+    </div>
+    <div style="margin-top:56px" class="split">
+      <div>
+        <h3 style="font-size:30px">І так само добре — <em>з телефона</em></h3>
+        <p class="muted" style="margin-top:14px;max-width:460px">Більшість людей приходить з Instagram, тобто з телефона. Сайт зібраний під нього: вібрація на кнопках, форма на один палець, номер підставляється з кодом країни.</p>
+        <div style="margin-top:26px;display:flex;gap:12px;flex-wrap:wrap"><a class="btn" href="https://veronika-logistics.com/" target="_blank" rel="noopener">Відкрити сайт <span class="arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M7 17 17 7M8 7h9v9"/></svg></span></a></div>
+      </div>
+      <div class="phones" style="grid-template-columns:1fr 1fr">
+        <div class="phone" data-zoom><img src="img/mob-hero.jpg" alt="Сайт на телефоні" loading="lazy"></div>
+        <div class="phone" data-zoom><img src="img/mob-form.jpg" alt="Форма заявки на телефоні" loading="lazy"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ВОРОНКА ============ -->
+<section style="background:#fff;border-radius:var(--r-xl);margin:0 16px">
+  <div class="wrap">
+    <div class="head">
+      <div><div class="num">02 · Автоворонка й урок</div><h2>Бот веде людину <em>сам</em></h2></div>
+      <p>Чат-бот у Direct перевіряє підписку, видає безкоштовний урок, через 20 годин нагадує про себе й кличе на безкоштовну консультацію.</p>
+    </div>
+    <div class="flow">
+      <div class="st">Рілс<small>людина бачить ролик</small></div><span class="ar">→</span>
+      <div class="st">Direct<small>бот перевіряє підписку</small></div><span class="ar">→</span>
+      <div class="st">Урок<small>7 хв, без реєстрації</small></div><span class="ar">→</span>
+      <div class="st">Догін<small>через 20 годин</small></div><span class="ar">→</span>
+      <div class="st end">Заявка<small>на консультацію</small></div>
+    </div>
+    <div class="split">
+      <figure><div class="shot" data-zoom><div class="bar"><i></i><i></i><i></i><span>veronika-logistics.com/urok</span></div><img src="img/urok.jpg" alt="Сторінка безкоштовного уроку" loading="lazy"></div><figcaption><b>Безкоштовний урок</b> — модуль 01 «Що таке логістика» окремою сторінкою. Людина бачить, як ти викладаєш, і вирішує.</figcaption></figure>
+      <div>
+        <div class="cards-sq" style="grid-template-columns:1fr 1fr">
+          <img src="../img/bot/dm-urok.jpg" alt="Картка уроку для директу" data-zoom loading="lazy">
+          <img src="../img/bot/dm-konsultaciya.jpg" alt="Картка консультації для директу" data-zoom loading="lazy">
+        </div>
+        <p class="muted" style="margin-top:16px;font-size:14.5px"><b style="color:var(--ink)">Картки для бота</b> — у стилі сайту, великий шрифт, читаються з телефона.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ЗАЯВКИ ============ -->
+<section>
+  <div class="wrap">
+    <div class="head">
+      <div><div class="num">03 · Заявки</div><h2>Заявка приходить <em>в Telegram</em></h2></div>
+      <p>Людина заповнює форму на сайті — і за секунду в групі «Заявки на консультацію» з'являється картка. Нічого не губиться в директі.</p>
+    </div>
+    <div class="grid2" style="align-items:center">
+      <div class="tg-wrap">
+        <div class="tg">
+          <div class="from">Вероніка Логістика заявки на консультацію</div>
+          🚚 <b>Нова заявка з сайту</b><br><br>
+          👤 <b>Олена</b><br>
+          📱 +380 67 123 45 67<br>
+          💬 Зручно: <a>WhatsApp</a><br>
+          🗓 Будні, після 18:00<br>
+          🎯 Консультація<br><br>
+          <b>Звідки</b><br>
+          ↪️ Instagram<br>
+          🌍 Wrocław, Польща<br>
+          📲 iPhone, браузер Instagram
+          <div class="t">приклад картки</div>
+        </div>
+      </div>
+      <ul class="points">
+        <li><b>Номер і зручний месенджер</b><span>Telegram, Viber, WhatsApp або дзвінок — і посилання, щоб написати в один дотик.</span></li>
+        <li><b>Звідки прийшла людина</b><span>Instagram, реклама чи пряме посилання, місто й пристрій — видно, що працює.</span></li>
+        <li><b>Захист від спаму</b><span>Боти й фейкові заявки відсіюються ще до Telegram.</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ КАСТДЕВ + РІЛСИ ============ -->
+<section style="padding-top:20px">
+  <div class="wrap">
+    <div class="head">
+      <div><div class="num">04 · Кастдев і рілси</div><h2>Голос учнів і <em>перші ролики</em></h2></div>
+      <p>Сценарій розмови з учнями: 15 хвилин відгуку на камеру й 45 хвилин кастдеву. Аналіз зробимо, щойно відбудуться розмови — цього місяця вони переносились.</p>
+    </div>
+    <figure class="big"><div class="shot" data-zoom><div class="bar"><i></i><i></i><i></i><span>veronika-logistics.com/kastdev</span></div><img src="img/kastdev.jpg" alt="Сценарій кастдеву" loading="lazy"></div></figure>
+    <h3 style="font-size:30px;margin:60px 0 10px">Рілси — <em>змонтували разом</em></h3>
+    <p class="muted" style="margin-bottom:30px">По кілька версій кожного: з твоїм голосом, коротша, швидша — щоб було з чого обрати.</p>
+    <div class="phones">
+      <figure><div class="phone"><video src="video/reel1.mp4" poster="img/reel1.jpg" controls playsinline preload="none"></video></div><figcaption><b>Про курс.</b> «Про неї мовчать — а платять в євро».</figcaption></figure>
+      <figure><div class="phone"><video src="video/reel2.mp4" poster="img/reel2.jpg" controls playsinline preload="none"></video></div><figcaption><b>Тригер.</b> SMM чи логістика.</figcaption></figure>
+      <figure><div class="phone"><video src="video/reel3.mp4" poster="img/reel3.jpg" controls playsinline preload="none"></video></div><figcaption><b>Відгук Богдани</b> — твоїм голосом.</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ПЛАТФОРМА (БОНУС) ============ -->
+<section class="bonus-band">
+  <div class="wrap">
+    <div class="head">
+      <div><span class="tag bonus">Понад домовленість</span><h2>Власна <em>навчальна платформа</em></h2></div>
+      <p>У пропозиції був «розбір і налаштування платформи». Ми пішли далі: зібрали твою власну платформу з нуля й перенесли туди всі матеріали.</p>
+    </div>
+    <div class="note">
+      <span style="font-size:22px">🎁</span>
+      <div><b>У вартість не входило й доплати не потребує.</b> Як і монтаж рілсів — у пропозиції він був на твоєму боці.</div>
+    </div>
+    <figure class="big"><div class="shot" data-zoom><div class="bar"><i></i><i></i><i></i><span>veronika-logistics.com/learn</span></div><img src="img/learn-m01.jpg" alt="Урок на платформі" loading="lazy"></div><figcaption><b>Урок на платформі.</b> Відео, план уроку, презентація, домашнє, матеріали — і прогрес, який зараховується сам.</figcaption></figure>
+    <div class="grid2">
+      <figure><div class="shot" data-zoom><img src="img/learn-home.jpg" alt="Кабінет учениці" loading="lazy"></div><figcaption><b>Кабінет учениці.</b> Прогрес маршрутом вантажівки й наступний крок.</figcaption></figure>
+      <figure><div class="shot" data-zoom><img src="img/learn-admin.jpg" alt="Адмінка" loading="lazy"></div><figcaption><b>Твоя адмінка.</b> Додаєш ученицю — і доступ відкривається одразу. Тарифи, потоки, строк доступу.</figcaption></figure>
+      <figure><div class="shot" data-zoom><img src="img/learn-m02-files.jpg" alt="Матеріали модуля 02" loading="lazy"></div><figcaption><b>Модуль 02:</b> фото завантаженого буса 3,5 т з поясненнями.</figcaption></figure>
+      <figure><div class="shot" data-zoom><img src="img/learn-m03-files.jpg" alt="Матеріали модуля 03" loading="lazy"></div><figcaption><b>Модуль 03:</b> черга, корок, поломка в тунелі — реальні ситуації на дорозі.</figcaption></figure>
+      <figure><div class="shot" data-zoom><img src="img/learn-m01-files.jpg" alt="Маршрути модуля 01" loading="lazy"></div><figcaption><b>Модуль 01:</b> клікабельні маршрути з точними адресами.</figcaption></figure>
+      <figure><div class="shot" data-zoom><img src="img/learn-materials.jpg" alt="Усі матеріали" loading="lazy"></div><figcaption><b>Усе в одному місці:</b> презентації, карти, файли й шаблони.</figcaption></figure>
+    </div>
+    <div class="mats">
+      <div><b>8</b><span>модулів з відео — вступ і 01–07</span></div>
+      <div><b>11</b><span>маршрутів на картах у модулях 01 і 03</span></div>
+      <div><b>38</b><span>слайдів у модулі 07, банківські дані прикрито</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ПЛАН ============ -->
+<section>
+  <div class="wrap">
+    <div class="head">
+      <div><div class="num">05 · Наступний місяць</div><h2>Наповнюємо систему <em>людьми</em></h2></div>
+      <p>Перший місяць зібрав «трубу» від рілса до заявки. Другий запускає в неї потік: контент, ще одна вхідна точка, відео, що продає, і реклама.</p>
+    </div>
+    <div class="plan">
+      <div class="c"><span class="n">01</span><h3>Контент за сходами Ханта</h3><p>Контент-план і сценарії рілсів: кожен ролик веде на крок ближче — від «що це за професія» до «хочу вчитися у Вероніки».</p><span class="who">Я — сценарії · ти — зйомка</span></div>
+      <div class="c"><span class="n">02</span><h3>Друга воронка на кодове слово</h3><p>Людина пише слово під рілсом або в директ — і бот сам веде її до заявки.</p><span class="who">Я</span></div>
+      <div class="c"><span class="n">03</span><h3>VSL — відео, що продає</h3><p>Одне відео замість десятків однакових переписок: хто ти, що в курсі, для кого він.</p><span class="who">Я — сценарій · записуємо разом</span></div>
+      <div class="c"><span class="n">04</span><h3>VSL на платформу</h3><p>Додаємо відео до навчальних матеріалів.</p><span class="who">Я</span></div>
+      <div class="c"><span class="n">05</span><h3>Запуск таргету</h3><p>Платний потік людей у вже готову воронку.</p><span class="who">Разом · налаштування й бюджет окремо</span></div>
+      <div class="c"><span class="n">06</span><h3>Аналіз кастдеву</h3><p>Слова й заперечення твоїх учнів — у рілси й VSL.</p><span class="who">Ти — розмови · я — аналіз</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ВАРТІСТЬ ============ -->
+<section style="padding-top:20px">
+  <div class="wrap">
+    <div class="head">
+      <div><div class="num">06 · Вартість</div><h2>Наступний місяць — <em>€600</em></h2></div>
+      <p>Знижка за довгострокову співпрацю. Далі вартість — за обсягом робіт, домовляємось наперед на кожен місяць.</p>
+    </div>
+    <div class="price">
+      <div class="pc"><div class="k">Перший місяць</div><div class="v">€750</div><p>Система від рілса до заявки + бонусом платформа й монтаж рілсів.</p></div>
+      <div class="pc dark"><div class="k">Наступний місяць</div><div class="v"><s>€750</s>€600</div><p>Контент, друга воронка, VSL, запуск таргету, аналіз кастдеву.</p></div>
+    </div>
+    <div class="extra"><b>Як і раніше, окремо:</b> таргет (налаштування, ведення й рекламний бюджет), домен і оплата сервісів.</div>
+  </div>
+</section>
+
+<footer>Звіт підготувала @marketolog_voskanian · 20 жовтня 2026</footer>
+
+<div class="lb" id="lb"><img alt=""></div>
+<script>
+  const lb = document.getElementById('lb'), lbImg = lb.querySelector('img');
+  document.querySelectorAll('[data-zoom]').forEach(el => el.addEventListener('click', () => {
+    const img = el.tagName === 'IMG' ? el : el.querySelector('img'); if (!img) return;
+    lbImg.src = img.src; lbImg.alt = img.alt; lb.classList.add('on');
+  }));
+  lb.addEventListener('click', () => lb.classList.remove('on'));
+  addEventListener('keydown', e => { if (e.key === 'Escape') lb.classList.remove('on'); });
+</script>
+</body>
+</html>
