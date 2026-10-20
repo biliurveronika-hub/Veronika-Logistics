@@ -119,16 +119,16 @@ function json(body, status, headers) {
   return new Response(JSON.stringify(body), { status, headers: { ...headers, 'Content-Type': 'application/json' } });
 }
 
-// контакт з посиланням, по якому можна одразу написати
+// номер + де людині зручніше, з посиланням, по якому можна одразу написати
+// (Viber-посилання Telegram не пропускає — для нього просто номер)
 function contactLine(data, fallback) {
   const type = cut(data.contact_type, 20), v = cut(data.contact_value, 100);
-  const nick = v.replace(/^@/, '');
-  if (type === 'instagram' && /^[A-Za-z0-9._]{1,30}$/.test(nick))
-    return `Instagram: <a href="https://instagram.com/${nick}">@${esc(nick)}</a>`;
-  if (type === 'telegram' && /^[A-Za-z][A-Za-z0-9_]{3,31}$/.test(nick))
-    return `Telegram: <a href="https://t.me/${nick}">@${esc(nick)}</a>`;
-  if (type === 'phone' && /^\+\d{9,15}$/.test(v))
-    return `Телефон: ${esc(v)} · <a href="https://wa.me/${v.slice(1)}">WhatsApp</a>`;
+  if (!/^\+\d{9,15}$/.test(v)) return esc(fallback);
+  const d = v.slice(1);
+  if (type === 'telegram') return `${v}\n💬 Зручно: <a href="https://t.me/+${d}">Telegram</a>`;
+  if (type === 'whatsapp') return `${v}\n💬 Зручно: <a href="https://wa.me/${d}">WhatsApp</a>`;
+  if (type === 'viber') return `${v}\n💬 Зручно: Viber`;
+  if (type === 'call') return `${v}\n💬 Зручно: дзвінок`;
   return esc(fallback);
 }
 
