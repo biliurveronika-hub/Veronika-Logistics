@@ -655,6 +655,12 @@ form .hint{color:var(--muted);font-size:15px;margin-bottom:30px}
 .field select{appearance:none;-webkit-appearance:none;font-family:inherit;color:inherit;padding-right:46px;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23546473' stroke-width='2.2' stroke-linecap='round'><path d='M6 9l6 6 6-6'/></svg>");background-repeat:no-repeat;background-position:right 16px center;background-size:18px}
 .field select:focus{border-color:var(--blue);background-color:#fff}
 .field textarea{resize:vertical;min-height:90px}
+/* контакт: тип зліва, значення справа */
+.contact-row{display:flex;gap:8px}
+.contact-row select{flex:0 0 152px;width:152px}
+.contact-row input{flex:1;min-width:0}
+.field .field-hint{display:block;font-size:12.5px;font-weight:500;color:var(--muted);margin:7px 0 0 4px}
+.field .field-hint.bad{color:#c0392b}
 .choices{border:1.5px solid var(--line);border-radius:18px;padding:4px 18px;margin:20px 0 26px}
 .choice{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:13px 0;border-bottom:1px solid var(--line);cursor:pointer;font-weight:500}
 .choice:last-child{border:0}
@@ -769,6 +775,7 @@ footer{background:var(--forest-d);color:#A9BCCB;padding:90px 0 34px;border-radiu
   .col h3{font-size:22px}
   .consult-text,.join-info{padding:40px 22px}
   form.lead-form{padding:34px 20px}
+  .contact-row select{flex-basis:128px;width:128px;padding-left:14px;padding-right:36px;background-position:right 12px center}
   details p{padding-right:0}
   summary{font-size:18px}
   #loader{padding:22px 16px 28px}
@@ -1326,7 +1333,17 @@ setTimeout(function () {
       <h3>Залишити заявку</h3>
       <p class="hint">Оберіть, що вас цікавить, — і я зв’яжуся з вами.</p>
       <label class="field"><span>Ваше ім’я</span><input name="name" required autocomplete="name" placeholder="Як до вас звертатися"></label>
-      <label class="field"><span>Telegram, Instagram або телефон</span><input name="contact" required placeholder="@username або +380…"></label>
+      <div class="field"><span id="contactLbl">Як з вами зв’язатися</span>
+        <div class="contact-row">
+          <select name="ctype" aria-label="Спосіб зв’язку">
+            <option value="instagram">Instagram</option>
+            <option value="telegram">Telegram</option>
+            <option value="phone">Телефон</option>
+          </select>
+          <input name="contact" required aria-labelledby="contactLbl" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="@username">
+        </div>
+        <small class="field-hint" id="contactHint">Ваш нік в Instagram — напишу в Direct</small>
+      </div>
       <label class="field"><span>Коли вам зручно на звʼязок</span><select name="preferred">
         <option>Будь-коли — напишіть мені</option>
         <option>Будні, до 12:00</option>
@@ -1848,11 +1865,84 @@ setTimeout(function () {
   const formErr = document.getElementById('formErr');
   const submitBtn = form.querySelector('button[type=submit]');
   const btnLabel = submitBtn.innerHTML;
+
+  /* ---- контакт: тип + значення ---- */
+  const CT = {
+    instagram: { ph: '@username', hint: 'Ваш нік в Instagram — напишу в Direct', bad: 'Нік в Instagram: латиниця, цифри, крапка або _', label: 'Instagram', mode: 'text',
+      norm: v => { if (/^\+?[\d\s()-]+$/.test(v)) return ''; v = v.replace(/^(https?:\/\/)?(www\.)?(instagram\.com|instagr\.am)\//i, '').split(/[/?#]/)[0].replace(/^@+/, ''); return v ? '@' + v : ''; },
+      ok: v => /^@[A-Za-z0-9._]{1,30}$/.test(v) },
+    telegram: { ph: '@username', hint: 'Ваш нік у Telegram — напишу в особисті', bad: 'Нік у Telegram: від 5 символів, латиниця, цифри або _', label: 'Telegram', mode: 'text',
+      norm: v => { if (/^\+?[\d\s()-]+$/.test(v)) return ''; v = v.replace(/^(https?:\/\/)?(t\.me|telegram\.me)\//i, '').split(/[/?#]/)[0].replace(/^@+/, ''); return v ? '@' + v : ''; },
+      ok: v => /^@[A-Za-z][A-Za-z0-9_]{3,31}$/.test(v) },
+    phone: { ph: '+380 67 123 45 67', hint: 'Номер з кодом країни — подзвоню або напишу у Viber / WhatsApp', bad: 'Перевірте номер: код країни і 9–15 цифр', label: 'Телефон', mode: 'tel',
+      norm: v => { const d = v.replace(/\D/g, ''); return d ? '+' + d : ''; },
+      ok: v => /^\+\d{9,15}$/.test(v) }
+  };
+  const cInput = form.contact, cType = form.ctype, cHint = document.getElementById('contactHint');
+  const setHint = (bad) => {
+    const t = CT[cType.value];
+    cHint.textContent = bad ? t.bad : t.hint;
+    cHint.classList.toggle('bad', !!bad);
+    cInput.style.borderColor = bad ? '#d9534f' : '';
+  };
+  const applyType = () => {
+    const t = CT[cType.value];
+    cInput.placeholder = t.ph;
+    cInput.inputMode = t.mode;
+    cInput.type = t.mode === 'tel' ? 'tel' : 'text';
+    cInput.autocomplete = t.mode === 'tel' ? 'tel' : 'off';
+    /* перенос уже введеного: нік лишаємо ніком, номер — номером */
+    const raw = cInput.value.trim();
+    const v = raw && raw !== '+' ? t.norm(raw) : '';
+    cInput.value = v.length > 1 ? v : (t.mode === 'tel' ? '+' : '');
+    setHint(false);
+  };
+  cType.addEventListener('change', () => { applyType(); cInput.focus(); haptic(10); });
+  /* вставили посилання іншого типу — перемикаємо самі */
+  cInput.addEventListener('input', () => {
+    const v = cInput.value.trim();
+    const guess = /t\.me\/|telegram\.me\//i.test(v) ? 'telegram'
+      : /instagram\.com\/|instagr\.am\//i.test(v) ? 'instagram'
+      : /^\+?\d[\d\s()-]{6,}$/.test(v) && cType.value !== 'phone' ? 'phone' : null;
+    if (guess && guess !== cType.value) { cType.value = guess; applyType(); }
+    if (cHint.classList.contains('bad')) setHint(false);
+  });
+  cInput.addEventListener('blur', () => {
+    const v = cInput.value.trim();
+    if (!v || v === '+') return;
+    const t = CT[cType.value];
+    cInput.value = t.norm(v);
+    setHint(!t.ok(cInput.value));
+  });
+  applyType();
+
+  /* ---- ознаки живої людини: бот, що шле POST напряму, їх не має ---- */
+  const bornAt = Date.now();
+  let touches = 0;
+  ['pointerdown', 'keydown', 'touchstart', 'input'].forEach(ev => form.addEventListener(ev, () => { touches++; }, { passive: true }));
+  /* utm і реферер з першого заходу: за ними видно, звідки людина */
+  const firstVisit = (() => {
+    try {
+      const saved = sessionStorage.getItem('vl_from');
+      if (saved) return JSON.parse(saved);
+      const p = new URLSearchParams(location.search), utm = {};
+      ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content'].forEach(k => { if (p.get(k)) utm[k] = p.get(k).slice(0, 80); });
+      const v = { ref: document.referrer.slice(0, 200), utm };
+      sessionStorage.setItem('vl_from', JSON.stringify(v));
+      return v;
+    } catch { return { ref: document.referrer.slice(0, 200), utm: {} }; }
+  })();
+
   form.addEventListener('submit', async e => {
     e.preventDefault();
     if (form.company.value) return;            // пастка для ботів
     let ok = true;
-    ['name', 'contact'].forEach(n => { const f = form[n]; const bad = !f.value.trim(); f.style.borderColor = bad ? '#d9534f' : ''; if (bad) ok = false; });
+    const nameBad = !form.name.value.trim();
+    form.name.style.borderColor = nameBad ? '#d9534f' : '';
+    if (nameBad) ok = false;
+    const ct = CT[cType.value];
+    cInput.value = ct.norm(cInput.value.trim());
+    if (!ct.ok(cInput.value)) { setHint(true); ok = false; }
     if (!ok) return;
     const interests = [];
     if (form.course.checked) interests.push('Курс');
@@ -1873,12 +1963,19 @@ setTimeout(function () {
         signal: ac.signal,
         body: JSON.stringify({
           name: form.name.value.trim().slice(0, 200),
-          contact: form.contact.value.trim().slice(0, 200),
+          /* contact — з підписом типу, щоб і старий воркер показав зрозуміло */
+          contact: (ct.label + ': ' + cInput.value).slice(0, 200),
+          contact_type: cType.value,
+          contact_value: cInput.value.slice(0, 100),
           preferred: form.preferred.value,
           interests,
           message: form.msg.value.trim().slice(0, 2000),
           company: form.company.value,
-          source: location.href.split('#')[0]
+          source: location.href.split('#')[0],
+          ref: firstVisit.ref,
+          utm: firstVisit.utm,
+          t: Date.now() - bornAt,
+          hi: touches
         })
       });
       const out = await res.json().catch(() => ({}));
