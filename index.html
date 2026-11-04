@@ -690,6 +690,57 @@ form .btn{width:100%;justify-content:space-between}
 form.sent>*:not(.ok){display:none}
 form.sent .ok{display:block}
 .privacy{font-size:12.5px;color:var(--muted);margin-top:14px;text-align:center}
+
+/* ---------- вікно «дякую» ---------- */
+.tmodal{position:fixed;inset:0;z-index:995;display:grid;place-items:center;padding:20px;background:rgba(23,49,63,.62);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);opacity:0;visibility:hidden;transition:opacity .35s,visibility .35s}
+.tmodal.open{opacity:1;visibility:visible}
+.tm-box{position:relative;width:min(540px,100%);max-height:calc(100vh - 40px);max-height:calc(100dvh - 40px);overflow:auto;background:var(--paper);border-radius:var(--r-xl);padding:0 38px 32px;text-align:center;transform:translateY(24px) scale(.95);opacity:0;transition:transform .5s var(--ease),opacity .35s}
+.tmodal.open .tm-box{transform:none;opacity:1}
+.tm-close{position:absolute;top:14px;right:14px;z-index:2;width:40px;height:40px;border-radius:50%;border:1px solid var(--line);background:rgba(255,255,255,.9);font-size:22px;line-height:1;color:var(--muted);display:grid;place-items:center;transition:background .3s,color .3s}
+.tm-close:hover{background:var(--ink);color:#fff;border-color:var(--ink)}
+.tm-box h3{font-size:clamp(26px,4.2vw,34px);letter-spacing:-.03em;margin-top:18px}
+.tm-box h3 em{color:var(--blue)}
+.tm-sub{color:var(--muted);font-size:16.5px;margin-top:10px}
+.tm-when{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin-top:16px}
+.tm-when span{font-size:13px;font-weight:600;color:var(--blue);background:var(--ice);border-radius:999px;padding:7px 14px}
+.tm-acts{display:flex;justify-content:center;flex-wrap:wrap;gap:10px;margin-top:26px}
+.tm-foot{font-size:12.5px;color:var(--muted);margin-top:16px}
+
+/* сцена: вантажівка довозить заявку */
+.tm-scene{margin:0 -38px;border-radius:var(--r-xl) var(--r-xl) 0 0;overflow:hidden;background:linear-gradient(180deg,var(--ice),var(--paper))}
+.tm-scene svg{display:block;width:100%;height:auto}
+.tm-hill{fill:rgba(62,110,145,.12)}
+.tm-road{stroke:#14232E;stroke-width:3;stroke-linecap:round}
+.tm-dash{stroke:#fff;stroke-width:2;stroke-dasharray:13 13}
+.tm-aim{fill:none;stroke:rgba(62,110,145,.3);stroke-width:2;stroke-dasharray:4 5}
+.tm-truck{transform:translateX(150px)}
+.tm-bob,.tw,.tm-badge,.tm-ring{transform-box:fill-box;transform-origin:center}
+.tm-badge{transform:scale(1)}
+.tm-ring{fill:none;stroke:#34C759;stroke-width:2;opacity:0}
+.tm-tick{stroke-dasharray:24;stroke-dashoffset:0}
+.tm-parcel{opacity:0}
+.tm-px{transform:translateX(352px)}
+.tm-py{transform:translateY(98px)}
+.tmodal.open .tm-dash{animation:tmRoad .5s linear infinite}
+.tmodal.open .tw{animation:tmSpin .45s linear infinite}
+.tmodal.open .tm-truck{animation:tmDrive 1.25s cubic-bezier(.2,.8,.25,1) both}
+.tmodal.open .tm-bob{animation:tmBob .3s ease-in-out 8 both}
+.tmodal.open .tm-px{animation:tmPX .8s cubic-bezier(.4,0,.7,1) 1.05s both}
+.tmodal.open .tm-py{animation:tmPY .8s ease-in-out 1.05s both}
+.tmodal.open .tm-parcel{animation:tmParcel .8s linear 1.05s both}
+.tmodal.open .tm-badge{animation:tmPop .55s cubic-bezier(.3,1.6,.5,1) 1.7s both}
+.tmodal.open .tm-tick{animation:tmTick .35s ease-out 1.95s both}
+.tmodal.open .tm-ring{animation:tmRing .8s ease-out 1.9s both}
+@keyframes tmRoad{to{stroke-dashoffset:-26}}
+@keyframes tmSpin{to{transform:rotate(360deg)}}
+@keyframes tmDrive{from{transform:translateX(-80px)}to{transform:translateX(150px)}}
+@keyframes tmBob{0%,100%{transform:translateY(0)}50%{transform:translateY(-1.2px)}}
+@keyframes tmPX{from{transform:translateX(188px)}to{transform:translateX(352px)}}
+@keyframes tmPY{0%{transform:translateY(96px)}45%{transform:translateY(58px)}100%{transform:translateY(98px)}}
+@keyframes tmParcel{0%{opacity:0;transform:scale(.4) rotate(-18deg)}14%{opacity:1;transform:scale(1) rotate(-8deg)}78%{opacity:1;transform:scale(1) rotate(10deg)}100%{opacity:0;transform:scale(.5) rotate(18deg)}}
+@keyframes tmPop{from{transform:scale(0)}to{transform:scale(1)}}
+@keyframes tmTick{from{stroke-dashoffset:24}to{stroke-dashoffset:0}}
+@keyframes tmRing{from{transform:scale(1);opacity:.8}to{transform:scale(2.4);opacity:0}}
 .hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
 .form-err{margin:14px 0 0;padding:14px 16px;border-radius:14px;background:#FDEDED;color:#9B2C2C;font-size:14px;line-height:1.45}
 .form-err a{text-decoration:underline}
@@ -811,6 +862,10 @@ footer{background:var(--forest-d);color:#A9BCCB;padding:90px 0 34px;border-radiu
   .col h3{font-size:22px}
   .consult-text,.join-info{padding:40px 22px}
   form.lead-form{padding:34px 20px}
+  .tm-box{padding:0 20px 26px;border-radius:var(--r-lg)}
+  .tm-scene{margin:0 -20px;border-radius:var(--r-lg) var(--r-lg) 0 0}
+  .tm-sub{font-size:15.5px}
+  .tm-acts .btn{width:100%;justify-content:space-between}
   details p{padding-right:0}
   summary{font-size:18px}
   #loader{padding:22px 16px 28px}
@@ -1431,6 +1486,50 @@ setTimeout(function () {
     </form>
   </div>
 </section>
+
+<!-- ============ ДЯКУЮ ============ -->
+<div class="tmodal" id="thanks" role="dialog" aria-modal="true" aria-labelledby="thTitle">
+  <div class="tm-box">
+    <button type="button" class="tm-close" id="thClose" aria-label="Закрити">×</button>
+    <div class="tm-scene" aria-hidden="true">
+      <svg viewBox="0 0 420 150" role="img">
+        <path class="tm-hill" d="M0 112 Q80 78 158 106 T292 98 T420 112 V150 H0 Z"/>
+        <line class="tm-road" x1="0" y1="126" x2="420" y2="126"/>
+        <line class="tm-dash" x1="0" y1="126" x2="420" y2="126"/>
+        <circle class="tm-aim" cx="352" cy="98" r="16"/>
+        <g transform="translate(352,98)">
+          <circle class="tm-ring" r="16"/>
+          <g class="tm-badge">
+            <circle r="16" fill="#34C759"/>
+            <path class="tm-tick" d="M-6.5 .5 L-1.5 5.5 L7.5 -5.5" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+          </g>
+        </g>
+        <g transform="translate(0,99)">
+          <g class="tm-truck"><g class="tm-bob">
+            <rect x="0" y="4" width="34" height="18" rx="3" fill="#5F6F3A"/>
+            <path d="M36 22 V9 Q36 6 39 6 H46 L52 14 V22 Z" fill="#14232E"/>
+            <path d="M40 9 H45 L49 14 H40 Z" fill="#BDD1E6"/>
+            <g transform="translate(9,23)"><g class="tw"><circle r="4" fill="#14232E" stroke="#fff" stroke-width="1.5"/><path d="M0 -2V2" stroke="#fff" stroke-width="1.1" stroke-linecap="round"/></g></g>
+            <g transform="translate(26,23)"><g class="tw"><circle r="4" fill="#14232E" stroke="#fff" stroke-width="1.5"/><path d="M0 -2V2" stroke="#fff" stroke-width="1.1" stroke-linecap="round"/></g></g>
+            <g transform="translate(45,23)"><g class="tw"><circle r="4" fill="#14232E" stroke="#fff" stroke-width="1.5"/><path d="M0 -2V2" stroke="#fff" stroke-width="1.1" stroke-linecap="round"/></g></g>
+          </g></g>
+        </g>
+        <g class="tm-px"><g class="tm-py"><g class="tm-parcel">
+          <rect x="-7" y="-5.5" width="14" height="11" rx="2" fill="#5F6F3A"/>
+          <path d="M-7 -1.5h14M0 -5.5v11" stroke="#CDD3B2" stroke-width="1.3"/>
+        </g></g></g>
+      </svg>
+    </div>
+    <h3 id="thTitle">Дякую! <em>Заявку надіслано</em></h3>
+    <p class="tm-sub" id="thSub">Вероніка звʼяжеться з вами найближчим часом.</p>
+    <div class="tm-when" id="thWhen"></div>
+    <div class="tm-acts">
+      <button type="button" class="btn btn-green" data-thclose>Зрозуміло <span class="arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M7 17 17 7M8 7h9v9"/></svg></span></button>
+      <a href="https://www.instagram.com/veronika_logistics/" target="_blank" rel="noopener" class="btn btn-ghost">Instagram ↗</a>
+    </div>
+    <p class="tm-foot">Якщо раптом не буде відповіді — напишіть в Instagram, відповім там.</p>
+  </div>
+</div>
 
 <!-- ============ FAQ ============ -->
 <section id="faq" style="padding-top:40px">
@@ -2096,7 +2195,7 @@ setTimeout(function () {
       });
       const out = await res.json().catch(() => ({}));
       if (!res.ok || out.ok === false) throw new Error('HTTP ' + res.status);
-      form.classList.add('sent'); haptic([20, 50, 40]);
+      form.classList.add('sent'); haptic([20, 50, 40]); openThanks();
     } catch (err) {
       formErr.hidden = false;
       submitBtn.disabled = false;
@@ -2108,6 +2207,36 @@ setTimeout(function () {
       clearTimeout(killer);
     }
   });
+
+  /* ---------- вікно «дякую» ---------- */
+  const thanks = document.getElementById('thanks');
+  const SAY = { telegram: 'напише вам у Telegram', viber: 'напише вам у Viber',
+                whatsapp: 'напише вам у WhatsApp', call: 'подзвонить вам' };
+  let thBack = null;
+  function openThanks(){
+    thBack = document.activeElement;
+    document.getElementById('thSub').textContent =
+      'Вероніка ' + (SAY[cType.value] || 'звʼяжеться з вами') + ' найближчим часом.';
+    /* підтверджуємо, куди саме і коли — щоб людина побачила, що номер правильний */
+    const chips = [cInput.value];
+    if (!/Будь-коли/.test(form.preferred.value)) chips.push(form.preferred.value);
+    const box = document.getElementById('thWhen');
+    box.textContent = '';
+    chips.forEach(c => { const el = document.createElement('span'); el.textContent = c; box.appendChild(el); });
+    thanks.classList.add('open'); body.classList.add('game-open');
+    setTimeout(() => document.getElementById('thClose').focus({ preventScroll: true }), 420);
+    if (!reduce) setTimeout(() => {
+      const b = thanks.querySelector('.tm-badge').getBoundingClientRect();
+      burst(b.left + b.width / 2, b.top + b.height / 2, 26, 150);
+      haptic([18, 40, 26]);
+    }, 2000);
+  }
+  function closeThanks(){
+    thanks.classList.remove('open'); body.classList.remove('game-open');
+    if (thBack && thBack.focus) thBack.focus({ preventScroll: true });
+  }
+  thanks.addEventListener('click', e => { if (e.target === thanks || e.target.closest('[data-thclose]')) closeThanks(); });
+  addEventListener('keydown', e => { if (e.key === 'Escape' && thanks.classList.contains('open')) closeThanks(); });
 })();
 </script>
 </body>
