@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Скрипти директу — Veronika Logistics</title>
+<title>Скрипт консультації — Veronika Logistics</title>
 <meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
 <meta name="googlebot" content="noindex, nofollow">
 <meta name="referrer" content="no-referrer">
@@ -16,112 +16,64 @@
   --bg:#EEF2F5; --paper:#F8FAFC; --white:#fff;
   --ink:#14232E; --muted:#546473; --line:rgba(20,35,46,.12);
   --forest:#244A5E; --forest-d:#17313F;
-  --blue:#3E6E91; --sky-l:#CFE0EF; --powder:#BDD1E6; --sky:#9DBBD9; --ice:#E3ECF4;
-  --ios:#34C759; --warn:#C2410C; --warn-bg:#FFF4EC; --ph:#FFF1C2;
-  --r-lg:26px; --r-md:18px;
-  --wrap:860px;
+  --blue:#3E6E91; --sky-l:#CFE0EF; --powder:#BDD1E6; --ice:#E3ECF4;
+  --ios:#34C759; --ph:#FFF1C2;
+  --r-lg:26px;
+  --wrap:760px;
   --ease:cubic-bezier(.2,.8,.2,1);
   --serif:'Playfair Display',Georgia,serif;
 }
 *{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth;scroll-padding-top:150px}
+html{scroll-behavior:smooth;scroll-padding-top:130px}
 body{font-family:'Manrope',system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
-a{color:var(--blue)}
 button,input{font:inherit;color:inherit}
 em{font-family:var(--serif);font-style:italic;font-weight:400;letter-spacing:-.02em}
 .wrap{max-width:var(--wrap);margin:0 auto;padding:0 16px}
 h1,h2,h3{font-weight:700;letter-spacing:-.035em;line-height:1.1}
 
-/* ---------- верхня панель ---------- */
 .top{position:sticky;top:0;z-index:40;background:rgba(238,242,245,.92);backdrop-filter:blur(14px) saturate(1.4);-webkit-backdrop-filter:blur(14px) saturate(1.4);border-bottom:1px solid var(--line);padding:10px 0 0}
-.tools{display:flex;gap:8px}
-.tools label{flex:1;min-width:0;display:flex;align-items:center;gap:8px;background:var(--white);border:1px solid var(--line);border-radius:14px;padding:0 12px;height:44px}
-.tools label span{font-size:12px;font-weight:700;color:var(--muted);white-space:nowrap}
-.tools input{border:0;outline:0;background:transparent;width:100%;min-width:0;font-size:15px;font-weight:600}
-.tools label:focus-within{border-color:var(--blue)}
-.tools .nm{flex:.8}
-.chips{display:flex;gap:6px;overflow-x:auto;padding:10px 0 10px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.top label{display:flex;align-items:center;gap:8px;background:var(--white);border:1px solid var(--line);border-radius:14px;padding:0 14px;height:46px}
+.top label span{font-size:13px;font-weight:700;color:var(--muted);white-space:nowrap}
+.top input{border:0;outline:0;background:transparent;width:100%;min-width:0;font-size:16px;font-weight:600}
+.top label:focus-within{border-color:var(--blue)}
+.chips{display:flex;gap:6px;overflow-x:auto;padding:10px 0;scrollbar-width:none}
 .chips::-webkit-scrollbar{display:none}
 .chips a{flex:none;text-decoration:none;color:var(--ink);font-size:13px;font-weight:700;padding:7px 12px;border-radius:999px;background:var(--white);border:1px solid var(--line);white-space:nowrap}
-.chips a.on{background:var(--forest-d);border-color:var(--forest-d);color:#fff}
 
-/* ---------- шапка сторінки ---------- */
-.hero{padding:34px 0 8px}
+.hero{padding:30px 0 4px}
 .label{display:inline-flex;align-items:center;gap:8px;padding:6px 12px 6px 9px;border-radius:999px;background:var(--white);border:1px solid var(--line);font-size:11.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--blue)}
 .label::before{content:"";width:7px;height:7px;border-radius:50%;background:currentColor}
-.hero h1{font-size:clamp(32px,7vw,52px);margin:16px 0 12px}
+.hero h1{font-size:clamp(30px,7vw,46px);margin:14px 0 10px}
 .hero h1 em{color:var(--blue)}
-.hero p{color:var(--muted);font-size:16px;max-width:640px}
-.legend{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px;font-size:13.5px;color:var(--muted)}
-.legend span{display:inline-flex;align-items:center;gap:6px;background:var(--white);border:1px solid var(--line);border-radius:999px;padding:6px 12px}
-.ph{background:var(--ph);border-radius:6px;padding:0 4px;font-weight:700;color:#7A5300;box-decoration-break:clone;-webkit-box-decoration-break:clone}
+.hero p{color:var(--muted);font-size:16px}
+.ph{background:var(--ph);border-radius:6px;padding:0 4px;font-weight:700;color:#7A5300}
 .who{background:var(--sky-l);border-radius:6px;padding:0 4px;font-weight:700;color:var(--forest-d)}
 
-/* ---------- секції ---------- */
-section.sec{padding:44px 0 0}
-.sec-head{display:flex;align-items:baseline;gap:12px;margin-bottom:6px}
-.sec-head .n{flex:none;font-size:13px;font-weight:800;color:var(--blue);letter-spacing:.08em}
-.sec h2{font-size:clamp(25px,5vw,34px)}
-.sec h2 em{color:var(--blue)}
-.sec .intro{color:var(--muted);font-size:15.5px;margin:8px 0 18px;max-width:680px}
+.flow{display:flex;flex-wrap:wrap;gap:6px;margin-top:16px;font-size:13.5px;font-weight:700;color:var(--forest)}
+.flow span{background:var(--ice);border-radius:999px;padding:6px 11px}
 
-/* ---------- картка скрипта ---------- */
-.s{background:var(--paper);border:1px solid var(--line);border-radius:var(--r-lg);padding:20px 18px 18px;margin-top:14px}
-.s h3{font-size:18.5px;letter-spacing:-.02em;line-height:1.3}
-.s .when{font-size:14px;color:var(--muted);margin-top:6px}
-.s .when b{color:var(--ink)}
-.msgs{display:grid;gap:10px;margin-top:14px}
-.msg{position:relative;background:var(--white);border:1px solid var(--line);border-radius:18px 18px 18px 6px;padding:14px 16px 14px;font-size:15.5px;white-space:pre-line}
+section.sec{padding:38px 0 0}
+.sec-head{display:flex;align-items:baseline;gap:10px}
+.sec-head .n{flex:none;width:30px;height:30px;border-radius:50%;background:var(--forest-d);color:#fff;display:grid;place-items:center;font-size:13px;font-weight:800;transform:translateY(-3px)}
+.sec h2{font-size:clamp(23px,5vw,30px)}
+.sec .intro{color:var(--muted);font-size:15px;margin:8px 0 4px}
+
+.s{background:var(--paper);border:1px solid var(--line);border-radius:var(--r-lg);padding:18px 16px 16px;margin-top:12px}
+.s h3{font-size:17.5px;letter-spacing:-.02em;line-height:1.3}
+.msgs{display:grid;gap:10px;margin-top:12px}
+.msg{background:var(--white);border:1px solid var(--line);border-radius:18px 18px 18px 6px;padding:14px 15px;font-size:15.5px;white-space:pre-line}
 .msg .t{display:block}
-.msg .bar{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:12px;padding-top:10px;border-top:1px dashed var(--line)}
-.msg .tag{font-size:12px;font-weight:700;color:var(--muted);letter-spacing:.02em}
-.msg.voice{background:var(--ice);border-color:var(--powder)}
-.msg.voice .tag{color:var(--forest)}
-.copy{flex:none;display:inline-flex;align-items:center;gap:7px;border:0;cursor:pointer;background:var(--forest-d);color:#fff;font-size:13.5px;font-weight:700;padding:8px 14px;border-radius:999px;transition:transform .25s var(--ease),background .25s}
+.msg .bar{display:flex;justify-content:flex-end;margin-top:10px}
+.copy{display:inline-flex;align-items:center;gap:7px;border:0;cursor:pointer;background:var(--forest-d);color:#fff;font-size:13.5px;font-weight:700;padding:8px 14px;border-radius:999px;transition:transform .25s var(--ease),background .25s}
 .copy:active{transform:scale(.96)}
 .copy.ok{background:var(--ios)}
 .copy svg{width:15px;height:15px}
-.note{margin-top:12px;font-size:14px;color:var(--muted);padding-left:14px;border-left:3px solid var(--powder)}
-.note b{color:var(--ink)}
-.branch{margin-top:12px;display:grid;gap:6px}
-.branch div{font-size:14px;background:var(--white);border:1px solid var(--line);border-radius:12px;padding:9px 12px}
-.branch div b{color:var(--blue)}
+.note{margin-top:10px;font-size:14px;color:var(--muted);padding-left:12px;border-left:3px solid var(--powder)}
 
-/* ---------- блоки правил ---------- */
-.rules{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:6px}
-.rule{background:var(--white);border:1px solid var(--line);border-radius:var(--r-md);padding:16px}
-.rule b{display:block;font-size:15.5px;margin-bottom:4px}
-.rule p{font-size:14.5px;color:var(--muted)}
-.rule .k{display:inline-grid;place-items:center;width:26px;height:26px;border-radius:50%;background:var(--ice);color:var(--blue);font-size:12.5px;font-weight:800;margin-bottom:8px}
-.dark{background:var(--forest-d);color:#fff;border-radius:var(--r-lg);padding:24px 20px;margin-top:14px}
-.dark h3{font-size:20px;color:#fff}
-.dark ul{list-style:none;margin-top:12px;display:grid;gap:8px}
-.dark li{font-size:15px;color:#CFE0EF;padding-left:22px;position:relative}
-.dark li::before{content:"✕";position:absolute;left:0;color:#F59E8B;font-weight:800}
-.dark.ok li::before{content:"✓";color:var(--ios)}
-.flow{display:grid;gap:8px;margin-top:6px;counter-reset:f}
-.flow div{position:relative;background:var(--white);border:1px solid var(--line);border-radius:14px;padding:12px 14px 12px 50px;font-size:15px}
-.flow div::before{counter-increment:f;content:counter(f);position:absolute;left:12px;top:11px;width:26px;height:26px;border-radius:50%;background:var(--forest-d);color:#fff;display:grid;place-items:center;font-size:12.5px;font-weight:800}
-.flow div small{display:block;color:var(--muted);font-size:13.5px}
-
-.empty{display:none;text-align:center;color:var(--muted);padding:50px 0 0}
-.hide{display:none!important}
-
-footer{margin-top:70px;background:var(--forest-d);color:#A9BCCB;padding:36px 0 calc(36px + env(safe-area-inset-bottom));border-radius:var(--r-lg) var(--r-lg) 0 0;font-size:14px}
+footer{margin-top:60px;background:var(--forest-d);color:#A9BCCB;padding:30px 0 calc(30px + env(safe-area-inset-bottom));border-radius:var(--r-lg) var(--r-lg) 0 0;font-size:14px}
 footer b{color:#fff}
-
 .toast{position:fixed;left:50%;bottom:calc(18px + env(safe-area-inset-bottom));transform:translate(-50%,160%);background:var(--forest-d);color:#fff;font-size:14px;font-weight:700;padding:11px 18px;border-radius:999px;box-shadow:0 14px 34px -14px rgba(23,49,63,.7);transition:transform .45s var(--ease);z-index:60;white-space:nowrap}
 .toast.show{transform:translate(-50%,0)}
-.up{position:fixed;right:14px;bottom:calc(16px + env(safe-area-inset-bottom));z-index:50;width:46px;height:46px;border-radius:50%;border:1px solid var(--line);background:var(--white);display:grid;place-items:center;cursor:pointer;box-shadow:0 10px 26px -14px rgba(23,49,63,.5);opacity:0;pointer-events:none;transition:opacity .3s}
-.up.show{opacity:1;pointer-events:auto}
-.up svg{width:18px;height:18px}
-
-@media (max-width:620px){
-  .rules{grid-template-columns:1fr}
-  .tools label span{display:none}
-  .s{padding:18px 14px 14px}
-  .msg{padding:13px 14px}
-}
 @media (prefers-reduced-motion:reduce){*{transition-duration:.01ms!important}html{scroll-behavior:auto}}
 </style>
 </head>
@@ -129,1105 +81,287 @@ footer b{color:#fff}
 
 <div class="top">
   <div class="wrap">
-    <div class="tools">
-      <label class="nm"><span>Ім’я</span><input id="nm" placeholder="Ім’я людини" autocomplete="off" enterkeyhint="done"></label>
-      <label><span>Пошук</span><input id="q" type="search" placeholder="«дорого», «чоловік», «перенос»…" autocomplete="off" enterkeyhint="search"></label>
-    </div>
-    <nav class="chips" id="chips" aria-label="Розділи">
-      <a href="#pravyla">Правила</a>
-      <a href="#pershe">Перша відповідь</a>
-      <a href="#pytannya">Розпитати</a>
-      <a href="#zapys">Запис на час</a>
-      <a href="#nagaduvannya">Нагадування</a>
-      <a href="#hto">Хто пише</a>
-      <a href="#faq">Часті питання</a>
-      <a href="#zaperechennya">Заперечення</a>
-      <a href="#dzvinok">На дзвінку</a>
-      <a href="#pislya">Після консультації</a>
-      <a href="#oplata">Оплата</a>
-      <a href="#movchat">Мовчать</a>
-      <a href="#skladni">Складні випадки</a>
-      <a href="#golosovi">Голосові</a>
-      <a href="#stop">Стоп-лист</a>
+    <label><span>Ім’я людини</span><input id="nm" placeholder="Олено, Андрію…" autocomplete="off" enterkeyhint="done"></label>
+    <nav class="chips" aria-label="Кроки">
+      <a href="#k1">1 · Привітатися</a>
+      <a href="#k2">2 · Розпитати</a>
+      <a href="#k3">3 · Час</a>
+      <a href="#k4">4 · Нагадати</a>
+      <a href="#k5">5 · Після</a>
+      <a href="#k6">Мовчить</a>
+      <a href="#k7">Питання</a>
+      <a href="#k8">Платна консультація</a>
     </nav>
   </div>
 </div>
 
-<main class="wrap" id="main">
+<main class="wrap">
 
 <header class="hero">
-  <span class="label">Тільки для Вероніки</span>
-  <h1>Скрипти <em>для директу</em></h1>
-  <p>Усе, що відповідати людям, які залишили заявку на консультацію, — від першого «вітаю» до оплати курсу. Впишіть ім’я людини зверху, і воно підставиться в кожне повідомлення. Кнопка «Скопіювати» — і вставляєте в директ.</p>
-  <div class="legend">
-    <span><b class="who">Олено</b> — ім’я підставиться само</span>
-    <span><b class="ph">[жовте]</b> — дописати перед відправкою</span>
-    <span>🎙 — краще голосовим</span>
-  </div>
+  <span class="label">Скрипт для директу</span>
+  <h1>Людина натиснула <em>«Хочу консультацію»</em></h1>
+  <p>Що писати по кроках: безкоштовна консультація для тих, хто думає про навчання, і платна — для тих, кому треба вирішити конкретне питання. Впишіть ім’я зверху, натисніть «Скопіювати» і вставте в директ. <span class="ph">[Жовте]</span> — дописати перед відправкою.</p>
+  <div class="flow"><span>Привітатися</span><span>→ 3 питання</span><span>→ час</span><span>→ нагадати</span><span>→ консультація</span><span>→ підсумок</span></div>
 </header>
 
-<!-- ================= 0. ПРАВИЛА ================= -->
-<section class="sec" id="pravyla" data-sec>
-  <div class="sec-head"><span class="n">00</span><h2>Вісім правил,<em>які важливіші за текст</em></h2></div>
-  <p class="intro">Скрипт — це каркас. Продає не він, а відчуття, що з людиною говорить жива Вероніка, яка розбирається. Тому:</p>
-  <div class="rules">
-    <div class="rule"><span class="k">1</span><b>Відповідати швидко</b><p>Перша година після заявки — людина ще «гаряча». Через добу вона вже дивиться рілси когось іншого. Навіть якщо зайнята — короткий перший текст, а розмова потім.</p></div>
-    <div class="rule"><span class="k">2</span><b>Одне повідомлення — одна думка</b><p>Не відправляйте простирадло. Три коротких повідомлення читаються, одне довге — гортається.</p></div>
-    <div class="rule"><span class="k">3</span><b>Закінчувати питанням</b><p>Кожне повідомлення, крім прощального, закінчується питанням. Нема питання — нема відповіді.</p></div>
-    <div class="rule"><span class="k">4</span><b>Голосові — ваша сила</b><p>Учні самі кажуть, що купили через голосові. Після першої переписки — 30–60 секунд голосом. Не довше хвилини.</p></div>
-    <div class="rule"><span class="k">5</span><b>Не продавати в переписці</b><p>Мета переписки — записати на консультацію. Продаж — на консультації, коли ви вже знаєте людину.</p></div>
-    <div class="rule"><span class="k">6</span><b>Звертатися на «ви» і по імені</b><p>Ім’я в кличному: Олено, Андрію, Маріє. Формулювання без роду — «ви написали», а не «ви написала».</p></div>
-    <div class="rule"><span class="k">7</span><b>Чесність замість тиску</b><p>«Якщо вам не підійде — так і скажу» продає краще за будь-яку знижку. Жодних «залишилось 2 місця», якщо це неправда.</p></div>
-    <div class="rule"><span class="k">8</span><b>Нотатка після кожного діалогу</b><p>Хто, звідки, що болить, на чому зупинились. Шаблон — у самому низу розділу «На дзвінку».</p></div>
-  </div>
-
-  <h3 style="margin-top:26px;font-size:19px">Шлях людини — коротко</h3>
-  <div class="flow" style="margin-top:12px">
-    <div>Заявка прийшла <small>з форми на сайті в Telegram, або людина написала в директ</small></div>
-    <div>Перша відповідь <small>привітатися, подякувати, поставити одне питання</small></div>
-    <div>Розпитати <small>3 питання — хто, навіщо, скільки часу</small></div>
-    <div>Голосове 🎙 <small>коротко, тепло, по суті її/його ситуації</small></div>
-    <div>Запис на час <small>дати 2 варіанти, а не «коли вам зручно»</small></div>
-    <div>Нагадування <small>за день і за годину</small></div>
-    <div>Консультація <small>розбір ситуації → план → пропозиція курсу</small></div>
-    <div>Підсумок у директ <small>того ж дня, з планом і умовами</small></div>
-    <div>Догони <small>1 день → 3 дні → 7 днів → останнє</small></div>
-  </div>
-</section>
-
-<!-- ================= 1. ПЕРША ВІДПОВІДЬ ================= -->
-<section class="sec" id="pershe" data-sec>
-  <div class="sec-head"><span class="n">01</span><h2>Перша <em>відповідь</em></h2></div>
-  <p class="intro">Головне завдання — показати, що заявку побачила жива людина, і отримати першу відповідь. Ніяких умов і цін тут.</p>
-
-  <article class="s" data-k="заявка сайт форма телеграм перше повідомлення привітання">
-    <h3>Заявка прийшла з сайту (форма)</h3>
-    <p class="when">Людина залишила ім’я і контакт. Пишете першою — в директ, Telegram або Viber, куди вона вказала.</p>
+<!-- 1 -->
+<section class="sec" id="k1">
+  <div class="sec-head"><span class="n">1</span><h2>Привітатися</h2></div>
+  <p class="intro">Одразу, щойно побачили заявку. Коротко і з одним питанням.</p>
+  <article class="s">
     <div class="msgs">
-      <div class="msg">Вітаю, {ім’я}! Це Вероніка, Veronika Logistics 🙂
-Бачу вашу заявку на консультацію — дякую, що написали.</div>
-      <div class="msg">Щоб консультація була не загальною, а саме про вас, скажіть: ви зараз зовсім з нуля в логістиці чи вже трохи з нею стикалися?</div>
+      <div class="msg">{ім’я}, вітаю! Це Вероніка 🙂
+Бачу вашу заявку на консультацію — дуже рада!</div>
+      <div class="msg">Підкажіть, будь ласка: ви думаєте про навчання професії логіста чи вам потрібно розібрати конкретне питання по логістиці?</div>
     </div>
-    <p class="note">Питання навмисно просте — на нього легко відповісти одним словом. Складні питання на старті лякають.</p>
-  </article>
-
-  <article class="s" data-k="директ хочу консультація кнопка кодове слово воронка">
-    <h3>Людина натиснула «Хочу консультацію» у воронці або написала «консультація»</h3>
-    <p class="when">Вона вже бачила урок. Це тепла людина — можна одразу до справи.</p>
-    <div class="msgs">
-      <div class="msg">{ім’я}, вітаю! Це вже я, Вероніка, а не бот 🙂
-Ви подивилися урок і хочете консультацію — супер, давайте розберемо вашу ситуацію.</div>
-      <div class="msg">Розкажіть у двох словах: чим ви зараз займаєтесь і чому дивитесь у бік логістики?</div>
-    </div>
-  </article>
-
-  <article class="s" data-k="без імені невідоме ім'я">
-    <h3>Ім’я невідоме (нік на кшталт @kotik_2019)</h3>
-    <div class="msgs">
-      <div class="msg">Вітаю! Це Вероніка, Veronika Logistics 🙂
-Дякую за заявку на консультацію. Підкажіть, як до вас можна звертатися?</div>
-    </div>
-    <p class="note">Ім’я — перший маленький «так». Після нього людина відповідає охочіше.</p>
-  </article>
-
-  <article class="s" data-k="запізнилась пізно відповідаю довго не відповідала вибачення">
-    <h3>Ви відповідаєте із запізненням (день і більше)</h3>
-    <div class="msgs">
-      <div class="msg">{ім’я}, вітаю! Вибачте, що відповідаю тільки зараз — була на рейсах, а ваша заявка заслуговує не на відповідь «на бігу».
-Ще актуально поговорити про логістику?</div>
-    </div>
-    <p class="note">«Була на рейсах» — правда і плюс: показує, що ви практик, а не інфоциганка. Не виправдовуйтесь довго.</p>
-  </article>
-
-  <article class="s" data-k="ніч вечір пізно заявка вночі вихідні">
-    <h3>Заявка прийшла пізно ввечері або у вихідні</h3>
-    <div class="msgs">
-      <div class="msg">{ім’я}, вітаю! Бачу вашу заявку 🙂 Зараз уже пізно для нормальної розмови, тому напишу вам [завтра зранку / в понеділок] — і підберемо час для консультації.
-А поки, щоб я підготувалася: ви з нуля чи вже трохи знайомі з логістикою?</div>
-    </div>
-  </article>
-
-  <article class="s" data-k="одразу ціна скільки коштує перше питання">
-    <h3>Перше повідомлення людини — «Скільки коштує?»</h3>
-    <div class="msgs">
-      <div class="msg">{ім’я}, вітаю! Консультація безкоштовна 🙂
-А курс — залежить від формату: є навчання в групі і індивідуальне. Щоб не кидати вам прайс навмання, скажіть: ви з нуля чи вже маєте якийсь досвід?</div>
-    </div>
-    <p class="note">Ціну не ховаємо — якщо людина питає вдруге, називаємо (розділ «Оплата»). Але спершу одне питання, щоб ціна прозвучала разом із цінністю.</p>
-  </article>
-
-  <article class="s" data-k="повторна вже писала раніше повернулась знову">
-    <h3>Людина вже писала раніше і повернулася</h3>
-    <div class="msgs">
-      <div class="msg">{ім’я}, рада вас знову бачити 🙂 Ми з вами вже говорили [коли / про що].
-Що змінилося з того часу? Розкажіть — подивимось, з чого почати зараз.</div>
-    </div>
+    <p class="note"><b>Навчання</b> → далі кроки 2–5 (безкоштовна консультація). <b>Конкретне питання</b> → розділ «Платна консультація» нижче.</p>
   </article>
 </section>
 
-<!-- ================= 2. РОЗПИТАТИ ================= -->
-<section class="sec" id="pytannya" data-sec>
-  <div class="sec-head"><span class="n">02</span><h2>Розпитати <em>перед консультацією</em></h2></div>
-  <p class="intro">Три питання, які за дві хвилини показують, хто перед вами. По одному, не всі разом — це розмова, а не анкета.</p>
-
-  <article class="s" data-k="питання анкета кваліфікація три питання">
-    <h3>Три питання по черзі</h3>
+<!-- 2 -->
+<section class="sec" id="k2">
+  <div class="sec-head"><span class="n">2</span><h2>Розпитати</h2></div>
+  <p class="intro">Якщо людина обрала навчання. По одному питанню. Дочекались відповіді — коротко відреагували («Зрозуміла», «О, класно») — наступне.</p>
+  <article class="s">
     <div class="msgs">
-      <div class="msg">Чим ви зараз займаєтесь? Робота, декрет, навчання — як є 🙂</div>
-      <div class="msg">А чому саме логістика? Що вас до неї привело?</div>
-      <div class="msg">І останнє: скільки часу на тиждень ви реально готові приділяти навчанню? Чесно, без «буду старатися» 🙂</div>
+      <div class="msg">Чим ви зараз займаєтесь?</div>
+      <div class="msg">А чому захотілося саме в логістику?</div>
+      <div class="msg">І скільки часу на тиждень ви готові приділяти навчанню?</div>
     </div>
-    <div class="branch">
-      <div><b>Відповідає охоче, розлого</b> → одразу голосове і пропозиція часу (розділ «Запис»).</div>
-      <div><b>Відповідає одним словом</b> → не тисніть, пишіть «Зрозуміла» + наступне питання. На консультації розговориться.</div>
-      <div><b>Питає у відповідь про ціну/гроші</b> → розділ «Часті питання».</div>
-    </div>
-  </article>
-
-  <article class="s" data-k="все в одному повідомленні анкета список">
-    <h3>Якщо людина поспішає — все одним повідомленням</h3>
-    <div class="msgs">
-      <div class="msg">{ім’я}, щоб консультація була предметна, розкажіть коротко:
-1. Чим займаєтесь зараз?
-2. Чому дивитесь у бік логістики?
-3. Скільки годин на тиждень готові вчитися?
-Відповідайте як є — я подивлюся і скажу чесно, чи буде вам із цього користь. Якщо ні — так і напишу.</div>
-    </div>
-  </article>
-
-  <article class="s" data-k="реакція відповідь на відповідь підхопити зрозуміла">
-    <h3>Як підхопити відповідь</h3>
-    <p class="when">Головне — показати, що ви почули саме її/його, а не відправили наступний пункт скрипта.</p>
-    <div class="msgs">
-      <div class="msg">О, [офіс / декрет / склад] — це дуже частий старт. У мене серед учнів багато хто прийшов саме звідти, і з такого місця входити в професію навіть простіше, ніж здається.</div>
-      <div class="msg">Зрозуміла вас. [Чоловік водій] — це взагалі плюс: ви вже чули про рейси, простої й завантаження зсередини. Половину термінів вам пояснювати не доведеться 🙂</div>
-      <div class="msg">Дякую, що так чесно. [Мало часу] — це не проблема, навчання без дедлайнів, проходите у своєму темпі. Просто план буде трохи інший.</div>
-    </div>
+    <p class="note">Після відповідей можна записати коротке голосове на 20–30 секунд — так людина відчуває, що з нею говорить жива людина.</p>
   </article>
 </section>
 
-<!-- ================= 3. ЗАПИС ================= -->
-<section class="sec" id="zapys" data-sec>
-  <div class="sec-head"><span class="n">03</span><h2>Запис <em>на час</em></h2></div>
-  <p class="intro">Ніколи не питайте «коли вам зручно?» — на це не відповідають. Давайте два конкретні варіанти.</p>
-
-  <article class="s" data-k="запис час слот запропонувати дата консультація дзвінок">
+<!-- 3 -->
+<section class="sec" id="k3">
+  <div class="sec-head"><span class="n">3</span><h2>Домовитися про час</h2></div>
+  <p class="intro">Завжди два конкретні варіанти, а не «коли вам зручно».</p>
+  <article class="s">
     <h3>Запропонувати час</h3>
     <div class="msgs">
-      <div class="msg">{ім’я}, пропоную так: сідаємо онлайн на [30 хвилин], розбираємо вашу ситуацію і складаємо план — з чого почати саме вам. Безкоштовно, без гороху з капустою, тільки ваше питання 🙂
+      <div class="msg">Дякую, тепер я вас розумію 🙂
+Пропоную созвонитися онлайн на [30 хвилин]: я розповім, як проходить навчання, і скажу чесно, чи підходить воно саме вам. Це безкоштовно.
 Вам зручніше [у вівторок о 18:00] чи [у четвер о 12:00]?</div>
     </div>
   </article>
-
-  <article class="s" data-k="інший час не підходить жоден варіант">
+  <article class="s">
     <h3>Обидва варіанти не підходять</h3>
     <div class="msgs">
-      <div class="msg">Без проблем 🙂 А в які дні і о котрій вам найпростіше — зранку, вдень чи ввечері? Підлаштуюся.</div>
+      <div class="msg">Без проблем 🙂 Напишіть, які дні і години вам зручні, — підлаштуюся.</div>
     </div>
   </article>
-
-  <article class="s" data-k="підтвердження записала посилання zoom meet телеграм дзвінок">
-    <h3>Підтвердження запису</h3>
+  <article class="s">
+    <h3>Підтвердити</h3>
     <div class="msgs">
       <div class="msg">Записала вас 🙌
-📅 [день, дата]
-🕐 [час] за [київським / польським] часом
-📍 [Zoom / Google Meet / Telegram-дзвінок] — посилання надішлю за годину до початку.
-Якщо щось зміниться — просто напишіть, перенесемо.</div>
-      <div class="msg">І маленьке домашнє 🙂 Запишіть до консультації одне-два питання, які вас найбільше хвилюють. Так ми точно не загубимо головне.</div>
-    </div>
-    <p class="note"><b>Часовий пояс</b> — завжди вказуйте. Польща і Україна різняться на годину, на цьому зриваються зустрічі.</p>
-  </article>
-
-  <article class="s" data-k="формат як проходить що буде на консультації скільки триває">
-    <h3>«А як проходить консультація?»</h3>
-    <div class="msgs">
-      <div class="msg">Дуже просто: відеодзвінок на [30 хвилин]. Камеру можна не вмикати, якщо не хочеться 🙂
-Спершу ви розповідаєте про себе, я ставлю кілька питань. Потім кажу чесно, як я бачу ваш шлях у логістику: з чого почати, що вчити, куди можна піти працювати. І відповідаю на все, що хвилює.</div>
-    </div>
-  </article>
-
-  <article class="s" data-k="безкоштовно чому безкоштовна підступ продаж">
-    <h3>«А чому безкоштовно? Будете щось продавати?»</h3>
-    <div class="msgs">
-      <div class="msg">Чесне питання — чесна відповідь 🙂 Так, у мене є курс, і якщо на консультації я побачу, що він вам підходить, — розкажу про нього.
-Але якщо не підходить, так і скажу. Мені не цікаво вчити людину, якій це не потрібно: потім ні результату, ні відгуку. Тож у будь-якому разі ви підете з планом.</div>
+📅 [день, дата] о [час] за [київським / польським] часом
+📍 [Zoom / Google Meet / Telegram] — посилання надішлю перед початком.
+Якщо плани зміняться — просто напишіть, перенесемо.</div>
     </div>
   </article>
 </section>
 
-<!-- ================= 4. НАГАДУВАННЯ ================= -->
-<section class="sec" id="nagaduvannya" data-sec>
-  <div class="sec-head"><span class="n">04</span><h2>Нагадування, <em>перенос, неявка</em></h2></div>
-  <p class="intro">Без нагадування не приходить кожен третій. З нагадуванням — майже всі.</p>
-
-  <article class="s" data-k="нагадування за день завтра">
-    <h3>За день до консультації</h3>
+<!-- 4 -->
+<section class="sec" id="k4">
+  <div class="sec-head"><span class="n">4</span><h2>Нагадати</h2></div>
+  <article class="s">
+    <h3>За день</h3>
     <div class="msgs">
-      <div class="msg">{ім’я}, привіт! Нагадую: завтра о [час] у нас консультація 🙂
-Все в силі?</div>
+      <div class="msg">{ім’я}, нагадую: завтра о [час] у нас консультація 🙂 Все в силі?</div>
     </div>
   </article>
-
-  <article class="s" data-k="нагадування за годину посилання">
+  <article class="s">
     <h3>За годину — з посиланням</h3>
     <div class="msgs">
-      <div class="msg">{ім’я}, за годину бачимось 🙌 Ось посилання: [посилання]
-Якщо будете з телефона — краще заздалегідь встановити [Zoom / Google Meet], щоб не витрачати час на початку.</div>
+      <div class="msg">{ім’я}, за годину бачимось! Ось посилання: [посилання]</div>
     </div>
   </article>
-
-  <article class="s" data-k="за 5 хвилин чекаю зайшла">
-    <h3>За 5 хвилин / ви вже в дзвінку</h3>
+  <article class="s">
+    <h3>Не прийшла людина (через 10 хвилин)</h3>
     <div class="msgs">
-      <div class="msg">Я вже тут і чекаю вас 🙂 [посилання]</div>
-    </div>
-  </article>
-
-  <article class="s" data-k="перенос перенести не можу інший день">
-    <h3>Людина просить перенести</h3>
-    <div class="msgs">
-      <div class="msg">Звісно, без проблем 🙂 Тоді [день о час] або [день о час] — що вам краще?</div>
-    </div>
-    <p class="note">Переносимо одразу на конкретний час. «Напишіть, коли зможете» = людина зникла.</p>
-  </article>
-
-  <article class="s" data-k="не прийшла неявка не з'явилась не зайшла пропустила">
-    <h3>Не прийшла (через 10 хвилин після початку)</h3>
-    <div class="msgs">
-      <div class="msg">{ім’я}, я в дзвінку, але вас не бачу 🙂 Все гаразд? Якщо щось завадило — нічого страшного, підберемо інший час.</div>
-    </div>
-  </article>
-
-  <article class="s" data-k="не прийшла наступного дня неявка друге повідомлення">
-    <h3>Не прийшла і мовчить — наступного дня</h3>
-    <div class="msgs">
-      <div class="msg">{ім’я}, вчора не вийшло зустрітися — буває, у всіх життя 🙂
-Якщо логістика ще актуальна, пропоную [день о час] або [день о час]. Якщо ні — просто напишіть «не зараз», я не ображуся.</div>
-    </div>
-    <p class="note">Після другої неявки більше не призначаємо самі. Пишемо: «Коли буде зручно — напишіть, я на зв’язку».</p>
-  </article>
-
-  <article class="s" data-k="ви запізнюєтесь вероніка запізнюється сама не встигаю">
-    <h3>Ви самі не встигаєте</h3>
-    <div class="msgs">
-      <div class="msg">{ім’я}, вибачте, будь ласка — затримуюсь на [10 хвилин], закриваю терміновий вантаж. Можемо почати о [час]? Або, якщо вам незручно, перенесемо на [варіант].</div>
+      <div class="msg">{ім’я}, я вже в дзвінку, але вас не бачу 🙂 Все гаразд? Якщо щось завадило — підберемо інший час.</div>
     </div>
   </article>
 </section>
 
-<!-- ================= 5. ХТО ПИШЕ ================= -->
-<section class="sec" id="hto" data-sec>
-  <div class="sec-head"><span class="n">05</span><h2>Хто пише — <em>і що йому сказати</em></h2></div>
-  <p class="intro">Після відповідей на три питання стає зрозуміло, хто перед вами. Під кожного — свій заход і своє голосове.</p>
-
-  <article class="s" data-k="з нуля без досвіду новачок нова професія офіс">
-    <h3>З нуля, хоче нову професію</h3>
-    <p class="when">Найчастіший випадок. Головний страх — «я не впораюсь».</p>
+<!-- 5 -->
+<section class="sec" id="k5">
+  <div class="sec-head"><span class="n">5</span><h2>Після консультації</h2></div>
+  <article class="s">
+    <h3>Того ж дня — підсумок</h3>
     <div class="msgs">
-      <div class="msg">{ім’я}, з нуля — це нормально, я сама прийшла в логістику без досвіду і без зв’язків 🙂
-Курс якраз і побудований з самого початку: хто такий логіст, спедитор і диспетчер, як шукати вантажі, як рахувати маршрут.</div>
-      <div class="msg">На консультації я покажу, з чого почати саме вам і скільки часу це реально займе. Вам зручніше [день о час] чи [день о час]?</div>
+      <div class="msg">{ім’я}, дякую за розмову, було дуже приємно 🙂
+Як ми й говорили: навчання [формат] — [ціна], стартувати можна коли зручно.
+Якщо вирішите йти — напишіть, я надішлю реквізити і відкрию доступ.</div>
     </div>
   </article>
-
-  <article class="s" data-k="чоловік водій дружина водія родина власна фірма перевізник">
-    <h3>Чоловік / дружина / хтось у родині — водій</h3>
-    <p class="when">Сильний сегмент: людина вже бачить логістику зсередини і часто хоче працювати з власною машиною.</p>
+  <article class="s">
+    <h3>Через 2 дні — якщо мовчить</h3>
     <div class="msgs">
-      <div class="msg">О, це взагалі ідеальний старт 🙂 Коли в родині є водій, ви вже наполовину в темі: рейси, простої, завантаження — усе це чули за вечерею.
-Багато хто в такій ситуації починає вести саме свою машину: шукати вантажі, рахувати маршрут і час водія.</div>
-      <div class="msg">Ви думаєте більше про роботу в компанії чи про те, щоб вести свою машину?</div>
-    </div>
-    <p class="note">Тут згадайте історію Богдани з сайту: чоловік водій, вона логіст, другий рік своя компанія.</p>
-  </article>
-
-  <article class="s" data-k="диспетчер вже працює досвід поглибити спедитор розвиток">
-    <h3>Вже працює в логістиці (диспетчер, асистент), хоче рости</h3>
-    <div class="msgs">
-      <div class="msg">{ім’я}, тоді ви знаєте, як часто в логістиці всьому вчать «на бігу» і ніхто не пояснює систему 🙂
-Розкажіть, що саме зараз робите і де відчуваєте, що бракує знань — біржі, маршрути, час водія, документи?</div>
-    </div>
-    <p class="note">Таким людям часто краще підходить індивідуальний формат або окремі модулі, а не курс з нуля. Скажіть це чесно — це будує довіру.</p>
-  </article>
-
-  <article class="s" data-k="перевізник власник машини бус тир шукає логіста">
-    <h3>Перевізник: має машини, хоче налагодити роботу з логістом</h3>
-    <div class="msgs">
-      <div class="msg">{ім’я}, вітаю! Скільки у вас машин і які — буси до 3,5 т чи тіри? І ви зараз шукаєте вантажі самі, через біржу чи через когось?</div>
-      <div class="msg">Я сама веду перевізників з бусами під відсоток і працювала в компанії з п’ятьма тірами, тож розумію обидві сторони. На консультації розберемо, як вам вибудувати роботу з логістом — або як навчити цього когось зі своїх.</div>
+      <div class="msg">{ім’я}, привіт! Як ви, подумали щодо навчання? Може, з’явилися питання — пишіть, відповім 🙂</div>
     </div>
   </article>
-
-  <article class="s" data-k="декрет мама діти вдома з дитиною">
-    <h3>У декреті / з маленькими дітьми</h3>
+  <article class="s">
+    <h3>Людина каже «так»</h3>
     <div class="msgs">
-      <div class="msg">{ім’я}, розумію вас як ніхто — дохід, який не прив’язаний до офісу і графіка, для мам це чи не найцінніше 🙂
-Навчання без дедлайнів: проходите, коли дитина спить, у своєму темпі. А сама робота логіста — це ноутбук і телефон.</div>
-      <div class="msg">Скільки приблизно годин на день у вас є «свого» часу? Від цього складемо реальний план, а не ідеальний.</div>
-    </div>
-  </article>
-
-  <article class="s" data-k="польща за кордоном європа живу в польщі німеччина">
-    <h3>Живе за кордоном (Польща, Німеччина, Чехія)</h3>
-    <div class="msgs">
-      <div class="msg">{ім’я}, Польща — це взагалі центр європейської логістики, тут транспортних фірм на кожному кроці 🙂 Я сама вчилася і працюю тут, у Вроцлаві.
-Як у вас з польською чи англійською? Від цього залежить, куди найкраще стукатися на старті.</div>
-    </div>
-  </article>
-
-  <article class="s" data-k="україна живу в україні з україни віддалено">
-    <h3>Живе в Україні</h3>
-    <div class="msgs">
-      <div class="msg">{ім’я}, з України теж можна — робота логіста дистанційна, багато європейських фірм наймають людей віддалено, особливо тих, хто говорить українською і розуміє ринок.
-На консультації розберемо, які варіанти реальні саме у вашій ситуації.</div>
-    </div>
-    <p class="note">Не обіцяйте конкретних вакансій. «Розберемо варіанти» — чесно.</p>
-  </article>
-
-  <article class="s" data-k="вік 40 50 старша пізно мені вже">
-    <h3>«Мені вже 40+ — не пізно?»</h3>
-    <div class="msgs">
-      <div class="msg">{ім’я}, ні 🙂 У логістиці вік — це скоріше плюс: перевізники і клієнти більше довіряють спокійній людині з життєвим досвідом, ніж студенту.
-Тут важливі уважність і вміння домовлятися, а не швидкість у тік-тоці.</div>
-    </div>
-  </article>
-
-  <article class="s" data-k="студент молодий 18 студентка учень">
-    <h3>Студент / дуже молода людина</h3>
-    <div class="msgs">
-      <div class="msg">{ім’я}, класно, що ви думаєте про професію так рано 🙂 Я сама п’ять років вчила логістику в університеті — і чесно скажу, на практиці половина того не знадобилась.
-Ви зараз вчитеся за спеціальністю чи шукаєте, чим займатися паралельно?</div>
-    </div>
-  </article>
-
-  <article class="s" data-k="просто цікаво подивитися не впевнена думаю чи моє">
-    <h3>«Просто цікаво, ще не знаю, чи моє»</h3>
-    <div class="msgs">
-      <div class="msg">І це абсолютно нормально 🙂 Саме для цього консультація і є: ви поставите всі питання, я розкажу, як виглядає робота логіста зсередини, без прикрас.
-Якщо зрозумієте, що не ваше, — це теж результат, і ви збережете собі гроші й час.</div>
+      <div class="msg">Ура, дуже рада 🙌
+Ось реквізити: [реквізити]
+Після оплати надішліть, будь ласка, скрін і вашу пошту — я відкрию доступ до кабінету.</div>
     </div>
   </article>
 </section>
 
-<!-- ================= 6. FAQ ================= -->
-<section class="sec" id="faq" data-sec>
-  <div class="sec-head"><span class="n">06</span><h2>Часті <em>питання в переписці</em></h2></div>
-  <p class="intro">Відповідаємо коротко і повертаємо розмову до консультації. Дописуйте <span class="ph">[жовте]</span> своїми цифрами.</p>
-
-  <article class="s" data-k="ціна курс скільки коштує вартість прайс друге питання">
-    <h3>«Скільки коштує курс?» (питає вдруге)</h3>
+<!-- 6 -->
+<section class="sec" id="k6">
+  <div class="sec-head"><span class="n">!</span><h2>Якщо людина мовчить</h2></div>
+  <article class="s">
+    <h3>Не відповіла на перше повідомлення (наступного дня)</h3>
     <div class="msgs">
-      <div class="msg">Курс у групі — [сума]. Індивідуальне навчання — [сума].
-У групі: вступ + 8 модулів, домашні з перевіркою, презентації, файли з маршрутами і мої відповіді на питання. Індивідуально — те саме, але заняття один на один і темп під вас.</div>
-      <div class="msg">Який формат вам підійде, краще зрозуміти на консультації — вона безкоштовна і ні до чого не зобов’язує. Записати вас на [день о час]?</div>
+      <div class="msg">{ім’я}, нагадую про себе 🙂 Ви хотіли консультацію щодо навчання логістиці. Ще актуально?</div>
     </div>
   </article>
-
-  <article class="s" data-k="мова польська англійська німецька знання мови">
-    <h3>«Треба знати польську / англійську?»</h3>
+  <article class="s">
+    <h3>Останнє повідомлення (ще через кілька днів)</h3>
     <div class="msgs">
-      <div class="msg">На курсі — ні, все українською 🙂
-Для роботи мова допомагає, але не обов’язково на старті ідеальна: багато хто починає з фірм, де працюють з україномовними водіями, а мову підтягує вже в процесі. Тексти листів клієнтам і перевізникам на курсі є.</div>
-    </div>
-    <p class="note">Перевірте, чи справді на курсі є шаблони листів, — або приберіть останнє речення.</p>
-  </article>
-
-  <article class="s" data-k="скільки заробляє логіст дохід зарплата гроші заробіток">
-    <h3>«Скільки заробляє логіст?»</h3>
-    <div class="msgs">
-      <div class="msg">Чесно — дуже по-різному, і цифрам «заробиш 3000 євро за місяць» я б не вірила 🙂
-Залежить від того, ви в компанії на зарплаті чи працюєте під відсоток з перевізниками, від напрямків і від того, скільки машин ведете. На консультації я розкладу, з чого складається дохід саме у вашому варіанті.</div>
-    </div>
-    <p class="note">Жодних конкретних цифр доходу в переписці — це правило. Калькулятор на сайті — орієнтир, не обіцянка.</p>
-  </article>
-
-  <article class="s" data-k="робота працевлаштування допоможете знайти роботу гарантія">
-    <h3>«Ви допоможете з роботою? Гарантуєте працевлаштування?»</h3>
-    <div class="msgs">
-      <div class="msg">Гарантувати роботу не може ніхто, хто чесний 🙂 Але восьмий модуль курсу повністю про це: резюме, підготовка до співбесіди, питання, на яких сиплються, і куди стукатися.
-Я з вами до кінця курсу і підкажу, куди дивитися саме вам.</div>
-    </div>
-  </article>
-
-  <article class="s" data-k="скільки часу триває тривалість тижні як довго">
-    <h3>«Скільки триває навчання?»</h3>
-    <div class="msgs">
-      <div class="msg">Програма розрахована на 5 тижнів — це вижимка з п’яти років університету і моєї практики 🙂
-Але дедлайнів немає: хтось проходить швидше, хтось — коли дитина спить. Доступ до матеріалів — [скільки].</div>
-    </div>
-  </article>
-
-  <article class="s" data-k="коли старт початок дата групи набір">
-    <h3>«Коли старт?»</h3>
-    <div class="msgs">
-      <div class="msg">Коли вам зручно 🙂 Фіксованих дат немає — після оплати я відкриваю доступ, і ви починаєте хоч того ж вечора.</div>
-    </div>
-  </article>
-
-  <article class="s" data-k="формат як проходить навчання відео записи живі заняття онлайн">
-    <h3>«Як проходить навчання?»</h3>
-    <div class="msgs">
-      <div class="msg">Онлайн, у вашому особистому кабінеті на сайті: відеоуроки, презентації, файли з маршрутами і домашні.
-Домашні я перевіряю особисто, на питання відповідаю — часто голосовими, бо так швидше і зрозуміліше 🙂</div>
-    </div>
-  </article>
-
-  <article class="s" data-k="сертифікат диплом документ після курсу">
-    <h3>«Буде сертифікат?»</h3>
-    <div class="msgs">
-      <div class="msg">[Так, після курсу ви отримуєте сертифікат Veronika Logistics / Окремого сертифіката немає].
-Але скажу чесно: на співбесіді в транспортну фірму питають не сертифікат, а «порахуйте мені час водія на маршрут Вроцлав — Мілан». От цього я і вчу 🙂</div>
-    </div>
-    <p class="note">Виберіть правдивий варіант у дужках і приберіть другий.</p>
-  </article>
-
-  <article class="s" data-k="математика боюся цифри формули складно">
-    <h3>«Я боюся математики»</h3>
-    <div class="msgs">
-      <div class="msg">Я теж боялася 🙂 Насправді там прості формули і логіка: скільки кілометрів, скільки годин водій може їхати, скільки вантажу влізе в машину. Я показую все на прикладах, крок за кроком — без шкільної алгебри.</div>
-    </div>
-  </article>
-
-  <article class="s" data-k="диспетчер спедитор логіст різниця хто це">
-    <h3>«А чим логіст відрізняється від диспетчера?»</h3>
-    <div class="msgs">
-      <div class="msg">Коротко: диспетчер веде водія — маршрут, час, де він зараз. Спедитор веде клієнта і ставку — знаходить вантаж і домовляється про ціну. Логіст — загальне слово, і часто це одна людина робить усе разом 🙂
-Це, до речі, питають на співбесідах. Ви вже бачили урок, де я це розбираю? [посилання на урок]</div>
-    </div>
-  </article>
-
-  <article class="s" data-k="ноутбук техніка що потрібно комп'ютер">
-    <h3>«Що потрібно для роботи / навчання?»</h3>
-    <div class="msgs">
-      <div class="msg">Ноутбук, телефон і інтернет 🙂 Для навчання можна і з телефона, але для роботи на біржах вантажів ноутбук усе-таки потрібен.</div>
-    </div>
-  </article>
-
-  <article class="s" data-k="індивідуально один на один різниця група">
-    <h3>«Чим група відрізняється від індивідуального?»</h3>
-    <div class="msgs">
-      <div class="msg">У групі — ви проходите модулі самостійно у своєму темпі, я перевіряю домашні і відповідаю на питання.
-Індивідуально — ми займаємося разом онлайн [2 рази на тиждень], я пояснюю наживо, підлаштовую програму під вашу ситуацію і розбираємо ваші реальні вантажі. Підходить тим, кому важливо, щоб поруч був хтось, хто «тримає».</div>
-    </div>
-  </article>
-
-  <article class="s" data-k="розстрочка частинами оплата частково">
-    <h3>«Можна частинами?»</h3>
-    <div class="msgs">
-      <div class="msg">[Так, можна двома частинами: [сума] зараз і [сума] через [строк] / Поки оплата тільки повна, але я можу відкрити перший модуль одразу після передоплати].
-Давайте на консультації подивимося, який формат вам підходить, — і тоді домовимося, як зручніше.</div>
-    </div>
-  </article>
-
-  <article class="s" data-k="повернення грошей не сподобається передумаю">
-    <h3>«А якщо не сподобається — повернете гроші?»</h3>
-    <div class="msgs">
-      <div class="msg">[Ваші умови повернення: наприклад, «якщо протягом перших [N] днів зрозумієте, що не ваше, — поверну [повністю / частину]»].
-Але саме тому я й роблю консультацію до оплати: щоб ви купували не кота в мішку, а розуміли, що отримаєте.</div>
-    </div>
-    <p class="note">Не вигадуйте умови на ходу — домовтеся з собою один раз і пишіть завжди однаково.</p>
-  </article>
-</section>
-
-<!-- ================= 7. ЗАПЕРЕЧЕННЯ ================= -->
-<section class="sec" id="zaperechennya" data-sec>
-  <div class="sec-head"><span class="n">07</span><h2>Заперечення — <em>і що за ними</em></h2></div>
-  <p class="intro">Заперечення — це не «ні», а питання, яке людина не наважилась поставити прямо. Спершу погоджуємось, потім уточнюємо, що насправді стоїть за словами.</p>
-
-  <article class="s" data-k="дорого дорого гроші ціна висока немає грошей">
-    <h3>«Дорого»</h3>
-    <div class="msgs">
-      <div class="msg">Розумію вас, це не маленькі гроші 🙂 Можна уточнити — дорого в порівнянні з чим? З іншим курсом, з тим, скільки ви зараз маєте вільних грошей, чи просто з відчуттям, що не впевнені в результаті?</div>
-    </div>
-    <div class="branch">
-      <div><b>«З іншим курсом»</b> → «А що там входить? Чи є перевірка домашніх і хтось, кому можна поставити питання?» Порівнюйте наповнення, не ціну.</div>
-      <div><b>«Зараз немає таких грошей»</b> → скрипт нижче «Немає грошей зараз».</div>
-      <div><b>«Не впевнена в результаті»</b> → «А що має бути, щоб ви були впевнені? Скажіть — подивимось, чи можу я це дати».</div>
-    </div>
-  </article>
-
-  <article class="s" data-k="дорого вкладення окупиться порівняння">
-    <h3>«Дорого» — коли людина вже порівнює з доходом</h3>
-    <div class="msgs">
-      <div class="msg">Я на своє навчання в логістиці витратила п’ять років і близько 30 000 євро 🙂 Курс — це вижимка з того, що реально знадобилося в роботі, без того, що я пережовувала в універі і що вам не потрібно.
-Тобто ви платите не за інформацію — її можна нагуглити, — а за те, щоб не витратити роки на набивання шишок.</div>
-    </div>
-  </article>
-
-  <article class="s" data-k="немає грошей зараз потім пізніше зарплата">
-    <h3>«Зараз немає грошей»</h3>
-    <div class="msgs">
-      <div class="msg">Дякую, що чесно сказали 🙂 Це нормально, тиснути не буду.
-Скажіть, коли приблизно буде зручніше — після зарплати, наступного місяця? Я можу написати вам тоді, а поки надішлю, що можна подивитися безкоштовно, щоб не стояти на місці.</div>
-    </div>
-  </article>
-
-  <article class="s" data-k="подумаю треба подумати дайте подумати">
-    <h3>«Я подумаю»</h3>
-    <div class="msgs">
-      <div class="msg">Звісно, подумайте — таке рішення не приймають за хвилину 🙂
-Тільки допоможіть мені: про що саме ви думатимете? Ціна, час, чи впораєтесь, чи формат? Бо часто «подумаю» — це одне конкретне питання, на яке я можу відповісти зараз.</div>
-    </div>
-    <div class="branch">
-      <div><b>Назвала конкретне</b> → відповідаєте саме на нього, потім: «Це знімає питання?»</div>
-      <div><b>«Ні, просто подумаю»</b> → «Добре 🙂 Тоді напишу вам [у четвер], добре?» — і пишете в четвер.</div>
-    </div>
-  </article>
-
-  <article class="s" data-k="порадитись з чоловіком дружиною родиною чоловік">
-    <h3>«Треба порадитись з чоловіком / родиною»</h3>
-    <div class="msgs">
-      <div class="msg">Правильно, це спільне рішення 🙂
-Хочете, я запишу коротке голосове, яке ви можете йому переслати: що це за професія, що на курсі і чого чекати? Щоб вам не довелося переказувати своїми словами.</div>
-      <div class="msg voice">🎙 Тези для голосового «для чоловіка»:
-— хто я: логіст, працюю в міжнародних перевезеннях, вчилась у Польщі;
-— що за робота: ноутбук і телефон, з дому, перевезення по Європі;
-— що на курсі: 8 модулів, від нуля до пошуку вантажів і співбесіди;
-— чесно: результат залежить від того, скільки часу людина вкладе;
-— запрошення: «якщо є питання — пишіть мені напряму, або приходьте разом на консультацію».</div>
-    </div>
-    <p class="note">Якщо чоловік водій — він часто найкращий союзник: знає, як цінують хорошого логіста. Запропонуйте прийти на консультацію разом.</p>
-  </article>
-
-  <article class="s" data-k="немає часу зайнята робота не встигну часу">
-    <h3>«Немає часу»</h3>
-    <div class="msgs">
-      <div class="msg">Розумію 🙂 Скільки у вас реально виходить вільного часу — хоча б годину-дві на тиждень?
-Навчання без дедлайнів, і багато хто проходить його по уроку за вечір. Це довше, ніж 5 тижнів, але це рух, а не «колись потім».</div>
-    </div>
-  </article>
-
-  <article class="s" data-k="не вийде не впораюсь боюсь страшно невпевнена не зможу">
-    <h3>«А раптом у мене не вийде?»</h3>
-    <div class="msgs">
-      <div class="msg">Цей страх є майже в усіх, хто мені пише — і в мене він теж був, коли я прийшла в логістику без досвіду і без зв’язків 🙂
-Тому курс і побудований від самого нуля, з домашніми, які я перевіряю. Якщо щось не виходить — ви не сидите з цим сама/сам, а пишете мені.</div>
-      <div class="msg">Що саме здається найскладнішим — мова, цифри, спілкування з клієнтами?</div>
-    </div>
-    <p class="note">«Сама/сам» — залиште одне слово під людину перед відправкою.</p>
-  </article>
-
-  <article class="s" data-k="шахрайство не вірю справжня чи ви реальна інфоцигани курси обман довіра">
-    <h3>«А ви взагалі справжня? Багато зараз курсів-пустушок»</h3>
-    <div class="msgs">
-      <div class="msg">Дуже правильне питання, я б теж спитала 🙂
-Я вчилася логістиці в польському університеті — бакалавр і магістр, працювала логістом у транспортній компанії з тірами, зараз веду перевізників і навчаю. Дипломи і сертифікат — на сайті: veronika-logistics.com</div>
-      <div class="msg">А найкраще — приходьте на безкоштовну консультацію і поставте мені будь-яке робоче питання. Одразу буде видно, практик я чи ні 🙂</div>
-    </div>
-  </article>
-
-  <article class="s" data-k="youtube безкоштовно в інтернеті є все сама навчусь відео">
-    <h3>«Все це є безкоштовно на YouTube»</h3>
-    <div class="msgs">
-      <div class="msg">Частково — так, і я це не заперечую 🙂 Інформацію знайти можна.
-Різниця в іншому: на YouTube ніхто не перевірить, чи правильно ви порахували час водія, і не скаже, що ви помилились у каботажі. А помилка в роботі — це штраф перевізнику і ваша репутація.
-У мене ви отримуєте систему по порядку і людину, якій можна поставити питання.</div>
-    </div>
-  </article>
-
-  <article class="s" data-k="інший курс дешевше в іншої конкурент порівнюю">
-    <h3>«В іншому місці дешевше»</h3>
-    <div class="msgs">
-      <div class="msg">Може бути 🙂 Подивіться тільки на три речі: чи веде курс практик, який зараз сам працює з вантажами; чи перевіряють домашні; і чи можна поставити питання після уроку.
-Якщо там усе це є і дешевше — чесно, йдіть туди. Якщо ні — різниця в ціні якраз за це.</div>
-    </div>
-  </article>
-
-  <article class="s" data-k="потім після свят пізніше не зараз не на часі восени">
-    <h3>«Потім, після свят / після літа»</h3>
-    <div class="msgs">
-      <div class="msg">Добре, розумію 🙂 Можна тільки одне питання: що зміниться після [свят]? Якщо буде більше часу — це одне. Якщо просто «колись» — то такий момент зазвичай не настає, по собі знаю.
-Дедлайнів у мене немає, тож можна почати зараз потихеньку, а основну частину пройти, коли стане вільніше.</div>
-    </div>
-  </article>
-
-  <article class="s" data-k="надішліть інформацію напишіть умови скиньте програму текстом">
-    <h3>«Скиньте інформацію, я почитаю»</h3>
-    <div class="msgs">
-      <div class="msg">Звісно 🙂 Ось вся програма: veronika-logistics.com/#program
-Але чесно — сайт однаковий для всіх, а ваша ситуація своя. 30 хвилин розмови дадуть більше, ніж година читання. Може, все-таки [день о час]?</div>
-    </div>
-  </article>
-
-  <article class="s" data-k="не впевнена що логістика моє сумніваюсь професія підходить">
-    <h3>«Не впевнена, що логістика — це моє»</h3>
-    <div class="msgs">
-      <div class="msg">Це найчесніше, що можна сказати на старті 🙂 Подивіться перший урок, якщо ще не бачили: veronika-logistics.com/urok/ — це 7 хвилин.
-Якщо після нього цікаво — значить, приблизно ваше. Якщо нудно — краще зрозуміти це зараз, ніж після оплати.</div>
+      <div class="msg">{ім’я}, не хочу бути настирливою 🙂 Якщо навчання стане актуальним — просто напишіть, я на зв’язку.</div>
     </div>
   </article>
 </section>
 
-<!-- ================= 8. НА ДЗВІНКУ ================= -->
-<section class="sec" id="dzvinok" data-sec>
-  <div class="sec-head"><span class="n">08</span><h2>План <em>самої консультації</em></h2></div>
-  <p class="intro">Не скрипт для читання, а шпаргалка, щоб не загубити структуру. Говорить людина 60–70% часу.</p>
-
-  <div class="flow">
-    <div>Знайомство, 2 хв <small>«Дякую, що прийшли. План такий: ви розповідаєте, я питаю, потім кажу, як бачу ваш шлях, і відповідаю на все. Ок?»</small></div>
-    <div>Ситуація зараз, 5–7 хв <small>Чим займається, що не влаштовує, чому саме зараз. Три «чому» підряд: «Чому це важливо? А що буде, якщо нічого не змінювати?»</small></div>
-    <div>Ціль, 3 хв <small>«Уявіть, що минуло пів року і все вийшло. Як виглядає ваш день?» Записуйте дослівно — ці слова потім повертаєте.</small></div>
-    <div>Що заважає, 3 хв <small>«Що досі зупиняло?» Час, мова, страх, гроші, родина — це майбутні заперечення, краще почути їх тут.</small></div>
-    <div>Ваш план для людини, 7–10 хв <small>Конкретно: 1) що вчити, 2) куди йти працювати / як вести свою машину, 3) скільки часу реально. Тут даєте цінність навіть тим, хто не купить.</small></div>
-    <div>Пропозиція, 3–5 хв <small>Тільки якщо підходить. Скрипт нижче.</small></div>
-    <div>Наступний крок <small>Ніколи не закінчуйте «подумайте». Домовтесь: «Тоді я напишу вам [завтра о 12], добре?»</small></div>
-  </div>
-
-  <article class="s" data-k="пропозиція курсу на дзвінку продаж як запропонувати">
-    <h3>Перехід до пропозиції (говорите вголос)</h3>
+<!-- 7 -->
+<section class="sec" id="k7">
+  <div class="sec-head"><span class="n">?</span><h2>Якщо питають у переписці</h2></div>
+  <article class="s">
+    <h3>«Скільки коштує навчання?»</h3>
     <div class="msgs">
-      <div class="msg voice">«Дивіться, з того, що ви розповіли, я бачу так: [коротко повторити її/його ціль їхніми словами]. Щоб туди дійти, вам потрібні [2–3 речі: маршрути, біржі, співбесіда].
-Саме це дає мій курс — [група / індивідуально], бо [чому саме цей формат цій людині].
-Коштує [сума], старт — коли вам зручно, хоч завтра.
-Що скажете?»</div>
+      <div class="msg">Навчання — [ціна]. Що саме входить і який формат підійде вам, розкажу на консультації — вона безкоштовна і ні до чого не зобов’язує 🙂 Вам зручніше [варіант 1] чи [варіант 2]?</div>
     </div>
-    <p class="note">Після «Що скажете?» — <b>мовчіть</b>. Пауза незручна, але першим має заговорити клієнт.</p>
   </article>
-
-  <article class="s" data-k="не підходить чесно відмовити курс не для вас">
-    <h3>Якщо курс людині не підходить (говорите чесно)</h3>
+  <article class="s">
+    <h3>«Консультація справді безкоштовна?»</h3>
     <div class="msgs">
-      <div class="msg voice">«Скажу чесно: зараз курс вам не потрібен, тому що [причина: немає часу зовсім / шукає швидкі гроші за тиждень / вже знає базу]. Краще [порада]. А коли [умова] — напишіть мені, і повернемося до цього.»</div>
-    </div>
-    <p class="note">Такі люди потім повертаються і приводять подруг — бо вам повірили.</p>
-  </article>
-
-  <article class="s" data-k="нотатка шаблон картка ліда записати crm">
-    <h3>Нотатка після консультації (для себе)</h3>
-    <div class="msgs">
-      <div class="msg">Ім’я: {ім’я}
-Звідки: [рілс / урок / реклама / порадили]
-Країна, мова: [ ]
-Зараз працює: [ ]
-Чому логістика (дослівно): [ ]
-Час на навчання: [ ]
-Що заважає / боїться: [ ]
-Що запропонувала: [група / індивідуально / нічого]
-Реакція: [купує / думає / не зараз]
-Наступний крок і дата: [ ]</div>
+      <div class="msg">Так 🙂 Ця консультація — для тих, хто думає про навчання: розповідаю, як воно проходить, і чесно кажу, чи підходить вам. Якщо ні — так і скажу.</div>
     </div>
   </article>
 </section>
 
-<!-- ================= 9. ПІСЛЯ ================= -->
-<section class="sec" id="pislya" data-sec>
-  <div class="sec-head"><span class="n">09</span><h2>Після консультації <em>і догони</em></h2></div>
-  <p class="intro">Більшість купує не на дзвінку, а через 1–7 днів після нього. Хто не пише після консультації — втрачає половину продажів.</p>
-
-  <article class="s" data-k="підсумок після консультації того ж дня дякую план">
-    <h3>Підсумок — того ж дня, через годину-дві</h3>
+<!-- PAID -->
+<section class="sec" id="k8">
+  <div class="sec-head"><span class="n">₴</span><h2>Платна консультація</h2></div>
+  <p class="intro">Для тих, кому не потрібне навчання, а треба вирішити своє питання: маршрут, час водія, біржі, документи, робота з перевізником, резюме і співбесіда.</p>
+  <article class="s">
+    <h3>Людина каже: «мені треба конкретне питання»</h3>
     <div class="msgs">
-      <div class="msg">{ім’я}, дякую за розмову, мені було дуже приємно 🙂
-Коротко, щоб не загубилося:
-1. [перший крок]
-2. [другий крок]
-3. [третій крок]
-Як ми говорили, курс [формат] — [сума], старт коли зручно.</div>
-      <div class="msg">Якщо щось згадаєте пізніше — пишіть, відповім 🙂 Як вам після розмови, що думаєте?</div>
+      <div class="msg">Зрозуміла 🙂 Напишіть коротко, яке у вас питання, — подивлюся, чи можу допомогти.</div>
     </div>
   </article>
-
-  <article class="s" data-k="догон 1 день наступного дня після консультації">
-    <h3>Догон через 1 день — якщо мовчить</h3>
+  <article class="s">
+    <h3>Запропонувати платну консультацію</h3>
     <div class="msgs">
-      <div class="msg">{ім’я}, привіт! Як ви, переварили вчорашню розмову? 🙂
-Може, з’явилися питання, які не встигли поставити?</div>
+      <div class="msg">Так, з цим можу допомогти 🙂
+Для таких питань у мене є індивідуальна консультація: онлайн, [тривалість], розбираємо саме вашу ситуацію з мого практичного досвіду.
+Вартість — [ціна].
+Вам зручніше [варіант 1] чи [варіант 2]?</div>
     </div>
   </article>
-
-  <article class="s" data-k="догон 3 дні корисне кейс користь">
-    <h3>Догон через 3 дні — з користю, без продажу</h3>
+  <article class="s">
+    <h3>Людина погодилась — оплата і запис</h3>
     <div class="msgs">
-      <div class="msg">{ім’я}, згадала про вас 🙂 Ви питали про [тема з консультації] — ось [коротка порада / рілс / файл / приклад маршруту] на цю тему: [посилання або текст].
-Як ви, рухаєтесь у бік логістики?</div>
+      <div class="msg">Чудово 🙌 Записую вас на [день] о [час] за [київським / польським] часом.
+Оплата наперед: [реквізити]. Після оплати надішліть, будь ласка, скрін — і час закріплений за вами.</div>
+      <div class="msg">І щоб не втратити час на дзвінку: напишіть заздалегідь ваше питання детальніше, якщо є — скріни, маршрут, документи. Я підготуюсь.</div>
     </div>
-    <p class="note">Тут нагадуєте про себе цінністю. Людина відчуває, що ви пам’ятаєте саме її розмову.</p>
   </article>
-
-  <article class="s" data-k="догон 7 днів тиждень відгук кейс учня історія">
-    <h3>Догон через 7 днів — історія когось схожого</h3>
+  <article class="s">
+    <h3>Оплата прийшла — підтвердження</h3>
     <div class="msgs">
-      <div class="msg">{ім’я}, привіт! Хочу поділитися: [ім’я учня] прийшла / прийшов до мене з тієї ж точки, що й ви, — [ситуація]. Зараз [результат без цифр доходу: працює в транспортній фірмі / веде свою машину / пройшла співбесіду].
-Ви ще думаєте про навчання, чи вирішили поки відкласти? Скажіть як є 🙂</div>
+      <div class="msg">{ім’я}, оплату отримала, дякую 🙂 Чекаю вас [день] о [час]. Посилання надішлю перед початком.</div>
     </div>
-    <p class="note">Тільки реальні історії з дозволом людини. Поки їх мало — історія Богдани з сайту.</p>
   </article>
-
-  <article class="s" data-k="останнє повідомлення 14 днів прощання не настирлива">
-    <h3>Останнє повідомлення — через 2 тижні тиші</h3>
+  <article class="s">
+    <h3>«Чому платно, якщо є безкоштовна?»</h3>
     <div class="msgs">
-      <div class="msg">{ім’я}, не хочу бути настирливою, тому це останнє повідомлення від мене 🙂
-Якщо логістика стане актуальною — просто напишіть, я поруч. А якщо ні — бажаю, щоб у вас вийшло те, що ви задумали.</div>
+      <div class="msg">Безкоштовна консультація — для тих, хто думає про навчання: я розповідаю про курс. А тут ми розбираємо саме вашу робочу ситуацію і я даю конкретне рішення — це вже моя робота як логіста 🙂</div>
     </div>
-    <p class="note">Після «прощального» часто відповідають саме ті, хто мовчав. Не пишіть більше — нехай вони приходять самі.</p>
   </article>
-
-  <article class="s" data-k="так купую хочу беру погодилась згода">
-    <h3>Людина каже «так, беру»</h3>
+  <article class="s">
+    <h3>Після платної консультації</h3>
     <div class="msgs">
-      <div class="msg">Ура, {ім’я}, я дуже рада 🙌
-Ось реквізити для оплати: [реквізити / посилання на оплату]
-Після оплати надішліть, будь ласка, скрін — і я одразу відкрию вам доступ до кабінету.</div>
+      <div class="msg">{ім’я}, дякую за розмову 🙂 Коротко, що ми вирішили:
+1. [ ]
+2. [ ]
+Якщо будуть уточнення по цьому питанню — пишіть.</div>
     </div>
+    <p class="note">Якщо на консультації видно, що людині бракує бази, — можна м’яко сказати про навчання, але не тиснути.</p>
   </article>
 </section>
-
-<!-- ================= 10. ОПЛАТА ================= -->
-<section class="sec" id="oplata" data-sec>
-  <div class="sec-head"><span class="n">10</span><h2>Оплата <em>і перший день</em></h2></div>
-
-  <article class="s" data-k="оплатила скрін оплата отримала доступ кабінет пошта">
-    <h3>Оплата прийшла — відкриваєте доступ</h3>
-    <div class="msgs">
-      <div class="msg">{ім’я}, оплату бачу, дякую 🙂 Напишіть, будь ласка, вашу пошту — на неї прийде вхід у кабінет.</div>
-      <div class="msg">Готово! Ось ваш кабінет: veronika-logistics.com/learn/
-Входите за поштою [пошта] — на неї прийде лист з посиланням для входу. Лист може впасти в «Спам» або «Промоакції», гляньте там, якщо не бачите.</div>
-      <div class="msg">Порада на старт: почніть зі вступу і першого модуля, домашнє надсилайте мені сюди. Будь-яке питання — пишіть, навіть якщо здається дурним. Дурних питань у логістиці немає, є дорогі помилки 🙂</div>
-    </div>
-    <p class="note">Не забудьте спершу вписати пошту людини в адмінці — інакше кабінет її не пустить.</p>
-  </article>
-
-  <article class="s" data-k="не приходить лист не можу увійти вхід не працює">
-    <h3>«Не можу увійти / лист не прийшов»</h3>
-    <div class="msgs">
-      <div class="msg">Зараз розберемося 🙂 Перевірте, будь ласка, папки «Спам» і «Промоакції». І напишіть, яку саме пошту ви вводите — перевірю, чи правильно я її внесла.</div>
-    </div>
-  </article>
-
-  <article class="s" data-k="думав оплатити не оплатила обіцяла оплатити реквізити зникла">
-    <h3>Взяла реквізити і не оплатила (через день)</h3>
-    <div class="msgs">
-      <div class="msg">{ім’я}, привіт! Бачу, оплата поки не дійшла — все гаразд? Якщо щось не виходить з переказом або з’явились сумніви — напишіть, розберемося 🙂</div>
-    </div>
-  </article>
-</section>
-
-<!-- ================= 11. МОВЧАТЬ ================= -->
-<section class="sec" id="movchat" data-sec>
-  <div class="sec-head"><span class="n">11</span><h2>Якщо людина <em>мовчить</em></h2></div>
-  <p class="intro">Мовчання — не відмова. Людина відкрила, відволіклася, забула. Нагадати один-два рази — нормально і ввічливо.</p>
-
-  <article class="s" data-k="не відповіла після першого повідомлення мовчить прочитала ігнор">
-    <h3>Не відповіла на перше повідомлення (через 1 день)</h3>
-    <div class="msgs">
-      <div class="msg">{ім’я}, нагадую про себе 🙂 Ви залишали заявку на консультацію з логістики. Ще актуально?</div>
-    </div>
-  </article>
-
-  <article class="s" data-k="прочитала не відповіла друге нагадування мовчить 3 дні">
-    <h3>Мовчить далі (через 3 дні)</h3>
-    <div class="msgs">
-      <div class="msg">{ім’я}, розумію, що могло закрутитися 🙂 Просто напишіть одне слово:
-«так» — підберемо час для консультації,
-«пізніше» — напишу вам за пару тижнів,
-«ні» — більше не турбуватиму.</div>
-    </div>
-    <p class="note">Варіанти-одне-слово знімають незручність відмовити. Відповідають навіть ті, хто мовчав.</p>
-  </article>
-
-  <article class="s" data-k="зникла посеред розмови перестала відповідати пропала">
-    <h3>Зникла посеред розмови</h3>
-    <div class="msgs">
-      <div class="msg">{ім’я}, ми з вами зупинилися на [чому]. Повертайтеся, коли буде хвилинка — я тут 🙂</div>
-    </div>
-  </article>
-
-  <article class="s" data-k="голосове мовчуну голосом нагадати">
-    <h3>Голосове для мовчуна 🎙</h3>
-    <div class="msgs">
-      <div class="msg voice">🎙 15–20 секунд, тепло і без тиску:
-«{ім’я}, привіт, це Вероніка. Ви залишали заявку на консультацію — я просто хотіла спитати, чи ще актуально. Якщо так — напишіть, підберемо час. Якщо ні — теж нічого, просто дайте знати. Гарного дня!»</div>
-    </div>
-  </article>
-</section>
-
-<!-- ================= 12. СКЛАДНІ ================= -->
-<section class="sec" id="skladni" data-sec>
-  <div class="sec-head"><span class="n">12</span><h2>Складні <em>випадки</em></h2></div>
-
-  <article class="s" data-k="безкоштовно все розкажіть тут в директі консультація в переписці">
-    <h3>Хоче, щоб ви все розписали в директі замість консультації</h3>
-    <div class="msgs">
-      <div class="msg">{ім’я}, я б з радістю, але в переписці це буде загальна відповідь — а вам потрібна про вашу ситуацію 🙂 За 30 хвилин голосом ми розберемо більше, ніж за тиждень листування. І це безкоштовно.
-[День о час] вам підійде?</div>
-    </div>
-  </article>
-
-  <article class="s" data-k="швидкі гроші заробити швидко за тиждень багато нереальні очікування">
-    <h3>Чекає швидких великих грошей</h3>
-    <div class="msgs">
-      <div class="msg">{ім’я}, скажу чесно, бо інакше нечесно до вас 🙂 Логістика — це професія, а не швидкий заробіток. Перші місяці йдуть на те, щоб навчитися і набити руку. Хто обіцяє великі гроші за тиждень — той продає мрію, а не навчання.
-Якщо ви готові до такого темпу — давайте поговоримо. Якщо потрібні гроші вже зараз — краще спершу закрити це питання, а потім повернутися до навчання.</div>
-    </div>
-  </article>
-
-  <article class="s" data-k="знижка дешевше дайте скидку промокод">
-    <h3>Просить знижку</h3>
-    <div class="msgs">
-      <div class="msg">Розумію бажання 🙂 Ціна однакова для всіх, бо я однаково вкладаюся в кожного — перевіряю домашні, відповідаю на питання.
-[Якщо маєте що запропонувати замість знижки: оплата частинами / бонусний файл / додаткова консультація після курсу]</div>
-    </div>
-    <p class="note">Не давайте знижку «бо попросили» — наступні люди дізнаються. Краще бонус, ніж знижка.</p>
-  </article>
-
-  <article class="s" data-k="грубість хамство агресія неадекват">
-    <h3>Грубість або агресія</h3>
-    <div class="msgs">
-      <div class="msg">Бачу, що вам щось не сподобалося. Якщо хочете, поясніть, що саме, — я відповім. Якщо ні — бажаю вам гарного дня.</div>
-    </div>
-    <p class="note">Одне спокійне повідомлення — і все. Не сперечайтеся і не виправдовуйтесь. Можна заблокувати.</p>
-  </article>
-
-  <article class="s" data-k="спам реклама співпраця бот пропозиція реклами">
-    <h3>Спам / «пропоную співпрацю» / реклама</h3>
-    <div class="msgs">
-      <div class="msg">Дякую, не цікаво 🙂</div>
-    </div>
-  </article>
-
-  <article class="s" data-k="вакансія шукаю роботу логістом візьміть на роботу найм">
-    <h3>Пише «візьміть мене на роботу логістом»</h3>
-    <div class="msgs">
-      <div class="msg">{ім’я}, дякую за довіру 🙂 Я сама не наймаю логістів, але навчаю людей, щоб їх брали в транспортні фірми.
-У вас вже є досвід у логістиці чи ви з нуля? Від цього залежить, що вам порадити.</div>
-    </div>
-  </article>
-
-  <article class="s" data-k="конкурент шпигун інший викладач розпитує">
-    <h3>Схоже на конкурента, що розпитує про курс</h3>
-    <div class="msgs">
-      <div class="msg">Вся програма відкрита на сайті: veronika-logistics.com 🙂 Якщо хочете вчитися — запрошую на консультацію.</div>
-    </div>
-  </article>
-
-  <article class="s" data-k="випускник учень вже пройшла курс питання після">
-    <h3>Пише колишній учень з робочим питанням</h3>
-    <div class="msgs">
-      <div class="msg">{ім’я}, привіт! Як ви, як справи з роботою? 🙂 Давайте ваше питання, подивлюся.</div>
-      <div class="msg">(після відповіді) До речі, якщо вам зручно — можна я колись попрошу у вас пару слів про навчання? Мені дуже цінно, як воно реально працює для людей.</div>
-    </div>
-    <p class="note">Учні з робочими питаннями — джерело відгуків і кейсів. Не пропускайте момент.</p>
-  </article>
-
-  <article class="s" data-k="англійською польською російською інша мова пише">
-    <h3>Пише російською / польською</h3>
-    <div class="msgs">
-      <div class="msg">[Відповідайте українською, спокійно]. Якщо людині складно — «Можемо говорити як вам зручніше, головне, щоб ви все зрозуміли 🙂». Курс українською, тож це варто сказати одразу.</div>
-    </div>
-  </article>
-</section>
-
-<!-- ================= 13. ГОЛОСОВІ ================= -->
-<section class="sec" id="golosovi" data-sec>
-  <div class="sec-head"><span class="n">13</span><h2>Тези <em>для голосових</em> 🎙</h2></div>
-  <p class="intro">Не читайте з екрана — пробіжіться очима і скажіть своїми словами. 30–60 секунд. Голос продає, бо в ньому чути, що ви жива і справді розбираєтесь.</p>
-
-  <article class="s" data-k="голосове перше після питань знайомство">
-    <h3>Перше голосове — після трьох питань</h3>
-    <div class="msgs">
-      <div class="msg voice">— «{ім’я}, привіт, це Вероніка, дякую, що так детально розповіли»;
-— повторіть одну деталь з її/його відповіді: «[чоловік водій / декрет / офіс]»;
-— «з такої точки входити в логістику — реально, я сама прийшла без досвіду»;
-— «давайте на консультації розберемо, з чого почати саме вам»;
-— «напишу вам два варіанти часу, виберіть, що зручніше».</div>
-    </div>
-  </article>
-
-  <article class="s" data-k="голосове сумнів страх не вийде підтримка">
-    <h3>Голосове для того, хто боїться</h3>
-    <div class="msgs">
-      <div class="msg voice">— «я розумію цей страх, у мене він був так само»;
-— коротко ваша історія: Польща, університет, перша робота з п’ятьма тірами, як було страшно;
-— «на курсі ви не одна/один — я перевіряю кожне домашнє»;
-— «найгірше, що може статися на консультації, — ви зрозумієте, що це не ваше, і збережете гроші».</div>
-    </div>
-  </article>
-
-  <article class="s" data-k="голосове після консультації подяка">
-    <h3>Голосове після консультації (замість текстового підсумку)</h3>
-    <div class="msgs">
-      <div class="msg voice">— «дякую за розмову, мені було дуже приємно»;
-— «головне, що я б радила вам зараз — [перший крок]»;
-— «якщо вирішите йти зі мною — напишіть, я все надішлю»;
-— «і якщо щось згадаєте — пишіть, не соромтеся».</div>
-    </div>
-  </article>
-</section>
-
-<!-- ================= 14. СТОП-ЛИСТ ================= -->
-<section class="sec" id="stop" data-sec>
-  <div class="sec-head"><span class="n">14</span><h2>Стоп-лист <em>і як замінити</em></h2></div>
-
-  <div class="dark">
-    <h3>Ніколи не пишемо</h3>
-    <ul>
-      <li>Конкретні суми доходу: «заробите 3000 євро», «окупиться за місяць».</li>
-      <li>Гарантію працевлаштування.</li>
-      <li>Неправдивий дефіцит: «залишилось 2 місця», «тільки сьогодні знижка».</li>
-      <li>Прайс першим повідомленням без жодного питання.</li>
-      <li>«Коли вам зручно?» без варіантів часу.</li>
-      <li>«Ну що, надумали?» — звучить як тиск.</li>
-      <li>Довгі простирадла тексту і більше трьох повідомлень підряд без відповіді.</li>
-      <li>Форми з родом до людини: «ви написала», «готова?» — замість цього «ви написали», «готові?».</li>
-    </ul>
-  </div>
-
-  <div class="dark ok">
-    <h3>Замість цього</h3>
-    <ul>
-      <li>«Дохід залежить від формату — на консультації розкладу, з чого він складається у вашому варіанті».</li>
-      <li>«Восьмий модуль повністю про пошук роботи: резюме, співбесіда, куди стукатися».</li>
-      <li>«Дедлайнів немає, стартуєте коли зручно» — це і є ваша перевага, не треба фальшивого поспіху.</li>
-      <li>Одне питання → відповідь → ціна разом з тим, що в неї входить.</li>
-      <li>«[Вівторок о 18:00] чи [четвер о 12:00]?»</li>
-      <li>«Як вам після розмови, що думаєте?»</li>
-      <li>Коротко, по одній думці. Довге — голосовим.</li>
-      <li>«Ви» в множині: «ви написали», «вам зручно», «ви готові?».</li>
-    </ul>
-  </div>
-</section>
-
-<p class="empty" id="empty">Нічого не знайшлося. Спробуйте інше слово — наприклад, «ціна», «чоловік», «перенос».</p>
 
 </main>
 
 <footer>
-  <div class="wrap">
-    <b>Veronika Logistics · робочі скрипти</b><br>
-    Сторінка не індексується пошуковиками і ніде не має посилань. Не пересилайте посилання учням — це ваша внутрішня шпаргалка.
-  </div>
+  <div class="wrap"><b>Veronika Logistics</b> · внутрішня сторінка, не пересилайте посилання.</div>
 </footer>
 
-<button class="up" id="up" aria-label="Нагору"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg></button>
-<div class="toast" id="toast" role="status" aria-live="polite">Скопійовано — вставляйте в директ</div>
+<div class="toast" id="toast" role="status" aria-live="polite">Скопійовано</div>
 
 <script>
 (() => {
-  const NAME_TOKEN = '{ім’я}';
+  const TOKEN = '{ім’я}';
   const esc = s => s.replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
   const store = {
     get(k){ try { return localStorage.getItem(k) || ''; } catch(e){ return ''; } },
     set(k,v){ try { localStorage.setItem(k, v); } catch(e){} }
   };
 
-  /* ---- готуємо повідомлення: зберігаємо сирий текст, малюємо підсвітку і кнопку ---- */
   const msgs = [...document.querySelectorAll('.msg')];
   msgs.forEach(m => {
-    m.dataset.raw = m.textContent.replace(/^\s+|\s+$/g, '').replace(/\n[ \t]+/g, '\n');
+    m.dataset.raw = m.textContent.trim().replace(/\n[ \t]+/g, '\n');
     const t = document.createElement('span'); t.className = 't';
     const bar = document.createElement('div'); bar.className = 'bar';
-    bar.innerHTML = '<span class="tag">' + (m.classList.contains('voice') ? '🎙 тези / говорити вголос' : 'повідомлення') + '</span>' +
-      '<button type="button" class="copy"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg><span>Скопіювати</span></button>';
+    bar.innerHTML = '<button type="button" class="copy"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg><span>Скопіювати</span></button>';
     m.textContent = ''; m.append(t, bar);
   });
 
-  const nameInput = document.getElementById('nm');
-  const curName = () => nameInput.value.trim();
-
+  const nm = document.getElementById('nm');
+  const name = () => nm.value.trim();
   const render = () => {
-    const n = curName();
+    const n = name();
     msgs.forEach(m => {
-      let h = esc(m.dataset.raw);
-      h = h.replace(/\[([^\]]*)\]/g, '<span class="ph">[$1]</span>');
-      h = h.split(esc(NAME_TOKEN)).join('<span class="who">' + (n ? esc(n) : 'Ім’я') + '</span>');
+      let h = esc(m.dataset.raw).replace(/\[([^\]]*)\]/g, '<span class="ph">[$1]</span>');
+      h = h.split(esc(TOKEN)).join('<span class="who">' + (n ? esc(n) : 'Ім’я') + '</span>');
       m.querySelector('.t').innerHTML = h;
     });
   };
-
-  /* текст для копіювання: ім’я підставлене; якщо імені немає — прибираємо звертання акуратно */
+  /* без імені прибираємо звертання акуратно */
   const plain = raw => {
-    const n = curName();
-    if (n) return raw.split(NAME_TOKEN).join(n);
-    return raw
-      .replace(/,\s*\{ім’я\}([!,])/g, '$1')
-      .replace(/\{ім’я\},\s*/g, m => '')
-      .replace(/\s*\{ім’я\}/g, '')
-      .replace(/^([a-zа-яіїєґ])/u, c => c.toUpperCase())
-      .replace(/\n([a-zа-яіїєґ])/gu, (m, c) => '\n' + c.toUpperCase());
+    const n = name();
+    if (n) return raw.split(TOKEN).join(n);
+    return raw.replace(/\{ім’я\},\s*/g, '').replace(/\s*\{ім’я\}/g, '')
+      .replace(/(^|\n)([a-zа-яіїєґ])/gu, (m, p, c) => p + c.toUpperCase());
   };
 
-  nameInput.value = store.get('vl-name');
-  nameInput.addEventListener('input', () => { store.set('vl-name', nameInput.value); render(); });
+  nm.value = store.get('vl-name');
+  nm.addEventListener('input', () => { store.set('vl-name', nm.value); render(); });
   render();
 
-  /* ---- копіювання ---- */
-  const toast = document.getElementById('toast');
-  let tt;
-  const showToast = txt => { toast.textContent = txt; toast.classList.add('show'); clearTimeout(tt); tt = setTimeout(() => toast.classList.remove('show'), 1800); };
-
-  const fallbackCopy = text => {
-    const ta = document.createElement('textarea');
-    ta.value = text; ta.setAttribute('readonly', ''); ta.style.position = 'fixed'; ta.style.opacity = '0';
-    document.body.appendChild(ta); ta.select(); ta.setSelectionRange(0, text.length);
-    let ok = false; try { ok = document.execCommand('copy'); } catch(e){}
-    ta.remove(); return ok;
+  const toast = document.getElementById('toast'); let tt;
+  const show = txt => { toast.textContent = txt; toast.classList.add('show'); clearTimeout(tt); tt = setTimeout(() => toast.classList.remove('show'), 1800); };
+  const fallback = text => {
+    const ta = document.createElement('textarea'); ta.value = text; ta.setAttribute('readonly', '');
+    ta.style.position = 'fixed'; ta.style.opacity = '0'; document.body.appendChild(ta);
+    ta.select(); ta.setSelectionRange(0, text.length);
+    let ok = false; try { ok = document.execCommand('copy'); } catch(e){} ta.remove(); return ok;
   };
-
   document.addEventListener('click', async e => {
     const b = e.target.closest('.copy'); if (!b) return;
-    const m = b.closest('.msg');
-    const text = plain(m.dataset.raw);
+    const text = plain(b.closest('.msg').dataset.raw);
     let ok = false;
-    try { await navigator.clipboard.writeText(text); ok = true; } catch(err) { ok = fallbackCopy(text); }
-    const hasPh = /\[[^\]]*\]/.test(text);
-    if (ok) {
-      b.classList.add('ok'); b.querySelector('span').textContent = 'Готово';
-      setTimeout(() => { b.classList.remove('ok'); b.querySelector('span').textContent = 'Скопіювати'; }, 1600);
-      showToast(hasPh ? 'Скопійовано — допишіть [жовте]' : 'Скопійовано — вставляйте в директ');
-    } else {
-      showToast('Не вдалося — виділіть текст пальцем');
-    }
+    try { await navigator.clipboard.writeText(text); ok = true; } catch(err) { ok = fallback(text); }
+    if (!ok) return show('Не вдалося — виділіть текст пальцем');
+    b.classList.add('ok'); b.querySelector('span').textContent = 'Готово';
+    setTimeout(() => { b.classList.remove('ok'); b.querySelector('span').textContent = 'Скопіювати'; }, 1600);
+    show(/\[[^\]]*\]/.test(text) ? 'Скопійовано — допишіть [жовте]' : 'Скопійовано');
   });
-
-  /* ---- пошук ---- */
-  const q = document.getElementById('q');
-  const cards = [...document.querySelectorAll('.s')];
-  const secs = [...document.querySelectorAll('[data-sec]')];
-  const empty = document.getElementById('empty');
-  const norm = s => s.toLowerCase().replace(/[’'ʼ`]/g, '').replace(/ё/g, 'е');
-  cards.forEach(c => c.dataset.idx = norm((c.dataset.k || '') + ' ' + c.querySelector('h3').textContent + ' ' + [...c.querySelectorAll('.msg')].map(m => m.dataset.raw).join(' ')));
-
-  q.addEventListener('input', () => {
-    const v = norm(q.value.trim());
-    const words = v.split(/\s+/).filter(Boolean);
-    let any = false;
-    cards.forEach(c => {
-      const hit = !words.length || words.every(w => c.dataset.idx.includes(w));
-      c.classList.toggle('hide', !hit);
-      if (hit) any = true;
-    });
-    secs.forEach(s => {
-      const own = s.querySelectorAll('.s');
-      const vis = s.querySelectorAll('.s:not(.hide)');
-      /* секції без карток (правила, стоп-лист) ховаємо під час пошуку */
-      s.classList.toggle('hide', words.length > 0 && (own.length === 0 || vis.length === 0));
-      s.querySelectorAll(':scope > .rules, :scope > .flow, :scope > .dark, :scope > h3, :scope > .intro').forEach(el => el.classList.toggle('hide', words.length > 0));
-    });
-    empty.style.display = any ? 'none' : 'block';
-    if (words.length) window.scrollTo({ top: 0 });
-  });
-
-  /* ---- активний розділ у меню ---- */
-  const chips = [...document.querySelectorAll('#chips a')];
-  const byId = Object.fromEntries(chips.map(a => [a.getAttribute('href').slice(1), a]));
-  if ('IntersectionObserver' in window) {
-    const io = new IntersectionObserver(entries => {
-      entries.forEach(en => {
-        if (!en.isIntersecting) return;
-        chips.forEach(a => a.classList.remove('on'));
-        const a = byId[en.target.id];
-        if (a) { a.classList.add('on'); a.scrollIntoView({ block: 'nearest', inline: 'center' }); }
-      });
-    }, { rootMargin: '-160px 0px -65% 0px' });
-    secs.forEach(s => io.observe(s));
-  }
-  chips.forEach(a => a.addEventListener('click', () => { if (q.value) { q.value = ''; q.dispatchEvent(new Event('input')); } }));
-
-  /* ---- кнопка нагору ---- */
-  const up = document.getElementById('up');
-  addEventListener('scroll', () => up.classList.toggle('show', scrollY > 900), { passive: true });
-  up.addEventListener('click', () => scrollTo({ top: 0, behavior: 'smooth' }));
 })();
 </script>
 </body>
