@@ -457,46 +457,40 @@ body.game-open{overflow:hidden}
 .map-legend .l-fer{background:repeating-linear-gradient(90deg,var(--sea) 0 3px,transparent 3px 8px)}
 .map-legend .l-hl{background:#35617D;height:12px;width:18px;border-radius:3px}
 .map-legend .mod-ref{margin-left:auto;color:var(--sky)}
-.modules{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;align-items:start}
-.mod{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:var(--r-md);padding:28px;transition:background .4s,transform .4s var(--ease),border-color .4s}
-.mod:hover{background:rgba(164,174,122,.1);border-color:rgba(164,174,122,.4);transform:translateY(-4px)}
-.mod .num{display:flex;justify-content:space-between;align-items:center;margin-bottom:26px}
-.mod .num b{font-family:var(--serif);font-style:italic;font-weight:400;font-size:40px;color:var(--sky);line-height:1}
-.mod h3{font-size:21px;letter-spacing:-.02em;line-height:1.22;margin-bottom:14px}
-.mod ul{list-style:none;color:#A9BCCB;font-size:14.5px}
-.mod li{padding:5px 0 5px 20px;position:relative}
-.mod li::before{content:"";position:absolute;left:0;top:14px;width:9px;height:1.5px;background:var(--sky)}
-.mod{cursor:pointer}
-.mod.active{background:#fff;border-color:#fff;color:var(--ink);transform:translateY(-4px)}
-.mod.active ul{color:var(--muted)}
-.mod.active li::before{background:var(--blue)}
-.mod.active .num b{color:var(--blue)}
-.mod .cnt{font-size:11.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#7D95A8;padding:5px 11px;border-radius:999px;border:1px solid rgba(255,255,255,.14)}
-.mod.active .cnt{color:var(--blue);border-color:var(--line)}
-/* «Повний зміст» — розкриває детальний розбір модуля */
-.mod .tap{display:inline-flex;align-items:center;gap:9px;margin-top:18px;font-size:12px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--sky)}
-.mod .tap i{width:24px;height:24px;border-radius:50%;border:1px solid currentColor;display:grid;place-items:center;font-style:normal;font-weight:600;font-size:15px;line-height:1;transition:transform .45s var(--ease),background .3s,color .3s}
-.mod:hover .tap i{transform:rotate(90deg)}
-.mod.active .tap{color:var(--blue)}
-.mod.active .tap i{transform:rotate(45deg);background:var(--blue);color:#fff;border-color:var(--blue)}
-.mod-more{display:none}
-/* широка панель під сіткою: у картці на 400px такий обсяг не читається */
-.mod-panel{display:grid;grid-template-rows:0fr;transition:grid-template-rows .6s var(--ease);margin-top:14px}
-.mod-panel.open{grid-template-rows:1fr}
-.mod-panel>div{overflow:hidden;min-height:0}
-.mp-in{background:var(--paper);color:var(--ink);border-radius:var(--r-lg);padding:38px 40px 34px;margin-top:4px}
-.mp-top{display:flex;align-items:center;gap:20px;padding-bottom:22px;margin-bottom:26px;border-bottom:1px solid var(--line)}
-.mp-num{font-family:var(--serif);font-style:italic;font-weight:400;font-size:52px;line-height:.9;color:var(--blue);flex:none}
-.mp-kicker{font-size:11.5px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--blue)}
-.mp-title{font-size:clamp(24px,2.6vw,34px);letter-spacing:-.03em;margin-top:5px}
-.mp-cnt{margin-left:auto;flex:none;font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--blue);padding:8px 15px;border-radius:999px;background:var(--ice)}
-.mp-close{flex:none;width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:#fff;font-size:24px;line-height:1;color:var(--muted);display:grid;place-items:center;transition:background .3s,color .3s}
-.mp-close:hover{background:var(--ink);color:#fff;border-color:var(--ink)}
-.mp-body{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:30px 36px;align-items:start}
-.mp-body.one{grid-template-columns:minmax(0,580px)}  /* один блок тем не розтягуємо на всю ширину */
-.mg h4{font-size:11.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--blue);padding-bottom:10px;margin-bottom:10px;border-bottom:1px solid var(--line)}
-.mg ul{list-style:none;color:var(--muted);font-size:15px}
-.mg li{position:relative;padding:5px 0 5px 20px}
+.prog-meta{display:flex;flex-wrap:wrap;gap:9px;margin:44px 0 18px}
+.prog-meta span{display:inline-flex;align-items:center;gap:7px;padding:9px 16px;border-radius:999px;border:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.05);font-size:13.5px;color:#BCCEDC}
+.prog-meta b{color:#fff;font-weight:700;font-size:15px}
+
+.prog{display:grid;grid-template-columns:minmax(290px,350px) 1fr;gap:16px}  /* панель тягнеться на висоту рейки — без порожньої дірки збоку */
+.prog-rail{display:flex;flex-direction:column;gap:8px}
+.pgm{border-radius:var(--r-md);background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);overflow:hidden;transition:background .35s,border-color .35s}
+.pgm:hover{background:rgba(255,255,255,.09);border-color:rgba(255,255,255,.22)}
+.pgm-row{width:100%;display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:3px 14px;padding:14px 18px;background:none;border:0;text-align:left;color:inherit}
+.pgm-num{grid-row:1/-1;font-family:var(--serif);font-style:italic;font-weight:400;font-size:27px;line-height:1;color:var(--sky);transition:color .3s}
+.pgm-name{grid-area:1/2/2/3;font-size:16.5px;font-weight:600;letter-spacing:-.02em;line-height:1.25}
+.pgm-cnt{grid-area:2/2/3/3;justify-self:start;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#7D95A8;white-space:nowrap;transition:color .3s}
+.pgm-ic{grid-row:1/-1;flex:none;width:28px;height:28px;border-radius:50%;border:1px solid rgba(255,255,255,.22);display:grid;place-items:center;transition:transform .45s var(--ease),background .3s,color .3s,border-color .3s}
+.pgm-ic svg{width:13px;height:13px}
+.pgm-body{display:none}
+@media (min-width:1101px){
+  .pgm.active{background:#fff;border-color:#fff;color:var(--ink)}
+  .pgm.active .pgm-num,.pgm.active .pgm-cnt{color:var(--blue)}
+  .pgm.active .pgm-ic{background:var(--blue);color:#fff;border-color:var(--blue)}
+}
+
+.prog-view{background:var(--paper);color:var(--ink);border-radius:var(--r-lg);padding:34px 36px 32px}
+.pv-top{display:flex;align-items:flex-start;gap:18px;padding-bottom:20px;margin-bottom:24px;border-bottom:1px solid var(--line)}
+.pv-num{font-family:var(--serif);font-style:italic;font-weight:400;font-size:46px;line-height:.86;color:var(--blue);flex:none}
+.pv-kick{font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--blue)}
+.pv-title{font-size:clamp(22px,2.3vw,31px);letter-spacing:-.03em;margin-top:4px}
+.pv-cnt{margin-left:auto;flex:none;font-size:11.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--blue);padding:7px 14px;border-radius:999px;background:var(--ice)}
+.pv-body{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:26px 34px;align-items:start}
+.pv-body.one{grid-template-columns:minmax(0,560px)}
+
+/* блок тем — однаковий і в панелі, і в розкритій картці на телефоні */
+.mg h4{font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--blue);padding-bottom:9px;margin-bottom:9px;border-bottom:1px solid var(--line)}
+.mg ul{list-style:none;color:var(--muted);font-size:14.5px}
+.mg li{position:relative;padding:5px 0 5px 19px}
 .mg li::before{content:"";position:absolute;left:0;top:14px;width:9px;height:1.5px;background:var(--blue)}
 
 /* ---------- lesson ---------- */
@@ -740,9 +734,19 @@ footer{background:var(--forest-d);color:#A9BCCB;padding:90px 0 34px;border-radiu
   .widget{left:20px}
   .stats-grid{grid-template-columns:repeat(3,1fr)}
   .cards,.dip-grid{grid-template-columns:repeat(2,1fr)}
-  .mp-in{padding:30px 26px 26px}
   .dip.wide{grid-column:1/-1}
-  .modules,.case-list,.rev-grid{grid-template-columns:repeat(2,1fr)}
+  .case-list,.rev-grid{grid-template-columns:repeat(2,1fr)}
+  /* вузько для двох колонок — картка розкривається на місці, під пальцем */
+  .prog{grid-template-columns:1fr}
+  .prog-view{display:none}
+  .pgm-body{display:grid;grid-template-rows:0fr;transition:grid-template-rows .5s var(--ease)}
+  .pgm.open .pgm-body{grid-template-rows:1fr}
+  .pgm-body>div{overflow:hidden;min-height:0}
+  .pgm-in{display:grid;gap:22px;padding:2px 18px 22px}
+  .pgm.open{background:#fff;border-color:#fff;color:var(--ink)}
+  .pgm.open .pgm-num,.pgm.open .pgm-cnt{color:var(--blue)}
+  .pgm-ic{transform:rotate(90deg)}
+  .pgm.open .pgm-ic{background:var(--blue);color:#fff;border-color:var(--blue);transform:rotate(-90deg)}
   .about-photos{position:relative;top:0;max-width:520px}
   .consult-photo{min-height:460px}
 }
@@ -767,14 +771,14 @@ footer{background:var(--forest-d);color:#A9BCCB;padding:90px 0 34px;border-radiu
   .wm .ph{display:none}
   .stats-grid{grid-template-columns:repeat(2,1fr)}
   .stat{min-height:150px;padding:22px 18px}
-  .cards,.modules,.case-list,.rev-grid,.why-grid,.topics,.dip-grid{grid-template-columns:1fr}
-  .mp-in{padding:24px 20px 22px;border-radius:var(--r-md)}
-  .mp-top{display:grid;grid-template-columns:auto 1fr auto;gap:10px 14px;align-items:center;padding-bottom:16px;margin-bottom:18px}
-  .mp-num{font-size:36px}
-  .mp-title{font-size:21px}
-  .mp-cnt{grid-area:2/1/3/-1;justify-self:start;margin-left:0;padding:6px 13px}
-  .mp-close{grid-area:1/3/2/4;width:36px;height:36px;margin-left:0}
-  .mp-body{gap:22px}
+  .cards,.case-list,.rev-grid,.why-grid,.topics,.dip-grid{grid-template-columns:1fr}
+  .prog-meta{gap:7px;margin:30px 0 14px}
+  .prog-meta span{padding:8px 13px;font-size:12.5px}
+  /* на вузькому екрані лічильник тем переїжджає під назву */
+  .pgm-row{gap:3px 13px;padding:13px 16px}
+  .pgm-num{font-size:24px}
+  .pgm-name{font-size:16px}
+  .pgm-in{padding:2px 16px 20px}
   .card{min-height:280px}.card:nth-child(even){margin-top:0}
   .about-photos .small{right:-6px;bottom:-24px}
   .program,.squeeze{margin:0 8px}
@@ -1113,28 +1117,49 @@ setTimeout(function () {
         <span class="mod-ref">Модулі 03–04</span>
       </div>
     </div>
-    <div class="modules">
-      <div class="mod intro rv"><div class="num"><b>00</b><span class="cnt">4 теми</span></div><h3>Вступ</h3><ul><li>Що може дати логістика</li><li>Мій власний досвід</li><li>Як працювати з дому</li></ul><span class="tap">Повний зміст<i>+</i></span><div class="mod-more"><div><div class="mg"><h4>Знайомство</h4><ul><li>Що реально дає професія: гроші, графік, свобода від офісу</li><li>Мій шлях: від логіста на 5 тірів до начальниці відділу диспетчерів</li><li>Як організувати роботу з дому — ноутбук, телефон, домовленості</li><li>Як користуватися платформою: відео, презентації, матеріали, домашки</li></ul></div></div></div></div>
-      <div class="mod rv" style="--d:.06s"><div class="num"><b>01</b><span class="cnt">10 тем</span></div><h3>Що таке логістика</h3><ul><li>Логістика на реальних прикладах</li><li>Логіст, диспетчер, експедитор</li><li>Каботаж і міжнародні перевезення</li></ul><span class="tap">Повний зміст<i>+</i></span><div class="mod-more"><div><div class="mg"><h4>Основа</h4><ul><li>Що таке логістика по факту: доставка з пункту А в пункт Б — на реальних прикладах</li><li>Типи перевезень: автомобільні, морські, авіа — чим відрізняються і де застосовуються</li></ul></div><div class="mg"><h4>Хто такий логіст</h4><ul><li>За що логіст реально відповідає у щоденній роботі</li><li>Як професію називають інакше: диспетчер, експедитор, spedytor польською</li><li>Різниця між експедитором, диспетчером і логістом — окремо по кожній ролі</li><li>Польська та англійська лексика: ми працюємо на європейському ринку, і терміни тут свої</li></ul></div><div class="mg"><h4>Каботаж</h4><ul><li>Що таке каботаж і де діють його правила — конкретні країни й території Європи</li><li>Внутрішні перевезення проти міжнародних</li><li>Правила каботажу в презентації та в доданих матеріалах на платформі</li><li>Який тип транспорту найкраще підходить під каботаж і короткі трасі з дня на день</li></ul></div></div></div></div>
-      <div class="mod rv" style="--d:.12s"><div class="num"><b>02</b><span class="cnt">15 тем</span></div><h3>Транспорт і завантаження</h3><ul><li>Тіри, солувки, буси — розміри й ладовність</li><li>Бічне, з рампи, з гори</li><li>Палети, паси, стовбари</li></ul><span class="tap">Повний зміст<i>+</i></span><div class="mod-more"><div><div class="mg"><h4>Типи машин</h4><ul><li>Тір: 13,6 метра, ладовність 24 тони</li><li>Солувка: від 3 до 10 тонн, від 10 до 20 європалет</li><li>Бус: 8–10 європалет, точні розміри</li><li>Кожен тип у трьох забудовах: тент, штивна забудова, рефрижератор-холодильник</li></ul></div><div class="mg"><h4>Типи завантаження</h4><ul><li>Бічне, із заду з рампи, з гори — для якої забудови що можливе</li><li>Реальні фотографії, як вантажать пландеку, солувку і бус на 8 європалет</li><li>Чим саме здійснюється завантаження на кожному типі</li></ul></div><div class="mg"><h4>Спорядження й техніка</h4><ul><li>Рохля, винда (ліфт) — що солувки й буси везуть із собою</li><li>Електричні візки, візки з оператором, палечаки</li></ul></div><div class="mg"><h4>Навантаження фури</h4><ul><li>Загальна маса і скільки машина реально може взяти</li><li>Чому не має бути перегрузу на передню вісь</li><li>Наклейка на лобове скло: мій штраф за її відсутність і адреси, де її купити</li></ul></div><div class="mg"><h4>Палети й кріплення</h4><ul><li>Фотографії товарів — підтвердження, що не завжди це стандартна європалета</li><li>Нестандартні палети: як із ними рахувати місце</li><li>Спорядження для пландек: стовбари, килимки під товар, паси — щоб товар не їздив у прицепі</li></ul></div></div></div></div>
-      <div class="mod rv"><div class="num"><b>03</b><span class="cnt">17 тем</span></div><h3>Ключові дороги Європи</h3><ul><li>Дороги, про які не скаже ChatGPT</li><li>Формула вигідності маршруту</li><li>Перетини Австрії та тунелі</li></ul><span class="tap">Повний зміст<i>+</i></span><div class="mod-more"><div><div class="mg"><h4>Базовий маршрут</h4><ul><li>Стандартна трасa Німеччина → Італія через Австрію, розібрана по частинах</li><li>Чому транзит через Швейцарію закритий і що потрібно, щоб усе ж заїхати на завантаження або розвантаження</li></ul></div><div class="mg"><h4>Перетини Австрії</h4><ul><li>Варіант 1: Куфштайн — Інсбрук</li><li>Варіант 2: Зальцбург — Філлах</li><li>Варіант 3: Брегенц, а також Фюссен</li><li>Що можна, а що ні на кожному з варіантів</li></ul></div><div class="mg"><h4>Дороги, якими я їздила сама</h4><ul><li>Чехія: якими дорогами варто користуватися, а якими ні</li><li>Як їхати з Польщі в Німеччину</li><li>Внутрішні дороги Німеччини</li><li>Внутрішні дороги Італії — SS309, SS47 та інші: про них вам ChatGPT не напише</li><li>Франція ↔ Італія: де тунелі, які треба купувати окремо</li></ul></div><div class="mg"><h4>Заборони руху</h4><ul><li>Де читати про заборони руху — посилання, бо вони змінюються щотижня</li></ul></div><div class="mg"><h4>Гроші за маршрут</h4><ul><li>Розрахунок вигідності маршруту — формула з мого досвіду</li><li>Скільки мінімально має заплатити клієнт за трасу: від місця, де машина пуста, до розвантаження</li><li>Як рахувати ставку за кілометр</li><li>Чому ставки на різних видах транспорту відрізняються</li><li>Підсумок модуля, головні правила і домашнє завдання</li></ul></div></div></div></div>
-      <div class="mod rv" style="--d:.06s"><div class="num"><b>04</b><span class="cnt">10 тем</span></div><h3>Платні дороги</h3><ul><li>Системи TOLL і карти</li><li>Вінʼєти, пороми, поїзд</li><li>Як рахувати кілометраж з оплатами</li></ul><span class="tap">Повний зміст<i>+</i></span><div class="mod-more"><div><div class="mg"><h4>Як перевізник платить за дороги</h4><ul><li>Системи TOLL і карти, якими користуються перевізники — особливо на тірах</li><li>Чому логіст не купує кожен кілометр, а тільки в окремих країнах</li><li>Автоматичне стягування: Німеччина, Франція — бокси в машині і як з них списується оплата</li></ul></div><div class="mg"><h4>Окремі країни</h4><ul><li>Люксембург, Швейцарія: де потрібна вінʼєта та євровінʼєта</li><li>Сайт і покроково — як купити проїзд</li></ul></div><div class="mg"><h4>Пором і поїзд</h4><ul><li>Пором з Німеччини до Швеції: як він працює і як його купити</li><li>Переправа машини поїздом через Австрію: для чого вона потрібна і як її використовувати</li></ul></div><div class="mg"><h4>Розрахунок</h4><ul><li>Покроково: як рахувати кілометраж разом з оплатами доріг</li><li>Як враховувати пором у розрахунку</li><li>Домашнє завдання — порахувати маршрут з оплатами доріг</li></ul></div></div></div></div>
-      <div class="mod rv" style="--d:.12s"><div class="num"><b>05</b><span class="cnt">9 тем</span></div><h3>Індекси, ставки, регіони</h3><ul><li>Поштові індекси (PLZ) по регіонах</li><li>Куди вантажити, а куди ні</li><li>Ставки на кожен тип транспорту</li></ul><span class="tap">Повний зміст<i>+</i></span><div class="mod-more"><div><div class="mg"><h4>Поштові індекси</h4><ul><li>PLZ по кожному регіону: як читати індекс і що він вам каже</li><li>Карти з індексами в матеріалах курсу</li></ul></div><div class="mg"><h4>Куди вантажити</h4><ul><li>Чому в логістиці важливо не просто завантажити машину, а знати, в який регіон</li><li>Чи отримаєте ви звідти нормальне наступне завантаження</li><li>Гірший регіон — вища ставка: як це закладати в ціну</li><li>Мої фотографії пузл-карти: я сама розписую по пунктах перше, друге, третє місце — куди варто їхати, а куди ні</li></ul></div><div class="mg"><h4>Ставки й сезонність</h4><ul><li>Ставки на всі типи транспорту — за які краще їздити</li><li>Ситуації з власного досвіду, де краще не їхати взагалі</li><li>Сезонність: у який період у логістиці краще не працювати</li></ul></div></div></div></div>
-      <div class="mod rv"><div class="num"><b>06</b><span class="cnt">8 тем</span></div><h3>Час праці водія</h3><ul><li>Їзда, паузи, відпочинок</li><li>Щотижневий відпочинок і де його стояти</li><li>Задача з розбором на відео</li></ul><span class="tap">Повний зміст<i>+</i></span><div class="mod-more"><div><div class="mg"><h4>Теорія</h4><ul><li>Час їзди в день і тижневі обмеження</li><li>Паузи: коли водій зобовʼязаний стати</li><li>Добовий відпочинок — повний і скорочений</li><li>Щотижневий відпочинок: повний і скорочений</li><li>Чи можна стояти на відпочинку будь-де в Європі, чи треба їхати туди, де зареєстрована машина</li></ul></div><div class="mg"><h4>Практика</h4><ul><li>Задача на відеозаписі: як час праці водія виглядає в реальному плануванні</li><li>Як рахувати маршрут так, щоб водій не виїхав за норми</li><li>Книга про час праці водія — у матеріалах курсу</li></ul></div></div></div></div>
-      <div class="mod rv" style="--d:.06s"><div class="num"><b>07</b><span class="cnt">14 тем</span></div><h3>Біржа, документи, фактура</h3><ul><li>TransEU: фільтри й акцепт вантажу</li><li>CMR і zlecenie по пунктах</li><li>Фактура у Fakturownia покроково</li></ul><span class="tap">Повний зміст<i>+</i></span><div class="mod-more"><div><div class="mg"><h4>Біржа TransEU</h4><ul><li>Як виставляти фільтри — покроково, з екрана</li><li>Як брати завантаження і як акцептувати його з клієнтом</li><li>Які саме інформації писати клієнту, щоб домовленість була зафіксована</li></ul></div><div class="mg"><h4>Весь ланцюг</h4><ul><li>Від моменту, як ви взяли вантаж на TransEU, і до оплати</li><li>Як передати завантаження водієві</li><li>Водій виконав — ви отримали документи з розвантаження</li><li>Що з цими документами робити далі і які це документи</li></ul></div><div class="mg"><h4>Документи</h4><ul><li>CMR: розбираємо повністю, по пунктах — що означає кожен пункт</li><li>Замовлення від клієнта (zlecenie): як воно виглядає і що з нього обовʼязково брати</li><li>Усі зразки замовлень і ордерів — у матеріалах курсу</li></ul></div><div class="mg"><h4>Фактура й оплата</h4><ul><li>Покроково: як виставити фактуру на замовлення у програмі Fakturownia</li><li>Варіант 1 — оригінали поштою: які документи зібрати і куди відправити, щоб пройшла оплата</li><li>Варіант 2 — клієнти, що працюють по сканах: мейл, фактура і документи завантаження у PDF</li><li>Як прочитати з замовлення, за яким саме варіантом працює цей клієнт</li></ul></div></div></div></div>
-      <div class="mod rv" style="--d:.12s"><div class="num"><b>08</b><span class="cnt">8 тем</span></div><h3>Робота, резюме, дохід</h3><ul><li>Резюме логіста-початківця</li><li>Як самому знайти перевізника</li><li>Ставка, процент чи маржа</li></ul><span class="tap">Повний зміст<i>+</i></span><div class="mod-more"><div><div class="mg"><h4>Резюме й старт</h4><ul><li>Як правильно написати резюме логісту-початківцю і на що звертають увагу</li><li>Мої поради з особистого досвіду — що працює, а що ні</li><li>Консультація зі мною в межах модуля</li></ul></div><div class="mg"><h4>Де брати роботу</h4><ul><li>Як самому шукати перевізників і виходити на них</li><li>Робота на перевізника під процент — як це влаштовано</li></ul></div><div class="mg"><h4>З чого складається дохід</h4><ul><li>Фірма зі сталою ставкою: що ви отримуєте</li><li>Фірма, що рахує дохід від маржі: як саме з цього заробляє логіст</li><li>Як порівняти два варіанти і вибрати свій</li></ul></div></div></div></div>
-    </div>
-    <div class="mod-panel" id="modPanel" aria-live="polite">
-      <div>
-        <div class="mp-in">
-          <div class="mp-top">
-            <b class="mp-num"></b>
-            <div><span class="mp-kicker">Повний зміст модуля</span><h3 class="mp-title"></h3></div>
-            <span class="mp-cnt"></span>
-            <button type="button" class="mp-close" aria-label="Згорнути">×</button>
-          </div>
-          <div class="mp-body"></div>
-        </div>
+    <div class="prog-meta rv"><span><b>9</b> блоків</span><span><b>95</b> тем</span><span>Відео + презентація до кожного</span><span>Домашні завдання</span><span>Матеріали на платформі</span></div>
+    <div class="prog">
+      <div class="prog-rail" id="progRail">
+      <div class="pgm rv">
+        <button class="pgm-row" type="button" aria-expanded="false" aria-controls="pgb00"><b class="pgm-num">00</b><span class="pgm-name">Вступ</span><span class="pgm-cnt">4 теми</span><i class="pgm-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg></i></button>
+        <div class="pgm-body" id="pgb00"><div><div class="pgm-in"><div class="mg"><h4>Знайомство</h4><ul><li>Що реально дає професія: гроші, графік, свобода від офісу</li><li>Мій шлях: від логіста на 5 тірів до начальниці відділу диспетчерів</li><li>Як організувати роботу з дому — ноутбук, телефон, домовленості</li><li>Як користуватися платформою: відео, презентації, матеріали, домашки</li></ul></div></div></div></div>
+      </div>
+      <div class="pgm rv" style="--d:.04s">
+        <button class="pgm-row" type="button" aria-expanded="false" aria-controls="pgb01"><b class="pgm-num">01</b><span class="pgm-name">Що таке логістика</span><span class="pgm-cnt">10 тем</span><i class="pgm-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg></i></button>
+        <div class="pgm-body" id="pgb01"><div><div class="pgm-in"><div class="mg"><h4>Основа</h4><ul><li>Що таке логістика по факту: доставка з пункту А в пункт Б — на реальних прикладах</li><li>Типи перевезень: автомобільні, морські, авіа — чим відрізняються і де застосовуються</li></ul></div><div class="mg"><h4>Хто такий логіст</h4><ul><li>За що логіст реально відповідає у щоденній роботі</li><li>Як професію називають інакше: диспетчер, експедитор, spedytor польською</li><li>Різниця між експедитором, диспетчером і логістом — окремо по кожній ролі</li><li>Польська та англійська лексика: ми працюємо на європейському ринку, і терміни тут свої</li></ul></div><div class="mg"><h4>Каботаж</h4><ul><li>Що таке каботаж і де діють його правила — конкретні країни й території Європи</li><li>Внутрішні перевезення проти міжнародних</li><li>Правила каботажу в презентації та в доданих матеріалах на платформі</li><li>Який тип транспорту найкраще підходить під каботаж і короткі трасі з дня на день</li></ul></div></div></div></div>
+      </div>
+      <div class="pgm rv" style="--d:.08s">
+        <button class="pgm-row" type="button" aria-expanded="false" aria-controls="pgb02"><b class="pgm-num">02</b><span class="pgm-name">Транспорт і завантаження</span><span class="pgm-cnt">15 тем</span><i class="pgm-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg></i></button>
+        <div class="pgm-body" id="pgb02"><div><div class="pgm-in"><div class="mg"><h4>Типи машин</h4><ul><li>Тір: 13,6 метра, ладовність 24 тони</li><li>Солувка: від 3 до 10 тонн, від 10 до 20 європалет</li><li>Бус: 8–10 європалет, точні розміри</li><li>Кожен тип у трьох забудовах: тент, штивна забудова, рефрижератор-холодильник</li></ul></div><div class="mg"><h4>Типи завантаження</h4><ul><li>Бічне, із заду з рампи, з гори — для якої забудови що можливе</li><li>Реальні фотографії, як вантажать пландеку, солувку і бус на 8 європалет</li><li>Чим саме здійснюється завантаження на кожному типі</li></ul></div><div class="mg"><h4>Спорядження й техніка</h4><ul><li>Рохля, винда (ліфт) — що солувки й буси везуть із собою</li><li>Електричні візки, візки з оператором, палечаки</li></ul></div><div class="mg"><h4>Навантаження фури</h4><ul><li>Загальна маса і скільки машина реально може взяти</li><li>Чому не має бути перегрузу на передню вісь</li><li>Наклейка на лобове скло: мій штраф за її відсутність і адреси, де її купити</li></ul></div><div class="mg"><h4>Палети й кріплення</h4><ul><li>Фотографії товарів — підтвердження, що не завжди це стандартна європалета</li><li>Нестандартні палети: як із ними рахувати місце</li><li>Спорядження для пландек: стовбари, килимки під товар, паси — щоб товар не їздив у прицепі</li></ul></div></div></div></div>
+      </div>
+      <div class="pgm rv" style="--d:.12s">
+        <button class="pgm-row" type="button" aria-expanded="false" aria-controls="pgb03"><b class="pgm-num">03</b><span class="pgm-name">Ключові дороги Європи</span><span class="pgm-cnt">17 тем</span><i class="pgm-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg></i></button>
+        <div class="pgm-body" id="pgb03"><div><div class="pgm-in"><div class="mg"><h4>Базовий маршрут</h4><ul><li>Стандартна трасa Німеччина → Італія через Австрію, розібрана по частинах</li><li>Чому транзит через Швейцарію закритий і що потрібно, щоб усе ж заїхати на завантаження або розвантаження</li></ul></div><div class="mg"><h4>Перетини Австрії</h4><ul><li>Варіант 1: Куфштайн — Інсбрук</li><li>Варіант 2: Зальцбург — Філлах</li><li>Варіант 3: Брегенц, а також Фюссен</li><li>Що можна, а що ні на кожному з варіантів</li></ul></div><div class="mg"><h4>Дороги, якими я їздила сама</h4><ul><li>Чехія: якими дорогами варто користуватися, а якими ні</li><li>Як їхати з Польщі в Німеччину</li><li>Внутрішні дороги Німеччини</li><li>Внутрішні дороги Італії — SS309, SS47 та інші: про них вам ChatGPT не напише</li><li>Франція ↔ Італія: де тунелі, які треба купувати окремо</li></ul></div><div class="mg"><h4>Заборони руху</h4><ul><li>Де читати про заборони руху — посилання, бо вони змінюються щотижня</li></ul></div><div class="mg"><h4>Гроші за маршрут</h4><ul><li>Розрахунок вигідності маршруту — формула з мого досвіду</li><li>Скільки мінімально має заплатити клієнт за трасу: від місця, де машина пуста, до розвантаження</li><li>Як рахувати ставку за кілометр</li><li>Чому ставки на різних видах транспорту відрізняються</li><li>Підсумок модуля, головні правила і домашнє завдання</li></ul></div></div></div></div>
+      </div>
+      <div class="pgm rv" style="--d:.16s">
+        <button class="pgm-row" type="button" aria-expanded="false" aria-controls="pgb04"><b class="pgm-num">04</b><span class="pgm-name">Платні дороги</span><span class="pgm-cnt">10 тем</span><i class="pgm-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg></i></button>
+        <div class="pgm-body" id="pgb04"><div><div class="pgm-in"><div class="mg"><h4>Як перевізник платить за дороги</h4><ul><li>Системи TOLL і карти, якими користуються перевізники — особливо на тірах</li><li>Чому логіст не купує кожен кілометр, а тільки в окремих країнах</li><li>Автоматичне стягування: Німеччина, Франція — бокси в машині і як з них списується оплата</li></ul></div><div class="mg"><h4>Окремі країни</h4><ul><li>Люксембург, Швейцарія: де потрібна вінʼєта та євровінʼєта</li><li>Сайт і покроково — як купити проїзд</li></ul></div><div class="mg"><h4>Пором і поїзд</h4><ul><li>Пором з Німеччини до Швеції: як він працює і як його купити</li><li>Переправа машини поїздом через Австрію: для чого вона потрібна і як її використовувати</li></ul></div><div class="mg"><h4>Розрахунок</h4><ul><li>Покроково: як рахувати кілометраж разом з оплатами доріг</li><li>Як враховувати пором у розрахунку</li><li>Домашнє завдання — порахувати маршрут з оплатами доріг</li></ul></div></div></div></div>
+      </div>
+      <div class="pgm rv" style="--d:.20s">
+        <button class="pgm-row" type="button" aria-expanded="false" aria-controls="pgb05"><b class="pgm-num">05</b><span class="pgm-name">Індекси, ставки, регіони</span><span class="pgm-cnt">9 тем</span><i class="pgm-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg></i></button>
+        <div class="pgm-body" id="pgb05"><div><div class="pgm-in"><div class="mg"><h4>Поштові індекси</h4><ul><li>PLZ по кожному регіону: як читати індекс і що він вам каже</li><li>Карти з індексами в матеріалах курсу</li></ul></div><div class="mg"><h4>Куди вантажити</h4><ul><li>Чому в логістиці важливо не просто завантажити машину, а знати, в який регіон</li><li>Чи отримаєте ви звідти нормальне наступне завантаження</li><li>Гірший регіон — вища ставка: як це закладати в ціну</li><li>Мої фотографії пузл-карти: я сама розписую по пунктах перше, друге, третє місце — куди варто їхати, а куди ні</li></ul></div><div class="mg"><h4>Ставки й сезонність</h4><ul><li>Ставки на всі типи транспорту — за які краще їздити</li><li>Ситуації з власного досвіду, де краще не їхати взагалі</li><li>Сезонність: у який період у логістиці краще не працювати</li></ul></div></div></div></div>
+      </div>
+      <div class="pgm rv" style="--d:.24s">
+        <button class="pgm-row" type="button" aria-expanded="false" aria-controls="pgb06"><b class="pgm-num">06</b><span class="pgm-name">Час праці водія</span><span class="pgm-cnt">8 тем</span><i class="pgm-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg></i></button>
+        <div class="pgm-body" id="pgb06"><div><div class="pgm-in"><div class="mg"><h4>Теорія</h4><ul><li>Час їзди в день і тижневі обмеження</li><li>Паузи: коли водій зобовʼязаний стати</li><li>Добовий відпочинок — повний і скорочений</li><li>Щотижневий відпочинок: повний і скорочений</li><li>Чи можна стояти на відпочинку будь-де в Європі, чи треба їхати туди, де зареєстрована машина</li></ul></div><div class="mg"><h4>Практика</h4><ul><li>Задача на відеозаписі: як час праці водія виглядає в реальному плануванні</li><li>Як рахувати маршрут так, щоб водій не виїхав за норми</li><li>Книга про час праці водія — у матеріалах курсу</li></ul></div></div></div></div>
+      </div>
+      <div class="pgm rv" style="--d:.24s">
+        <button class="pgm-row" type="button" aria-expanded="false" aria-controls="pgb07"><b class="pgm-num">07</b><span class="pgm-name">Біржа, документи, фактура</span><span class="pgm-cnt">14 тем</span><i class="pgm-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg></i></button>
+        <div class="pgm-body" id="pgb07"><div><div class="pgm-in"><div class="mg"><h4>Біржа TransEU</h4><ul><li>Як виставляти фільтри — покроково, з екрана</li><li>Як брати завантаження і як акцептувати його з клієнтом</li><li>Які саме інформації писати клієнту, щоб домовленість була зафіксована</li></ul></div><div class="mg"><h4>Весь ланцюг</h4><ul><li>Від моменту, як ви взяли вантаж на TransEU, і до оплати</li><li>Як передати завантаження водієві</li><li>Водій виконав — ви отримали документи з розвантаження</li><li>Що з цими документами робити далі і які це документи</li></ul></div><div class="mg"><h4>Документи</h4><ul><li>CMR: розбираємо повністю, по пунктах — що означає кожен пункт</li><li>Замовлення від клієнта (zlecenie): як воно виглядає і що з нього обовʼязково брати</li><li>Усі зразки замовлень і ордерів — у матеріалах курсу</li></ul></div><div class="mg"><h4>Фактура й оплата</h4><ul><li>Покроково: як виставити фактуру на замовлення у програмі Fakturownia</li><li>Варіант 1 — оригінали поштою: які документи зібрати і куди відправити, щоб пройшла оплата</li><li>Варіант 2 — клієнти, що працюють по сканах: мейл, фактура і документи завантаження у PDF</li><li>Як прочитати з замовлення, за яким саме варіантом працює цей клієнт</li></ul></div></div></div></div>
+      </div>
+      <div class="pgm rv" style="--d:.24s">
+        <button class="pgm-row" type="button" aria-expanded="false" aria-controls="pgb08"><b class="pgm-num">08</b><span class="pgm-name">Робота, резюме, дохід</span><span class="pgm-cnt">8 тем</span><i class="pgm-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg></i></button>
+        <div class="pgm-body" id="pgb08"><div><div class="pgm-in"><div class="mg"><h4>Резюме й старт</h4><ul><li>Як правильно написати резюме логісту-початківцю і на що звертають увагу</li><li>Мої поради з особистого досвіду — що працює, а що ні</li><li>Консультація зі мною в межах модуля</li></ul></div><div class="mg"><h4>Де брати роботу</h4><ul><li>Як самому шукати перевізників і виходити на них</li><li>Робота на перевізника під процент — як це влаштовано</li></ul></div><div class="mg"><h4>З чого складається дохід</h4><ul><li>Фірма зі сталою ставкою: що ви отримуєте</li><li>Фірма, що рахує дохід від маржі: як саме з цього заробляє логіст</li><li>Як порівняти два варіанти і вибрати свій</li></ul></div></div></div></div>
+      </div>
+      </div>
+      <div class="prog-view" id="progView">
+        <div class="pv-top"><b class="pv-num"></b><div><span class="pv-kick">Повний зміст модуля</span><h3 class="pv-title"></h3></div><span class="pv-cnt"></span></div>
+        <div class="pv-body"></div>
       </div>
     </div>
   </div>
@@ -1609,32 +1634,41 @@ setTimeout(function () {
   addEventListener('scroll', rpKick, { passive: true });
   rpKick();
 
-  /* ---------- modules: картка відкриває повний зміст у панелі ---------- */
-  const mPanel = document.getElementById('modPanel');
-  const mBody = mPanel.querySelector('.mp-body');
-  function closeMod(){
-    document.querySelectorAll('.mod.active').forEach(x => x.classList.remove('active'));
-    mPanel.classList.remove('open');
+  /* ---------- програма: рейка модулів + панель змісту ---------- */
+  const rail = document.getElementById('progRail');
+  const pv = document.getElementById('progView');
+  const pvBody = pv.querySelector('.pv-body');
+  const mods = [...rail.querySelectorAll('.pgm')];
+  /* ширше 1100 — зміст показує панель збоку; вужче — картка розкривається сама */
+  const wide = () => matchMedia('(min-width:1101px)').matches;
+
+  function fillPanel(pm){
+    pv.querySelector('.pv-num').textContent = pm.querySelector('.pgm-num').textContent;
+    pv.querySelector('.pv-title').textContent = pm.querySelector('.pgm-name').textContent;
+    pv.querySelector('.pv-cnt').textContent = pm.querySelector('.pgm-cnt').textContent;
+    pvBody.innerHTML = pm.querySelector('.pgm-in').innerHTML;
+    pvBody.classList.toggle('one', pvBody.children.length === 1);
   }
-  document.querySelectorAll('.mod').forEach(m => m.addEventListener('click', () => {
-    haptic(8);
-    if (m.classList.contains('active')) { closeMod(); return; }
-    closeMod();
-    m.classList.add('active');
-    mBody.innerHTML = m.querySelector('.mod-more > div').innerHTML;
-    mPanel.querySelector('.mp-num').textContent = m.querySelector('.num b').textContent;
-    mPanel.querySelector('.mp-title').textContent = m.querySelector('h3').textContent;
-    mPanel.querySelector('.mp-cnt').textContent = m.querySelector('.cnt').textContent;
-    mBody.classList.toggle('one', mBody.children.length === 1);
-    mPanel.classList.add('open');
-    /* панель нижче сітки — підтягуємо її у вид, якщо вона за екраном */
+  function select(pm){
+    mods.forEach(x => x.classList.remove('active'));
+    pm.classList.add('active');
+    fillPanel(pm);
+  }
+  function tap(pm){
+    const wasOpen = pm.classList.contains('open');
+    mods.forEach(x => { x.classList.remove('open'); x.querySelector('.pgm-row').setAttribute('aria-expanded', 'false'); });
+    select(pm);
+    if (wide() || wasOpen) return;                    // повторний тап згортає
+    pm.classList.add('open');
+    pm.querySelector('.pgm-row').setAttribute('aria-expanded', 'true');
+    /* картка розкрилась — підводимо її під шапку, щоб зміст не лишився за екраном */
     setTimeout(() => {
-      const r = mPanel.getBoundingClientRect();
-      if (r.bottom > innerHeight && r.top > innerHeight * .45)
-        scrollBy({ top: Math.min(r.top - 120, r.bottom - innerHeight + 30), behavior: reduce ? 'auto' : 'smooth' });
-    }, 620);
-  }));
-  mPanel.querySelector('.mp-close').addEventListener('click', e => { e.stopPropagation(); closeMod(); haptic(8); });
+      const t = pm.getBoundingClientRect().top;
+      if (t < 76 || t > innerHeight * .5) scrollBy({ top: t - 96, behavior: reduce ? 'auto' : 'smooth' });
+    }, 480);
+  }
+  mods.forEach(pm => pm.querySelector('.pgm-row').addEventListener('click', () => { haptic(8); tap(pm); }));
+  select(mods[0]);
 
   /* ---------- custom cursor ---------- */
   if (matchMedia('(pointer:fine)').matches && !reduce){
@@ -1642,7 +1676,7 @@ setTimeout(function () {
     let mx = -100, my = -100, rx = -100, ry = -100;
     addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; dot.style.transform = `translate(${mx}px,${my}px)`; });
     (function loop(){ rx += (mx - rx) * .16; ry += (my - ry) * .16; ring.style.transform = `translate(${rx}px,${ry}px)`; requestAnimationFrame(loop); })();
-    document.addEventListener('mouseover', e => ring.classList.toggle('big', !!e.target.closest('a, button, summary, .choice, .mod, input[type=range]')));
+    document.addEventListener('mouseover', e => ring.classList.toggle('big', !!e.target.closest('a, button, summary, .choice, .pgm-row, input[type=range]')));
   }
 
   /* ---------- diplomas lightbox ---------- */
