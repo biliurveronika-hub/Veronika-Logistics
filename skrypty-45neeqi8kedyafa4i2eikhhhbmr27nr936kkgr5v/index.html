@@ -70,6 +70,41 @@ section.sec{padding:38px 0 0}
 .copy svg{width:15px;height:15px}
 .note{margin-top:10px;font-size:14px;color:var(--muted);padding-left:12px;border-left:3px solid var(--powder)}
 
+/* ---------- тарифи ---------- */
+.offer{margin-top:14px;background:linear-gradient(135deg,#9DBBD9 0%,#BDD1E6 55%,#E3ECF4 100%);border-radius:var(--r-lg);padding:20px 18px;color:var(--forest-d)}
+.offer b.big{display:block;font-size:20px;letter-spacing:-.02em;line-height:1.25}
+.offer p{font-size:15px;margin-top:6px;color:#2A4A5E}
+.tariffs{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px}
+.tf{background:var(--white);border:1px solid var(--line);border-radius:var(--r-lg);padding:20px 18px;display:flex;flex-direction:column}
+.tf.dark{background:var(--forest-d);border-color:var(--forest-d);color:#fff}
+.tf .tag{align-self:flex-start;font-size:11.5px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;padding:5px 10px;border-radius:999px;background:var(--ice);color:var(--blue)}
+.tf.dark .tag{background:var(--ios);color:#fff}
+.tf h3{font-size:22px;margin-top:12px}
+.tf .sub{font-size:14px;color:var(--muted);margin-top:4px}
+.tf.dark .sub{color:#A9BCCB}
+.price{display:flex;align-items:baseline;gap:10px;margin-top:14px}
+.price b{font-size:36px;letter-spacing:-.04em;line-height:1}
+.price s{font-size:18px;color:var(--muted);font-weight:600}
+.tf.dark .price s{color:#7D95A8}
+.price-note{font-size:13px;font-weight:700;color:var(--forest);margin-top:4px}
+.tf.dark .price-note{color:var(--sky-l)}
+.tf ul{list-style:none;margin-top:14px;display:grid;gap:8px;font-size:14.5px}
+.tf li{position:relative;padding-left:24px;line-height:1.4}
+.tf li::before{content:"";position:absolute;left:0;top:2px;width:16px;height:16px;border-radius:50%;background:var(--ios) url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3.4' stroke-linecap='round' stroke-linejoin='round'><path d='M5 13l4 4L19 7'/></svg>") center/11px no-repeat}
+.tf li.no{color:var(--muted)}
+.tf li.no::before{background:#D9E1E8 url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3.4' stroke-linecap='round'><path d='M7 7l10 10M17 7 7 17'/></svg>") center/10px no-repeat}
+.tf li b{font-weight:700}
+.tf.dark li{color:#E3ECF4}
+.tf .for{margin-top:auto;padding-top:14px;font-size:13.5px;color:var(--muted)}
+.tf.dark .for{color:#A9BCCB}
+.bonus{margin-top:12px;background:var(--paper);border:1px solid var(--line);border-radius:var(--r-lg);padding:18px}
+.bonus h3{font-size:18px}
+.bonus ul{list-style:none;margin-top:10px;display:grid;gap:8px}
+.bonus li{display:flex;gap:10px;font-size:14.5px;line-height:1.4}
+.bonus li i{flex:none;font-style:normal;width:28px;height:28px;border-radius:9px;background:var(--ice);display:grid;place-items:center;font-size:15px}
+.bonus li small{display:block;color:var(--muted);font-size:13px}
+@media (max-width:640px){.tariffs{grid-template-columns:1fr}}
+
 footer{margin-top:60px;background:var(--forest-d);color:#A9BCCB;padding:30px 0 calc(30px + env(safe-area-inset-bottom));border-radius:var(--r-lg) var(--r-lg) 0 0;font-size:14px}
 footer b{color:#fff}
 .toast{position:fixed;left:50%;bottom:calc(18px + env(safe-area-inset-bottom));transform:translate(-50%,160%);background:var(--forest-d);color:#fff;font-size:14px;font-weight:700;padding:11px 18px;border-radius:999px;box-shadow:0 14px 34px -14px rgba(23,49,63,.7);transition:transform .45s var(--ease);z-index:60;white-space:nowrap}
@@ -85,8 +120,9 @@ footer b{color:#fff}
     <nav class="chips" aria-label="Кроки">
       <a href="#k1">1 · Привітатися</a>
       <a href="#kc">Скільки коштує</a>
-      <a href="#k2">2 · Навчання</a>
-      <a href="#k3">3 · Наступного дня</a>
+      <a href="#k2">2 · Дзвінок</a>
+      <a href="#kt">3 · Тарифи і оффер</a>
+      <a href="#k3">Мовчить</a>
       <a href="#k8">Платна консультація</a>
     </nav>
   </div>
@@ -98,7 +134,7 @@ footer b{color:#fff}
   <span class="label">Скрипт для директу</span>
   <h1>Людина натиснула <em>«Хочу консультацію»</em></h1>
   <p>Впишіть ім’я зверху, натисніть «Скопіювати» і вставте в директ. <span class="ph">[Жовте]</span> — дописати перед відправкою.</p>
-  <div class="flow"><span>Привітатися</span><span>→ запропонувати дзвінок</span><span>→ наступного дня</span><span>→ все</span></div>
+  <div class="flow"><span>Привітатися</span><span>→ дзвінок</span><span>→ тарифи</span><span>→ 48 годин на бронь</span></div>
 </header>
 
 <!-- 1 -->
@@ -128,14 +164,14 @@ footer b{color:#fff}
   <article class="s">
     <h3>Наполягає: «просто скажіть ціну»</h3>
     <div class="msgs">
-      <div class="msg">Звісно 🙂 Навчання — від [ціна]. А що саме входить і який формат вигідніший для вас, швидше пояснити голосом, ніж розписувати тут простирадло.
+      <div class="msg">Звісно 🙂 Навчання — від 500 €. Але тим, хто приходить на консультацію, я даю спеціальну ціну 😉 А що саме входить і який формат вигідніший для вас, швидше пояснити голосом, ніж розписувати тут простирадло.
 Зідзвонимося на [30 хвилин]? Обіцяю: затримаю вас менше, ніж митниця фуру на кордоні 😄</div>
     </div>
   </article>
   <article class="s">
     <h3>Питають «а є розстрочка?»</h3>
     <div class="msgs">
-      <div class="msg">Так, є 🙂 Можна оплатити частинами: [наприклад, 2 платежі — [сума] зараз і [сума] через [строк]].
+      <div class="msg">Так, є 🙂 Можна оплатити частинами: [наприклад, 2 платежі: X € зараз і X € через N тижнів].
 Як у перевезеннях: вантаж не обов’язково везти одним рейсом 😄 На дзвінку підберемо зручний для вас варіант. Вам краще [варіант 1] чи [варіант 2]?</div>
     </div>
     <p class="note">Умови розстрочки впишіть один раз і пишіть усім однаково.</p>
@@ -163,35 +199,145 @@ footer b{color:#fff}
       <div class="msg">{ім’я}, за годину зустрічаємося! Ось посилання: [посилання]</div>
     </div>
   </article>
+</section>
+
+<!-- TARIFFS -->
+<section class="sec" id="kt">
+  <div class="sec-head"><span class="n">3</span><h2>Тарифи і оффер</h2></div>
+  <p class="intro">Розповідаєте на дзвінку, а одразу після — надсилаєте підсумок з дедлайном. Шпаргалка для вас, тексти для людини — нижче.</p>
+
+  <div class="offer">
+    <b class="big">Оффер 48 годин</b>
+    <p>Хто бронює місце протягом <b>48 годин після консультації</b>, отримує ціну <b>400 € замість 500 €</b> або <b>700 € замість 900 €</b>. Після 48 годин — звичайна ціна. Бронювання — це <span class="ph">[передоплата X € або повна оплата]</span>.</p>
+  </div>
+
+  <div class="tariffs">
+    <div class="tf">
+      <span class="tag">Самостійний</span>
+      <h3>Курс + групові дзвінки</h3>
+      <p class="sub">Проходите самі, питання — на спільних розборах</p>
+      <div class="price"><b>400 €</b><s>500 €</s></div>
+      <p class="price-note">якщо бронь протягом 48 годин</p>
+      <ul>
+        <li>Вступ + <b>8 модулів</b> у кабінеті на сайті</li>
+        <li>Презентації до кожного модуля</li>
+        <li>Домашні завдання</li>
+        <li><b>Групові дзвінки</b> з розбором питань — [раз на 2 тижні]</li>
+        <li>Навчання у своєму темпі, старт будь-коли</li>
+        <li>Доступ до матеріалів — [строк]</li>
+        <li class="no">Без перевірки домашніх і особистих відповідей</li>
+      </ul>
+      <p class="for">Кому: тим, хто вміє вчитися самостійно і кому достатньо ставити питання на групових дзвінках.</p>
+    </div>
+    <div class="tf dark">
+      <span class="tag">З зворотним зв’язком</span>
+      <h3>Курс + я поруч</h3>
+      <p class="sub">Усе з «Самостійного» + особистий супровід</p>
+      <div class="price"><b>700 €</b><s>900 €</s></div>
+      <p class="price-note">якщо бронь протягом 48 годин</p>
+      <ul>
+        <li>Усе, що в тарифі «Самостійний», включно з груповими дзвінками</li>
+        <li><b>Перевіряю кожне домашнє</b> особисто і пояснюю помилки</li>
+        <li><b>Відповідаю на питання в особистих</b> — текстом або голосовими</li>
+        <li>Розбираємо ваші реальні ситуації: маршрут, вантаж, клієнт</li>
+        <li>Особистий розбір вашого резюме</li>
+        <li>Пробна співбесіда зі мною перед реальною</li>
+      </ul>
+      <p class="for">Кому: тим, хто з нуля, боїться «не впоратись» або хоче вийти на роботу якомога швидше.</p>
+    </div>
+  </div>
+
+  <div class="bonus">
+    <h3>🎁 Бонуси в обох тарифах</h3>
+    <ul>
+      <li><i>🗺</i><div>Карти регіонів для пошуку вантажів<small>Німеччина, Франція, Італія, Польща, Бенілюкс, Австрія</small></div></li>
+      <li><i>📄</i><div>Зразки документів<small>Zlecenie przewozu, Transportauftrag, CMR — як виглядають і що в них перевіряти</small></div></li>
+      <li><i>🛣</i><div>Файли з маршрутами і «секретними» дорогами<small>те, чого немає у відкритому доступі</small></div></li>
+      <li><i>📸</i><div>Реальні фото й відео з рейсів<small>завантаження, перевантаження осі, корки, поломки — і що з цим робити</small></div></li>
+      <li><i>💼</i><div>Модуль про роботу і співбесіду<small>резюме, питання, на яких сиплються, куди стукатися</small></div></li>
+    </ul>
+  </div>
+
   <article class="s">
-    <h3>Після дзвінка</h3>
+    <h3>На дзвінку — як розповісти про тарифи 🎙</h3>
     <div class="msgs">
-      <div class="msg">{ім’я}, дякую за розмову 🙂 Якщо вирішите навчатися — напишіть, я надішлю реквізити й відкрию доступ.</div>
+      <div class="msg">— «З того, що ви розповіли, я бачу [повторити ціль людини її словами]. Є два формати.»
+— «Самостійний: увесь курс, презентації, домашні і групові дзвінки, де я відповідаю на питання. 500 €.»
+— «З зворотним зв’язком: те саме, але я перевіряю кожне ваше домашнє, відповідаю в особистих, розбираю ваше резюме і роблю з вами пробну співбесіду. 900 €.»
+— «Вам, я думаю, більше підійде [тариф], тому що [причина].»
+— «І ще: якщо бронюєте місце протягом 48 годин після нашої розмови — 400 € замість 500 або 700 € замість 900. Це для тих, хто вже прийшов на консультацію.»
+— «Що скажете?» — і пауза.</div>
+    </div>
+    <p class="note">Після «Що скажете?» мовчіть — першим має заговорити клієнт.</p>
+  </article>
+
+  <article class="s">
+    <h3>Одразу після дзвінка — оффер з дедлайном</h3>
+    <div class="msgs">
+      <div class="msg">{ім’я}, дякую за розмову, було дуже приємно 🙂
+Як і обіцяла, коротко про формати:
+
+🔹 Самостійний — 8 модулів, презентації, домашні, групові дзвінки з розбором питань.
+500 € → 400 €
+
+🔸 З зворотним зв’язком — усе те саме + я перевіряю кожне домашнє, відповідаю в особистих, розбираю ваше резюме і роблю пробну співбесіду.
+900 € → 700 €
+
+🎁 В обох: карти регіонів, зразки документів, файли з маршрутами і «секретними» дорогами.</div>
+      <div class="msg">Ціна 400 / 700 € діє 48 годин — до [день] [час]. Щоб її закріпити, достатньо [передоплати X € або повної оплати].
+Який формат вам ближчий?</div>
+    </div>
+  </article>
+
+  <article class="s">
+    <h3>«Який тариф мені обрати?»</h3>
+    <div class="msgs">
+      <div class="msg">Чесно — якщо ви з нуля і хочете вийти на роботу якомога швидше, беріть з зворотним зв’язком: я буду поруч на кожному кроці і не дам застрягнути.
+Якщо ж ви добре вчитеся самі і вам достатньо ставити питання на групових дзвінках — «Самостійного» вистачить 🙂</div>
+    </div>
+  </article>
+
+  <article class="s">
+    <h3>Через 24 години — якщо мовчить</h3>
+    <div class="msgs">
+      <div class="msg">{ім’я}, вітаю! Як вам наша розмова? 🙂
+Нагадую: ціна 400 / 700 € діє до завтра, до [час]. Якщо є питання щодо тарифів чи оплати — пишіть, відповім.</div>
+    </div>
+  </article>
+
+  <article class="s">
+    <h3>За кілька годин до кінця</h3>
+    <div class="msgs">
+      <div class="msg">{ім’я}, коротко: спеціальна ціна діє ще до [час] сьогодні 🙂 Як у логістиці — вікно на завантаження не чекає 😄 Бронюємо місце?</div>
+    </div>
+  </article>
+
+  <article class="s">
+    <h3>48 годин минули</h3>
+    <div class="msgs">
+      <div class="msg">{ім’я}, спеціальна ціна вже не діє, але навчання нікуди не поїде — воно ж не фура 😄
+Коли будете готові — напишіть, місце знайдеться: 500 € за «Самостійний» і 900 € за формат з зворотним зв’язком.</div>
+    </div>
+    <p class="note">Не продовжуйте дедлайн «у виняток» — інакше наступного разу 48 годин ніхто не сприйме всерйоз.</p>
+  </article>
+
+  <article class="s">
+    <h3>Людина каже «так» — бронювання</h3>
+    <div class="msgs">
+      <div class="msg">Дуже рада 🙌 Бронюємо [Самостійний за 400 € / З зворотним зв’язком за 700 €].
+Ось реквізити: [реквізити]
+Після оплати надішліть, будь ласка, скриншот і вашу пошту — я відкрию доступ до кабінету.</div>
     </div>
   </article>
 </section>
 
-<!-- 3 -->
+<!-- SILENT -->
 <section class="sec" id="k3">
-  <div class="sec-head"><span class="n">3</span><h2>Наступного дня</h2></div>
-  <p class="intro">Одне повідомлення, якщо людина мовчить. Більше не пишемо.</p>
+  <div class="sec-head"><span class="n">!</span><h2>Не відповіла на привітання</h2></div>
+  <p class="intro">Одне повідомлення наступного дня. Більше не пишемо.</p>
   <article class="s">
-    <h3>Не відповіла на привітання</h3>
     <div class="msgs">
       <div class="msg">{ім’я}, нагадую про себе 🙂 Ви залишали заявку на консультацію. Ще актуально?</div>
-    </div>
-  </article>
-  <article class="s">
-    <h3>Після дзвінка мовчить</h3>
-    <div class="msgs">
-      <div class="msg">{ім’я}, вітаю! Як вам наша розмова? Якщо з’явилися запитання — пишіть, я на зв’язку 🙂</div>
-    </div>
-  </article>
-  <article class="s">
-    <h3>Людина каже «так»</h3>
-    <div class="msgs">
-      <div class="msg">Дуже рада 🙌 Ось реквізити: [реквізити]
-Після оплати надішліть, будь ласка, скриншот і вашу пошту — я відкрию доступ до кабінету.</div>
     </div>
   </article>
 </section>
