@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Анонс курсу — 6 сторіс | Veronika Logistics</title>
+<title>Сторіс на сьогодні — крок за кроком | Veronika Logistics</title>
 <meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
 <meta name="googlebot" content="noindex, nofollow">
 <meta name="referrer" content="no-referrer">
@@ -16,65 +16,77 @@
   --bg:#EEF2F5; --paper:#F8FAFC; --white:#fff;
   --ink:#14232E; --muted:#546473; --line:rgba(20,35,46,.12);
   --forest:#244A5E; --forest-d:#17313F;
-  --blue:#3E6E91; --sky-l:#CFE0EF; --powder:#BDD1E6; --ice:#E3ECF4;
+  --blue:#3E6E91; --sky:#9DBBD9; --sky-l:#CFE0EF; --powder:#BDD1E6; --ice:#E3ECF4;
   --ios:#34C759;
-  --r-lg:26px; --wrap:760px;
+  --r-lg:26px; --wrap:720px;
   --ease:cubic-bezier(.2,.8,.2,1);
   --serif:'Playfair Display',Georgia,serif;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
-body{font-family:'Manrope',system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body{font-family:'Manrope',system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.5;-webkit-font-smoothing:antialiased;overflow-x:hidden}
 button{font:inherit;color:inherit}
 a{color:var(--blue)}
 em{font-family:var(--serif);font-style:italic;font-weight:400;letter-spacing:-.02em}
 .wrap{max-width:var(--wrap);margin:0 auto;padding:0 16px}
 h1,h2,h3{font-weight:700;letter-spacing:-.035em;line-height:1.1}
 
-.hero{padding:34px 0 4px}
+/* ---------- шапка ---------- */
+.hero{padding:32px 0 6px}
 .label{display:inline-flex;align-items:center;gap:8px;padding:6px 12px 6px 9px;border-radius:999px;background:var(--white);border:1px solid var(--line);font-size:11.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--blue)}
 .label::before{content:"";width:7px;height:7px;border-radius:50%;background:currentColor}
-.hero h1{font-size:clamp(30px,7vw,46px);margin:14px 0 10px}
+.hero h1{font-size:clamp(30px,7.4vw,44px);margin:14px 0 10px}
 .hero h1 em{color:var(--blue)}
 .hero p{color:var(--muted);font-size:16px}
 
-.linkbox{margin-top:20px;background:var(--forest-d);color:#fff;border-radius:var(--r-lg);padding:18px}
-.linkbox b{display:block;font-size:12px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--sky-l)}
-.linkbox .u{display:block;margin:8px 0 12px;font-size:17px;font-weight:700;word-break:break-all}
-.linkbox p{font-size:14px;color:#A9BCCB}
-.bar{display:flex;justify-content:flex-end;margin-top:10px}
+.prog{display:flex;align-items:center;gap:10px;margin-top:20px;background:var(--white);border:1px solid var(--line);border-radius:999px;padding:10px 16px}
+.prog .track{flex:1;height:8px;border-radius:99px;background:var(--ice);overflow:hidden}
+.prog .track i{display:block;height:100%;width:0;background:var(--ios);border-radius:99px;transition:width .4s var(--ease)}
+.prog b{font-size:13px;font-weight:800;color:var(--forest);white-space:nowrap}
+
+/* ---------- посилання ---------- */
+.links{margin-top:14px;display:grid;gap:10px}
+.lk{background:var(--forest-d);color:#fff;border-radius:var(--r-lg);padding:16px 18px}
+.lk b{display:block;font-size:11.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--sky-l)}
+.lk .u{display:block;margin:7px 0 4px;font-size:16px;font-weight:700;word-break:break-all}
+.lk small{display:block;font-size:13.5px;color:#A9BCCB}
+.lk .bar{display:flex;justify-content:flex-end;margin-top:10px}
 .copy{display:inline-flex;align-items:center;gap:7px;border:0;cursor:pointer;background:rgba(255,255,255,.16);color:#fff;font-size:13.5px;font-weight:700;padding:9px 16px;border-radius:999px;transition:transform .15s,background .25s}
 .copy:active{transform:scale(.96)}
 .copy.ok{background:var(--ios)}
-.card .copy{background:var(--forest-d)}
+.step .copy{background:var(--forest-d)}
 
-h2.sec{font-size:clamp(22px,5vw,28px);margin:44px 0 6px}
+h2.sec{font-size:clamp(21px,5vw,27px);margin:42px 0 4px}
 .sub{color:var(--muted);font-size:15px}
 
-/* кадр */
-.st{background:var(--paper);border:1px solid var(--line);border-radius:var(--r-lg);padding:16px;margin-top:12px;display:grid;grid-template-columns:116px 1fr;gap:16px;align-items:start}
-.st .pic{border-radius:16px;overflow:hidden;background:var(--forest-d);aspect-ratio:9/16;display:grid;place-items:center}
-.st .pic img{width:100%;height:100%;object-fit:cover;display:block}
-.st .pic.film{color:var(--sky-l);font-size:30px}
-.st .n{display:inline-flex;align-items:center;gap:8px;font-size:11.5px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--blue)}
-.st .n i{font-style:normal;width:22px;height:22px;border-radius:7px;background:var(--forest-d);color:#fff;display:grid;place-items:center;font-size:12px}
-.st h3{font-size:18px;margin:8px 0 6px;letter-spacing:-.02em}
-.st p{font-size:14.5px;color:var(--muted)}
-.st .dl{display:inline-flex;align-items:center;gap:7px;margin-top:11px;text-decoration:none;background:var(--forest-d);color:#fff;font-size:13.5px;font-weight:700;padding:9px 15px;border-radius:999px}
-.st .say{margin-top:10px;background:var(--white);border:1px solid var(--line);border-radius:16px 16px 16px 6px;padding:13px 14px;font-size:15px;white-space:pre-line;color:var(--ink)}
-.st .tag{display:inline-block;margin-top:9px;font-size:12.5px;font-weight:700;color:var(--forest);background:var(--ice);border-radius:999px;padding:5px 11px}
-@media (max-width:520px){.st{grid-template-columns:92px 1fr;gap:13px}}
+/* ---------- крок ---------- */
+.step{position:relative;background:var(--paper);border:1px solid var(--line);border-radius:var(--r-lg);padding:16px;margin-top:12px;display:grid;grid-template-columns:104px 1fr;gap:16px;align-items:start;transition:border-color .3s,background .3s}
+.step.done{background:#F1F8F2;border-color:rgba(52,199,89,.45)}
+.step .pic{border-radius:14px;overflow:hidden;background:var(--forest-d);aspect-ratio:9/16;display:grid;place-items:center;font-size:30px;color:var(--sky-l)}
+.step .pic img{width:100%;height:100%;object-fit:cover;display:block}
+.step .no{display:inline-flex;align-items:center;gap:8px;font-size:11.5px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--blue)}
+.step .no i{font-style:normal;width:24px;height:24px;border-radius:8px;background:var(--forest-d);color:#fff;display:grid;place-items:center;font-size:12.5px}
+.step.done .no i{background:var(--ios)}
+.step h3{font-size:18px;margin:9px 0 6px;letter-spacing:-.02em}
+.step p{font-size:14.5px;color:var(--muted)}
+.todo{list-style:none;margin-top:10px;display:grid;gap:7px}
+.todo li{display:flex;gap:9px;font-size:14.5px;line-height:1.4}
+.todo li::before{content:"";flex:none;width:7px;height:7px;border-radius:50%;background:var(--sky);margin-top:7px}
+.acts{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.btn{display:inline-flex;align-items:center;gap:7px;text-decoration:none;border:0;cursor:pointer;font-size:13.5px;font-weight:700;padding:10px 16px;border-radius:999px}
+.btn.dl{background:var(--forest-d);color:#fff}
+.btn.gh{background:var(--white);border:1px solid var(--line);color:var(--ink)}
+.btn.ok{background:var(--ios);color:#fff}
+.say{margin-top:10px;background:var(--white);border:1px solid var(--line);border-radius:16px 16px 16px 6px;padding:13px 14px;font-size:15px;white-space:pre-line;color:var(--ink)}
+.tag{display:inline-block;margin-top:9px;font-size:12.5px;font-weight:700;color:var(--forest);background:var(--ice);border-radius:999px;padding:5px 11px}
+.hint{margin-top:10px;font-size:13.5px;color:var(--muted);padding-left:11px;border-left:3px solid var(--powder)}
+@media (max-width:520px){.step{grid-template-columns:84px 1fr;gap:12px;padding:14px}}
 
 .card{background:var(--paper);border:1px solid var(--line);border-radius:var(--r-lg);padding:18px;margin-top:12px}
 .card h3{font-size:17.5px}
-.card p{font-size:14.5px;color:var(--muted);margin-top:6px}
-.steps{display:grid;gap:9px;margin-top:12px}
-.step{display:flex;gap:11px;font-size:15px;line-height:1.4}
-.step i{flex:none;font-style:normal;width:24px;height:24px;border-radius:8px;background:var(--ice);color:var(--blue);display:grid;place-items:center;font-weight:800;font-size:12.5px}
-
-.check{list-style:none;margin-top:12px;display:grid;gap:8px}
-.check li{display:flex;gap:11px;background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:12px 14px;font-size:14.5px;line-height:1.4}
-.check li i{flex:none;font-style:normal;width:20px;height:20px;border-radius:6px;border:2px solid var(--powder)}
+.rows{display:grid;gap:9px;margin-top:11px}
+.rows div{display:flex;gap:11px;font-size:15px;line-height:1.4}
+.rows i{flex:none;font-style:normal;width:24px;height:24px;border-radius:8px;background:var(--ice);color:var(--blue);display:grid;place-items:center;font-weight:800;font-size:12.5px}
 
 footer{margin-top:56px;background:var(--forest-d);color:#A9BCCB;padding:28px 0 calc(28px + env(safe-area-inset-bottom));border-radius:var(--r-lg) var(--r-lg) 0 0;font-size:14px}
 footer b{color:#fff}
@@ -88,118 +100,139 @@ footer b{color:#fff}
 <main class="wrap">
 
 <div class="hero">
-  <span class="label">Анонс курсу</span>
-  <h1>Шість сторіс — <em>і все</em></h1>
-  <p>Картинки вже готові, їх треба просто зберегти й викласти. Два кадри — ваші: один говорите в камеру, другий — готове відео з ученицею. Серію потім збережіть в «Актуальне».</p>
+  <span class="label">Сторіс на сьогодні</span>
+  <h1>Шість кроків — <em>і готово</em></h1>
+  <p>Робіть згори вниз, не перескакуючи. Чотири кадри вже намальовані — їх треба тільки зберегти й викласти. Знімати потрібно один раз.</p>
 
-  <div class="linkbox">
-    <b>Посилання для наліпки і шапки профілю</b>
+  <div class="prog"><b id="pn">0 з 6</b><span class="track"><i id="pf"></i></span></div>
+</div>
+
+<h2 class="sec">Два посилання</h2>
+<p class="sub">Більше жодних не треба. Перше — на програму курсу, друге — на заявку.</p>
+<div class="links">
+  <div class="lk">
+    <b>Наліпка на 3-му кадрі — програма навчання</b>
+    <span class="u">veronika-logistics.com/#program</span>
+    <small>Відкриває сайт одразу на розділі «Програма»: вступ і 8 модулів.</small>
+    <div class="bar"><button class="copy" data-copy="https://veronika-logistics.com/#program">Скопіювати</button></div>
+  </div>
+  <div class="lk">
+    <b>Наліпка на 6-му кадрі і шапка профілю — заявка</b>
     <span class="u">veronika-logistics.com/?k=1</span>
-    <p>Відкриває сайт одразу з формою «Безкоштовна консультація».</p>
+    <small>Відкриває сайт одразу з формою «Безкоштовна консультація».</small>
     <div class="bar"><button class="copy" data-copy="https://veronika-logistics.com/?k=1">Скопіювати</button></div>
   </div>
 </div>
 
-<h2 class="sec">Порядок кадрів</h2>
-<p class="sub">Викладайте підряд, одне за одним. Щоб зберегти картинку з телефона — натисніть «Завантажити» й потім «Зберегти в фото».</p>
+<h2 class="sec">Кроки</h2>
+<p class="sub">Натисніть «Готово» на кроці — він позеленіє, і буде видно, де ви зупинились.</p>
 
-<div class="st">
+<div class="step" data-s="1">
   <div class="pic"><img src="s1.png" alt=""></div>
   <div>
-    <span class="n"><i>1</i>картинка</span>
-    <h3>Скільки виходить у логіста?</h3>
-    <p>Питання, яке чіпляє. Нічого більше на цьому кадрі не треба.</p>
-    <a class="dl" href="s1.png" download>Завантажити</a>
+    <span class="no"><i>1</i>картинка</span>
+    <h3>Питання</h3>
+    <p>«Скільки виходить у логіста?» Кадр лише ставить питання — відповідь буде далі.</p>
+    <ul class="todo">
+      <li>Завантажити й викласти як є</li>
+      <li>Наліпок і тексту не додавати</li>
+    </ul>
+    <div class="acts"><a class="btn dl" href="s1.png" download>Завантажити</a><button class="btn gh" data-done>Готово</button></div>
   </div>
 </div>
 
-<div class="st">
+<div class="step" data-s="2">
   <div class="pic"><img src="s2.png" alt=""></div>
   <div>
-    <span class="n"><i>2</i>картинка</span>
-    <h3>Розрахунок: €1 247 на місяць</h3>
-    <p>Ті самі цифри, що й у калькуляторі на сайті: 3 машини, 2 рейси на тиждень, ставка 400 €, ваші 12 %.</p>
-    <a class="dl" href="s2.png" download>Завантажити</a>
+    <span class="no"><i>2</i>картинка</span>
+    <h3>Відповідь — цифра</h3>
+    <p>Розрахунок на мінімалках: 3 машини, 2 рейси на тиждень, ставка 400 €, ваші 12 % — виходить €1 247 на місяць.</p>
+    <ul class="todo">
+      <li>Завантажити й викласти як є</li>
+      <li>Можна додати опитування «Думали, більше чи менше?»</li>
+    </ul>
+    <div class="acts"><a class="btn dl" href="s2.png" download>Завантажити</a><button class="btn gh" data-done>Готово</button></div>
+    <p class="hint">Це ті самі цифри, що в калькуляторі на сайті. Якщо хтось піде перевіряти — усе зійдеться.</p>
   </div>
 </div>
 
-<div class="st">
+<div class="step" data-s="3">
   <div class="pic"><img src="s3.png" alt=""></div>
   <div>
-    <span class="n"><i>3</i>картинка</span>
-    <h3>Що треба вміти</h3>
-    <p>Показує, що за цифрою стоїть робота, а не везіння.</p>
-    <a class="dl" href="s3.png" download>Завантажити</a>
+    <span class="no"><i>3</i>картинка + наліпка</span>
+    <h3>Чому не кожен так може</h3>
+    <p>Чотири вміння, без яких цифри не буде: знайти вантаж, порахувати маршрут, втримати час водія, оформити документи.</p>
+    <ul class="todo">
+      <li>Завантажити й викласти</li>
+      <li>Зверху або знизу — наліпка з посиланням на програму</li>
+    </ul>
+    <div class="acts"><a class="btn dl" href="s3.png" download>Завантажити</a><button class="copy" data-copy="https://veronika-logistics.com/#program">Скопіювати посилання</button><button class="btn gh" data-done>Готово</button></div>
   </div>
 </div>
 
-<div class="st">
-  <div class="pic film">🎙</div>
+<div class="step" data-s="4">
+  <div class="pic">🎙</div>
   <div>
-    <span class="n"><i>4</i>говорите в камеру</span>
+    <span class="no"><i>4</i>знімаєте себе</span>
     <h3>Розмовна сторіс</h3>
-    <p>Просто селфі-камера, 25–30 секунд. Текст на екран не потрібен — тут працює ваше обличчя й голос.</p>
+    <p>Селфі-камера, 25–30 секунд, без тексту на екрані. Тут продає ваше обличчя, а не напис.</p>
     <div class="say">Так, друзі, всім привіт. Ви питали, скільки виходить у логіста — я показала розрахунок. Але ця цифра працює тільки тоді, коли ви вмієте знайти вантаж, порахувати маршрут і не зірвати час праці водія. Саме цього я і вчу: вступ і вісім модулів, усе з практики. Хочете спробувати — записуйтесь на безкоштовну консультацію, посилання нижче.</div>
-    <div class="bar"><button class="copy">Скопіювати текст</button></div>
+    <div class="acts"><button class="copy">Скопіювати текст</button><button class="btn gh" data-done>Готово</button></div>
+    <p class="hint">Не вчіть напам'ять. Прочитайте двічі й скажіть своїми словами — так живіше.</p>
   </div>
 </div>
 
-<div class="st">
-  <div class="pic film">🎬</div>
+<div class="step" data-s="5">
+  <div class="pic">🎬</div>
   <div>
-    <span class="n"><i>5</i>відео</span>
+    <span class="no"><i>5</i>готове відео</span>
     <h3>Відгук Богдани</h3>
-    <p>Готовий ролик, маркетолог надішле файл. Нічого домальовувати не треба.</p>
+    <p>Файл надішле маркетолог. Викладайте як є — нічого дописувати не треба.</p>
     <span class="tag">Юрист із Кракова, зараз веде логістику в компанії чоловіка</span>
+    <div class="acts"><button class="btn gh" data-done>Готово</button></div>
   </div>
 </div>
 
-<div class="st">
+<div class="step" data-s="6">
   <div class="pic"><img src="s4.png" alt=""></div>
   <div>
-    <span class="n"><i>6</i>картинка + наліпка</span>
-    <h3>Безкоштовна консультація</h3>
-    <p>Низ кадру навмисно порожній — туди ставите наліпку з посиланням, щоб вона нічого не перекрила.</p>
-    <a class="dl" href="s4.png" download>Завантажити</a>
+    <span class="no"><i>6</i>картинка + наліпка</span>
+    <h3>Заклик</h3>
+    <p>Безкоштовна консультація, 30 хвилин. Низ кадру навмисно порожній — туди наліпка.</p>
+    <ul class="todo">
+      <li>Завантажити й викласти</li>
+      <li>Наліпка з посиланням на заявку — у порожній низ</li>
+      <li>Те саме посилання поставити в шапку профілю</li>
+    </ul>
+    <div class="acts"><a class="btn dl" href="s4.png" download>Завантажити</a><button class="copy" data-copy="https://veronika-logistics.com/?k=1">Скопіювати посилання</button><button class="btn gh" data-done>Готово</button></div>
   </div>
 </div>
 
-<h2 class="sec">Зберегти в «Актуальне»</h2>
-<p class="sub">Щоб серія працювала й завтра, і через місяць.</p>
-<div class="card">
-  <div class="steps">
-    <div class="step"><i>1</i><div>Після публікації відкрийте свій профіль → «Актуальне» → «+».</div></div>
-    <div class="step"><i>2</i><div>Додайте всі шість кадрів, назвіть добірку <b>Навчання</b>.</div></div>
-    <div class="step"><i>3</i><div>Поставте обкладинку — вона внизу цієї сторінки.</div></div>
-  </div>
-</div>
-
-<div class="st">
+<h2 class="sec">Після публікації</h2>
+<div class="step" data-s="7">
   <div class="pic"><img src="s0-cover.png" alt=""></div>
   <div>
-    <span class="n"><i>★</i>обкладинка</span>
-    <h3>Обкладинка «Навчання»</h3>
-    <p>Зображення по центру — Instagram обрізає обкладинку в коло.</p>
-    <a class="dl" href="s0-cover.png" download>Завантажити</a>
+    <span class="no"><i>★</i>актуальне</span>
+    <h3>Зберегти серію</h3>
+    <p>Щоб вона працювала й завтра, і через місяць.</p>
+    <ul class="todo">
+      <li>Профіль → «Актуальне» → «+» → додати всі шість кадрів</li>
+      <li>Назва — <b>Навчання</b></li>
+      <li>Обкладинка — ця картинка</li>
+    </ul>
+    <div class="acts"><a class="btn dl" href="s0-cover.png" download>Завантажити обкладинку</a><button class="btn gh" data-done>Готово</button></div>
   </div>
 </div>
 
 <h2 class="sec">Коли прийде заявка</h2>
-<p class="sub">Форма на сайті вже працює і перевірена. Заявка падає у вашу групу в Telegram одразу — з іменем, номером і зручним часом.</p>
+<p class="sub">Форма на сайті вже працює. Заявка падає у вашу групу в Telegram одразу — з іменем, номером і зручним часом.</p>
 <div class="card">
-  <div class="steps">
-    <div class="step"><i>1</i><div>Пишете тим способом, який людина обрала в заявці.</div></div>
-    <div class="step"><i>2</i><div>Призначаєте безкоштовну консультацію — пропонуйте одразу два конкретні слоти.</div></div>
-    <div class="step"><i>3</i><div>Після дзвінка — тарифи й оффер на 48 годин. Готові тексти є на сторінці скриптів.</div></div>
+  <div class="rows">
+    <div><i>1</i><span>Пишете тим способом, який людина обрала в заявці.</span></div>
+    <div><i>2</i><span>Призначаєте безкоштовну консультацію — одразу два конкретні слоти на вибір.</span></div>
+    <div><i>3</i><span>Після дзвінка — тарифи й оффер на 48 годин. Готові тексти є на сторінці скриптів.</span></div>
   </div>
 </div>
-
-<h2 class="sec">Перед публікацією</h2>
-<ul class="check">
-  <li><i></i><div>Посилання стоїть у шапці профілю</div></li>
-  <li><i></i><div>Наліпка з посиланням — на шостому кадрі</div></li>
-  <li><i></i><div>Телефон на зарядці: після анонсу директ оживає</div></li>
-</ul>
 
 </main>
 
@@ -212,10 +245,11 @@ footer b{color:#fff}
 <script>
 (function(){
   var toast = document.getElementById('toast'), tm;
-  function show(){ toast.classList.add('show'); clearTimeout(tm); tm = setTimeout(function(){ toast.classList.remove('show'); }, 1500); }
+  function show(txt){ toast.textContent = txt || 'Скопійовано'; toast.classList.add('show'); clearTimeout(tm); tm = setTimeout(function(){ toast.classList.remove('show'); }, 1500); }
+
+  /* ---- копіювання ---- */
   document.querySelectorAll('.copy').forEach(function(btn){
     btn.addEventListener('click', function(){
-      /* або текст із data-copy, або сусідній блок .say */
       var txt = btn.dataset.copy;
       if (!txt){
         var say = btn.closest('div').parentNode.querySelector('.say');
@@ -235,6 +269,36 @@ footer b{color:#fff}
       }
     });
   });
+
+  /* ---- «Готово»: прогрес лишається, якщо сторінку закрити ---- */
+  var steps = [].slice.call(document.querySelectorAll('.step'));
+  var main = steps.filter(function(s){ return +s.dataset.s <= 6; });
+  var pf = document.getElementById('pf'), pn = document.getElementById('pn');
+  var KEY = 'vl-anons-done';
+  var saved = {};
+  try { saved = JSON.parse(localStorage.getItem(KEY) || '{}'); } catch(e){}
+
+  function paint(){
+    var n = main.filter(function(s){ return s.classList.contains('done'); }).length;
+    pn.textContent = n + ' з 6';
+    pf.style.width = (n / 6 * 100) + '%';
+  }
+  steps.forEach(function(s){
+    var btn = s.querySelector('[data-done]');
+    if (!btn) return;
+    if (saved[s.dataset.s]) { s.classList.add('done'); btn.classList.add('ok'); btn.classList.remove('gh'); btn.textContent = 'Зроблено'; }
+    btn.addEventListener('click', function(){
+      var on = !s.classList.contains('done');
+      s.classList.toggle('done', on);
+      btn.classList.toggle('ok', on); btn.classList.toggle('gh', !on);
+      btn.textContent = on ? 'Зроблено' : 'Готово';
+      saved[s.dataset.s] = on;
+      try { localStorage.setItem(KEY, JSON.stringify(saved)); } catch(e){}
+      paint();
+      if (on && main.every(function(x){ return x.classList.contains('done'); })) show('Усе викладено 🎉');
+    });
+  });
+  paint();
 })();
 </script>
 </body>
