@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Анонс курсу — сторіс на сьогодні | Veronika Logistics</title>
+<meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
+<meta name="googlebot" content="noindex, nofollow">
+<meta name="referrer" content="no-referrer">
+<meta name="theme-color" content="#EEF2F5">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@1,400;1,500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#EEF2F5; --paper:#F8FAFC; --white:#fff;
+  --ink:#14232E; --muted:#546473; --line:rgba(20,35,46,.12);
+  --forest:#244A5E; --forest-d:#17313F;
+  --blue:#3E6E91; --sky-l:#CFE0EF; --powder:#BDD1E6; --ice:#E3ECF4;
+  --ios:#34C759; --ph:#FFF1C2; --warn:#FFE9D6;
+  --r-lg:26px;
+  --wrap:760px;
+  --ease:cubic-bezier(.2,.8,.2,1);
+  --serif:'Playfair Display',Georgia,serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:120px}
+body{font-family:'Manrope',system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+button,input{font:inherit;color:inherit}
+a{color:var(--blue)}
+em{font-family:var(--serif);font-style:italic;font-weight:400;letter-spacing:-.02em}
+.wrap{max-width:var(--wrap);margin:0 auto;padding:0 16px}
+h1,h2,h3{font-weight:700;letter-spacing:-.035em;line-height:1.1}
+
+.top{position:sticky;top:0;z-index:40;background:rgba(238,242,245,.92);backdrop-filter:blur(14px) saturate(1.4);-webkit-backdrop-filter:blur(14px) saturate(1.4);border-bottom:1px solid var(--line);padding-top:env(safe-area-inset-top)}
+.chips{display:flex;gap:6px;overflow-x:auto;padding:12px 0;scrollbar-width:none}
+.chips::-webkit-scrollbar{display:none}
+.chips a{flex:none;text-decoration:none;color:var(--ink);font-size:13px;font-weight:700;padding:7px 12px;border-radius:999px;background:var(--white);border:1px solid var(--line);white-space:nowrap}
+
+.hero{padding:30px 0 4px}
+.label{display:inline-flex;align-items:center;gap:8px;padding:6px 12px 6px 9px;border-radius:999px;background:var(--white);border:1px solid var(--line);font-size:11.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--blue)}
+.label::before{content:"";width:7px;height:7px;border-radius:50%;background:currentColor}
+.hero h1{font-size:clamp(30px,7vw,46px);margin:14px 0 10px}
+.hero h1 em{color:var(--blue)}
+.hero p{color:var(--muted);font-size:16px}
+.flow{display:flex;flex-wrap:wrap;gap:6px;margin-top:16px;font-size:13.5px;font-weight:700;color:var(--forest)}
+.flow span{background:var(--ice);border-radius:999px;padding:6px 11px}
+
+.linkbox{margin-top:18px;background:var(--forest-d);color:#fff;border-radius:var(--r-lg);padding:18px}
+.linkbox b{display:block;font-size:12px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--sky-l)}
+.linkbox .u{display:block;margin:8px 0 12px;font-size:17px;font-weight:700;word-break:break-all}
+.linkbox p{font-size:14px;color:#A9BCCB}
+
+section.sec{padding:40px 0 0}
+.sec-head{display:flex;align-items:baseline;gap:10px}
+.sec-head .n{flex:none;width:30px;height:30px;border-radius:50%;background:var(--forest-d);color:#fff;display:grid;place-items:center;font-size:13px;font-weight:800;transform:translateY(-3px)}
+.sec h2{font-size:clamp(23px,5vw,30px)}
+.sec .intro{color:var(--muted);font-size:15px;margin:10px 0 4px}
+
+.steps{display:grid;gap:10px;margin-top:14px}
+.step{display:flex;gap:12px;background:var(--paper);border:1px solid var(--line);border-radius:var(--r-lg);padding:16px}
+.step i{flex:none;font-style:normal;width:30px;height:30px;border-radius:50%;background:var(--ice);color:var(--blue);display:grid;place-items:center;font-weight:800;font-size:14px}
+.step b{display:block;font-size:16px}
+.step p{font-size:14.5px;color:var(--muted);margin-top:3px}
+
+/* ---------- кадри сторіс ---------- */
+.fr{background:var(--paper);border:1px solid var(--line);border-radius:var(--r-lg);padding:18px 16px 16px;margin-top:12px}
+.fr-top{display:flex;align-items:center;gap:11px}
+.fr-top .num{flex:none;width:34px;height:34px;border-radius:12px;background:var(--forest-d);color:#fff;display:grid;place-items:center;font-size:14px;font-weight:800}
+.fr-top h3{font-size:17.5px;letter-spacing:-.02em;line-height:1.25}
+.fr-top .kind{margin-left:auto;flex:none;font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--blue);background:var(--ice);border-radius:999px;padding:5px 10px}
+.shot{margin-top:12px;font-size:14.5px;color:var(--muted);padding-left:12px;border-left:3px solid var(--powder)}
+.shot b{color:var(--ink)}
+.cap{margin-top:12px;background:var(--forest-d);color:#fff;border-radius:16px;padding:13px 15px;font-size:15.5px;font-weight:700;white-space:pre-line}
+.cap .k{display:block;font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--sky-l);margin-bottom:6px}
+.say{margin-top:10px;background:var(--white);border:1px solid var(--line);border-radius:18px 18px 18px 6px;padding:14px 15px;font-size:15.5px;white-space:pre-line}
+.say .k{display:block;font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+.bar{display:flex;justify-content:flex-end;margin-top:10px}
+.copy{display:inline-flex;align-items:center;gap:7px;border:0;cursor:pointer;background:var(--forest-d);color:#fff;font-size:13.5px;font-weight:700;padding:8px 14px;border-radius:999px;transition:transform .15s,background .25s}
+.copy:active{transform:scale(.96)}
+.copy.ok{background:var(--ios)}
+.copy svg{width:15px;height:15px}
+.cap .copy{background:rgba(255,255,255,.16)}
+.cap .copy.ok{background:var(--ios)}
+
+.note{margin-top:12px;font-size:14px;color:var(--muted);padding-left:12px;border-left:3px solid var(--powder)}
+.warn{margin-top:14px;background:var(--warn);border-radius:var(--r-lg);padding:16px 18px;font-size:14.5px;color:#7A4A1E}
+.warn b{display:block;font-size:15.5px;color:#5E3611;margin-bottom:5px}
+
+.files{display:grid;gap:10px;margin-top:14px}
+.file{display:flex;gap:12px;align-items:flex-start;background:var(--white);border:1px solid var(--line);border-radius:var(--r-lg);padding:15px 16px}
+.file i{flex:none;font-style:normal;width:34px;height:34px;border-radius:11px;background:var(--ice);display:grid;place-items:center;font-size:16px}
+.file b{display:block;font-size:15.5px;line-height:1.3}
+.file small{display:block;color:var(--muted);font-size:13.5px;margin-top:3px}
+.file .ok-tag{color:var(--ios);font-weight:800}
+.file .no-tag{color:#B44A2B;font-weight:800}
+
+.check{list-style:none;margin-top:14px;display:grid;gap:9px}
+.check li{display:flex;gap:11px;background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:13px 15px;font-size:15px;line-height:1.4}
+.check li i{flex:none;font-style:normal;width:22px;height:22px;border-radius:7px;border:2px solid var(--powder)}
+
+footer{margin-top:60px;background:var(--forest-d);color:#A9BCCB;padding:30px 0 calc(30px + env(safe-area-inset-bottom));border-radius:var(--r-lg) var(--r-lg) 0 0;font-size:14px}
+footer b{color:#fff}
+.toast{position:fixed;left:50%;bottom:calc(18px + env(safe-area-inset-bottom));transform:translate(-50%,160%);background:var(--forest-d);color:#fff;font-size:14px;font-weight:700;padding:11px 18px;border-radius:999px;transition:transform .35s var(--ease);z-index:60}
+.toast.show{transform:translate(-50%,0)}
+@media (prefers-reduced-motion:reduce){*{transition-duration:.01ms!important}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<div class="top">
+  <div class="wrap">
+    <nav class="chips" aria-label="Розділи">
+      <a href="#plan">План на сьогодні</a>
+      <a href="#stories">Сторіс 1–12</a>
+      <a href="#video">Відео</a>
+      <a href="#leads">Коли прийде заявка</a>
+      <a href="#check">Чеклист</a>
+    </nav>
+  </div>
+</div>
+
+<main class="wrap">
+
+<div class="hero">
+  <span class="label">Анонс курсу</span>
+  <h1>Сьогодні оголошуємо <em>набір</em></h1>
+  <p>Прогрів уже зроблено: три сторіс із робочого дня — біржа, маршрут і розрахунок догрузів. Нижче — продовження цієї ж лінії: ви розшифровуєте те, що показали, і виходите на навчання. Сайт уже приймає заявки.</p>
+  <div class="flow"><span>сторіс</span><span>→ заявка на сайті</span><span>→ директ</span><span>→ безкоштовна консультація</span><span>→ тарифи</span></div>
+
+  <div class="linkbox">
+    <b>Посилання для наліпки і шапки профілю</b>
+    <span class="u">veronika-logistics.com/?k=1</span>
+    <p>Відкриває сайт одразу з формою «Безкоштовна консультація». Не скорочуйте його через сторонні сервіси — Instagram гірше довіряє коротким посиланням.</p>
+    <div class="bar"><button class="copy" data-copy="https://veronika-logistics.com/?k=1">Скопіювати</button></div>
+  </div>
+</div>
+
+<section class="sec" id="plan">
+  <div class="sec-head"><span class="n">1</span><h2>План на сьогодні</h2></div>
+  <p class="intro">Прогрів вийшов о 15:30. Найкраще продовжити його сьогодні ж, поки сторіс ще живі й люди пам'ятають контекст.</p>
+  <div class="steps">
+    <div class="step"><i>1</i><div><b>Увечері, 18:00–20:00 — серія сторіс</b><p>12 кадрів нижче. Перші чотири — це ваші ж сьогоднішні скріни, їх навіть не треба перезнімати: просто перезалийте і озвучте.</p></div></div>
+    <div class="step"><i>2</i><div><b>Одразу — наліпка з посиланням</b><p>На кадрах 11 і 12. І те саме посилання поставте в шапку профілю на час набору.</p></div></div>
+    <div class="step"><i>3</i><div><b>Зберегти серію в «Актуальне»</b><p>Назвіть «Навчання». Хто зайде на профіль завтра — побачить усю історію цілком.</p></div></div>
+    <div class="step"><i>4</i><div><b>Відповідати на заявки в день надходження</b><p>Заявки падають у групу в Telegram. Скрипти відповідей — за посиланням у розділі «Коли прийде заявка».</p></div></div>
+  </div>
+</section>
+
+<section class="sec" id="stories">
+  <div class="sec-head"><span class="n">2</span><h2>Серія сторіс</h2></div>
+  <p class="intro">Логіка така: спочатку ви розшифровуєте три свої сьогоднішні сторіс — і людина бачить, що за «вкладками і цифрами» стоять конкретні навички. Далі — чому цього не вчать безкоштовні відео, ваша історія, курс, відгук і запрошення на консультацію. Текст на екран — коротко, щоб читалося за секунду. Усе інше — голосом.</p>
+
+  <div class="fr">
+    <div class="fr-top"><span class="num">1</span><h3>Місток від прогріву</h3><span class="kind">селфі</span></div>
+    <div class="shot"><b>Що показати:</b> ви в кадрі, говорите. Можна просто тримати телефон у руці.</div>
+    <div class="cap"><span class="k">Текст на екран</span>Що ви щойно бачили<div class="bar"><button class="copy" data-copy="Що ви щойно бачили">Скопіювати</button></div></div>
+    <div class="say"><span class="k">Що сказати</span>Так, друзі, всім привіт. Сьогодні я показала вам три сторіс зі свого робочого дня: біржу, карту і програму для догрузів. Збоку це виглядає як купа вкладок і цифр. Насправді там три різні навички, за які платять гроші. Зараз розберу кожну — і ви зрозумієте, з чого складається робота логіста.<div class="bar"><button class="copy">Скопіювати</button></div></div>
+  </div>
+
+  <div class="fr">
+    <div class="fr-top"><span class="num">2</span><h3>Розбір 1 — біржа</h3><span class="kind">ваш скрін</span></div>
+    <div class="shot"><b>Що показати:</b> той самий скрін TransEU з прогріву — Getynga → Poznań.</div>
+    <div class="cap"><span class="k">Текст на екран</span>0,50 € за кілометр — це не «пощастило»<div class="bar"><button class="copy" data-copy="0,50 € за кілометр — це не «пощастило»">Скопіювати</button></div></div>
+    <div class="say"><span class="k">Що сказати</span>Перша сторіс — біржа. Я шукала завантаження в Польщу і витягнула 0,50 за кілометр. Я не просто так написала «видерла»: ставку дає не біржа, а ваше вміння торгуватися і знання, скільки цей напрямок реально коштує сьогодні. Хто щойно прийшов у професію — бере перше, що дають, і везе собі в мінус. А потім не розуміє, чому місяць відпрацював, а грошей нема.<div class="bar"><button class="copy">Скопіювати</button></div></div>
+  </div>
+
+  <div class="fr">
+    <div class="fr-top"><span class="num">3</span><h3>Розбір 2 — маршрут</h3><span class="kind">ваш скрін</span></div>
+    <div class="shot"><b>Що показати:</b> скрін карти з прогріву — 764 км, 8 год 44 хв.</div>
+    <div class="cap"><span class="k">Текст на екран</span>764 км — і вже видно, брати чи ні<div class="bar"><button class="copy" data-copy="764 км — і вже видно, брати чи ні">Скопіювати</button></div></div>
+    <div class="say"><span class="k">Що сказати</span>Друга сторіс — маршрут і 600 євро за завантаження. Перше, що я роблю, коли бачу таку пропозицію, — рахую, скільки з цих грошей заберуть платні дороги, час праці водія і порожній пробіг до місця завантаження. Поки ви цього не порахували, рейс виглядає прибутковим. Порахували — і половина пропозицій на біржі відпадає сама.<div class="bar"><button class="copy">Скопіювати</button></div></div>
+  </div>
+
+  <div class="fr">
+    <div class="fr-top"><span class="num">4</span><h3>Розбір 3 — догрузи</h3><span class="kind">ваш скрін</span></div>
+    <div class="shot"><b>Що показати:</b> скрін програми з палетами 84×124.</div>
+    <div class="cap"><span class="k">Текст на екран</span>Влізе чи не влізе — це теж гроші<div class="bar"><button class="copy" data-copy="Влізе чи не влізе — це теж гроші">Скопіювати</button></div></div>
+    <div class="say"><span class="k">Що сказати</span>Третя сторіс — розкладка догрузів. Палети 84 на 124, по 25 кілограмів кожна. Помилилися з розкладкою — машина приїхала, а товар не влазить, і розбиратися з клієнтом будете ви. А ще є вісь: перегруз на передню — це штраф. І платить його не водій зі своєї кишені, а фірма, яка довірила вам машину. Другий раз таку довіру вже не дають.<div class="bar"><button class="copy">Скопіювати</button></div></div>
+  </div>
+
+  <div class="fr">
+    <div class="fr-top"><span class="num">5</span><h3>Питання, яке пишуть щодня</h3><span class="kind">селфі</span></div>
+    <div class="shot"><b>Що показати:</b> ви в кадрі. Якщо є реальне питання в директі — зробіть скрін, затріть ім'я й аватарку.</div>
+    <div class="cap"><span class="k">Текст на екран</span>«А цьому можна навчитися з нуля?»<div class="bar"><button class="copy" data-copy="«А цьому можна навчитися з нуля?»">Скопіювати</button></div></div>
+    <div class="say"><span class="k">Що сказати</span>І після кожної такої сторіс мені прилітає одне й те саме питання: Вероніко, а цьому можна навчитися з нуля, якщо я взагалі нічого не розумію в логістиці? Відповідаю чесно: можна. Я сама так починала. Але не за один вечір і не по безкоштовних відео.<div class="bar"><button class="copy">Скопіювати</button></div></div>
+  </div>
+
+  <div class="fr">
+    <div class="fr-top"><span class="num">6</span><h3>Чому не вистачає безкоштовного</h3><span class="kind">селфі або текст</span></div>
+    <div class="shot"><b>Що показати:</b> можна просто текстом на фоні — наприклад, на фото робочого столу.</div>
+    <div class="cap"><span class="k">Текст на екран</span>Безкоштовні уроки закінчуються там, де починається робота<div class="bar"><button class="copy" data-copy="Безкоштовні уроки закінчуються там, де починається робота">Скопіювати</button></div></div>
+    <div class="say"><span class="k">Що сказати</span>У відкритому доступі вам розкажуть, що логістика — це доставка з точки А в точку Б. Сім хвилин, красиво, і все. А далі починається те, про що не розповідають: каботаж і де він діє, час праці водія, тахограф, які дороги платні, а куди транзитом просто не можна заїхати. Саме на цьому сиплються всі, хто приходить у професію.<div class="bar"><button class="copy">Скопіювати</button></div></div>
+  </div>
+
+  <div class="fr">
+    <div class="fr-top"><span class="num">7</span><h3>Ваша історія</h3><span class="kind">фото</span></div>
+    <div class="shot"><b>Що показати:</b> фото з дипломом або з університету, або просто ваше фото. Можна поставити скрін блоку з дипломами на сайті.</div>
+    <div class="cap"><span class="k">Текст на екран</span>Я вчилася цього п'ять років<div class="bar"><button class="copy" data-copy="Я вчилася цього п'ять років">Скопіювати</button></div></div>
+    <div class="say"><span class="k">Що сказати</span>Я закінчила логістику в університеті в Польщі: бакалавр і магістр, п'ять років. І вийшла звідти з теорією. По-справжньому навчилася вже у фірмі: спочатку п'ять тірів, потім двадцять п'ять, потім у мене в підпорядкуванні був відділ диспетчерів. Усе, що я знаю зараз, зібралося з практики, а не з підручника.<div class="bar"><button class="copy">Скопіювати</button></div></div>
+  </div>
+
+  <div class="fr">
+    <div class="fr-top"><span class="num">8</span><h3>Що ви з цього зробили</h3><span class="kind">скрін сайту</span></div>
+    <div class="shot"><b>Що показати:</b> блок «Програма» на сайті — список із 9 модулів. Прокрутіть його на екрані й запишіть відео.</div>
+    <div class="cap"><span class="k">Текст на екран</span>Я зібрала цю практику в курс<div class="bar"><button class="copy" data-copy="Я зібрала цю практику в курс">Скопіювати</button></div></div>
+    <div class="say"><span class="k">Що сказати</span>І я зібрала цю практику в курс. Вступ і вісім модулів: від того, що таке логістика, до того, як виставити фактуру і отримати гроші. Типи машин і завантаження, ключові дороги Європи, платні дороги, поштові індекси і ставки по регіонах, час праці водія, біржа і документи, резюме та співбесіда. До кожного модуля — презентація, домашнє завдання і мої робочі файли з маршрутами, яких немає у відкритому доступі.<div class="bar"><button class="copy">Скопіювати</button></div></div>
+  </div>
+
+  <div class="fr">
+    <div class="fr-top"><span class="num">9</span><h3>Відгук — Богдана</h3><span class="kind">відео або скрін</span></div>
+    <div class="shot"><b>Що показати:</b> готове відео з відгуком Богдани (воно у маркетолога) або скрін блоку «Історія учениці» на сайті.</div>
+    <div class="cap"><span class="k">Текст на екран</span>Богдана, 31, Краків<div class="bar"><button class="copy" data-copy="Богдана, 31, Краків">Скопіювати</button></div></div>
+    <div class="say"><span class="k">Що сказати</span>Щоб це не звучало як самі лише обіцянки — ось Богдана. Юрист за освітою, зараз веде логістику у транспортній компанії свого чоловіка. Коли ми починали, вона не знала, що таке тахограф. Її повний відгук є на сайті, посилання залишу в кінці.<div class="bar"><button class="copy">Скопіювати</button></div></div>
+    <div class="note">Про гроші учениць не говоримо — ні своїми словами, ні натяком. Говоримо про те, що людина вміє робити зараз.</div>
+  </div>
+
+  <div class="fr">
+    <div class="fr-top"><span class="num">10</span><h3>Два формати</h3><span class="kind">текст</span></div>
+    <div class="shot"><b>Що показати:</b> текст на спокійному фоні. Ціну в сторіс не пишемо.</div>
+    <div class="cap"><span class="k">Текст на екран</span>Два формати: самі або я поруч<div class="bar"><button class="copy" data-copy="Два формати: самі або я поруч">Скопіювати</button></div></div>
+    <div class="say"><span class="k">Що сказати</span>Форматів два. Перший — проходите курс самостійно, а питання розбираємо на спільних дзвінках. Другий — я поруч щотижня: перевіряю кожне домашнє, відповідаю в особистих, розбираю ваше резюме і проводжу пробну співбесіду перед справжньою. Який формат підійде саме вам — скажу на консультації, бо це залежить від того, з чого ви стартуєте і скільки часу маєте.<div class="bar"><button class="copy">Скопіювати</button></div></div>
+    <div class="note">Ціну навмисне не називаємо в сторіс: вона звучить на дзвінку разом із тим, що в неї входить. Якщо питають у директі — відповідь є у скриптах, розділ «Скільки коштує».</div>
+  </div>
+
+  <div class="fr">
+    <div class="fr-top"><span class="num">11</span><h3>Запрошення на консультацію</h3><span class="kind">селфі + наліпка</span></div>
+    <div class="shot"><b>Що показати:</b> ви в кадрі. Наліпка з посиланням — велика, по центру, щоб палець потрапив.</div>
+    <div class="cap"><span class="k">Текст на екран</span>Безкоштовна консультація — 30 хвилин<div class="bar"><button class="copy" data-copy="Безкоштовна консультація — 30 хвилин">Скопіювати</button></div></div>
+    <div class="say"><span class="k">Що сказати</span>Тому замість того, щоб розписувати тут простирадло, пропоную поговорити. Безкоштовна консультація, тридцять хвилин онлайн: розберемо вашу ситуацію, я розкажу, як проходить навчання, і відповім на всі питання. Залишайте заявку за посиланням — воно тут, у сторіс, і в шапці профілю. Сьогодні я на зв'язку, відповім усім.<div class="bar"><button class="copy">Скопіювати</button></div></div>
+  </div>
+
+  <div class="fr">
+    <div class="fr-top"><span class="num">12</span><h3>Стікер «Питання»</h3><span class="kind">стікер</span></div>
+    <div class="shot"><b>Що показати:</b> спокійний фон і стікер «Питання». Голос не потрібен.</div>
+    <div class="cap"><span class="k">Текст на екран</span>Питання про навчання — кидайте сюди<div class="bar"><button class="copy" data-copy="Питання про навчання — кидайте сюди">Скопіювати</button></div></div>
+    <div class="note">Два зиски: люди, які не наважились написати в директ, питають анонімно — і ви отримуєте готовий матеріал на завтра. Відповіді на питання зі стікера — це окрема серія сторіс, яка знову приведе до консультації.</div>
+  </div>
+</section>
+
+<section class="sec" id="video">
+  <div class="sec-head"><span class="n">3</span><h2>Відео</h2></div>
+  <p class="intro">У нас є два готових ролики з вашим голосом. На сьогодні підходить один.</p>
+  <div class="files">
+    <div class="file"><i>✓</i><div><b>Відгук Богдани <span class="ok-tag">— можна сьогодні</span></b><small>Підходить і в стрічку як Reels, і в кадр №9. Нічого змінювати не треба.</small></div></div>
+    <div class="file"><i>⏸</i><div><b>Презентація курсу <span class="no-tag">— поки не публікуємо</span></b><small>У ролику вашим голосом звучить «стиснула в курс на п'ять тижнів», а в тарифах і на сайті зараз 6 тижнів. Спершу вирішуємо, скільки насправді.</small></div></div>
+  </div>
+  <div class="warn">
+    <b>Треба звірити: курс на 5 чи на 6 тижнів?</b>
+    Зараз сайт, сторінка тарифів і скрипти кажуть «6 тижнів», а ролик вашим голосом — «п'ять». Якщо правильно 6 — запишіть, будь ласка, одну фразу голосом, і ролик пересоберемо. Якщо 5 — скажіть, і ми поправимо сайт і скрипти. Публікувати ролик до цього не варто: людина почує одне, а на сайті побачить інше.
+  </div>
+</section>
+
+<section class="sec" id="leads">
+  <div class="sec-head"><span class="n">4</span><h2>Коли прийде заявка</h2></div>
+  <p class="intro">Форма на сайті вже працює і перевірена сьогодні. Заявка падає у вашу групу в Telegram одразу після відправки — з іменем, номером, способом зв'язку і зручним часом.</p>
+  <div class="steps">
+    <div class="step"><i>1</i><div><b>Пишете в директ або на номер</b><p>Тим способом, який людина обрала в заявці — Telegram, Viber, WhatsApp чи дзвінок.</p></div></div>
+    <div class="step"><i>2</i><div><b>Призначаєте консультацію</b><p>30 хвилин онлайн, безкоштовно. Пропонуйте одразу два конкретні слоти, а не «коли вам зручно».</p></div></div>
+    <div class="step"><i>3</i><div><b>Після дзвінка — тарифи і 48 годин</b><p>Готові тексти всіх повідомлень — на сторінці скриптів.</p></div></div>
+  </div>
+  <div class="note">Сторінка скриптів консультації — окреме посилання, його вам уже надсилали. Там є все: привітання, відповідь на «скільки коштує», тарифи, оффер на 48 годин і догони.</div>
+</section>
+
+<section class="sec" id="check">
+  <div class="sec-head"><span class="n">5</span><h2>Чеклист перед публікацією</h2></div>
+  <ul class="check">
+    <li><i></i><div>Посилання стоїть у шапці профілю</div></li>
+    <li><i></i><div>Наліпка з посиланням є на кадрах 11 і 12</div></li>
+    <li><i></i><div>Текст на екрані не лягає на обличчя і не ховається за інтерфейсом Instagram — перевірте в попередньому перегляді</div></li>
+    <li><i></i><div>Ціни в сторіс немає — вона звучить на дзвінку</div></li>
+    <li><i></i><div>Телефон на зарядці: після анонсу директ оживає</div></li>
+    <li><i></i><div>Серія збережена в «Актуальне» під назвою «Навчання»</div></li>
+  </ul>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap"><b>Veronika Logistics</b> · внутрішня сторінка, не пересилайте посилання.</div>
+</footer>
+
+<div class="toast" id="toast">Скопійовано</div>
+
+<script>
+(function(){
+  var toast = document.getElementById('toast'), tm;
+  function show(){ toast.classList.add('show'); clearTimeout(tm); tm = setTimeout(function(){ toast.classList.remove('show'); }, 1500); }
+  document.querySelectorAll('.copy').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      /* або текст із data-copy, або вміст блоку, у якому стоїть кнопка */
+      var txt = btn.dataset.copy;
+      if (!txt){
+        var box = btn.closest('.say, .cap').cloneNode(true);
+        box.querySelectorAll('.k, .bar').forEach(function(x){ x.remove(); });
+        txt = box.textContent.trim();
+      }
+      var done = function(){ btn.classList.add('ok'); show(); setTimeout(function(){ btn.classList.remove('ok'); }, 1400); };
+      if (navigator.clipboard && navigator.clipboard.writeText){
+        navigator.clipboard.writeText(txt).then(done, fallback);
+      } else fallback();
+      function fallback(){
+        var ta = document.createElement('textarea');
+        ta.value = txt; ta.style.position = 'fixed'; ta.style.opacity = '0';
+        document.body.appendChild(ta); ta.select();
+        try { document.execCommand('copy'); done(); } catch(e){}
+        ta.remove();
+      }
+    });
+  });
+})();
+</script>
+</body>
+</html>
