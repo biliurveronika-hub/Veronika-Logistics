@@ -60,6 +60,11 @@ h2.sec{font-size:clamp(21px,5vw,27px);margin:42px 0 4px}
 .step.done{background:#F1F8F2;border-color:rgba(52,199,89,.45)}
 .step .pic{position:relative;border-radius:14px;overflow:hidden;background:var(--forest-d);aspect-ratio:9/16;display:grid;place-items:center;font-size:30px;color:var(--sky-l)}
 .step .pic video,.step .pic img{width:100%;height:100%;object-fit:cover;display:block}
+.step .pic.vid{cursor:pointer}
+.step .pic .pl{position:absolute;inset:0;display:grid;place-items:center;opacity:0;transition:opacity .25s;pointer-events:none}
+.step .pic .pl::after{content:"";width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,.92);box-shadow:0 6px 18px rgba(0,0,0,.3);clip-path:polygon(0 0,100% 0,100% 100%,0 100%)}
+.step .pic .pl::before{content:"";position:absolute;z-index:2;width:0;height:0;border-left:14px solid #14232E;border-top:9px solid transparent;border-bottom:9px solid transparent;margin-left:4px}
+.step .pic.paused .pl{opacity:1}
 .step .no{display:inline-flex;align-items:center;gap:8px;font-size:11.5px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--blue)}
 .step .no i{font-style:normal;width:24px;height:24px;border-radius:8px;background:var(--forest-d);color:#fff;display:grid;place-items:center;font-size:12.5px}
 .step.done .no i{background:var(--ios)}
@@ -112,7 +117,7 @@ footer b{color:#fff}
 <p class="sub">Згори вниз, не перескакуючи. Натиснули «Готово» — крок позеленів.</p>
 
 <div class="step" data-s="1">
-  <div class="pic"><video src="v1.mp4" muted loop autoplay playsinline></video></div>
+  <div class="pic vid" data-play><video src="v1.mp4" poster="p-v1.jpg" muted loop autoplay playsinline preload="metadata"></video><i class="pl"></i></div>
   <div>
     <span class="no"><i>1</i>відео 6 сек</span>
     <h3>Питання</h3>
@@ -123,7 +128,7 @@ footer b{color:#fff}
 </div>
 
 <div class="step" data-s="2">
-  <div class="pic"><video src="v2.mp4" muted loop autoplay playsinline></video></div>
+  <div class="pic vid" data-play><video src="v2.mp4" poster="p-v2.jpg" muted loop autoplay playsinline preload="metadata"></video><i class="pl"></i></div>
   <div>
     <span class="no"><i>2</i>відео 10 сек</span>
     <h3>Відповідь — цифра</h3>
@@ -135,7 +140,7 @@ footer b{color:#fff}
 </div>
 
 <div class="step" data-s="3">
-  <div class="pic"><video src="v3.mp4" muted loop autoplay playsinline></video></div>
+  <div class="pic vid" data-play><video src="v3.mp4" poster="p-v3.jpg" muted loop autoplay playsinline preload="metadata"></video><i class="pl"></i></div>
   <div>
     <span class="no"><i>3</i>відео 8 сек + наліпка</span>
     <h3>Коли вмієте все</h3>
@@ -158,7 +163,7 @@ footer b{color:#fff}
 </div>
 
 <div class="step" data-s="5">
-  <div class="pic"><video src="bogdana.mp4" muted loop autoplay playsinline></video></div>
+  <div class="pic vid" data-play><video src="bogdana.mp4" poster="p-bogdana.jpg" muted loop autoplay playsinline preload="metadata"></video><i class="pl"></i></div>
   <div>
     <span class="no"><i>5</i>відео 20 сек</span>
     <h3>Відгук Богдани</h3>
@@ -169,7 +174,7 @@ footer b{color:#fff}
 </div>
 
 <div class="step" data-s="6">
-  <div class="pic"><video src="v4.mp4" muted loop autoplay playsinline></video></div>
+  <div class="pic vid" data-play><video src="v4.mp4" poster="p-v4.jpg" muted loop autoplay playsinline preload="metadata"></video><i class="pl"></i></div>
   <div>
     <span class="no"><i>6</i>відео 7 сек + наліпка</span>
     <h3>Програма навчання</h3>
@@ -238,6 +243,19 @@ footer b{color:#fff}
         ta.remove();
       }
     });
+  });
+
+  /* Превʼю: деякі браузери (режим енергозбереження, економія трафіку) не дають
+     автоплей — тоді показуємо кнопку і стартуємо по натисканню. */
+  document.querySelectorAll('.pic.vid').forEach(function(box){
+    var v = box.querySelector('video');
+    function sync(){ box.classList.toggle('paused', v.paused); }
+    v.addEventListener('play', sync);
+    v.addEventListener('pause', sync);
+    box.addEventListener('click', function(){ v.paused ? v.play().catch(function(){}) : v.pause(); });
+    var p = v.play();
+    if (p && p.catch) p.catch(function(){ sync(); });
+    setTimeout(sync, 700);
   });
 
   /* «Готово»: прогрес лишається, якщо сторінку закрити */
