@@ -2023,11 +2023,11 @@ setTimeout(function () {
      коли скрол зупинився, і доводимо до місця. */
   const ANCHOR_OFFSET = 92;
   let anchorStop = null;
-  function goToAnchor(el){
+  function goToAnchor(el, instant){
     if (anchorStop) anchorStop();           // попередній перехід ще доводив скрол — скасовуємо
     const target = () => Math.max(0, Math.round(el.getBoundingClientRect().top + scrollY - ANCHOR_OFFSET));
-    const jump = top => scrollTo({ top, behavior: reduce ? 'auto' : 'smooth' });
-    jump(target());
+    const jump = (top, now) => scrollTo({ top, behavior: (now || reduce) ? 'auto' : 'smooth' });
+    jump(target(), instant);
     if (reduce) return;
     let last = -1, still = 0, passes = 0, timer;
     const stop = () => { clearInterval(timer); anchorStop = null; removeEventListener('wheel', stop); removeEventListener('touchstart', stop); };
@@ -2054,6 +2054,21 @@ setTimeout(function () {
     history.replaceState(null, '', '#' + id);
     goToAnchor(el);
   });
+
+  /* Людина прийшла за посиланням з якорем (#program із сторіс, меню тощо).
+     Нативний стрибок стається на недорахованій сторінці — і цілі там уже немає.
+     Чекаємо, поки зникне заставка, і доводимо до блоку самі. */
+  (function fromHash(){
+    const id = location.hash.slice(1);
+    if (!id) return;
+    const el = document.getElementById(id);
+    if (!el) return;
+    const go = () => {
+      if (!body.classList.contains('loaded')) return setTimeout(go, 120);
+      goToAnchor(el, true);
+    };
+    addEventListener('load', () => setTimeout(go, 80));
+  })();
 
   /* ---------- form ---------- */
   const form = document.getElementById('leadForm');
