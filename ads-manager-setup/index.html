@@ -53,6 +53,8 @@ header.hero{padding-block:28px 8px;display:grid;gap:14px}
 .olga .row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
 .olga .lbl{font-size:13px;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.05em;min-width:110px}
 .val{font-weight:800;word-break:break-all}
+.ava{width:56px;height:56px;border-radius:50%;object-fit:cover;flex:none}
+.olga .sub{font-size:14px;color:var(--muted)}
 .copy{font:inherit;font-size:14px;font-weight:700;border:1px solid var(--accent);color:var(--accent);background:var(--accent-soft);border-radius:8px;padding:4px 10px;cursor:pointer}
 .copy:focus-visible,.tab:focus-visible,.done-btn:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
 .tabs{display:flex;gap:8px;flex-wrap:wrap;margin:28px 0 6px}
@@ -115,7 +117,7 @@ figure.shot figcaption{font-size:13px;color:var(--muted)}
   <h1>Як дати доступ до реклами у Facebook</h1>
 
   <div class="olga" aria-label="Дані Ольги">
-    <div class="row"><span class="lbl">Кому</span><span class="val" id="olgaName"></span></div>
+    <div class="row"><img class="ava" src="img/olga.jpg" width="56" height="56" alt="Аватарка Ольги у Facebook"><div><div class="val" id="olgaName"></div><div class="sub">У Facebook: Olga Voskanian · Інтернет-маркетолог</div></div></div>
     <div class="row"><span class="lbl">Її пошта</span><span class="val" id="olgaEmail"></span><button class="copy" id="copyEmail" type="button">Скопіювати</button></div>
     <div class="row" id="fbRow"><span class="lbl">Її Facebook</span><a class="val" id="olgaFb" href="#" target="_blank" rel="noopener"></a></div>
   </div>
@@ -219,8 +221,9 @@ figure.shot figcaption{font-size:13px;color:var(--muted)}
   <h3>Додай Ольгу в друзі у Facebook</h3>
   <p>Це обов'язково: Facebook дозволяє дати доступ до реклами лише людині, яка є в тебе в друзях.</p>
   <ul>
-    <li>У пошуку Facebook знайди <b>Ольга Восканян</b> і надішли їй запит у друзі.</li>
-    <li>Дочекайся, поки Ольга його прийме (напиши їй, щоб не чекати).</li>
+    <li>Відкрий профіль Ольги: <a href="https://www.facebook.com/profile.php?id=100086868997254" target="_blank" rel="noopener">facebook.com/profile.php?id=100086868997254</a></li>
+    <li>Там буде <b>Olga Voskanian</b>, «Інтернет-маркетолог», Lozova, з аватаркою як угорі цієї сторінки.</li>
+    <li>Натисни <span class="ui blue">Додати в друзі</span> і дочекайся, поки Ольга прийме запит (напиши їй, щоб не чекати).</li>
   </ul>
   <div class="tip">Якщо ви вже друзі, просто натисни «Готово».</div>
 </div></div><button class="done-btn" type="button">Готово</button></li>
@@ -246,7 +249,7 @@ figure.shot figcaption{font-size:13px;color:var(--muted)}
 
 <li class="step" data-step="b4"><div class="step-head"><div class="num">5</div><div class="step-body">
   <h3>Впиши Ольгу</h3>
-  <p>У лівому полі «Вкажіть друга» почни писати <b>Ольга Восканян</b> і обери її у списку, що випаде.</p>
+  <p>У лівому полі «Вкажіть друга» почни писати <b>Olga</b> або <b>Ольга</b> і обери її у списку, що випаде (дивись на аватарку).</p>
   <figure class="shot"><img src="img/3-vikno.jpg" width="380" height="275" alt="Вікно «Додайте людей у цей рекламний акаунт»: поле для імені друга і список ролей" loading="lazy"><figcaption>Ліворуч ім'я, праворуч роль</figcaption></figure>
 </div></div><button class="done-btn" type="button">Готово</button></li>
 
@@ -288,7 +291,7 @@ figure.shot figcaption{font-size:13px;color:var(--muted)}
 const OLGA = {
   name: "Ольга Восканян",
   email: "olga.voskanian777@gmail.com",
-  fb: "" // посилання на профіль Facebook, наприклад https://www.facebook.com/...
+  fb: "https://www.facebook.com/profile.php?id=100086868997254"
 };
 
 document.getElementById("olgaName").textContent = OLGA.name;
