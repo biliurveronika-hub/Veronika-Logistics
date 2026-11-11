@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="robots" content="noindex, nofollow">
 <meta property="og:title" content="Пакет логіста-практика">
-<meta property="og:description" content="Три модулі: індекси й ставки, біржі й документи, робота й співбесіда. Ціна 220 € до 14 листопада.">
+<meta property="og:description" content="Три модулі: індекси й ставки, біржі й документи, робота й співбесіда. Обмежена пропозиція на 36 годин.">
 <title>Пакет логіста-практика</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@1,500&family=IBM+Plex+Mono:wght@400;500&display=swap">
@@ -134,7 +134,7 @@ footer{padding-block:28px 48px;color:var(--muted);font-size:13px}
 <body>
 
 <div class="bar"><div class="wrap">
-  <div><b>Обмежена пропозиція</b> · ціна до 14 листопада, 23:59</div>
+  <div><b>Обмежена пропозиція на 36 годин</b> · ціна діє до <span data-dl="long">14 листопада, 23:59</span></div>
   <div class="clock" data-clock aria-label="Залишилось часу"><span data-d>--</span>д<span data-h>--</span>год<span data-m>--</span>хв</div>
 </div></div>
 
@@ -236,8 +236,8 @@ footer{padding-block:28px 48px;color:var(--muted);font-size:13px}
           <div><dt>Матеріали</dt><dd>Відео, презентації, файли, домашки</dd></div>
           <div><dt>Перевірка</dt><dd class="no-fb">Немає</dd></div>
         </dl>
-        <div class="price"><small>Ціна до 14.11</small><b data-price="320 €">220 €</b></div>
-        <p class="after" data-after>Після 14 листопада — <s>320 €</s></p>
+        <div class="price"><small>Ціна до <span data-dl="short">14.11</span></small><b data-price="320 €">220 €</b></div>
+        <p class="after" data-after>Після <span data-dl="short">14.11</span> — <s>320 €</s></p>
         <a class="btn" href="https://ig.me/m/veronika_logistics" target="_blank" rel="noopener">Хочу варіант A</a>
       </div>
     </article>
@@ -251,8 +251,8 @@ footer{padding-block:28px 48px;color:var(--muted);font-size:13px}
           <div><dt>Перевірка</dt><dd>Перевіряю домашки і відповідаю на твої питання по цих темах</dd></div>
           <div><dt>Термін</dt><dd>3 тижні зворотного звʼязку</dd></div>
         </dl>
-        <div class="price"><small>Ціна до 14.11</small><b data-price="420 €">320 €</b></div>
-        <p class="after" data-after>Після 14 листопада — <s>420 €</s></p>
+        <div class="price"><small>Ціна до <span data-dl="short">14.11</span></small><b data-price="420 €">320 €</b></div>
+        <p class="after" data-after>Після <span data-dl="short">14.11</span> — <s>420 €</s></p>
         <a class="btn solid" href="https://ig.me/m/veronika_logistics" target="_blank" rel="noopener">Хочу варіант B</a>
       </div>
     </article>
@@ -262,8 +262,8 @@ footer{padding-block:28px 48px;color:var(--muted);font-size:13px}
 <section><div class="wrap">
   <div class="limit">
     <div>
-      <h2 data-limit-title>До 14 листопада — ціна нижча на 100 €</h2>
-      <p data-limit-text>Зараз пакет коштує 220 € або 320 € зі зворотним звʼязком на 3 тижні. Після 14.11 ціна піднімається до 320 € і 420 €.</p>
+      <h2 data-limit-title>36 годин ціна нижча на 100 €</h2>
+      <p data-limit-text>Зараз пакет коштує 220 € або 320 € зі зворотним звʼязком на 3 тижні. Після <span data-dl="long">14 листопада, 23:59</span> ціна піднімається до 320 € і 420 €.</p>
       <div class="contact">Напиши мені в Instagram <code>@veronika_logistics</code> або просто відповідай у нашому чаті.</div>
     </div>
     <div class="big" data-big aria-label="Залишилось часу">
@@ -280,6 +280,10 @@ footer{padding-block:28px 48px;color:var(--muted);font-size:13px}
 (function(){
   var DEADLINE = new Date('2026-11-14T23:59:00+01:00').getTime();
   var pad = function(n){ return String(n).padStart(2,'0'); };
+  var dl = new Date(DEADLINE), hm = pad(dl.getHours()) + ':' + pad(dl.getMinutes());
+  var fmt = { long: dl.toLocaleDateString('uk-UA', { day: 'numeric', month: 'long' }) + ', ' + hm,
+              short: pad(dl.getDate()) + '.' + pad(dl.getMonth() + 1) + ', ' + hm };
+  document.querySelectorAll('[data-dl]').forEach(function(e){ e.textContent = fmt[e.getAttribute('data-dl')]; });
   function tick(){
     var left = DEADLINE - Date.now();
     if (left <= 0){
