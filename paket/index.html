@@ -120,10 +120,12 @@ header.top{position:fixed;inset:16px 0 auto;z-index:50;padding-top:env(safe-area
 .mod li{position:relative;padding-left:22px;font-size:15px;color:#DCE6EE;min-width:0}
 .mod li::before{content:"";position:absolute;left:0;top:.5em;width:9px;height:9px;border-radius:50%;background:var(--ios)}
 .mod .chip{display:inline-block;margin-top:22px;padding:7px 12px;border-radius:10px;background:rgba(157,187,217,.14);color:var(--sky);font-size:13px;font-weight:600;letter-spacing:.02em}
-.bonus{display:grid;grid-template-columns:150px 1fr;gap:20px 36px;padding:32px;border-radius:var(--r-lg);background:var(--olive);color:#fff;position:relative;overflow:hidden}
+.bonus{display:grid;grid-template-columns:150px 1fr;gap:20px 36px;padding:36px 32px;border-radius:var(--r-lg);background:var(--olive);border:2px solid var(--ios);box-shadow:0 0 0 6px rgba(52,199,89,.14),0 24px 50px -20px rgba(52,199,89,.45);color:#fff;position:relative;overflow:hidden}
 .bonus > div{min-width:0}
 .bonus-tag{display:flex;flex-direction:column;gap:12px;align-items:flex-start}
 .bonus-tag span{padding:5px 12px;border-radius:999px;background:var(--ios);font-size:12.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase}
+.bonus-tag .gift{width:72px;height:72px;border-radius:22px;background:var(--ios);display:grid;place-items:center;color:#fff;font-style:normal;transform:rotate(-6deg);box-shadow:0 12px 26px -10px rgba(0,0,0,.4)}
+.bonus-tag .gift svg{width:38px;height:38px}
 .bonus-tag b{font-size:56px;font-weight:600;letter-spacing:-.05em;line-height:.9;color:var(--sage-l)}
 .bonus h3{font-size:clamp(24px,2.6vw,32px);letter-spacing:-.03em;line-height:1.15}
 .bonus .sub{color:#E6EAD8;margin-top:10px;font-size:16px;max-width:62ch}
@@ -199,7 +201,8 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
   .why{padding:22px}
   .bonus{grid-template-columns:1fr;padding:24px 22px}
   .bonus-tag{flex-direction:row;align-items:center}
-  .bonus-tag b{font-size:40px}
+  .bonus-tag .gift{width:56px;height:56px;border-radius:18px}
+  .bonus-tag .gift svg{width:30px;height:30px}
   .incl-card{padding:12px 22px 16px}
   .plan{padding:28px 22px}
   .hero-actions .btn{width:100%}
@@ -238,7 +241,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
       </div>
     </div>
     <div class="stats">
-      <div class="stat"><strong>3<small>+1</small></strong><span>модулі з повного курсу і бонус про ставку €/км</span></div>
+      <div class="stat"><strong>3<small>+1</small></strong><span>модулі з курсу і подарунок: як рахувати ставку €/км</span></div>
       <div class="stat blue"><strong>3</strong><span>домашні завдання з реальними PLZ і документами</span></div>
       <div class="stat"><strong>3<small>тиж.</small></strong><span>зворотного звʼязку у варіанті B</span></div>
       <div class="stat accent"><strong>−100<small>€</small></strong><span>до <b data-dl="short">13.11, 09:00</b>, потім ціна росте</span></div>
@@ -302,9 +305,9 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
         </div>
       </article>
       <article class="bonus">
-        <div class="bonus-tag"><span>Бонус</span><b>€/км</b></div>
+        <div class="bonus-tag"><i class="gift"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8" width="18" height="4" rx="1"/><path d="M12 8v13M19 12v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-7"/><path d="M7.5 8a2.5 2.5 0 0 1 0-5C10 3 12 8 12 8s2-5 4.5-5a2.5 2.5 0 0 1 0 5"/></svg></i><span>Подарунок</span></div>
         <div>
-          <h3>Як рахувати ставку за кілометр</h3>
+          <h3>🎁 Подарунок від мене: як рахувати ставку за кілометр</h3>
           <p class="sub">Окремого модуля про це немає, тож я зробила для тебе короткий матеріал: 2 слайди і пояснення текстом. Щоб за будь-яким вантажем ти міг одразу порахувати ставку €/км і зрозуміти, чи він вигідний.</p>
         </div>
       </article>
@@ -340,7 +343,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
         <div class="rows">
           <div class="row"><span>Модулі 05 · 07 · 08</span><i class="tg on"></i></div>
           <div class="row"><span>Відео, презентації, файли, домашки</span><i class="tg on"></i></div>
-          <div class="row"><span>Бонус: як рахувати ставку за км</span><i class="tg on"></i></div>
+          <div class="row"><span>🎁 Подарунок: як рахувати ставку за км</span><i class="tg on"></i></div>
           <div class="row dim"><span>Перевірка домашок</span><i class="tg"></i></div>
           <div class="row dim"><span>3 тижні зворотного звʼязку</span><i class="tg"></i></div>
         </div>
@@ -358,7 +361,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
         <div class="rows">
           <div class="row"><span>Модулі 05 · 07 · 08</span><i class="tg on"></i></div>
           <div class="row"><span>Відео, презентації, файли, домашки</span><i class="tg on"></i></div>
-          <div class="row"><span>Бонус: як рахувати ставку за км</span><i class="tg on"></i></div>
+          <div class="row"><span>🎁 Подарунок: як рахувати ставку за км</span><i class="tg on"></i></div>
           <div class="row"><span>Перевіряю домашки й відповідаю на питання</span><i class="tg on"></i></div>
           <div class="row"><span>3 тижні зворотного звʼязку</span><i class="tg on"></i></div>
         </div>
