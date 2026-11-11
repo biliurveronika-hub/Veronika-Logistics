@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Звідки Дарія — Veronika Logistics</title>
+<meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
+<meta name="googlebot" content="noindex, nofollow">
+<meta name="referrer" content="no-referrer">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700&family=Manrope:wght@400;500;600;700;800&display=swap">
+<style>
+/* Layout: одна вузька колонка-«чек-лист», кроки як картки з макетом кнопки, прогрес-бар зверху */
+:root{
+  --bg:#f3f5f9; --surface:#ffffff; --ink:#18202e; --muted:#5c6779; --line:#dde2ec;
+  --accent:#1f6feb; --accent-soft:#e3edff; --ok:#16855a; --ok-soft:#ddf3e8; --warn:#a15c00; --warn-soft:#fff1d9;
+  --mark:#ffe58a; --mark-ink:#3a2c00;
+  --display:"Unbounded","Manrope",system-ui,sans-serif;
+  --body:"Manrope",system-ui,-apple-system,"Segoe UI",sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0f141c; --surface:#18202b; --ink:#e8edf5; --muted:#9aa6b8; --line:#2a3443;
+  --accent:#5b9dff; --accent-soft:#1c2c47; --ok:#4fd19a; --ok-soft:#163327; --warn:#f2b45a; --warn-soft:#3a2a10;
+  --mark:#6b5a12; --mark-ink:#fff4c2; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0f141c; --surface:#18202b; --ink:#e8edf5; --muted:#9aa6b8; --line:#2a3443;
+  --accent:#5b9dff; --accent-soft:#1c2c47; --ok:#4fd19a; --ok-soft:#163327; --warn:#f2b45a; --warn-soft:#3a2a10;
+  --mark:#6b5a12; --mark-ink:#fff4c2; color-scheme:dark}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.55;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 64px}
+.wrap{max-width:720px;margin:0 auto}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;line-height:1.2;margin:0}
+h1{font-size:clamp(26px,6vw,36px);font-weight:700}
+h2{font-size:20px;font-weight:700}
+h3{font-size:17px;font-weight:500}
+p{margin:0}
+a{color:var(--accent);font-weight:700}
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);padding-block:12px 10px;border-bottom:1px solid var(--line)}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--bg)}
+.prog-row{display:flex;justify-content:space-between;font-size:14px;color:var(--muted);font-weight:600;margin-bottom:6px}
+.bar{height:10px;border-radius:99px;background:var(--line);overflow:hidden}
+.bar i{display:block;height:100%;width:0;background:var(--ok);transition:width .35s}
+header.hero{padding-block:28px 8px;display:grid;gap:14px}
+.eyebrow{font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);font-weight:800}
+.lead{font-size:18px;color:var(--muted)}
+.facts{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:6px}
+.fact{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px}
+.fact b{display:block;font-family:var(--display);font-size:18px;font-weight:500}
+.fact span{font-size:14px;color:var(--muted)}
+@media (max-width:520px){.facts{grid-template-columns:1fr}}
+.olga{background:var(--surface);border:2px dashed var(--accent);border-radius:14px;padding:16px;display:grid;gap:10px;margin-top:22px}
+.olga .row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.olga .lbl{font-size:13px;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.05em;min-width:110px}
+.val{font-weight:800;word-break:break-all}
+.ava{width:56px;height:56px;border-radius:50%;object-fit:cover;flex:none}
+.olga .sub{font-size:14px;color:var(--muted)}
+.copy{font:inherit;font-size:14px;font-weight:700;border:1px solid var(--accent);color:var(--accent);background:var(--accent-soft);border-radius:8px;padding:4px 10px;cursor:pointer}
+.copy:focus-visible,.tab:focus-visible,.done-btn:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin:28px 0 6px}
+.tab{font:inherit;font-weight:700;font-size:15px;padding:10px 14px;border-radius:10px;border:1px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer;flex:1 1 220px;text-align:left}
+.tab small{display:block;font-weight:500;color:var(--muted);font-size:13px}
+.tab[aria-selected="true"]{border-color:var(--accent);box-shadow:inset 0 0 0 1px var(--accent);background:var(--accent-soft)}
+.which{font-size:15px;color:var(--muted);margin-bottom:14px}
+ol.steps{list-style:none;padding:0;margin:0;display:grid;gap:14px}
+.step{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:18px;display:grid;gap:12px;transition:border-color .2s,background .2s}
+.step.is-done{border-color:var(--ok);background:color-mix(in srgb,var(--ok-soft) 45%,var(--surface))}
+.step-head{display:flex;gap:12px;align-items:flex-start}
+.num{flex:none;width:36px;height:36px;border-radius:50%;display:grid;place-items:center;font-family:var(--display);font-weight:700;background:var(--accent);color:#fff;font-size:16px}
+.step.is-done .num{background:var(--ok)}
+.step-body{display:grid;gap:10px;min-width:0}
+.step ul{margin:0;padding-left:20px;display:grid;gap:4px}
+.ui{display:inline-flex;align-items:center;gap:6px;font-weight:800;font-size:15px;padding:2px 9px;border-radius:7px;border:1px solid var(--line);background:var(--bg);white-space:nowrap}
+.ui.blue{background:var(--accent);color:#fff;border-color:var(--accent)}
+.path{display:flex;flex-wrap:wrap;gap:6px;align-items:center;font-size:15px}
+.path .arr{color:var(--muted);font-weight:800}
+.mark{background:var(--mark);color:var(--mark-ink);padding:0 4px;border-radius:4px;font-weight:800}
+.note{font-size:15px;border-radius:10px;padding:10px 12px;background:var(--warn-soft);color:var(--ink);border-left:4px solid var(--warn)}
+.tip{font-size:15px;border-radius:10px;padding:10px 12px;background:var(--accent-soft);border-left:4px solid var(--accent)}
+.mock{border:1px solid var(--line);border-radius:12px;background:var(--bg);padding:12px;font-size:14px;display:grid;gap:8px}
+.mock .mrow{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:8px 10px;border-radius:8px;background:var(--surface);border:1px solid var(--line)}
+.mock .mrow.hl{border-color:var(--accent);box-shadow:0 0 0 2px var(--accent-soft)}
+.mock .cap{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;font-weight:700}
+.tog{width:34px;height:20px;border-radius:99px;background:var(--accent);position:relative;flex:none}
+.tog::after{content:"";position:absolute;right:3px;top:3px;width:14px;height:14px;border-radius:50%;background:#fff}
+.tog.off{background:var(--line)}.tog.off::after{right:auto;left:3px}
+.box{width:18px;height:18px;border-radius:4px;border:2px solid var(--accent);background:var(--accent);flex:none;position:relative}
+.box::after{content:"";position:absolute;left:4px;top:0px;width:5px;height:10px;border:solid #fff;border-width:0 2px 2px 0;transform:rotate(45deg)}
+.done-btn{justify-self:start;font:inherit;font-weight:800;font-size:15px;padding:10px 16px;border-radius:10px;border:2px solid var(--ok);background:transparent;color:var(--ok);cursor:pointer}
+.step.is-done .done-btn{background:var(--ok);color:var(--surface)}
+section.block{margin-top:40px;display:grid;gap:14px}
+details{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px 14px}
+summary{cursor:pointer;font-weight:800}
+details p,details ul{margin-top:8px;color:var(--muted);font-size:16px}
+.videos{display:grid;gap:10px}
+.vid{display:flex;gap:12px;align-items:center;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px 14px;text-decoration:none;color:var(--ink)}
+.vid .play{flex:none;width:40px;height:40px;border-radius:50%;background:var(--accent);display:grid;place-items:center}
+.vid .play::after{content:"";border-left:13px solid #fff;border-top:8px solid transparent;border-bottom:8px solid transparent;margin-left:3px}
+.vid span{font-weight:500;color:var(--muted);font-size:14px;display:block}
+figure.shot{margin:0;display:grid;gap:6px}
+figure.shot img{display:block;max-width:100%;height:auto;border:1px solid var(--line);border-radius:10px;background:#fff}
+figure.shot figcaption{font-size:13px;color:var(--muted)}
+.finish{background:var(--ok-soft);border:2px solid var(--ok);border-radius:16px;padding:18px;display:grid;gap:8px}
+.finish[hidden]{display:none!important}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<div class="top"><div class="wrap">
+  <div class="prog-row"><span id="progLabel">Зроблено 0 з 0 кроків</span><span>≈ 5 хвилин</span></div>
+  <div class="bar"><i id="progBar"></i></div>
+</div></div>
+
+<div class="wrap">
+<header class="hero">
+  <div class="eyebrow">Для Вероніки · Дарія</div>
+  <h1>Звідки взялася Дарія і як її прибрати</h1>
+  <p class="lead">Ім'я «Daria Martynenko» сіре, і його не можна ні змінити, ні видалити. Браузер тут ні до чого: в інкогніто Дарія теж є. Отже, вона записана в самому Facebook: як старе запрошення, як профіль у Центрі акаунтів або як людина з доступом до сторінки. Перевіримо по черзі, де саме.</p>
+</header>
+
+<div class="tip" style="margin-top:18px">Не хвилюйся: на рекламу це не впливає, доступ в Ольги вже працює. Роби з комп'ютера. Якщо Facebook у тебе російською, назви пунктів у дужках.</div>
+
+<ol class="steps" style="margin-top:22px">
+
+<li class="step" data-step="r3"><div class="step-head"><div class="num">1</div><div class="step-body">
+  <h3>Подивись список людей у портфоліо</h3>
+  <p>Відкрий <a href="https://business.facebook.com/latest/settings/business_users?business_id=4364995910477064" target="_blank" rel="noopener">Налаштування → Люди</a> (Настройки → Люди).</p>
+  <div class="mock">
+    <div class="cap">Так виглядає старе запрошення</div>
+    <div class="mrow hl"><span>Daria Martynenko</span><span style="color:var(--muted)">Очікує (Ожидает)</span></div>
+  </div>
+  <p>Якщо Дарія там зі статусом <b>«Очікує»</b>, це запрошення, яке колись відправили і ніхто не прийняв. Його не можна редагувати, тому воно сіре. Але можна скасувати:</p>
+  <div class="path"><span class="ui">Дарія</span><span class="arr">→</span><span class="ui">⋯</span><span class="arr">→</span><span class="ui blue">Скасувати запрошення</span></div>
+  <div class="tip">Російською: <b>Отменить приглашение</b> або <b>Отозвать</b>. Ольгу не чіпай.</div>
+</div></div><button class="done-btn" type="button">Готово</button></li>
+
+<li class="step" data-step="r4"><div class="step-head"><div class="num">2</div><div class="step-body">
+  <h3>Перевір Центр акаунтів</h3>
+  <p>Коли ти об'єднувала Instagram і Facebook, туди міг підтягнутися ще якийсь профіль. Відкрий:</p>
+  <p><a href="https://accountscenter.facebook.com/profiles" target="_blank" rel="noopener">Центр акаунтів → Профілі</a> (Профили)</p>
+  <p>Там мають бути тільки твій Facebook і твій Instagram. Якщо є профіль Дарії:</p>
+  <div class="path"><span class="ui">профіль Дарії</span><span class="arr">→</span><span class="ui blue">Видалити з Центру акаунтів</span></div>
+  <div class="note">Тут же глянь <span class="ui">Особисті дані</span> (Личные данные) → <b>Ім'я</b>. Якщо твоє ім'я там чомусь Дарія, нічого не міняй, зроби скріншот і надішли Ользі.</div>
+</div></div><button class="done-btn" type="button">Готово</button></li>
+
+<li class="step" data-step="r5"><div class="step-head"><div class="num">3</div><div class="step-body">
+  <h3>Перевір доступ до сторінки</h3>
+  <ul>
+    <li>Перемкнись на свою сторінку (аватарка праворуч угорі → обери сторінку).</li>
+    <li><span class="ui">Налаштування</span> → <span class="ui">Доступ до сторінки</span> (Доступ к Странице).</li>
+  </ul>
+  <p>Якщо там є Дарія і кнопка біля неї активна, натисни <span class="ui">⋯</span> → <span class="ui blue">Видалити</span>.</p>
+  <div class="note">Якщо кнопки сірі й не натискаються, значить, у Дарії на цій сторінці більше прав, ніж у тебе. Сама ти її не видалиш. Нічого не роби, зроби скріншот, Ольга підкаже, як повернути сторінку повністю собі.</div>
+</div></div><button class="done-btn" type="button">Готово</button></li>
+
+<li class="step" data-step="r6"><div class="step-head"><div class="num">4</div><div class="step-body">
+  <h3>Напиши Ользі</h3>
+  <p>Напиши, на якому кроці знайшлася Дарія, і надішли скріншот. Якщо ніде не знайшлася, надішли скріншот того вікна, де вона висить сіра.</p>
+</div></div><button class="done-btn" type="button">Готово</button></li>
+</ol>
+
+<div class="finish" id="finish" hidden>
+  <h2>Дякую, ти впоралася</h2>
+  <p>Ольга подивиться скріншоти і скаже, чи треба ще щось робити. Реклама від цього не залежить.</p>
+</div>
+</div>
+
+<script>
+const KEY = "veronika-dariia";
+let state = {}; try { state = JSON.parse(localStorage.getItem(KEY) || "{}"); } catch (e) {}
+const save = () => { try { localStorage.setItem(KEY, JSON.stringify(state)); } catch (e) {} };
+const steps = [...document.querySelectorAll(".step")];
+function render() {
+  steps.forEach(s => {
+    const d = !!state[s.dataset.step];
+    s.classList.toggle("is-done", d);
+    s.querySelector(".done-btn").textContent = d ? "✓ Зроблено" : "Готово";
+  });
+  const n = steps.filter(s => state[s.dataset.step]).length;
+  document.getElementById("progLabel").textContent = `Зроблено ${n} з ${steps.length} кроків`;
+  document.getElementById("progBar").style.width = (n / steps.length * 100) + "%";
+  document.getElementById("finish").hidden = n !== steps.length;
+}
+steps.forEach(s => s.querySelector(".done-btn").addEventListener("click", () => {
+  state[s.dataset.step] = !state[s.dataset.step]; save(); render();
+  if (state[s.dataset.step]) { const next = s.nextElementSibling; if (next) next.scrollIntoView({behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block: "center"}); }
+}));
+render();
+</script>
+</body>
+</html>
