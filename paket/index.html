@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="robots" content="noindex, nofollow">
 <meta property="og:title" content="Пакет логіста-практика">
-<meta property="og:description" content="Три модулі: індекси й ставки, біржі й документи, робота й співбесіда. Персональна пропозиція до 14 листопада.">
+<meta property="og:description" content="Три модулі: індекси й ставки, біржі й документи, робота й співбесіда. Ціна 220 € до 14 листопада.">
 <title>Пакет логіста-практика</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@1,500&family=IBM+Plex+Mono:wght@400;500&display=swap">
@@ -95,6 +95,8 @@ section{padding-block:44px}
 .price{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-top:20px}
 .price small{font:500 12px/1 var(--mono);text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
 .price b{font-size:44px;font-weight:800;letter-spacing:-.03em;font-variant-numeric:tabular-nums}
+.after{margin:6px 0 0;text-align:right;font-size:14px;color:var(--muted)}
+.after s{text-decoration-thickness:1px}
 .btn{display:flex;justify-content:center;align-items:center;gap:8px;margin-top:18px;padding:15px 20px;border-radius:999px;font-weight:700;text-decoration:none;border:2px solid var(--ink);transition:transform .2s}
 .btn:hover{transform:translateY(-2px)}
 .btn.solid{background:var(--forest);border-color:var(--forest);color:var(--forest-ink)}
@@ -132,7 +134,7 @@ footer{padding-block:28px 48px;color:var(--muted);font-size:13px}
 <body>
 
 <div class="bar"><div class="wrap">
-  <div><b>Персональна пропозиція</b> · діє до 14 листопада, 23:59</div>
+  <div><b>Обмежена пропозиція</b> · ціна до 14 листопада, 23:59</div>
   <div class="clock" data-clock aria-label="Залишилось часу"><span data-d>--</span>д<span data-h>--</span>год<span data-m>--</span>хв</div>
 </div></div>
 
@@ -222,7 +224,7 @@ footer{padding-block:28px 48px;color:var(--muted);font-size:13px}
 <section id="price"><div class="wrap">
   <div class="head">
     <h2>Обери варіант</h2>
-    <p>Зміст однаковий. Різниця — чи перевіряю я твої домашки.</p>
+    <p>Зміст однаковий. Різниця — чи перевіряю я твої домашки протягом 3 тижнів.</p>
   </div>
   <div class="orders">
     <article class="order">
@@ -234,20 +236,23 @@ footer{padding-block:28px 48px;color:var(--muted);font-size:13px}
           <div><dt>Матеріали</dt><dd>Відео, презентації, файли, домашки</dd></div>
           <div><dt>Перевірка</dt><dd class="no-fb">Немає</dd></div>
         </dl>
-        <div class="price"><small>Ціна</small><b>220 €</b></div>
+        <div class="price"><small>Ціна до 14.11</small><b data-price="320 €">220 €</b></div>
+        <p class="after" data-after>Після 14 листопада — <s>320 €</s></p>
         <a class="btn" href="https://ig.me/m/veronika_logistics" target="_blank" rel="noopener">Хочу варіант A</a>
       </div>
     </article>
     <article class="order pick">
-      <header><span>Варіант B</span><span>Зі мною</span></header>
+      <header><span>Варіант B</span><span>Зі мною · 3 тижні</span></header>
       <div class="body">
         <h3>Зі зворотним звʼязком</h3>
         <dl class="fields">
           <div><dt>Модулі</dt><dd>05 · 07 · 08</dd></div>
           <div><dt>Матеріали</dt><dd>Відео, презентації, файли, домашки</dd></div>
           <div><dt>Перевірка</dt><dd>Перевіряю домашки і відповідаю на твої питання по цих темах</dd></div>
+          <div><dt>Термін</dt><dd>3 тижні зворотного звʼязку</dd></div>
         </dl>
-        <div class="price"><small>Ціна</small><b>320 €</b></div>
+        <div class="price"><small>Ціна до 14.11</small><b data-price="420 €">320 €</b></div>
+        <p class="after" data-after>Після 14 листопада — <s>420 €</s></p>
         <a class="btn solid" href="https://ig.me/m/veronika_logistics" target="_blank" rel="noopener">Хочу варіант B</a>
       </div>
     </article>
@@ -257,8 +262,8 @@ footer{padding-block:28px 48px;color:var(--muted);font-size:13px}
 <section><div class="wrap">
   <div class="limit">
     <div>
-      <h2 data-limit-title>Пропозиція діє до 14 листопада</h2>
-      <p data-limit-text>Окремими модулями я не продаю — цей пакет зібраний персонально під тебе. Після 14.11 ціна й склад уже не гарантовані.</p>
+      <h2 data-limit-title>До 14 листопада — ціна нижча на 100 €</h2>
+      <p data-limit-text>Зараз пакет коштує 220 € або 320 € зі зворотним звʼязком на 3 тижні. Після 14.11 ціна піднімається до 320 € і 420 €.</p>
       <div class="contact">Напиши мені в Instagram <code>@veronika_logistics</code> або просто відповідай у нашому чаті.</div>
     </div>
     <div class="big" data-big aria-label="Залишилось часу">
@@ -280,8 +285,11 @@ footer{padding-block:28px 48px;color:var(--muted);font-size:13px}
     if (left <= 0){
       document.querySelectorAll('[data-clock],[data-big]').forEach(function(el){ el.hidden = true; });
       var t = document.querySelector('[data-limit-title]'), p = document.querySelector('[data-limit-text]');
-      if (t) t.textContent = 'Термін пропозиції минув';
-      if (p) p.textContent = 'Напиши мені — скажу, чи можу ще відкрити цей пакет.';
+      if (t) t.textContent = 'Обмежена пропозиція завершилась';
+      if (p) p.textContent = 'Діють звичайні ціни: 320 € без зворотного звʼязку і 420 € зі зворотним звʼязком.';
+      document.querySelectorAll('[data-price]').forEach(function(e){ e.textContent = e.getAttribute('data-price'); });
+      document.querySelectorAll('[data-after]').forEach(function(e){ e.hidden = true; });
+      document.querySelectorAll('.price small').forEach(function(e){ e.textContent = 'Ціна'; });
       return;
     }
     var d = Math.floor(left/864e5), h = Math.floor(left/36e5)%24, m = Math.floor(left/6e4)%60;
