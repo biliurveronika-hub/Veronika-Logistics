@@ -127,13 +127,41 @@ header{position:sticky;top:0;z-index:50;padding:14px 0;background:rgba(238,242,2
 
 /* ---------- заклик ---------- */
 .cta-sec{padding:90px 0 0}
-.cta{position:relative;overflow:hidden;background:linear-gradient(135deg,#9DBBD9 0%,#BDD1E6 55%,#E3ECF4 100%);border-radius:var(--r-xl);padding:60px 56px;color:var(--forest-d)}
-.cta h2{font-size:clamp(30px,4.2vw,50px);max-width:640px;margin-top:20px}
+.cta{position:relative;overflow:hidden;background:linear-gradient(135deg,#9DBBD9 0%,#BDD1E6 55%,#E3ECF4 100%);border-radius:var(--r-xl);padding:56px;color:var(--forest-d);display:grid;grid-template-columns:1fr 430px;gap:44px;align-items:center}
+.cta h2{font-size:clamp(30px,3.8vw,46px);margin-top:20px}
 .cta h2 em{color:var(--forest-d)}
-.cta p{font-size:17px;max-width:540px;margin:20px 0 32px;color:#2A4A5E}
+.cta-copy p{font-size:17px;margin:20px 0 28px;color:#2A4A5E}
 .cta .acts{display:flex;flex-wrap:wrap;gap:14px;align-items:center}
 .cta .label{background:rgba(255,255,255,.7)}
 .cta-note{margin-top:26px;font-size:14px;color:#2A4A5E;opacity:.8}
+
+/* ---------- форма заявки: стилі ті самі, що на головній ---------- */
+form.lead-form{position:relative;background:#fff;border-radius:var(--r-lg);padding:34px 30px;border:1px solid var(--line);color:var(--ink)}
+form h3{font-size:26px;letter-spacing:-.03em;margin-bottom:8px}
+form .hint{color:var(--muted);font-size:15px;margin-bottom:22px}
+.field{display:block;margin-bottom:14px}
+.field span{display:block;font-size:13px;font-weight:600;color:var(--muted);margin-bottom:7px}
+.field input,.field select{width:100%;border:1.5px solid var(--line);background:var(--paper);border-radius:16px;padding:15px 18px;font:inherit;font-size:16px;color:inherit;outline:none;transition:border-color .25s,background .25s}
+.field input:focus{border-color:var(--blue);background:#fff}
+/* select окремо: shorthand background вище стер би шеврон */
+.field select{appearance:none;-webkit-appearance:none;padding-right:46px;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23546473' stroke-width='2.2' stroke-linecap='round'><path d='M6 9l6 6 6-6'/></svg>");background-repeat:no-repeat;background-position:right 16px center;background-size:18px}
+.field select:focus{border-color:var(--blue);background-color:#fff}
+.field .field-hint{display:block;font-size:12.5px;font-weight:500;color:var(--muted);margin:7px 0 0 4px}
+.field .field-hint.bad{color:#c0392b}
+form .btn{width:100%;justify-content:space-between;margin-top:8px}
+form .btn[disabled]{opacity:.7;pointer-events:none}
+.btn .spin{width:18px;height:18px;border-radius:50%;border:2px solid currentColor;border-top-color:transparent;animation:spin1 .7s linear infinite}
+@keyframes spin1{to{transform:rotate(360deg)}}
+.ok{display:none;text-align:center;padding:30px 6px}
+.ok .big{width:84px;height:84px;margin:0 auto 22px;border-radius:50%;background:var(--ios);display:grid;place-items:center;color:#fff}
+.ok .big svg{width:38px}
+.ok .hint{margin-bottom:0}
+form.sent>*:not(.ok){display:none}
+form.sent .ok{display:block}
+.privacy{font-size:12.5px;color:var(--muted);margin-top:14px;text-align:center}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
+.form-err{margin:14px 0 0;padding:14px 16px;border-radius:14px;background:#FDEDED;color:#9B2C2C;font-size:14px;line-height:1.45}
+.form-err a{text-decoration:underline}
 
 /* ---------- хто веде ---------- */
 .author{padding:90px 0 0}
@@ -169,13 +197,16 @@ footer{margin-top:90px;background:var(--forest-d);color:#A9BCCB;padding:60px 0 2
   .mods{grid-template-columns:repeat(2,1fr)}
   .au-grid{grid-template-columns:1fr;gap:24px}
   .au-photo{aspect-ratio:16/10}
-  .cta{padding:44px 26px}
+  .cta{grid-template-columns:1fr;gap:30px;padding:44px 26px}
   .bar{display:flex}
   footer{padding-bottom:96px}
 }
 @media (max-width:560px){
   .inside,.next,.cta-sec,.author{padding-top:64px}
   .take{padding:28px 22px}
+  .cta{padding:34px 14px 14px}
+  .cta-copy{padding:0 8px}
+  form.lead-form{padding:26px 18px}
   .take .rule{flex-wrap:wrap}
   .take .rule div{flex:1 1 40%}
 }
@@ -194,7 +225,7 @@ footer{margin-top:90px;background:var(--forest-d);color:#A9BCCB;padding:60px 0 2
       <i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 6h12v10H1z"/><path d="M13 9h4l4 4v3h-8"/><circle cx="5.5" cy="17.5" r="1.8"/><circle cx="17.5" cy="17.5" r="1.8"/></svg></i>
       <span>veronika_logistics</span>
     </a>
-    <a href="https://ig.me/m/veronika_logistics" target="_blank" rel="noopener" class="nav-cta">Написати Вероніці</a>
+    <a href="#cta" class="nav-cta">Залишити заявку</a>
   </div>
 </header>
 
@@ -313,17 +344,33 @@ footer{margin-top:90px;background:var(--forest-d);color:#A9BCCB;padding:60px 0 2
 <section class="cta-sec" id="cta">
   <div class="wrap">
     <div class="cta rv">
-      <span class="label">Повне навчання</span>
-      <h2>Готові пройти <em>весь курс?</em></h2>
-      <p>Напишіть мені в директ — розкажу умови, формат і подивимось, чи підходить вам навчання. Я веду групи особисто: перевіряю домашні, відповідаю на питання, показую на своїх робочих кейсах.</p>
-      <div class="acts">
-        <a href="https://ig.me/m/veronika_logistics" target="_blank" rel="noopener" class="btn btn-dark btn-xl">
-          Отримати повне навчання
-          <span class="arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M7 17 17 7M8 7h9v9"/></svg></span>
-        </a>
-        <a href="../#program" class="btn-ghost">Подивитися програму</a>
+      <div class="cta-copy">
+        <span class="label">Повне навчання</span>
+        <h2>Готові пройти <em>весь курс?</em></h2>
+        <p>Залиште заявку — розкажу умови, формат і подивимось, чи підходить вам навчання. Я веду групи особисто: перевіряю домашні, відповідаю на питання, показую на своїх робочих кейсах.</p>
+        <div class="acts">
+          <a href="../#program" class="btn-ghost">Подивитися програму</a>
+        </div>
+        <p class="cta-note">Відповідаю особисто, зазвичай протягом дня.</p>
       </div>
-      <p class="cta-note">Відповідаю особисто, зазвичай протягом дня.</p>
+      <form class="lead-form" id="leadForm" novalidate>
+        <h3>Залишити заявку</h3>
+        <p class="hint">Залиште номер — і я зв’яжуся з вами.</p>
+        <label class="field"><span>Ваше ім’я</span><input name="name" required autocomplete="name" placeholder="Як до вас звертатися"></label>
+        <label class="field"><span>Номер телефону</span><input name="contact" type="tel" inputmode="tel" autocomplete="tel" required placeholder="+380 67 123 45 67">
+          <small class="field-hint" id="contactHint">З кодом країни: +380, +48…</small></label>
+        <label class="field"><span>Де вам зручніше написати</span><select name="ctype">
+          <option value="telegram">Telegram</option>
+          <option value="viber">Viber</option>
+          <option value="whatsapp">WhatsApp</option>
+          <option value="call">Подзвонити</option>
+        </select></label>
+        <input class="hp" type="text" name="company" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <p class="form-err" id="formErr" hidden>Не вдалося надіслати заявку. Напишіть мені, будь ласка, в <a href="https://www.instagram.com/veronika_logistics/" target="_blank" rel="noopener">Instagram</a> (кнопка «Написати») — відповім там.</p>
+        <button class="btn btn-dark btn-xl" type="submit">Надіслати заявку <span class="arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M7 17 17 7M8 7h9v9"/></svg></span></button>
+        <p class="privacy">Натискаючи кнопку, ви погоджуєтесь на обробку контактних даних.</p>
+        <div class="ok"><div class="big"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg></div><h3>Заявку надіслано!</h3><p class="hint">Вероніка напише вам найближчим часом.</p></div>
+      </form>
     </div>
   </div>
 </section>
@@ -363,7 +410,7 @@ footer{margin-top:90px;background:var(--forest-d);color:#A9BCCB;padding:60px 0 2
 
 <div class="bar" id="bar">
   <b>Повне навчання<small>8 модулів, група з перевіркою</small></b>
-  <a href="https://ig.me/m/veronika_logistics" target="_blank" rel="noopener">Хочу</a>
+  <a href="#cta">Хочу</a>
 </div>
 
 <script>
@@ -395,6 +442,115 @@ footer{margin-top:90px;background:var(--forest-d);color:#A9BCCB;padding:60px 0 2
     addEventListener('scroll', onScroll, { passive: true });
     onScroll();
   }
+
+  /* ---------- форма: той самий приймач, що й на головній ---------- */
+  const form = document.getElementById('leadForm');
+  const LEAD_ENDPOINT = 'https://rapid-thunder-b3dc.biliurveronika.workers.dev/';
+  const formErr = document.getElementById('formErr');
+  const submitBtn = form.querySelector('button[type=submit]');
+  const btnLabel = submitBtn.innerHTML;
+
+  /* ---- телефон + де зручніше написати ---- */
+  const CT = {
+    telegram: { label: 'Telegram', hint: 'Напишу вам у Telegram на цей номер' },
+    viber:    { label: 'Viber',    hint: 'Напишу вам у Viber на цей номер' },
+    whatsapp: { label: 'WhatsApp', hint: 'Напишу вам у WhatsApp на цей номер' },
+    call:     { label: 'Дзвінок',  hint: 'Подзвоню вам на цей номер' }
+  };
+  const PHONE_BAD = 'Перевірте номер: код країни і 9–15 цифр, напр. +380 67 123 45 67';
+  /* лишаємо цифри; український 0XX… без коду — дописуємо +38 */
+  const normPhone = v => {
+    const d = v.replace(/\D/g, '');
+    if (/^0\d{9}$/.test(d)) return '+38' + d;
+    return d ? '+' + d : '';
+  };
+  const phoneOk = v => /^\+\d{9,15}$/.test(v);
+  const cInput = form.contact, cType = form.ctype, cHint = document.getElementById('contactHint');
+  const setHint = bad => {
+    cHint.textContent = bad ? PHONE_BAD : CT[cType.value].hint;
+    cHint.classList.toggle('bad', !!bad);
+    cInput.style.borderColor = bad ? '#d9534f' : '';
+  };
+  cType.addEventListener('change', () => { if (!cHint.classList.contains('bad')) setHint(false); });
+  cInput.addEventListener('focus', () => { if (!cInput.value) cInput.value = '+'; });
+  cInput.addEventListener('input', () => { if (cHint.classList.contains('bad')) setHint(false); });
+  cInput.addEventListener('blur', () => {
+    const v = cInput.value.trim();
+    if (!v || v === '+') return;
+    cInput.value = normPhone(v);
+    setHint(!phoneOk(cInput.value));
+  });
+  setHint(false);
+
+  /* ---- ознаки живої людини: бот, що шле POST напряму, їх не має ---- */
+  const bornAt = Date.now();
+  let touches = 0;
+  ['pointerdown', 'keydown', 'touchstart', 'input'].forEach(ev => form.addEventListener(ev, () => { touches++; }, { passive: true }));
+  /* utm і реферер з першого заходу: за ними видно, звідки людина */
+  const firstVisit = (() => {
+    try {
+      const saved = sessionStorage.getItem('vl_from');
+      if (saved) return JSON.parse(saved);
+      const p = new URLSearchParams(location.search), utm = {};
+      ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content'].forEach(k => { if (p.get(k)) utm[k] = p.get(k).slice(0, 80); });
+      const v = { ref: document.referrer.slice(0, 200), utm };
+      sessionStorage.setItem('vl_from', JSON.stringify(v));
+      return v;
+    } catch { return { ref: document.referrer.slice(0, 200), utm: {} }; }
+  })();
+
+  form.addEventListener('submit', async e => {
+    e.preventDefault();
+    if (form.company.value) return;            // пастка для ботів
+    let ok = true;
+    const nameBad = !form.name.value.trim();
+    form.name.style.borderColor = nameBad ? '#d9534f' : '';
+    if (nameBad) ok = false;
+    const ct = CT[cType.value];
+    cInput.value = normPhone(cInput.value.trim());
+    if (!phoneOk(cInput.value)) { setHint(true); ok = false; }
+    if (!ok) return;
+    formErr.hidden = true;
+    submitBtn.disabled = true;
+    submitBtn.innerHTML = 'Надсилаю… <span class="arr"><span class="spin"></span></span>';
+    /* на поганому мобільному звʼязку fetch може висіти нескінченно —
+       обриваємо, щоб кнопка не крутилась без відповіді */
+    const ac = new AbortController();
+    const killer = setTimeout(() => ac.abort(), 12000);
+    try {
+      const res = await fetch(LEAD_ENDPOINT, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        signal: ac.signal,
+        body: JSON.stringify({
+          name: form.name.value.trim().slice(0, 200),
+          contact: (ct.label + ': ' + cInput.value).slice(0, 200),
+          contact_type: cType.value,
+          contact_value: cInput.value.slice(0, 100),
+          interests: ['Курс'],
+          company: form.company.value,
+          source: location.href.split('#')[0],
+          ref: firstVisit.ref,
+          utm: firstVisit.utm,
+          t: Date.now() - bornAt,
+          hi: touches
+        })
+      });
+      const out = await res.json().catch(() => ({}));
+      if (!res.ok || out.ok === false) throw new Error('HTTP ' + res.status);
+      form.classList.add('sent');
+      /* форма стала нижчою, і на телефоні підтвердження може опинитись за екраном */
+      form.scrollIntoView({ block: 'center' });
+    } catch (err) {
+      formErr.hidden = false;
+      submitBtn.disabled = false;
+      submitBtn.innerHTML = btnLabel;
+      /* з відкритою клавіатурою блок помилки часто за екраном */
+      formErr.scrollIntoView({ block: 'center' });
+    } finally {
+      clearTimeout(killer);
+    }
+  });
 })();
 </script>
 
