@@ -216,6 +216,14 @@ footer{margin-top:90px;background:var(--forest-d);color:#A9BCCB;padding:60px 0 2
   .rv{opacity:1;transform:none}
 }
 </style>
+<!-- Meta Pixel -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init','1475403971005665');
+fbq('track','PageView');
+fbq('track','ViewContent',{content_name:'urok-1'});
+</script>
+<!-- /Meta Pixel -->
 </head>
 <body>
 
@@ -539,6 +547,7 @@ footer{margin-top:90px;background:var(--forest-d);color:#A9BCCB;padding:60px 0 2
       const out = await res.json().catch(() => ({}));
       if (!res.ok || out.ok === false) throw new Error('HTTP ' + res.status);
       form.classList.add('sent');
+      window.fbq && fbq('track','Lead',{content_name:'urok-form'});
       /* форма стала нижчою, і на телефоні підтвердження може опинитись за екраном */
       form.scrollIntoView({ block: 'center' });
     } catch (err) {

@@ -875,6 +875,13 @@ footer{background:var(--forest-d);color:#A9BCCB;padding:90px 0 34px;border-radiu
   .ld-km{text-align:left}
 }
 </style>
+<!-- Meta Pixel -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init','1475403971005665');
+fbq('track','PageView');
+</script>
+<!-- /Meta Pixel -->
 </head>
 <body class="loading">
 
@@ -2210,7 +2217,7 @@ setTimeout(function () {
       });
       const out = await res.json().catch(() => ({}));
       if (!res.ok || out.ok === false) throw new Error('HTTP ' + res.status);
-      form.classList.add('sent'); haptic([20, 50, 40]); openThanks();
+      form.classList.add('sent'); window.fbq && fbq('track','Lead',{content_name:'konsultaciya'}); haptic([20, 50, 40]); openThanks();
     } catch (err) {
       formErr.hidden = false;
       submitBtn.disabled = false;
