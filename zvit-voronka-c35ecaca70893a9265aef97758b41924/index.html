@@ -1,0 +1,339 @@
+<!doctype html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>Воронка Veronika Logistics</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&family=Playfair+Display:ital,wght@1,500&display=swap">
+<style>
+/* Layout: one readable column; route maps as step strips that stack on phones; call script as a timed sequence */
+:root{
+  --bg:#F4F7FA; --surface:#FFFFFF; --ink:#14232E; --muted:#526472; --line:#D9E3EC;
+  --navy:#17313F; --on-navy:#F4F7FA; --sky:#BDD1E6; --sage:#6F7A45; --sage-soft:#E7EBD6; --amber:#A8650F; --amber-soft:#F8E8CF;
+  --display:'Manrope',system-ui,-apple-system,'Segoe UI',sans-serif;
+  --accent:'Playfair Display',Georgia,'Times New Roman',serif;
+  --body:'Manrope',system-ui,-apple-system,'Segoe UI',sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0F1B23; --surface:#16252F; --ink:#E6EEF4; --muted:#9DB0BE; --line:#2A3C48;
+  --navy:#1E3A4B; --on-navy:#E6EEF4; --sky:#BDD1E6; --sage:#B9C48C; --sage-soft:#24301F; --amber:#E8A33D; --amber-soft:#3A2C17; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0F1B23; --surface:#16252F; --ink:#E6EEF4; --muted:#9DB0BE; --line:#2A3C48;
+  --navy:#1E3A4B; --on-navy:#E6EEF4; --sky:#BDD1E6; --sage:#B9C48C; --sage-soft:#24301F; --amber:#E8A33D; --amber-soft:#3A2C17; color-scheme:dark}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.6;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:40px 64px}
+.wrap{max-width:780px;margin:0 auto;display:flex;flex-direction:column;gap:60px}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;margin:0;letter-spacing:-.02em}
+h1{font-size:clamp(30px,6vw,46px);font-weight:800;line-height:1.08}
+h1 em,h2 em{font-family:var(--accent);font-weight:500;font-style:italic;color:var(--sage);letter-spacing:0}
+h2{font-size:clamp(22px,4vw,30px);font-weight:800;line-height:1.2}
+h3{font-size:18px;font-weight:700;line-height:1.35}
+p{margin:0}
+.kicker{font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+section{display:flex;flex-direction:column;gap:18px}
+.lead{font-size:18px;color:var(--muted);max-width:62ch}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:18px 20px;display:grid;gap:10px;min-width:0}
+.summary p{display:grid;grid-template-columns:22px 1fr;gap:8px}
+.mark{font-weight:800;color:var(--sage)}
+.route{display:flex;flex-wrap:wrap;gap:8px;align-items:stretch}
+.step{flex:1 1 110px;min-width:0;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:12px 14px;font-size:14px;line-height:1.35;font-weight:600}
+.step small{display:block;color:var(--muted);font-size:12px;margin-top:4px;font-weight:500}
+.step.hot{border-color:var(--amber);background:var(--amber-soft)}
+.step.new{border-color:var(--sage);background:var(--sage-soft)}
+.arrow{align-self:center;color:var(--muted);font-weight:700}
+@media (max-width:600px){.route{flex-direction:column}.arrow{transform:rotate(90deg);align-self:flex-start;margin-left:14px}}
+.list{display:flex;flex-direction:column;gap:14px}
+.num{counter-reset:n}
+.num .card h3::before{counter-increment:n;content:counter(n) ". ";color:var(--amber)}
+.example{font-size:14px;color:var(--muted);border-left:3px solid var(--line);padding-left:12px}
+.say{background:var(--sage-soft);border-radius:10px;padding:12px 14px;font-size:15px}
+.say b{display:block;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--sage);margin-bottom:4px}
+.stage{display:grid;grid-template-columns:92px 1fr;gap:16px;align-items:start;padding:16px 0;border-bottom:1px solid var(--line)}
+.stage:last-child{border-bottom:0}
+.stage .t{font-family:var(--display);font-weight:800;font-size:14px;color:var(--sage);font-variant-numeric:tabular-nums}
+.stage > div{display:grid;gap:8px;min-width:0}
+@media (max-width:520px){.stage{grid-template-columns:1fr;gap:6px}}
+ul.dots{margin:0;padding-left:20px;display:grid;gap:6px}
+.table{overflow-x:auto;border:1px solid var(--line);border-radius:12px;background:var(--surface)}
+table{border-collapse:collapse;width:100%;min-width:540px;font-size:15px}
+th,td{text-align:left;padding:12px 16px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:700}
+tr:last-child td{border-bottom:0}
+.rules{display:grid;gap:10px;padding:0;margin:0;list-style:none}
+.rules li{display:grid;grid-template-columns:22px 1fr;gap:10px}
+.rules li::before{content:"✓";color:var(--sage);font-weight:800}
+.rules.no li::before{content:"✕";color:var(--amber)}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media (max-width:640px){.two{grid-template-columns:1fr}}
+pre.msg{white-space:pre-wrap;font-family:var(--body);font-size:15px;margin:0;background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:14px 16px}
+.todo{background:var(--navy);color:var(--on-navy);border-radius:16px;padding:26px 24px;display:grid;gap:16px}
+.todo h2{color:var(--on-navy)}
+.todo h2 em{color:var(--sky)}
+.todo ol{margin:0;padding-left:20px;display:grid;gap:10px}
+.todo .when{font-family:var(--accent);font-style:italic;font-size:20px}
+.foot{font-size:14px;color:var(--muted)}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+<header style="display:flex;flex-direction:column;gap:16px">
+  <span class="kicker">Veronika Logistics · звіт · листопад 2026</span>
+  <h1>Чому консультації не закінчуються <em>оплатою</em> — і що змінюємо</h1>
+  <p class="lead">Вероніко, розбір конкретних консультацій ми з тобою вже зробили. Тут я не повторюю його, а збираю висновки в одну систему: як тепер виглядає весь шлях людини від рилса до оплати, щоб ті самі ситуації більше не траплялися. Консультація лишається нашим головним інструментом продажу — курс не дешевий, і такі курси купують після живої розмови.</p>
+</header>
+
+<section>
+  <span class="kicker">Коротко</span>
+  <div class="card summary">
+    <p><span class="mark">→</span><span><b>Курс продається.</b> У тебе вже було 15 учнів на індивідуальному, а учень без досвіду вийшов на роботу через 2 тижні після курсу.</span></p>
+    <p><span class="mark">→</span><span><b>Людей ми втрачаємо в останні хвилини дзвінка і в переписці після нього:</b> немає ціни з терміном, немає прямого питання «беремо?», а відповіді на страхи звучать як відмова.</span></p>
+    <p><span class="mark">→</span><span><b>Що робимо:</b> замінюємо старий урок на новий відео-урок «Як стати логістом з нуля» — він дає користь, прогріває і веде на дзвінок. А сам дзвінок робимо коротшим і з чіткою кінцівкою.</span></p>
+  </div>
+</section>
+
+<section>
+  <span class="kicker">Як працює зараз</span>
+  <h2>Стара воронка</h2>
+  <div class="route" aria-label="Стара воронка">
+    <div class="step">Рилс<small>пишуть «логістика»</small></div><span class="arrow">→</span>
+    <div class="step">ManyChat<small>перевірка підписки</small></div><span class="arrow">→</span>
+    <div class="step">Урок 7 хв<small>«Що таке логістика»</small></div><span class="arrow">→</span>
+    <div class="step">Нагадування<small>через 20 годин</small></div><span class="arrow">→</span>
+    <div class="step hot">Консультація<small>усе вирішується тут</small></div>
+  </div>
+  <p>Урок дає знання, але не відповідає на те, що людину насправді хвилює: «чи вийде в мене», «чи знайду роботу», «скільки коштує». Тому на дзвінок людина приходить холодною: вона тебе тиждень тому не знала, ціни не бачила, і за 20 хвилин ти маєш і познайомитися, і все показати, і продати.</p>
+</section>
+
+<section>
+  <span class="kicker">Висновки з розбору</span>
+  <h2>Що ми зрозуміли і що <em>змінюємо</em></h2>
+  <p>Розбір окремих розмов ми вже зробили. Тут — шість висновків з нього і місце в новій схемі, де кожен із них закритий. Це не про помилки, а про те, що тепер є система, яка підстраховує.</p>
+  <div class="table">
+    <table>
+      <thead><tr><th>Що ми побачили</th><th>Як це закриває нова схема</th></tr></thead>
+      <tbody>
+        <tr><td>Люди приходять на дзвінок холодними: вперше бачать тебе, твою історію і ціну одночасно</td><td><b>Відео перед дзвінком</b> — знайомство, страхи, кейс учня і «від 500 €» людина бачить заздалегідь</td></tr>
+        <tr><td>Більша частина дзвінка йде на показ платформи</td><td><b>Платформа — у відео.</b> На дзвінку 7 хвилин питань про людину і відповідь на її страх</td></tr>
+        <tr><td>У кінці дзвінка немає поради одного формату і прямого питання</td><td><b>Структура дзвінка</b> з готовими фразами: порада, бонус, «Що скажете?» і пауза</td></tr>
+        <tr><td>Після дзвінка тарифи приходять без терміну, або не в той чат</td><td><b>Шаблон повідомлення</b> з бонусом, датою і питанням — завжди в той чат, де листувались</td></tr>
+        <tr><td>Нагадування без ціни і дати, а останнього перед кінцем терміну немає</td><td><b>Два нагадування за графіком:</b> через 24 години і за кілька годин до кінця</td></tr>
+        <tr><td>На питання про розстрочку, зворотний зв'язок і роботу відповідь звучить як відмова</td><td><b>Готові відповіді</b> на чотири сумніви — кожна закінчується пропозицією, а не «на жаль»</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section>
+  <span class="kicker">Що робимо</span>
+  <h2>Нова воронка: <em>відео-урок</em> замість старого уроку</h2>
+  <div class="route" aria-label="Нова воронка">
+    <div class="step">Рилс<small>пишуть «логістика»</small></div><span class="arrow">→</span>
+    <div class="step new">Відео-урок 12 хв<small>користь і прогрів</small></div><span class="arrow">→</span>
+    <div class="step new">Запис на дзвінок<small>15–20 хв</small></div><span class="arrow">→</span>
+    <div class="step hot">Дзвінок<small>закриває продаж</small></div><span class="arrow">→</span>
+    <div class="step new">Повідомлення<small>термін і нагадування</small></div>
+  </div>
+  <p>Старий урок «Що таке логістика» — це перший модуль курсу. Він дає теорію, але не відповідає на те, що людину хвилює, і віддає частину платного курсу безкоштовно. Тому модуль 1 повертаємо тільки в курс, а за кодове слово людина отримує новий відео-урок.</p>
+
+  <div class="list">
+    <div class="card">
+      <h3>Крок 1. Рилс і кодове слово — як і раніше</h3>
+      <p>Людина пише «логістика», ManyChat перевіряє підписку і надсилає безкоштовний урок. Старі рилси міняти не треба: людина так само отримує урок, просто новий.</p>
+    </div>
+    <div class="card">
+      <h3>Крок 2. Відео-урок «Як стати логістом з нуля» — 12 хвилин</h3>
+      <p>Він складається з трьох частин:</p>
+      <ul class="dots">
+        <li><b>Урок — користь (6 хв):</b> що логіст робить насправді, один реальний рейс з твого екрана — від біржі до оплати, і три речі, які шукає роботодавець;</li>
+        <li><b>Прогрів (4 хв):</b> твоя історія — як прийшла без досвіду і зібрала все в систему, учень, який вийшов на роботу через 2 тижні, і коротко відповіді на сумніви: техніка, мова, час, «рідні проти»;</li>
+        <li><b>Запрошення (3 хв):</b> як проходить навчання, два формати, «від 500 €, можна двома платежами», кому це не підходить і запис на розмову.</li>
+      </ul>
+      <p>Тобто те, що ти зараз щоразу пояснюєш на дзвінку, ти розповідаєш один раз — і людина приходить на розмову вже теплою.</p>
+    </div>
+    <div class="card">
+      <h3>Крок 3. Нагадування в ManyChat</h3>
+      <ul class="dots">
+        <li>через 20 годин — «Ну що, подивилися урок?»;</li>
+        <li>подивились — запрошення на розмову і кнопка «Є питання», яка передає людину тобі;</li>
+        <li>не подивились — нагадування, а ще через 20 годин останнє: з історією учня і кнопкою запису.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Крок 4. Запис на дзвінок</h3>
+      <p>Під відео — форма запису, як зараз на сайті. Різниця в тому, хто записується: людина вже знає тебе, бачила кейс і знає, що навчання коштує від 500 €. Кому це зовсім не по кишені — просто не запишеться, і ти не витрачаєш на нього час.</p>
+    </div>
+    <div class="card">
+      <h3>Крок 5. Дзвінок — коротший і з чіткою кінцівкою</h3>
+      <p>Платформу і програму людина вже бачила у відео. Тому на дзвінку ти говориш про неї, а не про курс. Структура — нижче.</p>
+    </div>
+    <div class="card">
+      <h3>Крок 6. Повідомлення після дзвінка і нагадування</h3>
+      <p>Одразу після дзвінка — підсумок з ціною, бонусом і терміном. Потім два нагадування за графіком. Шаблони — нижче.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <span class="kicker">Дзвінок</span>
+  <h2>Як проходить дзвінок тепер</h2>
+  <div class="card" style="gap:0;padding-block:6px">
+    <div class="stage"><span class="t">0–2 хв</span><div>
+      <h3>Знайомство</h3>
+      <p>Привіталась, подякувала, що подивились відео. Спитай, що найбільше зачепило.</p>
+    </div></div>
+    <div class="stage"><span class="t">2–9 хв</span><div>
+      <h3>Питання про людину — найважливіша частина</h3>
+      <ul class="dots">
+        <li>Чим ви зараз займаєтесь?</li>
+        <li>Чому дивитесь у бік логістики? Що хочете змінити?</li>
+        <li>Скільки часу на тиждень можете вчитися?</li>
+        <li>Чого найбільше боїтесь, коли думаєте про нову професію?</li>
+      </ul>
+      <p>Слухай і запам'ятовуй слова людини — вони знадобляться в кінці.</p>
+    </div></div>
+    <div class="stage"><span class="t">9–12 хв</span><div>
+      <h3>Відповідь на її страх</h3>
+      <p>Тільки на той, який вона назвала. Якщо це «чи знайду роботу» — чесно: гарантій не дає ніхто, але ось що є в курсі для роботи, і ось історія учня.</p>
+    </div></div>
+    <div class="stage"><span class="t">12–15 хв</span><div>
+      <h3>Два формати і твоя порада</h3>
+      <p>Коротко про Самостійний (500 €) та Індивідуальний (900 €), розстрочка двома платежами. І одразу порада одного формату:</p>
+      <div class="say"><b>Можна сказати так</b>«З того, що ви розповіли — [повтори ціль її словами] — я б вам радила Індивідуальний, тому що [причина].»</div>
+    </div></div>
+    <div class="stage"><span class="t">15–17 хв</span><div>
+      <h3>Бонус, термін і питання</h3>
+      <div class="say"><b>Можна сказати так</b>«Якщо забронюєте місце протягом 48 годин, я додам [бонус]. Для броні достатньо передоплати 100 €, а почати можна, коли вам зручно. Що скажете?»</div>
+      <p><b>Після «Що скажете?» мовчи.</b> Першою має заговорити людина. Пауза може бути довгою — це нормально.</p>
+    </div></div>
+    <div class="stage"><span class="t">Якщо</span><div>
+      <h3>Людина каже «я подумаю»</h3>
+      <div class="say"><b>Можна сказати так</b>«Звісно, подумайте. А що саме вас зупиняє — вартість, час чи страх, що не вийде? Можливо, я зможу щось підказати.»</div>
+      <p>Відповідь людини — це справжнє заперечення. На нього й відповідаєш (готові відповіді — нижче).</p>
+    </div></div>
+  </div>
+</section>
+
+<section>
+  <span class="kicker">Після дзвінка</span>
+  <h2>Повідомлення і два нагадування</h2>
+  <p>Усі повідомлення — в той чат, де ви листувались до дзвінка (директ, Telegram або Viber), а не в чат відеодзвінка.</p>
+  <div class="list">
+    <div class="card">
+      <h3>Одразу після дзвінка</h3>
+<pre class="msg">{ім'я}, дякую за розмову, було дуже приємно 🙂
+Як і обіцяла, коротко:
+
+🔹 Самостійний — 8 модулів, презентації, домашні і 2 групові дзвінки. 500 €
+🔸 Індивідуальний — те саме + 6 особистих дзвінків, перевірка кожного домашнього, розбір резюме і пробна співбесіда. 900 €
+💳 Можна двома платежами.
+
+🎁 Якщо бронюєте місце до [день, час], додаю [бонус].
+Для броні достатньо передоплати 100 €.
+
+Який формат вам ближчий?</pre>
+    </div>
+    <div class="two">
+      <div class="card">
+        <h3>Через 24 години, якщо мовчить</h3>
+<pre class="msg">{ім'я}, вітаю! Як вам наша розмова? 🙂
+Нагадую: бонус діє до завтра, до [час]. Якщо є питання щодо формату чи оплати — пишіть.</pre>
+      </div>
+      <div class="card">
+        <h3>За кілька годин до кінця</h3>
+<pre class="msg">{ім'я}, коротко: бонус діє ще до [час] сьогодні 🙂 Бронюємо місце?</pre>
+      </div>
+    </div>
+    <p>Після цього не пишемо. Якщо людина повернеться пізніше — ціна та сама, просто без бонусу.</p>
+  </div>
+</section>
+
+<section>
+  <span class="kicker">Ціна і термін</span>
+  <h2>Правила, щоб не підставитись</h2>
+  <div class="two">
+    <div class="card">
+      <h3>Робимо</h3>
+      <ul class="rules">
+        <li><span>Ціна завжди одна: 500 € і 900 €, можна двома платежами.</span></li>
+        <li><span>Бонус на 48 годин після дзвінка: додатковий дзвінок або розбір резюме. Ціна від нього не змінюється.</span></li>
+        <li><span>Чесні місця: на Індивідуальний береш стільки людей на місяць, скільки реально потягнеш.</span></li>
+        <li><span>Однакові цифри всюди: у відео, на сторінці, в повідомленнях.</span></li>
+        <li><span>Що вже обіцяно — виконуємо: для тих, з ким ти говорила цього тижня, лишаються 400 / 700 €.</span></li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Не робимо</h3>
+      <ul class="rules no">
+        <li><span>Знижки із закресленою ціною: закон ЄС вимагає показувати найнижчу ціну за 30 днів, а таймери, що скидаються, люди помічають.</span></li>
+        <li><span>Продовження терміну «у виняток» — наступного разу 48 годин ніхто не сприйме всерйоз.</span></li>
+        <li><span>Обіцянки роботи і цифри заробітку.</span></li>
+        <li><span>Перепрошування за ціну.</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section>
+  <span class="kicker">Готові відповіді</span>
+  <h2>Чотири сумніви, які ми вже чули</h2>
+  <div class="list">
+    <div class="card">
+      <h3>«Дорого» / «А є розстрочка?»</h3>
+      <div class="say"><b>Відповідь</b>«Так, можна двома платежами: половина зараз — відкривається перша половина курсу, пройшли — оплачуєте другу. А щоб закріпити місце, достатньо 100 €.»</div>
+    </div>
+    <div class="card">
+      <h3>«А зворотного зв'язку немає?» / «А можна питати в чаті?»</h3>
+      <div class="say"><b>Відповідь</b>«А для вас важливо, щоб було кому поставити питання? Тоді вам якраз Індивідуальний: я перевіряю кожне домашнє і відповідаю в особистих. Він коштує 900 €, можна двома платежами. Оформлюємо?»</div>
+    </div>
+    <div class="card">
+      <h3>«Зараз немає часу» / «Я їду»</h3>
+      <div class="say"><b>Відповідь</b>«Розумію. Можна закріпити місце передоплатою 100 €, а почати, коли повернетесь. Бонус лишиться за вами.»</div>
+    </div>
+    <div class="card">
+      <h3>«А чи буду я працювати після курсу?»</h3>
+      <div class="say"><b>Відповідь</b>«Чесно: гарантію роботи не дає ніхто — ні курс, ні університет. Але я гарантую, що ви отримаєте всі знання, які потрібні на роботі, і я буду поруч. Є окремий модуль про роботу і співбесіду. А мій учень прийшов без досвіду і через два тижні після курсу вже працював — зараз у нього 20 водіїв.»</div>
+      <p class="example">Історію учня розповідаємо тільки з його дозволу.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <span class="kicker">Що змінюється для тебе</span>
+  <h2>Твоя роль</h2>
+  <div class="table">
+    <table>
+      <thead><tr><th>Зараз</th><th>Після запуску відео</th></tr></thead>
+      <tbody>
+        <tr><td>На дзвінку знайомишся, показуєш платформу і продаєш — усе за 20 хвилин</td><td>Знайомство і платформа вже у відео. На дзвінку — тільки людина і її рішення</td></tr>
+        <tr><td>Приходять усі, хто залишив заявку</td><td>Приходять ті, хто подивився відео і знає ціну</td></tr>
+        <tr><td>Щоразу сама вигадуєш, що відповісти на страхи</td><td>Готові відповіді на чотири головні сумніви</td></tr>
+        <tr><td>Після дзвінка — тарифи без терміну</td><td>Шаблон повідомлення з бонусом, терміном і питанням</td></tr>
+        <tr><td>Нагадування — коли згадаєш</td><td>Два нагадування за графіком: через 24 години і за кілька годин до кінця</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="todo">
+  <span class="kicker" style="color:inherit;opacity:.75">Що потрібно від тебе</span>
+  <h2>До суботи — <em>рішення</em>, у суботу — зйомка</h2>
+  <ol>
+    <li>Обрати бонус на 48 годин: що тобі не шкода дати (наприклад, один особистий дзвінок і розбір резюме).</li>
+    <li>Сказати, скільки людей на місяць ти реально можеш взяти на Індивідуальний.</li>
+    <li>Як чесно відповідати про мову: чи потрібна польська або німецька на старті.</li>
+    <li>Спитати в учня дозволу розповісти його історію у відео — письмово, хоч словом «так».</li>
+    <li>Записати екран: кабінет з модулями, біржа, CMR — можна будь-якого дня.</li>
+    <li>Скинути мені запис однієї консультації — послухаємо разом, де саме людина «зависає».</li>
+  </ol>
+  <p class="when">Субота: знімаємо відео за сценарієм, блоками, своїми словами.</p>
+</section>
+
+<p class="foot">Сценарій відео я підготувала окремо: 10 блоків, у кожному — думка і приклади фраз, без зубріння. Пройдемося по ньому разом перед суботою.</p>
+
+</div>
+</body>
+</html>
