@@ -613,6 +613,7 @@ input[type=range]::-moz-range-thumb{width:28px;height:28px;border-radius:50%;bac
 .story-ava{width:68px;height:68px;border-radius:50%;flex:none;display:grid;place-items:center;font-size:28px;font-weight:700;color:#fff;background:conic-gradient(from 210deg,var(--sky),var(--ios),var(--blue),var(--sky))}
 .story-who b{display:block;font-size:20px;letter-spacing:-.02em}
 .story-who small{color:var(--sky-l);font-size:14px}
+.story-ava img{width:100%;height:100%;border-radius:50%;object-fit:cover;display:block}
 .story-stars{color:#F2C94C;letter-spacing:3px;font-size:15px}
 .story-quote{font-family:var(--serif);font-style:italic;font-size:clamp(22px,2.3vw,30px);line-height:1.25;letter-spacing:-.02em}
 .story-chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:auto}
@@ -1420,7 +1421,7 @@ setTimeout(function () {
     <div class="story rv" style="margin-top:32px">
       <div class="story-side">
         <div class="story-who">
-          <span class="story-ava">С</span>
+          <span class="story-ava"><img src="img/vidhuk-serhii.jpg" alt="Сергій" width="68" height="68" loading="lazy"></span>
           <div><b>Сергій</b><small>Вроцлав · диспетчер у транспортній компанії</small></div>
         </div>
         <div class="story-stars">★★★★★</div>
@@ -1454,7 +1455,7 @@ setTimeout(function () {
     <div class="story rv" style="margin-top:32px">
       <div class="story-side">
         <div class="story-who">
-          <span class="story-ava">Н</span>
+          <span class="story-ava"><img src="img/vidhuk-nastia.jpg" alt="Настя" width="68" height="68" loading="lazy"></span>
           <div><b>Настя, 34</b><small>Чехія · мама в декреті · сімейна справа</small></div>
         </div>
         <div class="story-stars">★★★★★</div>
@@ -1513,7 +1514,7 @@ setTimeout(function () {
 <div class="smodal" id="smodal-serg" role="dialog" aria-modal="true" aria-label="Історія Сергія">
   <div class="smodal-box">
     <div class="smodal-top">
-      <div style="display:flex;align-items:center;gap:12px"><span class="story-ava" style="width:46px;height:46px;font-size:20px">С</span><div><b>Сергій · Вроцлав</b><small>Відгук про навчання з Веронікою</small></div></div>
+      <div style="display:flex;align-items:center;gap:12px"><span class="story-ava" style="width:46px;height:46px;font-size:20px"><img src="img/vidhuk-serhii.jpg" alt="Сергій" width="68" height="68" loading="lazy"></span><div><b>Сергій · Вроцлав</b><small>Відгук про навчання з Веронікою</small></div></div>
       <button type="button" class="g-close" data-sclose aria-label="Закрити">×</button>
     </div>
     <div class="smodal-body">
@@ -1534,7 +1535,7 @@ setTimeout(function () {
 <div class="smodal" id="smodal-nastia" role="dialog" aria-modal="true" aria-label="Історія Насті">
   <div class="smodal-box">
     <div class="smodal-top">
-      <div style="display:flex;align-items:center;gap:12px"><span class="story-ava" style="width:46px;height:46px;font-size:20px">Н</span><div><b>Настя, 34 · Чехія</b><small>Відгук про навчання з Веронікою</small></div></div>
+      <div style="display:flex;align-items:center;gap:12px"><span class="story-ava" style="width:46px;height:46px;font-size:20px"><img src="img/vidhuk-nastia.jpg" alt="Настя" width="68" height="68" loading="lazy"></span><div><b>Настя, 34 · Чехія</b><small>Відгук про навчання з Веронікою</small></div></div>
       <button type="button" class="g-close" data-sclose aria-label="Закрити">×</button>
     </div>
     <div class="smodal-body">
