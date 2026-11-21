@@ -193,7 +193,7 @@ h2.sec{font-size:clamp(21px,5vw,27px);margin:40px 0 4px}
 <script>
 (function(){
   var KEY='vl-rilsy-week';
-  var rs=[].slice.call(document.querySelectorAll('.reel')), st={};
+  var rs=[].slice.call(document.querySelectorAll('.reel[data-r]')), st={};
   try{st=JSON.parse(localStorage.getItem(KEY)||'{}')}catch(e){}
   function upd(){
     var n=rs.filter(function(r){return r.classList.contains('done')}).length;
