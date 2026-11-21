@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Рилси на тиждень | Veronika Logistics</title>
+<meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
+<meta name="googlebot" content="noindex, nofollow">
+<meta name="referrer" content="no-referrer">
+<meta name="theme-color" content="#EEF2F5">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@1,400;1,500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#EEF2F5; --paper:#F8FAFC; --white:#fff;
+  --ink:#14232E; --muted:#546473; --line:rgba(20,35,46,.12);
+  --forest:#244A5E; --forest-d:#17313F;
+  --blue:#3E6E91; --sky-l:#CFE0EF; --ice:#E3ECF4; --sage:#E7EBD6; --sage-d:#5E6A36; --amber:#F8E8CF; --amber-d:#8A5410;
+  --ios:#34C759; --r:22px; --wrap:720px;
+  --serif:'Playfair Display',Georgia,serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Manrope',system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden;padding-bottom:60px}
+button{font:inherit;color:inherit}
+a{color:var(--blue)}
+em{font-family:var(--serif);font-style:italic;font-weight:400;letter-spacing:-.02em}
+.wrap{max-width:var(--wrap);margin:0 auto;padding:0 max(16px,env(safe-area-inset-left,0px))}
+h1,h2,h3{font-weight:700;letter-spacing:-.03em;line-height:1.15}
+.hero{padding:32px 0 6px}
+.label{display:inline-flex;align-items:center;gap:8px;padding:6px 12px 6px 9px;border-radius:999px;background:var(--white);border:1px solid var(--line);font-size:11.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--blue)}
+.label::before{content:"";width:7px;height:7px;border-radius:50%;background:currentColor}
+.hero h1{font-size:clamp(30px,7.4vw,44px);margin:14px 0 10px}
+.hero h1 em{color:var(--blue)}
+.hero p{color:var(--muted);font-size:16px}
+.prog{position:sticky;top:0;z-index:5;display:flex;align-items:center;gap:10px;margin-top:20px;background:var(--white);border:1px solid var(--line);border-radius:999px;padding:10px 16px}
+.prog .track{flex:1;height:8px;border-radius:99px;background:var(--ice);overflow:hidden}
+.prog .track i{display:block;height:100%;width:0;background:var(--ios);border-radius:99px;transition:width .4s}
+.prog b{font-size:13px;font-weight:800;color:var(--forest);white-space:nowrap}
+.note{margin-top:14px;background:var(--forest-d);color:#fff;border-radius:var(--r);padding:16px 18px;display:grid;gap:8px}
+.note b{font-size:11.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--sky-l)}
+.note p{color:#DCE6EE;font-size:15px}
+.reel{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);padding:18px;margin-top:22px;display:grid;gap:12px;transition:background .3s,border-color .3s}
+.reel.done{background:#F1F8F2;border-color:rgba(52,199,89,.45)}
+.reel .top{display:flex;justify-content:space-between;gap:12px;align-items:baseline;flex-wrap:wrap}
+.reel h2{font-size:21px}
+.reel h2 small{display:block;font-size:12px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:4px}
+.tags{display:flex;flex-wrap:wrap;gap:6px}
+.tag{font-size:12.5px;font-weight:700;padding:5px 10px;border-radius:999px;background:var(--white);border:1px solid var(--line)}
+.tag.kw{background:var(--forest-d);color:#fff;border-color:var(--forest-d)}
+.why{font-size:14.5px;color:var(--muted)}
+.rows{display:grid;gap:8px}
+.row{display:grid;grid-template-columns:58px 1fr;gap:12px;background:var(--white);border:1px solid var(--line);border-radius:14px;padding:12px 14px}
+.row .t{font-size:12.5px;font-weight:800;color:var(--blue);font-variant-numeric:tabular-nums;padding-top:2px}
+.row .say{font-size:16px}
+.row .shot{font-size:13.5px;color:var(--muted);margin-top:6px}
+.row .shot::before{content:"🎬 "}
+.row>div{min-width:0}
+.box{border-radius:14px;padding:10px 14px;font-size:14.5px}
+.box b{display:block;font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;margin-bottom:4px}
+.ins{background:var(--sage)} .ins b{color:var(--sage-d)}
+.dec{background:var(--amber)} .dec b{color:var(--amber-d)}
+.cap{background:var(--white);border:1px solid var(--line);border-radius:14px;padding:12px 14px;font-size:15px;white-space:pre-line}
+.cap b{display:block;font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--blue);margin-bottom:6px}
+.acts{display:flex;flex-wrap:wrap;gap:8px}
+.btn{border:0;cursor:pointer;background:var(--forest-d);color:#fff;font-size:14px;font-weight:700;padding:10px 18px;border-radius:999px;text-decoration:none;display:inline-flex;align-items:center;gap:6px}
+.btn.ghost{background:var(--white);color:var(--forest-d);border:1px solid var(--line)}
+.btn.ok,.reel.done .done-btn{background:var(--ios)}
+.check{background:var(--white);border:1px solid var(--line);border-radius:var(--r);padding:16px 18px;margin-top:12px}
+.check li{list-style:none;display:grid;grid-template-columns:24px 1fr;gap:8px;padding:6px 0;font-size:15.5px}
+.check li::before{content:"□";color:var(--blue);font-weight:800}
+h2.sec{font-size:clamp(21px,5vw,27px);margin:40px 0 4px}
+.ft{margin-top:40px;color:var(--muted);font-size:13.5px}
+@media (max-width:420px){.row{grid-template-columns:1fr;gap:4px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="hero">
+  <span class="label">Рилси · наступний тиждень</span>
+  <h1>Три рилси, <em>які знімаємо</em></h1>
+  <p>Вероніко, тут усі три рилси на тиждень: що говорити, що в кадрі і що підготувати. Знімаємо в той самий день, що й відео-урок.</p>
+  <div class="prog"><div class="track"><i id="bar"></i></div><b id="cnt">0 з 3</b></div>
+  <div class="note">
+    <b>Як знімати</b>
+    <p>Говори своїми словами, текст — тільки підказка. Перша фраза кожного рилса — найважливіша: зніми її 2–3 рази з різною інтонацією, я виберу найкращу.</p>
+    <p>Знімай вертикально, при денному світлі, в тому самому одязі, що й урок. Кадри «🎬» — це перебивки: можна зняти окремо, хоч на телефон.</p>
+  </div>
+</header>
+
+<section class="reel" data-r="1">
+  <div class="top"><h2><small>Рилс 1</small>Тест «Чи підходить вам логістика»</h2></div>
+  <div class="tags"><span class="tag">≈ 30 сек</span><span class="tag kw">кодове слово: тест</span></div>
+  <p class="why">Веде людей у тест, а з тесту — на розмову з тобою. Сценарій уже готовий на окремій сторінці разом із 4 сторіс.</p>
+  <div class="acts">
+    <a class="btn ghost" href="https://veronika-logistics.com/test-logista-c2920a8fd11f1e0c4fc93d2e16de5075/" target="_blank" rel="noopener">Відкрити сценарій тесту ↗</a>
+    <button class="btn done-btn" type="button">Знято</button>
+  </div>
+</section>
+
+<section class="reel" data-r="2">
+  <div class="top"><h2><small>Рилс 2</small>«Пояснюю роботу логіста на одному яблуці»</h2></div>
+  <div class="tags"><span class="tag">30–40 сек</span><span class="tag kw">кодове слово: логістика</span></div>
+  <p class="why">Пояснює професію простими словами і веде на новий безкоштовний відео-урок.</p>
+  <div class="rows">
+    <div class="row"><span class="t">0–3 с</span><div><p class="say">«Пояснюю роботу логіста на одному яблуці.»</p><p class="shot">Яблуко в руці, крупно.</p></div></div>
+    <div class="row"><span class="t">3–12 с</span><div><p class="say">«Фермер у Польщі виростив яблука. Супермаркет у Німеччині хоче їх продати. Між ними — 800 кілометрів.»</p><p class="shot">Яблуко на карті Європи — на столі або я додам графікою.</p></div></div>
+    <div class="row"><span class="t">12–25 с</span><div><p class="say">«Хто знаходить машину? Хто домовляється про ціну, перевіряє документи, планує, де водій відпочине, і стежить, щоб усе приїхало вчасно? Логіст.»</p><p class="shot">Швидкі перебивки: біржа на ноутбуці, CMR, фура.</p></div></div>
+    <div class="row"><span class="t">25–32 с</span><div><p class="say">«Ви не возите вантаж самі — ви організовуєте весь процес головою.»</p><p class="shot">Ти відкушуєш яблуко 🙂</p></div></div>
+    <div class="row"><span class="t">32–40 с</span><div><p class="say">«Хочете побачити, як це виглядає наживо? Напишіть “логістика” — надішлю безкоштовний урок, де я покажу реальний рейс зі свого екрана.»</p><p class="shot">Дивишся в камеру, спокійно.</p></div></div>
+  </div>
+  <div class="box ins"><b>Підготувати</b>Одне гарне яблуко. Перебивки: біржа на ноутбуці, CMR, фура (можна з того, що знімаєш для уроку).</div>
+  <div class="cap" id="cap2"><b>Підпис під рилс</b>Логіст не возить вантаж — він організовує весь шлях: знаходить машину, домовляється про ціну, перевіряє документи і стежить, щоб усе приїхало вчасно 🍎
+
+Хочете побачити, як це виглядає на реальному рейсі? Напишіть «логістика» — надішлю безкоштовний урок у директ.</div>
+  <div class="acts">
+    <button class="btn ghost copy" type="button" data-copy="cap2">Скопіювати підпис</button>
+    <button class="btn done-btn" type="button">Знято</button>
+  </div>
+</section>
+
+<section class="reel" data-r="3">
+  <div class="top"><h2><small>Рилс 3</small>«Апельсини їхали 2 500 км. Скільки з їхньої ціни — доставка?»</h2></div>
+  <div class="tags"><span class="tag">35–40 сек</span><span class="tag kw">кодове слово: логістика</span></div>
+  <p class="why">Рилс на широку аудиторію: ціни в магазині бачив кожен, а відповідь на загадку — робота логіста.</p>
+  <div class="rows">
+    <div class="row"><span class="t">0–3 с</span><div><p class="say">«Ці апельсини проїхали 2 500 кілометрів з Іспанії. Як думаєте, скільки з їхньої ціни — це доставка?»</p><p class="shot">Тримаєш сітку апельсинів, крупно етикетка «Hiszpania».</p></div></div>
+    <div class="row"><span class="t">3–10 с</span><div><p class="say">«Здається, що доставка через пів Європи має коштувати купу грошей. Але ні.»</p><p class="shot">Карта: Іспанія → Польща (я додам графікою).</p></div></div>
+    <div class="row"><span class="t">10–22 с</span><div><p class="say">«Одна фура везе понад 20 тонн. Якщо поділити ціну рейсу на кожен кілограм — виходять копійки, приблизно 20 центів.»</p><p class="shot">Фура-рефрижератор на трасі, на екрані «20 тонн → ≈ 20 центів за кг».</p></div></div>
+    <div class="row"><span class="t">22–30 с</span><div><p class="say">«А ще хороший логіст ніколи не відправляє фуру назад порожньою. Привезла апельсини — забирає з Польщі вже інший вантаж. Так доставка стає ще дешевшою.»</p><p class="shot">Анімація: фура туди з апельсинами, назад з іншим вантажем — зроблю я.</p></div></div>
+    <div class="row"><span class="t">30–38 с</span><div><p class="say">«Отак логістика впливає на ціни у вашому кошику. Хочете зрозуміти, як працює ця професія, — напишіть “логістика”, надішлю безкоштовний урок.»</p><p class="shot">Ти чистиш апельсин, дивишся в камеру.</p></div></div>
+  </div>
+  <div class="box ins"><b>Підготувати</b>Сітку апельсинів з етикеткою «Hiszpania». Якщо в магазині тільки з Єгипту чи Марокко — бери їх і напиши мені, я поміняю країну і кілометри в тексті.</div>
+  <div class="box dec"><b>Перевір цифру</b>«Приблизно 20 центів за кілограм» — це прикидка: рейс Іспанія → Польща на рефрижераторі ділимо на 20+ тонн. Ти знаєш реальні ставки — якщо в тебе інша цифра, скажи її у відео.</div>
+  <div class="cap" id="cap3"><b>Підпис під рилс</b>Апельсини з Іспанії проїхали 2 500 км, а доставка — лише копійки з кожного кілограма. Секрет — у фурі на 20+ тонн і в логісті, який ніколи не відправляє її назад порожньою 🍊
+
+Хочете зрозуміти, як працює ця професія? Напишіть «логістика» — урок прийде в директ.</div>
+  <div class="acts">
+    <button class="btn ghost copy" type="button" data-copy="cap3">Скопіювати підпис</button>
+    <button class="btn done-btn" type="button">Знято</button>
+  </div>
+</section>
+
+<h2 class="sec">Що взяти на зйомку</h2>
+<ul class="check">
+  <li>Яблуко</li>
+  <li>Сітку апельсинів з етикеткою країни</li>
+  <li>Ноутбук з відкритою біржею (для перебивок)</li>
+  <li>Штатив, світло з вікна, петличку</li>
+</ul>
+
+<p class="ft">Veronika Logistics · внутрішня сторінка, не пересилайте посилання.</p>
+</div>
+<script>
+(function(){
+  var KEY='vl-rilsy-week';
+  var rs=[].slice.call(document.querySelectorAll('.reel')), st={};
+  try{st=JSON.parse(localStorage.getItem(KEY)||'{}')}catch(e){}
+  function upd(){
+    var n=rs.filter(function(r){return r.classList.contains('done')}).length;
+    document.getElementById('bar').style.width=(n/rs.length*100)+'%';
+    document.getElementById('cnt').textContent=n+' з '+rs.length;
+  }
+  rs.forEach(function(r){
+    var id=r.getAttribute('data-r'), b=r.querySelector('.done-btn');
+    if(st[id]){r.classList.add('done');b.textContent='Знято ✓'}
+    b.addEventListener('click',function(){
+      var on=!r.classList.contains('done');
+      r.classList.toggle('done',on); b.textContent=on?'Знято ✓':'Знято';
+      st[id]=on; try{localStorage.setItem(KEY,JSON.stringify(st))}catch(e){}
+      upd();
+    });
+  });
+  [].forEach.call(document.querySelectorAll('.copy'),function(b){
+    b.addEventListener('click',function(){
+      var el=document.getElementById(b.getAttribute('data-copy'));
+      var txt=el.innerText.replace(/^Підпис під рилс\s*/,'').trim();
+      var done=function(){b.classList.add('ok');b.textContent='Скопійовано ✓';setTimeout(function(){b.classList.remove('ok');b.textContent='Скопіювати підпис'},2000)};
+      if(navigator.clipboard){navigator.clipboard.writeText(txt).then(done,function(){})}
+    });
+  });
+  upd();
+})();
+</script>
+</body>
+</html>
