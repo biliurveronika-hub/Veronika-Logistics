@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Перезйомка відеоуроку | Veronika Logistics</title>
+<meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
+<meta name="googlebot" content="noindex, nofollow">
+<meta name="referrer" content="no-referrer">
+<meta name="theme-color" content="#EEF2F5">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@1,400;1,500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#EEF2F5; --paper:#F8FAFC; --white:#fff;
+  --ink:#14232E; --muted:#546473; --line:rgba(20,35,46,.12);
+  --forest:#244A5E; --forest-d:#17313F;
+  --blue:#3E6E91; --sky-l:#CFE0EF; --ice:#E3ECF4; --sage:#E7EBD6; --sage-d:#5E6A36; --amber:#F8E8CF; --amber-d:#8A5410;
+  --ios:#34C759; --r:22px; --wrap:720px;
+  --serif:'Playfair Display',Georgia,serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Manrope',system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden;padding-bottom:60px}
+button,input{font:inherit;color:inherit}
+a{color:var(--blue)}
+em{font-family:var(--serif);font-style:italic;font-weight:400;letter-spacing:-.02em}
+.wrap{max-width:var(--wrap);margin:0 auto;padding:0 max(16px,env(safe-area-inset-left,0px))}
+h1,h2,h3{font-weight:700;letter-spacing:-.03em;line-height:1.15}
+.hero{padding:32px 0 6px}
+.label{display:inline-flex;align-items:center;gap:8px;padding:6px 12px 6px 9px;border-radius:999px;background:var(--white);border:1px solid var(--line);font-size:11.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--blue)}
+.label::before{content:"";width:7px;height:7px;border-radius:50%;background:currentColor}
+.hero h1{font-size:clamp(30px,7.4vw,44px);margin:14px 0 10px}
+.hero h1 em{color:var(--blue)}
+.hero p{color:var(--muted);font-size:16px}
+.prog{position:sticky;top:0;z-index:5;display:flex;align-items:center;gap:10px;margin-top:20px;background:var(--white);border:1px solid var(--line);border-radius:999px;padding:10px 16px}
+.prog .track{flex:1;height:8px;border-radius:99px;background:var(--ice);overflow:hidden}
+.prog .track i{display:block;height:100%;width:0;background:var(--ios);border-radius:99px;transition:width .4s}
+.prog b{font-size:13px;font-weight:800;color:var(--forest);white-space:nowrap}
+.note{margin-top:14px;background:var(--forest-d);color:#fff;border-radius:var(--r);padding:16px 18px;display:grid;gap:8px}
+.note b{font-size:11.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--sky-l)}
+.note p{color:#DCE6EE;font-size:15px}
+.reel{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);padding:18px;margin-top:16px;display:grid;gap:12px;transition:background .3s,border-color .3s}
+.reel.done{background:#F1F8F2;border-color:rgba(52,199,89,.45)}
+.reel h2{font-size:21px}
+.reel h2 small{display:block;font-size:12px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:4px}
+.say{display:grid;gap:10px;font-size:16px}
+.box{border-radius:14px;padding:12px 14px;font-size:15px}
+.box b{display:block;font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;margin-bottom:4px}
+.ins{background:var(--sage)} .ins b{color:var(--sage-d)}
+.dec{background:var(--amber)} .dec b{color:var(--amber-d)}
+.acts{display:flex;flex-wrap:wrap;gap:8px}
+.btn{border:0;cursor:pointer;background:var(--forest-d);color:#fff;font-size:14px;font-weight:700;padding:10px 18px;border-radius:999px;text-decoration:none;display:inline-flex;align-items:center;gap:6px}
+.btn.ghost{background:var(--white);color:var(--forest-d);border:1px solid var(--line)}
+.btn.big{font-size:16px;padding:14px 24px}
+.btn.ok,.reel.done .done-btn{background:var(--ios)}
+.step{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);padding:18px;margin-top:14px;display:grid;gap:10px}
+.step h3{font-size:19px;display:flex;gap:10px;align-items:center}
+.step h3 .n{flex:none;width:30px;height:30px;border-radius:50%;background:var(--blue);color:#fff;display:grid;place-items:center;font-size:14px;font-weight:800}
+.step ul{display:grid;gap:7px;padding-left:2px}
+.step li{list-style:none;display:grid;grid-template-columns:18px 1fr;gap:8px;font-size:15.5px}
+.step li::before{content:"•";color:var(--blue);font-weight:800}
+.step li b{font-weight:800}
+.pic{border-radius:14px;overflow:hidden;border:1px solid var(--line);position:relative}
+.pic img{display:block;width:100%;height:auto}
+.pic span{position:absolute;left:10px;top:10px;background:#B3261E;color:#fff;font-size:12px;font-weight:800;padding:5px 10px;border-radius:99px}
+.files{display:flex;flex-wrap:wrap;gap:6px}
+.files span{font-size:13.5px;font-weight:700;padding:5px 10px;border-radius:999px;background:var(--white);border:1px solid var(--line)}
+h2.sec{font-size:clamp(21px,5vw,27px);margin:40px 0 4px}
+h3.chap{font-size:13px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--blue);margin:28px 0 -4px}
+.ft{margin-top:40px;color:var(--muted);font-size:13.5px}
+/* суфлер */
+#tp{position:fixed;inset:0;z-index:50;background:#000;color:#fff;display:none}
+#tp.on{display:block}
+#tpView{position:absolute;inset:0;overflow:hidden}
+#tpText{position:absolute;left:50%;transform:translateX(-50%);width:min(var(--tpw,62%),1100px);top:0;font-size:var(--tps,52px);line-height:1.45;font-weight:600;padding:12vh 0 90vh}
+#tpText h4{font-size:.45em;letter-spacing:.14em;text-transform:uppercase;color:#7FA6C6;margin:1.6em 0 .5em;font-weight:800}
+#tpText p{margin:0 0 .7em}
+#tpText.mirror{transform:translateX(-50%) scaleX(-1)}
+#tpBar{position:absolute;left:0;right:0;bottom:0;display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:center;padding:12px;background:rgba(20,20,20,.92);font-size:14px;transition:opacity .3s}
+#tp.playing #tpBar{opacity:.08}
+#tp.playing #tpBar:hover{opacity:1}
+#tpBar button{border:0;cursor:pointer;background:#2a2a2a;color:#fff;padding:9px 14px;border-radius:99px;font-weight:700}
+#tpBar button.main{background:var(--ios)}
+#tpBar label{display:flex;align-items:center;gap:6px;color:#bbb}
+#tpBar input[type=range]{width:110px}
+#tpEye{position:absolute;left:0;right:0;top:12vh;height:0;border-top:2px dashed rgba(127,166,198,.35);pointer-events:none}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="hero">
+  <span class="label">Зйомка · відеоурок</span>
+  <h1>Перезнімаємо <em>відеоурок</em></h1>
+  <p>Вероніко, перші блоки вже змонтовані, і виглядає круто 🔥 Але урок перезнімаємо повністю, від першого до останнього блоку: так він буде цілісним, а ти в кадрі виглядатимеш набагато краще. Тут усе по кроках: як поставити камеру, як налаштувати айфон і весь текст із суфлером.</p>
+  <div class="prog"><div class="track"><i id="bar"></i></div><b id="cnt">0 з 16</b></div>
+  <div class="note">
+    <b>Головне</b>
+    <p>Камера на рівні очей, HDR вимкнений, текст — у суфлері на ноутбуці під камерою. Знімаєш блоками, по одному, і після кожного тиснеш «Знято».</p>
+  </div>
+</header>
+
+<h2 class="sec">Перед зйомкою</h2>
+
+<div class="step">
+  <h3><span class="n">1</span>Камера — на рівні очей ❗</h3>
+  <div class="pic"><img src="bulo.jpg" alt="Минула зйомка: камера зверху і далеко" width="720" height="406" loading="lazy"><span>Минулого разу</span></div>
+  <p>Телефон стояв вище за тебе і далеко: видно весь стіл, кришку ноутбука, а над головою пів кімнати. Так ти виглядаєш меншою, і пропадає контакт із глядачем.</p>
+  <ul>
+    <li><span>Об'єктив — <b>рівно на рівні очей</b>, можна на 2–3 см вище, не більше</span></li>
+    <li><span>Штатив ближче: <b>1,2–1,5 м</b> від тебе. Сідай по центру кадру</span></li>
+    <li><span>Кадр горизонтальний: від макушки до пояса, над головою — долоня простору</span></li>
+    <li><span>Штатив не дістає — підклади під нього книжки або коробки на столі</span></li>
+  </ul>
+</div>
+
+<div class="step">
+  <h3><span class="n">2</span>Налаштування айфона</h3>
+  <ul>
+    <li><span>Налаштування → Камера → Запис відео → <b>4K, 30 к/с</b></span></li>
+    <li><span>Там само <b>вимкни «HDR-відео»</b>: через нього кольори після монтажу виходять бліді</span></li>
+    <li><span>Знімай на <b>основну (задню) камеру</b>, не на фронталку</span></li>
+    <li><span>Перед записом протри об'єктив</span></li>
+    <li><span>У кадрі затисни пальцем на своєму обличчі, поки не з'явиться <b>«Замок AE/AF»</b>: тоді яскравість і фокус не стрибатимуть</span></li>
+  </ul>
+</div>
+
+<div class="step">
+  <h3><span class="n">3</span>Світло і звук</h3>
+  <ul>
+    <li><span>Сідай <b>обличчям до вікна</b>, а не боком</span></li>
+    <li><span>Знімай удень, приблизно <b>з 11:00 до 15:00</b>, поки світло рівне</span></li>
+    <li><span>Петличка: перед стартом зніми 10 секунд пробного відео, переслухай і скинь мені. Перевір, що звук пише саме петличка</span></li>
+    <li><span>Увесь день той самий одяг і те саме місце: так блоки зберуться в одне відео</span></li>
+  </ul>
+</div>
+
+<div class="step">
+  <h3><span class="n">4</span>Суфлер — щоб не вчити текст</h3>
+  <p>Суфлер уже вбудований у цю сторінку. Відкрий її на MacBook, постав ноутбук <b>одразу під телефоном</b>, щоб погляд майже не втікав з камери, і натисни кнопку нижче.</p>
+  <ul>
+    <li><span><b>Пробіл</b> — пауза і старт, <b>↑ ↓</b> — швидкість, <b>← →</b> — попередній і наступний блок</span></li>
+    <li><span>Шрифт і ширину колонки підбери повзунками: колонка вужча — очі менше бігають</span></li>
+    <li><span>Читай рядок біля пунктирної лінії вгорі: вона найближче до камери</span></li>
+    <li><span>Перед кожним блоком прочитай його один раз уголос, а потім уже записуй. Текст — опора: якщо своїми словами виходить живіше, кажи своїми</span></li>
+  </ul>
+  <div class="acts"><button class="btn big prompt" type="button" data-b="1">▶ Відкрити суфлер</button></div>
+</div>
+
+<div class="step">
+  <h3><span class="n">5</span>Як знімати блоки</h3>
+  <ul>
+    <li><span><b>Один блок = один запис</b></span></li>
+    <li><span>На початку скажи номер: <b>«Блок вісім»</b>, потім пауза 2 секунди, і починай. Так я одразу знайду, де що</span></li>
+    <li><span>Збилась — зроби паузу і почни <b>речення</b> заново, не весь блок. Я все виріжу</span></li>
+    <li><span>В кінці блоку — 2 секунди тиші, дивишся в камеру</span></li>
+    <li><span>Блоки 9 і 13 теж просто говориш у камеру. Записи екрана, які ти вже скинула, підходять</span></li>
+  </ul>
+  <div class="box ins"><b>Якщо буде хвилинка</b>Дозапиши екран: zlecenie (замовлення) і як виглядає оплата за рейс. Цих кроків у записах поки немає, а в тексті блоку 9 вони є.</div>
+</div>
+
+<div class="step">
+  <h3><span class="n">6</span>Файли з минулої зйомки</h3>
+  <p>Блоків 8–16 я не отримала. У нумерації твоїх файлів є пропуски, глянь, будь ласка, що там, і скинь, якщо це урок:</p>
+  <div class="files"><span>IMG_4554–4557</span><span>IMG_4562–4563</span><span>IMG_4565–4574</span></div>
+</div>
+
+<div class="step">
+  <h3><span class="n">7</span>Як скидати</h3>
+  <ul>
+    <li><span>Як і минулого разу — <b>файлами</b>, а не відео, щоб не стискалось</span></li>
+    <li><span>Після зйомки напиши список: який номер IMG — який блок</span></li>
+  </ul>
+</div>
+
+<h2 class="sec">Текст уроку · 16 блоків</h2>
+<h3 class="chap">Частина 1 · знайомство, біль і нова можливість</h3><section class="reel blk" data-r="1">
+  <div class="top"><h2><small>Блок 1</small>Хук і обіцянка</h2></div>
+  <div class="say" id="b1"><p>Як за шість тижнів з нуля освоїти професію міжнародного логіста і вже через два тижні після навчання піти на першу співбесіду — без досвіду, без диплома логіста і без роботи руками.</p><p>У цьому відео я покажу вам повну карту шляху з п'яти кроків — від нуля до першої роботи. Проведу по одному реальному рейсу з мого екрана. Розповім, як мій учень з офіціанта став диспетчером на двадцять водіїв.</p><p>І в кінці скажу, як потрапити до мене на безкоштовний розбір, де ми складемо ваш особистий план.</p></div>
+  <div class="acts">
+    <button class="btn ghost prompt" type="button" data-b="1">Суфлер з цього блоку</button>
+    <button class="btn done-btn" type="button">Знято</button>
+  </div>
+</section><section class="reel blk" data-r="2">
+  <div class="top"><h2><small>Блок 2</small>Докази</h2></div>
+  <div class="say" id="b2"><p>Це не теорія. Я сама працюю міжнародним логістом: шукаю вантажі і працюю з водіями. І вже навчила цієї професії понад п'ятнадцять людей особисто.</p><p>Сергій до курсу був офіціантом. Через два тижні після навчання пройшов співбесіду, а зараз працює у великій транспортній компанії у Вроцлаві.</p><p>Настя — мама в декреті з Чехії. Вже взяла свій перший вантаж і каже, що це як виграти в лотерею.</p><p>Богдана разом із чоловіком веде власну транспортну компанію: замінила йому і логіста, і бухгалтера.</p><p>Про кожного розповім детальніше.</p></div>
+  <div class="acts">
+    <button class="btn ghost prompt" type="button" data-b="2">Суфлер з цього блоку</button>
+    <button class="btn done-btn" type="button">Знято</button>
+  </div>
+</section><section class="reel blk" data-r="3">
+  <div class="top"><h2><small>Блок 3</small>Проблема</h2></div>
+  <div class="say" id="b3"><p>У вас є робота, і звільнятися страшно, бо це хоч якась стабільність.</p><p>Але щодня одне й те саме: завод, склад, ресторан, нічні зміни. Ви втомлюєтесь, а розвитку — нуль.</p><p>А якщо ви в декреті — ви вже розумієте, що на нічні зміни не повернетесь, бо дитина потребує маму.</p><p>І найнебезпечніше — що так може минути і рік, і три. Думка «колись потім» перетворюється на «вже пізно».</p></div>
+  <div class="acts">
+    <button class="btn ghost prompt" type="button" data-b="3">Суфлер з цього блоку</button>
+    <button class="btn done-btn" type="button">Знято</button>
+  </div>
+</section><section class="reel blk" data-r="4">
+  <div class="top"><h2><small>Блок 4</small>Нова можливість</h2></div>
+  <div class="say" id="b4"><p>А тепер уявіть роботу, де цінують голову, а не руки. Де ви сидите за ноутбуком — вдома чи в офісі — і керуєте рухом вантажів по всій Європі.</p><p>Логіст не водить фуру. Він знаходить вантаж, домовляється про ціну, планує маршрут і веде водія.</p><p>І поки люди купують товари, ця робота потрібна завжди. А логістів, які справді розуміють процес, зараз дуже не вистачає.</p></div>
+  <div class="acts">
+    <button class="btn ghost prompt" type="button" data-b="4">Суфлер з цього блоку</button>
+    <button class="btn done-btn" type="button">Знято</button>
+  </div>
+</section><section class="reel blk" data-r="5">
+  <div class="top"><h2><small>Блок 5</small>Кому підходить</h2></div>
+  <div class="say" id="b5"><p>Це для вас, якщо ви працюєте за кордоном на заводі, складі чи в ресторані і хочете роботу з ноутбука.</p><p>Якщо ви мама в декреті і шукаєте професію з нормальним графіком, без нічних змін.</p><p>Якщо ви водій і хочете пересісти з-за керма за ноутбук — самі складати маршрути.</p><p>Або якщо у вашої родини є бізнес перевезень, і ви хочете в ньому працювати.</p></div>
+  <div class="acts">
+    <button class="btn ghost prompt" type="button" data-b="5">Суфлер з цього блоку</button>
+    <button class="btn done-btn" type="button">Знято</button>
+  </div>
+</section><section class="reel blk" data-r="6">
+  <div class="top"><h2><small>Блок 6</small>Гачок і перший заклик</h2></div>
+  <div class="say" id="b6"><p>Далі я покажу вам повну карту шляху з п'яти кроків і реальний рейс зі свого екрана. Додивіться — це найцінніша частина.</p><p>А якщо вже зараз відчуваєте, що це про вас, — під відео є кнопка запису на безкоштовний розбір. Можна записатися, навіть не додивившись.</p></div>
+  <div class="acts">
+    <button class="btn ghost prompt" type="button" data-b="6">Суфлер з цього блоку</button>
+    <button class="btn done-btn" type="button">Знято</button>
+  </div>
+</section><section class="reel blk" data-r="7">
+  <div class="top"><h2><small>Блок 7</small>Моя історія</h2></div>
+  <div class="say" id="b7"><p>Я теж починала з нуля. Без досвіду, без знайомих у логістиці.</p><p>П'ять років навчалась у Польщі — бакалавр і магістр. А на першій роботі зрозуміла: половини того, що реально треба, в університеті не вчать.</p><p>Перші помилки з документами, перші невдалі рейси, незадоволені клієнти — все набивала сама.</p><p>Сьогодні я веду вантажі по всій Європі. І все, що набивала роками, зібрала в одну систему — щоб ви пройшли цей шлях за тижні, а не за роки.</p></div>
+  <div class="acts">
+    <button class="btn ghost prompt" type="button" data-b="7">Суфлер з цього блоку</button>
+    <button class="btn done-btn" type="button">Знято</button>
+  </div>
+</section><h3 class="chap">Частина 2 · карта шляху, рейс і кейси</h3><section class="reel blk" data-r="8">
+  <div class="top"><h2><small>Блок 8</small>Карта шляху: 5 кроків</h2></div>
+  <div class="say" id="b8"><p>Отже, п'ять кроків від нуля до першої роботи.</p><p>Крок перший. Зрозуміти, як влаштована логістика. Хто такий диспетчер, а хто спедитор. Які бувають машини і що в яку вміщається. На співбесіді про це питають — і саме на цьому сиплються.</p><p>Крок другий. Вивчити Європу очима логіста. Ключові дороги, платні дороги, регіони, звідки добре виїжджати, а куди краще не відправляти машину. Поштові індекси і ставки.</p><p>Крок третій. Час праці водія і тахограф. Помилка тут — це штраф для перевізника і ваша репутація.</p><p>Крок четвертий. Біржі вантажів і документи. Як знайти вантаж, домовитися про ціну, що перевірити в замовленні, як оформити CMR і довести рейс до оплати.</p><p>Крок п'ятий. Резюме, співбесіда і перша робота. Що писати в резюме, які питання ставлять і куди стукатися.</p><p>Пройшли ці п'ять кроків — і ви вже не «людина з вулиці», а спеціаліст, з яким є про що говорити на співбесіді.</p></div>
+  <div class="acts">
+    <button class="btn ghost prompt" type="button" data-b="8">Суфлер з цього блоку</button>
+    <button class="btn done-btn" type="button">Знято</button>
+  </div>
+</section><section class="reel blk" data-r="9">
+  <div class="top"><h2><small>Блок 9</small>Один рейс на екрані</h2></div>
+  <div class="say" id="b9"><p>Ось як це виглядає наживо.</p><p>Біржа вантажів — ось вантаж: звідки, куди, яка ставка. Прикидаю, чи він вигідний: рахую кілометри і ставку за кілометр.</p><p>Домовились — приходить замовлення, zlecenie. Перевіряю в ньому дати, адреси, ціну.</p><p>Водій завантажився — CMR. Розвантажились — документи і оплата.</p><p>Бачите? Це не магія, а зрозумілі кроки. І всьому цьому можна навчитися з нуля.</p></div>
+  <div class="acts">
+    <button class="btn ghost prompt" type="button" data-b="9">Суфлер з цього блоку</button>
+    <button class="btn done-btn" type="button">Знято</button>
+  </div>
+</section><section class="reel blk" data-r="10">
+  <div class="top"><h2><small>Блок 10</small>Кейси учнів</h2></div>
+  <div class="say" id="b10"><p>Сергій працював офіціантом у Польщі. Жодного досвіду в логістиці. Пройшов навчання за місяць, через два тижні пройшов співбесіду, а через місяць після курсу вже повноцінно працював. Зараз він диспетчер і відповідає за двадцять водіїв.</p><p>Настя — мама в декреті, живе в Чехії. До цього — завод, зміни по десять годин, нічні. Зараз вона на практиці і вже взяла перший вантаж. Каже, що це відчуття — як виграти в лотерею.</p><p>Богдана — юрист за освітою, працювала офіціанткою і косметологом. Зараз разом із чоловіком веде власну транспортну компанію: сама шукає вантажі і веде клієнтів.</p><p>Чесно: гарантію працевлаштування не дасть ніхто — ні курс, ні університет. Але кожен із них почав з нуля. Різниця лише в тому, що вони не відклали рішення.</p></div>
+  <div class="acts">
+    <button class="btn ghost prompt" type="button" data-b="10">Суфлер з цього блоку</button>
+    <button class="btn done-btn" type="button">Знято</button>
+  </div>
+</section><section class="reel blk" data-r="11">
+  <div class="top"><h2><small>Блок 11</small>Сумніви</h2></div>
+  <div class="say" id="b11"><p>«У мене немає досвіду». У жодного з моїх учнів його не було. Навчання починається з основ, а для документів є готові шаблони.</p><p>«Це складно». Ви щойно бачили: п'ять кроків і один рейс — і вже зрозуміло, як усе працює.</p><p>«Знайду все сам в інтернеті». У вас два шляхи. Довгий — роками збирати інформацію по шматочках і вчитися на власних штрафах. Або швидкий — пройти готову систему з людиною, яка щодня в цій роботі.</p><p>«Немає часу». Старт будь-коли, уроки можна дивитися з телефона у вільну хвилину, доступ до матеріалів — на рік.</p><p>І якщо ви вже бачите себе в цій професії — натисніть кнопку під відео і запишіться на розбір.</p></div>
+  <div class="acts">
+    <button class="btn ghost prompt" type="button" data-b="11">Суфлер з цього блоку</button>
+    <button class="btn done-btn" type="button">Знято</button>
+  </div>
+</section><h3 class="chap">Частина 3 · розбір, навчання і заклик</h3><section class="reel blk" data-r="12">
+  <div class="top"><h2><small>Блок 12</small>Безкоштовний розбір</h2></div>
+  <div class="say" id="b12"><p>Тепер про наступний крок. Я проводжу безкоштовний розбір — двадцять хвилин онлайн.</p><p>Ми розберемо вашу точку А: чим ви займаєтесь зараз, який у вас досвід, мова, скільки часу можете приділяти.</p><p>Я складу вам особистий план входу в логістику: з чого почати, на що звернути увагу, скільки часу це займе саме у вас.</p><p>І чесно скажу, чи вам це підходить. Якщо ні — так і скажу. Навіть якщо ви не підете на навчання, ви підете з розмови з чітким планом.</p></div>
+  <div class="acts">
+    <button class="btn ghost prompt" type="button" data-b="12">Суфлер з цього блоку</button>
+    <button class="btn done-btn" type="button">Знято</button>
+  </div>
+</section><section class="reel blk" data-r="13">
+  <div class="top"><h2><small>Блок 13</small>Що всередині навчання</h2></div>
+  <div class="say" id="b13"><p>Якщо на розборі ми зрозуміємо, що вам підходить, — ось що ви отримаєте.</p><p>Відеокурс з восьми модулів — усі п'ять кроків, які я показала, з презентаціями і домашніми завданнями на реальних маршрутах.</p><p>Бонуси. «Карти регіонів Європи» — де брати вантажі, а куди не їхати. «Готові шаблони документів» — zlecenie, CMR. «Секретні маршрути і дороги» — те, чого немає у відкритому доступі. «Відеоархів реальних рейсів» — завантаження, корки, поломки і що з цим робити.</p><p>І доступ до всього — на рік: можна повертатися до матеріалів скільки завгодно разів.</p><p>А в Індивідуальному форматі я ще й особисто поруч: щотижня дзвінок, перевіряю кожне домашнє, розбираю ваше резюме і роблю з вами пробну співбесіду.</p><p>І моя гарантія: протягом року ви можете проходити навчання скільки завгодно разів. А питання ставите мені — на групових розборах або особисто в Індивідуальному форматі. Ви не залишитесь сам на сам з відео.</p></div>
+  <div class="acts">
+    <button class="btn ghost prompt" type="button" data-b="13">Суфлер з цього блоку</button>
+    <button class="btn done-btn" type="button">Знято</button>
+  </div>
+</section><section class="reel blk" data-r="14">
+  <div class="top"><h2><small>Блок 14</small>Ціна</h2></div>
+  <div class="say" id="b14"><p>Навчання коштує від чотирьохсот євро. І його можна оплатити двома частинами — від двохсот євро на старті, а другу частину після першої половини курсу.</p><p>Точний формат і ціну під вас ми підберемо на розборі.</p></div>
+  <div class="acts">
+    <button class="btn ghost prompt" type="button" data-b="14">Суфлер з цього блоку</button>
+    <button class="btn done-btn" type="button">Знято</button>
+  </div>
+</section><section class="reel blk" data-r="15">
+  <div class="top"><h2><small>Блок 15</small>Кому не підходить</h2></div>
+  <div class="say" id="b15"><p>І одразу чесно: навчання не для вас, якщо ви шукаєте швидкі гроші без зусиль або не готові приділяти навчанню хоча б кілька годин на тиждень.</p></div>
+  <div class="acts">
+    <button class="btn ghost prompt" type="button" data-b="15">Суфлер з цього блоку</button>
+    <button class="btn done-btn" type="button">Знято</button>
+  </div>
+</section><section class="reel blk" data-r="16">
+  <div class="top"><h2><small>Блок 16</small>Фінальний заклик</h2></div>
+  <div class="say" id="b16"><p>Я сама працюю логістом, тому на навчання беру не більше п'яти-шести людей на місяць — щоб кожному приділити увагу.</p><p>А тим, хто після розбору вирішить не відкладати, я даю бонус — розповім про нього на розмові.</p><p>Тож якщо ви дивились і думали «це про мене» — натисніть кнопку під відео прямо зараз і оберіть зручний час. До зустрічі на розборі!</p></div>
+  <div class="acts">
+    <button class="btn ghost prompt" type="button" data-b="16">Суфлер з цього блоку</button>
+    <button class="btn done-btn" type="button">Знято</button>
+  </div>
+</section>
+
+<p class="ft">Veronika Logistics · внутрішня сторінка, не пересилайте посилання.</p>
+</div>
+
+<div id="tp" aria-hidden="true">
+  <div id="tpView"><div id="tpText"></div></div>
+  <div id="tpEye"></div>
+  <div id="tpBar">
+    <button type="button" id="tpPrev">← Блок</button>
+    <button type="button" class="main" id="tpPlay">▶ Старт</button>
+    <button type="button" id="tpNext">Блок →</button>
+    <label>Швидкість <input type="range" id="tpSpeed" min="10" max="160" value="45"></label>
+    <label>Шрифт <input type="range" id="tpSize" min="28" max="96" value="52"></label>
+    <label>Ширина <input type="range" id="tpWidth" min="30" max="95" value="62"></label>
+    <button type="button" id="tpMirror">Дзеркало</button>
+    <button type="button" id="tpClose">✕ Закрити</button>
+  </div>
+</div>
+
+<script>
+(function(){
+  var KEY='vl-perezyomka-uroku';
+  var rs=[].slice.call(document.querySelectorAll('.reel[data-r]')), st={};
+  try{st=JSON.parse(localStorage.getItem(KEY)||'{}')}catch(e){}
+  function upd(){
+    var n=rs.filter(function(r){return r.classList.contains('done')}).length;
+    document.getElementById('bar').style.width=(n/rs.length*100)+'%';
+    document.getElementById('cnt').textContent=n+' з '+rs.length;
+  }
+  rs.forEach(function(r){
+    var id=r.getAttribute('data-r'), b=r.querySelector('.done-btn');
+    if(st[id]){r.classList.add('done');b.textContent='Знято ✓'}
+    b.addEventListener('click',function(){
+      var on=!r.classList.contains('done');
+      r.classList.toggle('done',on); b.textContent=on?'Знято ✓':'Знято';
+      st[id]=on; try{localStorage.setItem(KEY,JSON.stringify(st))}catch(e){}
+      upd();
+    });
+  });
+  upd();
+
+  /* суфлер */
+  var B=[{"n": 1, "t": "Хук і обіцянка", "p": ["Як за шість тижнів з нуля освоїти професію міжнародного логіста і вже через два тижні після навчання піти на першу співбесіду — без досвіду, без диплома логіста і без роботи руками.", "У цьому відео я покажу вам повну карту шляху з п'яти кроків — від нуля до першої роботи. Проведу по одному реальному рейсу з мого екрана. Розповім, як мій учень з офіціанта став диспетчером на двадцять водіїв.", "І в кінці скажу, як потрапити до мене на безкоштовний розбір, де ми складемо ваш особистий план."]}, {"n": 2, "t": "Докази", "p": ["Це не теорія. Я сама працюю міжнародним логістом: шукаю вантажі і працюю з водіями. І вже навчила цієї професії понад п'ятнадцять людей особисто.", "Сергій до курсу був офіціантом. Через два тижні після навчання пройшов співбесіду, а зараз працює у великій транспортній компанії у Вроцлаві.", "Настя — мама в декреті з Чехії. Вже взяла свій перший вантаж і каже, що це як виграти в лотерею.", "Богдана разом із чоловіком веде власну транспортну компанію: замінила йому і логіста, і бухгалтера.", "Про кожного розповім детальніше."]}, {"n": 3, "t": "Проблема", "p": ["У вас є робота, і звільнятися страшно, бо це хоч якась стабільність.", "Але щодня одне й те саме: завод, склад, ресторан, нічні зміни. Ви втомлюєтесь, а розвитку — нуль.", "А якщо ви в декреті — ви вже розумієте, що на нічні зміни не повернетесь, бо дитина потребує маму.", "І найнебезпечніше — що так може минути і рік, і три. Думка «колись потім» перетворюється на «вже пізно»."]}, {"n": 4, "t": "Нова можливість", "p": ["А тепер уявіть роботу, де цінують голову, а не руки. Де ви сидите за ноутбуком — вдома чи в офісі — і керуєте рухом вантажів по всій Європі.", "Логіст не водить фуру. Він знаходить вантаж, домовляється про ціну, планує маршрут і веде водія.", "І поки люди купують товари, ця робота потрібна завжди. А логістів, які справді розуміють процес, зараз дуже не вистачає."]}, {"n": 5, "t": "Кому підходить", "p": ["Це для вас, якщо ви працюєте за кордоном на заводі, складі чи в ресторані і хочете роботу з ноутбука.", "Якщо ви мама в декреті і шукаєте професію з нормальним графіком, без нічних змін.", "Якщо ви водій і хочете пересісти з-за керма за ноутбук — самі складати маршрути.", "Або якщо у вашої родини є бізнес перевезень, і ви хочете в ньому працювати."]}, {"n": 6, "t": "Гачок і перший заклик", "p": ["Далі я покажу вам повну карту шляху з п'яти кроків і реальний рейс зі свого екрана. Додивіться — це найцінніша частина.", "А якщо вже зараз відчуваєте, що це про вас, — під відео є кнопка запису на безкоштовний розбір. Можна записатися, навіть не додивившись."]}, {"n": 7, "t": "Моя історія", "p": ["Я теж починала з нуля. Без досвіду, без знайомих у логістиці.", "П'ять років навчалась у Польщі — бакалавр і магістр. А на першій роботі зрозуміла: половини того, що реально треба, в університеті не вчать.", "Перші помилки з документами, перші невдалі рейси, незадоволені клієнти — все набивала сама.", "Сьогодні я веду вантажі по всій Європі. І все, що набивала роками, зібрала в одну систему — щоб ви пройшли цей шлях за тижні, а не за роки."]}, {"n": 8, "t": "Карта шляху: 5 кроків", "p": ["Отже, п'ять кроків від нуля до першої роботи.", "Крок перший. Зрозуміти, як влаштована логістика. Хто такий диспетчер, а хто спедитор. Які бувають машини і що в яку вміщається. На співбесіді про це питають — і саме на цьому сиплються.", "Крок другий. Вивчити Європу очима логіста. Ключові дороги, платні дороги, регіони, звідки добре виїжджати, а куди краще не відправляти машину. Поштові індекси і ставки.", "Крок третій. Час праці водія і тахограф. Помилка тут — це штраф для перевізника і ваша репутація.", "Крок четвертий. Біржі вантажів і документи. Як знайти вантаж, домовитися про ціну, що перевірити в замовленні, як оформити CMR і довести рейс до оплати.", "Крок п'ятий. Резюме, співбесіда і перша робота. Що писати в резюме, які питання ставлять і куди стукатися.", "Пройшли ці п'ять кроків — і ви вже не «людина з вулиці», а спеціаліст, з яким є про що говорити на співбесіді."]}, {"n": 9, "t": "Один рейс на екрані", "p": ["Ось як це виглядає наживо.", "Біржа вантажів — ось вантаж: звідки, куди, яка ставка. Прикидаю, чи він вигідний: рахую кілометри і ставку за кілометр.", "Домовились — приходить замовлення, zlecenie. Перевіряю в ньому дати, адреси, ціну.", "Водій завантажився — CMR. Розвантажились — документи і оплата.", "Бачите? Це не магія, а зрозумілі кроки. І всьому цьому можна навчитися з нуля."]}, {"n": 10, "t": "Кейси учнів", "p": ["Сергій працював офіціантом у Польщі. Жодного досвіду в логістиці. Пройшов навчання за місяць, через два тижні пройшов співбесіду, а через місяць після курсу вже повноцінно працював. Зараз він диспетчер і відповідає за двадцять водіїв.", "Настя — мама в декреті, живе в Чехії. До цього — завод, зміни по десять годин, нічні. Зараз вона на практиці і вже взяла перший вантаж. Каже, що це відчуття — як виграти в лотерею.", "Богдана — юрист за освітою, працювала офіціанткою і косметологом. Зараз разом із чоловіком веде власну транспортну компанію: сама шукає вантажі і веде клієнтів.", "Чесно: гарантію працевлаштування не дасть ніхто — ні курс, ні університет. Але кожен із них почав з нуля. Різниця лише в тому, що вони не відклали рішення."]}, {"n": 11, "t": "Сумніви", "p": ["«У мене немає досвіду». У жодного з моїх учнів його не було. Навчання починається з основ, а для документів є готові шаблони.", "«Це складно». Ви щойно бачили: п'ять кроків і один рейс — і вже зрозуміло, як усе працює.", "«Знайду все сам в інтернеті». У вас два шляхи. Довгий — роками збирати інформацію по шматочках і вчитися на власних штрафах. Або швидкий — пройти готову систему з людиною, яка щодня в цій роботі.", "«Немає часу». Старт будь-коли, уроки можна дивитися з телефона у вільну хвилину, доступ до матеріалів — на рік.", "І якщо ви вже бачите себе в цій професії — натисніть кнопку під відео і запишіться на розбір."]}, {"n": 12, "t": "Безкоштовний розбір", "p": ["Тепер про наступний крок. Я проводжу безкоштовний розбір — двадцять хвилин онлайн.", "Ми розберемо вашу точку А: чим ви займаєтесь зараз, який у вас досвід, мова, скільки часу можете приділяти.", "Я складу вам особистий план входу в логістику: з чого почати, на що звернути увагу, скільки часу це займе саме у вас.", "І чесно скажу, чи вам це підходить. Якщо ні — так і скажу. Навіть якщо ви не підете на навчання, ви підете з розмови з чітким планом."]}, {"n": 13, "t": "Що всередині навчання", "p": ["Якщо на розборі ми зрозуміємо, що вам підходить, — ось що ви отримаєте.", "Відеокурс з восьми модулів — усі п'ять кроків, які я показала, з презентаціями і домашніми завданнями на реальних маршрутах.", "Бонуси. «Карти регіонів Європи» — де брати вантажі, а куди не їхати. «Готові шаблони документів» — zlecenie, CMR. «Секретні маршрути і дороги» — те, чого немає у відкритому доступі. «Відеоархів реальних рейсів» — завантаження, корки, поломки і що з цим робити.", "І доступ до всього — на рік: можна повертатися до матеріалів скільки завгодно разів.", "А в Індивідуальному форматі я ще й особисто поруч: щотижня дзвінок, перевіряю кожне домашнє, розбираю ваше резюме і роблю з вами пробну співбесіду.", "І моя гарантія: протягом року ви можете проходити навчання скільки завгодно разів. А питання ставите мені — на групових розборах або особисто в Індивідуальному форматі. Ви не залишитесь сам на сам з відео."]}, {"n": 14, "t": "Ціна", "p": ["Навчання коштує від чотирьохсот євро. І його можна оплатити двома частинами — від двохсот євро на старті, а другу частину після першої половини курсу.", "Точний формат і ціну під вас ми підберемо на розборі."]}, {"n": 15, "t": "Кому не підходить", "p": ["І одразу чесно: навчання не для вас, якщо ви шукаєте швидкі гроші без зусиль або не готові приділяти навчанню хоча б кілька годин на тиждень."]}, {"n": 16, "t": "Фінальний заклик", "p": ["Я сама працюю логістом, тому на навчання беру не більше п'яти-шести людей на місяць — щоб кожному приділити увагу.", "А тим, хто після розбору вирішить не відкладати, я даю бонус — розповім про нього на розмові.", "Тож якщо ви дивились і думали «це про мене» — натисніть кнопку під відео прямо зараз і оберіть зручний час. До зустрічі на розборі!"]}];
+  var tp=document.getElementById('tp'), view=document.getElementById('tpView'), txt=document.getElementById('tpText');
+  var play=document.getElementById('tpPlay'), sp=document.getElementById('tpSpeed');
+  var y=0, run=false, last=0;
+  function esc(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;')}
+  txt.innerHTML=B.map(function(b){return '<h4 data-n="'+b.n+'">Блок '+b.n+' · '+esc(b.t)+'</h4>'+b.p.map(function(p){return '<p>'+esc(p)+'</p>'}).join('')}).join('');
+  function setY(v){y=Math.max(0,v); txt.style.top=(-y)+'px'}
+  function heads(){return [].slice.call(txt.querySelectorAll('h4'))}
+  function goBlock(n){var h=txt.querySelector('h4[data-n="'+n+'"]'); if(h) setY(h.offsetTop-view.clientHeight*0.12+txt.offsetTop*0)}
+  function cur(){var hs=heads(),c=1; hs.forEach(function(h){if(h.offsetTop-view.clientHeight*0.12<=y+5) c=+h.dataset.n}); return c}
+  function tick(t){ if(!run) return; var dt=last?(t-last)/1000:0; last=t; setY(y+dt*(+sp.value)*1.6); requestAnimationFrame(tick) }
+  function setRun(on){ run=on; last=0; tp.classList.toggle('playing',on); play.textContent=on?'❚❚ Пауза':'▶ Старт'; if(on) requestAnimationFrame(tick) }
+  function open(n){ tp.classList.add('on'); tp.setAttribute('aria-hidden','false'); document.body.style.overflow='hidden';
+    try{ if(document.documentElement.requestFullscreen) document.documentElement.requestFullscreen().catch(function(){}) }catch(e){}
+    setTimeout(function(){goBlock(n)},50) }
+  function close(){ setRun(false); tp.classList.remove('on'); tp.setAttribute('aria-hidden','true'); document.body.style.overflow='';
+    try{ if(document.fullscreenElement) document.exitFullscreen() }catch(e){} }
+  [].forEach.call(document.querySelectorAll('.prompt'),function(b){ b.addEventListener('click',function(){open(+b.dataset.b)}) });
+  play.onclick=function(){setRun(!run)};
+  document.getElementById('tpClose').onclick=close;
+  document.getElementById('tpPrev').onclick=function(){goBlock(Math.max(1,cur()-1))};
+  document.getElementById('tpNext').onclick=function(){goBlock(Math.min(B.length,cur()+1))};
+  document.getElementById('tpSize').oninput=function(){var c=cur(); txt.style.setProperty('--tps',this.value+'px'); goBlock(c)};
+  document.getElementById('tpWidth').oninput=function(){var c=cur(); txt.style.setProperty('--tpw',this.value+'%'); goBlock(c)};
+  document.getElementById('tpMirror').onclick=function(){txt.classList.toggle('mirror')};
+  view.addEventListener('wheel',function(e){e.preventDefault(); setY(y+e.deltaY)},{passive:false});
+  var ty=null; view.addEventListener('touchstart',function(e){ty=e.touches[0].clientY},{passive:true});
+  view.addEventListener('touchmove',function(e){if(ty!==null){setY(y+(ty-e.touches[0].clientY)); ty=e.touches[0].clientY}},{passive:true});
+  view.addEventListener('click',function(){setRun(!run)});
+  document.addEventListener('keydown',function(e){
+    if(!tp.classList.contains('on')) return;
+    if(e.code==='Space'){e.preventDefault(); setRun(!run)}
+    else if(e.key==='ArrowUp'){e.preventDefault(); sp.value=Math.min(160,+sp.value+5)}
+    else if(e.key==='ArrowDown'){e.preventDefault(); sp.value=Math.max(10,+sp.value-5)}
+    else if(e.key==='ArrowRight'){goBlock(Math.min(B.length,cur()+1))}
+    else if(e.key==='ArrowLeft'){goBlock(Math.max(1,cur()-1))}
+    else if(e.key==='Escape'){close()}
+  });
+})();
+</script>
+</body>
+</html>
