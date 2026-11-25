@@ -414,7 +414,11 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 
 <script>
 (function(){
-  var DEADLINE = new Date('2026-11-28T12:00:00+01:00').getTime();
+  /* таймер від першого відкриття на цьому пристрої: HOURS годин, час старту памʼятаємо в браузері */
+  var HOURS = 168, KEY = 'vl_praktyk_t0', t0 = 0;
+  try { t0 = +localStorage.getItem(KEY) || 0; } catch (e) {}
+  if (!t0 || t0 > Date.now()) { t0 = Date.now(); try { localStorage.setItem(KEY, String(t0)); } catch (e) {} }
+  var DEADLINE = t0 + HOURS * 36e5;
   var pad = function(n){ return String(n).padStart(2,'0'); };
   var dl = new Date(DEADLINE), hm = pad(dl.getHours()) + ':' + pad(dl.getMinutes());
   var fmt = { long: dl.toLocaleDateString('uk-UA', { day: 'numeric', month: 'long' }) + ', ' + hm,
