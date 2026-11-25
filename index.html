@@ -1987,7 +1987,7 @@ setTimeout(function () {
   ];
   const game = document.getElementById('game'), stage = document.getElementById('gStage'), gTruck = document.getElementById('gTruck'), gXp = document.getElementById('gXp'), gXpBox = document.getElementById('gXpBox');
   const ARR = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M7 17 17 7M8 7h9v9"/></svg>';
-  let gi = 0, picks = [], xp = 0, lastFocus = null;
+  let gi = 0, picks = [], pickT = [], xp = 0, lastFocus = null;
   const setProg = p => game.style.setProperty('--gp', p);
   function setXp(v){
     const from = xp; xp = v; const t1 = performance.now();
@@ -1999,7 +1999,7 @@ setTimeout(function () {
     haptic(15);
     if (e && e.preventDefault) e.preventDefault();
     if (!game.classList.contains('open')) lastFocus = document.activeElement;
-    gi = 0; picks = []; xp = 0; gXp.textContent = 0; setProg(0);
+    gi = 0; picks = []; pickT = []; xp = 0; gXp.textContent = 0; setProg(0);
     game.classList.add('open'); body.classList.add('game-open');
     renderG();
     setTimeout(() => document.getElementById('gClose').focus(), 50);
@@ -2023,7 +2023,7 @@ setTimeout(function () {
     const r = b.getBoundingClientRect();
     burst(r.right - 40, r.top + r.height / 2, 22, 120);
     floatText(r.right - 40, r.top - 10, '+20 XP');
-    picks.push(Q[gi].o[+b.dataset.i][2]); gi++;
+    picks.push(Q[gi].o[+b.dataset.i][2]); pickT.push(Q[gi].o[+b.dataset.i][1]); gi++;
     setXp(gi * 20); setProg(gi / Q.length);
     gTruck.classList.remove('go'); void gTruck.offsetWidth; gTruck.classList.add('go');
     setTimeout(() => {
@@ -2033,8 +2033,13 @@ setTimeout(function () {
   });
   function resultG(){
     haptic([40, 60, 40, 60, 90]);
-    stage.innerHTML = `<div class="g-card g-res"><div class="g-badge"><div>🏆</div></div><span class="lvl">Логіст · рівень 1 · ${xp} XP</span><h3>Професія логіста вам підходить!</h3><div class="q-list">${picks.map((p, i) => `<div style="--i:${i}">${p}<i class="tg sm" data-tgi="${i}"></i></div>`).join('')}</div><p>${TEST_MODE ? 'Освоїти логістику може кожен, хто поставив собі таку ціль. Дайте відповідь ще на чотири питання — і я підкажу, з чого почати саме вам.' : 'Освоїти логістику може кожен, хто поставив собі таку ціль. Я покажу шлях від нуля до першого вантажу — за 6 тижнів.'}</p><div class="acts">${TEST_MODE ? `<a href="/anketa/${location.search}" class="btn btn-green">Дізнатися, з чого почати <span class="arr">${ARR}</span></a>` : `<a href="#join" class="btn btn-green" data-close>Записатися на курс <span class="arr">${ARR}</span></a><a href="#lesson" class="btn btn-ghost" data-close>Перший урок</a>`}<button type="button" class="btn btn-ghost" data-restart>Зіграти ще</button></div></div>`;
+    stage.innerHTML = `<div class="g-card g-res"><div class="g-badge"><div>🏆</div></div><span class="lvl">Логіст · рівень 1 · ${xp} XP</span><h3>Професія логіста вам підходить!</h3><div class="q-list">${picks.map((p, i) => `<div style="--i:${i}">${p}<i class="tg sm" data-tgi="${i}"></i></div>`).join('')}</div><p>${TEST_MODE ? 'Освоїти логістику може кожен, хто поставив собі таку ціль. Ще чотири питання — і я підкажу, з чого почати саме вам. Перекидаю вас за мить…' : 'Освоїти логістику може кожен, хто поставив собі таку ціль. Я покажу шлях від нуля до першого вантажу — за 6 тижнів.'}</p><div class="acts">${TEST_MODE ? `<a href="/kviz/${location.search}" class="btn btn-green">Дізнатися, з чого почати <span class="arr">${ARR}</span></a>` : `<a href="#join" class="btn btn-green" data-close>Записатися на курс <span class="arr">${ARR}</span></a><a href="#lesson" class="btn btn-ghost" data-close>Перший урок</a>`}<button type="button" class="btn btn-ghost" data-restart>Зіграти ще</button></div></div>`;
     stage.querySelectorAll('[data-tgi]').forEach((t, i) => setTimeout(() => t.classList.add('on'), 800 + i * 150));
+    /* режим із директу: відповіді тесту — у квіз (підуть у заявку), і самі перекидаємо на квіз */
+    if (TEST_MODE) {
+      try { sessionStorage.setItem('vl_test', JSON.stringify(Q.map((q, i) => [q.t, pickT[i]]))); } catch (e) {}
+      setTimeout(() => { location.href = '/kviz/' + location.search; }, 3000);
+    }
     const W = innerWidth, H = innerHeight;
     burst(W / 2, H * .35, 70, 360);
     setTimeout(() => burst(W * .2, H * .5, 40, 260), 250);

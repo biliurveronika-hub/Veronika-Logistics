@@ -125,6 +125,14 @@ a{color:var(--blue)}
     bar.style.width = (v / TOTAL * 100) + '%';
     stepN.textContent = n >= 0 && n < TOTAL ? `Крок ${n + 1} з ${TOTAL}` : '';
   };
+  /* відповіді гри-тесту з головної (?test=1) — додаємо в заявку */
+  const TEST = (() => { try { return JSON.parse(sessionStorage.getItem('vl_test') || 'null'); } catch (e) { return null; } })();
+  const answers = () =>
+    '• Зараз: ' + A.now + '\n' +
+    '• Почати: ' + A.start + '\n' +
+    '• Час на тиждень: ' + A.time + '\n' +
+    '• Від 400 €: ' + A.invest +
+    (Array.isArray(TEST) && TEST.length ? '\n\nТест «Чи підходить логістика»:\n' + TEST.map(x => '• ' + x[0] + ' — ' + x[1]).join('\n') : '');
   const track = (ev, p) => { try { window.fbq && fbq('track', ev, p); } catch (e) {} };
 
   /* ознаки живої людини — воркер відсіює ботів по них */
@@ -172,10 +180,29 @@ a{color:var(--blue)}
     stage.querySelector('[data-back]').onclick = () => { step--; render(); };
   }
 
-  /* ---- гілка «Лише безкоштовне»: урок 1 модуля ---- */
+  /* ---- гілка «Лише безкоштовне»: урок 1 модуля ----
+     контакту немає, але відповіді все одно надсилаємо в групу (один раз) */
+  let freeSent = false;
+  function sendFree(){
+    if (freeSent) return; freeSent = true;
+    fetch(LEAD_ENDPOINT, {
+      method: 'POST', headers: { 'Content-Type': 'application/json' }, keepalive: true,
+      body: JSON.stringify({
+        name: 'Без контакту',
+        contact: 'не залишили — обрали безкоштовний урок',
+        interests: ['Безкоштовний урок'],
+        message: '❄️ Лише безкоштовне · квіз → урок 1 модуля\n\n' + answers(),
+        company: '',
+        source: location.href.split('#')[0],
+        ref: firstVisit.ref, utm: firstVisit.utm,
+        t: Date.now() - bornAt, hi: touches
+      })
+    }).catch(() => {});
+  }
   function lesson(){
     progress(TOTAL);
     track('ViewContent', { content_name: 'kviz_free' });
+    sendFree();
     stage.innerHTML = `<section class="card done">
       <div class="big">🎁</div>
       <h2>Почніть із безкоштовного уроку</h2>
@@ -245,12 +272,7 @@ a{color:var(--blue)}
       if (!okPhone) setHint(true);
       if (!name || !okPhone) return;
 
-      const message =
-        '🔥 Запис на консультацію · квіз\n\n' +
-        '• Зараз: ' + A.now + '\n' +
-        '• Почати: ' + A.start + '\n' +
-        '• Час на тиждень: ' + A.time + '\n' +
-        '• Від 400 €: ' + A.invest;
+      const message = '🔥 Запис на консультацію · квіз\n\n' + answers();
 
       err.hidden = true; sb.disabled = true;
       sb.innerHTML = 'Надсилаю… <span class="spin"></span>';
