@@ -2349,10 +2349,12 @@ setTimeout(function () {
   /* Прихід з директу: #konsultaciya — одразу форма з обраною консультацією.
      Людина вже прогріта, заставку їй показувати нема сенсу.
      ?k=1 — дубль на випадок, коли обгортка редіректу зріже фрагмент. */
-  if (/konsultaciya/i.test(location.hash) || /konsultaciya|(^|[?&])k=1/i.test(location.search)) {
+  /* ?c=1 — одразу форма платної консультації (кнопка з мультипосилання /tt/) */
+  const PAID_LINK = /(^|[?&])c=1(&|$)/.test(location.search);
+  if (PAID_LINK || /konsultaciya/i.test(location.hash) || /konsultaciya|(^|[?&])k=1/i.test(location.search)) {
     /* безкоштовна консультація з директу — це розмова про курс: ведемо через квіз,
        він закінчується записом на безкоштовну консультацію */
-    setWant('course');
+    setWant(PAID_LINK ? 'consult' : 'course');
 
     /* знімаємо заставку напряму, без залежності від порядку слухачів */
     body.classList.remove('loading'); body.classList.add('loaded');
