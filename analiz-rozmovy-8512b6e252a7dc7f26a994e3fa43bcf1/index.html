@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Розбір дзвінка — Veronika Logistics</title>
+<meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
+<meta name="googlebot" content="noindex, nofollow">
+<meta name="referrer" content="no-referrer">
+<meta name="theme-color" content="#EEF2F5">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@1,400;1,500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#EEF2F5; --paper:#F8FAFC; --white:#fff;
+  --ink:#14232E; --muted:#546473; --line:rgba(20,35,46,.12);
+  --forest:#244A5E; --forest-d:#17313F;
+  --blue:#3E6E91; --sky-l:#CFE0EF; --powder:#BDD1E6; --ice:#E3ECF4;
+  --ios:#34C759; --ok-l:#DDF4E3; --ok-d:#1E6B35;
+  --mid-l:#FFF1C2; --mid-d:#7A5300;
+  --no-l:#FBE1DE; --no-d:#9A2E22;
+  --r-lg:26px; --wrap:760px;
+  --ease:cubic-bezier(.2,.8,.2,1);
+  --serif:'Playfair Display',Georgia,serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:70px}
+body{font-family:'Manrope',system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+button{font:inherit;color:inherit}
+em{font-family:var(--serif);font-style:italic;font-weight:400;letter-spacing:-.02em}
+.wrap{max-width:var(--wrap);margin:0 auto;padding:0 16px}
+h1,h2,h3{font-weight:700;letter-spacing:-.035em;line-height:1.1}
+
+.top{position:sticky;top:0;z-index:40;background:rgba(238,242,245,.92);backdrop-filter:blur(14px) saturate(1.4);-webkit-backdrop-filter:blur(14px) saturate(1.4);border-bottom:1px solid var(--line)}
+.chips{display:flex;gap:6px;overflow-x:auto;padding:10px 0;scrollbar-width:none}
+.chips::-webkit-scrollbar{display:none}
+.chips a{flex:none;text-decoration:none;color:var(--ink);font-size:13px;font-weight:700;padding:7px 12px;border-radius:999px;background:var(--white);border:1px solid var(--line);white-space:nowrap}
+
+.hero{padding:30px 0 4px}
+.label{display:inline-flex;align-items:center;gap:8px;padding:6px 12px 6px 9px;border-radius:999px;background:var(--white);border:1px solid var(--line);font-size:11.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--blue)}
+.label::before{content:"";width:7px;height:7px;border-radius:50%;background:currentColor}
+.hero h1{font-size:clamp(30px,7vw,46px);margin:14px 0 10px}
+.hero h1 em{color:var(--blue)}
+.hero p{color:var(--muted);font-size:16px}
+.ph{background:var(--mid-l);border-radius:6px;padding:0 4px;font-weight:700;color:var(--mid-d)}
+
+.verdict{margin-top:18px;background:linear-gradient(135deg,#9DBBD9 0%,#BDD1E6 55%,#E3ECF4 100%);border-radius:var(--r-lg);padding:20px 18px;color:var(--forest-d)}
+.verdict b.big{display:block;font-size:21px;letter-spacing:-.02em;line-height:1.25}
+.verdict p{font-size:15px;margin-top:8px;color:#2A4A5E}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:14px}
+.stat{background:rgba(255,255,255,.7);border-radius:16px;padding:12px 10px}
+.stat b{display:block;font-size:24px;letter-spacing:-.03em;line-height:1}
+.stat small{display:block;font-size:12.5px;color:#2A4A5E;margin-top:4px;line-height:1.3}
+
+section.sec{padding:38px 0 0}
+.sec-head{display:flex;align-items:baseline;gap:10px}
+.sec-head .n{flex:none;width:30px;height:30px;border-radius:50%;background:var(--forest-d);color:#fff;display:grid;place-items:center;font-size:13px;font-weight:800;transform:translateY(-3px)}
+.sec h2{font-size:clamp(23px,5vw,30px)}
+.sec .intro{color:var(--muted);font-size:15px;margin:8px 0 4px}
+
+.s{background:var(--paper);border:1px solid var(--line);border-radius:var(--r-lg);padding:18px 16px 16px;margin-top:12px}
+.s h3{font-size:17.5px;letter-spacing:-.02em;line-height:1.3}
+.s p{font-size:15px;margin-top:8px}
+.s ul{margin:8px 0 0 18px;font-size:15px;display:grid;gap:5px}
+.time{display:inline-block;font-size:12px;font-weight:800;color:var(--blue);background:var(--ice);border-radius:999px;padding:3px 9px;margin-right:6px;vertical-align:2px}
+.q{margin-top:10px;padding:10px 14px;border-left:3px solid var(--powder);background:var(--white);border-radius:0 14px 14px 0;font-size:14.5px;color:var(--forest)}
+.q i{font-style:normal;color:var(--muted);font-size:13px;display:block;margin-top:3px}
+.note{margin-top:10px;font-size:14px;color:var(--muted);padding-left:12px;border-left:3px solid var(--powder)}
+.fix{margin-top:10px;background:var(--ok-l);border-radius:14px;padding:10px 14px;font-size:14.5px;color:var(--ok-d)}
+.fix b{color:var(--ok-d)}
+
+/* таблиця по скрипту */
+.steps{display:grid;gap:8px;margin-top:12px}
+.st{display:grid;grid-template-columns:auto 1fr;gap:12px;align-items:start;background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:14px}
+.badge{width:30px;height:30px;border-radius:50%;display:grid;place-items:center;font-size:15px;font-weight:800}
+.ok .badge{background:var(--ok-l);color:var(--ok-d)}
+.mid .badge{background:var(--mid-l);color:var(--mid-d)}
+.no .badge{background:var(--no-l);color:var(--no-d)}
+.st h3{font-size:15.5px;letter-spacing:-.01em;line-height:1.3}
+.st p{font-size:14.5px;color:var(--muted);margin-top:3px}
+.legend{display:flex;flex-wrap:wrap;gap:12px;margin-top:10px;font-size:13px;color:var(--muted);font-weight:600}
+.legend span::before{content:"";display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:5px;vertical-align:0}
+.legend .l1::before{background:var(--ios)} .legend .l2::before{background:#E7B93A} .legend .l3::before{background:#D9584A}
+
+/* людина */
+.facts{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}
+.fact{background:var(--white);border:1px solid var(--line);border-radius:18px;padding:14px}
+.fact b{display:block;font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--blue)}
+.fact p{font-size:14.5px;margin-top:5px}
+@media (max-width:600px){.facts{grid-template-columns:1fr}.stats{grid-template-columns:1fr 1fr 1fr}}
+
+/* розбіжності */
+.diff{display:grid;gap:6px;margin-top:10px}
+.diff div{display:flex;gap:10px;align-items:baseline;font-size:14.5px;background:var(--white);border-radius:12px;padding:8px 12px;border:1px solid var(--line)}
+.diff .time{flex:none}
+
+/* повідомлення */
+.msgs{display:grid;gap:10px;margin-top:12px}
+.msg{background:var(--white);border:1px solid var(--line);border-radius:18px 18px 18px 6px;padding:14px 15px;font-size:15.5px;white-space:pre-line}
+.msg .t{display:block}
+.msg .bar{display:flex;justify-content:flex-end;margin-top:10px}
+.copy{display:inline-flex;align-items:center;gap:7px;border:0;cursor:pointer;background:var(--forest-d);color:#fff;font-size:13.5px;font-weight:700;padding:8px 14px;border-radius:999px;transition:transform .25s var(--ease),background .25s}
+.copy:active{transform:scale(.96)}
+.copy.ok{background:var(--ios)}
+.copy svg{width:15px;height:15px}
+
+.check{list-style:none;display:grid;gap:8px;margin-top:12px}
+.check li{display:flex;gap:10px;background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:12px 14px;font-size:15px;line-height:1.4}
+.check li i{flex:none;font-style:normal;width:24px;height:24px;border-radius:50%;background:var(--forest-d);color:#fff;display:grid;place-items:center;font-size:12px;font-weight:800}
+
+footer{margin-top:60px;background:var(--forest-d);color:#A9BCCB;padding:30px 0 calc(30px + env(safe-area-inset-bottom));border-radius:var(--r-lg) var(--r-lg) 0 0;font-size:14px}
+footer b{color:#fff}
+.toast{position:fixed;left:50%;bottom:calc(18px + env(safe-area-inset-bottom));transform:translate(-50%,160%);background:var(--forest-d);color:#fff;font-size:14px;font-weight:700;padding:11px 18px;border-radius:999px;box-shadow:0 14px 34px -14px rgba(23,49,63,.7);transition:transform .45s var(--ease);z-index:60;white-space:nowrap}
+.toast.show{transform:translate(-50%,0)}
+@media (prefers-reduced-motion:reduce){*{transition-duration:.01ms!important}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<div class="top">
+  <div class="wrap">
+    <nav class="chips" aria-label="Розділи">
+      <a href="#kor">Коротко</a>
+      <a href="#hto">Хто він</a>
+      <a href="#skrypt">По скрипту</a>
+      <a href="#dobre">Що вдалося</a>
+      <a href="#vtraty">Де губила</a>
+      <a href="#tsyfry">Цифри</a>
+      <a href="#napysaty">Що написати</a>
+      <a href="#dali">Наступного разу</a>
+    </nav>
+  </div>
+</div>
+
+<main class="wrap">
+
+<header class="hero" id="kor">
+  <span class="label">Розбір дзвінка · 24 листопада</span>
+  <h1>Розмова з учнем, який <em>майже купив</em></h1>
+  <p>Вероніко, я послухала весь запис (33 хвилини) і порівняла його з нашим скриптом продажу. Тут усе по порядку: що вийшло, де він міг зірватися і що йому написати зараз, щоб у п’ятницю була оплата.</p>
+
+  <div class="verdict">
+    <b class="big">Дзвінок хороший. Людина тепла: сама сказала, що до п’ятниці обере пакет і внесе передоплату.</b>
+    <p>Ти пройшла майже весь скрипт. Не вистачило трьох речей у кінці: <b>порадити один пакет</b>, <b>назвати бонус з терміном</b> і <b>домовитися про точний час</b> у п’ятницю. Їх ще можна надолужити повідомленням — тексти внизу.</p>
+    <div class="stats">
+      <div class="stat"><b>33 хв</b><small>замість 15–20 за скриптом</small></div>
+      <div class="stat"><b>8 хв</b><small>показ платформи (за скриптом 1–2)</small></div>
+      <div class="stat"><b>7 / 11</b><small>кроків скрипту виконано</small></div>
+    </div>
+  </div>
+</header>
+
+<!-- ХТО ВІН -->
+<section class="sec" id="hto">
+  <div class="sec-head"><span class="n">1</span><h2>Хто цей учень</h2></div>
+  <p class="intro">Це не новачок «з нуля». Від цього залежить, що йому радити.</p>
+  <div class="facts">
+    <div class="fact"><b>Досвід</b><p>Уже працював з перевезеннями: знає Trans.EU і Timocom, тахограф, дороги Італії. Казав «у мене своя гілка».</p></div>
+    <div class="fact"><b>Що хоче насправді</b><p>Працювати <b>на себе</b>: на відсоток від машини або як посередник — взяти вантаж за 1000 €, віддати перевізнику за 800 €.</p></div>
+    <div class="fact"><b>План Б</b><p>Влаштуватися у фірму. Питав про ставку, відсоток, випробувальний термін.</p></div>
+    <div class="fact"><b>Час</b><p>Може вчитися багато, приблизно по 1,5 години кілька разів на тиждень.</p></div>
+    <div class="fact"><b>Страх</b><p>«Нічого не боюся, готовий до ризиків». Справжній сумнів так і не прозвучав.</p></div>
+    <div class="fact"><b>Ціна</b><p>Про ціну не сперечався, про розстрочку не питав. Сумнів не в грошах, а в тому, «чи моє це».</p></div>
+  </div>
+  <p class="note">Його питання — відсотки, B2B, коли приходять гроші, податки на JDG і spółka — показують: йому потрібен не просто курс, а людина, якій можна ставити питання про свою ситуацію. Це індивідуальний пакет.</p>
+</section>
+
+<!-- ПО СКРИПТУ -->
+<section class="sec" id="skrypt">
+  <div class="sec-head"><span class="n">2</span><h2>Дзвінок крок за кроком по скрипту</h2></div>
+  <div class="legend"><span class="l1">зроблено</span><span class="l2">частково</span><span class="l3">пропущено</span></div>
+  <div class="steps">
+    <div class="st ok"><span class="badge">✓</span><div><h3><span class="time">0:06</span>Знайомство: «як про мене дізналися?»</h3><p>Почала точно по скрипту.</p></div></div>
+    <div class="st ok"><span class="badge">✓</span><div><h3><span class="time">0:36–3:25</span>Чотири питання про людину</h3><p>Задала всі: чим займається, чому логістика, скільки часу, чого боїться.</p></div></div>
+    <div class="st mid"><span class="badge">~</span><div><h3><span class="time">3:25</span>Страх</h3><p>Почула «нічого не боюся» і пішла далі. Варто було спитати ціль: скільки хоче заробляти і до якого часу.</p></div></div>
+    <div class="st ok"><span class="badge">✓</span><div><h3><span class="time">3:44</span>Коротко про себе</h3><p>Прийшла без досвіду, університет нічого не дав, зараз міжнародний логіст, навчила 15 людей.</p></div></div>
+    <div class="st mid"><span class="badge">~</span><div><h3><span class="time">13:11–21:00</span>Показ кабінету</h3><p>Він сам попросив — і це був найсильніший шматок дзвінка. Але 8 хвилин замість 1–2, і показ був уже <b>після</b> цін.</p></div></div>
+    <div class="st ok"><span class="badge">✓</span><div><h3><span class="time">7:19–8:33</span>Два формати</h3><p>Описала обидва пакети, 6 тижнів, доступ на рік, ціни 400 і 700 €, оплату двома платежами.</p></div></div>
+    <div class="st no"><span class="badge">✕</span><div><h3><span class="time">8:52</span>Порада одного формату</h3><p>Сказала «думаю, вам підійдуть обидва пакети». Вибір ліг на нього — і він пішов думати.</p></div></div>
+    <div class="st ok"><span class="badge">✓</span><div><h3><span class="time">12:06</span>Підвищення ціни з 1 січня і бронь 100 €</h3><p>Прозвучало чітко: 500 і 900 € з 1 січня, бронь 100 €.</p></div></div>
+    <div class="st no"><span class="badge">✕</span><div><h3>Бонус на 48 годин</h3><p>Не прозвучав зовсім. А саме бонус з терміном дає причину вирішити зараз, а не «до п’ятниці».</p></div></div>
+    <div class="st ok"><span class="badge">✓</span><div><h3><span class="time">12:51</span>«Що скажете?»</h3><p>Спитала. Він відповів питанням про модулі — це добрий знак, йому було цікаво.</p></div></div>
+    <div class="st no"><span class="badge">✕</span><div><h3><span class="time">30:34–32:15</span>«Я подумаю» → «що вас зупиняє?»</h3><p>Він попросив час до п’ятниці. Ти погодилась, але не спитала, що саме він хоче обдумати, і не призначила час розмови.</p></div></div>
+  </div>
+</section>
+
+<!-- ЩО ВДАЛОСЯ -->
+<section class="sec" id="dobre">
+  <div class="sec-head"><span class="n">3</span><h2>Що вдалося — так і роби далі</h2></div>
+
+  <article class="s">
+    <h3>Показ платформи на реальних прикладах</h3>
+    <p>SS-47 і SS-309 в Італії, транзит через Австрію і заборона через Швейцарію, віньєти в Люксембурзі, паузи 15 + 30 хвилин, CMR, фактура з ПДВ і без. Людина з досвідом одразу бачить: це з практики, а не з інтернету.</p>
+    <div class="q">«Такі дороги, про які ви не дізнаєтеся ні в інтернеті, ні в ChatGPT»<i>14:48 — сильна фраза, залишай її</i></div>
+  </article>
+
+  <article class="s">
+    <h3>Чесно про гарантії і сильний кейс одразу після</h3>
+    <p>На питання «чи влаштуюся я?» ти не обіцяла зайвого, а одразу розповіла про хлопця з Вроцлава: без досвіду, за два тижні знайшов роботу, тепер диспетчер і веде 20 фур. Саме так і має звучати відповідь.</p>
+  </article>
+
+  <article class="s">
+    <h3>Чесні межі</h3>
+    <p>Про податки на JDG і spółka ти сказала, що ти не бухгалтер і з цим краще до спеціаліста. Це правильно: краще чесне «не знаю», ніж порада, яка потім підведе.</p>
+  </article>
+
+  <article class="s">
+    <h3>Свій шлях як порада</h3>
+    <p>«Спочатку попрацювати у фірмі, вивчити систему зсередини, потім — на себе». Він відповів: «Я теж так думав». У цей момент ви були на одній хвилі — це момент довіри.</p>
+  </article>
+
+  <article class="s">
+    <h3>Ти говорила його мовою</h3>
+    <p>Коли він перейшов на українську, ти теж перейшла. Розмова стала живішою.</p>
+  </article>
+</section>
+
+<!-- ДЕ ГУБИЛА -->
+<section class="sec" id="vtraty">
+  <div class="sec-head"><span class="n">4</span><h2>Де могла його втратити</h2></div>
+  <p class="intro">Це не помилки «на провал» — людина все одно тепла. Але через ці місця «куплю зараз» перетворилося на «подумаю до п’ятниці».</p>
+
+  <article class="s">
+    <h3>1. Ціна прозвучала раніше, ніж цінність</h3>
+    <p>Пакети і ціни — на 8-й хвилині, а платформа — тільки на 13-й. Він почув «700 €», ще не побачивши, за що.</p>
+    <div class="fix"><b>Як краще:</b> спочатку коротко показати кабінет (1–2 хвилини), потім назвати формати і ціну.</div>
+  </article>
+
+  <article class="s">
+    <h3>2. Не порадила один пакет</h3>
+    <div class="q">«Я думаю, вам підійдуть два пакети. Але залежно від того, чого саме ви хочете»<i>8:52</i></div>
+    <p>Коли людині дають два рівні варіанти, вона йде думати. Йому явно підходить індивідуальний: у нього багато питань про свою ситуацію, а там чат, 6 дзвінків, резюме і пробна співбесіда.</p>
+    <div class="fix"><b>Як краще:</b> «З того, що ви розповіли — хочете працювати на себе і маєте багато питань про відсотки й договори, — я б радила Індивідуальний: ці питання ми розберемо на ваших реальних ситуаціях».</div>
+  </article>
+
+  <article class="s">
+    <h3>3. Без бонусу немає причини вирішувати зараз</h3>
+    <p>Підвищення з 1 січня — до нього ще місяць, тож поспішати не треба. Бонус на 48 годин мав би дати термін, але він не прозвучав.</p>
+    <div class="fix"><b>Як краще:</b> бонус ще не називався, тож його можна запропонувати в повідомленні з терміном до п’ятниці, 12:00 — якраз коли він обіцяв вирішити.</div>
+  </article>
+
+  <article class="s">
+    <h3>4. Плутанина з терміном ціни</h3>
+    <div class="q">«Можемо за тою ціною, яка зараз є, домовитися, що ви мені дасте знати завтра до обіду»<i>31:00</i></div>
+    <p>Звучить так, ніби ціна 400 / 700 € діє тільки до завтра. А за скриптом бронь фіксує її до 31 грудня. Якщо він це помітить, дедлайн перестане сприйматися всерйоз.</p>
+    <div class="fix"><b>Як краще:</b> «Ціну 400 / 700 € можна зафіксувати бронню до 31 грудня. А бонус діє до [день, час]». Дедлайн дає бонус, а не ціна.</div>
+  </article>
+
+  <article class="s">
+    <h3>5. Восьмий модуль ще не готовий</h3>
+    <p>Модуль про роботу і співбесіду — саме те, про що він питав, — ще в монтажі. Чесно, що ти сказала. Але не сказала, коли він з’явиться.</p>
+    <div class="fix"><b>Як краще:</b> завжди додавати дату: «модуль буде в кабінеті до [дата], а до того резюме і співбесіду ми розберемо на дзвінку».</div>
+  </article>
+
+  <article class="s">
+    <h3>6. Надто категорично про виплати</h3>
+    <div class="q">«Так не працює від слова взагалі»<i>25:52 — про те, що логіст не чекає 30–60 днів оплати</i></div>
+    <p>Насправді це залежить від того, як домовишся з перевізником. Якщо він потім зустріне іншу схему, це вдарить по довірі.</p>
+    <div class="fix"><b>Як краще:</b> «Зазвичай домовляються, що відсоток платять раз на місяць, наприклад 10-го числа, і не чекають оплати від клієнта. Це прописується в домовленості — на модулі я показую, як».</div>
+  </article>
+
+  <article class="s">
+    <h3>7. Фраза про магістратуру</h3>
+    <div class="q">«У мене вища освіта, магістратура, я маю право викладати як магістр»<i>20:11</i></div>
+    <p>Звучить як виправдання і нічого не додає — тим більше що на початку ти сама сказала, що університет тобі нічого не дав. Сильніше працюють результати учнів.</p>
+    <div class="fix"><b>Як краще:</b> прибрати цю фразу. Залишити: «Можете вказати сертифікат і послатися на мене, якщо на співбесіді спитають, де вчилися».</div>
+  </article>
+
+  <article class="s">
+    <h3>8. «Подумаю до п’ятниці» без часу і без питання</h3>
+    <p>Він сам сказав, що до п’ятниці напише і внесе передоплату. Але «до п’ятниці» — це не домовленість. Без конкретного часу такі обіцянки часто тихо зникають.</p>
+    <div class="fix"><b>Як краще:</b> «Добре! Тоді давайте в п’ятницю о [час] коротко зідзвонимося на 5 хвилин — і я одразу відкрию вам доступ. А що саме хочете ще обдумати — може, я підкажу зараз?»</div>
+  </article>
+</section>
+
+<!-- ЦИФРИ -->
+<section class="sec" id="tsyfry">
+  <div class="sec-head"><span class="n">5</span><h2>Цифри, які треба звести в одну версію</h2></div>
+  <p class="intro">Людина з досвідом уважно слухає. Коли цифри «пливуть», виникає питання: а що ще не так?</p>
+  <article class="s">
+    <h3>Скільки учнів працює</h3>
+    <div class="diff">
+      <div><span class="time">4:23</span>«Навчила 15 людей, і більшість із них працює»</div>
+      <div><span class="time">21:53</span>«Усі мої 15 учнів працюють»</div>
+    </div>
+  </article>
+  <article class="s">
+    <h3>Скільки ти в логістиці</h3>
+    <div class="diff">
+      <div><span class="time">10:00</span>«За всі мої три роки роботи»</div>
+      <div><span class="time">11:12</span>«Два роки тому я починала від трьох відсотків»</div>
+      <div><span class="time">28:25</span>«Як хотіла б, щоб мене навчили 4 роки тому»</div>
+    </div>
+  </article>
+  <article class="s">
+    <h3>Кейс учня</h3>
+    <div class="diff">
+      <div><span class="time">22:12</span>На дзвінку: знайшов роботу за <b>два тижні</b></div>
+      <div><span class="time">скрипт</span>У скрипті: Сергій працював логістом <b>через місяць</b> після курсу</div>
+    </div>
+  </article>
+  <div class="fix"><b>Що зробити:</b> вибери одну правдиву версію для кожної цифри — скільки учнів, скільки з них працює, скільки років у логістиці, за скільки знайшов роботу Сергій. Напиши мені, і я поправлю скрипт, щоб там стояли ті самі цифри.</div>
+</section>
+
+<!-- ЩО НАПИСАТИ -->
+<section class="sec" id="napysaty">
+  <div class="sec-head"><span class="n">6</span><h2>Що написати йому зараз</h2></div>
+  <p class="intro">Пиши в той чат, де ви листувались до дзвінка. <span class="ph">[Жовте]</span> — допиши перед відправкою.</p>
+
+  <article class="s">
+    <h3>Сьогодні — підсумок з порадою і бонусом</h3>
+    <div class="msgs">
+      <div class="msg">[Ім’я], дякую за розмову, було дуже приємно 🙂
+Як і домовлялися, коротко:
+
+🔹 Самостійний — 8 модулів, презентації, домашні і 2 групові дзвінки. 400 €
+🔸 Індивідуальний — те саме + 6 особистих дзвінків, чат зі мною, розбір резюме і пробна співбесіда. 700 €
+💳 Можна двома платежами.
+
+Вам я б радила Індивідуальний: у вас уже є досвід і багато питань саме про роботу на себе — відсотки, домовленості з перевізниками, оплати. Ці питання ми розберемо на ваших реальних ситуаціях, а не в загальному.
+
+📌 З 1 січня ціна зростає до 500 € і 900 €. Бронь 100 € фіксує для вас 400 / 700 €, навіть якщо стартуєте пізніше.
+🎁 А якщо бронюєте до п’ятниці, 12:00, додаю ще [бонус].
+
+Давайте в п’ятницю о [час] коротко зідзвонимося на 5 хвилин? Відповім на останні питання і одразу відкрию доступ.</div>
+    </div>
+    <p class="note">Бонус бери зі скрипту: для Індивідуального — ще один дзвінок уже після курсу, коли людина шукає роботу або перших клієнтів.</p>
+  </article>
+
+  <article class="s">
+    <h3>Четвер — якщо мовчить</h3>
+    <div class="msgs">
+      <div class="msg">[Ім’я], вітаю! 🙂 Як думки після нашої розмови?
+Нагадую: бонус діє до завтра, до 12:00. Якщо є питання — пишіть, відповім.</div>
+    </div>
+  </article>
+
+  <article class="s">
+    <h3>П’ятниця зранку</h3>
+    <div class="msgs">
+      <div class="msg">[Ім’я], доброго ранку! Сьогодні до 12:00 ще діє бонус 🙂 Як у логістиці — вікно на завантаження не чекає 😄 Бронюємо місце?</div>
+    </div>
+  </article>
+
+  <article class="s">
+    <h3>Якщо пише «ще думаю»</h3>
+    <div class="msgs">
+      <div class="msg">Звісно, подумайте 🙂 Можна одне питання, щоб я могла краще допомогти: що для вас зараз головний сумнів — вартість, час чи те, чи підійде вам саме такий формат?</div>
+    </div>
+    <p class="note">Відповідь — це його справжній сумнів. На нього й відповідай готовою фразою зі скрипту.</p>
+  </article>
+
+  <article class="s">
+    <h3>Якщо каже «так»</h3>
+    <div class="msgs">
+      <div class="msg">Дуже рада 🙌 Бронюємо [Індивідуальний за 700 € / Самостійний за 400 €] — ціна зафіксована за вами. Для броні — 100 €, решта [перед стартом / двома платежами].
+Ось реквізити: [реквізити]
+Після оплати надішліть, будь ласка, скриншот і вашу пошту — я відкрию доступ до кабінету.</div>
+    </div>
+  </article>
+</section>
+
+<!-- НАСТУПНОГО РАЗУ -->
+<section class="sec" id="dali">
+  <div class="sec-head"><span class="n">7</span><h2>Наступного разу на дзвінку</h2></div>
+  <ul class="check">
+    <li><i>1</i><span>Почула «нічого не боюся» — спитай ціль: <b>«Скільки хочете заробляти і до якого часу?»</b> Потім повтори її, коли радиш пакет.</span></li>
+    <li><i>2</i><span>Спочатку <b>покажи кабінет 1–2 хвилини</b>, потім називай ціну.</span></li>
+    <li><i>3</i><span>Завжди <b>радь один пакет</b> і поясни чому — словами людини.</span></li>
+    <li><i>4</i><span>Після ціни — <b>бонус з терміном</b>, потім «Що скажете?» і мовчи.</span></li>
+    <li><i>5</i><span>Дедлайн дає бонус, а <b>ціна 400 / 700 € діє до 31 грудня</b> з броню. Не кажи «ціна до завтра».</span></li>
+    <li><i>6</i><span>На «я подумаю» — <b>«Що саме вас зупиняє?»</b> і точний час наступної розмови.</span></li>
+    <li><i>7</i><span>Одразу після дзвінка — <b>повідомлення з тарифами</b>, порадою, бонусом і питанням.</span></li>
+    <li><i>8</i><span><b>Одні й ті самі цифри</b> про себе й учнів на кожному дзвінку.</span></li>
+  </ul>
+  <p class="note">Дзвінок тривав 33 хвилини, бо в нього було багато справжніх питань — це нормально для людини з досвідом. Скорочувати варто показ платформи, а не відповіді на його питання.</p>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap"><b>Veronika Logistics</b> · внутрішня сторінка, не пересилайте посилання.</div>
+</footer>
+
+<div class="toast" id="toast" role="status" aria-live="polite">Скопійовано</div>
+
+<script>
+(() => {
+  const esc = s => s.replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+  document.querySelectorAll('.msg').forEach(m => {
+    m.dataset.raw = m.textContent.trim().replace(/\n[ \t]+/g, '\n');
+    const t = document.createElement('span'); t.className = 't';
+    t.innerHTML = esc(m.dataset.raw).replace(/\[([^\]]*)\]/g, '<span class="ph">[$1]</span>');
+    const bar = document.createElement('div'); bar.className = 'bar';
+    bar.innerHTML = '<button type="button" class="copy"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg><span>Скопіювати</span></button>';
+    m.textContent = ''; m.append(t, bar);
+  });
+  const toast = document.getElementById('toast'); let tt;
+  const show = txt => { toast.textContent = txt; toast.classList.add('show'); clearTimeout(tt); tt = setTimeout(() => toast.classList.remove('show'), 1800); };
+  const fallback = text => {
+    const ta = document.createElement('textarea'); ta.value = text; ta.setAttribute('readonly', '');
+    ta.style.position = 'fixed'; ta.style.opacity = '0'; document.body.appendChild(ta);
+    ta.select(); ta.setSelectionRange(0, text.length);
+    let ok = false; try { ok = document.execCommand('copy'); } catch(e){} ta.remove(); return ok;
+  };
+  document.addEventListener('click', async e => {
+    const b = e.target.closest('.copy'); if (!b) return;
+    const text = b.closest('.msg').dataset.raw;
+    let ok = false;
+    try { await navigator.clipboard.writeText(text); ok = true; } catch(err) { ok = fallback(text); }
+    if (!ok) return show('Не вдалося — виділіть текст пальцем');
+    b.classList.add('ok'); b.querySelector('span').textContent = 'Готово';
+    setTimeout(() => { b.classList.remove('ok'); b.querySelector('span').textContent = 'Скопіювати'; }, 1600);
+    show(/\[[^\]]*\]/.test(text) ? 'Скопійовано — допишіть [жовте]' : 'Скопійовано');
+  });
+})();
+</script>
+</body>
+</html>
