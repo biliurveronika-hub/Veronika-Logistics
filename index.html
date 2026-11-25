@@ -1610,7 +1610,7 @@ setTimeout(function () {
         <small class="field-hint" id="contactHint">З кодом країни: +380, +48…</small></label>
       <input type="hidden" name="ctype" value="any">
       <input type="hidden" name="preferred" value="">
-      <div class="paid only-consult"><span>💳</span><span><b>Консультація платна.</b> Вероніка напише вам, щоб узгодити вартість і зручний час.</span></div>
+      <div class="paid only-consult"><span>💳</span><span><b>Консультація платна — 50 € (або 200 zł).</b> Вероніка напише вам, щоб узгодити зручний час.</span></div>
       <label class="field only-consult"><span>Ваше питання (необов’язково)</span><textarea name="msg" placeholder="Коротко: що хочете розібрати"></textarea></label>
       <p class="next-hint only-course">Далі — кілька коротких питань, щоб підібрати вам формат навчання.</p>
       <input class="hp" type="text" name="company" tabindex="-1" autocomplete="off" aria-hidden="true">
@@ -2352,7 +2352,7 @@ setTimeout(function () {
     const interests = [isConsult ? 'Консультація (платна)' : 'Курс'];
     const q = form.msg.value.trim();
     const msg = isConsult
-      ? '💬 Запит на консультацію · попереджено, що консультація платна' + (q ? '\n\nПитання: ' + q : '')
+      ? '💬 Запит на консультацію · попереджено, що консультація платна (50 € / 200 zł)' + (q ? '\n\nПитання: ' + q : '')
       : '🎓 Хоче на курс · перейшов(ла) до квізу. Якщо пройде — повні відповіді прийдуть окремою заявкою';
     formErr.hidden = true;
     submitBtn.disabled = true;
@@ -2414,7 +2414,7 @@ setTimeout(function () {
   function openThanks(){
     thBack = document.activeElement;
     document.getElementById('thSub').textContent =
-      'Вероніка ' + (SAY[cType.value] || 'звʼяжеться з вами') + ' найближчим часом' + (cType.value === 'any' ? ', щоб узгодити вартість і час консультації.' : '.');
+      'Вероніка ' + (SAY[cType.value] || 'звʼяжеться з вами') + ' найближчим часом' + (cType.value === 'any' ? ', щоб узгодити час консультації.' : '.');
     /* підтверджуємо, куди саме і коли — щоб людина побачила, що номер правильний */
     const chips = [cInput.value];
     if (form.preferred.value && !/Будь-коли/.test(form.preferred.value)) chips.push(form.preferred.value);
