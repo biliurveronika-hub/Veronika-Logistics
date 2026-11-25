@@ -35,29 +35,53 @@ a{color:var(--blue)}
 .brand i{width:34px;height:34px;border-radius:50%;background:var(--forest-d);color:#fff;display:grid;place-items:center}
 .brand svg{width:18px;height:18px}
 .step-n{font-size:13px;font-weight:700;color:var(--muted)}
-.bar{height:6px;border-radius:99px;background:rgba(20,35,46,.08);overflow:hidden;margin-bottom:26px}
+.bar{height:6px;border-radius:99px;background:rgba(20,35,46,.08);overflow:hidden;margin-bottom:22px}
 .bar b{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--blue),var(--forest));border-radius:inherit;transition:width .5s var(--ease)}
 
-.card{background:#fff;border-radius:30px;padding:30px 22px;box-shadow:0 30px 60px -34px rgba(20,35,46,.35);animation:in .45s var(--ease) both}
+.card{background:#fff;border-radius:30px;padding:28px 22px;box-shadow:0 30px 60px -34px rgba(20,35,46,.35);animation:in .45s var(--ease) both}
+.card + .card{margin-top:14px}
 @keyframes in{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
 .card h1{font-size:clamp(26px,7vw,34px);font-weight:700;letter-spacing:-.035em;line-height:1.1;margin-bottom:12px}
-.card h2{font-size:clamp(22px,6vw,28px);font-weight:700;letter-spacing:-.03em;line-height:1.15;margin-bottom:12px}
-.card .sub{color:var(--muted);font-size:15px;margin-bottom:20px}
-.card p.lead{color:var(--muted);font-size:16px;margin-bottom:24px}
-.kicker{display:inline-block;font-size:12px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--blue);margin-bottom:12px}
+.card h2{font-size:clamp(22px,6vw,28px);font-weight:700;letter-spacing:-.03em;line-height:1.15;margin-bottom:10px}
+.card h3{font-size:17px;font-weight:700;letter-spacing:-.01em;margin-bottom:12px}
+.card .sub{color:var(--muted);font-size:15px;margin-bottom:18px}
+.card p.lead{color:var(--muted);font-size:16px;margin-bottom:22px}
+.kicker{display:inline-block;font-size:12px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--blue);margin-bottom:10px}
 
-.opts{display:grid;gap:10px;margin-top:8px}
+/* Вероніка */
+.who{display:flex;align-items:center;gap:12px;margin-bottom:18px}
+.ava{width:52px;height:52px;border-radius:50%;object-fit:cover;flex:none;box-shadow:0 0 0 3px #fff,0 0 0 4px var(--sky-l)}
+.ava.sm{width:36px;height:36px;box-shadow:0 0 0 2px #fff,0 0 0 3px var(--sky-l)}
+.who b{display:block;font-size:15px}
+.who small{display:block;color:var(--muted);font-size:13px}
+.bubble{position:relative;background:var(--ice);border-radius:18px 18px 18px 6px;padding:12px 14px;font-size:14px;color:var(--ink);margin:-4px 0 16px 48px}
+.ask{display:flex;align-items:flex-start;gap:10px;margin-bottom:6px}
+.ask .ava{margin-top:2px}
+
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 22px}
+.chips span{font-size:13px;font-weight:700;padding:7px 12px;border-radius:999px;background:var(--paper);border:1px solid var(--line)}
+
+.opts{display:grid;gap:10px;margin-top:14px}
 .opt{display:flex;align-items:center;gap:14px;width:100%;text-align:left;padding:16px 18px;border-radius:18px;border:1.5px solid var(--line);background:var(--paper);font-size:16px;font-weight:600;cursor:pointer;transition:border-color .2s,background .2s,transform .2s}
 .opt:hover{border-color:var(--blue)}
 .opt:active{transform:scale(.985)}
+.opt:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
 .opt .e{font-size:22px;flex:none}
 .opt.on{border-color:var(--forest);background:var(--ice)}
+.qhint{font-size:13.5px;color:var(--muted);margin-top:4px}
 
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;width:100%;padding:17px 24px;border-radius:999px;border:0;background:var(--forest-d);color:#fff;font-weight:700;font-size:16px;cursor:pointer;text-decoration:none;box-shadow:0 16px 36px -14px rgba(23,49,63,.6);transition:transform .25s var(--ease),opacity .2s}
 .btn:hover{transform:translateY(-2px)}
 .btn[disabled]{opacity:.6;cursor:default;transform:none}
 .btn.ghost{background:transparent;color:var(--ink);border:1.5px solid var(--line);box-shadow:none}
+.link{display:block;width:100%;margin-top:14px;background:none;border:0;color:var(--blue);font-size:15px;font-weight:700;cursor:pointer;text-align:center}
 .back{margin-top:16px;background:none;border:0;color:var(--muted);font-size:14px;font-weight:600;cursor:pointer}
+
+/* персональний підсумок */
+.plan{list-style:none;display:grid;gap:10px;margin:4px 0 0}
+.plan li{display:flex;gap:12px;align-items:flex-start;font-size:15px}
+.plan li i{flex:none;width:30px;height:30px;border-radius:10px;background:var(--ice);display:grid;place-items:center;font-style:normal;font-size:16px}
+.plan li b{display:block;font-size:13px;color:var(--muted);font-weight:700}
 
 .field{margin-bottom:16px}
 .field label,.field .lbl{display:block;font-size:14px;font-weight:700;margin-bottom:8px}
@@ -75,9 +99,20 @@ a{color:var(--blue)}
 .hint.bad{color:var(--bad)}
 .err{margin-top:14px;font-size:14px;color:var(--bad)}
 .hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
-.perks{list-style:none;display:grid;gap:8px;margin:0 0 22px;font-size:15px}
-.perks li{display:flex;gap:10px;align-items:flex-start}
-.perks li::before{content:"✓";flex:none;width:22px;height:22px;border-radius:50%;background:var(--ice);color:var(--forest);font-weight:800;font-size:12px;display:grid;place-items:center;margin-top:1px}
+.next{list-style:none;display:flex;justify-content:space-between;gap:6px;margin:16px 0 0;font-size:12.5px;color:var(--muted);text-align:center}
+.next li{flex:1}
+.next li b{display:block;margin:0 auto 4px;width:24px;height:24px;border-radius:50%;background:var(--ice);color:var(--forest);font-size:12px;display:grid;place-items:center}
+
+/* відгуки */
+.proof{display:flex;align-items:center;gap:12px}
+.faces{display:flex;flex:none}
+.faces img{width:34px;height:34px;border-radius:50%;object-fit:cover;border:2px solid #fff;margin-left:-10px}
+.faces img:first-child{margin-left:0}
+.proof p{font-size:13.5px;color:var(--muted);line-height:1.35}
+.proof p b{color:var(--ink)}
+.quote{margin-top:14px;padding:14px 16px;border-radius:18px;background:var(--paper);border:1px solid var(--line)}
+.quote q{display:block;font-family:var(--serif);font-style:italic;font-size:17px;line-height:1.3;quotes:"«" "»"}
+.quote small{display:block;margin-top:6px;color:var(--muted);font-size:13px;font-weight:600}
 
 .done{text-align:center}
 .done .big{font-size:54px;margin-bottom:10px}
@@ -101,23 +136,34 @@ a{color:var(--blue)}
 (function(){
   /* приймач заявок — той самий воркер, що й форма на головній: пише в групу Telegram */
   const LEAD_ENDPOINT = 'https://rapid-thunder-b3dc.biliurveronika.workers.dev/';
+  const AVA = 'vera.jpg';
 
+  /* r — що Вероніка «відповідає» на вибір: іде в персональний підсумок */
   const Q = [
     { k: 'now', t: 'Чим ви зараз займаєтесь?', o: [
-      ['💼', 'Працюю в іншій сфері'], ['🏡', 'Декрет / вдома'], ['🔎', 'Шукаю роботу'], ['🚛', 'Вже в логістиці']] },
+      ['💼', 'Працюю в іншій сфері', 'Вчитися можна паралельно з роботою — у своєму темпі'],
+      ['🏡', 'Декрет / вдома', 'Логіст працює з дому: потрібні лише ноутбук і телефон'],
+      ['🔎', 'Шукаю роботу', 'Покажу, як підготуватися до співбесіди в транспортній фірмі'],
+      ['🚛', 'Вже в логістиці', 'Складемо ваш досвід у систему й додамо те, чого бракує']] },
     { k: 'start', t: 'Коли хочете почати навчання?', o: [
-      ['🚀', 'Уже зараз'], ['📅', 'За 1–2 місяці'], ['👀', 'Поки придивляюся']] },
+      ['🚀', 'Уже зараз', 'Найближчий старт і місця — скажу на консультації'],
+      ['📅', 'За 1–2 місяці', 'Якраз встигнемо спокійно підготуватися до старту'],
+      ['👀', 'Поки придивляюся', 'Нормально — розмова ні до чого не зобовʼязує']] },
     { k: 'time', t: 'Скільки годин на тиждень готові приділяти навчанню?', o: [
-      ['☕', 'До 5 годин'], ['🕐', '5–10 годин'], ['🔥', 'Понад 10 годин']] },
-    { k: 'invest', t: 'Чи готові інвестувати у навчання від 400 €?', o: [
-      ['✅', 'Так'], ['🧩', 'Так, частинами'], ['🎁', 'Лише безкоштовне']] }
+      ['☕', 'До 5 годин', 'Кожен модуль — відео й презентація, вчитеся коли зручно'],
+      ['🕐', '5–10 годин', 'Спокійно пройдете програму за 6 тижнів'],
+      ['🔥', 'Понад 10 годин', 'Повне занурення — нова професія за 6 тижнів']] },
+    { k: 'invest', t: 'Чи готові інвестувати у навчання від 400 €?', h: 'Повний курс коштує від 400 €, можна частинами. Чесна відповідь допоможе мені запропонувати вам правильний наступний крок.', o: [
+      ['✅', 'Так'], ['🧩', 'Так, частинами'], ['🎁', 'Поки лише безкоштовне']] }
   ];
-  /* сегментація: хто не готовий інвестувати — на безкоштовний урок 1 модуля,
-     хто готовий (одразу чи частинами) — одразу на запис на консультацію */
-  const FREE = 'Лише безкоштовне';
+  const FREE = 'Поки лише безкоштовне';
   const TOTAL = Q.length + 1;              // + крок із записом
-  const A = {};
-  let step = -1;                           // -1 — вступ
+  const KEY = 'vl_kviz';
+  let A = {}, step = -1, fromFree = false;
+  /* стан переживає перезавантаження (браузер Instagram це любить) */
+  try { const s = JSON.parse(sessionStorage.getItem(KEY) || 'null'); if (s && s.A) { A = s.A; step = s.step; fromFree = !!s.fromFree; } } catch (e) {}
+  const save = () => { try { sessionStorage.setItem(KEY, JSON.stringify({ A, step, fromFree })); } catch (e) {} };
+
   const stage = document.getElementById('stage'), bar = document.getElementById('bar'), stepN = document.getElementById('stepN');
   const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
   const progress = (n = step) => {
@@ -125,6 +171,9 @@ a{color:var(--blue)}
     bar.style.width = (v / TOTAL * 100) + '%';
     stepN.textContent = n >= 0 && n < TOTAL ? `Крок ${n + 1} з ${TOTAL}` : '';
   };
+  const track = (ev, p, custom) => { try { window.fbq && fbq(custom ? 'trackCustom' : 'track', ev, p); } catch (e) {} };
+  const reply = k => { const q = Q.find(x => x.k === k), o = q && q.o.find(x => x[1] === A[k]); return o && o[2]; };
+
   /* відповіді гри-тесту з головної (?test=1) — додаємо в заявку */
   const TEST = (() => { try { return JSON.parse(sessionStorage.getItem('vl_test') || 'null'); } catch (e) { return null; } })();
   const answers = () =>
@@ -133,7 +182,6 @@ a{color:var(--blue)}
     '• Час на тиждень: ' + A.time + '\n' +
     '• Від 400 €: ' + A.invest +
     (Array.isArray(TEST) && TEST.length ? '\n\nТест «Чи підходить логістика»:\n' + TEST.map(x => '• ' + x[0] + ' — ' + x[1]).join('\n') : '');
-  const track = (ev, p) => { try { window.fbq && fbq('track', ev, p); } catch (e) {} };
 
   /* ознаки живої людини — воркер відсіює ботів по них */
   const bornAt = Date.now();
@@ -145,53 +193,64 @@ a{color:var(--blue)}
     return { ref: document.referrer.slice(0, 200), utm };
   })();
 
+  const FACES = `<div class="faces"><img src="/img/vidhuk-bohdana.jpg" alt="" width="34" height="34"><img src="/img/vidhuk-serhii.jpg" alt="" width="34" height="34"><img src="/img/vidhuk-nastia.jpg" alt="" width="34" height="34"></div>`;
+
+  function go(n){ step = n; save(); render(); }
   function render(){
     progress();
     window.scrollTo(0, 0);
     if (step === -1) return intro();
     if (step < Q.length) return question();
-    if (A.invest === FREE) return lesson();
+    if (A.invest === FREE && !fromFree) return lesson();
     booking();
   }
 
   function intro(){
     stage.innerHTML = `<section class="card">
-      <span class="kicker">Квіз · 1 хвилина</span>
+      <div class="who"><img class="ava" src="${AVA}" alt="Вероніка" width="52" height="52"><div><b>Вероніка</b><small>логіст, 2 дипломи з логістики</small></div></div>
       <h1>З чого почати <em>саме вам?</em></h1>
       <p class="lead">Чотири коротких питання — і я підкажу наступний крок: безкоштовну консультацію зі мною або перший урок курсу.</p>
+      <div class="chips"><span>⏱ 1 хвилина</span><span>🎓 6 потоків учнів</span><span>🗓 курс — 6 тижнів</span></div>
       <button type="button" class="btn" data-go>Почати</button>
     </section>`;
-    stage.querySelector('[data-go]').onclick = () => { step = 0; render(); };
+    stage.querySelector('[data-go]').onclick = () => { track('KvizStart', {}, true); go(0); };
   }
 
   function question(){
     const q = Q[step];
     stage.innerHTML = `<section class="card">
-      <h2>${esc(q.t)}</h2>
-      <div class="opts">${q.o.map((o, i) => `<button type="button" class="opt${A[q.k] === o[1] ? ' on' : ''}" data-i="${i}"><span class="e">${o[0]}</span>${esc(o[1])}</button>`).join('')}</div>
+      <div class="ask"><img class="ava sm" src="${AVA}" alt="" width="36" height="36"><h2>${esc(q.t)}</h2></div>
+      ${q.h ? `<p class="qhint">${esc(q.h)}</p>` : ''}
+      <div class="opts" role="radiogroup" aria-label="${esc(q.t)}">${q.o.map((o, i) => `<button type="button" role="radio" aria-checked="${A[q.k] === o[1]}" class="opt${A[q.k] === o[1] ? ' on' : ''}" data-i="${i}"><span class="e">${o[0]}</span>${esc(o[1])}</button>`).join('')}</div>
       <button type="button" class="back" data-back>← Назад</button>
     </section>`;
     stage.querySelectorAll('.opt').forEach(b => b.onclick = () => {
-      stage.querySelectorAll('.opt').forEach(x => x.classList.remove('on'));
-      b.classList.add('on');
+      stage.querySelectorAll('.opt').forEach(x => { x.classList.remove('on'); x.setAttribute('aria-checked', 'false'); });
+      b.classList.add('on'); b.setAttribute('aria-checked', 'true');
       A[q.k] = q.o[+b.dataset.i][1];
-      setTimeout(() => { step++; render(); }, 220);
+      if (q.k === 'invest') fromFree = false;
+      setTimeout(() => go(step + 1), 220);
     });
-    stage.querySelector('[data-back]').onclick = () => { step--; render(); };
+    stage.querySelector('[data-back]').onclick = () => go(step - 1);
   }
 
-  /* ---- гілка «Лише безкоштовне»: урок 1 модуля ----
-     контакту немає, але відповіді все одно надсилаємо в групу (один раз) */
-  let freeSent = false;
+  /* персональний підсумок з відповідей */
+  const planHTML = () => {
+    const rows = [['🧭', 'Ваша ситуація', reply('now')], ['🗓', 'Темп', reply('time')], ['🚦', 'Старт', reply('start')]].filter(r => r[2]);
+    return `<ul class="plan">${rows.map(r => `<li><i>${r[0]}</i><span><b>${r[1]}</b>${esc(r[2])}</span></li>`).join('')}</ul>`;
+  };
+
+  /* ---- гілка «Поки лише безкоштовне»: урок 1 модуля ----
+     контакту немає, але відповіді все одно надсилаємо в групу (один раз за візит) */
   function sendFree(){
-    if (freeSent) return; freeSent = true;
+    try { if (sessionStorage.getItem('vl_kviz_free')) return; sessionStorage.setItem('vl_kviz_free', '1'); } catch (e) {}
     fetch(LEAD_ENDPOINT, {
       method: 'POST', headers: { 'Content-Type': 'application/json' }, keepalive: true,
       body: JSON.stringify({
         name: 'Без контакту',
         contact: 'не залишили — обрали безкоштовний урок',
         interests: ['Безкоштовний урок'],
-        message: '❄️ Лише безкоштовне · квіз → урок 1 модуля\n\n' + answers(),
+        message: '❄️ Поки лише безкоштовне · квіз → урок 1 модуля\n\n' + answers(),
         company: '',
         source: location.href.split('#')[0],
         ref: firstVisit.ref, utm: firstVisit.utm,
@@ -201,21 +260,23 @@ a{color:var(--blue)}
   }
   function lesson(){
     progress(TOTAL);
-    track('ViewContent', { content_name: 'kviz_free' });
+    track('KvizFree', {}, true);
     sendFree();
     stage.innerHTML = `<section class="card done">
       <div class="big">🎁</div>
       <h2>Почніть із безкоштовного уроку</h2>
       <p class="lead">Перший модуль курсу «Що таке логістика» — повністю й безкоштовно. 7 хвилин, і стане зрозуміло, чим займається логіст, чим він відрізняється від диспетчера і що таке каботаж.</p>
-      <div class="acts">
-        <a class="btn" href="/urok/${location.search}">Дивитися урок</a>
-        <button type="button" class="btn ghost" data-back>← Змінити відповідь</button>
-      </div>
-    </section>`;
-    stage.querySelector('[data-back]').onclick = () => { step = Q.length - 1; render(); };
+      <div class="acts"><a class="btn" href="/urok/${location.search}">Дивитися урок</a></div>
+      <button type="button" class="link" data-consult>Все ж хочу безкоштовну консультацію →</button>
+    </section>
+    <section class="card">${proofHTML()}</section>`;
+    stage.querySelector('[data-consult]').onclick = () => { fromFree = true; go(Q.length); };
   }
 
-  /* ---- гілка «Так / Так, частинами»: запис на консультацію ---- */
+  const proofHTML = () => `<div class="proof">${FACES}<p>Курс уже пройшли <b>6 потоків учнів</b> — серед них Богдана, Сергій і Настя</p></div>
+    <div class="quote"><q>Через два тижні після курсу я пройшов співбесіду, а через місяць уже працював</q><small>Сергій · Вроцлав</small></div>`;
+
+  /* ---- гілка «Так / Так, частинами» (або передумали): запис на консультацію ---- */
   const CT = {
     telegram: 'Напишу вам у Telegram на цей номер',
     viber: 'Напишу вам у Viber на цей номер',
@@ -229,10 +290,16 @@ a{color:var(--blue)}
   const phoneOk = v => /^\+\d{9,15}$/.test(v);
 
   function booking(){
+    const parts = A.invest === 'Так, частинами';
     stage.innerHTML = `<section class="card">
-      <span class="kicker">Безкоштовно · онлайн</span>
-      <h2>Запишіться на консультацію</h2>
-      <p class="sub">По відповідях бачу: нам є сенс поговорити особисто. Розберемо саме вашу ситуацію і з чого почати, а ще розповім про умови навчання${A.invest === 'Так, частинами' ? ' й оплату частинами' : ''}.</p>
+      <span class="kicker">Ваш результат</span>
+      <h2>Логістика вам <em>підходить</em></h2>
+      <p class="sub">${fromFree ? 'Добре, що вирішили поговорити — розберемо все спокійно, без зобовʼязань.' : 'По відповідях бачу: нам є сенс поговорити особисто.'}</p>
+      ${planHTML()}
+    </section>
+    <section class="card">
+      <div class="who"><img class="ava" src="${AVA}" alt="Вероніка" width="52" height="52"><div><b>Безкоштовна консультація</b><small>онлайн, з Веронікою особисто</small></div></div>
+      <p class="sub">Розберемо вашу ситуацію і з чого почати, а ще розповім про умови навчання${parts ? ' й оплату частинами' : ''}.</p>
       <form id="f" novalidate>
         <div class="field"><label for="nm">Ваше імʼя</label><input id="nm" name="name" type="text" autocomplete="given-name" maxlength="100"></div>
         <div class="field">
@@ -249,9 +316,11 @@ a{color:var(--blue)}
         <div class="hp" aria-hidden="true"><input name="company" tabindex="-1" autocomplete="off"></div>
         <button type="submit" class="btn" id="sb">Записатися на консультацію</button>
         <div class="err" id="err" hidden>Не вдалося надіслати. Напишіть мені, будь ласка, в <a href="https://ig.me/m/veronika_logistics">Direct</a> — відповім там.</div>
+        <ol class="next"><li><b>1</b>Я пишу вам</li><li><b>2</b>Узгоджуємо час</li><li><b>3</b>Говоримо онлайн</li></ol>
       </form>
-      <button type="button" class="back" data-back>← Назад</button>
-    </section>`;
+      <button type="button" class="back" data-back>← Змінити відповіді</button>
+    </section>
+    <section class="card">${proofHTML()}</section>`;
     const f = stage.querySelector('#f'), ph = f.phone, hint = stage.querySelector('#hint'), err = stage.querySelector('#err'), sb = stage.querySelector('#sb');
     const ct = () => f.querySelector('input[name=ct]:checked').value;
     const setHint = bad => { hint.textContent = bad ? PHONE_BAD : CT[ct()]; hint.classList.toggle('bad', !!bad); ph.classList.toggle('bad', !!bad); };
@@ -260,7 +329,7 @@ a{color:var(--blue)}
     ph.addEventListener('focus', () => { if (!ph.value) ph.value = '+'; });
     ph.addEventListener('input', () => { if (hint.classList.contains('bad')) setHint(false); });
     ph.addEventListener('blur', () => { const v = ph.value.trim(); if (!v || v === '+') return; ph.value = normPhone(v); setHint(!phoneOk(ph.value)); });
-    stage.querySelector('[data-back]').onclick = () => { step--; render(); };
+    stage.querySelector('[data-back]').onclick = () => { fromFree = false; go(Q.length - 1); };
 
     f.onsubmit = async e => {
       e.preventDefault();
@@ -270,9 +339,10 @@ a{color:var(--blue)}
       ph.value = normPhone(ph.value.trim());
       const okPhone = phoneOk(ph.value);
       if (!okPhone) setHint(true);
-      if (!name || !okPhone) return;
+      if (!name) { f.name.focus(); return; }
+      if (!okPhone) { ph.focus(); return; }
 
-      const message = '🔥 Запис на консультацію · квіз\n\n' + answers();
+      const message = (fromFree ? '🔥 Запис на консультацію · квіз (спершу обрали безкоштовне, потім передумали)' : '🔥 Запис на консультацію · квіз') + '\n\n' + answers();
 
       err.hidden = true; sb.disabled = true;
       sb.innerHTML = 'Надсилаю… <span class="spin"></span>';
@@ -296,16 +366,19 @@ a{color:var(--blue)}
         const out = await res.json().catch(() => ({}));
         if (!res.ok || out.ok === false) throw new Error('HTTP ' + res.status);
         track('Lead', { content_name: 'kviz_konsultaciya' });
-        booked(f.preferred.value);
+        try { sessionStorage.removeItem(KEY); } catch (x) {}
+        booked(f.preferred.value, name);
       } catch (x) {
         err.hidden = false; sb.disabled = false; sb.textContent = 'Надіслати ще раз';
       } finally { clearTimeout(killer); }
     };
   }
 
-  function booked(when){
+  function booked(when, name){
     progress(TOTAL); window.scrollTo(0, 0);
-    stage.innerHTML = `<section class="card done"><div class="big">🙌</div><h2>Ви записані!</h2>
+    stage.innerHTML = `<section class="card done">
+      <img class="ava" src="${AVA}" alt="Вероніка" width="52" height="52" style="width:72px;height:72px;margin:0 auto 14px;display:block">
+      <h2>${esc(name.split(' ')[0])}, ви записані!</h2>
       <p class="lead">Я напишу вам${/Будь-коли/.test(when) ? '' : ' (' + esc(when.toLowerCase()) + ')'}, щоб узгодити точний час консультації. Вона безкоштовна й онлайн.</p>
       <div class="acts"><a class="btn ghost" href="/urok/">Поки чекаєте — перший урок</a></div></section>`;
   }
