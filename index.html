@@ -692,6 +692,23 @@ form .hint{color:var(--muted);font-size:15px;margin-bottom:30px}
 .choice{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:13px 0;border-bottom:1px solid var(--line);cursor:pointer;font-weight:500}
 .choice:last-child{border:0}
 .choice input{position:absolute;opacity:0;pointer-events:none}
+/* вибір «курс / консультація» на початку форми */
+.want{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:0 0 22px}
+.want label{position:relative;cursor:pointer}
+.want input{position:absolute;opacity:0;pointer-events:none}
+.want span{display:flex;flex-direction:column;gap:6px;height:100%;padding:16px 16px 15px;border-radius:18px;border:1.5px solid var(--line);background:var(--paper);font-weight:700;font-size:15.5px;line-height:1.25;transition:border-color .2s,background .2s}
+.want span i{font-style:normal;font-size:22px}
+.want span small{font-weight:500;font-size:12.5px;color:var(--muted)}
+.want label:hover span{border-color:var(--blue)}
+.want input:checked+span{border-color:var(--forest);background:var(--ice);box-shadow:inset 0 0 0 1px var(--forest)}
+.want input:focus-visible+span{outline:2px solid var(--blue);outline-offset:2px}
+.paid{gap:10px;align-items:flex-start;margin:4px 0 16px;padding:13px 15px;border-radius:16px;background:#FFF6E5;border:1px solid #F1DDB0;font-size:14px;line-height:1.45;color:#5B4513}
+.paid b{color:#3F2F0B}
+.next-hint{font-size:13.5px;color:var(--muted);margin:4px 0 18px}
+form.lead-form .only-consult{display:none}
+form.lead-form.is-consult .only-consult{display:block}
+form.lead-form.is-consult .paid.only-consult{display:flex}
+form.lead-form.is-consult .only-course{display:none}
 form .btn{width:100%;justify-content:space-between}
 .ok{display:none;text-align:center;padding:40px 10px}
 .ok .big{width:84px;height:84px;margin:0 auto 22px;border-radius:50%;background:var(--ios);display:grid;place-items:center;color:#fff}
@@ -1583,32 +1600,22 @@ setTimeout(function () {
     </div>
     <form class="lead-form rv" id="leadForm" style="--d:.1s" novalidate>
       <h3>Залишити заявку</h3>
-      <p class="hint">Оберіть, що вас цікавить, — і я зв’яжуся з вами.</p>
-      <label class="field"><span>Ваше ім’я</span><input name="name" required autocomplete="name" placeholder="Як до вас звертатися"></label>
+      <p class="hint">Оберіть, що вас цікавить:</p>
+      <div class="want" role="radiogroup" aria-label="Що вас цікавить">
+        <label><input type="radio" name="want" value="course" checked><span><i>🎓</i>Хочу на курс<small>Навчання логістики з нуля або окремі модулі</small></span></label>
+        <label><input type="radio" name="want" value="consult"><span><i>💬</i>Хочу на консультацію<small>Розбір вашого питання з Веронікою</small></span></label>
+      </div>
+      <label class="field"><span>Як до вас звертатися</span><input name="name" required autocomplete="given-name" placeholder="Ваше ім’я"></label>
       <label class="field"><span>Номер телефону</span><input name="contact" type="tel" inputmode="tel" autocomplete="tel" required placeholder="+380 67 123 45 67">
         <small class="field-hint" id="contactHint">З кодом країни: +380, +48…</small></label>
-      <label class="field"><span>Де вам зручніше написати</span><select name="ctype">
-        <option value="telegram">Telegram</option>
-        <option value="viber">Viber</option>
-        <option value="whatsapp">WhatsApp</option>
-        <option value="call">Подзвонити</option>
-      </select></label>
-      <label class="field"><span>Коли вам зручно на звʼязок</span><select name="preferred">
-        <option>Будь-коли — напишіть мені</option>
-        <option>Будні, до 12:00</option>
-        <option>Будні, 12:00–18:00</option>
-        <option>Будні, після 18:00</option>
-        <option>Вихідні</option>
-      </select></label>
-      <div class="choices">
-        <label class="choice">Хочу на курс<input type="checkbox" name="course" checked><i class="tg"></i></label>
-        <label class="choice">Хочу консультацію<input type="checkbox" name="consult"><i class="tg"></i></label>
-        <label class="choice">Маю питання<input type="checkbox" name="question"><i class="tg"></i></label>
-      </div>
-      <label class="field"><span>Ваше питання (необов’язково)</span><textarea name="msg" placeholder="Напишіть, що хочете дізнатися"></textarea></label>
+      <input type="hidden" name="ctype" value="any">
+      <input type="hidden" name="preferred" value="">
+      <div class="paid only-consult"><span>💳</span><span><b>Консультація платна.</b> Вероніка напише вам, щоб узгодити вартість і зручний час.</span></div>
+      <label class="field only-consult"><span>Ваше питання (необов’язково)</span><textarea name="msg" placeholder="Коротко: що хочете розібрати"></textarea></label>
+      <p class="next-hint only-course">Далі — кілька коротких питань, щоб підібрати вам формат навчання.</p>
       <input class="hp" type="text" name="company" tabindex="-1" autocomplete="off" aria-hidden="true">
       <p class="form-err" id="formErr" hidden>Не вдалося надіслати заявку. Напишіть мені, будь ласка, в <a href="https://ig.me/m/veronika_logistics" rel="noopener">Direct</a> — відповім там.</p>
-      <button class="btn btn-green" type="submit">Надіслати заявку <span class="arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M7 17 17 7M8 7h9v9"/></svg></span></button>
+      <button class="btn btn-green" type="submit"><b class="sb-t" style="font-weight:inherit">Далі</b> <span class="arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M7 17 17 7M8 7h9v9"/></svg></span></button>
       <p class="privacy">Натискаючи кнопку, ви погоджуєтесь з <a href="privacy/">політикою конфіденційності</a> та <a href="oferta/">умовами оферти</a>.</p>
       <div class="ok"><div class="big"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg></div><h3>Заявку надіслано!</h3><p class="hint">Вероніка напише вам найближчим часом.</p></div>
     </form>
@@ -2236,21 +2243,24 @@ setTimeout(function () {
 
   /* ---------- form ---------- */
   const form = document.getElementById('leadForm');
-  form.querySelectorAll('.choice input').forEach(i => i.addEventListener('change', () => haptic(10)));
-  document.querySelectorAll('[data-pick]').forEach(a => a.addEventListener('click', () => {
-    form.course.checked = false; form.consult.checked = a.dataset.pick === 'consult'; form.question.checked = a.dataset.pick === 'question';
-  }));
+  /* курс → далі квіз; консультація → запит (платна) */
+  const sbT = form.querySelector('.sb-t');
+  const want = () => form.querySelector('input[name=want]:checked').value;
+  const setWant = v => {
+    form.querySelector('input[name=want][value=' + v + ']').checked = true;
+    form.classList.toggle('is-consult', v === 'consult');
+    sbT.textContent = v === 'consult' ? 'Надіслати запит' : 'Далі';
+  };
+  form.querySelectorAll('input[name=want]').forEach(i => i.addEventListener('change', () => { setWant(want()); haptic(10); }));
+  document.querySelectorAll('[data-pick]').forEach(a => a.addEventListener('click', () => setWant('consult')));
+  setWant(want());
   /* Прихід з директу: #konsultaciya — одразу форма з обраною консультацією.
      Людина вже прогріта, заставку їй показувати нема сенсу.
      ?k=1 — дубль на випадок, коли обгортка редіректу зріже фрагмент. */
   if (/konsultaciya/i.test(location.hash) || /konsultaciya|(^|[?&])k=1/i.test(location.search)) {
-    form.course.checked = false; form.consult.checked = true; form.question.checked = false;
-
-    /* текст під безкоштовну консультацію — тільки для тих, хто прийшов за цим
-       посиланням; у розмітці лишається звичайна заявка на курс */
-    form.querySelector('h3').textContent = 'Безкоштовна консультація';
-    form.querySelector('.hint').textContent = 'Заповніть — і я напишу вам, щоб узгодити час. Консультація безкоштовна.';
-    form.querySelector('button[type=submit]').firstChild.nodeValue = 'Записатися на консультацію ';
+    /* безкоштовна консультація з директу — це розмова про курс: ведемо через квіз,
+       він закінчується записом на безкоштовну консультацію */
+    setWant('course');
 
     /* знімаємо заставку напряму, без залежності від порядку слухачів */
     body.classList.remove('loading'); body.classList.add('loaded');
@@ -2283,7 +2293,8 @@ setTimeout(function () {
     telegram: { label: 'Telegram', hint: 'Напишу вам у Telegram на цей номер' },
     viber:    { label: 'Viber',    hint: 'Напишу вам у Viber на цей номер' },
     whatsapp: { label: 'WhatsApp', hint: 'Напишу вам у WhatsApp на цей номер' },
-    call:     { label: 'Дзвінок',  hint: 'Подзвоню вам на цей номер' }
+    call:     { label: 'Дзвінок',  hint: 'Подзвоню вам на цей номер' },
+    any:      { label: 'Телефон',  hint: 'Напишу або подзвоню вам на цей номер' }
   };
   const PHONE_BAD = 'Перевірте номер: код країни і 9–15 цифр, напр. +380 67 123 45 67';
   /* лишаємо цифри; український 0XX… без коду — дописуємо +38 */
@@ -2299,7 +2310,6 @@ setTimeout(function () {
     cHint.classList.toggle('bad', !!bad);
     cInput.style.borderColor = bad ? '#d9534f' : '';
   };
-  cType.addEventListener('change', () => { if (!cHint.classList.contains('bad')) setHint(false); haptic(10); });
   cInput.addEventListener('focus', () => { if (!cInput.value) cInput.value = '+'; });
   cInput.addEventListener('input', () => { if (cHint.classList.contains('bad')) setHint(false); });
   cInput.addEventListener('blur', () => {
@@ -2338,10 +2348,12 @@ setTimeout(function () {
     cInput.value = normPhone(cInput.value.trim());
     if (!phoneOk(cInput.value)) { setHint(true); ok = false; }
     if (!ok) return;
-    const interests = [];
-    if (form.course.checked) interests.push('Курс');
-    if (form.consult.checked) interests.push('Консультація');
-    if (form.question.checked) interests.push('Питання');
+    const isConsult = want() === 'consult';
+    const interests = [isConsult ? 'Консультація (платна)' : 'Курс'];
+    const q = form.msg.value.trim();
+    const msg = isConsult
+      ? '💬 Запит на консультацію · попереджено, що консультація платна' + (q ? '\n\nПитання: ' + q : '')
+      : '🎓 Хоче на курс · перейшов(ла) до квізу. Якщо пройде — повні відповіді прийдуть окремою заявкою';
     formErr.hidden = true;
     submitBtn.disabled = true;
     submitBtn.innerHTML = 'Надсилаю… <span class="arr"><span class="spin"></span></span>';
@@ -2363,7 +2375,7 @@ setTimeout(function () {
           contact_value: cInput.value.slice(0, 100),
           preferred: form.preferred.value,
           interests,
-          message: form.msg.value.trim().slice(0, 2000),
+          message: msg.slice(0, 2000),
           company: form.company.value,
           source: location.href.split('#')[0],
           ref: firstVisit.ref,
@@ -2374,6 +2386,13 @@ setTimeout(function () {
       });
       const out = await res.json().catch(() => ({}));
       if (!res.ok || out.ok === false) throw new Error('HTTP ' + res.status);
+      if (!isConsult) {
+        /* курс: контакт уже в групі, далі квіз — імʼя і телефон там підставляться самі */
+        window.fbq && fbq('track', 'Lead', { content_name: 'kurs_forma' });
+        try { sessionStorage.setItem('vl_lead', JSON.stringify({ name: form.name.value.trim(), phone: cInput.value })); } catch (x) {}
+        setTimeout(() => { location.href = '/anketa/' + location.search; }, 250);
+        return;
+      }
       form.classList.add('sent'); window.fbq && fbq('track','Lead',{content_name:'konsultaciya'}); haptic([20, 50, 40]); openThanks();
     } catch (err) {
       formErr.hidden = false;
@@ -2390,15 +2409,15 @@ setTimeout(function () {
   /* ---------- вікно «дякую» ---------- */
   const thanks = document.getElementById('thanks');
   const SAY = { telegram: 'напише вам у Telegram', viber: 'напише вам у Viber',
-                whatsapp: 'напише вам у WhatsApp', call: 'подзвонить вам' };
+                whatsapp: 'напише вам у WhatsApp', call: 'подзвонить вам', any: 'напише або подзвонить вам' };
   let thBack = null;
   function openThanks(){
     thBack = document.activeElement;
     document.getElementById('thSub').textContent =
-      'Вероніка ' + (SAY[cType.value] || 'звʼяжеться з вами') + ' найближчим часом.';
+      'Вероніка ' + (SAY[cType.value] || 'звʼяжеться з вами') + ' найближчим часом' + (cType.value === 'any' ? ', щоб узгодити вартість і час консультації.' : '.');
     /* підтверджуємо, куди саме і коли — щоб людина побачила, що номер правильний */
     const chips = [cInput.value];
-    if (!/Будь-коли/.test(form.preferred.value)) chips.push(form.preferred.value);
+    if (form.preferred.value && !/Будь-коли/.test(form.preferred.value)) chips.push(form.preferred.value);
     const box = document.getElementById('thWhen');
     box.textContent = '';
     chips.forEach(c => { const el = document.createElement('span'); el.textContent = c; box.appendChild(el); });

@@ -194,6 +194,8 @@ a{color:var(--blue)}
   const reply = k => { const q = Q.find(x => x.k === k), o = q && q.o.find(x => x[1] === A[k]); return o && o[2]; };
 
   /* відповіді гри-тесту з головної (?test=1) — додаємо в заявку */
+  /* контакт із форми на головній («Хочу на курс») — підставляємо, щоб не вводили вдруге */
+  const LEAD = (() => { try { return JSON.parse(sessionStorage.getItem('vl_lead') || 'null'); } catch (e) { return null; } })();
   const TEST = (() => { try { return JSON.parse(sessionStorage.getItem('vl_test') || 'null'); } catch (e) { return null; } })();
   const answers = () =>
     '• Зараз: ' + A.now + '\n' +
@@ -269,8 +271,8 @@ a{color:var(--blue)}
     fetch(LEAD_ENDPOINT, {
       method: 'POST', headers: { 'Content-Type': 'application/json' }, keepalive: true,
       body: JSON.stringify({
-        name: 'Без контакту',
-        contact: 'не залишили — обрали безкоштовний урок',
+        name: LEAD ? LEAD.name : 'Без контакту',
+        contact: LEAD ? 'Телефон: ' + LEAD.phone + ' (з форми на головній)' : 'не залишили — обрали безкоштовний урок',
         interests: ['Безкоштовний урок'],
         message: '❄️ Поки лише безкоштовне · квіз → урок 1 модуля\n\n' + answers(),
         company: '',
@@ -353,6 +355,7 @@ a{color:var(--blue)}
     const f = stage.querySelector('#f'), ph = f.phone, hint = stage.querySelector('#hint'), err = stage.querySelector('#err'), sb = stage.querySelector('#sb');
     const ct = () => f.querySelector('input[name=ct]:checked').value;
     const setHint = bad => { hint.textContent = bad ? PHONE_BAD : CT[ct()]; hint.classList.toggle('bad', !!bad); ph.classList.toggle('bad', !!bad); };
+    if (LEAD) { if (!f.name.value) f.name.value = LEAD.name || ''; if (!ph.value) ph.value = LEAD.phone || ''; }
     setHint(false);
     f.querySelectorAll('input[name=ct]').forEach(r => r.onchange = () => { if (!hint.classList.contains('bad')) setHint(false); });
     ph.addEventListener('focus', () => { if (!ph.value) ph.value = '+'; });
