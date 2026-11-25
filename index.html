@@ -379,6 +379,14 @@ body.loaded .hr{opacity:1;transform:none}
 .game-tab .ga{flex:none;width:28px;height:28px;border-radius:50%;background:var(--forest-d);color:#fff;display:grid;place-items:center;transition:transform .3s var(--ease)}
 .game-tab .ga svg{width:14px;height:14px}
 body.loaded .game-tab{transform:none}
+.ask-tab{position:fixed;right:20px;bottom:86px;z-index:70;display:flex;align-items:center;gap:12px;padding:8px 16px 8px 8px;border-radius:20px;border:1px solid rgba(255,255,255,.8);background:rgba(255,255,255,.82);backdrop-filter:blur(16px) saturate(1.4);-webkit-backdrop-filter:blur(16px) saturate(1.4);color:var(--ink);box-shadow:0 18px 40px -16px rgba(23,49,63,.45);transform:translateX(130%);transition:transform .7s var(--ease) .15s,box-shadow .3s}
+.ask-tab:hover{box-shadow:0 22px 46px -14px rgba(23,49,63,.55)}
+.ask-tab .ai{flex:none;width:40px;height:40px;border-radius:13px;background:#2AABEE;color:#fff;display:grid;place-items:center}
+.ask-tab .ai svg{width:20px;height:20px;margin-left:-2px}
+.ask-tab .gt-t{display:flex;flex-direction:column;line-height:1.2}
+.ask-tab .gt-t small{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#1C8FD0}
+.ask-tab .gt-t b{font-size:14px;font-weight:700}
+body.loaded .ask-tab{transform:none}
 @keyframes wiggle{0%,80%,100%{transform:rotate(0)}85%{transform:rotate(-14deg)}90%{transform:rotate(12deg)}95%{transform:rotate(-6deg)}}
 
 /* game modal */
@@ -877,6 +885,11 @@ footer{background:var(--forest-d);color:#A9BCCB;padding:90px 0 34px;border-radiu
   .gt-badge{width:90px;height:90px;right:4%}
   .gt .btn-xl{width:100%;justify-content:space-between}
   .game-tab{right:12px;bottom:12px;gap:10px;padding:6px 8px 6px 6px;border-radius:16px}
+  .ask-tab{right:12px;bottom:66px;gap:10px;padding:6px 12px 6px 6px;border-radius:16px}
+  .ask-tab .ai{width:34px;height:34px;border-radius:11px}
+  .ask-tab .ai svg{width:17px;height:17px}
+  .ask-tab .gt-t small{display:none}
+  .ask-tab .gt-t b{font-size:13px;font-weight:600}
   .game-tab .gi{width:34px;height:34px;border-radius:11px}
   .game-tab .gt-t b{display:none}
   .game-tab .gt-t small{font-size:13px;letter-spacing:0;text-transform:none;color:var(--ink)}
@@ -1013,6 +1026,7 @@ setTimeout(function () {
   </div>
   <div class="g-stage" id="gStage"></div>
 </div>
+<a class="ask-tab" href="https://t.me/biliur2121" target="_blank" rel="noopener" aria-label="Задати питання Вероніці в Telegram"><span class="ai"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.4 4.3 2.9 11.5c-1.3.5-1.2 1.3-.2 1.6l4.7 1.5 1.8 5.6c.2.6.4.8.9.8.4 0 .6-.2.9-.4l2.3-2.2 4.8 3.5c.9.5 1.5.2 1.7-.8l3.1-14.7c.3-1.3-.5-1.8-1.5-1.4ZM8.8 14.3l9.9-6.2c.5-.3.9-.1.5.2l-8.2 7.4-.3 3.4-1.9-4.8Z"/></svg></span><span class="gt-t"><small>Telegram</small><b>Задати питання Вероніці</b></span></a>
 <button type="button" class="game-tab" data-game aria-label="Пройти тест: чи підходить вам професія логіста"><span class="gi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3 8-8"/><path d="M20 12v6a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h9"/></svg></span><span class="gt-t"><small>Пройти тест · 1 хв</small><b>Чи підходить вам логістика?</b></span><span class="ga"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></button>
 
 <div class="lightbox" id="lightbox" role="dialog" aria-label="Документ"><button type="button" aria-label="Закрити">×</button><img alt=""></div>
@@ -1046,6 +1060,7 @@ setTimeout(function () {
       <p class="lead hr" style="--d:.16s">Вантажі по Європі їздять щодня — і кожним рейсом керує логіст. Навчу вас цієї професії з нуля всього за 6 тижнів: спедитор або диспетчер, робота з дому й дохід, який не залежить від міста, де ви живете.</p>
       <div class="hero-actions hr" style="--d:.24s">
         <a href="#join" class="btn btn-green" data-pick="course">Записатися на курс <span class="arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M7 17 17 7M8 7h9v9"/></svg></span></a>
+        <a href="#join" class="btn btn-ghost" data-pick="consult">Отримати консультацію</a>
         <a href="#lesson" class="btn-play"><span class="pl"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 4l14 8-14 8z"/></svg></span>Перший урок безкоштовно</a>
       </div>
       <a href="#quiz" class="quiz-link hr" style="--d:.3s" data-game><b>🧭</b>Тест: чи підходить вам професія логіста? <span>→</span></a>
