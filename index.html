@@ -1019,7 +1019,7 @@ setTimeout(function () {
       <a href="#faq">FAQ</a>
     </nav>
     <div style="display:flex;align-items:center;gap:8px">
-    <a href="#join" class="btn btn-green">Записатися <span class="arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M7 17 17 7M8 7h9v9"/></svg></span></a>
+    <a href="#join" class="btn btn-green" data-pick="course">Записатися <span class="arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M7 17 17 7M8 7h9v9"/></svg></span></a>
     </div>
   </div>
 </header>
@@ -1034,7 +1034,7 @@ setTimeout(function () {
       <h1 class="hr" style="--d:.08s">Нова професія — <em>логіст.</em> Працюйте з&nbsp;будь-якої точки світу</h1>
       <p class="lead hr" style="--d:.16s">Вантажі по Європі їздять щодня — і кожним рейсом керує логіст. Навчу вас цієї професії з нуля всього за 6 тижнів: спедитор або диспетчер, робота з дому й дохід, який не залежить від міста, де ви живете.</p>
       <div class="hero-actions hr" style="--d:.24s">
-        <a href="#join" class="btn btn-green">Записатися на курс <span class="arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M7 17 17 7M8 7h9v9"/></svg></span></a>
+        <a href="#join" class="btn btn-green" data-pick="course">Записатися на курс <span class="arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M7 17 17 7M8 7h9v9"/></svg></span></a>
         <a href="#lesson" class="btn-play"><span class="pl"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 4l14 8-14 8z"/></svg></span>Перший урок безкоштовно</a>
       </div>
       <a href="#quiz" class="quiz-link hr" style="--d:.3s" data-game><b>🧭</b>Тест: чи підходить вам професія логіста? <span>→</span></a>
@@ -1252,6 +1252,10 @@ setTimeout(function () {
         <div class="pv-body"></div>
       </div>
     </div>
+    <div class="mods-only rv" style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px 24px;margin-top:28px;padding:24px 28px;border-radius:var(--r-lg);background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14)">
+      <div style="min-width:0;flex:1 1 320px"><b style="display:block;font-size:19px;margin-bottom:4px">Вже працюєте в логістиці або маєте свою фірму?</b><span style="opacity:.75">Не обовʼязково проходити весь курс — можна взяти лише потрібні модулі: ставки й індекси, біржі, документи.</span></div>
+      <a href="#join" class="btn btn-green" data-pick="course">Підібрати модулі <span class="arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M7 17 17 7M8 7h9v9"/></svg></span></a>
+    </div>
   </div>
 </section>
 
@@ -1387,6 +1391,7 @@ setTimeout(function () {
         <span class="label dark">Консультація</span>
         <h2>Особиста консультація <em>з Веронікою</em></h2>
         <p class="lead">Коли потрібна відповідь саме на вашу ситуацію — записуйтесь на онлайн-консультацію. Розберемо ваше питання предметно, з мого практичного досвіду.</p>
+        <p class="consult-price" style="display:inline-flex;align-items:center;gap:10px;margin:18px 0 4px;padding:9px 16px;border-radius:999px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);font-weight:700;font-size:15px">💳 50 € <span style="opacity:.7;font-weight:500">(або 200 zł)</span> · онлайн</p>
         <div class="topics">
           <div class="topic"><i>✓</i>З чого почати і як увійти в професію</div>
           <div class="topic"><i>✓</i>Резюме та підготовка до співбесіди</div>
@@ -1397,7 +1402,7 @@ setTimeout(function () {
         </div>
         <div class="consult-actions">
           <a href="#join" class="btn btn-green" data-pick="consult">Записатися на консультацію <span class="arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M7 17 17 7M8 7h9v9"/></svg></span></a>
-          <a href="#join" class="btn btn-ghost light" data-pick="question">Задати питання</a>
+          <a href="https://ig.me/m/veronika_logistics" target="_blank" rel="noopener" class="btn btn-ghost light">Задати питання в Direct</a>
         </div>
       </div>
     </div>
@@ -1441,7 +1446,7 @@ setTimeout(function () {
         </div>
         <div class="story-actions">
           <button type="button" class="btn btn-green" data-story>Читати повну історію <span class="arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M7 17 17 7M8 7h9v9"/></svg></span></button>
-          <a href="#join" class="btn btn-ghost">Хочу так само</a>
+          <a href="#join" class="btn btn-ghost" data-pick="course">Хочу так само</a>
         </div>
       </div>
     </div>
@@ -1475,7 +1480,7 @@ setTimeout(function () {
         </div>
         <div class="story-actions">
           <button type="button" class="btn btn-green" data-story="serg">Читати повну історію <span class="arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M7 17 17 7M8 7h9v9"/></svg></span></button>
-          <a href="#join" class="btn btn-ghost">Хочу так само</a>
+          <a href="#join" class="btn btn-ghost" data-pick="course">Хочу так само</a>
         </div>
       </div>
     </div>
@@ -1509,7 +1514,7 @@ setTimeout(function () {
         </div>
         <div class="story-actions">
           <button type="button" class="btn btn-green" data-story="nastia">Читати повну історію <span class="arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M7 17 17 7M8 7h9v9"/></svg></span></button>
-          <a href="#join" class="btn btn-ghost">Хочу так само</a>
+          <a href="#join" class="btn btn-ghost" data-pick="course">Хочу так само</a>
         </div>
       </div>
     </div>
@@ -1532,7 +1537,7 @@ setTimeout(function () {
       <div class="sblock"><h4><i>🗣</i>Порада тим, хто вагається</h4><p>Для того, хто думає, йти чи не йти, однозначно скажу: ВАРТО. Сфера логістики постійно розвивається, це такий вид бізнесу, де завжди буде робота і замовлення. Поки є попит на товар — доти будуть водії їздити. А логіст — це як місток між замовником і водієм: без його правильного розрахунку часу, будування маршруту й домовленостей із замовником і водієм нічого б не було.</p></div>
     </div>
     <div class="smodal-cta">
-      <a href="#join" class="btn btn-green" data-sclose>Записатися на курс <span class="arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M7 17 17 7M8 7h9v9"/></svg></span></a>
+      <a href="#join" class="btn btn-green" data-pick="course" data-sclose>Записатися на курс <span class="arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M7 17 17 7M8 7h9v9"/></svg></span></a>
       <a href="#consult" class="btn btn-ghost" data-sclose>Індивідуальна консультація</a>
     </div>
   </div>
@@ -1553,7 +1558,7 @@ setTimeout(function () {
       <div class="sblock"><h4><i>🗣</i>Порада тим, хто вагається</h4><p>Якщо думаєте, що логістика — це круто, то правильно думаєте. Логістика — це дійсно круто. Пробуйте, навчайтесь — і все буде добре.</p></div>
     </div>
     <div class="smodal-cta">
-      <a href="#join" class="btn btn-green" data-sclose>Записатися на курс <span class="arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M7 17 17 7M8 7h9v9"/></svg></span></a>
+      <a href="#join" class="btn btn-green" data-pick="course" data-sclose>Записатися на курс <span class="arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M7 17 17 7M8 7h9v9"/></svg></span></a>
       <a href="#consult" class="btn btn-ghost" data-sclose>Індивідуальна консультація</a>
     </div>
   </div>
@@ -1574,7 +1579,7 @@ setTimeout(function () {
       <div class="sblock"><h4><i>🌱</i>Що далі</h4><p>Я ще в процесі навчання, тож поки що в мене лише практика. Але я вірю, що все вийде і ця професія стане моїм фундаментом для роботи і життя в Європі.</p></div>
     </div>
     <div class="smodal-cta">
-      <a href="#join" class="btn btn-green" data-sclose>Записатися на курс <span class="arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M7 17 17 7M8 7h9v9"/></svg></span></a>
+      <a href="#join" class="btn btn-green" data-pick="course" data-sclose>Записатися на курс <span class="arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M7 17 17 7M8 7h9v9"/></svg></span></a>
       <a href="#consult" class="btn btn-ghost" data-sclose>Індивідуальна консультація</a>
     </div>
   </div>
@@ -1676,7 +1681,9 @@ setTimeout(function () {
       <details><summary>Коли можна почати навчання?<span class="pm">+</span></summary><p>Коли вам зручно. Немає фіксованих дат — ви заходите в навчання в будь-який момент і проходите у своєму темпі.</p></details>
       <details><summary>Чи можна потім працювати з дому?<span class="pm">+</span></summary><p>Так — я сама так працюю. На курсі показую, як шукати вантажі, спілкуватися з клієнтами й вести перевезення дистанційно.</p></details>
       <details><summary>Допоможете з пошуком роботи?<span class="pm">+</span></summary><p>Модуль 8 повністю про це: складання резюме, підготовка до співбесіди і мої поради як спеціалістки.</p></details>
-      <details><summary>Чим консультація відрізняється від курсу?<span class="pm">+</span></summary><p>Курс дає системні знання крок за кроком. Консультація — це точкова відповідь на вашу конкретну ситуацію чи питання.</p></details>
+      <details><summary>Скільки коштує навчання?<span class="pm">+</span></summary><p>Повний курс — від 400 €, можна оплатити частинами. Точний формат і ціну підберемо на безкоштовній розмові після короткого квізу — натисніть «Записатися на курс».</p></details>
+      <details><summary>Я вже працюю в логістиці. Можна взяти лише кілька модулів?<span class="pm">+</span></summary><p>Так. Якщо у вас є досвід або своя транспортна фірма, можна взяти лише потрібні теми — наприклад, ставки й індекси або біржі й документи. Це дешевше за повний курс; вартість залежить від кількості модулів і формату.</p></details>
+      <details><summary>Чим консультація відрізняється від курсу?<span class="pm">+</span></summary><p>Курс дає системні знання крок за кроком. Консультація — це точкова відповідь на вашу конкретну ситуацію чи питання. Консультація коштує 50 € (або 200 zł) і проходить онлайн.</p></details>
       <details><summary>Я боюся математики — це проблема?<span class="pm">+</span></summary><p>Ні 🙂 Я теж боялася. Все, що потрібно для роботи, — зрозумілі формули й логіка, які я показую на прикладах.</p></details>
     </div>
   </div>
@@ -1688,7 +1695,7 @@ setTimeout(function () {
   <div class="wrap">
     <div class="foot-top">
       <h3>Готові зробити перший рейс <em>у новій професії?</em></h3>
-      <a href="#join" class="btn btn-white">Записатися <span class="arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M7 17 17 7M8 7h9v9"/></svg></span></a>
+      <a href="#join" class="btn btn-white" data-pick="course">Записатися <span class="arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M7 17 17 7M8 7h9v9"/></svg></span></a>
     </div>
     <div class="foot-wm">Veronika <em>Logistics</em></div>
     <div class="foot-row">
@@ -2051,7 +2058,7 @@ setTimeout(function () {
   });
   function resultG(){
     haptic([40, 60, 40, 60, 90]);
-    stage.innerHTML = `<div class="g-card g-res${TEST_MODE ? ' tm' : ''}"><div class="g-badge"><div>🏆</div></div><span class="lvl">Логіст · рівень 1 · ${xp} XP</span><h3>Професія логіста вам підходить!</h3><div class="q-list">${picks.map((p, i) => `<div style="--i:${i}">${p}<i class="tg sm" data-tgi="${i}"></i></div>`).join('')}</div><p>${TEST_MODE ? 'Освоїти логістику може кожен, хто поставив собі таку ціль. Ще чотири питання — і я підкажу, з чого почати саме вам.' : 'Освоїти логістику може кожен, хто поставив собі таку ціль. Я покажу шлях від нуля до першого вантажу — за 6 тижнів.'}</p><div class="acts">${TEST_MODE ? `<a href="/kviz/${location.search}" class="btn btn-green">Дізнатися, з чого почати <span class="arr">${ARR}</span></a><small class="tm-cd" id="tmCd" aria-live="polite">Перейдемо автоматично за 7 с</small>` :`<a href="#join" class="btn btn-green" data-close>Записатися на курс <span class="arr">${ARR}</span></a><a href="#lesson" class="btn btn-ghost" data-close>Перший урок</a>`}<button type="button" class="btn btn-ghost" data-restart>Зіграти ще</button></div></div>`;
+    stage.innerHTML = `<div class="g-card g-res${TEST_MODE ? ' tm' : ''}"><div class="g-badge"><div>🏆</div></div><span class="lvl">Логіст · рівень 1 · ${xp} XP</span><h3>Професія логіста вам підходить!</h3><div class="q-list">${picks.map((p, i) => `<div style="--i:${i}">${p}<i class="tg sm" data-tgi="${i}"></i></div>`).join('')}</div><p>${TEST_MODE ? 'Освоїти логістику може кожен, хто поставив собі таку ціль. Ще чотири питання — і я підкажу, з чого почати саме вам.' : 'Освоїти логістику може кожен, хто поставив собі таку ціль. Я покажу шлях від нуля до першого вантажу — за 6 тижнів.'}</p><div class="acts">${TEST_MODE ? `<a href="/kviz/${location.search}" class="btn btn-green">Дізнатися, з чого почати <span class="arr">${ARR}</span></a><small class="tm-cd" id="tmCd" aria-live="polite">Перейдемо автоматично за 7 с</small>` :`<a href="#join" class="btn btn-green" data-pick="course" data-close>Записатися на курс <span class="arr">${ARR}</span></a><a href="#lesson" class="btn btn-ghost" data-close>Перший урок</a>`}<button type="button" class="btn btn-ghost" data-restart>Зіграти ще</button></div></div>`;
     /* у режимі з директу галочки зʼявляються повільніше — щоб встигли прочитати */
     const tgStep = TEST_MODE ? 400 : 150;
     stage.querySelectorAll('[data-tgi]').forEach((t, i) => setTimeout(() => t.classList.add('on'), 800 + i * tgStep));
@@ -2252,7 +2259,7 @@ setTimeout(function () {
     sbT.textContent = v === 'consult' ? 'Надіслати запит' : 'Далі';
   };
   form.querySelectorAll('input[name=want]').forEach(i => i.addEventListener('change', () => { setWant(want()); haptic(10); }));
-  document.querySelectorAll('[data-pick]').forEach(a => a.addEventListener('click', () => setWant('consult')));
+  document.addEventListener('click', e => { const a = e.target.closest('[data-pick]'); if (a) setWant(a.dataset.pick === 'course' ? 'course' : 'consult'); });
   setWant(want());
   /* Прихід з директу: #konsultaciya — одразу форма з обраною консультацією.
      Людина вже прогріта, заставку їй показувати нема сенсу.
