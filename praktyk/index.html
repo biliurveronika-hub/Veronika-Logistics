@@ -400,6 +400,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
         <p class="lead" data-limit-text>Перешліть це посилання партнеру — тут уся програма й ціни. Якщо у вас обох є питання, напишіть мені: відповім на все.</p>
         <a class="btn btn-white" href="https://t.me/biliur2121" target="_blank" rel="noopener">Написати Вероніці<span class="arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></svg></span></a>
         <p class="contact">Telegram — або просто відповідайте в нашому чаті.</p>
+        <p class="why72" style="margin-top:22px;padding-top:18px;border-top:1px solid rgba(255,255,255,.2);font-size:15px;line-height:1.55;color:#E9EDDC"><b style="color:#fff">Чому лише 72 години?</b> З досвіду: хто справді хоче рухатися далі, вирішує за кілька днів. Якщо рішення відкладається довше — це вже не «подумаю», а «колись потім», і час просто минає. Тому пропозиція діє 3 доби з моменту, як ви відкрили цю сторінку.</p>
       </div>
       <div class="big" data-big aria-label="Залишилось часу">
         <div><span data-d>--</span><small>днів</small></div>
@@ -415,7 +416,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 <script>
 (function(){
   /* таймер від першого відкриття на цьому пристрої: HOURS годин, час старту памʼятаємо в браузері */
-  var HOURS = 168, KEY = 'vl_praktyk_t0', t0 = 0;
+  var HOURS = 72, KEY = 'vl_praktyk_t0', t0 = 0;
   try { t0 = +localStorage.getItem(KEY) || 0; } catch (e) {}
   if (!t0 || t0 > Date.now()) { t0 = Date.now(); try { localStorage.setItem(KEY, String(t0)); } catch (e) {} }
   var DEADLINE = t0 + HOURS * 36e5;
