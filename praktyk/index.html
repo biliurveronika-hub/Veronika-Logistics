@@ -400,7 +400,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
         <p class="lead" data-limit-text>Перешліть це посилання партнеру — тут уся програма й ціни. Якщо у вас обох є питання, напишіть мені: відповім на все.</p>
         <a class="btn btn-white" href="https://t.me/biliur2121" target="_blank" rel="noopener">Написати Вероніці<span class="arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></svg></span></a>
         <p class="contact">Telegram — або просто відповідайте в нашому чаті.</p>
-        <p class="why72" style="margin-top:22px;padding-top:18px;border-top:1px solid rgba(255,255,255,.2);font-size:15px;line-height:1.55;color:#E9EDDC"><b style="color:#fff">Чому лише 72 години?</b> Скажу прямо: хто справді хоче працювати й заробляти, вирішує за кілька днів. Якщо людина «думає» тиждень, вона нічого не почне — це вже не рішення, а імітація руху. Я працюю з тими, хто діє. Тому пропозиція діє 3 доби з моменту, як ви відкрили цю сторінку, — і не продовжується.</p>
+        <p class="why72" style="margin-top:22px;padding-top:18px;border-top:1px solid rgba(255,255,255,.2);font-size:15px;line-height:1.55;color:#E9EDDC"><b style="color:#fff" data-why-q>Чому лише 72 години?</b> Скажу прямо: хто справді хоче працювати й заробляти, вирішує за кілька днів. Якщо людина «думає» тиждень, вона нічого не почне — це вже не рішення, а імітація руху. Я працюю з тими, хто діє. <span data-why-end>Тому пропозиція діє 3 доби з моменту, як ви відкрили цю сторінку, — і не продовжується.</span></p>
       </div>
       <div class="big" data-big aria-label="Залишилось часу">
         <div><span data-d>--</span><small>днів</small></div>
@@ -417,9 +417,26 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 (function(){
   /* таймер від першого відкриття на цьому пристрої: HOURS годин, час старту памʼятаємо в браузері */
   var HOURS = 72, KEY = 'vl_praktyk_t0', t0 = 0;
-  try { t0 = +localStorage.getItem(KEY) || 0; } catch (e) {}
-  if (!t0 || t0 > Date.now()) { t0 = Date.now(); try { localStorage.setItem(KEY, String(t0)); } catch (e) {} }
-  var DEADLINE = t0 + HOURS * 36e5;
+  /* персональне посилання ?do=2811-1200 (ДДММ-ГГХХ, час Польщі): один дедлайн для всіх, хто відкриє це посилання,
+     на будь-якому пристрої — партнер не отримує свої 72 години */
+  var FIXED = 0, m = /[?&]do=(\d{2})(\d{2})-(\d{2})(\d{2})/.exec(location.search);
+  if (m) {
+    var y = new Date().getFullYear(), mo = +m[2] - 1, dd = +m[1], hh = +m[3], mi = +m[4];
+    /* Польща: UTC+1 взимку, UTC+2 влітку (кінець березня — кінець жовтня) */
+    var off = (mo > 2 && mo < 9) ? 2 : 1;
+    FIXED = Date.UTC(y, mo, dd, hh - off, mi);
+    if (FIXED < Date.now() - 180 * 864e5) FIXED = Date.UTC(y + 1, mo, dd, hh - off, mi);
+  }
+  if (!FIXED) {
+    try { t0 = +localStorage.getItem(KEY) || 0; } catch (e) {}
+    if (!t0 || t0 > Date.now()) { t0 = Date.now(); try { localStorage.setItem(KEY, String(t0)); } catch (e) {} }
+  }
+  var DEADLINE = FIXED || t0 + HOURS * 36e5;
+  if (FIXED) {
+    var wq = document.querySelector('[data-why-q]'), we = document.querySelector('[data-why-end]');
+    if (wq) wq.textContent = 'Чому є дедлайн?';
+    if (we) we.textContent = 'Тому ця пропозиція діє до ' + new Date(FIXED).toLocaleDateString('uk-UA', { day: 'numeric', month: 'long' }) + ', ' + String(new Date(FIXED).getHours()).padStart(2, '0') + ':' + String(new Date(FIXED).getMinutes()).padStart(2, '0') + ' — і не продовжується.';
+  }
   var pad = function(n){ return String(n).padStart(2,'0'); };
   var dl = new Date(DEADLINE), hm = pad(dl.getHours()) + ':' + pad(dl.getMinutes());
   var fmt = { long: dl.toLocaleDateString('uk-UA', { day: 'numeric', month: 'long' }) + ', ' + hm,
