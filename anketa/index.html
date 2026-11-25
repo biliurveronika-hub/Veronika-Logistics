@@ -3,12 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Анкета — з чого почати в логістиці | Veronika Logistics</title>
+<title>Квіз — з чого почати в логістиці | Veronika Logistics</title>
 <meta name="description" content="Чотири коротких питання — і Вероніка підкаже, з чого почати саме вам.">
 <meta name="robots" content="noindex, nofollow">
 <meta name="theme-color" content="#EEF2F5">
-<meta property="og:title" content="З чого почати саме вам — анкета">
-<meta property="og:description" content="Чотири питання, хвилина часу. Вероніка відповість особисто.">
+<meta property="og:title" content="З чого почати саме вам — квіз">
+<meta property="og:description" content="Чотири питання, хвилина часу. Далі — безкоштовна консультація або перший урок.">
 <meta property="og:image" content="https://veronika-logistics.com/urok/og.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -25,7 +25,7 @@
 }
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:'Manrope',system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.5;-webkit-font-smoothing:antialiased;min-height:100vh;min-height:100dvh}
-button,input{font:inherit;color:inherit}
+button,input,select{font:inherit;color:inherit}
 em{font-family:var(--serif);font-style:italic;font-weight:400;letter-spacing:-.02em}
 a{color:var(--blue)}
 
@@ -41,11 +41,12 @@ a{color:var(--blue)}
 .card{background:#fff;border-radius:30px;padding:30px 22px;box-shadow:0 30px 60px -34px rgba(20,35,46,.35);animation:in .45s var(--ease) both}
 @keyframes in{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
 .card h1{font-size:clamp(26px,7vw,34px);font-weight:700;letter-spacing:-.035em;line-height:1.1;margin-bottom:12px}
-.card h2{font-size:clamp(22px,6vw,28px);font-weight:700;letter-spacing:-.03em;line-height:1.15;margin-bottom:20px}
+.card h2{font-size:clamp(22px,6vw,28px);font-weight:700;letter-spacing:-.03em;line-height:1.15;margin-bottom:12px}
+.card .sub{color:var(--muted);font-size:15px;margin-bottom:20px}
 .card p.lead{color:var(--muted);font-size:16px;margin-bottom:24px}
 .kicker{display:inline-block;font-size:12px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--blue);margin-bottom:12px}
 
-.opts{display:grid;gap:10px}
+.opts{display:grid;gap:10px;margin-top:8px}
 .opt{display:flex;align-items:center;gap:14px;width:100%;text-align:left;padding:16px 18px;border-radius:18px;border:1.5px solid var(--line);background:var(--paper);font-size:16px;font-weight:600;cursor:pointer;transition:border-color .2s,background .2s,transform .2s}
 .opt:hover{border-color:var(--blue)}
 .opt:active{transform:scale(.985)}
@@ -59,9 +60,10 @@ a{color:var(--blue)}
 .back{margin-top:16px;background:none;border:0;color:var(--muted);font-size:14px;font-weight:600;cursor:pointer}
 
 .field{margin-bottom:16px}
-.field label{display:block;font-size:14px;font-weight:700;margin-bottom:8px}
-.field input[type=text],.field input[type=tel]{width:100%;padding:15px 16px;border-radius:16px;border:1.5px solid var(--line);background:var(--paper);font-size:16px;outline:none;transition:border-color .2s}
-.field input:focus{border-color:var(--blue)}
+.field label,.field .lbl{display:block;font-size:14px;font-weight:700;margin-bottom:8px}
+.field input[type=text],.field input[type=tel],.field select{width:100%;padding:15px 16px;border-radius:16px;border:1.5px solid var(--line);background:var(--paper);font-size:16px;outline:none;transition:border-color .2s;-webkit-appearance:none;appearance:none}
+.field select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23546473' stroke-width='2.2' stroke-linecap='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;background-size:18px;padding-right:44px}
+.field input:focus,.field select:focus{border-color:var(--blue)}
 .field input.bad{border-color:var(--bad)}
 .ct{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-top:10px}
 .ct label{margin:0}
@@ -73,6 +75,9 @@ a{color:var(--blue)}
 .hint.bad{color:var(--bad)}
 .err{margin-top:14px;font-size:14px;color:var(--bad)}
 .hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+.perks{list-style:none;display:grid;gap:8px;margin:0 0 22px;font-size:15px}
+.perks li{display:flex;gap:10px;align-items:flex-start}
+.perks li::before{content:"✓";flex:none;width:22px;height:22px;border-radius:50%;background:var(--ice);color:var(--forest);font-weight:800;font-size:12px;display:grid;place-items:center;margin-top:1px}
 
 .done{text-align:center}
 .done .big{font-size:54px;margin-bottom:10px}
@@ -107,17 +112,20 @@ a{color:var(--blue)}
     { k: 'invest', t: 'Чи готові інвестувати у навчання від 400 €?', o: [
       ['✅', 'Так'], ['🧩', 'Так, частинами'], ['🎁', 'Лише безкоштовне']] }
   ];
-  const TOTAL = Q.length + 1;              // + крок з контактом
+  /* сегментація: хто не готовий інвестувати — на безкоштовний урок 1 модуля,
+     хто готовий (одразу чи частинами) — одразу на запис на консультацію */
+  const FREE = 'Лише безкоштовне';
+  const TOTAL = Q.length + 1;              // + крок із записом
   const A = {};
   let step = -1;                           // -1 — вступ
   const stage = document.getElementById('stage'), bar = document.getElementById('bar'), stepN = document.getElementById('stepN');
   const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
-  const progress = () => {
-    const n = Math.max(0, Math.min(step, TOTAL));
-    bar.style.width = (n / TOTAL * 100) + '%';
-    stepN.textContent = step >= 0 && step < TOTAL ? `Крок ${step + 1} з ${TOTAL}` : '';
+  const progress = (n = step) => {
+    const v = Math.max(0, Math.min(n, TOTAL));
+    bar.style.width = (v / TOTAL * 100) + '%';
+    stepN.textContent = n >= 0 && n < TOTAL ? `Крок ${n + 1} з ${TOTAL}` : '';
   };
-  const hot = () => (A.start === 'Уже зараз' || A.start === 'За 1–2 місяці') && (A.invest === 'Так' || A.invest === 'Так, частинами');
+  const track = (ev, p) => { try { window.fbq && fbq('track', ev, p); } catch (e) {} };
 
   /* ознаки живої людини — воркер відсіює ботів по них */
   const bornAt = Date.now();
@@ -134,14 +142,15 @@ a{color:var(--blue)}
     window.scrollTo(0, 0);
     if (step === -1) return intro();
     if (step < Q.length) return question();
-    contact();
+    if (A.invest === FREE) return lesson();
+    booking();
   }
 
   function intro(){
     stage.innerHTML = `<section class="card">
-      <span class="kicker">Хвилина часу</span>
+      <span class="kicker">Квіз · 1 хвилина</span>
       <h1>З чого почати <em>саме вам?</em></h1>
-      <p class="lead">Чотири коротких питання й ваш контакт. Я подивлюся відповіді й напишу вам особисто — чесно скажу, чи буде вам із цього користь.</p>
+      <p class="lead">Чотири коротких питання — і я підкажу наступний крок: безкоштовну консультацію зі мною або перший урок курсу.</p>
       <button type="button" class="btn" data-go>Почати</button>
     </section>`;
     stage.querySelector('[data-go]').onclick = () => { step = 0; render(); };
@@ -163,6 +172,23 @@ a{color:var(--blue)}
     stage.querySelector('[data-back]').onclick = () => { step--; render(); };
   }
 
+  /* ---- гілка «Лише безкоштовне»: урок 1 модуля ---- */
+  function lesson(){
+    progress(TOTAL);
+    track('ViewContent', { content_name: 'kviz_free' });
+    stage.innerHTML = `<section class="card done">
+      <div class="big">🎁</div>
+      <h2>Почніть із безкоштовного уроку</h2>
+      <p class="lead">Перший модуль курсу «Що таке логістика» — повністю й безкоштовно. 7 хвилин, і стане зрозуміло, чим займається логіст, чим він відрізняється від диспетчера і що таке каботаж.</p>
+      <div class="acts">
+        <a class="btn" href="/urok/${location.search}">Дивитися урок</a>
+        <button type="button" class="btn ghost" data-back>← Змінити відповідь</button>
+      </div>
+    </section>`;
+    stage.querySelector('[data-back]').onclick = () => { step = Q.length - 1; render(); };
+  }
+
+  /* ---- гілка «Так / Так, частинами»: запис на консультацію ---- */
   const CT = {
     telegram: 'Напишу вам у Telegram на цей номер',
     viber: 'Напишу вам у Viber на цей номер',
@@ -170,13 +196,16 @@ a{color:var(--blue)}
     call: 'Подзвоню вам на цей номер'
   };
   const CT_LABEL = { telegram: 'Telegram', viber: 'Viber', whatsapp: 'WhatsApp', call: 'Дзвінок' };
+  const TIMES = ['Будь-коли — напишіть мені', 'Будні, до 12:00', 'Будні, 12:00–18:00', 'Будні, після 18:00', 'Вихідні'];
   const PHONE_BAD = 'Перевірте номер: код країни і 9–15 цифр, напр. +380 67 123 45 67';
   const normPhone = v => { const d = v.replace(/\D/g, ''); if (/^0\d{9}$/.test(d)) return '+38' + d; return d ? '+' + d : ''; };
   const phoneOk = v => /^\+\d{9,15}$/.test(v);
 
-  function contact(){
+  function booking(){
     stage.innerHTML = `<section class="card">
-      <h2>Куди вам написати?</h2>
+      <span class="kicker">Безкоштовно · онлайн</span>
+      <h2>Запишіться на консультацію</h2>
+      <p class="sub">По відповідях бачу: нам є сенс поговорити особисто. Розберемо саме вашу ситуацію і з чого почати, а ще розповім про умови навчання${A.invest === 'Так, частинами' ? ' й оплату частинами' : ''}.</p>
       <form id="f" novalidate>
         <div class="field"><label for="nm">Ваше імʼя</label><input id="nm" name="name" type="text" autocomplete="given-name" maxlength="100"></div>
         <div class="field">
@@ -187,8 +216,11 @@ a{color:var(--blue)}
           </div>
           <div class="hint" id="hint"></div>
         </div>
+        <div class="field"><label for="tm">Коли вам зручно на звʼязок</label>
+          <select id="tm" name="preferred">${TIMES.map(t => `<option>${t}</option>`).join('')}</select>
+        </div>
         <div class="hp" aria-hidden="true"><input name="company" tabindex="-1" autocomplete="off"></div>
-        <button type="submit" class="btn" id="sb">Надіслати</button>
+        <button type="submit" class="btn" id="sb">Записатися на консультацію</button>
         <div class="err" id="err" hidden>Не вдалося надіслати. Напишіть мені, будь ласка, в <a href="https://ig.me/m/veronika_logistics">Direct</a> — відповім там.</div>
       </form>
       <button type="button" class="back" data-back>← Назад</button>
@@ -213,9 +245,8 @@ a{color:var(--blue)}
       if (!okPhone) setHint(true);
       if (!name || !okPhone) return;
 
-      const isHot = hot();
       const message =
-        (isHot ? '🔥 ГАРЯЧИЙ' : '❄️ Холодний') + ' · анкета після тесту\n\n' +
+        '🔥 Запис на консультацію · квіз\n\n' +
         '• Зараз: ' + A.now + '\n' +
         '• Почати: ' + A.start + '\n' +
         '• Час на тиждень: ' + A.time + '\n' +
@@ -231,7 +262,8 @@ a{color:var(--blue)}
             name: name.slice(0, 200),
             contact: (CT_LABEL[ct()] + ': ' + ph.value).slice(0, 200),
             contact_type: ct(), contact_value: ph.value.slice(0, 100),
-            interests: ['Анкета після тесту'],
+            preferred: f.preferred.value,
+            interests: ['Консультація'],
             message,
             company: f.company.value,
             source: location.href.split('#')[0],
@@ -241,23 +273,19 @@ a{color:var(--blue)}
         });
         const out = await res.json().catch(() => ({}));
         if (!res.ok || out.ok === false) throw new Error('HTTP ' + res.status);
-        window.fbq && fbq('track', 'Lead', { content_name: 'anketa' });
-        done(isHot);
+        track('Lead', { content_name: 'kviz_konsultaciya' });
+        booked(f.preferred.value);
       } catch (x) {
         err.hidden = false; sb.disabled = false; sb.textContent = 'Надіслати ще раз';
       } finally { clearTimeout(killer); }
     };
   }
 
-  function done(isHot){
-    step = TOTAL; progress(); window.scrollTo(0, 0);
-    stage.innerHTML = isHot
-      ? `<section class="card done"><div class="big">🙌</div><h2>Дякую, що чесно!</h2>
-          <p class="lead">По відповідях бачу: нам є сенс поговорити особисто. Я напишу вам найближчим часом, щоб узгодити час безкоштовної консультації. Там же розповім про умови навчання й оплату.</p>
-          <div class="acts"><a class="btn ghost" href="/urok/">Поки чекаєте — перший урок</a></div></section>`
-      : `<section class="card done"><div class="big">🙌</div><h2>Дякую, що чесно!</h2>
-          <p class="lead">Поспішати не треба. Почніть із безкоштовного уроку — 7 хвилин, і логістика стане ближчою. А коли будете готові, я на звʼязку.</p>
-          <div class="acts"><a class="btn" href="/urok/">Дивитися урок</a></div></section>`;
+  function booked(when){
+    progress(TOTAL); window.scrollTo(0, 0);
+    stage.innerHTML = `<section class="card done"><div class="big">🙌</div><h2>Ви записані!</h2>
+      <p class="lead">Я напишу вам${/Будь-коли/.test(when) ? '' : ' (' + esc(when.toLowerCase()) + ')'}, щоб узгодити точний час консультації. Вона безкоштовна й онлайн.</p>
+      <div class="acts"><a class="btn ghost" href="/urok/">Поки чекаєте — перший урок</a></div></section>`;
   }
 
   render();
