@@ -426,6 +426,14 @@ body.loaded .game-tab{transform:none}
 .g-res .q-list div{animation:optIn .5s var(--ease) both;animation-delay:calc(.5s + var(--i)*.15s)}
 .g-res p{color:var(--muted);margin:18px auto 24px;max-width:460px}
 .g-res .acts{display:flex;flex-wrap:wrap;gap:10px;justify-content:center}
+/* режим із директу (?test=1): відповіді проявляються повільніше, кнопка на квіз прилипає до низу екрана */
+.g-res.tm .q-list div{animation-delay:calc(.5s + var(--i)*.4s)}
+.g-res.tm p{margin:16px auto 12px}
+.g-res.tm .acts{position:sticky;bottom:-40px;z-index:2;flex-direction:column;align-items:center;gap:8px;margin:0 -40px -40px;padding:14px 40px 24px;background:linear-gradient(rgba(255,255,255,0),#fff 22%);border-radius:0 0 34px 34px}
+.g-res.tm .acts .btn{width:100%;justify-content:center}
+.g-res.tm .acts .btn-green{background:var(--forest-d);color:#fff;box-shadow:0 16px 36px -14px rgba(23,49,63,.6)}
+.g-res.tm .acts .btn-ghost{width:auto;padding:8px 18px;font-size:14px}
+.tm-cd{font-size:13px;font-weight:600;color:var(--muted)}
 body.game-open{overflow:hidden}
 
 /* ---------- program ---------- */
@@ -846,6 +854,9 @@ footer{background:var(--forest-d);color:#A9BCCB;padding:90px 0 34px;border-radiu
   .game-tab .gt-t small{font-size:13px;letter-spacing:0;text-transform:none;color:var(--ink)}
   .g-top{padding:14px;gap:10px}
   .g-card{padding:28px 20px;border-radius:26px}
+  .g-res.tm .acts{bottom:-28px;margin:0 -20px -28px;padding:14px 20px 20px;border-radius:0 0 26px 26px}
+  .g-res.tm .g-badge{width:110px;height:110px;margin-bottom:16px}
+  .g-res.tm .g-badge div{width:90px;height:90px;font-size:42px}
   .g-emoji{font-size:48px}
   .g-xp{padding:8px 12px;font-size:14px}
   .sq-points{grid-template-columns:1fr}
@@ -2015,7 +2026,7 @@ setTimeout(function () {
     stage.innerHTML = `<div class="g-card"><div class="g-step">Питання ${gi + 1} з ${Q.length}</div><div class="g-emoji">${q.e}</div><div class="g-q">${q.t}</div><div class="g-opts">${q.o.map((o, i) => `<button type="button" class="g-opt" style="--i:${i}" data-i="${i}"><span class="oe">${o[0]}</span><span class="ot">${o[1]}</span><i class="tg sm"></i></button>`).join('')}</div></div>`;
   }
   stage.addEventListener('click', e => {
-    if (e.target.closest('[data-restart]')) { openGame(); return; }
+    if (e.target.closest('[data-restart]')) { clearInterval(resultG.t); openGame(); return; }
     if (e.target.closest('[data-close]')) { closeGame(); return; }
     const b = e.target.closest('.g-opt'); if (!b || b.disabled) return;
     stage.querySelectorAll('.g-opt').forEach(x => { x.disabled = true; });
@@ -2033,12 +2044,31 @@ setTimeout(function () {
   });
   function resultG(){
     haptic([40, 60, 40, 60, 90]);
-    stage.innerHTML = `<div class="g-card g-res"><div class="g-badge"><div>🏆</div></div><span class="lvl">Логіст · рівень 1 · ${xp} XP</span><h3>Професія логіста вам підходить!</h3><div class="q-list">${picks.map((p, i) => `<div style="--i:${i}">${p}<i class="tg sm" data-tgi="${i}"></i></div>`).join('')}</div><p>${TEST_MODE ? 'Освоїти логістику може кожен, хто поставив собі таку ціль. Ще чотири питання — і я підкажу, з чого почати саме вам. Перекидаю вас за мить…' : 'Освоїти логістику може кожен, хто поставив собі таку ціль. Я покажу шлях від нуля до першого вантажу — за 6 тижнів.'}</p><div class="acts">${TEST_MODE ? `<a href="/kviz/${location.search}" class="btn btn-green">Дізнатися, з чого почати <span class="arr">${ARR}</span></a>` : `<a href="#join" class="btn btn-green" data-close>Записатися на курс <span class="arr">${ARR}</span></a><a href="#lesson" class="btn btn-ghost" data-close>Перший урок</a>`}<button type="button" class="btn btn-ghost" data-restart>Зіграти ще</button></div></div>`;
-    stage.querySelectorAll('[data-tgi]').forEach((t, i) => setTimeout(() => t.classList.add('on'), 800 + i * 150));
-    /* режим із директу: відповіді тесту — у квіз (підуть у заявку), і самі перекидаємо на квіз */
+    stage.innerHTML = `<div class="g-card g-res${TEST_MODE ? ' tm' : ''}"><div class="g-badge"><div>🏆</div></div><span class="lvl">Логіст · рівень 1 · ${xp} XP</span><h3>Професія логіста вам підходить!</h3><div class="q-list">${picks.map((p, i) => `<div style="--i:${i}">${p}<i class="tg sm" data-tgi="${i}"></i></div>`).join('')}</div><p>${TEST_MODE ? 'Освоїти логістику може кожен, хто поставив собі таку ціль. Ще чотири питання — і я підкажу, з чого почати саме вам.' : 'Освоїти логістику може кожен, хто поставив собі таку ціль. Я покажу шлях від нуля до першого вантажу — за 6 тижнів.'}</p><div class="acts">${TEST_MODE ? `<a href="/kviz/${location.search}" class="btn btn-green">Дізнатися, з чого почати <span class="arr">${ARR}</span></a><small class="tm-cd" id="tmCd" aria-live="polite">Перейдемо автоматично за 7 с</small>` :`<a href="#join" class="btn btn-green" data-close>Записатися на курс <span class="arr">${ARR}</span></a><a href="#lesson" class="btn btn-ghost" data-close>Перший урок</a>`}<button type="button" class="btn btn-ghost" data-restart>Зіграти ще</button></div></div>`;
+    /* у режимі з директу галочки зʼявляються повільніше — щоб встигли прочитати */
+    const tgStep = TEST_MODE ? 400 : 150;
+    stage.querySelectorAll('[data-tgi]').forEach((t, i) => setTimeout(() => t.classList.add('on'), 800 + i * tgStep));
+    /* режим із директу: відповіді тесту — у квіз (підуть у заявку), і через 7 с самі перекидаємо на квіз;
+       кнопка весь час видна, хто готовий раніше — тисне сам */
     if (TEST_MODE) {
       try { sessionStorage.setItem('vl_test', JSON.stringify(Q.map((q, i) => [q.t, pickT[i]]))); } catch (e) {}
-      setTimeout(() => { location.href = '/kviz/' + location.search; }, 3000);
+      let left = 7;
+      clearInterval(resultG.t);
+      /* людина сама гортає результат — не перебиваємо читання, чекаємо на кнопку */
+      const gStageEl = document.getElementById('gStage');
+      const stopAuto = () => {
+        clearInterval(resultG.t);
+        const cd = document.getElementById('tmCd'); if (cd) cd.textContent = 'Натисніть, коли будете готові 👆';
+        gStageEl.removeEventListener('scroll', stopAuto); gStageEl.removeEventListener('touchmove', stopAuto);
+      };
+      setTimeout(() => { gStageEl.addEventListener('scroll', stopAuto, { passive: true }); gStageEl.addEventListener('touchmove', stopAuto, { passive: true }); }, 600);
+      resultG.t = setInterval(() => {
+        const cd = document.getElementById('tmCd');
+        if (!cd || !game.classList.contains('open')) { clearInterval(resultG.t); return; }
+        left--;
+        if (left <= 0) { clearInterval(resultG.t); cd.textContent = 'Переходимо…'; location.href = '/kviz/' + location.search; return; }
+        cd.textContent = `Перейдемо автоматично за ${left} с`;
+      }, 1000);
     }
     const W = innerWidth, H = innerHeight;
     burst(W / 2, H * .35, 70, 360);
