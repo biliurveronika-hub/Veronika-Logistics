@@ -2033,7 +2033,7 @@ setTimeout(function () {
   });
   function resultG(){
     haptic([40, 60, 40, 60, 90]);
-    stage.innerHTML = `<div class="g-card g-res"><div class="g-badge"><div>🏆</div></div><span class="lvl">Логіст · рівень 1 · ${xp} XP</span><h3>Професія логіста вам підходить!</h3><div class="q-list">${picks.map((p, i) => `<div style="--i:${i}">${p}<i class="tg sm" data-tgi="${i}"></i></div>`).join('')}</div><p>${TEST_MODE ? 'Освоїти логістику може кожен, хто поставив собі таку ціль. Поверніться в директ — підкажу, з чого почати саме вам.' : 'Освоїти логістику може кожен, хто поставив собі таку ціль. Я покажу шлях від нуля до першого вантажу — за 6 тижнів.'}</p><div class="acts">${TEST_MODE ? `<a href="https://ig.me/m/veronika_logistics?ref=test_done" class="btn btn-green">Повернутися в директ <span class="arr">${ARR}</span></a>` : `<a href="#join" class="btn btn-green" data-close>Записатися на курс <span class="arr">${ARR}</span></a><a href="#lesson" class="btn btn-ghost" data-close>Перший урок</a>`}<button type="button" class="btn btn-ghost" data-restart>Зіграти ще</button></div></div>`;
+    stage.innerHTML = `<div class="g-card g-res"><div class="g-badge"><div>🏆</div></div><span class="lvl">Логіст · рівень 1 · ${xp} XP</span><h3>Професія логіста вам підходить!</h3><div class="q-list">${picks.map((p, i) => `<div style="--i:${i}">${p}<i class="tg sm" data-tgi="${i}"></i></div>`).join('')}</div><p>${TEST_MODE ? 'Освоїти логістику може кожен, хто поставив собі таку ціль. Дайте відповідь ще на чотири питання — і я підкажу, з чого почати саме вам.' : 'Освоїти логістику може кожен, хто поставив собі таку ціль. Я покажу шлях від нуля до першого вантажу — за 6 тижнів.'}</p><div class="acts">${TEST_MODE ? `<a href="/anketa/${location.search}" class="btn btn-green">Дізнатися, з чого почати <span class="arr">${ARR}</span></a>` : `<a href="#join" class="btn btn-green" data-close>Записатися на курс <span class="arr">${ARR}</span></a><a href="#lesson" class="btn btn-ghost" data-close>Перший урок</a>`}<button type="button" class="btn btn-ghost" data-restart>Зіграти ще</button></div></div>`;
     stage.querySelectorAll('[data-tgi]').forEach((t, i) => setTimeout(() => t.classList.add('on'), 800 + i * 150));
     const W = innerWidth, H = innerHeight;
     burst(W / 2, H * .35, 70, 360);
@@ -2043,8 +2043,8 @@ setTimeout(function () {
   }
 
   /* Прихід з директу за словом «тест» (?test=1): одразу відкриваємо гру,
-     без заставки, а в результаті ведемо назад у директ — там ManyChat
-     ловить ref=test_done і запускає опитування. */
+     без заставки, а в результаті ведемо на анкету /anketa/ — вона шле заявку
+     в групу Telegram. */
   if (TEST_MODE) {
     body.classList.remove('loading'); body.classList.add('loaded');
     document.getElementById('loader')?.remove();
