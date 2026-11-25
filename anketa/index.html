@@ -139,12 +139,23 @@ a{color:var(--blue)}
   const AVA = 'vera.jpg';
 
   /* r — що Вероніка «відповідає» на вибір: іде в персональний підсумок */
+  /* if — питання показуємо лише коли умова виконується; tt/hh — текст залежно від попередніх відповідей */
+  const ADV = ['Працюю в логістиці', 'Працював(ла) в логістиці раніше', 'Маю свою транспортну фірму'];
+  const MODS = 'Лише окремі теми';
+  const SOLO = 'Я сам(а)';
+  const need = () => ADV.includes(A.now) ? A.need : null;
   const Q = [
     { k: 'now', t: 'Чим ви зараз займаєтесь?', o: [
       ['💼', 'Працюю в іншій сфері', 'Вчитися можна паралельно з роботою — у своєму темпі'],
       ['🏡', 'Декрет / вдома', 'Логіст працює з дому: потрібні лише ноутбук і телефон'],
       ['🔎', 'Шукаю роботу', 'Покажу, як підготуватися до співбесіди в транспортній фірмі'],
-      ['🚛', 'Вже в логістиці', 'Складемо ваш досвід у систему й додамо те, чого бракує']] },
+      ['🚛', 'Працюю в логістиці', 'Складемо ваш досвід у систему й додамо те, чого бракує'],
+      ['📦', 'Працював(ла) в логістиці раніше', 'Освіжимо знання й додамо те, що змінилося на ринку'],
+      ['🏢', 'Маю свою транспортну фірму', 'Дам саме те, що потрібно для роботи вашої фірми']] },
+    { k: 'need', t: 'Що вам потрібно?', if: () => ADV.includes(A.now), o: [
+      ['📚', 'Повний курс', 'Пройдемо всю програму, а знайоме ви пройдете швидше'],
+      ['🎯', MODS, 'Можна взяти лише потрібні модулі: ставки й індекси, біржі, документи'],
+      ['❓', 'Розібрати конкретне питання', 'Розберемо вашу ситуацію предметно, з мого практичного досвіду']] },
     { k: 'start', t: 'Коли хочете почати навчання?', o: [
       ['🚀', 'Уже зараз', 'Найближчий старт і місця — скажу на консультації'],
       ['📅', 'За 1–2 місяці', 'Якраз встигнемо спокійно підготуватися до старту'],
@@ -153,11 +164,19 @@ a{color:var(--blue)}
       ['☕', 'До 5 годин', 'Кожен модуль — відео й презентація, вчитеся коли зручно'],
       ['🕐', '5–10 годин', 'Спокійно пройдете програму за 6 тижнів'],
       ['🔥', 'Понад 10 годин', 'Повне занурення — нова професія за 6 тижнів']] },
-    { k: 'invest', t: 'Чи готові інвестувати у навчання від 400 €?', h: 'Повний курс коштує від 400 €, можна частинами. Чесна відповідь допоможе мені запропонувати вам правильний наступний крок.', o: [
-      ['✅', 'Так'], ['🧩', 'Так, частинами'], ['🎁', 'Поки лише безкоштовне']] }
+    { k: 'invest', t: 'Чи готові інвестувати у навчання від 400 €?', h: 'Повний курс коштує від 400 €, можна частинами. Чесна відповідь допоможе мені запропонувати вам правильний наступний крок.',
+      tt: () => need() === MODS ? 'Чи готові інвестувати в навчання окремих модулів?' : need() === 'Розібрати конкретне питання' ? 'Чи готові інвестувати в навчання, якщо воно вам підійде?' : null,
+      hh: () => need() && need() !== 'Повний курс' ? 'Окремі модулі коштують менше за повний курс — точну ціну назву на консультації. Чесна відповідь допоможе запропонувати правильний наступний крок.' : null,
+      o: [['✅', 'Так'], ['🧩', 'Так, частинами'], ['🎁', 'Поки лише безкоштовне']] },
+    { k: 'decide', t: 'Хто ухвалює рішення про навчання?', if: () => A.invest !== FREE || fromFree, h: 'Якщо рішення ви ухвалюєте разом — приходьте на консультацію вдвох, тоді все вирішимо за одну розмову.', o: [
+      ['🙋', SOLO, 'Тоді на консультації одразу підберемо формат і старт'],
+      ['👥', 'Разом із партнером / чоловіком чи дружиною', 'Приходьте на консультацію разом — відповім на питання обох'],
+      ['🏢', 'Рішення за керівником / компанією', 'Покличте на консультацію того, хто ухвалює рішення']] }
   ];
   const FREE = 'Поки лише безкоштовне';
-  const TOTAL = Q.length + 1;              // + крок із записом
+  const VQ = () => Q.filter(q => !q.if || q.if());   // питання, що показуються при поточних відповідях
+  const total = () => VQ().length + 1;     // + крок із записом
+  const together = () => A.decide && A.decide !== SOLO;
   const KEY = 'vl_kviz';
   let A = {}, step = -1, fromFree = false;
   /* стан переживає перезавантаження (браузер Instagram це любить) */
@@ -167,9 +186,9 @@ a{color:var(--blue)}
   const stage = document.getElementById('stage'), bar = document.getElementById('bar'), stepN = document.getElementById('stepN');
   const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
   const progress = (n = step) => {
-    const v = Math.max(0, Math.min(n, TOTAL));
-    bar.style.width = (v / TOTAL * 100) + '%';
-    stepN.textContent = n >= 0 && n < TOTAL ? `Крок ${n + 1} з ${TOTAL}` : '';
+    const T = total(), v = Math.max(0, Math.min(n, T));
+    bar.style.width = (v / T * 100) + '%';
+    stepN.textContent = n >= 0 && n < T ? `Крок ${n + 1} з ${T}` : '';
   };
   const track = (ev, p, custom) => { try { window.fbq && fbq(custom ? 'trackCustom' : 'track', ev, p); } catch (e) {} };
   const reply = k => { const q = Q.find(x => x.k === k), o = q && q.o.find(x => x[1] === A[k]); return o && o[2]; };
@@ -178,9 +197,11 @@ a{color:var(--blue)}
   const TEST = (() => { try { return JSON.parse(sessionStorage.getItem('vl_test') || 'null'); } catch (e) { return null; } })();
   const answers = () =>
     '• Зараз: ' + A.now + '\n' +
+    (need() ? '• Потрібно: ' + need() + '\n' : '') +
     '• Почати: ' + A.start + '\n' +
     '• Час на тиждень: ' + A.time + '\n' +
-    '• Від 400 €: ' + A.invest +
+    '• Готові інвестувати: ' + A.invest +
+    (A.decide && (A.invest !== FREE || fromFree) ? '\n• Рішення: ' + A.decide : '') +
     (Array.isArray(TEST) && TEST.length ? '\n\nТест «Чи підходить логістика»:\n' + TEST.map(x => '• ' + x[0] + ' — ' + x[1]).join('\n') : '');
 
   /* ознаки живої людини — воркер відсіює ботів по них */
@@ -200,7 +221,7 @@ a{color:var(--blue)}
     progress();
     window.scrollTo(0, 0);
     if (step === -1) return intro();
-    if (step < Q.length) return question();
+    if (step < VQ().length) return question();
     if (A.invest === FREE && !fromFree) return lesson();
     booking();
   }
@@ -209,7 +230,7 @@ a{color:var(--blue)}
     stage.innerHTML = `<section class="card">
       <div class="who"><img class="ava" src="${AVA}" alt="Вероніка" width="52" height="52"><div><b>Вероніка</b><small>логіст, 2 дипломи з логістики</small></div></div>
       <h1>З чого почати <em>саме вам?</em></h1>
-      <p class="lead">Чотири коротких питання — і я підкажу наступний крок: безкоштовну консультацію зі мною або перший урок курсу.</p>
+      <p class="lead">Кілька коротких питань — і я підкажу наступний крок: безкоштовну консультацію зі мною або перший урок курсу.</p>
       <div class="chips"><span>⏱ 1 хвилина</span><span>🎓 6 потоків учнів</span><span>🗓 курс — 6 тижнів</span></div>
       <button type="button" class="btn" data-go>Почати</button>
     </section>`;
@@ -217,11 +238,12 @@ a{color:var(--blue)}
   }
 
   function question(){
-    const q = Q[step];
+    const q = VQ()[step];
+    const qt = (q.tt && q.tt()) || q.t, qh = (q.hh && q.hh()) || q.h;
     stage.innerHTML = `<section class="card">
-      <div class="ask"><img class="ava sm" src="${AVA}" alt="" width="36" height="36"><h2>${esc(q.t)}</h2></div>
-      ${q.h ? `<p class="qhint">${esc(q.h)}</p>` : ''}
-      <div class="opts" role="radiogroup" aria-label="${esc(q.t)}">${q.o.map((o, i) => `<button type="button" role="radio" aria-checked="${A[q.k] === o[1]}" class="opt${A[q.k] === o[1] ? ' on' : ''}" data-i="${i}"><span class="e">${o[0]}</span>${esc(o[1])}</button>`).join('')}</div>
+      <div class="ask"><img class="ava sm" src="${AVA}" alt="" width="36" height="36"><h2>${esc(qt)}</h2></div>
+      ${qh ? `<p class="qhint">${esc(qh)}</p>` : ''}
+      <div class="opts" role="radiogroup" aria-label="${esc(qt)}">${q.o.map((o, i) => `<button type="button" role="radio" aria-checked="${A[q.k] === o[1]}" class="opt${A[q.k] === o[1] ? ' on' : ''}" data-i="${i}"><span class="e">${o[0]}</span>${esc(o[1])}</button>`).join('')}</div>
       <button type="button" class="back" data-back>← Назад</button>
     </section>`;
     stage.querySelectorAll('.opt').forEach(b => b.onclick = () => {
@@ -236,7 +258,7 @@ a{color:var(--blue)}
 
   /* персональний підсумок з відповідей */
   const planHTML = () => {
-    const rows = [['🧭', 'Ваша ситуація', reply('now')], ['🗓', 'Темп', reply('time')], ['🚦', 'Старт', reply('start')]].filter(r => r[2]);
+    const rows = [['🧭', 'Ваша ситуація', reply('now')], ['🎯', 'Що візьмемо', ADV.includes(A.now) && reply('need')], ['🗓', 'Темп', reply('time')], ['🚦', 'Старт', reply('start')], ['👥', 'Рішення', together() && reply('decide')]].filter(r => r[2]);
     return `<ul class="plan">${rows.map(r => `<li><i>${r[0]}</i><span><b>${r[1]}</b>${esc(r[2])}</span></li>`).join('')}</ul>`;
   };
 
@@ -259,7 +281,7 @@ a{color:var(--blue)}
     }).catch(() => {});
   }
   function lesson(){
-    progress(TOTAL);
+    progress(total());
     track('KvizFree', {}, true);
     sendFree();
     stage.innerHTML = `<section class="card done">
@@ -270,7 +292,11 @@ a{color:var(--blue)}
       <button type="button" class="link" data-consult>Все ж хочу безкоштовну консультацію →</button>
     </section>
     <section class="card">${proofHTML()}</section>`;
-    stage.querySelector('[data-consult]').onclick = () => { fromFree = true; go(Q.length); };
+    /* передумали — питаємо, хто ухвалює рішення (його пропускали в безкоштовній гілці) */
+    stage.querySelector('[data-consult]').onclick = () => {
+      fromFree = true;
+      go(VQ().findIndex(q => q.k === 'decide'));
+    };
   }
 
   const proofHTML = () => `<div class="proof">${FACES}<p>Курс уже пройшли <b>6 потоків учнів</b> — серед них Богдана, Сергій і Настя</p></div>
@@ -293,13 +319,14 @@ a{color:var(--blue)}
     const parts = A.invest === 'Так, частинами';
     stage.innerHTML = `<section class="card">
       <span class="kicker">Ваш результат</span>
-      <h2>Логістика вам <em>підходить</em></h2>
+      <h2>${need() ? 'Я можу вам <em>допомогти</em>' : 'Логістика вам <em>підходить</em>'}</h2>
       <p class="sub">${fromFree ? 'Добре, що вирішили поговорити — розберемо все спокійно, без зобовʼязань.' : 'По відповідях бачу: нам є сенс поговорити особисто.'}</p>
       ${planHTML()}
     </section>
     <section class="card">
       <div class="who"><img class="ava" src="${AVA}" alt="Вероніка" width="52" height="52"><div><b>Безкоштовна консультація</b><small>онлайн, з Веронікою особисто</small></div></div>
       <p class="sub">Розберемо вашу ситуацію і з чого почати, а ще розповім про умови навчання${parts ? ' й оплату частинами' : ''}.</p>
+      ${together() ? `<div class="bubble" style="margin:0 0 16px">👥 Рішення ви ухвалюєте не самі — тож приходьте на консультацію <b>разом із ${A.decide.startsWith('Разом') ? 'партнером' : 'тим, хто ухвалює рішення'}</b>. Так я одразу відповім на питання обох, і не доведеться потім переказувати розмову.</div>` : ''}
       <form id="f" novalidate>
         <div class="field"><label for="nm">Ваше імʼя</label><input id="nm" name="name" type="text" autocomplete="given-name" maxlength="100"></div>
         <div class="field">
@@ -313,6 +340,7 @@ a{color:var(--blue)}
         <div class="field"><label for="tm">Коли вам зручно на звʼязок</label>
           <select id="tm" name="preferred">${TIMES.map(t => `<option>${t}</option>`).join('')}</select>
         </div>
+        ${together() ? `<div class="field"><label style="display:flex;gap:10px;align-items:flex-start;font-weight:600;cursor:pointer"><input type="checkbox" id="both" style="width:20px;height:20px;flex:none;margin-top:1px;accent-color:var(--forest)"> Так, на консультації будемо разом</label><div class="hint bad" id="bothHint" hidden>Позначте, будь ласка: консультацію проводимо, коли є обоє</div></div>` : ''}
         <div class="hp" aria-hidden="true"><input name="company" tabindex="-1" autocomplete="off"></div>
         <button type="submit" class="btn" id="sb">Записатися на консультацію</button>
         <p class="privacy" style="font-size:12.5px;opacity:.7;margin-top:12px;text-align:center">Натискаючи кнопку, ви погоджуєтесь з <a href="../privacy/" style="color:inherit">політикою конфіденційності</a> та <a href="../oferta/" style="color:inherit">умовами оферти</a>.</p>
@@ -330,7 +358,7 @@ a{color:var(--blue)}
     ph.addEventListener('focus', () => { if (!ph.value) ph.value = '+'; });
     ph.addEventListener('input', () => { if (hint.classList.contains('bad')) setHint(false); });
     ph.addEventListener('blur', () => { const v = ph.value.trim(); if (!v || v === '+') return; ph.value = normPhone(v); setHint(!phoneOk(ph.value)); });
-    stage.querySelector('[data-back]').onclick = () => { fromFree = false; go(Q.length - 1); };
+    stage.querySelector('[data-back]').onclick = () => { fromFree = false; go(VQ().length - 1); };
 
     f.onsubmit = async e => {
       e.preventDefault();
@@ -340,10 +368,16 @@ a{color:var(--blue)}
       ph.value = normPhone(ph.value.trim());
       const okPhone = phoneOk(ph.value);
       if (!okPhone) setHint(true);
+      const both = f.querySelector('#both');
+      if (both) f.querySelector('#bothHint').hidden = both.checked;
       if (!name) { f.name.focus(); return; }
       if (!okPhone) { ph.focus(); return; }
+      if (both && !both.checked) { both.focus(); return; }
 
-      const message = (fromFree ? '🔥 Запис на консультацію · квіз (спершу обрали безкоштовне, потім передумали)' : '🔥 Запис на консультацію · квіз') + '\n\n' + answers();
+      const message = (fromFree ? '🔥 Запис на консультацію · квіз (спершу обрали безкоштовне, потім передумали)' : '🔥 Запис на консультацію · квіз') +
+        (together() ? '\n👥 Рішення не сам(а) — на консультацію кличемо обох (підтвердили, що будуть разом)' : '') +
+        (need() === MODS ? '\n🎯 Досвідчений — потрібні лише окремі модулі' : '') +
+        '\n\n' + answers();
 
       err.hidden = true; sb.disabled = true;
       sb.innerHTML = 'Надсилаю… <span class="spin"></span>';
@@ -376,7 +410,7 @@ a{color:var(--blue)}
   }
 
   function booked(when, name){
-    progress(TOTAL); window.scrollTo(0, 0);
+    progress(total()); window.scrollTo(0, 0);
     stage.innerHTML = `<section class="card done">
       <img class="ava" src="${AVA}" alt="Вероніка" width="52" height="52" style="width:72px;height:72px;margin:0 auto 14px;display:block">
       <h2>${esc(name.split(' ')[0])}, ви записані!</h2>
