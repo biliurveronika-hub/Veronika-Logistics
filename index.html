@@ -708,6 +708,17 @@ form .hint{color:var(--muted);font-size:15px;margin-bottom:30px}
 form.lead-form .only-consult{display:none}
 form.lead-form.is-consult .only-consult{display:block}
 form.lead-form.is-consult .paid.only-consult{display:flex}
+form.lead-form.is-consult .ckind.only-consult{display:grid}
+.ckind{grid-template-columns:1fr 1fr;gap:10px;margin:2px 0 12px}
+.ckind label{position:relative;cursor:pointer}
+.ckind input{position:absolute;opacity:0;pointer-events:none}
+.ckind span{display:flex;flex-direction:column;gap:3px;height:100%;padding:13px 14px;border-radius:16px;border:1.5px solid var(--line);background:var(--paper);font-size:14.5px;line-height:1.3;transition:border-color .2s,background .2s}
+.ckind em{font-style:normal;font-weight:800;font-size:18px;font-family:inherit;letter-spacing:-.01em}
+.ckind em small{font-weight:500;font-size:12.5px;color:var(--muted)}
+.ckind span>small{font-size:12.5px;color:var(--muted)}
+.ckind label:hover span{border-color:var(--blue)}
+.ckind input:checked+span{border-color:var(--forest);background:var(--ice);box-shadow:inset 0 0 0 1px var(--forest)}
+.ckind input:focus-visible+span{outline:2px solid var(--blue);outline-offset:2px}
 form.lead-form.is-consult .only-course{display:none}
 form .btn{width:100%;justify-content:space-between}
 .ok{display:none;text-align:center;padding:40px 10px}
@@ -1391,7 +1402,10 @@ setTimeout(function () {
         <span class="label dark">Консультація</span>
         <h2>Особиста консультація <em>з Веронікою</em></h2>
         <p class="lead">Коли потрібна відповідь саме на вашу ситуацію — записуйтесь на онлайн-консультацію. Розберемо ваше питання предметно, з мого практичного досвіду.</p>
-        <p class="consult-price" style="display:inline-flex;align-items:center;gap:10px;margin:18px 0 4px;padding:9px 16px;border-radius:999px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);font-weight:700;font-size:15px">💳 50 € <span style="opacity:.7;font-weight:500">(або 200 zł)</span> · онлайн</p>
+        <div class="consult-price" style="display:flex;flex-wrap:wrap;gap:10px;margin:18px 0 4px">
+          <span style="display:inline-flex;align-items:center;gap:8px;padding:9px 16px;border-radius:999px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);font-weight:700;font-size:15px">🗓 За записом — 50 € <span style="opacity:.7;font-weight:500">(або 200 zł)</span></span>
+          <span style="display:inline-flex;align-items:center;gap:8px;padding:9px 16px;border-radius:999px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);font-weight:700;font-size:15px">⚡ Термінова — 100 € <span style="opacity:.7;font-weight:500">поза чергою</span></span>
+        </div>
         <div class="topics">
           <div class="topic"><i>✓</i>З чого почати і як увійти в професію</div>
           <div class="topic"><i>✓</i>Резюме та підготовка до співбесіди</div>
@@ -1402,6 +1416,7 @@ setTimeout(function () {
         </div>
         <div class="consult-actions">
           <a href="#join" class="btn btn-green" data-pick="consult">Записатися на консультацію <span class="arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M7 17 17 7M8 7h9v9"/></svg></span></a>
+          <a href="#join" class="btn btn-ghost light" data-pick="consult" data-ckind="urgent">⚡ Термінова консультація</a>
           <a href="https://ig.me/m/veronika_logistics" target="_blank" rel="noopener" class="btn btn-ghost light">Задати питання в Direct</a>
         </div>
       </div>
@@ -1615,7 +1630,11 @@ setTimeout(function () {
         <small class="field-hint" id="contactHint">З кодом країни: +380, +48…</small></label>
       <input type="hidden" name="ctype" value="any">
       <input type="hidden" name="preferred" value="">
-      <div class="paid only-consult"><span>💳</span><span><b>Консультація платна — 50 € (або 200 zł).</b> Вероніка напише вам, щоб узгодити зручний час.</span></div>
+      <div class="ckind only-consult" role="radiogroup" aria-label="Вид консультації">
+        <label><input type="radio" name="ckind" value="plan" checked><span><b>🗓 За записом</b><em>50 € <small>(або 200 zł)</small></em><small>Онлайн, у зручний для вас час</small></span></label>
+        <label><input type="radio" name="ckind" value="urgent"><span><b>⚡ Термінова</b><em>100 €</em><small>Онлайн, якнайшвидше — поза чергою</small></span></label>
+      </div>
+      <div class="paid only-consult"><span>💳</span><span><b>Консультація платна.</b> <span class="paid-t">Вероніка напише вам, щоб узгодити зручний час.</span></span></div>
       <label class="field only-consult"><span>Ваше питання (необов’язково)</span><textarea name="msg" placeholder="Коротко: що хочете розібрати"></textarea></label>
       <p class="next-hint only-course">Далі — кілька коротких питань, щоб підібрати вам формат навчання.</p>
       <input class="hp" type="text" name="company" tabindex="-1" autocomplete="off" aria-hidden="true">
@@ -1683,7 +1702,7 @@ setTimeout(function () {
       <details><summary>Допоможете з пошуком роботи?<span class="pm">+</span></summary><p>Модуль 8 повністю про це: складання резюме, підготовка до співбесіди і мої поради як спеціалістки.</p></details>
       <details><summary>Скільки коштує навчання?<span class="pm">+</span></summary><p>Повний курс — від 400 €, можна оплатити частинами. Точний формат і ціну підберемо на безкоштовній розмові після короткого квізу — натисніть «Записатися на курс».</p></details>
       <details><summary>Я вже працюю в логістиці. Можна взяти лише кілька модулів?<span class="pm">+</span></summary><p>Так. Якщо у вас є досвід або своя транспортна фірма, можна взяти лише потрібні теми — наприклад, ставки й індекси або біржі й документи. Це дешевше за повний курс; вартість залежить від кількості модулів і формату.</p></details>
-      <details><summary>Чим консультація відрізняється від курсу?<span class="pm">+</span></summary><p>Курс дає системні знання крок за кроком. Консультація — це точкова відповідь на вашу конкретну ситуацію чи питання. Консультація коштує 50 € (або 200 zł) і проходить онлайн.</p></details>
+      <details><summary>Чим консультація відрізняється від курсу?<span class="pm">+</span></summary><p>Курс дає системні знання крок за кроком. Консультація — це точкова відповідь на вашу конкретну ситуацію чи питання. Консультація проходить онлайн: за записом — 50 € (або 200 zł), термінова, поза чергою — 100 €.</p></details>
       <details><summary>Я боюся математики — це проблема?<span class="pm">+</span></summary><p>Ні 🙂 Я теж боялася. Все, що потрібно для роботи, — зрозумілі формули й логіка, які я показую на прикладах.</p></details>
     </div>
   </div>
@@ -2261,6 +2280,16 @@ setTimeout(function () {
   form.querySelectorAll('input[name=want]').forEach(i => i.addEventListener('change', () => { setWant(want()); haptic(10); }));
   document.addEventListener('click', e => { const a = e.target.closest('[data-pick]'); if (a) setWant(a.dataset.pick === 'course' ? 'course' : 'consult'); });
   setWant(want());
+  const kind = () => form.querySelector('input[name=ckind]:checked').value;
+  const KIND = { plan: 'За записом — 50 € / 200 zł', urgent: 'ТЕРМІНОВА — 100 €' };
+  const paidT = form.querySelector('.paid-t');
+  form.querySelectorAll('input[name=ckind]').forEach(i => i.addEventListener('change', () => {
+    paidT.textContent = kind() === 'urgent'
+      ? 'Вероніка звʼяжеться з вами якнайшвидше, поза чергою.'
+      : 'Вероніка напише вам, щоб узгодити зручний час.';
+    haptic(10);
+  }));
+  document.addEventListener('click', e => { const a = e.target.closest('[data-ckind]'); if (a) { form.querySelector('input[name=ckind][value=' + a.dataset.ckind + ']').click(); } });
   /* Прихід з директу: #konsultaciya — одразу форма з обраною консультацією.
      Людина вже прогріта, заставку їй показувати нема сенсу.
      ?k=1 — дубль на випадок, коли обгортка редіректу зріже фрагмент. */
@@ -2356,10 +2385,10 @@ setTimeout(function () {
     if (!phoneOk(cInput.value)) { setHint(true); ok = false; }
     if (!ok) return;
     const isConsult = want() === 'consult';
-    const interests = [isConsult ? 'Консультація (платна)' : 'Курс'];
+    const interests = [isConsult ? (kind() === 'urgent' ? 'Термінова консультація (100 €)' : 'Консультація за записом (50 €)') : 'Курс'];
     const q = form.msg.value.trim();
     const msg = isConsult
-      ? '💬 Запит на консультацію · попереджено, що консультація платна (50 € / 200 zł)' + (q ? '\n\nПитання: ' + q : '')
+      ? (kind() === 'urgent' ? '⚡ ТЕРМІНОВА консультація · 100 €' : '💬 Запит на консультацію за записом · 50 € / 200 zł') + ' · попереджено, що платна' + (q ? '\n\nПитання: ' + q : '')
       : '🎓 Хоче на курс · перейшов(ла) до квізу. Якщо пройде — повні відповіді прийдуть окремою заявкою';
     formErr.hidden = true;
     submitBtn.disabled = true;
@@ -2421,7 +2450,7 @@ setTimeout(function () {
   function openThanks(){
     thBack = document.activeElement;
     document.getElementById('thSub').textContent =
-      'Вероніка ' + (SAY[cType.value] || 'звʼяжеться з вами') + ' найближчим часом' + (cType.value === 'any' ? ', щоб узгодити час консультації.' : '.');
+      'Вероніка ' + (SAY[cType.value] || 'звʼяжеться з вами') + (cType.value === 'any' && kind() === 'urgent' ? ' якнайшвидше — термінову консультацію беремо поза чергою.' : ' найближчим часом' + (cType.value === 'any' ? ', щоб узгодити час консультації.' : '.'));
     /* підтверджуємо, куди саме і коли — щоб людина побачила, що номер правильний */
     const chips = [cInput.value];
     if (form.preferred.value && !/Будь-коли/.test(form.preferred.value)) chips.push(form.preferred.value);
