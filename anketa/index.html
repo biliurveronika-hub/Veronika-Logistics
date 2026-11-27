@@ -264,31 +264,60 @@ a{color:var(--blue)}
     return `<ul class="plan">${rows.map(r => `<li><i>${r[0]}</i><span><b>${r[1]}</b>${esc(r[2])}</span></li>`).join('')}</ul>`;
   };
 
+  /* власник транспортної фірми — окрема позначка в картці, це не звичайний учень */
+  const OWNER = 'Маю свою транспортну фірму';
+  const ownerLine = () => A.now === OWNER ? '\n🏢 Власник транспортної фірми' : '';
+
   /* ---- гілка «Поки лише безкоштовне»: урок 1 модуля ----
-     контакту немає, але відповіді все одно надсилаємо в групу (один раз за візит) */
-  function sendFree(){
-    try { if (sessionStorage.getItem('vl_kviz_free')) return; sessionStorage.setItem('vl_kviz_free', '1'); } catch (e) {}
-    fetch(LEAD_ENDPOINT, {
-      method: 'POST', headers: { 'Content-Type': 'application/json' }, keepalive: true,
-      body: JSON.stringify({
-        name: LEAD ? LEAD.name : 'Без контакту',
-        contact: LEAD ? 'Телефон: ' + LEAD.phone + ' (з форми на головній)' : 'не залишили — обрали безкоштовний урок',
-        interests: ['Безкоштовний урок'],
-        message: '❄️ Поки лише безкоштовне · квіз → урок 1 модуля\n\n' + answers(),
-        company: '',
-        source: location.href.split('#')[0],
-        ref: firstVisit.ref, utm: firstVisit.utm,
-        t: Date.now() - bornAt, hi: touches
-      })
-    }).catch(() => {});
-  }
+     урок віддаємо в обмін на контакт: серед «безкоштовних» бувають власники фірм
+     і ті, хто дозріє пізніше, — без контакту ми їх втрачаємо */
+  const FREE_KEY = 'vl_kviz_free';
+  const freeDone = () => { try { return !!sessionStorage.getItem(FREE_KEY); } catch (e) { return false; } };
+  const freeMsg = () => '❄️ Безкоштовний урок · квіз → урок 1 модуля' + ownerLine() + '\n\n' + answers();
   function lesson(){
     progress(total());
+    /* контакт уже є (форма на головній) — не питаємо вдруге */
+    if (!freeDone() && LEAD && LEAD.name && LEAD.phone) {
+      try { sessionStorage.setItem(FREE_KEY, '1'); } catch (e) {}
+      fetch(LEAD_ENDPOINT, {
+        method: 'POST', headers: { 'Content-Type': 'application/json' }, keepalive: true,
+        body: JSON.stringify({
+          name: LEAD.name, contact: 'Телефон: ' + LEAD.phone + ' (з форми на головній)',
+          interests: ['Безкоштовний урок'], message: freeMsg(), company: '',
+          source: location.href.split('#')[0], ref: firstVisit.ref, utm: firstVisit.utm,
+          t: Date.now() - bornAt, hi: touches
+        })
+      }).catch(() => {});
+    }
+    if (freeDone()) return lessonOpen();
+    stage.innerHTML = `<section class="card">
+      <span class="kicker">🎁 Урок 1 модуля · 7 хв · безкоштовно</span>
+      <h2>Куди надіслати <em>урок?</em></h2>
+      <p class="sub">Залиште контакт — урок відкриється тут одразу, а посилання я продублюю вам у месенджер, щоб не загубилось.${A.now === OWNER ? ' І підкажу, чим курс може бути корисний саме вашій фірмі.' : ''}</p>
+      ${contactForm('Отримати урок')}
+      <button type="button" class="back" data-back>← Змінити відповіді</button>
+    </section>
+    <section class="card">${proofHTML()}</section>`;
+    stage.querySelector('[data-back]').onclick = () => go(VQ().length - 1);
+    wireForm(async (name, ct, phone, f, sb, err) => {
+      try {
+        const res = await sendLead({
+          name, contact: (CT_LABEL[ct] + ': ' + phone).slice(0, 200), contact_type: ct, contact_value: phone,
+          interests: ['Безкоштовний урок'], message: freeMsg(), company: f.company.value
+        });
+        if (!res.ok) throw new Error();
+      } catch (x) { /* урок усе одно віддаємо — людину не караємо за збій мережі */ }
+      try { sessionStorage.setItem(FREE_KEY, '1'); } catch (e) {}
+      track('Lead', { content_name: 'kviz_free_urok' });
+      lessonOpen(name);
+    });
+  }
+  function lessonOpen(name){
     track('KvizFree', {}, true);
-    sendFree();
+    window.scrollTo(0, 0);
     stage.innerHTML = `<section class="card done">
       <div class="big">🎁</div>
-      <h2>Почніть із безкоштовного уроку</h2>
+      <h2>${name ? esc(name.split(' ')[0]) + ', урок ваш!' : 'Почніть із безкоштовного уроку'}</h2>
       <p class="lead">Перший модуль курсу «Що таке логістика» — повністю й безкоштовно. 7 хвилин, і стане зрозуміло, чим займається логіст, чим він відрізняється від диспетчера і що таке каботаж.</p>
       <div class="acts"><a class="btn" href="/urok/${location.search}">Дивитися урок</a></div>
       <button type="button" class="link" data-consult>Все ж хочу безкоштовну консультацію →</button>
@@ -316,6 +345,57 @@ a{color:var(--blue)}
   const PHONE_BAD = 'Перевірте номер: код країни і 9–15 цифр, напр. +380 67 123 45 67';
   const normPhone = v => { const d = v.replace(/\D/g, ''); if (/^0\d{9}$/.test(d)) return '+38' + d; return d ? '+' + d : ''; };
   const phoneOk = v => /^\+\d{9,15}$/.test(v);
+
+  /* коротка форма контакту для безкоштовної гілки: імʼя, телефон, месенджер */
+  const contactForm = label => `<form id="f" novalidate>
+        <div class="field"><label for="nm">Ваше імʼя</label><input id="nm" name="name" type="text" autocomplete="given-name" maxlength="100"></div>
+        <div class="field">
+          <label for="ph">Номер телефону</label>
+          <input id="ph" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="+380 67 123 45 67" maxlength="20">
+          <div class="ct" role="radiogroup" aria-label="Де зручніше">
+            ${Object.keys(CT).map((k, i) => `<label><input type="radio" name="ct" value="${k}"${i ? '' : ' checked'}><span>${CT_LABEL[k]}</span></label>`).join('')}
+          </div>
+          <div class="hint" id="hint"></div>
+        </div>
+        <div class="hp" aria-hidden="true"><input name="company" tabindex="-1" autocomplete="off"></div>
+        <button type="submit" class="btn" id="sb">${label}</button>
+        <p class="privacy" style="font-size:12.5px;opacity:.7;margin-top:12px;text-align:center">Натискаючи кнопку, ви погоджуєтесь з <a href="../privacy/" style="color:inherit">політикою конфіденційності</a> та <a href="../oferta/" style="color:inherit">умовами оферти</a>.</p>
+        <div class="err" id="err" hidden></div>
+      </form>`;
+  const sendLead = extra => {
+    const ac = new AbortController(); const killer = setTimeout(() => ac.abort(), 12000);
+    return fetch(LEAD_ENDPOINT, {
+      method: 'POST', headers: { 'Content-Type': 'application/json' }, signal: ac.signal,
+      body: JSON.stringify(Object.assign({
+        source: location.href.split('#')[0], ref: firstVisit.ref, utm: firstVisit.utm,
+        t: Date.now() - bornAt, hi: touches
+      }, extra))
+    }).then(async r => { const o = await r.json().catch(() => ({})); return { ok: r.ok && o.ok !== false }; }).finally(() => clearTimeout(killer));
+  };
+  function wireForm(onOk){
+    const f = stage.querySelector('#f'), ph = f.phone, hint = stage.querySelector('#hint'), err = stage.querySelector('#err'), sb = stage.querySelector('#sb');
+    const ct = () => f.querySelector('input[name=ct]:checked').value;
+    const setHint = bad => { hint.textContent = bad ? PHONE_BAD : CT[ct()]; hint.classList.toggle('bad', !!bad); ph.classList.toggle('bad', !!bad); };
+    setHint(false);
+    f.querySelectorAll('input[name=ct]').forEach(r => r.onchange = () => { if (!hint.classList.contains('bad')) setHint(false); });
+    ph.addEventListener('focus', () => { if (!ph.value) ph.value = '+'; });
+    ph.addEventListener('input', () => { if (hint.classList.contains('bad')) setHint(false); });
+    ph.addEventListener('blur', () => { const v = ph.value.trim(); if (!v || v === '+') return; ph.value = normPhone(v); setHint(!phoneOk(ph.value)); });
+    f.onsubmit = async e => {
+      e.preventDefault();
+      if (f.company.value) return;
+      const name = f.name.value.trim();
+      f.name.classList.toggle('bad', !name);
+      ph.value = normPhone(ph.value.trim());
+      const okPhone = phoneOk(ph.value);
+      if (!okPhone) setHint(true);
+      if (!name) { f.name.focus(); return; }
+      if (!okPhone) { ph.focus(); return; }
+      err.hidden = true; sb.disabled = true;
+      sb.innerHTML = 'Надсилаю… <span class="spin"></span>';
+      await onOk(name.slice(0, 200), ct(), ph.value.slice(0, 100), f, sb, err);
+    };
+  }
 
   function booking(){
     const parts = A.invest === 'Так, частинами';
@@ -380,6 +460,7 @@ a{color:var(--blue)}
       const message = (fromFree ? '🔥 Запис на консультацію · квіз (спершу обрали безкоштовне, потім передумали)' : '🔥 Запис на консультацію · квіз') +
         (together() ? '\n👥 Рішення не сам(а) — на консультацію кличемо обох (підтвердили, що будуть разом)' : '') +
         (need() === MODS ? '\n🎯 Досвідчений — потрібні лише окремі модулі' : '') +
+        ownerLine() +
         '\n\n' + answers();
 
       err.hidden = true; sb.disabled = true;
