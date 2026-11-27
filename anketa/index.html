@@ -137,6 +137,8 @@ a{color:var(--blue)}
   /* приймач заявок — той самий воркер, що й форма на головній: пише в групу Telegram */
   const LEAD_ENDPOINT = 'https://rapid-thunder-b3dc.biliurveronika.workers.dev/';
   const AVA = 'vera.jpg';
+  /* Telegram-бот у ManyChat, куди ведемо «безкоштовних»; порожньо — тоді звичайна форма */
+  const TG_BOT = 'veronika_logistics_bot';
 
   /* r — що Вероніка «відповідає» на вибір: іде в персональний підсумок */
   /* if — питання показуємо лише коли умова виконується; tt/hh — текст залежно від попередніх відповідей */
@@ -290,15 +292,49 @@ a{color:var(--blue)}
       }).catch(() => {});
     }
     if (freeDone()) return lessonOpen();
+    /* основний шлях — Telegram-бот (ManyChat): людина ділиться номером однією кнопкою й отримує урок там.
+       Відповіді квізу шлемо в групу одразу, щоб не загубились; номер буде в ManyChat → Contacts */
+    if (TG_BOT) return lessonTg();
+    lessonForm();
+  }
+  function lessonTg(){
+    stage.innerHTML = `<section class="card">
+      <span class="kicker">🎁 Урок 1 модуля · 7 хв · безкоштовно</span>
+      <h2>Урок чекає на вас <em>у Telegram</em></h2>
+      <p class="sub">Натисніть кнопку — відкриється мій бот. Поділіться номером одним дотиком, і урок одразу прийде вам у чат, не загубиться.${A.now === OWNER ? ' Там же підкажу, чим курс може бути корисний саме вашій фірмі.' : ''}</p>
+      <a class="btn" id="tgGo" href="https://t.me/${TG_BOT}" style="background:#229ED9;box-shadow:0 16px 36px -14px rgba(34,158,217,.6)"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M21.9 4.3 18.7 19.4c-.2 1.1-.9 1.3-1.8.8l-4.9-3.6-2.4 2.3c-.3.3-.5.5-1 .5l.3-5 9.2-8.3c.4-.4-.1-.6-.6-.2L6.1 13.1 1.2 11.6c-1.1-.3-1.1-1.1.2-1.6L20.6 2.6c.9-.3 1.7.2 1.3 1.7z"/></svg>Отримати урок у Telegram</a>
+      <button type="button" class="link" data-form>Немає Telegram? Залиште номер тут</button>
+      <button type="button" class="back" data-back>← Змінити відповіді</button>
+    </section>
+    <section class="card">${proofHTML()}</section>`;
+    stage.querySelector('[data-back]').onclick = () => go(VQ().length - 1);
+    stage.querySelector('[data-form]').onclick = lessonForm;
+    stage.querySelector('#tgGo').addEventListener('click', () => {
+      track('Lead', { content_name: 'kviz_free_telegram' });
+      try { if (sessionStorage.getItem('vl_kviz_tg')) return; sessionStorage.setItem('vl_kviz_tg', '1'); } catch (e) {}
+      fetch(LEAD_ENDPOINT, {
+        method: 'POST', headers: { 'Content-Type': 'application/json' }, keepalive: true,
+        body: JSON.stringify({
+          name: 'Пішли в Telegram-бот', contact: 'номер — у ManyChat → Contacts (канал Telegram, @' + TG_BOT + ')',
+          interests: ['Безкоштовний урок'],
+          message: '❄️ Безкоштовний урок · квіз → Telegram-бот' + ownerLine() + '\n\n' + answers(),
+          company: '', source: location.href.split('#')[0], ref: firstVisit.ref, utm: firstVisit.utm,
+          t: Date.now() - bornAt, hi: touches
+        })
+      }).catch(() => {});
+    });
+  }
+  function lessonForm(){
+    window.scrollTo(0, 0);
     stage.innerHTML = `<section class="card">
       <span class="kicker">🎁 Урок 1 модуля · 7 хв · безкоштовно</span>
       <h2>Куди надіслати <em>урок?</em></h2>
       <p class="sub">Залиште контакт — урок відкриється тут одразу, а посилання я продублюю вам у месенджер, щоб не загубилось.${A.now === OWNER ? ' І підкажу, чим курс може бути корисний саме вашій фірмі.' : ''}</p>
       ${contactForm('Отримати урок')}
-      <button type="button" class="back" data-back>← Змінити відповіді</button>
+      <button type="button" class="back" data-back>← Назад</button>
     </section>
     <section class="card">${proofHTML()}</section>`;
-    stage.querySelector('[data-back]').onclick = () => go(VQ().length - 1);
+    stage.querySelector('[data-back]').onclick = () => TG_BOT ? lessonTg() : go(VQ().length - 1);
     wireForm(async (name, ct, phone, f, sb, err) => {
       try {
         const res = await sendLead({
