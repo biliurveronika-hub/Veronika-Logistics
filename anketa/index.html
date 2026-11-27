@@ -8,7 +8,7 @@
 <meta name="robots" content="noindex, nofollow">
 <meta name="theme-color" content="#EEF2F5">
 <meta property="og:title" content="З чого почати саме вам — квіз">
-<meta property="og:description" content="Чотири питання, хвилина часу. Далі — безкоштовна консультація або перший урок.">
+<meta property="og:description" content="Чотири питання, хвилина часу. Далі — умови курсу від Вероніки або перший урок.">
 <meta property="og:image" content="https://veronika-logistics.com/urok/og.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -159,21 +159,21 @@ a{color:var(--blue)}
       ['🎯', MODS, 'Можна взяти лише потрібні модулі: ставки й індекси, біржі, документи'],
       ['❓', 'Розібрати конкретне питання', 'Розберемо вашу ситуацію предметно, з мого практичного досвіду']] },
     { k: 'start', t: 'Коли хочете почати навчання?', o: [
-      ['🚀', 'Уже зараз', 'Найближчий старт і місця — скажу на консультації'],
+      ['🚀', 'Уже зараз', 'Найближчий старт і вільні місця — напишу разом з умовами'],
       ['📅', 'За 1–2 місяці', 'Якраз встигнемо спокійно підготуватися до старту'],
-      ['👀', 'Поки придивляюся', 'Нормально — розмова ні до чого не зобовʼязує']] },
+      ['👀', 'Поки придивляюся', 'Нормально — умови ні до чого не зобовʼязують']] },
     { k: 'time', t: 'Скільки годин на тиждень готові приділяти навчанню?', o: [
       ['☕', 'До 5 годин', 'Кожен модуль — відео й презентація, вчитеся коли зручно'],
       ['🕐', '5–10 годин', 'Спокійно пройдете програму за 6 тижнів'],
       ['🔥', 'Понад 10 годин', 'Повне занурення — нова професія за 6 тижнів']] },
     { k: 'invest', t: 'Чи готові інвестувати у навчання від 400 €?', h: 'Повний курс коштує від 400 €, можна частинами. Чесна відповідь допоможе мені запропонувати вам правильний наступний крок.',
       tt: () => need() === MODS ? 'Чи готові інвестувати в навчання окремих модулів?' : need() === 'Розібрати конкретне питання' ? 'Чи готові інвестувати в навчання, якщо воно вам підійде?' : null,
-      hh: () => need() && need() !== 'Повний курс' ? 'Окремі модулі коштують менше за повний курс — точну ціну назву на консультації. Чесна відповідь допоможе запропонувати правильний наступний крок.' : null,
+      hh: () => need() && need() !== 'Повний курс' ? 'Окремі модулі коштують менше за повний курс — точну ціну напишу разом з умовами. Чесна відповідь допоможе запропонувати правильний наступний крок.' : null,
       o: [['✅', 'Так'], ['🧩', 'Так, частинами'], ['🎁', 'Поки лише безкоштовне']] },
-    { k: 'decide', t: 'Хто ухвалює рішення про навчання?', if: () => A.invest !== FREE || fromFree, h: 'Якщо рішення ви ухвалюєте разом — приходьте на консультацію вдвох, тоді все вирішимо за одну розмову.', o: [
-      ['🙋', SOLO, 'Тоді на консультації одразу підберемо формат і старт'],
-      ['👥', 'Разом із партнером / чоловіком чи дружиною', 'Приходьте на консультацію разом — відповім на питання обох'],
-      ['🏢', 'Рішення за керівником / компанією', 'Покличте на консультацію того, хто ухвалює рішення']] }
+    { k: 'decide', t: 'Хто ухвалює рішення про навчання?', if: () => A.invest !== FREE || fromFree, h: 'Так я надішлю умови у зручному вигляді — щоб їх було легко показати тому, з ким вирішуєте.', o: [
+      ['🙋', SOLO, 'Тоді одразу підберемо формат і старт'],
+      ['👥', 'Разом із партнером / чоловіком чи дружиною', 'Надішлю умови так, щоб їх зручно було показати'],
+      ['🏢', 'Рішення за керівником / компанією', 'Надішлю умови, які зручно переслати керівнику']] }
   ];
   const FREE = 'Поки лише безкоштовне';
   const VQ = () => Q.filter(q => !q.if || q.if());   // питання, що показуються при поточних відповідях
@@ -234,7 +234,7 @@ a{color:var(--blue)}
     stage.innerHTML = `<section class="card">
       <div class="who"><img class="ava" src="${AVA}" alt="Вероніка" width="52" height="52"><div><b>Вероніка</b><small>логіст, 2 дипломи з логістики</small></div></div>
       <h1>З чого почати <em>саме вам?</em></h1>
-      <p class="lead">Кілька коротких питань — і я підкажу наступний крок: безкоштовну консультацію зі мною або перший урок курсу.</p>
+      <p class="lead">Кілька коротких питань — і я підкажу наступний крок: умови курсу саме під вас або перший урок безкоштовно.</p>
       <div class="chips"><span>⏱ 1 хвилина</span><span>🎓 6 потоків учнів</span><span>🗓 курс — 6 тижнів</span></div>
       <button type="button" class="btn" data-go>Почати</button>
     </section>`;
@@ -356,7 +356,8 @@ a{color:var(--blue)}
       <h2>${name ? esc(name.split(' ')[0]) + ', урок ваш!' : 'Почніть із безкоштовного уроку'}</h2>
       <p class="lead">Перший модуль курсу «Що таке логістика» — повністю й безкоштовно. 7 хвилин, і стане зрозуміло, чим займається логіст, чим він відрізняється від диспетчера і що таке каботаж.</p>
       <div class="acts"><a class="btn" href="/urok/${location.search}">Дивитися урок</a></div>
-      <button type="button" class="link" data-consult>Все ж хочу безкоштовну консультацію →</button>
+      <button type="button" class="link" data-consult>Все ж хочу дізнатися умови курсу →</button>
+      <a class="link" href="/?c=1#konsultaciya" style="display:block;text-align:center;margin-top:6px">Особистий розбір з Веронікою · 1 година, платно →</a>
     </section>
     <section class="card">${proofHTML()}</section>`;
     /* передумали — питаємо, хто ухвалює рішення (його пропускали в безкоштовній гілці) */
@@ -369,7 +370,7 @@ a{color:var(--blue)}
   const proofHTML = () => `<div class="proof">${FACES}<p>Курс уже пройшли <b>6 потоків учнів</b> — серед них Богдана, Сергій і Настя</p></div>
     <div class="quote"><q>Через два тижні після курсу я пройшов співбесіду, а через місяць уже працював</q><small>Сергій · Вроцлав</small></div>`;
 
-  /* ---- гілка «Так / Так, частинами» (або передумали): запис на консультацію ---- */
+  /* ---- гілка «Так / Так, частинами» (або передумали): запит умов курсу ---- */
   const CT = {
     telegram: 'Напишу вам у Telegram на цей номер',
     viber: 'Напишу вам у Viber на цей номер',
@@ -438,13 +439,13 @@ a{color:var(--blue)}
     stage.innerHTML = `<section class="card">
       <span class="kicker">Ваш результат</span>
       <h2>${need() ? 'Я можу вам <em>допомогти</em>' : 'Логістика вам <em>підходить</em>'}</h2>
-      <p class="sub">${fromFree ? 'Добре, що вирішили поговорити — розберемо все спокійно, без зобовʼязань.' : 'По відповідях бачу: нам є сенс поговорити особисто.'}</p>
+      <p class="sub">${fromFree ? 'Добре, що вирішили дізнатися умови — це ні до чого не зобовʼязує.' : 'По відповідях бачу: курс вам підходить. Надішлю умови особисто.'}</p>
       ${planHTML()}
     </section>
     <section class="card">
-      <div class="who"><img class="ava" src="${AVA}" alt="Вероніка" width="52" height="52"><div><b>Безкоштовна консультація</b><small>онлайн, з Веронікою особисто</small></div></div>
-      <p class="sub">Розберемо вашу ситуацію і з чого почати, а ще розповім про умови навчання${parts ? ' й оплату частинами' : ''}.</p>
-      ${together() ? `<div class="bubble" style="margin:0 0 16px">👥 Рішення ви ухвалюєте не самі — тож приходьте на консультацію <b>разом із ${A.decide.startsWith('Разом') ? 'партнером' : 'тим, хто ухвалює рішення'}</b>. Так я одразу відповім на питання обох, і не доведеться потім переказувати розмову.</div>` : ''}
+      <div class="who"><img class="ava" src="${AVA}" alt="Вероніка" width="52" height="52"><div><b>Умови курсу</b><small>від Вероніки особисто</small></div></div>
+      <p class="sub">Напишу вам, який формат підійде саме вам, пакети й ціни${parts ? ' та як оплатити частинами' : ''}.</p>
+      ${together() ? `<div class="bubble" style="margin:0 0 16px">👥 Рішення ви ухвалюєте не самі — надішлю умови так, щоб їх було зручно показати <b>${A.decide.startsWith('Разом') ? 'партнеру' : 'тому, хто ухвалює рішення'}</b>.</div>` : ''}
       <form id="f" novalidate>
         <div class="field"><label for="nm">Ваше імʼя</label><input id="nm" name="name" type="text" autocomplete="given-name" maxlength="100"></div>
         <div class="field">
@@ -458,12 +459,11 @@ a{color:var(--blue)}
         <div class="field"><label for="tm">Коли вам зручно на звʼязок</label>
           <select id="tm" name="preferred">${TIMES.map(t => `<option>${t}</option>`).join('')}</select>
         </div>
-        ${together() ? `<div class="field"><label style="display:flex;gap:10px;align-items:flex-start;font-weight:600;cursor:pointer"><input type="checkbox" id="both" style="width:20px;height:20px;flex:none;margin-top:1px;accent-color:var(--forest)"> Так, на консультації будемо разом</label><div class="hint bad" id="bothHint" hidden>Позначте, будь ласка: консультацію проводимо, коли є обоє</div></div>` : ''}
         <div class="hp" aria-hidden="true"><input name="company" tabindex="-1" autocomplete="off"></div>
-        <button type="submit" class="btn" id="sb">Записатися на консультацію</button>
+        <button type="submit" class="btn" id="sb">Отримати умови курсу</button>
         <p class="privacy" style="font-size:12.5px;opacity:.7;margin-top:12px;text-align:center">Натискаючи кнопку, ви погоджуєтесь з <a href="../privacy/" style="color:inherit">політикою конфіденційності</a> та <a href="../oferta/" style="color:inherit">умовами оферти</a>.</p>
         <div class="err" id="err" hidden>Не вдалося надіслати. Напишіть мені, будь ласка, в <a href="https://ig.me/m/veronika_logistics">Direct</a> — відповім там.</div>
-        <ol class="next"><li><b>1</b>Я пишу вам</li><li><b>2</b>Узгоджуємо час</li><li><b>3</b>Говоримо онлайн</li></ol>
+        <ol class="next"><li><b>1</b>Я пишу вам</li><li><b>2</b>Надсилаю пакети й ціни</li><li><b>3</b>Обираєте формат і старт</li></ol>
       </form>
       <button type="button" class="back" data-back>← Змінити відповіді</button>
     </section>
@@ -493,8 +493,8 @@ a{color:var(--blue)}
       if (!okPhone) { ph.focus(); return; }
       if (both && !both.checked) { both.focus(); return; }
 
-      const message = (fromFree ? '🔥 Запис на консультацію · квіз (спершу обрали безкоштовне, потім передумали)' : '🔥 Запис на консультацію · квіз') +
-        (together() ? '\n👥 Рішення не сам(а) — на консультацію кличемо обох (підтвердили, що будуть разом)' : '') +
+      const message = (fromFree ? '🔥 Хоче умови курсу · квіз (спершу обрали безкоштовне, потім передумали)' : '🔥 Хоче умови курсу · квіз') +
+        (together() ? '\n👥 Рішення не сам(а) — умови покаже ' + (A.decide.startsWith('Разом') ? 'партнеру' : 'керівнику') : '') +
         (need() === MODS ? '\n🎯 Досвідчений — потрібні лише окремі модулі' : '') +
         ownerLine() +
         '\n\n' + answers();
@@ -510,7 +510,7 @@ a{color:var(--blue)}
             contact: (CT_LABEL[ct()] + ': ' + ph.value).slice(0, 200),
             contact_type: ct(), contact_value: ph.value.slice(0, 100),
             preferred: f.preferred.value,
-            interests: ['Консультація'],
+            interests: ['Курс'],
             message,
             company: f.company.value,
             source: location.href.split('#')[0],
@@ -520,7 +520,7 @@ a{color:var(--blue)}
         });
         const out = await res.json().catch(() => ({}));
         if (!res.ok || out.ok === false) throw new Error('HTTP ' + res.status);
-        track('Lead', { content_name: 'kviz_konsultaciya' });
+        track('Lead', { content_name: 'kviz_umovy' });
         try { sessionStorage.removeItem(KEY); } catch (x) {}
         booked(f.preferred.value, name);
       } catch (x) {
@@ -533,8 +533,8 @@ a{color:var(--blue)}
     progress(total()); window.scrollTo(0, 0);
     stage.innerHTML = `<section class="card done">
       <img class="ava" src="${AVA}" alt="Вероніка" width="52" height="52" style="width:72px;height:72px;margin:0 auto 14px;display:block">
-      <h2>${esc(name.split(' ')[0])}, ви записані!</h2>
-      <p class="lead">Я напишу вам${/Будь-коли/.test(when) ? '' : ' (' + esc(when.toLowerCase()) + ')'}, щоб узгодити точний час консультації. Вона безкоштовна й онлайн.</p>
+      <h2>${esc(name.split(' ')[0])}, заявку отримала!</h2>
+      <p class="lead">Я напишу вам${/Будь-коли/.test(when) ? '' : ' (' + esc(when.toLowerCase()) + ')'}, і надішлю умови курсу й пакети.</p>
       <div class="acts"><a class="btn ghost" href="/urok/">Поки чекаєте — перший урок</a></div></section>`;
   }
 
