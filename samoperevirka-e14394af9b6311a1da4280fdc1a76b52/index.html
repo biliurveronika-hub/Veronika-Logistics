@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Чи готові ви до першої співбесіди на логіста — самоперевірка Вероніки</title>
+<meta name="description" content="20 питань, які ставлять новачкам на співбесіді на логіста. Відмітьте чесно: знаю чи не знаю.">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#EEF2F5">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@1,400;1,500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#EEF2F5; --paper:#F8FAFC; --ink:#14232E; --muted:#546473; --line:rgba(20,35,46,.12);
+  --forest:#244A5E; --forest-d:#17313F; --blue:#3E6E91; --sky:#9DBBD9; --ice:#E3ECF4;
+  --olive:#5F6F3A; --ios:#34C759; --warn:#C2603A; --warn-l:#FBEDE6;
+  --serif:'Playfair Display',Georgia,serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Manrope',system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+em{font-family:var(--serif);font-style:italic;font-weight:400;letter-spacing:-.02em}
+a{color:inherit}
+.wrap{max-width:720px;margin:0 auto;padding:0 16px}
+
+.hero{padding:22px 0 8px}
+.brand{font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.hero-card{margin-top:16px;background:var(--forest-d);color:#fff;border-radius:30px;overflow:hidden;display:grid;grid-template-columns:1fr}
+.hero-photo{height:220px;background:url(/img/portrait.jpg) center 22%/cover}
+.hero-txt{padding:24px 22px 26px}
+.tag{display:inline-flex;align-items:center;gap:8px;padding:7px 13px;border-radius:999px;background:rgba(255,255,255,.12);font-size:13px;font-weight:700}
+.hero h1{font-size:clamp(28px,7.6vw,42px);line-height:1.1;letter-spacing:-.035em;margin:14px 0 12px;font-weight:800}
+.hero h1 em{color:var(--sky)}
+.hero p{color:#B9CBD9;font-size:16px}
+@media(min-width:680px){.hero-card{grid-template-columns:.8fr 1.2fr}.hero-photo{height:auto;min-height:340px}.hero-txt{padding:36px 34px}}
+
+.intro{background:#fff;border-radius:24px;padding:20px;margin-top:14px;font-size:15.5px}
+.intro b{font-weight:800}
+.how{display:grid;gap:8px;margin-top:14px}
+.how div{display:flex;gap:10px;align-items:flex-start;font-size:14.5px;line-height:1.4}
+.how span{flex:none;width:26px;height:26px;border-radius:50%;background:var(--ice);color:var(--blue);display:grid;place-items:center;font-weight:800;font-size:13px}
+
+.bar{position:sticky;top:0;z-index:5;background:rgba(238,242,245,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);margin:14px -16px 0;padding:10px 16px;display:flex;align-items:center;gap:12px}
+.bar .track{flex:1;height:8px;border-radius:999px;background:#fff;overflow:hidden;border:1px solid var(--line)}
+.bar .fill{height:100%;width:0;background:var(--forest);transition:width .3s}
+.bar b{font-size:13px;font-weight:800;color:var(--forest-d);white-space:nowrap}
+
+.sec{background:#fff;border-radius:28px;padding:22px 18px;margin-top:14px}
+.sec-top{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:4px}
+.sec-lbl{font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--blue)}
+.sec-mod{font-size:12px;font-weight:700;color:var(--muted);background:var(--ice);padding:5px 10px;border-radius:999px;white-space:nowrap}
+.sec h2{font-size:clamp(20px,5.4vw,25px);line-height:1.2;letter-spacing:-.025em;font-weight:800}
+
+.qq{border:1.5px solid var(--line);border-radius:18px;padding:14px;margin-top:10px;transition:border-color .2s,background .2s}
+.qq p{font-size:15.5px;font-weight:600;line-height:1.4}
+.ans{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px}
+.ans button{min-height:44px;border-radius:999px;border:1.5px solid var(--line);background:var(--paper);font:inherit;font-weight:700;font-size:14.5px;color:var(--ink);cursor:pointer;transition:.2s}
+.qq.k{border-color:rgba(52,199,89,.45);background:#F7FDF8}
+.qq.k .ans .y{background:var(--ios);border-color:var(--ios);color:#fff}
+.qq.u{border-color:rgba(194,96,58,.45);background:#FFFBF9}
+.qq.u .ans .n{background:var(--warn);border-color:var(--warn);color:#fff}
+
+.final{background:var(--forest-d);color:#fff;border-radius:30px;padding:26px 20px;margin:18px 0 14px;scroll-margin-top:66px}
+.final h2{font-size:clamp(24px,6.4vw,32px);line-height:1.15;letter-spacing:-.03em;font-weight:800}
+.final h2 em{color:var(--sky)}
+.score{display:flex;align-items:baseline;gap:10px;margin:16px 0 4px}
+.score b{font-size:54px;line-height:1;letter-spacing:-.04em}
+.score span{color:#B9CBD9;font-size:15px}
+.final p{color:#C9D7E2;font-size:15.5px;margin-top:10px}
+.final p b{color:#fff}
+.gaps{margin-top:14px;display:grid;gap:6px}
+.gaps div{background:rgba(255,255,255,.08);border-radius:14px;padding:10px 14px;font-size:14.5px;color:#E6EEF4;display:flex;justify-content:space-between;gap:10px}
+.gaps div span{color:#F3B49A;font-weight:800;white-space:nowrap}
+.btns{display:grid;gap:10px;margin-top:16px}
+.btn{display:flex;align-items:center;justify-content:center;gap:8px;min-height:54px;border-radius:999px;font-weight:800;font-size:16px;text-decoration:none;border:0;cursor:pointer;font-family:inherit;text-align:center;padding:0 18px}
+.btn.main{background:#fff;color:var(--forest-d)}
+.btn.ghost{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.35)}
+.reset{display:block;margin:14px auto 0;background:none;border:0;color:#8FA4B4;font:inherit;font-size:13.5px;text-decoration:underline;cursor:pointer}
+.note{font-size:12.5px;color:var(--muted);text-align:center;padding:4px 10px 30px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="hero">
+    <div class="brand">Veronika Logistics · подарунок</div>
+    <div class="hero-card">
+      <div class="hero-photo" role="img" aria-label="Вероніка"></div>
+      <div class="hero-txt">
+        <span class="tag">🎯 Самоперевірка · 5 хвилин</span>
+        <h1>Чи готові ви до першої <em>співбесіди на логіста?</em></h1>
+        <p>20 питань, які ставлять новачкам. Відповідати вголос не треба — просто чесно відмітьте, знаєте ви відповідь чи ні.</p>
+      </div>
+    </div>
+  </header>
+
+  <div class="intro">
+    Роботодавець бере новачка без досвіду, якщо бачить, що <b>з ним є про що говорити</b>. Ця самоперевірка покаже, які теми ви вже знаєте, а де поки прогалини.
+    <div class="how">
+      <div><span>1</span>Читаєте питання і чесно натискаєте «Знаю» або «Не знаю».</div>
+      <div><span>2</span>«Знаю» — це коли можете пояснити своїми словами, а не «десь чув».</div>
+      <div><span>3</span>Унизу побачите результат і теми, які варто підтягнути.</div>
+    </div>
+  </div>
+
+  <div class="bar"><div class="track"><div class="fill" id="fill"></div></div><b id="cnt">0 / 20</b></div>
+
+  <div id="list"></div>
+
+  <section class="final" id="final">
+    <h2>Ваш <em>результат</em></h2>
+    <div class="score"><b id="sc">0</b><span>з 20 тем ви вже знаєте</span></div>
+    <p id="verdict">Дайте відповідь на всі питання — і тут з’явиться результат.</p>
+    <div class="gaps" id="gaps"></div>
+    <div class="btns">
+      <a class="btn main" href="/?utm_source=samoperevirka#taryfy">Подивитися навчання</a>
+      <a class="btn ghost" href="https://www.instagram.com/veronika_logistics/" target="_blank" rel="noopener">Написати мені в Direct</a>
+    </div>
+    <button class="reset" id="reset" type="button">Пройти ще раз</button>
+  </section>
+
+  <p class="note">Подарунок від Вероніки · Veronika Logistics</p>
+</div>
+
+<script>
+const SECS = [
+ {lbl:"Основа", mod:"Модуль 01", t:"Що таке логістика", q:[
+  "Чим відрізняються диспетчер, спедитор і логіст — і хто з них що робить щодня?",
+  "Що таке каботаж і чому в деяких країнах на нього є обмеження?",
+  "Як ваша посада називається у польських вакансіях і які базові терміни треба знати польською?"]},
+ {lbl:"Транспорт", mod:"Модуль 02", t:"Машини і завантаження", q:[
+  "Скільки європалет вміщає тір і скільки тонн він може взяти?",
+  "Чим солувка відрізняється від буса і для яких вантажів кожна підходить?",
+  "Які бувають забудови (тент, штивна, рефрижератор) і як їх завантажують?",
+  "Чому важливо, щоб вантаж не перевантажував передню вісь?"]},
+ {lbl:"Європа", mod:"Модулі 03–04", t:"Дороги і платні дороги", q:[
+  "Як фура їде з Німеччини в Італію і якими варіантами можна перетнути Австрію?",
+  "Чому фура не може просто так проїхати транзитом через Швейцарію?",
+  "В яких країнах дороги платні для вантажівок і як ця оплата впливає на ціну рейсу?"]},
+ {lbl:"Гроші", mod:"Модуль 05", t:"Індекси, ставки, регіони", q:[
+  "Як за поштовим індексом швидко зрозуміти, звідки і куди їде вантаж?",
+  "Як оцінити, чи ставка за рейс вигідна, а не просто «гарна цифра»?",
+  "З яких регіонів машині важко взяти наступний вантаж і чому це важливо?"]},
+ {lbl:"Водій", mod:"Модуль 06", t:"Час праці водія", q:[
+  "Скільки годин на день і на тиждень водій може бути за кермом?",
+  "Коли водій зобов’язаний зробити перерву і скільки триває його відпочинок?",
+  "Що таке тахограф і що буде, якщо правила часу праці порушено?"]},
+ {lbl:"Робота", mod:"Модуль 07", t:"Біржа, документи, фактура", q:[
+  "Як знайти вантаж на біржі і на що дивитися в оголошенні в першу чергу?",
+  "Що перевірити в замовленні (zlecenie), перш ніж його підтвердити?",
+  "Що таке CMR, хто його заповнює і навіщо він потрібен для оплати?"]},
+ {lbl:"Співбесіда", mod:"Модуль 08", t:"Резюме і перша робота", q:[
+  "Що писати в резюме логіста, якщо досвіду в логістиці немає?"]}
+];
+const KEY='vl-samoperevirka';
+let st={}; try{st=JSON.parse(localStorage.getItem(KEY)||'{}')}catch(e){}
+const list=document.getElementById('list'); let n=0;
+SECS.forEach((s,si)=>{
+  let h=`<section class="sec"><div class="sec-top"><span class="sec-lbl">${s.lbl}</span><span class="sec-mod">${s.mod}</span></div><h2>${s.t}</h2>`;
+  s.q.forEach(q=>{const id='q'+(n++); h+=`<div class="qq" data-id="${id}" data-s="${si}"><p>${n}. ${q}</p><div class="ans"><button class="y" type="button">Знаю</button><button class="n" type="button">Не знаю</button></div></div>`;});
+  list.insertAdjacentHTML('beforeend',h+'</section>');
+});
+const TOTAL=n;
+function save(){try{localStorage.setItem(KEY,JSON.stringify(st))}catch(e){}}
+function render(){
+  let done=0,known=0; const gap={};
+  document.querySelectorAll('.qq').forEach(el=>{
+    const v=st[el.dataset.id]; el.classList.toggle('k',v==='k'); el.classList.toggle('u',v==='u');
+    if(v){done++; if(v==='k')known++; else { const s=SECS[el.dataset.s]; gap[s.mod]=gap[s.mod]||{t:s.t,c:0}; gap[s.mod].c++; }}
+  });
+  document.getElementById('fill').style.width=(done/TOTAL*100)+'%';
+  document.getElementById('cnt').textContent=done+' / '+TOTAL;
+  document.getElementById('sc').textContent=known;
+  const vd=document.getElementById('verdict'), gp=document.getElementById('gaps');
+  if(done<TOTAL){vd.innerHTML='Дайте відповідь на всі питання — і тут з’явиться результат. Залишилось: <b>'+(TOTAL-done)+'</b>.'; gp.innerHTML=''; return;}
+  if(known<=7) vd.innerHTML='<b>Ви на самому старті — і це нормально.</b> Так починали всі мої учні. Але йти на співбесіду зараз рано: більшість питань поки закриють розмову. Добра новина — усі ці теми можна пройти за кілька тижнів, по порядку.';
+  else if(known<=14) vd.innerHTML='<b>Основа вже є, але прогалини помітні.</b> На співбесіді саме вони вирішують, чи буде друга розмова. Нижче — теми, які варто підтягнути в першу чергу.';
+  else if(known<TOTAL) vd.innerHTML='<b>Ви майже готові.</b> Залишилось кілька тем — і з ними краще розібратися до співбесіди, а не на ній.';
+  else vd.innerHTML='<b>Ви знаєте всі 20 тем.</b> Наступний крок — перевірити себе в живій розмові: пробна співбесіда показує, чи вмієте ви пояснити це вголос.';
+  gp.innerHTML=Object.entries(gap).map(([m,g])=>`<div>${m} · ${g.t}<span>${g.c} не знаю</span></div>`).join('');
+}
+list.addEventListener('click',e=>{
+  const b=e.target.closest('button'); if(!b)return; const q=b.closest('.qq');
+  st[q.dataset.id]=b.classList.contains('y')?'k':'u'; save(); render();
+  if(Object.keys(st).length===TOTAL && !render.shown){render.shown=1; setTimeout(()=>document.getElementById('final').scrollIntoView({behavior:'smooth'}),250);}
+});
+document.getElementById('reset').addEventListener('click',()=>{st={}; save(); render.shown=0; render(); window.scrollTo({top:0,behavior:'smooth'});});
+render();
+</script>
+</body>
+</html>
