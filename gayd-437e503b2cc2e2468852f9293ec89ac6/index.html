@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Як логісту побудувати роботу — гайд Вероніки</title>
-<meta name="description" content="7 правил з практики: машини, регіони, ставка, платні дороги, час праці водія, замовлення, документи й оплата.">
+<title>7 помилок логіста — самоперевірка перед консультацією</title>
+<meta name="description" content="7 помилок, на яких логіст втрачає гроші. Перевірте себе перед консультацією з Веронікою.">
 <meta name="robots" content="noindex, nofollow">
 <meta name="theme-color" content="#EEF2F5">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -13,8 +13,8 @@
 <style>
 :root{
   --bg:#EEF2F5; --paper:#F8FAFC; --ink:#14232E; --muted:#546473; --line:rgba(20,35,46,.12);
-  --forest:#244A5E; --forest-d:#17313F; --blue:#3E6E91; --sky:#9DBBD9; --sky-l:#CFE0EF; --ice:#E3ECF4;
-  --olive:#5F6F3A; --sage-l:#CDD3B2; --ios:#34C759;
+  --forest:#244A5E; --forest-d:#17313F; --blue:#3E6E91; --sky:#9DBBD9; --ice:#E3ECF4;
+  --olive:#5F6F3A; --ios:#34C759; --warn:#C2603A; --warn-l:#FBEDE6;
   --serif:'Playfair Display',Georgia,serif;
 }
 *{box-sizing:border-box;margin:0;padding:0}
@@ -24,11 +24,10 @@ em{font-family:var(--serif);font-style:italic;font-weight:400;letter-spacing:-.0
 a{color:inherit}
 .wrap{max-width:720px;margin:0 auto;padding:0 16px}
 
-/* hero */
 .hero{padding:22px 0 8px}
 .brand{font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
 .hero-card{margin-top:16px;background:var(--forest-d);color:#fff;border-radius:30px;overflow:hidden;display:grid;grid-template-columns:1fr}
-.hero-photo{height:230px;background:url(/img/portrait.jpg) center 22%/cover}
+.hero-photo{height:220px;background:url(/img/portrait.jpg) center 22%/cover}
 .hero-txt{padding:24px 22px 26px}
 .tag{display:inline-flex;align-items:center;gap:8px;padding:7px 13px;border-radius:999px;background:rgba(255,255,255,.12);font-size:13px;font-weight:700}
 .hero h1{font-size:clamp(30px,8vw,44px);line-height:1.08;letter-spacing:-.035em;margin:14px 0 12px;font-weight:800}
@@ -38,78 +37,60 @@ a{color:inherit}
 
 .intro{background:#fff;border-radius:24px;padding:20px;margin-top:14px;font-size:15.5px}
 .intro b{font-weight:800}
-.legend{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
-.legend span{font-size:13px;font-weight:700;padding:6px 11px;border-radius:999px}
-.l-new{background:var(--ice);color:var(--blue)}
-.l-pro{background:#EEF0E2;color:var(--olive)}
+.how{display:grid;gap:8px;margin-top:14px}
+.how div{display:flex;gap:10px;align-items:flex-start;font-size:14.5px;line-height:1.4}
+.how span{flex:none;width:26px;height:26px;border-radius:50%;background:var(--ice);color:var(--blue);display:grid;place-items:center;font-weight:800;font-size:13px}
 
-/* nav */
 .toc{position:sticky;top:0;z-index:5;background:rgba(238,242,245,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);margin:14px -16px 0;padding:10px 16px;display:flex;gap:6px;overflow-x:auto;scrollbar-width:none}
 .toc::-webkit-scrollbar{display:none}
 .toc a{flex:none;width:38px;height:38px;border-radius:50%;display:grid;place-items:center;background:#fff;font-weight:800;font-size:15px;text-decoration:none;border:1px solid var(--line);transition:.2s}
 .toc a.on{background:var(--forest-d);color:#fff;border-color:var(--forest-d)}
 .toc a.extra{width:auto;padding:0 14px;border-radius:999px;font-size:13px}
 
-/* rules */
 .rule{background:#fff;border-radius:28px;padding:24px 20px;margin-top:14px;scroll-margin-top:66px}
+.r-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
+.r-lbl{font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--warn)}
+.r-mod{font-size:12px;font-weight:700;color:var(--muted);background:var(--ice);padding:5px 10px;border-radius:999px}
 .r-head{display:flex;gap:14px;align-items:flex-start}
 .r-num{font-family:var(--serif);font-style:italic;font-size:46px;line-height:.9;color:var(--blue);flex:none;min-width:30px}
 .rule h2{font-size:clamp(21px,5.6vw,27px);line-height:1.2;letter-spacing:-.025em;font-weight:800}
-.r-lead{margin:14px 0 4px;font-size:16px}
-.rule ul{list-style:none;margin:12px 0 4px;display:grid;gap:9px}
-.rule ul li{position:relative;padding-left:26px;font-size:15.5px}
-.rule ul li::before{content:'';position:absolute;left:4px;top:.62em;width:9px;height:9px;border-radius:50%;background:var(--sky)}
-.check li{padding-left:34px!important;cursor:pointer;user-select:none}
-.check li::before{display:none}
-.check li i{position:absolute;left:0;top:1px;width:22px;height:22px;border-radius:7px;border:2px solid var(--sky);display:grid;place-items:center;transition:.2s}
-.check li.on i{background:var(--ios);border-color:var(--ios)}
-.check li.on i::after{content:'';width:6px;height:11px;border:solid #fff;border-width:0 2.5px 2.5px 0;transform:rotate(45deg) translate(-1px,-1px)}
-.check li.on{color:var(--muted)}
-.box{border-radius:18px;padding:14px 16px;margin-top:12px;font-size:15px}
-.box b{display:block;font-size:12.5px;letter-spacing:.06em;text-transform:uppercase;margin-bottom:4px}
-.box.new{background:var(--ice)} .box.new b{color:var(--blue)}
-.box.pro{background:#EEF0E2} .box.pro b{color:var(--olive)}
-.calc{background:var(--forest-d);color:#fff;border-radius:20px;padding:18px;margin-top:14px}
-.calc .cap{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--sky)}
-.route{display:flex;align-items:center;gap:6px;margin:12px 0 10px;font-size:13.5px;flex-wrap:wrap}
-.route span{padding:6px 10px;border-radius:999px;background:rgba(255,255,255,.1)}
-.route .dash{background:none;padding:0;color:var(--sky)}
-.calc .row{display:flex;justify-content:space-between;gap:10px;padding:8px 0;border-top:1px solid rgba(255,255,255,.12);font-size:15px}
-.calc .row b{white-space:nowrap}
-.calc .bad{color:#F4A5A5;text-decoration:line-through;text-decoration-thickness:1.5px}
-.calc .good{color:#9EE6B0}
-.calc small{display:block;color:#9FB3C3;margin-top:8px;font-size:12.5px}
-.norms{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:14px}
-.norm{background:var(--ice);border-radius:16px;padding:12px}
-.norm b{display:block;font-size:22px;letter-spacing:-.02em;color:var(--forest-d)}
-.norm span{font-size:13px;color:var(--muted);line-height:1.35;display:block}
-.norm.w{grid-column:1/-1}
-.src{font-size:12.5px;color:var(--muted);margin-top:8px}
+.r-lead{margin:14px 0 0;font-size:16px}
+.cost{margin-top:12px;background:var(--warn-l);border-radius:16px;padding:12px 14px;font-size:15px}
+.cost b{color:var(--warn)}
+
+.chk{margin-top:16px}
+.chk-h{font-size:13px;font-weight:800;color:var(--muted);margin-bottom:8px}
+.qq{border:1.5px solid var(--line);border-radius:18px;padding:14px;margin-top:8px;transition:border-color .2s,background .2s}
+.qq .who{font-size:12px;font-weight:800;letter-spacing:.04em;margin-bottom:4px}
+.qq .who.new{color:var(--blue)} .qq .who.pro{color:var(--olive)}
+.qq p{font-size:15.5px;font-weight:600;line-height:1.4}
+.ans{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px}
+.ans button{min-height:44px;border-radius:999px;border:1.5px solid var(--line);background:var(--paper);font:inherit;font-weight:700;font-size:14.5px;color:var(--ink);cursor:pointer;transition:.2s}
+.qq.k .ans .y{background:var(--ios);border-color:var(--ios);color:#fff}
+.qq.u{border-color:rgba(194,96,58,.45);background:#FFFBF9}
+.qq.u .ans .n{background:var(--warn);border-color:var(--warn);color:#fff}
 
 .q{margin-top:16px;border-top:1px dashed var(--line);padding-top:14px}
 .q label{display:block;font-size:13px;font-weight:700;color:var(--muted);margin-bottom:6px}
 .q textarea{width:100%;min-height:52px;resize:vertical;border:1.5px solid var(--line);border-radius:14px;padding:11px 13px;font:inherit;font-size:16px;background:var(--paper);color:var(--ink)}
 .q textarea:focus{outline:none;border-color:var(--blue);background:#fff}
 
-/* cheat sheet */
-.trucks{display:grid;gap:8px;margin-top:14px}
-.truck{display:flex;gap:12px;align-items:center;background:var(--ice);border-radius:16px;padding:12px 14px}
-.truck .ic{font-size:26px;flex:none}
-.truck b{font-size:16px}
-.truck span{display:block;font-size:14px;color:var(--muted)}
-
-/* final */
-.final{background:var(--forest-d);color:#fff;border-radius:30px;padding:26px 20px;margin:18px 0 14px}
+.final{background:var(--forest-d);color:#fff;border-radius:30px;padding:26px 20px;margin:18px 0 14px;scroll-margin-top:66px}
 .final h2{font-size:clamp(24px,6.4vw,32px);line-height:1.15;letter-spacing:-.03em;font-weight:800}
 .final h2 em{color:var(--sky)}
-.final ol{margin:16px 0 0 20px;display:grid;gap:8px;color:#C9D7E2;font-size:15.5px}
-.final ol b{color:#fff}
-.myq{margin-top:18px;background:rgba(255,255,255,.08);border-radius:18px;padding:14px 16px;font-size:15px;white-space:pre-wrap;color:#E6EEF4;min-height:54px}
+.score{display:flex;align-items:baseline;gap:10px;margin:16px 0 4px}
+.score b{font-size:54px;line-height:1;letter-spacing:-.04em}
+.score span{color:#B9CBD9;font-size:15px}
+.final p{color:#C9D7E2;font-size:15.5px;margin-top:10px}
+.final p b{color:#fff}
+.myq{margin-top:16px;background:rgba(255,255,255,.08);border-radius:18px;padding:14px 16px;font-size:14.5px;white-space:pre-wrap;color:#E6EEF4;min-height:54px;max-height:320px;overflow:auto}
 .myq.empty{color:#8FA4B4;font-style:italic}
 .btns{display:grid;gap:10px;margin-top:14px}
 .btn{display:flex;align-items:center;justify-content:center;gap:8px;min-height:54px;border-radius:999px;font-weight:800;font-size:16px;text-decoration:none;border:0;cursor:pointer;font-family:inherit}
 .btn.main{background:#fff;color:var(--forest-d)}
 .btn.ghost{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.35)}
+.course{margin-top:18px;padding-top:16px;border-top:1px solid rgba(255,255,255,.14);font-size:14.5px;color:#B9CBD9}
+.course b{color:#fff}
 .note{font-size:12.5px;color:var(--muted);text-align:center;padding:4px 10px 30px}
 .toast{position:fixed;left:50%;bottom:22px;transform:translate(-50%,30px);opacity:0;background:var(--ink);color:#fff;padding:12px 18px;border-radius:999px;font-weight:700;font-size:14px;transition:.3s;pointer-events:none;z-index:9}
 .toast.on{opacity:1;transform:translate(-50%,0)}
@@ -124,149 +105,119 @@ a{color:inherit}
     <div class="hero-photo" role="img" aria-label="Вероніка"></div>
     <div class="hero-txt">
       <span class="tag">🎁 Бонус до консультації</span>
-      <h1>Як логісту правильно <em>побудувати роботу</em></h1>
-      <p>7 правил з моєї практики — від ранку з машинами до оплати за рейс.</p>
+      <h1>7 помилок, на яких логіст <em>втрачає гроші</em></h1>
+      <p>Перевірте себе перед нашою консультацією.</p>
     </div>
   </div>
   <div class="intro">
-    Я починала логістом на 5 тірів і дійшла до начальниці відділу диспетчерів. Тут — те, на чому найчастіше втрачають гроші, час і нерви. <b>Прочитайте до нашої консультації</b> і запишіть питання під кожним правилом — так за годину ми встигнемо розібрати саме вашу ситуацію.
-    <div class="legend"><span class="l-new">🌱 Якщо ви починаєте</span><span class="l-pro">🚛 Якщо вже працюєте</span></div>
+    Я починала логістом на 5 тірів і дійшла до начальниці відділу диспетчерів. Ці сім помилок я бачу постійно — і в новачків, і в тих, хто працює роками. <b>Пройдіть самоперевірку чесно</b>: так ми не витратимо годину консультації на те, що ви вже знаєте.
+    <div class="how">
+      <div><span>1</span>Прочитайте помилку і чим вона коштує.</div>
+      <div><span>2</span>На кожне питання відповідайте «Знаю» або «Не знаю».</div>
+      <div><span>3</span>Внизу збереться ваш план консультації — надішліть його мені в Direct.</div>
+    </div>
   </div>
-  <nav class="toc" aria-label="Правила">
-    <a href="#r1">1</a><a href="#r2">2</a><a href="#r3">3</a><a href="#r4">4</a><a href="#r5">5</a><a href="#r6">6</a><a href="#r7">7</a><a href="#cheat" class="extra">Шпаргалка</a><a href="#final" class="extra">Мої питання</a>
+  <nav class="toc" aria-label="Помилки">
+    <a href="#r1">1</a><a href="#r2">2</a><a href="#r3">3</a><a href="#r4">4</a><a href="#r5">5</a><a href="#r6">6</a><a href="#r7">7</a><a href="#final" class="extra">Мій результат</a>
   </nav>
 </header>
 
 <main>
 
 <section class="rule" id="r1">
-  <div class="r-head"><div class="r-num">1</div><h2>Починайте день з машин, а не з біржі</h2></div>
-  <p class="r-lead">Найчастіша помилка початківця — відкрити біржу й хапати вантаж, який «гарно виглядає». Логіст шукає вантаж під конкретну машину: де вона звільниться, коли і скільки годин у водія ще є.</p>
-  <ul>
-    <li>Де зараз кожна машина і коли вона розвантажиться.</li>
-    <li>Скільки годин їзди залишилось у водія — сьогодні і цього тижня.</li>
-    <li>Де водій стане на добовий чи тижневий відпочинок.</li>
-    <li>Чи прийшли документи по вчорашніх розвантаженнях.</li>
-  </ul>
-  <p class="r-lead">І тільки тоді — біржа, з фільтром під точку, де машина буде пуста.</p>
-  <div class="box new"><b>🌱 Якщо ви починаєте</b>На співбесіді спитайте, скільки машин веде один логіст. Це скаже про навантаження більше, ніж сума в оголошенні.</div>
-  <div class="box pro"><b>🚛 Якщо вже працюєте</b>Ведіть одну таблицю: «машина → де й коли вільна → години водія → куди хочемо далі». Від п'яти машин тримати це в голові вже не вийде.</div>
-  <div class="q"><label for="q1">Моє питання до консультації</label><textarea id="q1" data-q="1" placeholder="Наприклад: як організувати ранок, якщо машин 10?"></textarea></div>
+  <div class="r-top"><span class="r-lbl">Помилка</span><span class="r-mod">Модулі 06–07</span></div>
+  <div class="r-head"><div class="r-num">1</div><h2>Шукати вантаж, не знаючи, де й коли звільниться машина</h2></div>
+  <p class="r-lead">Новачок відкриває біржу і хапає вантаж, який «гарно виглядає». А потім виявляється, що машина ще не розвантажилась, у водія закінчуються години, і вантаж доводиться віддавати.</p>
+  <div class="cost"><b>Чим коштує:</b> зірваний вантаж, незадоволений клієнт і мінус до вашої репутації на біржі.</div>
+  <div class="chk"><div class="chk-h">Перевірте себе</div>
+    <div class="qq" data-k="1a"><div class="who new">🌱 Якщо ви починаєте</div><p>Що логіст має перевірити зранку, перш ніж відкрити біржу?</p><div class="ans"><button type="button" class="y">Знаю</button><button type="button" class="n">Не знаю</button></div></div>
+    <div class="qq" data-k="1b"><div class="who pro">🚛 Якщо вже працюєте</div><p>Як вести 5+ машин так, щоб жодна не простоювала і нічого не губилось?</p><div class="ans"><button type="button" class="y">Знаю</button><button type="button" class="n">Не знаю</button></div></div>
+  </div>
+  <div class="q"><label for="q1">Моє питання до консультації</label><textarea id="q1" data-q="1" placeholder="Ваша ситуація своїми словами"></textarea></div>
 </section>
 
 <section class="rule" id="r2">
-  <div class="r-head"><div class="r-num">2</div><h2>Вантажте не «куди дають», а туди, звідки буде наступний вантаж</h2></div>
-  <p class="r-lead">Вигідний на вигляд вантаж може завезти машину в регіон, звідки потім кілька днів нема що брати. Простій з'їдає весь заробіток з рейсу.</p>
-  <ul>
-    <li>Дивіться на поштовий індекс розвантаження. У Німеччині перша цифра PLZ — це великий регіон, і по ній одразу видно, куди поїде машина.</li>
-    <li>Перед тим як брати вантаж, гляньте на біржі, скільки вантажів зараз виходить із цього регіону.</li>
-    <li>Гірший регіон — вища ставка. Якщо клієнт не готовий доплатити, часто краще не їхати.</li>
-  </ul>
-  <div class="box new"><b>🌱 Якщо ви починаєте</b>Почніть з карти індексів тих країн, через які йдуть ваші маршрути. Коли ви «читаєте» індекс з першого погляду, біржа перестає бути хаосом.</div>
-  <div class="box pro"><b>🚛 Якщо вже працюєте</b>Розпишіть свою «пузл-карту»: регіони першого, другого й третього вибору. Я так роблю сама — це економить години на біржі.</div>
-  <div class="q"><label for="q2">Моє питання до консультації</label><textarea id="q2" data-q="2" placeholder="Наприклад: які регіони вважати поганими на моїх маршрутах?"></textarea></div>
+  <div class="r-top"><span class="r-lbl">Помилка</span><span class="r-mod">Модуль 05</span></div>
+  <div class="r-head"><div class="r-num">2</div><h2>Вантажити «куди дають»</h2></div>
+  <p class="r-lead">Вантаж з гарною ставкою може завезти машину туди, звідки потім кілька днів нема що брати. На папері рейс вигідний, а по факту простій з'їдає весь заробіток.</p>
+  <div class="cost"><b>Чим коштує:</b> дні простою, порожній пробіг і рейс, який ви самі ж оплатили.</div>
+  <div class="chk"><div class="chk-h">Перевірте себе</div>
+    <div class="qq" data-k="2a"><div class="who new">🌱 Якщо ви починаєте</div><p>Чи можете ви по поштовому індексу розвантаження одразу сказати, вигідний цей регіон чи ні?</p><div class="ans"><button type="button" class="y">Знаю</button><button type="button" class="n">Не знаю</button></div></div>
+    <div class="qq" data-k="2b"><div class="who pro">🚛 Якщо вже працюєте</div><p>Які регіони на ваших маршрутах «погані» — і на скільки там має бути вища ставка?</p><div class="ans"><button type="button" class="y">Знаю</button><button type="button" class="n">Не знаю</button></div></div>
+  </div>
+  <div class="q"><label for="q2">Моє питання до консультації</label><textarea id="q2" data-q="2" placeholder="Ваша ситуація своїми словами"></textarea></div>
 </section>
 
 <section class="rule" id="r3">
-  <div class="r-head"><div class="r-num">3</div><h2>Рахуйте ставку від місця, де машина пуста</h2></div>
-  <p class="r-lead">Клієнт має заплатити за всю трасу — від точки, де машина звільнилась, до розвантаження. Не тільки за кілометри з вантажем.</p>
-  <div class="calc">
-    <div class="cap">Приклад</div>
-    <div class="route"><span>🚛 Машина пуста</span><span class="dash">— 120 км →</span><span>📦 Завантаження</span><span class="dash">— 880 км →</span><span>🏁 Розвантаження</span></div>
-    <div class="row"><span>Клієнт пропонує</span><b>1 300 €</b></div>
-    <div class="row"><span>Якщо ділити тільки на 880 км</span><b class="bad">1,48 €/км</b></div>
-    <div class="row"><span>Чесно — на всі 1 000 км</span><b class="good">1,30 €/км</b></div>
-    <small>Цифри умовні — щоб показати принцип. Ставки на тір, солувку й бус різні, і вони змінюються від сезону.</small>
+  <div class="r-top"><span class="r-lbl">Помилка</span><span class="r-mod">Модулі 03, 05</span></div>
+  <div class="r-head"><div class="r-num">3</div><h2>Рахувати ставку тільки за кілометри з вантажем</h2></div>
+  <p class="r-lead">Клієнт пропонує 1 300 € за 880 км. Виходить майже 1,5 € за кілометр — здається, треба брати. Якщо ви теж так подумали, ви щойно могли взяти рейс у мінус.</p>
+  <div class="cost"><b>Чим коштує:</b> ви працюєте весь тиждень, а перевізник у кінці каже, що нічого не заробив.</div>
+  <div class="chk"><div class="chk-h">Перевірте себе</div>
+    <div class="qq" data-k="3a"><div class="who new">🌱 Якщо ви починаєте</div><p>Знаєте, як порахувати, чи вигідні ці 1 300 € насправді?</p><div class="ans"><button type="button" class="y">Знаю</button><button type="button" class="n">Не знаю</button></div></div>
+    <div class="qq" data-k="3b"><div class="who pro">🚛 Якщо вже працюєте</div><p>Яка ваша мінімальна ставка за кілометр — і з чого саме вона складається?</p><div class="ans"><button type="button" class="y">Знаю</button><button type="button" class="n">Не знаю</button></div></div>
   </div>
-  <p class="r-lead">Далі від цієї суми віднімаються платні дороги, тунелі й пороми — і тільки тоді видно, скільки рейс реально заробляє.</p>
-  <div class="box new"><b>🌱 Якщо ви починаєте</b>Не порівнюйте ставки різних машин між собою: у буса й тіра зовсім різна ціна кілометра.</div>
-  <div class="box pro"><b>🚛 Якщо вже працюєте</b>Закладайте в мінімальну ставку і регіон розвантаження з правила 2. Поганий регіон — вища планка, нижче якої ви не їдете.</div>
-  <div class="q"><label for="q3">Моє питання до консультації</label><textarea id="q3" data-q="3" placeholder="Наприклад: як порахувати мінімальну ставку для мого маршруту?"></textarea></div>
+  <div class="q"><label for="q3">Моє питання до консультації</label><textarea id="q3" data-q="3" placeholder="Ваша ситуація своїми словами"></textarea></div>
 </section>
 
 <section class="rule" id="r4">
-  <div class="r-head"><div class="r-num">4</div><h2>Платні дороги, тунелі й пороми — у ціну одразу</h2></div>
-  <p class="r-lead">Перевізник платить за дороги щодня. Якщо їх не закласти в ціну, рейс легко йде в мінус — і це помітять не одразу.</p>
-  <ul>
-    <li>Німеччина, Франція — оплата списується автоматично через бокс у машині. Логіст її не купує, але враховує в розрахунку.</li>
-    <li>В окремих країнах вінʼєту чи проїзд купують окремо — і це вже ваша робота.</li>
-    <li>Тунелі між Францією та Італією, пороми — окремі витрати, їх треба порахувати й купити заздалегідь.</li>
-    <li>Заборони руху у вихідні та свята змінюються постійно — перевіряйте їх перед кожним рейсом.</li>
-  </ul>
-  <div class="box new"><b>🌱 Якщо ви починаєте</b>Рахуйте кілометраж одразу разом з оплатами доріг. Окремо «кілометри» і окремо «дороги» — так і з'являються збиткові рейси.</div>
-  <div class="box pro"><b>🚛 Якщо вже працюєте</b>Перегляньте свої постійні маршрути. Через Австрію є кілька варіантів перетину і навіть переправа машини поїздом — різниця в грошах і часі буває суттєва.</div>
-  <div class="q"><label for="q4">Моє питання до консультації</label><textarea id="q4" data-q="4" placeholder="Наприклад: як дешевше їхати Німеччина → Італія?"></textarea></div>
+  <div class="r-top"><span class="r-lbl">Помилка</span><span class="r-mod">Модулі 03–04</span></div>
+  <div class="r-head"><div class="r-num">4</div><h2>Забути про платні дороги, тунелі й пороми</h2></div>
+  <p class="r-lead">Перевізник платить за дороги щодня. В одних країнах це списується саме, в інших логіст має купити проїзд заздалегідь — а є ще тунелі, пороми й заборони руху. Хто цього не врахував, той віддав свою маржу.</p>
+  <div class="cost"><b>Чим коштує:</b> рейс, який виглядав вигідним, а закінчився в мінус — або машина, що стоїть перед закритою дорогою.</div>
+  <div class="chk"><div class="chk-h">Перевірте себе</div>
+    <div class="qq" data-k="4a"><div class="who new">🌱 Якщо ви починаєте</div><p>У яких країнах логіст купує проїзд окремо, а де оплата списується сама?</p><div class="ans"><button type="button" class="y">Знаю</button><button type="button" class="n">Не знаю</button></div></div>
+    <div class="qq" data-k="4b"><div class="who pro">🚛 Якщо вже працюєте</div><p>Чи знаєте ви всі варіанти перетину Австрії і коли який вигідніший саме для вашого маршруту?</p><div class="ans"><button type="button" class="y">Знаю</button><button type="button" class="n">Не знаю</button></div></div>
+  </div>
+  <div class="q"><label for="q4">Моє питання до консультації</label><textarea id="q4" data-q="4" placeholder="Ваша ситуація своїми словами"></textarea></div>
 </section>
 
 <section class="rule" id="r5">
-  <div class="r-head"><div class="r-num">5</div><h2>Плануйте маршрут від годин водія, а не від бажань клієнта</h2></div>
-  <p class="r-lead">Клієнт хоче «завтра зранку», але водій не поїде більше, ніж дозволяє тахограф. Помилка тут — штраф для перевізника і ваша репутація.</p>
-  <div class="norms">
-    <div class="norm"><b>9 год</b><span>їзди на день, двічі на тиждень — до 10</span></div>
-    <div class="norm"><b>45 хв</b><span>пауза після 4,5 год їзди (можна 15 + 30)</span></div>
-    <div class="norm"><b>56 / 90 год</b><span>їзди за тиждень / за два тижні</span></div>
-    <div class="norm"><b>11 год</b><span>добовий відпочинок, скорочений — 9</span></div>
-    <div class="norm w"><b>45 год</b><span>тижневий відпочинок, скорочений — 24</span></div>
+  <div class="r-top"><span class="r-lbl">Помилка</span><span class="r-mod">Модуль 06</span></div>
+  <div class="r-head"><div class="r-num">5</div><h2>Обіцяти клієнту час, не порахувавши години водія</h2></div>
+  <p class="r-lead">Клієнт хоче «завтра зранку», логіст каже «без проблем». А тахограф з цим не згоден: водій мусить стати на паузу чи відпочинок — і машина приїжджає на пів дня пізніше.</p>
+  <div class="cost"><b>Чим коштує:</b> штраф для перевізника, спізнення на завантаження і клієнт, який більше вам не дзвонить.</div>
+  <div class="chk"><div class="chk-h">Перевірте себе</div>
+    <div class="qq" data-k="5a"><div class="who new">🌱 Якщо ви починаєте</div><p>Скільки водій може їхати за день і коли він зобовʼязаний стати?</p><div class="ans"><button type="button" class="y">Знаю</button><button type="button" class="n">Не знаю</button></div></div>
+    <div class="qq" data-k="5b"><div class="who pro">🚛 Якщо вже працюєте</div><p>Як спланувати рейс на кінець тижня, щоб водій не застряг на тижневий відпочинок у невигідному місці?</p><div class="ans"><button type="button" class="y">Знаю</button><button type="button" class="n">Не знаю</button></div></div>
   </div>
-  <p class="src">Базові правила ЄС (Регламент 561/2006). Винятки й нюанси — окрема розмова.</p>
-  <div class="box new"><b>🌱 Якщо ви починаєте</b>Перш ніж обіцяти клієнту час, розкладіть маршрут на години з паузами й відпочинком. По карті завжди здається швидше, ніж є насправді.</div>
-  <div class="box pro"><b>🚛 Якщо вже працюєте</b>Плануйте, де водій стане на тижневий відпочинок, ще до того, як берете вантаж на четвер чи п'ятницю.</div>
-  <div class="q"><label for="q5">Моє питання до консультації</label><textarea id="q5" data-q="5" placeholder="Наприклад: як рахувати рейс на 1 500 км з одним водієм?"></textarea></div>
+  <div class="q"><label for="q5">Моє питання до консультації</label><textarea id="q5" data-q="5" placeholder="Ваша ситуація своїми словами"></textarea></div>
 </section>
 
 <section class="rule" id="r6">
-  <div class="r-head"><div class="r-num">6</div><h2>Домовленість — тільки письмово, а замовлення — перевіряйте</h2></div>
-  <p class="r-lead">Усна домовленість на біржі нічого не варта, якщо щось піде не так. Все, про що ви домовились, має бути в замовленні (zlecenie). Звіряйте пункт за пунктом — можна ставити галочки прямо тут:</p>
-  <ul class="check">
-    <li><i></i>Адреси завантаження й розвантаження — з індексами</li>
-    <li><i></i>Дати й години: коли машина має бути на місці</li>
-    <li><i></i>Вантаж: вага, кількість палет, чи це стандартні європалети</li>
-    <li><i></i>Тип машини й забудова: тент, штивна чи холодильник</li>
-    <li><i></i>Як вантажать: збоку, ззаду з рампи чи згори</li>
-    <li><i></i>Ставка, валюта і термін оплати</li>
-    <li><i></i>Які документи потрібні для оплати: оригінали поштою чи скани</li>
-  </ul>
-  <div class="box new"><b>🌱 Якщо ви починаєте</b>Збережіть цей список і проходьте його з кожним замовленням, поки не почнете робити це автоматично.</div>
-  <div class="box pro"><b>🚛 Якщо вже працюєте</b>Будь-яка розбіжність у замовленні — інша дата, вага чи кількість палет — це привід уточнити до завантаження, а не після.</div>
-  <div class="q"><label for="q6">Моє питання до консультації</label><textarea id="q6" data-q="6" placeholder="Наприклад: що робити, якщо клієнт змінив умови вже після завантаження?"></textarea></div>
+  <div class="r-top"><span class="r-lbl">Помилка</span><span class="r-mod">Модуль 07</span></div>
+  <div class="r-head"><div class="r-num">6</div><h2>Домовлятися на словах і не перевіряти замовлення</h2></div>
+  <p class="r-lead">На біржі домовились про одне, а в замовленні (zlecenie) стоїть інша дата, інша вага чи інша машина. Якщо ви це не помітили до завантаження — проблема вже ваша.</p>
+  <div class="cost"><b>Чим коштує:</b> суперечка з клієнтом, урізана оплата або машина, яка приїхала не під той вантаж.</div>
+  <div class="chk"><div class="chk-h">Перевірте себе</div>
+    <div class="qq" data-k="6a"><div class="who new">🌱 Якщо ви починаєте</div><p>Які пункти в замовленні треба обовʼязково перевірити до завантаження?</p><div class="ans"><button type="button" class="y">Знаю</button><button type="button" class="n">Не знаю</button></div></div>
+    <div class="qq" data-k="6b"><div class="who pro">🚛 Якщо вже працюєте</div><p>Що робити, якщо клієнт змінив умови вже після завантаження?</p><div class="ans"><button type="button" class="y">Знаю</button><button type="button" class="n">Не знаю</button></div></div>
+  </div>
+  <div class="q"><label for="q6">Моє питання до консультації</label><textarea id="q6" data-q="6" placeholder="Ваша ситуація своїми словами"></textarea></div>
 </section>
 
 <section class="rule" id="r7">
-  <div class="r-head"><div class="r-num">7</div><h2>Рейс закінчується не розвантаженням, а оплатою</h2></div>
-  <p class="r-lead">Машина розвантажилась — а гроші ще не прийшли. Оплату найчастіше затримують через документи.</p>
-  <ul>
-    <li>Попросіть водія одразу сфотографувати CMR з підписом і печаткою отримувача.</li>
-    <li>Перевірте, що CMR заповнений правильно — кожен пункт у ньому має значення.</li>
-    <li>Виставляйте фактуру відразу, а не «колись потім».</li>
-    <li>Відправляйте документи так, як вимагає клієнт: оригінали поштою або скани мейлом. Це видно з замовлення.</li>
-  </ul>
-  <div class="box new"><b>🌱 Якщо ви починаєте</b>Розберіться з CMR по пунктах — без цього документа не обходиться жоден рейс.</div>
-  <div class="box pro"><b>🚛 Якщо вже працюєте</b>Ведіть список «документи відправлено → оплата прийшла». Так прострочені оплати видно одразу, а не через два місяці.</div>
-  <div class="q"><label for="q7">Моє питання до консультації</label><textarea id="q7" data-q="7" placeholder="Наприклад: клієнт не платить — що робити?"></textarea></div>
-</section>
-
-<section class="rule" id="cheat">
-  <div class="r-head"><div class="r-num">+</div><h2>Шпаргалка: машини, про які питають на співбесіді</h2></div>
-  <div class="trucks">
-    <div class="truck"><div class="ic">🚛</div><div><b>Тір</b><span>13,6 метра, ладовність 24 тонни</span></div></div>
-    <div class="truck"><div class="ic">🚚</div><div><b>Солувка</b><span>від 3 до 10 тонн, від 10 до 20 європалет</span></div></div>
-    <div class="truck"><div class="ic">🚐</div><div><b>Бус</b><span>8–10 європалет</span></div></div>
+  <div class="r-top"><span class="r-lbl">Помилка</span><span class="r-mod">Модуль 07</span></div>
+  <div class="r-head"><div class="r-num">7</div><h2>Вважати рейс закритим після розвантаження</h2></div>
+  <p class="r-lead">Машина розвантажилась — а гроші ще не прийшли. Оплату найчастіше затримують через документи: не той CMR, не так відправили, не вчасно виставили фактуру.</p>
+  <div class="cost"><b>Чим коштує:</b> оплата, яка йде місяцями — або не приходить зовсім.</div>
+  <div class="chk"><div class="chk-h">Перевірте себе</div>
+    <div class="qq" data-k="7a"><div class="who new">🌱 Якщо ви починаєте</div><p>Які документи потрібні, щоб отримати оплату за рейс, і що з ними робити після розвантаження?</p><div class="ans"><button type="button" class="y">Знаю</button><button type="button" class="n">Не знаю</button></div></div>
+    <div class="qq" data-k="7b"><div class="who pro">🚛 Якщо вже працюєте</div><p>Як з замовлення зрозуміти, чи клієнт платить по оригіналах, чи по сканах?</p><div class="ans"><button type="button" class="y">Знаю</button><button type="button" class="n">Не знаю</button></div></div>
   </div>
-  <p class="r-lead">Кожен тип буває в трьох забудовах: тент, штивна забудова, рефрижератор-холодильник. І від забудови залежить, як машину можна завантажити: збоку, ззаду з рампи чи згори.</p>
+  <div class="q"><label for="q7">Моє питання до консультації</label><textarea id="q7" data-q="7" placeholder="Ваша ситуація своїми словами"></textarea></div>
 </section>
 
 <section class="final" id="final">
-  <h2>Перед нашою <em>консультацією</em></h2>
-  <ol>
-    <li><b>Запишіть питання</b> під правилами — навіть якщо вони здаються простими.</li>
-    <li><b>Надішліть їх мені в Direct</b> до зустрічі — я підготуюсь, і за годину ми розберемо більше.</li>
-    <li><b>Майте під рукою</b> своє резюме, маршрут чи замовлення, якщо питання про них.</li>
-  </ol>
-  <div class="myq empty" id="myq">Тут з'являться ваші питання, коли ви запишете їх під правилами.</div>
+  <h2>Ваш план <em>консультації</em></h2>
+  <div class="score"><b id="sc">0</b><span id="scT">питань з «не знаю» — поки ви ще не відповідали</span></div>
+  <p id="scMsg">Відповідайте на питання вище — тут збереться все, що варто розібрати разом.</p>
+  <div class="myq empty" id="myq">Тут з'явиться ваш план.</div>
   <div class="btns">
-    <button type="button" class="btn main" id="copy">Скопіювати мої питання</button>
-    <a class="btn ghost" href="https://ig.me/m/veronika_logistics" target="_blank" rel="noopener">Написати Вероніці в Direct</a>
+    <button type="button" class="btn main" id="copy">Скопіювати план</button>
+    <a class="btn ghost" href="https://ig.me/m/veronika_logistics" target="_blank" rel="noopener">Надіслати Вероніці в Direct</a>
   </div>
+  <div class="course">За годину консультації розберемо найважливіше саме для вас. А <b>кожна з цих семи тем — окремий модуль курсу</b> з відео, матеріалами й домашніми завданнями. Якщо після консультації йдете на курс — її вартість зарахую у ціну навчання.</div>
 </section>
 
 <p class="note">Гайд — для учасників консультації з Веронікою. Будь ласка, не пересилайте посилання.</p>
@@ -276,30 +227,55 @@ a{color:inherit}
 
 <script>
 (function(){
-  var KEY = 'vl_gayd_q';
-  var store = {};
-  try { store = JSON.parse(localStorage.getItem(KEY) || '{}') || {}; } catch (e) {}
+  var KEY = 'vl_gayd2';
+  var st = { a: {}, q: {} };
+  try { var saved = JSON.parse(localStorage.getItem(KEY) || 'null'); if (saved && saved.a && saved.q) st = saved; } catch (e) {}
+  function save(){ try { localStorage.setItem(KEY, JSON.stringify(st)); } catch (e) {} }
+
+  var qs = document.querySelectorAll('.qq');
+  var total = qs.length;
+  qs.forEach(function(el){
+    var k = el.dataset.k;
+    function paint(){ el.classList.toggle('k', st.a[k] === 'y'); el.classList.toggle('u', st.a[k] === 'n'); }
+    paint();
+    el.querySelector('.y').addEventListener('click', function(){ st.a[k] = st.a[k] === 'y' ? undefined : 'y'; paint(); save(); render(); });
+    el.querySelector('.n').addEventListener('click', function(){ st.a[k] = st.a[k] === 'n' ? undefined : 'n'; paint(); save(); render(); });
+  });
+
   var areas = document.querySelectorAll('textarea[data-q]');
-  var titles = {};
   areas.forEach(function(t){
     var n = t.dataset.q;
-    titles[n] = t.closest('.rule').querySelector('h2').textContent;
-    if (store[n]) t.value = store[n];
-    t.addEventListener('input', function(){
-      store[n] = t.value;
-      try { localStorage.setItem(KEY, JSON.stringify(store)); } catch (e) {}
-      render();
-    });
+    if (st.q[n]) t.value = st.q[n];
+    t.addEventListener('input', function(){ st.q[n] = t.value; save(); render(); });
   });
-  function text(){
-    var out = [];
-    areas.forEach(function(t){ var v = t.value.trim(); if (v) out.push(t.dataset.q + '. ' + titles[t.dataset.q] + '\n— ' + v); });
-    return out.length ? 'Мої питання до консультації:\n\n' + out.join('\n\n') : '';
+
+  function title(n){ return document.querySelector('#r' + n + ' h2').textContent; }
+  function plan(){
+    var parts = [];
+    for (var n = 1; n <= 7; n++) {
+      var lines = [];
+      ['a', 'b'].forEach(function(s){
+        var el = document.querySelector('.qq[data-k="' + n + s + '"]');
+        if (el && st.a[n + s] === 'n') lines.push('— не знаю: ' + el.querySelector('p').textContent);
+      });
+      var own = (st.q[n] || '').trim();
+      if (own) lines.push('— моє питання: ' + own);
+      if (lines.length) parts.push(n + '. ' + title(n) + '\n' + lines.join('\n'));
+    }
+    return parts.length ? 'Мій план консультації:\n\n' + parts.join('\n\n') : '';
   }
-  var box = document.getElementById('myq');
+  var sc = document.getElementById('sc'), scT = document.getElementById('scT'), scMsg = document.getElementById('scMsg'), box = document.getElementById('myq');
   function render(){
-    var t = text();
-    box.textContent = t || 'Тут з’являться ваші питання, коли ви запишете їх під правилами.';
+    var answered = 0, unknown = 0;
+    qs.forEach(function(el){ var v = st.a[el.dataset.k]; if (v) answered++; if (v === 'n') unknown++; });
+    sc.textContent = unknown;
+    scT.textContent = answered ? 'з ' + total + ' питань — «не знаю»' : 'питань з «не знаю» — поки ви ще не відповідали';
+    if (!answered) scMsg.textContent = 'Відповідайте на питання вище — тут збереться все, що варто розібрати разом.';
+    else if (unknown === 0) scMsg.innerHTML = '<b>Сильний результат.</b> Тоді на консультації підемо глибше — у вашу конкретну ситуацію. Запишіть питання під помилками.';
+    else if (unknown <= 4) scMsg.innerHTML = '<b>Основа вже є.</b> Ці питання — саме те, що закриємо на консультації.';
+    else scMsg.innerHTML = '<b>Чесно — і це нормально.</b> Саме на таких речах логіст і втрачає гроші. На консультації визначимо, з чого почати вам.';
+    var t = plan();
+    box.textContent = t || 'Тут з’явиться ваш план.';
     box.classList.toggle('empty', !t);
   }
   render();
@@ -307,35 +283,26 @@ a{color:inherit}
   var toast = document.getElementById('toast');
   function say(m){ toast.textContent = m; toast.classList.add('on'); clearTimeout(say.t); say.t = setTimeout(function(){ toast.classList.remove('on'); }, 2400); }
   document.getElementById('copy').addEventListener('click', function(){
-    var t = text();
-    if (!t) { say('Спершу запишіть хоча б одне питання'); document.getElementById('q1').focus(); return; }
+    var t = plan();
+    if (!t) { say('Спершу дайте відповідь хоча б на одне питання'); location.hash = '#r1'; return; }
     var done = function(){ say('Скопійовано — вставте в Direct'); };
-    if (navigator.clipboard && navigator.clipboard.writeText) {
-      navigator.clipboard.writeText(t).then(done, fallback);
-    } else fallback();
     function fallback(){
       var ta = document.createElement('textarea'); ta.value = t; ta.style.position = 'fixed'; ta.style.opacity = '0';
       document.body.appendChild(ta); ta.select();
       try { document.execCommand('copy'); done(); } catch (e) { say('Не вдалося скопіювати — виділіть текст вручну'); }
       ta.remove();
     }
+    if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(t).then(done, fallback); else fallback();
   });
 
-  /* чекліст замовлення */
-  document.querySelectorAll('.check li').forEach(function(li){
-    li.addEventListener('click', function(){ li.classList.toggle('on'); });
-  });
-
-  /* підсвітка поточного правила в навігації */
   var links = {};
   document.querySelectorAll('.toc a').forEach(function(a){ links[a.getAttribute('href').slice(1)] = a; });
   if ('IntersectionObserver' in window) {
     var io = new IntersectionObserver(function(es){
       es.forEach(function(e){
-        if (e.isIntersecting) {
-          Object.keys(links).forEach(function(k){ links[k].classList.toggle('on', k === e.target.id); });
-          var a = links[e.target.id]; if (a && a.scrollIntoView) a.parentNode.scrollTo({ left: a.offsetLeft - 60, behavior: 'smooth' });
-        }
+        if (!e.isIntersecting) return;
+        Object.keys(links).forEach(function(k){ links[k].classList.toggle('on', k === e.target.id); });
+        var a = links[e.target.id]; if (a) a.parentNode.scrollTo({ left: a.offsetLeft - 60, behavior: 'smooth' });
       });
     }, { rootMargin: '-45% 0px -50% 0px' });
     document.querySelectorAll('.rule, .final').forEach(function(s){ io.observe(s); });
