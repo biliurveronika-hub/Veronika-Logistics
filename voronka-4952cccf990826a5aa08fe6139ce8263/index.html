@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>Воронка для Вероніки</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@1,400;1,500&display=swap">
+<style>
+/* Layout: зміст → три дороги → оплата → що приходить тобі і що робиш → готові повідомлення → консультація → ціни → статус → що потрібно від тебе */
+:root{
+  --bg:#EEF2F5; --surface:#FFFFFF; --ink:#14232E; --muted:#546473; --line:rgba(20,35,46,.12);
+  --deep:#17313F; --deep-ink:#FFFFFF; --deep-muted:#B9CBD9;
+  --accent:#3E6E91; --accent-soft:#E3ECF4;
+  --free:#3E8E5E; --free-soft:#E5F2EA;
+  --paid:#B8642E; --paid-soft:#FBEDE3;
+  --vero:#6B5BA8; --vero-soft:#EEEBF7;
+  --later:#7A8691; --later-soft:#EDF0F2;
+  --sans:'Manrope',system-ui,-apple-system,'Segoe UI',sans-serif;
+  --serif:'Playfair Display',Georgia,'Times New Roman',serif;
+  --mono:ui-monospace,'Cascadia Mono',Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0F1A21; --surface:#17252F; --ink:#E6EEF4; --muted:#9AAEBD; --line:rgba(230,238,244,.12);
+  --deep:#0B1419; --deep-ink:#E6EEF4; --deep-muted:#9AAEBD;
+  --accent:#8DB4D6; --accent-soft:#1F3443;
+  --free:#7CCB98; --free-soft:#183327;
+  --paid:#E9A274; --paid-soft:#3A2617;
+  --vero:#B4A6EC; --vero-soft:#28224A;
+  --later:#A3AEB8; --later-soft:#222F38;
+  color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0F1A21; --surface:#17252F; --ink:#E6EEF4; --muted:#9AAEBD; --line:rgba(230,238,244,.12);
+  --deep:#0B1419; --deep-ink:#E6EEF4; --deep-muted:#9AAEBD;
+  --accent:#8DB4D6; --accent-soft:#1F3443;
+  --free:#7CCB98; --free-soft:#183327;
+  --paid:#E9A274; --paid-soft:#3A2617;
+  --vero:#B4A6EC; --vero-soft:#28224A;
+  --later:#A3AEB8; --later-soft:#222F38;
+  color-scheme:dark}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:15.5px;line-height:1.55;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1180px;margin:0 auto;padding-block:28px 56px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+h1,h2,h3{text-wrap:balance;margin:0}
+em{font-family:var(--serif);font-style:italic;font-weight:400}
+a{color:var(--accent)}
+.eyebrow{font-size:12px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+header h1{font-size:clamp(30px,5.4vw,50px);line-height:1.05;letter-spacing:-.035em;font-weight:800;margin-top:8px}
+header h1 em{color:var(--accent)}
+.lede{max-width:68ch;color:var(--muted);margin:12px 0 0;font-size:16.5px}
+.legend{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.chip{display:inline-flex;align-items:center;gap:7px;font-size:13px;font-weight:700;padding:6px 12px;border-radius:999px}
+.chip i{width:9px;height:9px;border-radius:50%;display:block}
+.c-free{background:var(--free-soft);color:var(--free)} .c-free i{background:var(--free)}
+.c-paid{background:var(--paid-soft);color:var(--paid)} .c-paid i{background:var(--paid)}
+.c-vero{background:var(--vero-soft);color:var(--vero)} .c-vero i{background:var(--vero)}
+.c-step{background:var(--accent-soft);color:var(--accent)} .c-step i{background:var(--accent)}
+.c-later{background:var(--later-soft);color:var(--later)} .c-later i{background:var(--later)}
+.st-ok,.st-build{display:inline-block;font-size:11.5px;font-weight:800;padding:2px 8px;border-radius:999px;margin-left:4px;vertical-align:1px;white-space:nowrap}
+.st-ok{background:var(--free-soft);color:var(--free)}
+.st-build{background:var(--paid-soft);color:var(--paid)}
+
+.toc{display:flex;flex-wrap:wrap;gap:6px;margin-top:20px}
+.toc a{font-size:13.5px;font-weight:700;text-decoration:none;color:var(--ink);background:var(--surface);border:1px solid var(--line);padding:7px 12px;border-radius:999px}
+.toc a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+
+section.block{margin-top:38px;scroll-margin-top:16px}
+section.block>h2{font-size:clamp(23px,3.6vw,33px);letter-spacing:-.03em;font-weight:800;line-height:1.15}
+section.block>h2 em{color:var(--accent)}
+section.block>.sub{color:var(--muted);margin:8px 0 0;max-width:70ch}
+
+/* дороги */
+.tabs{display:none;gap:6px;margin-top:16px;overflow-x:auto}
+.tabs button{flex:none;font:inherit;font-weight:800;font-size:14px;padding:10px 14px;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer}
+.tabs button[aria-selected="true"]{background:var(--deep);color:var(--deep-ink);border-color:var(--deep)}
+.lanes{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:16px}
+.lane{background:var(--surface);border-radius:26px;padding:20px 18px;min-width:0;display:flex;flex-direction:column}
+.lane-h{padding-bottom:14px;border-bottom:1px solid var(--line)}
+.lane-h .who{font-size:21px;font-weight:800;letter-spacing:-.02em;line-height:1.2}
+.lane-h p{margin:6px 0 0;color:var(--muted);font-size:14.5px}
+.flow{list-style:none;margin:14px 0 0;padding:0;flex:1}
+.st{position:relative;padding:0 0 18px 26px}
+.st::before{content:"";position:absolute;left:7px;top:12px;bottom:0;width:2px;background:var(--line)}
+.st:last-child::before{display:none}
+.st .dot{position:absolute;left:0;top:4px;width:16px;height:16px;border-radius:50%;border:3px solid var(--surface)}
+.st.free .dot{background:var(--free)} .st.paid .dot{background:var(--paid)} .st.vero .dot{background:var(--vero)} .st.step .dot{background:var(--accent)} .st.later .dot{background:var(--later)}
+.st b{display:block;font-size:15.5px;line-height:1.35}
+.st span.d{display:block;color:var(--muted);font-size:14px;margin-top:2px}
+.st .tag{display:inline-block;margin-top:6px;font-size:12px;font-weight:800;padding:3px 9px;border-radius:999px}
+.st.free .tag{background:var(--free-soft);color:var(--free)}
+.st.paid .tag{background:var(--paid-soft);color:var(--paid)}
+.st.vero .tag{background:var(--vero-soft);color:var(--vero)}
+.st.step .tag{background:var(--accent-soft);color:var(--accent)}
+.st.later .tag{background:var(--later-soft);color:var(--later)}
+.st.later b{color:var(--later)}
+.alt{margin-top:4px;border:1.5px dashed var(--line);border-radius:16px;padding:10px 12px;font-size:13.5px;color:var(--muted)}
+.alt+.alt{margin-top:8px}
+.alt b{color:var(--ink)}
+
+/* оплата */
+.merge{margin-top:16px;background:var(--deep);color:var(--deep-ink);border-radius:26px;padding:22px 20px;display:grid;grid-template-columns:1fr 1.1fr;gap:22px}
+.merge h3{font-size:clamp(21px,3vw,28px);letter-spacing:-.03em;line-height:1.15;font-weight:800}
+.merge h3 em{color:#9DBBD9}
+.merge p{color:var(--deep-muted);margin:10px 0 0}
+.merge ol{margin:0;padding-left:20px;display:grid;gap:9px;color:var(--deep-muted)}
+.merge ol b{color:var(--deep-ink)}
+.merge code{font-family:var(--mono);font-size:12.5px;background:rgba(255,255,255,.1);padding:2px 6px;border-radius:6px;color:var(--deep-ink)}
+
+/* події */
+.events{display:grid;gap:10px;margin-top:16px}
+.ev{background:var(--surface);border-radius:20px;padding:16px 18px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.3fr);gap:16px}
+.ev .tg{font-family:var(--mono);font-size:13px;background:var(--accent-soft);color:var(--ink);border-radius:12px;padding:10px 12px;white-space:pre-wrap;word-break:break-word}
+.ev .when{font-size:12px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+.ev ol{margin:0;padding-left:20px;display:grid;gap:5px;font-size:14.5px}
+.ev ol li::marker{color:var(--vero);font-weight:800}
+.ev .none{color:var(--free);font-weight:700;font-size:14.5px}
+
+/* повідомлення */
+.msgs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:16px}
+.msg{background:var(--surface);border-radius:20px;padding:16px 18px;display:flex;flex-direction:column;min-width:0}
+.msg h3{font-size:16px;font-weight:800}
+.msg .when{font-size:13px;color:var(--muted);margin-top:2px}
+.msg pre{margin:12px 0 0;font-family:var(--sans);font-size:14.5px;line-height:1.5;white-space:pre-wrap;word-break:break-word;background:var(--bg);border-radius:14px;padding:12px 14px;flex:1}
+.msg button{margin-top:10px;align-self:flex-start;font:inherit;font-weight:800;font-size:14px;padding:9px 16px;border-radius:999px;border:0;background:var(--deep);color:var(--deep-ink);cursor:pointer}
+.msg .ph{background:var(--paid-soft);color:var(--paid);border-radius:4px;padding:0 3px}
+
+/* консультація */
+.plan{background:var(--surface);border-radius:22px;margin-top:16px;overflow:hidden}
+.plan-row{display:grid;grid-template-columns:90px minmax(0,1fr);gap:14px;padding:14px 18px;border-bottom:1px solid var(--line)}
+.plan-row:last-child{border-bottom:0}
+.plan-row .t{font-weight:800;color:var(--vero);font-variant-numeric:tabular-nums}
+.plan-row b{display:block}
+.plan-row span{color:var(--muted);font-size:14.5px}
+
+/* таблиця */
+.prices{overflow-x:auto;margin-top:16px;background:var(--surface);border-radius:22px}
+table{width:100%;border-collapse:collapse;min-width:600px;font-variant-numeric:tabular-nums}
+th,td{text-align:left;padding:12px 16px;border-bottom:1px solid var(--line);vertical-align:top;font-size:14.5px}
+th{font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);font-weight:800}
+tr:last-child td{border-bottom:0}
+td .s{display:block;color:var(--muted);font-size:13px}
+tr.later td{color:var(--later)}
+
+.two{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:16px}
+.list{background:var(--surface);border-radius:22px;padding:18px;min-width:0}
+.list h3{font-size:17px;font-weight:800}
+.list ul{margin:10px 0 0;padding-left:20px;display:grid;gap:8px;font-size:14.5px}
+.list li{color:var(--muted)} .list li b{color:var(--ink)}
+.warn{background:var(--paid-soft)} .warn h3{color:var(--paid)}
+.check{list-style:none!important;padding-left:0!important}
+.check li{display:flex;gap:10px;align-items:flex-start}
+.check li i{flex:none;width:20px;height:20px;border-radius:6px;display:grid;place-items:center;font-style:normal;font-size:12px;font-weight:800;margin-top:1px}
+.check li.ok i{background:var(--free-soft);color:var(--free)}
+.check li.todo i{background:var(--paid-soft);color:var(--paid)}
+.check li.wait i{background:var(--later-soft);color:var(--later)}
+.dates{margin-top:16px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.date{background:var(--surface);border-radius:20px;padding:16px 18px}
+.date b{font-size:24px;letter-spacing:-.02em;display:block;font-variant-numeric:tabular-nums}
+.date span{color:var(--muted);font-size:14.5px}
+.toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translate(-50%,20px);opacity:0;background:var(--deep);color:var(--deep-ink);padding:11px 18px;border-radius:999px;font-weight:700;font-size:14px;transition:.25s;pointer-events:none}
+.toast.on{opacity:1;transform:translate(-50%,0)}
+
+@media (max-width:900px){
+  .tabs{display:flex}
+  .lanes{grid-template-columns:1fr}
+  .lanes .lane{display:none}
+  .lanes .lane.on{display:flex}
+  .merge,.two,.msgs,.ev,.dates{grid-template-columns:1fr}
+  .plan-row{grid-template-columns:70px minmax(0,1fr)}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.toast{transition:none}}
+</style>
+<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}</style>
+</head>
+<body>
+
+<div class="wrap">
+<header>
+  <div class="eyebrow">Veronika Logistics · для Вероніки · 28.11.2026</div>
+  <h1>Як працює наша воронка — <em>від рилса до оплати</em></h1>
+  <p class="lede">Тут усе: хто до нас приходить, куди веде кожна кнопка, що тобі приходить у Telegram і що робиш ти. Позначки <span class="st-ok">✅ працює</span> — це вже на сайті, <span class="st-build">🛠 робимо</span> — готуємо зараз. Головне правило: безкоштовно — тільки те, що не забирає твій час (тест, відеоурок, рилси). Будь-яка розмова з тобою — платна консультація.</p>
+  <div class="legend">
+    <span class="chip c-free"><i></i>Безкоштовно, без тебе</span>
+    <span class="chip c-step"><i></i>Сторінка / крок на сайті</span>
+    <span class="chip c-vero"><i></i>Твій час</span>
+    <span class="chip c-paid"><i></i>Оплата</span>
+    <span class="chip c-later"><i></i>Пізніше</span>
+  </div>
+  <nav class="toc" aria-label="Зміст">
+    <a href="#dorogy">Три дороги</a><a href="#oplata">Оплата</a><a href="#podii">Що приходить тобі</a><a href="#povidomlennia">Готові повідомлення</a><a href="#konsultatsiia">Консультація</a><a href="#tsiny">Ціни</a><a href="#status">Що готово</a><a href="#vid-tebe">Що потрібно від тебе</a>
+  </nav>
+</header>
+
+<section class="block" id="dorogy">
+  <h2>Три типи клієнтів — <em>три дороги</em></h2>
+  <p class="sub">Людина сама обирає свою дорогу однією кнопкою. Довгу анкету, щоб їх розділити, не робимо.</p>
+  <div class="tabs" role="tablist" aria-label="Тип клієнта">
+    <button type="button" role="tab" id="t1" aria-selected="true" aria-controls="l1">🌱 Вирішив вчитися</button>
+    <button type="button" role="tab" id="t2" aria-selected="false" aria-controls="l2">🤔 Придивляється</button>
+    <button type="button" role="tab" id="t3" aria-selected="false" aria-controls="l3">🚛 Вже працює</button>
+  </div>
+  <div class="lanes">
+    <article class="lane on" id="l1" role="tabpanel" aria-labelledby="t1">
+      <div class="lane-h"><div class="who">🌱 Новачок, вирішив вчитися</div><p>З нуля, але вже хоче професію. Йому потрібні умови й кнопка «оплатити», а не ще одна розмова.</p></div>
+      <ol class="flow">
+        <li class="st step"><span class="dot"></span><b>Рилс / реклама / шапка Instagram</b><span class="d">Кнопка «Записатися на курс»</span></li>
+        <li class="st step"><span class="dot"></span><b>Сторінка «Умови курсу» <span class="st-build">🛠</span></b><span class="d">Два пакети з цінами, що всередині, оплата частинами, відгуки, часті питання</span><span class="tag">ціни видно одразу</span></li>
+        <li class="st step"><span class="dot"></span><b>Обрав пакет → «Оплатити» або «Забронювати місце»</b><span class="d">Бронь фіксує ціну, решту доплачує до старту</span></li>
+        <li class="st paid"><span class="dot"></span><b>Сторінка оплати <span class="st-build">🛠</span></b><span class="d">Реквізити + кнопка «Надіслати скрін»</span><span class="tag">пакет 1 · 400 € / пакет 2 · 700 €</span></li>
+        <li class="st vero"><span class="dot"></span><b>Ти відкриваєш доступ</b><span class="d">Отримала скрін → доступ до платформи → вітальне повідомлення</span></li>
+      </ol>
+      <div class="alt"><b>Не знає, який пакет обрати?</b> Кнопка «Не знаю, який пакет» → короткий квіз <span class="st-ok">✅</span>, 4–6 питань → він підказує пакет. Хто після квізу все ще сумнівається — на консультацію (дорога 🤔), 35 € зараховуються в курс.</div>
+    </article>
+
+    <article class="lane" id="l2" role="tabpanel" aria-labelledby="t2">
+      <div class="lane-h"><div class="who">🤔 Новачок, придивляється</div><p>Не розуміє, чи це його. Спершу хоче побачити професію — безкоштовно і без розмови з тобою.</p></div>
+      <ol class="flow">
+        <li class="st step"><span class="dot"></span><b>Рилс → слово «логістика» або «тест» у коментарях</b><span class="d">ManyChat перевіряє підписку і надсилає посилання</span></li>
+        <li class="st free"><span class="dot"></span><b>Тест «Чи підходить вам професія логіста» <span class="st-ok">✅</span></b><span class="d">Гра на 5 питань, 1 хвилина. Тест лишається — він добре працює для сумнівних</span><span class="tag">безкоштовно</span></li>
+        <li class="st free"><span class="dot"></span><b>VSL-урок «Як стати логістом з нуля» <span class="st-build">🛠 знімаємо</span></b><span class="d">Користь, шлях з 5 кроків, реальний рейс з твого екрана, історії учнів</span><span class="tag">безкоштовно · без тебе</span></li>
+        <li class="st step"><span class="dot"></span><b>Під відео дві кнопки</b><span class="d">«Умови курсу» (→ дорога 🌱) і «Консультація-знайомство»</span></li>
+        <li class="st paid"><span class="dot"></span><b>Оплата консультації наперед</b><span class="d">Та сама сторінка оплати. Запис підтверджується тільки після оплати</span><span class="tag">35 € до 31.12, потім 50 €</span></li>
+        <li class="st free"><span class="dot"></span><b>Одразу після оплати — подарунки</b><span class="d">Гайд «7 помилок, на яких логіст втрачає гроші» + словник логіста. Посилання приходять тобі в заявці — просто перешли</span></li>
+        <li class="st vero"><span class="dot"></span><b>Консультація, 1 година</b><span class="d">Чи підходить професія, план входу, який пакет — і пропозиція курсу</span></li>
+        <li class="st paid"><span class="dot"></span><b>Оплата курсу мінус 35 €</b><span class="d">Вартість консультації зараховується, якщо оплатить курс протягом 7 днів</span></li>
+      </ol>
+      <div class="alt"><b>Ще не готовий платити навіть 35 €?</b> У квізі кнопка «Поки лише безкоштовне» лишається <span class="st-ok">✅</span> → Telegram-бот @veronika_logistics_bot надсилає VSL-урок (зараз там старий урок — замінимо, щойно змонтуємо VSL). Твій час не потрібен.</div>
+    </article>
+
+    <article class="lane" id="l3" role="tabpanel" aria-labelledby="t3">
+      <div class="lane-h"><div class="who">🚛 Вже працює</div><p>Логіст, диспетчер, власна фірма чи бус. Йому не потрібен курс з нуля — потрібна відповідь на конкретне питання.</p></div>
+      <ol class="flow">
+        <li class="st step"><span class="dot"></span><b>Сайт / шапка Instagram → «Консультація»</b><span class="d">Або пише тобі в Direct зі своїм питанням</span></li>
+        <li class="st paid"><span class="dot"></span><b>Оплата консультації наперед</b><span class="d">Та сама сторінка оплати</span><span class="tag">35 € · термінова 70 € до 31.12</span></li>
+        <li class="st free"><span class="dot"></span><b>Подарунки після оплати</b><span class="d">Гайд і словник — для практика корисніший гайд</span></li>
+        <li class="st vero"><span class="dot"></span><b>Консультація, 1 година</b><span class="d">Розбираєте його ситуацію: ставки, біржі, документи, водії, клієнти</span></li>
+        <li class="st later"><span class="dot"></span><b>Модулі для практиків — пізніше</b><span class="d">Окремі модулі (05 і 07) зараз не продаємо. Коли будемо готові — консультацію так само зарахуємо в їхню вартість</span><span class="tag">пізніше</span></li>
+      </ol>
+    </article>
+  </div>
+</section>
+
+<section class="block" id="oplata">
+  <h2>Оплата: одна сторінка <em>для всього</em></h2>
+  <div class="merge">
+    <div>
+      <h3>Без ФОПа — <em>через реквізити</em></h3>
+      <p>Оплату карткою прямо на сайті поки не підключаємо: для цього потрібна фірма. Тому робимо одну приховану сторінку з твоїми реквізитами. На неї ведуть усі кнопки «Оплатити» — з сайту, з ManyChat і з Telegram-бота. Якщо реквізити зміняться, міняємо в одному місці.</p>
+    </div>
+    <ol>
+      <li><b>Кнопка знає, що купують.</b> Наприклад <code>?p=konsult</code>, <code>?p=kurs1</code>, <code>?p=kurs2</code>, <code>?p=bron</code> — на сторінці одразу потрібна сума.</li>
+      <li><b>Реквізити</b> з кнопкою «Скопіювати».</li>
+      <li><b>«Я оплатив(ла) — надіслати скрін»</b> → відкривається чат з тобою з готовим текстом: що оплачено і скільки.</li>
+      <li><b>Ти перевіряєш надходження</b> і відповідаєш: доступ до курсу або час консультації + подарунки.</li>
+    </ol>
+  </div>
+</section>
+
+<section class="block" id="podii">
+  <h2>Що приходить тобі — <em>і що ти робиш</em></h2>
+  <p class="sub">Заявки з сайту падають у групу в Telegram. Ліворуч — як виглядає повідомлення, праворуч — твої дії.</p>
+  <div class="events">
+    <div class="ev">
+      <div><div class="when">Заявка на консультацію</div><div class="tg">💬 Запит на консультацію за записом · 35 € (акція до 31.12) · попереджено, що платна
+
+🎁 Після оплати надіслати гайд: …/gayd-…/
+і словник: …/slovnyk-…/</div></div>
+      <ol>
+        <li>Протягом дня напиши людині в месенджер, який вона вказала: запропонуй 2–3 варіанти часу.</li>
+        <li>Надішли посилання на оплату (повідомлення №1 нижче).</li>
+        <li>Прийшов скрін → перевір надходження → підтверди час і перешли гайд і словник (повідомлення №2).</li>
+        <li>Термінова (⚡ 70 €) — те саме, але звʼяжись якнайшвидше, того ж дня.</li>
+      </ol>
+    </div>
+    <div class="ev">
+      <div><div class="when">Хоче умови курсу (з квізу)</div><div class="tg">🔥 Хоче умови курсу · квіз
+відповіді: чим займається, коли старт, скільки часу, бюджет, хто вирішує</div></div>
+      <ol>
+        <li>Подивись відповіді: зайнятість, бюджет і хто ухвалює рішення.</li>
+        <li>Надішли посилання на «Умови курсу» і порадь пакет одним реченням (повідомлення №3). Поки сторінки умов немає — пиши пакети й ціни текстом, як у Black Friday.</li>
+        <li>Якщо сумнівається — запропонуй консультацію-знайомство.</li>
+      </ol>
+    </div>
+    <div class="ev">
+      <div><div class="when">Скрін оплати курсу або броні</div><div class="tg">Оплатив(ла): Пакет 2 · Курс + я поруч · 600 €
+[скрін]</div></div>
+      <ol>
+        <li>Перевір надходження на рахунку.</li>
+        <li>Відкрий доступ на платформі.</li>
+        <li>Надішли вітальне повідомлення з доступом (повідомлення №5).</li>
+        <li>Якщо це бронь — нагадай суму й термін доплати.</li>
+      </ol>
+    </div>
+    <div class="ev">
+      <div><div class="when">Після консультації</div><div class="tg">(ти сама — одразу після дзвінка)</div></div>
+      <ol>
+        <li>Того ж дня надішли пропозицію: пакет, який ви обрали, мінус 35 €, діє 7 днів (повідомлення №3).</li>
+        <li>На 5-й день, якщо не оплатив, — коротке нагадування (повідомлення №4).</li>
+      </ol>
+    </div>
+    <div class="ev">
+      <div><div class="when">Без контакту / «Поки лише безкоштовне»</div><div class="tg">❄️ Без контакту · квіз
+або ❄️ Безкоштовний урок · квіз → бот</div></div>
+      <div><p class="none">Нічого не робиш. Бот сам надсилає урок. Це просто інформація, скільки людей пройшло квіз.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="povidomlennia">
+  <h2>Готові <em>повідомлення</em></h2>
+  <p class="sub">Тексти для клієнтів — на «ви». Скопіюй і встав, змінивши тільки виділене.</p>
+  <div class="msgs">
+    <div class="msg"><h3>№1 · Посилання на оплату консультації</h3><div class="when">Коли людина обрала час</div>
+<pre>Вітаю! Це Вероніка 🙂 Дякую за запит на консультацію. Можу запропонувати <span class="ph">[день і час]</span>.
+
+Запис підтверджується після оплати — 35 € (ціна діє до 31 грудня). Оплатити можна тут: <span class="ph">[посилання на оплату]</span>
+
+Після оплати надішліть, будь ласка, скрін — і я одразу підтверджу час.</pre><button type="button" data-copy>Скопіювати</button></div>
+
+    <div class="msg"><h3>№2 · Після оплати консультації</h3><div class="when">Коли прийшов скрін</div>
+<pre>Дякую, оплату отримала 🙌 Чекаю вас <span class="ph">[день і час]</span>, посилання на дзвінок надішлю за годину до початку.
+
+Як і обіцяла — два подарунки:
+📘 Гайд «7 помилок, на яких логіст втрачає гроші»: https://veronika-logistics.com/gayd-437e503b2cc2e2468852f9293ec89ac6/
+📗 Словник логіста: https://veronika-logistics.com/slovnyk-c1feeeac9c1a20b2bc84ce3c41bf3fa8/
+
+Будь ласка, не пересилайте ці посилання — вони тільки для учасників консультації.</pre><button type="button" data-copy>Скопіювати</button></div>
+
+    <div class="msg"><h3>№3 · Пропозиція після консультації</h3><div class="when">Того ж дня після дзвінка</div>
+<pre>Дякую за розмову! Як домовились, вам найкраще підходить <span class="ph">[Пакет 1 · Курс + групові дзвінки / Пакет 2 · Курс + я поруч]</span>.
+
+Вартість консультації — 35 € — зараховую у ціну курсу, якщо оплатите протягом 7 днів, до <span class="ph">[дата]</span>. Тоді для вас курс коштує <span class="ph">[сума]</span>. Можна частинами.
+
+Оплатити або забронювати місце: <span class="ph">[посилання на оплату]</span></pre><button type="button" data-copy>Скопіювати</button></div>
+
+    <div class="msg"><h3>№4 · Нагадування</h3><div class="when">На 5-й день після консультації</div>
+<pre>Нагадую 🙂 Ще 2 дні — до <span class="ph">[дата]</span> — 35 € за консультацію зараховуються у вартість курсу. Якщо залишились питання — пишіть, відповім.</pre><button type="button" data-copy>Скопіювати</button></div>
+
+    <div class="msg"><h3>№5 · Доступ до курсу</h3><div class="when">Коли прийшла оплата курсу</div>
+<pre>Вітаю на курсі! 🎉 Оплату отримала. Ось ваш доступ до платформи: <span class="ph">[посилання / логін]</span>
+
+Почніть із вступного модуля — там я розповідаю, як усе влаштовано. Якщо щось не відкривається — пишіть мені сюди.</pre><button type="button" data-copy>Скопіювати</button></div>
+
+    <div class="msg"><h3>№6 · Відповідь «скільки коштує» в Direct</h3><div class="when">Коли питають ціну в особистих</div>
+<pre>Вітаю! Усі пакети й ціни тут: <span class="ph">[посилання на «Умови курсу»]</span> — можна одразу оплатити або забронювати місце.
+
+Якщо не впевнені, чи вам підходить професія, — є консультація-знайомство за 35 € (до 31 грудня). Її вартість потім зараховується у курс.</pre><button type="button" data-copy>Скопіювати</button></div>
+  </div>
+</section>
+
+<section class="block" id="konsultatsiia">
+  <h2>Консультація-знайомство — <em>план на годину</em></h2>
+  <p class="sub">Пропозиція, як розподілити годину, щоб у кінці була природна пропозиція курсу. Змінюй під себе.</p>
+  <div class="plan">
+    <div class="plan-row"><div class="t">0–5 хв</div><div><b>Знайомство</b><span>Хто людина, де живе, чим займається зараз, звідки дізналась про тебе.</span></div></div>
+    <div class="plan-row"><div class="t">5–25 хв</div><div><b>Її ситуація</b><span>Навіщо їй логістика, що лякає, скільки часу є, яка мова (польська, англійська). Для практика — його конкретне питання.</span></div></div>
+    <div class="plan-row"><div class="t">25–45 хв</div><div><b>Чи підходить і план входу</b><span>Чесно: чи це її. Що треба вивчити, скільки часу до першої роботи, з чого почати саме їй.</span></div></div>
+    <div class="plan-row"><div class="t">45–55 хв</div><div><b>Курс зсередини і пакет</b><span>Покажи платформу, поясни різницю пакетів, порадь один. Скажи, що 35 € зараховуються, якщо оплатить за 7 днів.</span></div></div>
+    <div class="plan-row"><div class="t">55–60 хв</div><div><b>Питання і наступний крок</b><span>Домовтесь, коли вона дасть відповідь. Того ж дня — повідомлення №3.</span></div></div>
+  </div>
+</section>
+
+<section class="block" id="tsiny">
+  <h2>Усі ціни <em>в одному місці</em></h2>
+  <div class="prices">
+    <table>
+      <thead><tr><th>Продукт</th><th>Для кого</th><th>Ціна зараз</th><th>Звичайна ціна</th></tr></thead>
+      <tbody>
+        <tr><td><b>Пакет 1 · Курс + групові дзвінки</b><span class="s">8 модулів, 6 тижнів, 2 групові розбори, доступ на рік</span></td><td>🌱 вміє вчитися сам</td><td><b>350 €</b> до 5.12<span class="s">2 × 175 €</span></td><td>400 €<span class="s">частинами</span></td></tr>
+        <tr><td><b>Пакет 2 · Курс + я поруч</b><span class="s">усе з пакета 1 + 6 особистих дзвінків, перевірка домашніх, резюме, пробна співбесіда</span></td><td>🌱 з нуля, хоче на роботу швидше</td><td><b>600 €</b> до 5.12<span class="s">3 × 200 €</span></td><td>700 €<span class="s">частинами</span></td></tr>
+        <tr><td><b>Консультація-знайомство</b><span class="s">1 година онлайн · 🎁 гайд + словник · зараховується в курс</span></td><td>🤔 і 🚛</td><td><b>35 €</b> до 31.12</td><td>50 €</td></tr>
+        <tr><td><b>Термінова консультація</b><span class="s">поза чергою, того ж дня</span></td><td>🤔 і 🚛</td><td><b>70 €</b> до 31.12</td><td>100 €</td></tr>
+        <tr class="later"><td><b>Модулі для практиків (05 + 07)</b><span class="s">поки не продаємо</span></td><td>🚛</td><td>—</td><td>пізніше</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="dates">
+    <div class="date"><b>5 грудня</b><span>закінчуються ціни Black Friday на курс: знову 400 € і 700 €</span></div>
+    <div class="date"><b>31 грудня</b><span>останній день консультації за 35 € / 70 €</span></div>
+    <div class="date"><b>1 січня</b><span>консультація знову 50 € / 100 € — міняємо на сайті</span></div>
+  </div>
+</section>
+
+<section class="block" id="status">
+  <h2>Що вже готово, <em>а що робимо</em></h2>
+  <div class="two">
+    <div class="list"><h3>Уже працює</h3><ul class="check">
+      <li class="ok"><i>✓</i><span><b>Тест</b> «Чи підходить вам професія логіста» — на сайті й за словом «тест»</span></li>
+      <li class="ok"><i>✓</i><span><b>Квіз</b> — підказує пакет; «Поки лише безкоштовне» веде в Telegram-бот</span></li>
+      <li class="ok"><i>✓</i><span><b>Форма консультації</b> на сайті — платна, 35 € / 70 €, заявки йдуть у Telegram</span></li>
+      <li class="ok"><i>✓</i><span><b>Гайд «7 помилок»</b> і <b>словник логіста</b> — готові, за прихованими посиланнями</span></li>
+      <li class="ok"><i>✓</i><span>«Якщо після консультації йдете на курс — її вартість зараховується» — уже написано на сайті</span></li>
+    </ul></div>
+    <div class="list"><h3>Робимо</h3><ul class="check">
+      <li class="todo"><i>!</i><span><b>Знімаємо VSL-урок</b> → ставимо на сайт і в Telegram-бот замість старого уроку</span></li>
+      <li class="todo"><i>!</i><span><b>Сторінка «Умови курсу»</b> з пакетами, цінами і кнопками оплати/броні</span></li>
+      <li class="todo"><i>!</i><span><b>Сторінка оплати</b> з твоїми реквізитами</span></li>
+      <li class="todo"><i>!</i><span>«Записатися на курс» на сайті й у шапці Instagram → на «Умови курсу», квіз — кнопкою «Не знаю, який пакет»</span></li>
+      <li class="todo"><i>!</i><span>ManyChat «логістика» → VSL-урок</span></li>
+      <li class="wait"><i>…</i><span><b>Блоки «🎁 гайд + словник»</b> біля консультації на сайті — готові, чекають, поки ти прочитаєш гайд і словник</span></li>
+    </ul></div>
+  </div>
+</section>
+
+<section class="block" id="vid-tebe">
+  <h2>Що потрібно <em>від тебе</em></h2>
+  <div class="two">
+    <div class="list"><h3>Щоб запустити</h3><ul>
+      <li><b>Прочитай гайд і словник</b> — виправ, що не так, і скажи «ок». Після цього покажемо подарунки на сайті.</li>
+      <li><b>Реквізити:</b> польський рахунок (IBAN), BLIK за номером, Revolut — як тобі зручно приймати.</li>
+      <li><b>Бронь:</b> скільки (пропонуємо 100 €) і що вона дає — фіксує ціну.</li>
+      <li><b>Термін зарахування</b> консультації в курс: пропонуємо 7 днів.</li>
+      <li><b>Куди скріни:</b> Telegram чи Direct.</li>
+      <li><b>Перевізники:</b> у пості Black Friday для них 50 € / 100 €, на сайті — 35 € / 70 € для всіх. Обери одну ціну.</li>
+    </ul></div>
+    <div class="list warn"><h3>Без ФОПа — уточнити</h3><ul>
+      <li>Ти живеш у Польщі. Там є <b>działalność nierejestrowana</b> — можна отримувати оплату без реєстрації фірми, але з лімітом доходу. Ліміт і податки краще уточнити в бухгалтера.</li>
+      <li>Коли доходи виростуть і зʼявиться фірма — підключимо оплату карткою прямо на сайті.</li>
+    </ul></div>
+  </div>
+</section>
+</div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+(function(){
+  var tabs = document.querySelectorAll('.tabs button');
+  tabs.forEach(function(b){
+    b.addEventListener('click', function(){
+      tabs.forEach(function(x){ x.setAttribute('aria-selected', x === b ? 'true' : 'false'); });
+      document.querySelectorAll('.lane').forEach(function(l){ l.classList.toggle('on', l.id === b.getAttribute('aria-controls')); });
+    });
+  });
+  var toast = document.getElementById('toast');
+  function say(m){ toast.textContent = m; toast.classList.add('on'); clearTimeout(say.t); say.t = setTimeout(function(){ toast.classList.remove('on'); }, 2000); }
+  document.querySelectorAll('[data-copy]').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var pre = btn.parentNode.querySelector('pre');
+      var text = pre.innerText;
+      function fallback(){
+        var r = document.createRange(); r.selectNodeContents(pre);
+        var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
+        say('Текст виділено — натисніть «Копіювати»');
+      }
+      try {
+        navigator.clipboard.writeText(text).then(function(){ say('Скопійовано'); }, fallback);
+      } catch (e) { fallback(); }
+    });
+  });
+})();
+</script>
+</body>
+</html>
