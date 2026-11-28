@@ -72,13 +72,19 @@ h1,h2,h3{text-wrap:balance}
 .cons h2{font-size:clamp(26px,6vw,38px);letter-spacing:-.03em;line-height:1.1;font-weight:800;margin-top:8px}
 .cons h2 em{color:var(--sky)}
 .cons>p{color:#B9CBD9;margin-top:10px;max-width:60ch}
-.types{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:20px}
+.types{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:20px}
 .type{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:22px;padding:18px;min-width:0;display:flex;flex-direction:column}
 .type h3{font-size:19px;letter-spacing:-.015em;line-height:1.25}
 .type .for{color:var(--sky);font-size:13.5px;font-weight:700;margin-top:4px}
 .type ul{list-style:none;margin:12px 0 14px;display:grid;gap:7px;flex:1}
 .type li{position:relative;padding-left:18px;font-size:14.5px;color:#D5E1EA;line-height:1.4}
 .type li::before{content:'';position:absolute;left:2px;top:.55em;width:7px;height:7px;border-radius:50%;background:var(--sky)}
+.type .for{order:-1}
+.type.urgent{background:rgba(255,255,255,.13)}
+.cprice{font-size:15px;color:#D5E1EA;margin-bottom:10px}
+.cprice b{font-size:30px;color:#fff;letter-spacing:-.03em;margin-right:6px}
+.cprice s{color:#9FB3C3;margin-right:6px}
+.cprice small{display:block;color:#9FB3C3;font-size:13px}
 .type .credit{background:rgba(157,187,217,.16);border-radius:12px;padding:9px 11px;font-size:13.5px;color:#fff;font-weight:700;margin-bottom:14px}
 .type .btn{width:100%;min-height:50px;font-size:15px}
 .ctab{width:100%;border-collapse:collapse;margin-top:18px;font-variant-numeric:tabular-nums;font-size:15px}
@@ -148,7 +154,8 @@ form .btn-main{width:100%}
 .foot{font-size:13px;color:var(--muted);text-align:center;padding:4px 10px 30px}
 .spin{width:18px;height:18px;border-radius:50%;border:2.5px solid rgba(255,255,255,.35);border-top-color:#fff;animation:sp .8s linear infinite;display:inline-block}
 @keyframes sp{to{transform:rotate(360deg)}}
-@media (max-width:760px){.packs,.types,.how{grid-template-columns:1fr}}
+@media (max-width:860px){.types{grid-template-columns:1fr}}
+@media (max-width:760px){.packs,.how{grid-template-columns:1fr}}
 @media (max-width:420px){.choice,.row2{grid-template-columns:1fr}}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.btn{transition:none}.spin{animation:none}}
 </style>
@@ -200,43 +207,47 @@ fbq('init','1475403971005665');fbq('track','PageView');fbq('track','ViewContent'
 
   <section class="cons" id="konsultatsiia">
     <div class="k">Консультація з Веронікою</div>
-    <h2>Година онлайн — <em>про вашу ситуацію</em></h2>
-    <p>Особиста онлайн-розмова з Веронікою. Без загальних слів: розбираємо саме вашу ситуацію, з її практичного досвіду. Консультація платна, запис — після оплати.</p>
+    <h2>Три формати консультації — <em>оберіть свій</em></h2>
+    <p>Година онлайн з Веронікою — без загальних слів, тільки ваша ситуація, з її практичного досвіду. Усі консультації платні, запис — після оплати.</p>
 
     <div class="types">
       <div class="type">
+        <div class="for">Для новачків</div>
         <h3>Знайомство перед навчанням</h3>
-        <div class="for">Думаєте про навчання, але сумніваєтесь</div>
         <ul>
           <li>Чи підходить вам професія логіста</li>
           <li>З чого почати саме вам і скільки часу до першої роботи</li>
-          <li>Як виглядає курс зсередини</li>
-          <li>Який пакет вам підходить</li>
+          <li>Як виглядає курс зсередини і який пакет вам підходить</li>
         </ul>
-        <div class="credit">Якщо підете на навчання — вартість консультації зараховується в ціну курсу</div>
-        <button type="button" class="btn btn-white" data-pick="zn">Записатися на знайомство</button>
+        <div class="cprice" data-cpx="plan"></div>
+        <div class="credit">Підете на навчання — вартість зараховується в ціну курсу</div>
+        <button type="button" class="btn btn-white" data-pick="zn">Записатися</button>
       </div>
       <div class="type">
+        <div class="for">Для практиків</div>
         <h3>«Ваше питання»</h3>
-        <div class="for">Вже працюєте: логіст, диспетчер, своя фірма чи бус</div>
         <ul>
           <li>Ставки, регіони, вигідність маршруту</li>
           <li>Біржі, клієнти, документи й оплата</li>
-          <li>Час праці водія, маршрути, платні дороги</li>
-          <li>Резюме і співбесіда в транспортній фірмі</li>
+          <li>Час праці водія, платні дороги, резюме</li>
         </ul>
+        <div class="cprice" data-cpx="plan"></div>
         <div class="credit">Захочете навчатися — вартість так само зарахуємо</div>
-        <button type="button" class="btn btn-white" data-pick="vp">Записатися з питанням</button>
+        <button type="button" class="btn btn-white" data-pick="vp">Записатися</button>
+      </div>
+      <div class="type urgent">
+        <div class="for">Коли треба швидко</div>
+        <h3>Термінова</h3>
+        <ul>
+          <li>Будь-яка з двох консультацій</li>
+          <li>Поза чергою — протягом 24 годин</li>
+          <li>Коли питання не може чекати</li>
+        </ul>
+        <div class="cprice" data-cpx="urg"></div>
+        <div class="credit">Зарахування в курс — так само</div>
+        <button type="button" class="btn btn-white" data-pick="zn" data-urg="1">Записатися терміново</button>
       </div>
     </div>
-
-    <table class="ctab" aria-label="Ціни консультацій">
-      <thead><tr><th>Ціна</th><th>За записом</th><th>Термінова</th></tr></thead>
-      <tbody>
-        <tr><td>Будь-яка консультація<small>1 година онлайн</small></td><td data-cp="plan">35 €</td><td data-cp="urg">70 €</td></tr>
-        <tr><td>Коли<small>&nbsp;</small></td><td>у найближчі дні</td><td>протягом 24 годин</td></tr>
-      </tbody>
-    </table>
 
     <div class="how">
       <div><b>Залишаєте заявку</b>Обираєте вид консультації внизу сторінки</div>
@@ -313,6 +324,9 @@ fbq('init','1475403971005665');fbq('track','PageView');fbq('track','ViewContent'
     document.querySelector('[data-parts="' + k + '"]').textContent = P[k].parts;
     document.querySelector('[data-sum="' + k + '"]').textContent = eur(P[k].v) + (P[k].note ? ' · ' + P[k].note : '');
   });
+  document.querySelectorAll('[data-cpx]').forEach(function(el){
+    var k = el.dataset.cpx; el.innerHTML = (P[k].old ? '<s>' + eur(P[k].old) + '</s>' : '') + '<b>' + eur(P[k].v) + '</b>' + (P[k].note ? '<small>' + P[k].note + ', потім ' + eur(P[k].old) + '</small>' : '');
+  });
   document.querySelectorAll('[data-cp]').forEach(function(td){
     var k = td.dataset.cp; td.innerHTML = (P[k].old ? '<s>' + eur(P[k].old) + '</s>' : '') + '<b>' + eur(P[k].v) + '</b>' + (P[k].note ? '<small>' + P[k].note + '</small>' : '');
   });
@@ -340,7 +354,7 @@ fbq('init','1475403971005665');fbq('track','PageView');fbq('track','ViewContent'
   }
   document.addEventListener('click', function(e){
     var b = e.target.closest('[data-pick]'); if (!b) return;
-    var r = f.querySelector('input[name=pick][value="' + b.dataset.pick + '"]'); if (r) { r.checked = true; render(); }
+    var r = f.querySelector('input[name=pick][value="' + b.dataset.pick + '"]'); if (r) { r.checked = true; urg.checked = b.dataset.urg === '1' ? true : (r.value === 'zn' || r.value === 'vp' ? urg.checked && false : false); render(); }
     toForm();
   });
   /* ?pick=p1|p2|zn|vp (&urg=1) — з уроку, квізу, мультипосилання */

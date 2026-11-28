@@ -77,6 +77,8 @@ h2 em{color:var(--blue)}
 .tg.sm{--w:40px;--h:24px}
 
 /* ---------- loader (light, road → sea → air) ---------- */
+.bf-pill{display:inline-flex;align-items:center;gap:6px;margin:0 0 12px;padding:8px 14px;border-radius:999px;background:#14232E;color:#fff;font-size:13.5px;font-weight:700;text-decoration:none;line-height:1.25}
+.bf-pill[hidden]{display:none}
 #loader{position:fixed;inset:0;z-index:1000;background:var(--cream);color:var(--ink);display:flex;flex-direction:column;justify-content:space-between;padding:28px 40px 36px;transition:transform 1.4s cubic-bezier(.77,0,.18,1)}
 #loader::after{content:"";position:absolute;left:0;right:0;top:100%;height:100vh;background:var(--olive)}
 body.loaded #loader{transform:translateY(-200%)}
@@ -1091,6 +1093,7 @@ setTimeout(function () {
 <section class="hero">
   <div class="wrap hero-grid">
     <div>
+      <a href="/kurs/" class="bf-pill hr" id="bfPill" hidden>🖤 Black Friday на навчання — до 5 грудня <span aria-hidden="true">→</span></a>
       <span class="label hr">Онлайн-курс міжнародної логістики</span>
       <h1 class="hr" style="--d:.08s">Нова професія — <em>логіст.</em> Працюйте з&nbsp;будь-якої точки світу</h1>
       <p class="lead hr" style="--d:.16s"><span class="lead-d">Вантажі по Європі їздять щодня — і кожним рейсом керує логіст. Навчу вас цієї професії з нуля всього за 6 тижнів: спедитор або диспетчер, робота з дому й дохід, який не залежить від міста, де ви живете.</span><span class="lead-m">Навчу професії логіста з нуля за 6 тижнів — робота з дому й дохід, який не залежить від міста.</span></p>
@@ -1116,6 +1119,8 @@ setTimeout(function () {
     </div>
   </div>
 </section>
+
+<script>(function(){ var __now = new Date(), __BF = __now < new Date('2026-12-06T00:00:00+01:00'), __CP = __now < new Date('2027-01-01T00:00:00+01:00'); if (__BF) { var b = document.getElementById('bfPill'); if (b) b.hidden = false; } })();</script>
 
 <!-- ============ WORDMARK ============ -->
 <div class="wordmark" aria-label="Veronika Logistics">
