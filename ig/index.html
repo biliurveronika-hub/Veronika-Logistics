@@ -64,7 +64,7 @@ em{font-family:'Playfair Display',Georgia,serif;font-style:italic;font-weight:40
     <p>Навчаю міжнародної логістики з нуля<br>онлайн · 6 тижнів</p>
   </header>
 
-  <a class="bf" id="bf" data-to="/" data-ev="bf" hidden><b>🖤 Black Friday</b> Акція на навчання — до 5 грудня, на консультації — до 31 грудня</a>
+  <a class="bf" id="bf" data-to="/" data-ev="bf" hidden><b>🖤 Black Friday</b> Навчання — до 5 грудня · консультації — до 31 грудня</a>
   <nav class="links">
     <a class="lk main" data-to="/" data-ev="site">
       <span class="ic">🌐</span>
@@ -73,7 +73,7 @@ em{font-family:'Playfair Display',Georgia,serif;font-style:italic;font-weight:40
     </a>
     <a class="lk" data-to="/" data-q="c=1" data-ev="konsultaciya">
       <span class="ic">💬</span>
-      <span class="tx"><b>Отримати консультацію</b><small><span id="cPrice">Для новачків і практиків — 35 € (замість <s>50 €</s>)<br>Термінова — 70 € (замість <s>100 €</s>) · акція до 31.12</span></small></span>
+      <span class="tx"><b>Отримати консультацію</b><small>Для новачків, практиків і по навчанню<br><span id="cPrice">35 € замість <s>50 €</s> · до 31.12</span></small></span>
       <span class="ar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
     </a>
 
@@ -103,7 +103,7 @@ em{font-family:'Playfair Display',Georgia,serif;font-style:italic;font-weight:40
   ['utm_campaign', 'utm_content'].forEach(k => { if (p.get(k)) utm.set(k, p.get(k)); });
   var __now = new Date(), __BF = __now < new Date('2026-12-06T00:00:00+01:00'), __CP = __now < new Date('2027-01-01T00:00:00+01:00');
   if (__BF) document.getElementById('bf').hidden = false;
-  if (!__CP) { const cp = document.getElementById('cPrice'); if (cp) cp.textContent = '50 € · термінова 100 €'; }
+  if (!__CP) { const cp = document.getElementById('cPrice'); if (cp) cp.textContent = '50 €'; }
   document.querySelectorAll('[data-to]').forEach(a => {
     const q = (a.dataset.q ? a.dataset.q + '&' : '') + utm.toString();
     a.href = a.dataset.to + '?' + q + (a.dataset.h ? '#' + a.dataset.h : '');
