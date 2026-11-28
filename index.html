@@ -648,15 +648,26 @@ input[type=range]::-moz-range-thumb{width:28px;height:28px;border-radius:50%;bac
 /* пакет 1 — сіра плашка, пакет 2 — головний */
 .tf-card:not(.hl){background:#E4E9EE;box-shadow:none}
 .tf-card:not(.hl) li::before{background:#fff}
-.tf-card.hl{background:linear-gradient(160deg,#1F4256 0%,#17313F 60%,#122733 100%);color:#fff;border-color:transparent;box-shadow:0 30px 60px -28px rgba(23,49,63,.75);position:relative}
+.tf-card.hl{background:radial-gradient(120% 70% at 85% 0%,rgba(110,160,210,.28) 0%,rgba(110,160,210,0) 55%),linear-gradient(165deg,#13314A 0%,#0B1E30 55%,#071421 100%);color:#fff;border-color:transparent;box-shadow:0 34px 70px -30px rgba(7,20,33,.9),0 0 0 1px rgba(157,187,217,.08);position:relative;overflow:hidden}
 .tf-card.hl::before{content:"";position:absolute;inset:0;border-radius:inherit;padding:2px;background:linear-gradient(135deg,#9DBBD9,rgba(157,187,217,0) 45%,#CFE0EF);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none}
-.tf-card.hl .tf-tag{background:#CFE0EF;color:#17313F}
+.tf-card.hl .tf-tag{background:linear-gradient(90deg,#E8F1FA,#BFD5EA);color:#0B1E30}
 .tf-card.hl h3{color:#fff}
 .tf-card.hl .tf-price s,.tf-card.hl .tf-parts{color:#9FB3C3}
 .tf-card.hl li{color:#E6EEF4}
 .tf-card.hl li::before{background:rgba(157,187,217,.25)}
 .tf-card.hl li::after{border-color:#CFE0EF}
-.tf-card.hl .btn-green{background:#CFE0EF;color:#17313F}
+.tf-card.hl .btn-green{background:linear-gradient(90deg,#F2F7FC,#CFE0EF);color:#0B1E30;box-shadow:0 14px 30px -14px rgba(207,224,239,.6)}
+.tf-timer{margin-top:22px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px 18px;padding:16px 20px;border-radius:22px;background:linear-gradient(165deg,#13314A 0%,#0B1E30 60%,#071421 100%);color:#fff}
+.tf-timer[hidden]{display:none}
+.tf-t-l{font-weight:700;font-size:15px}
+.tf-t-n{display:flex;gap:8px}
+.tf-t-n div{min-width:56px;text-align:center;background:rgba(255,255,255,.1);border:1px solid rgba(207,224,239,.25);border-radius:14px;padding:7px 6px}
+.tf-t-n b{display:block;font-size:24px;line-height:1.1;font-variant-numeric:tabular-nums;letter-spacing:-.02em}
+.tf-t-n small{font-size:11px;color:#9FB3C3;text-transform:uppercase;letter-spacing:.06em}
+@media (max-width:420px){.tf-timer{justify-content:center;text-align:center}.tf-t-n div{min-width:62px}}
+.tf-bfn{display:inline-flex;align-items:center;gap:6px;margin-top:10px;padding:6px 11px;border-radius:999px;background:#14232E;color:#fff;font-size:12.5px;font-weight:700;line-height:1.2;align-self:flex-start}
+.tf-bfn[hidden]{display:none}
+.tf-card.hl .tf-bfn{background:rgba(255,255,255,.12);border:1px solid rgba(207,224,239,.35)}
 @media (max-width:760px){.tf-grid{grid-template-columns:1fr}.tf-card{padding:24px 20px}}
 form.lead-form:not(.is-consult) .ckind.only-course{display:grid}
 form.lead-form.is-consult .only-course{display:none}
@@ -1509,12 +1520,17 @@ setTimeout(function () {
       <h2>Два формати — <em>оберіть свій</em></h2>
       <p class="tf-sub"><span class="tf-bf" id="tfBf" hidden></span>Старт будь-коли, можна частинами. Бронювання місця — це оплата повністю або першої частини.</p>
     </div>
+    <div class="tf-timer rv" id="tfTimer" hidden aria-live="off">
+      <span class="tf-t-l">🖤 До кінця Black Friday залишилось</span>
+      <div class="tf-t-n"><div><b id="tfD">0</b><small>днів</small></div><div><b id="tfH">00</b><small>год</small></div><div><b id="tfM">00</b><small>хв</small></div><div><b id="tfS">00</b><small>сек</small></div></div>
+    </div>
     <div class="tf-grid">
       <article class="tf-card rv">
         <span class="tf-tag">Пакет 1</span>
         <h3>Курс + групові дзвінки</h3>
         <div class="tf-price"><b data-tp="p1">400 €</b><s data-tpo="p1" hidden></s></div>
         <div class="tf-parts" data-tparts="p1">можна частинами</div>
+        <span class="tf-bfn" data-bfn hidden>🖤 Ціна Black Friday — до 5 грудня</span>
         <ul>
           <li>Вступ і 8 модулів: від першого вантажу до фактури</li>
           <li>Відео, презентації, домашні завдання</li>
@@ -1528,6 +1544,7 @@ setTimeout(function () {
         <h3>Курс + я поруч</h3>
         <div class="tf-price"><b data-tp="p2">700 €</b><s data-tpo="p2" hidden></s></div>
         <div class="tf-parts" data-tparts="p2">можна частинами</div>
+        <span class="tf-bfn" data-bfn hidden>🖤 Ціна Black Friday — до 5 грудня</span>
         <ul>
           <li>Усе з пакета 1</li>
           <li class="plus">6 особистих дзвінків зі мною</li>
@@ -2468,6 +2485,25 @@ setTimeout(function () {
     document.querySelectorAll('[data-tparts="' + k + '"]').forEach(el => { el.textContent = PKG[k].parts; });
     document.querySelectorAll('[data-fpp="' + k + '"]').forEach(el => { el.innerHTML = (PKG[k].old ? '<s style="opacity:.55">' + PKG[k].old + ' €</s> ' : '') + PKG[k].v + ' €'; });
   });
+  if (BF) document.querySelectorAll('[data-bfn]').forEach(el => { el.hidden = false; });
+  /* таймер до кінця Black Friday (6.12 00:00 за Варшавою) */
+  (() => {
+    const box = document.getElementById('tfTimer'); if (!box || !BF) return;
+    const END = new Date('2026-12-06T00:00:00+01:00').getTime();
+    const el = id => document.getElementById(id), pad = n => String(n).padStart(2, '0');
+    box.hidden = false;
+    let iv;
+    const tick = () => {
+      let t = Math.max(0, Math.floor((END - Date.now()) / 1000));
+      if (!t) { box.hidden = true; clearInterval(iv); return; }
+      const d = Math.floor(t / 86400); t %= 86400;
+      el('tfD').textContent = d;
+      el('tfD').nextElementSibling.textContent = (d % 10 === 1 && d % 100 !== 11) ? 'день' : (d % 10 >= 2 && d % 10 <= 4 && (d % 100 < 12 || d % 100 > 14)) ? 'дні' : 'днів';
+      el('tfH').textContent = pad(Math.floor(t / 3600)); t %= 3600;
+      el('tfM').textContent = pad(Math.floor(t / 60)); el('tfS').textContent = pad(t % 60);
+    };
+    iv = setInterval(tick, 1000); tick();
+  })();
   if (BF) { const t = document.getElementById('tfBf'); if (t) { t.textContent = '🖤 Black Friday — до 5 грудня'; t.hidden = false; } }
 
   setWant(want());
