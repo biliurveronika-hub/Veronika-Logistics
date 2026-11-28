@@ -61,19 +61,14 @@ em{font-family:'Playfair Display',Georgia,serif;font-style:italic;font-weight:40
   </header>
 
   <nav class="links">
-    <a class="lk" data-to="/" data-ev="site">
+    <a class="lk main" data-to="/" data-ev="site">
       <span class="ic">🌐</span>
-      <span class="tx"><b>Сайт курсу</b><small>Програма, відгуки · повноцінне навчання на логіста від 400 €</small></span>
+      <span class="tx"><b>Сайт курсу</b><small>Програма, відгуки · повноцінне навчання на логіста</small></span>
       <span class="ar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
     </a>
-    <a class="lk main" data-to="/kurs/" data-ev="kurs">
-      <span class="ic">🎓</span>
-      <span class="tx"><b>Записатися на курс</b><small>Два формати навчання · ціни · можна частинами</small></span>
-      <span class="ar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-    </a>
-    <a class="lk" data-to="/" data-q="c=1" data-ev="konsultaciya">
+    <a class="lk" data-to="/kurs/" data-h="konsultatsiia" data-ev="konsultaciya">
       <span class="ic">💬</span>
-      <span class="tx"><b>Консультація зі мною</b><small>До 31.12: 35 € замість 50 € — за записом<br>70 € замість 100 € — терміново</small></span>
+      <span class="tx"><b>Отримати консультацію</b><small>До 31.12: 35 € замість 50 € — за записом<br>70 € замість 100 € — терміново</small></span>
       <span class="ar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
     </a>
 
@@ -103,7 +98,7 @@ em{font-family:'Playfair Display',Georgia,serif;font-style:italic;font-weight:40
   ['utm_campaign', 'utm_content'].forEach(k => { if (p.get(k)) utm.set(k, p.get(k)); });
   document.querySelectorAll('[data-to]').forEach(a => {
     const q = (a.dataset.q ? a.dataset.q + '&' : '') + utm.toString();
-    a.href = a.dataset.to + '?' + q;
+    a.href = a.dataset.to + '?' + q + (a.dataset.h ? '#' + a.dataset.h : '');
   });
   document.querySelectorAll('[data-ev]').forEach(a => a.addEventListener('click', () => {
     try { window.fbq && fbq('trackCustom', 'LinkClick', { link: a.dataset.ev, source: utm.get('utm_source') }); } catch (e) {}
