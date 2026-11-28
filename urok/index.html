@@ -181,6 +181,27 @@ footer{margin-top:90px;background:var(--forest-d);color:#A9BCCB;padding:60px 0 2
 .foot-row a:hover{color:#fff}
 
 /* ---------- нижня панель на телефоні ---------- */
+.fm .fm-sub{color:var(--muted);margin-top:10px;max-width:60ch}
+.fm-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-top:22px}
+.fm-card{display:flex;flex-direction:column;background:#fff;border-radius:28px;padding:22px 20px;text-decoration:none;color:inherit;border:2px solid transparent;transition:transform .2s,border-color .2s}
+.fm-card:hover{transform:translateY(-2px)}
+.fm-card.hl{border-color:var(--forest-d)}
+.fm-tag{align-self:flex-start;font-size:12px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;padding:5px 11px;border-radius:999px;background:var(--ice);color:var(--blue)}
+.fm-card.hl .fm-tag{background:var(--forest-d);color:#fff}
+.fm-card h3{font-size:22px;letter-spacing:-.02em;margin-top:12px}
+.fm-card p{color:var(--muted);font-size:15px;margin-top:6px;flex:1}
+.fm-price{display:flex;align-items:baseline;gap:10px;margin-top:14px}
+.fm-price b{font-size:38px;letter-spacing:-.04em;line-height:1}
+.fm-price s{color:var(--muted);font-size:18px}
+.fm-btn{margin-top:16px;display:flex;align-items:center;justify-content:center;min-height:52px;border-radius:999px;background:var(--forest-d);color:#fff;font-weight:800}
+.fm-help{margin-top:14px;background:var(--forest-d);color:#fff;border-radius:28px;padding:22px 20px;display:grid;grid-template-columns:1.3fr 1fr;gap:18px;align-items:center}
+.fm-help h3{font-size:21px}
+.fm-help p{color:#B9CBD9;margin-top:6px;font-size:15px}
+.fm-help p b{color:#fff}
+.fm-help-acts{display:grid;gap:10px}
+.fm-btn2{display:flex;align-items:center;justify-content:center;min-height:52px;border-radius:999px;background:#fff;color:var(--forest-d);font-weight:800;text-decoration:none}
+.fm-link{color:#CFE0EF;font-size:14.5px;text-align:center}
+@media (max-width:760px){.fm-grid,.fm-help{grid-template-columns:1fr}}
 .bar{position:fixed;left:14px;right:14px;bottom:14px;z-index:60;display:none;align-items:center;justify-content:space-between;gap:12px;padding:10px 10px 10px 20px;border-radius:22px;background:rgba(23,49,63,.93);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);color:#fff;box-shadow:0 18px 40px -16px rgba(23,49,63,.6);transform:translateY(140%);transition:transform .6s var(--ease)}
 .bar.show{transform:none}
 .bar b{font-size:14.5px;font-weight:700;line-height:1.25}
@@ -233,7 +254,7 @@ fbq('track','ViewContent',{content_name:'urok-1'});
       <i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 6h12v10H1z"/><path d="M13 9h4l4 4v3h-8"/><circle cx="5.5" cy="17.5" r="1.8"/><circle cx="17.5" cy="17.5" r="1.8"/></svg></i>
       <span>veronika_logistics</span>
     </a>
-    <a href="#cta" class="nav-cta">Залишити заявку</a>
+    <a href="#cta" class="nav-cta">Обрати формат</a>
   </div>
 </header>
 
@@ -348,37 +369,38 @@ fbq('track','ViewContent',{content_name:'urok-1'});
   </div>
 </section>
 
-<!-- ============ ЗАКЛИК ============ -->
-<section class="cta-sec" id="cta">
+<!-- ============ ЗАКЛИК: ОБЕРІТЬ ФОРМАТ ============ -->
+<section class="cta-sec fm" id="cta">
   <div class="wrap">
-    <div class="cta rv">
-      <div class="cta-copy">
-        <span class="label">Повне навчання</span>
-        <h2>Готові пройти <em>весь курс?</em></h2>
-        <p>Залиште заявку — розкажу умови, формат і подивимось, чи підходить вам навчання. Я веду групи особисто: перевіряю домашні, відповідаю на питання, показую на своїх робочих кейсах.</p>
-        <div class="acts">
-          <a href="../#program" class="btn-ghost">Подивитися програму</a>
-        </div>
-        <p class="cta-note">Відповідаю особисто, зазвичай протягом дня.</p>
+    <span class="label rv">Повне навчання</span>
+    <h2 class="rv">Оберіть <em>формат навчання</em></h2>
+    <p class="fm-sub rv"><span id="fmNote">Старт будь-коли, можна частинами.</span> Бронювання місця — це оплата повністю або першої частини.</p>
+    <div class="fm-grid">
+      <a class="fm-card rv" href="/kurs/?pick=p1">
+        <span class="fm-tag">Пакет 1</span>
+        <h3>Курс + групові дзвінки</h3>
+        <p>Усі 8 модулів, відео й презентації, домашні, 2 групові розбори, доступ на рік.</p>
+        <div class="fm-price"><b data-fp="p1">400 €</b><s data-fo="p1" hidden></s></div>
+        <span class="fm-btn">Забронювати місце →</span>
+      </a>
+      <a class="fm-card hl rv" href="/kurs/?pick=p2">
+        <span class="fm-tag">Пакет 2 · з нуля до роботи</span>
+        <h3>Курс + я поруч</h3>
+        <p>Усе з пакета 1 + 6 особистих дзвінків, перевірка кожного домашнього, розбір резюме і пробна співбесіда.</p>
+        <div class="fm-price"><b data-fp="p2">700 €</b><s data-fo="p2" hidden></s></div>
+        <span class="fm-btn">Забронювати місце →</span>
+      </a>
+    </div>
+    <div class="fm-help rv">
+      <div>
+        <h3>Не знаєте, що обрати?</h3>
+        <p>Консультація-знайомство: година онлайн, познайомимось, відповім на питання і підберемо формат. <b>Її вартість зараховується в ціну навчання, якщо вирішите вчитися.</b></p>
       </div>
-      <form class="lead-form" id="leadForm" novalidate>
-        <h3>Залишити заявку</h3>
-        <p class="hint">Залиште номер — і я зв’яжуся з вами.</p>
-        <label class="field"><span>Ваше ім’я</span><input name="name" required autocomplete="name" placeholder="Як до вас звертатися"></label>
-        <label class="field"><span>Номер телефону</span><input name="contact" type="tel" inputmode="tel" autocomplete="tel" required placeholder="+380 67 123 45 67">
-          <small class="field-hint" id="contactHint">З кодом країни: +380, +48…</small></label>
-        <label class="field"><span>Де вам зручніше написати</span><select name="ctype">
-          <option value="telegram">Telegram</option>
-          <option value="viber">Viber</option>
-          <option value="whatsapp">WhatsApp</option>
-          <option value="call">Подзвонити</option>
-        </select></label>
-        <input class="hp" type="text" name="company" tabindex="-1" autocomplete="off" aria-hidden="true">
-        <p class="form-err" id="formErr" hidden>Не вдалося надіслати заявку. Напишіть мені, будь ласка, в <a href="https://www.instagram.com/veronika_logistics/" target="_blank" rel="noopener">Instagram</a> (кнопка «Написати») — відповім там.</p>
-        <button class="btn btn-dark btn-xl" type="submit">Надіслати заявку <span class="arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M7 17 17 7M8 7h9v9"/></svg></span></button>
-        <p class="privacy">Натискаючи кнопку, ви погоджуєтесь з <a href="../privacy/">політикою конфіденційності</a> та <a href="../oferta/">умовами оферти</a>.</p>
-        <div class="ok"><div class="big"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg></div><h3>Заявку надіслано!</h3><p class="hint">Вероніка напише вам найближчим часом.</p></div>
-      </form>
+      <div class="fm-help-acts">
+        <a class="fm-btn2" href="/kurs/?pick=zn">Консультація · <span id="fmC">35 €</span></a>
+        <a class="fm-link" href="/kurs/">Усі умови й часті питання</a>
+        <a class="fm-link" href="https://www.instagram.com/veronika_logistics/" target="_blank" rel="noopener">Коротке питання — в Direct, безкоштовно</a>
+      </div>
     </div>
   </div>
 </section>
@@ -419,8 +441,8 @@ fbq('track','ViewContent',{content_name:'urok-1'});
 </footer>
 
 <div class="bar" id="bar">
-  <b>Повне навчання<small>8 модулів, група з перевіркою</small></b>
-  <a href="#cta">Хочу</a>
+  <b>Повне навчання<small>2 формати · можна частинами</small></b>
+  <a href="#cta">Обрати</a>
 </div>
 
 <script>
@@ -454,7 +476,23 @@ fbq('track','ViewContent',{content_name:'urok-1'});
   }
 
   /* ---------- форма: той самий приймач, що й на головній ---------- */
+
+  /* ціни у блоці «Оберіть формат» — ті самі дати, що й на /kurs/ */
+  (function(){
+    var now = new Date(), BF = now < new Date('2026-12-06T00:00:00+01:00'), CP = now < new Date('2027-01-01T00:00:00+01:00');
+    var P = { p1: BF ? [350, 400] : [400], p2: BF ? [600, 700] : [700] };
+    ['p1', 'p2'].forEach(function(k){
+      var b = document.querySelector('[data-fp="' + k + '"]'), o = document.querySelector('[data-fo="' + k + '"]');
+      if (!b) return;
+      b.textContent = P[k][0] + ' €';
+      if (P[k][1]) { o.textContent = P[k][1] + ' €'; o.hidden = false; }
+    });
+    var n = document.getElementById('fmNote');
+    if (n) n.textContent = BF ? 'Black Friday — ціни нижчі до 5 грудня. Можна частинами.' : (CP ? 'Ціни діють до 31 грудня — з 1 січня зростуть. Можна частинами.' : 'Старт будь-коли, можна частинами.');
+    var c = document.getElementById('fmC'); if (c) c.textContent = (CP ? 35 : 50) + ' €';
+  })();
   const form = document.getElementById('leadForm');
+  if (!form) return;
   const LEAD_ENDPOINT = 'https://rapid-thunder-b3dc.biliurveronika.workers.dev/';
   const formErr = document.getElementById('formErr');
   const submitBtn = form.querySelector('button[type=submit]');

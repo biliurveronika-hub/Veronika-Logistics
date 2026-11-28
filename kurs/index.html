@@ -229,9 +229,9 @@ fbq('init','1475403971005665');fbq('track','PageView');fbq('track','ViewContent'
       <div class="opt">
         <div class="oi">💬</div>
         <h3>Задати питання в Direct</h3>
-        <p>Коротке питання: «який пакет мені», «чи можна частинами». Відповім текстом або голосовим.</p>
+        <p>Коротке питання: «який пакет мені», «чи можна частинами». Кнопка «Повідомлення» в профілі — відповім текстом або голосовим.</p>
         <span class="pr free">безкоштовно</span>
-        <a class="btn btn-ghost" href="https://ig.me/m/veronika_logistics" target="_blank" rel="noopener">Написати в Direct</a>
+        <a class="btn btn-ghost" href="https://www.instagram.com/veronika_logistics/" target="_blank" rel="noopener">Написати в Direct</a>
       </div>
       <div class="opt">
         <div class="oi">🧭</div>
@@ -314,7 +314,7 @@ fbq('init','1475403971005665');fbq('track','PageView');fbq('track','ViewContent'
       <div class="hint" id="hint">Напишу вам у Telegram на цей номер</div>
       <label class="field" id="qBox"><span>Ваше питання (необовʼязково)</span><textarea id="q" name="msg" placeholder="Коротко: що хочете розібрати"></textarea></label>
       <div class="hp" aria-hidden="true"><input name="company" tabindex="-1" autocomplete="off"></div>
-      <div class="err" id="err" hidden>Не вдалося надіслати. Напишіть мені, будь ласка, в <a href="https://ig.me/m/veronika_logistics" target="_blank" rel="noopener">Direct</a> — відповім там.</div>
+      <div class="err" id="err" hidden>Не вдалося надіслати. Напишіть мені, будь ласка, в <a href="https://www.instagram.com/veronika_logistics/" target="_blank" rel="noopener">Instagram</a> — відповім там.</div>
       <button type="submit" class="btn btn-main" id="sb">Надіслати</button>
     </form>
     <div class="done" role="status"><div class="ic">🙌</div><h3>Дякую, заявку отримала!</h3><p id="doneT">Напишу вам найближчим часом і надішлю реквізити.</p></div>
@@ -373,6 +373,19 @@ fbq('init','1475403971005665');fbq('track','PageView');fbq('track','ViewContent'
     sb.textContent = c ? 'Записатися на консультацію' : 'Забронювати місце';
   }
   f.addEventListener('change', render);
+  /* ?pick=p1|p2|zn|vp (+ &urg=1) — з уроку, мультипосилання: одразу обраний варіант і форма */
+  (function(){
+    try {
+      var q = new URLSearchParams(location.search), pk = q.get('pick');
+      var r0 = pk && f.querySelector('input[name=pick][value="' + pk + '"]');
+      if (r0) {
+        r0.checked = true;
+        if (q.get('urg') === '1') urg.checked = true;
+        var go = function(){ var z = document.getElementById('zapys'); window.scrollTo({ top: z.getBoundingClientRect().top + window.pageYOffset - 8, behavior: 'auto' }); };
+        if (document.readyState === 'complete') setTimeout(go, 50); else window.addEventListener('load', function(){ setTimeout(go, 50); });
+      }
+    } catch (x) {}
+  })();
   render();
 
   /* кнопки на сторінці обирають варіант і ведуть до форми */
