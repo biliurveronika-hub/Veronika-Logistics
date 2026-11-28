@@ -469,13 +469,13 @@ a{color:var(--blue)}
           ${price(pk)}
           <a class="btn" href="/?pick=${pk}">Забронювати місце</a>
           <a class="btn ghost" href="/#taryfy" style="margin-top:10px">Порівняти обидва пакети</a>
-          <p class="rnote">Бронювання = оплата повністю або першої частини. Після оплати місце за вами.</p></section>`;
+          <p class="rnote">Бронювання = оплата повністю або першої частини. Після оплати місце за вами і три подарунки 🎁</p></section>`;
     stage.innerHTML = `<section class="card">
       <span class="kicker">Ваш результат</span>
       <h2>${need() ? 'Я можу вам <em>допомогти</em>' : 'Логістика вам <em>підходить</em>'}</h2>
       ${planHTML()}
     </section>
-    ${wantsQuestion ? '' : `<section class="card cons-card"><span class="kicker" style="color:#9DBBD9">Наступний крок</span><h2>Консультація <em>зі мною</em></h2><p class="sub">Година онлайн: розберемо вашу ситуацію, з чого почати саме вам і який формат навчання підходить. Консультація платна — ${cons}${CP ? ' замість 50 € до 31 грудня' : ''}.</p><ul class="cons-l"><li>Якщо підете на курс — вартість консультації зараховується</li><li>🎁 Після оплати — гайд «7 помилок, на яких логіст втрачає гроші» і словник логіста</li></ul><a class="btn" href="/?c=1#konsultaciya" style="background:#fff;color:#17313F">Записатися на консультацію</a></section>`}
+    ${wantsQuestion ? '' : `<section class="card cons-card"><span class="kicker" style="color:#9DBBD9">Наступний крок</span><h2>Консультація <em>зі мною</em></h2><p class="sub">Година онлайн: розберемо вашу ситуацію, з чого почати саме вам і який формат навчання підходить. Консультація платна — ${cons}${CP ? ' замість 50 € до 31 грудня' : ''}.</p><ul class="cons-l"><li>Якщо підете на курс — вартість консультації зараховується</li><li>🎁 Після оплати — три подарунки: гайд «7 помилок», словник логіста і самоперевірка перед співбесідою</li></ul><a class="btn" href="/?c=1#konsultaciya" style="background:#fff;color:#17313F">Записатися на консультацію</a></section>`}
     ${top.replace('<span class="kicker">Вам підходить</span>', wantsQuestion ? '<span class="kicker">Вам підходить</span>' : '<span class="kicker">Або одразу на навчання</span>')}
     <section class="card">${proofHTML()}</section>
     <button type="button" class="back" data-back>← Змінити відповіді</button>`;

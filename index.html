@@ -643,6 +643,7 @@ input[type=range]::-moz-range-thumb{width:28px;height:28px;border-radius:50%;bac
 .tf-card li::after{content:'';position:absolute;left:5px;top:6px;width:5px;height:8px;border:solid var(--blue);border-width:0 2px 2px 0;transform:rotate(45deg)}
 .tf-card li.plus{font-weight:700}
 .tf-card .btn{width:100%;justify-content:center}
+.tf-gift{margin-top:18px;background:#fff;border-radius:18px;padding:14px 18px;font-size:15px;text-align:center;color:var(--ink)}
 .tf-help{text-align:center;color:var(--muted);margin-top:18px;font-size:15.5px}
 .tf-help a{color:var(--blue);font-weight:700}
 /* пакет 1 — сіра плашка, пакет 2 — головний */
@@ -1554,6 +1555,7 @@ setTimeout(function () {
         <a href="#join" class="btn btn-green" data-pick="course" data-pkg="p2">Забронювати місце <span class="arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M7 17 17 7M8 7h9v9"/></svg></span></a>
       </article>
     </div>
+    <p class="tf-gift rv">🎁 Після бронювання місця — три подарунки: гайд «7 помилок, на яких логіст втрачає гроші», словник логіста і самоперевірка «Чи готові ви до першої співбесіди».</p>
     <p class="tf-help rv">Не знаєте, який обрати? <a href="#consult">Консультація-знайомство</a> — її вартість зараховується в ціну курсу.</p>
   </div>
 </section>
@@ -1576,9 +1578,9 @@ setTimeout(function () {
         </div>
         <p style="margin-top:12px;color:#A9BCCB;font-size:15px">🎓 Якщо після консультації йдете на курс — її вартість зарахую у ціну навчання.</p>
         <div class="c-bonus">
-          <div class="c-bonus-h"><span>🎁</span><div><b>Бонуси до консультації — гайд і словник</b><small>«7 помилок, на яких логіст втрачає гроші» — що відбувається в реальній роботі і де на цьому погорають. І словник логіста: слова з першого дня роботи українською, польською та англійською. Надішлю одразу після оплати.</small></div></div>
+          <div class="c-bonus-h"><span>🎁</span><div><b>Три подарунки — до консультації і при бронюванні курсу</b><small>«7 помилок, на яких логіст втрачає гроші» — що відбувається в реальній роботі і де на цьому погорають. Словник логіста: слова з першого дня роботи українською, польською та англійською. І самоперевірка «Чи готові ви до першої співбесіди». Надішлю одразу після оплати консультації або броні місця.</small></div></div>
           <ol><li><span>1</span>Шукати вантаж, не знаючи, де звільниться машина</li><li><span>2</span>Вантажити «куди дають»</li><li><span>3</span>Рахувати ставку тільки за кілометри з вантажем</li><li><span>4</span>Забути про платні дороги, тунелі й пороми</li><li><span>5</span>Обіцяти час, не порахувавши години водія</li><li><span>6</span>Домовлятися на словах</li><li><span>7</span>Вважати рейс закритим після розвантаження</li></ol>
-          <p class="c-lock">🔒 Гайд і словник відкриваються після запису на консультацію</p>
+          <p class="c-lock">🔒 Відкриваються після оплати консультації або броні місця на курсі</p>
         </div>
         <div class="topics">
           <div class="topic"><i>✓</i>З чого почати і як увійти в професію</div>
@@ -1812,9 +1814,9 @@ setTimeout(function () {
         <label><input type="radio" name="ckind" value="plan" checked><span><b>🗓 За записом</b><em><s style="opacity:.55">50 €</s> 35 € <small>до 31.12</small></em><small>Онлайн, у зручний для вас час</small></span></label>
         <label><input type="radio" name="ckind" value="urgent"><span><b>⚡ Термінова</b><em><s style="opacity:.55">100 €</s> 70 € <small>до 31.12</small></em><small>Онлайн, якнайшвидше — поза чергою</small></span></label>
       </div>
-      <div class="paid only-consult"><span>💳</span><span><b>Консультація платна, запис — після оплати. Якщо підете на курс — її вартість зараховується.</b> <span class="paid-t">Вероніка напише вам, щоб узгодити зручний час. Після оплати надішле гайд і словник логіста 🎁</span></span></div>
+      <div class="paid only-consult"><span>💳</span><span><b>Консультація платна, запис — після оплати. Якщо підете на курс — її вартість зараховується.</b> <span class="paid-t">Вероніка напише вам, щоб узгодити зручний час. Після оплати надішле три подарунки 🎁</span></span></div>
       <label class="field only-consult"><span>Ваше питання (необов’язково)</span><textarea name="msg" placeholder="Коротко: що хочете розібрати"></textarea></label>
-      <p class="next-hint only-course">Вероніка напише вам і надішле реквізити. Бронювання місця — це оплата повністю або першої частини.</p>
+      <p class="next-hint only-course">Вероніка напише вам і надішле реквізити. Бронювання місця — це оплата повністю або першої частини. 🎁 Після оплати — три подарунки: гайд «7 помилок», словник логіста і самоперевірка перед співбесідою.</p>
       <input class="hp" type="text" name="company" tabindex="-1" autocomplete="off" aria-hidden="true">
       <p class="form-err" id="formErr" hidden>Не вдалося надіслати заявку. Напишіть мені, будь ласка, в <a href="https://www.instagram.com/veronika_logistics/" rel="noopener">Direct</a> — відповім там.</p>
       <button class="btn btn-green" type="submit"><b class="sb-t" style="font-weight:inherit">Далі</b> <span class="arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M7 17 17 7M8 7h9v9"/></svg></span></button>
@@ -2269,7 +2271,7 @@ setTimeout(function () {
   });
   function resultG(){
     haptic([40, 60, 40, 60, 90]);
-    stage.innerHTML = `<div class="g-card g-res${TEST_MODE ? ' tm' : ''}"><div class="g-badge"><div>🏆</div></div><span class="lvl">Логіст · рівень 1 · ${xp} XP</span><h3>Професія логіста вам підходить!</h3><div class="q-list">${picks.map((p, i) => `<div style="--i:${i}">${p}<i class="tg sm" data-tgi="${i}"></i></div>`).join('')}</div><p>${TEST_MODE ? 'Освоїти логістику може кожен, хто поставив собі таку ціль. Ще кілька питань — і я підкажу, з чого почати саме вам.' : 'Освоїти логістику може кожен, хто поставив собі таку ціль. Я покажу шлях від нуля до першого вантажу — за 6 тижнів.'}</p><div class="g-ask"><p>💬 <b>Коротке питання про навчання?</b> Напишіть мені в Direct (кнопка «Повідомлення» в профілі) — відповім голосовим.</p><p>📋 <b>Детально розібрати вашу ситуацію</b> — це вже особиста консультація. Вона платна: 1 година онлайн, <s>50 €</s> <b>35 € до 31 грудня</b>. Якщо після консультації йдете на курс — її вартість зарахую у ціну навчання.</p><p>🎁 <b>Бонус:</b> після оплати надішлю гайд «7 помилок, на яких логіст втрачає гроші» і словник логіста.</p><div class="ask-acts"><a href="https://www.instagram.com/veronika_logistics/" target="_blank" rel="noopener">Задати питання</a><a href="#join" class="pay" data-pick="consult" data-close>Консультація · 35 €</a></div></div><div class="acts">${TEST_MODE ? `<a href="/kviz/${location.search}" class="btn btn-green">Дізнатися, з чого почати <span class="arr">${ARR}</span></a><small class="tm-cd" id="tmCd" aria-live="polite">Перейдемо автоматично за 7 с</small>` :`<a href="#taryfy" class="btn btn-green" data-close>Обрати формат навчання <span class="arr">${ARR}</span></a><a href="#lesson" class="btn btn-ghost" data-close>Перший урок</a>`}<button type="button" class="btn btn-ghost" data-restart>Зіграти ще</button></div></div>`;
+    stage.innerHTML = `<div class="g-card g-res${TEST_MODE ? ' tm' : ''}"><div class="g-badge"><div>🏆</div></div><span class="lvl">Логіст · рівень 1 · ${xp} XP</span><h3>Професія логіста вам підходить!</h3><div class="q-list">${picks.map((p, i) => `<div style="--i:${i}">${p}<i class="tg sm" data-tgi="${i}"></i></div>`).join('')}</div><p>${TEST_MODE ? 'Освоїти логістику може кожен, хто поставив собі таку ціль. Ще кілька питань — і я підкажу, з чого почати саме вам.' : 'Освоїти логістику може кожен, хто поставив собі таку ціль. Я покажу шлях від нуля до першого вантажу — за 6 тижнів.'}</p><div class="g-ask"><p>💬 <b>Коротке питання про навчання?</b> Напишіть мені в Direct (кнопка «Повідомлення» в профілі) — відповім голосовим.</p><p>📋 <b>Детально розібрати вашу ситуацію</b> — це вже особиста консультація. Вона платна: 1 година онлайн, <s>50 €</s> <b>35 € до 31 грудня</b>. Якщо після консультації йдете на курс — її вартість зарахую у ціну навчання.</p><p>🎁 <b>Бонус:</b> після оплати надішлю три подарунки: гайд «7 помилок, на яких логіст втрачає гроші», словник логіста і самоперевірка «Чи готові ви до першої співбесіди».</p><div class="ask-acts"><a href="https://www.instagram.com/veronika_logistics/" target="_blank" rel="noopener">Задати питання</a><a href="#join" class="pay" data-pick="consult" data-close>Консультація · 35 €</a></div></div><div class="acts">${TEST_MODE ? `<a href="/kviz/${location.search}" class="btn btn-green">Дізнатися, з чого почати <span class="arr">${ARR}</span></a><small class="tm-cd" id="tmCd" aria-live="polite">Перейдемо автоматично за 7 с</small>` :`<a href="#taryfy" class="btn btn-green" data-close>Обрати формат навчання <span class="arr">${ARR}</span></a><a href="#lesson" class="btn btn-ghost" data-close>Перший урок</a>`}<button type="button" class="btn btn-ghost" data-restart>Зіграти ще</button></div></div>`;
     /* у режимі з директу галочки зʼявляються повільніше — щоб встигли прочитати */
     const tgStep = TEST_MODE ? 400 : 150;
     stage.querySelectorAll('[data-tgi]').forEach((t, i) => setTimeout(() => t.classList.add('on'), 800 + i * tgStep));
@@ -2512,8 +2514,8 @@ setTimeout(function () {
   const paidT = form.querySelector('.paid-t');
   form.querySelectorAll('input[name=ckind]').forEach(i => i.addEventListener('change', () => {
     paidT.textContent = kind() === 'urgent'
-      ? 'Вероніка звʼяжеться з вами якнайшвидше, поза чергою. Після оплати надішле гайд і словник логіста 🎁'
-      : 'Вероніка напише вам, щоб узгодити зручний час. Після оплати надішле гайд і словник логіста 🎁';
+      ? 'Вероніка звʼяжеться з вами якнайшвидше, поза чергою. Після оплати надішле три подарунки 🎁'
+      : 'Вероніка напише вам, щоб узгодити зручний час. Після оплати надішле три подарунки 🎁';
     haptic(10);
   }));
   document.addEventListener('click', e => { const a = e.target.closest('[data-ckind]'); if (a) { form.querySelector('input[name=ckind][value=' + a.dataset.ckind + ']').click(); } });
@@ -2620,8 +2622,8 @@ setTimeout(function () {
     const interests = [isConsult ? (kind() === 'urgent' ? 'Термінова консультація (70 €, акція до 31.12)' : 'Консультація за записом (35 €, акція до 31.12)') : 'Курс · ' + P.name + ' — ' + P.v + ' €'];
     const q = form.msg.value.trim();
     const msg = isConsult
-      ? (kind() === 'urgent' ? '⚡ ТЕРМІНОВА консультація · 70 € (акція до 31.12)' : '💬 Запит на консультацію за записом · 35 € (акція до 31.12)') + ' · попереджено, що платна' + (q ? '\n\nПитання: ' + q : '') + '\n\n🎁 Після оплати надіслати гайд: https://veronika-logistics.com/gayd-437e503b2cc2e2468852f9293ec89ac6/\nі словник: https://veronika-logistics.com/slovnyk-c1feeeac9c1a20b2bc84ce3c41bf3fa8/'
-      : '🎟 Бронює місце · ' + P.name + ' · ' + P.v + ' €' + (BF ? ' (Black Friday до 5.12)' : '') + ' · ' + P.parts + '\n\n➡️ Надіслати реквізити для оплати';
+      ? (kind() === 'urgent' ? '⚡ ТЕРМІНОВА консультація · 70 € (акція до 31.12)' : '💬 Запит на консультацію за записом · 35 € (акція до 31.12)') + ' · попереджено, що платна' + (q ? '\n\nПитання: ' + q : '') + '\n\n🎁 Після оплати надіслати три подарунки:\n• гайд: https://veronika-logistics.com/gayd-437e503b2cc2e2468852f9293ec89ac6/\n• словник: https://veronika-logistics.com/slovnyk-c1feeeac9c1a20b2bc84ce3c41bf3fa8/\n• самоперевірка: https://veronika-logistics.com/samoperevirka-e14394af9b6311a1da4280fdc1a76b52/'
+      : '🎟 Бронює місце · ' + P.name + ' · ' + P.v + ' €' + (BF ? ' (Black Friday до 5.12)' : '') + ' · ' + P.parts + '\n\n➡️ Надіслати реквізити для оплати\n\n🎁 Після оплати надіслати три подарунки:\n• гайд: https://veronika-logistics.com/gayd-437e503b2cc2e2468852f9293ec89ac6/\n• словник: https://veronika-logistics.com/slovnyk-c1feeeac9c1a20b2bc84ce3c41bf3fa8/\n• самоперевірка: https://veronika-logistics.com/samoperevirka-e14394af9b6311a1da4280fdc1a76b52/';
     formErr.hidden = true;
     submitBtn.disabled = true;
     submitBtn.innerHTML = 'Надсилаю… <span class="arr"><span class="spin"></span></span>';
