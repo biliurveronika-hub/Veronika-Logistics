@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Три рилси на охват | Veronika Logistics</title>
+<meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
+<meta name="googlebot" content="noindex, nofollow">
+<meta name="referrer" content="no-referrer">
+<meta name="theme-color" content="#EEF2F5">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@1,400;1,500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#EEF2F5; --paper:#F8FAFC; --white:#fff;
+  --ink:#14232E; --muted:#546473; --line:rgba(20,35,46,.12);
+  --forest:#244A5E; --forest-d:#17313F;
+  --blue:#3E6E91; --sky-l:#CFE0EF; --ice:#E3ECF4; --sage:#E7EBD6; --sage-d:#5E6A36; --amber:#F8E8CF; --amber-d:#8A5410;
+  --ios:#34C759; --r:22px; --wrap:720px;
+  --serif:'Playfair Display',Georgia,serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Manrope',system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden;padding-bottom:60px}
+button{font:inherit;color:inherit}
+a{color:var(--blue)}
+em{font-family:var(--serif);font-style:italic;font-weight:400;letter-spacing:-.02em}
+.wrap{max-width:var(--wrap);margin:0 auto;padding:0 max(16px,env(safe-area-inset-left,0px))}
+h1,h2,h3{font-weight:700;letter-spacing:-.03em;line-height:1.15}
+.hero{padding:32px 0 6px}
+.label{display:inline-flex;align-items:center;gap:8px;padding:6px 12px 6px 9px;border-radius:999px;background:var(--white);border:1px solid var(--line);font-size:11.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--blue)}
+.label::before{content:"";width:7px;height:7px;border-radius:50%;background:currentColor}
+.hero h1{font-size:clamp(30px,7.4vw,44px);margin:14px 0 10px}
+.hero h1 em{color:var(--blue)}
+.hero p{color:var(--muted);font-size:16px}
+.prog{position:sticky;top:0;z-index:5;display:flex;align-items:center;gap:10px;margin-top:20px;background:var(--white);border:1px solid var(--line);border-radius:999px;padding:8px 8px 8px 16px}
+.prog .track{flex:1;height:8px;border-radius:99px;background:var(--ice);overflow:hidden}
+.prog .track i{display:block;height:100%;width:0;background:var(--ios);border-radius:99px;transition:width .4s}
+.prog b{font-size:13px;font-weight:800;color:var(--forest);white-space:nowrap}
+.prog .btn{padding:8px 14px;font-size:13px}
+.note{margin-top:14px;background:var(--forest-d);color:#fff;border-radius:var(--r);padding:16px 18px;display:grid;gap:8px}
+.note b{font-size:11.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--sky-l)}
+.note p{color:#DCE6EE;font-size:15px}
+.reel{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);padding:18px;margin-top:22px;display:grid;gap:12px;transition:background .3s,border-color .3s}
+.reel.done{background:#F1F8F2;border-color:rgba(52,199,89,.45)}
+.reel h2{font-size:21px}
+.reel h2 small{display:block;font-size:12px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:4px}
+.tags{display:flex;flex-wrap:wrap;gap:6px}
+.tag{font-size:12.5px;font-weight:700;padding:5px 10px;border-radius:999px;background:var(--white);border:1px solid var(--line)}
+.tag.kw{background:var(--forest-d);color:#fff;border-color:var(--forest-d)}
+.why{font-size:14.5px;color:var(--muted)}
+.rows{display:grid;gap:8px}
+.row{display:grid;grid-template-columns:58px 1fr;gap:12px;background:var(--white);border:1px solid var(--line);border-radius:14px;padding:12px 14px}
+.row .t{font-size:12.5px;font-weight:800;color:var(--blue);font-variant-numeric:tabular-nums;padding-top:2px}
+.row .say{font-size:16px}
+.row .shot{font-size:13.5px;color:var(--muted);margin-top:6px}
+.row .shot::before{content:"🎬 "}
+.row>div{min-width:0}
+.box{border-radius:14px;padding:10px 14px;font-size:14.5px}
+.box b{display:block;font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;margin-bottom:4px}
+.ins{background:var(--sage)} .ins b{color:var(--sage-d)}
+.dec{background:var(--amber)} .dec b{color:var(--amber-d)}
+.cap{background:var(--white);border:1px solid var(--line);border-radius:14px;padding:12px 14px;font-size:15px;white-space:pre-line}
+.cap b{display:block;font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--blue);margin-bottom:6px}
+.acts{display:flex;flex-wrap:wrap;gap:8px}
+.btn{border:0;cursor:pointer;background:var(--forest-d);color:#fff;font-size:14px;font-weight:700;padding:10px 18px;border-radius:999px;text-decoration:none;display:inline-flex;align-items:center;gap:6px}
+.btn.ghost{background:var(--white);color:var(--forest-d);border:1px solid var(--line)}
+.btn.ok,.reel.done .done-btn{background:var(--ios)}
+.check{background:var(--white);border:1px solid var(--line);border-radius:var(--r);padding:16px 18px;margin-top:12px}
+.check li{list-style:none;display:grid;grid-template-columns:24px 1fr;gap:8px;padding:6px 0;font-size:15.5px}
+.check li::before{content:"□";color:var(--blue);font-weight:800}
+h2.sec{font-size:clamp(21px,5vw,27px);margin:40px 0 4px}
+.ft{margin-top:40px;color:var(--muted);font-size:13.5px}
+/* суфлер */
+.pr{position:fixed;inset:0;z-index:20;background:#0E1A22;color:#fff;overflow-y:auto;display:none;padding:0 0 80px}
+.pr.on{display:block}
+.pr-bar{position:sticky;top:0;display:flex;gap:8px;justify-content:space-between;align-items:center;padding:12px 16px;background:#0E1A22;border-bottom:1px solid rgba(255,255,255,.12)}
+.pr-bar .btn{background:#fff;color:#0E1A22;padding:8px 14px;font-size:13px}
+.pr-bar .sz{display:flex;gap:6px}
+.pr-in{max-width:760px;margin:0 auto;padding:10px 20px}
+.pr h3{font-size:14px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--sky-l);margin:34px 0 10px}
+.pr p{font-size:var(--pf,28px);line-height:1.4;font-weight:600;margin:0 0 22px}
+@media (max-width:420px){.row{grid-template-columns:1fr;gap:4px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="hero">
+  <span class="label">Рилси · наступний тиждень</span>
+  <h1>Три рилси <em>на широку аудиторію</em></h1>
+  <p>Вероніко, ці три рилси для тих, хто про логістику ще навіть не думав: про склад і прибирання в Польщі, про чоловіків-далекобійників і про «чоловічу роботу». Знімаються вдома, разом приблизно пів години.</p>
+  <div class="prog"><div class="track"><i id="bar"></i></div><b id="cnt">0 з 3</b><button class="btn" type="button" id="prOpen">Суфлер</button></div>
+  <div class="note">
+    <b>Як знімати</b>
+    <p>Телефон вертикально на штативі, світло з вікна в обличчя. Один і той самий светр чи сорочка спокійного кольору на всі три.</p>
+    <p>Кожну фразу — окремим дублем, між фразами пауза 2–3 секунди. Першу фразу зніми 2–3 рази з різною інтонацією. Чергуй два плани: ближче (по груди) і далі (по пояс).</p>
+    <p>Говори своїми словами — текст тільки підказка. Кадри «🎬» можна зняти окремо, коротко, по 3–5 секунд.</p>
+  </div>
+</header>
+
+<section class="reel" data-r="1">
+  <h2><small>Рилс 1</small>«Склад, прибирання чи завод?»</h2>
+  <div class="tags"><span class="tag">≈ 33 сек</span><span class="tag kw">кодове слово: логістика</span></div>
+  <p class="why">Чіпляє всіх українок у Польщі, бо кожна чула «без мови тільки склад». А відповідь — твоя професія.</p>
+  <div class="rows">
+    <div class="row"><span class="t">0–3 с</span><div><p class="say">«Здається, що українці в Польщі є лише три варіанти: склад, прибирання або завод. Є четвертий — логістика.»</p><p class="shot">Йдеш вулицею зі стаканчиком кави, дивишся в камеру.</p></div></div>
+    <div class="row"><span class="t">3–9 с</span><div><p class="say">«Логіст не носить коробки й не стоїть біля конвеєра. Він за ноутбуком організовує, як вантаж доїде з однієї країни в іншу.»</p><p class="shot">Сідаєш за стіл, відкриваєш ноутбук.</p></div></div>
+    <div class="row"><span class="t">9–15 с</span><div><p class="say">«Шукає машину, складає маршрут, домовляється з водієм і клієнтом, стежить, щоб усе приїхало вчасно.»</p><p class="shot">Крупно екран ноутбука з картою Європи або маршрутом.</p></div></div>
+    <div class="row"><span class="t">15–23 с</span><div><p class="say">«І ваша українська тут не мінус. Я сама налагоджувала роботу польської фірми з українськими перевізниками, з якими поляки просто не могли домовитися.»</p><p class="shot">Далі, спокійно, в камеру.</p></div></div>
+    <div class="row"><span class="t">23–28 с</span><div><p class="say">«Тут важать не сильні руки, а логіка й уважність. І цьому можна навчитися з нуля.»</p><p class="shot">Ближче, в камеру.</p></div></div>
+    <div class="row"><span class="t">28–33 с</span><div><p class="say">«Як ця робота виглядає зсередини — напишіть “логістика”, надішлю безкоштовне відео.»</p><p class="shot">Показуєш пальцем вниз.</p></div></div>
+  </div>
+  <div class="cap" id="cap1"><b>Підпис під рилс</b>Напишіть «логістика» в коментарях — надішлю безкоштовне відео «Як стати логістом з нуля» 👇
+
+Склад, прибирання чи завод? Є четвертий варіант. Логіст не носить коробки — він за ноутбуком організовує, як вантаж доїде з Польщі у Францію: машина, маршрут, водій, документи. І ваша українська тут не мінус, а плюс.
+
+А ким ви працюєте зараз? 👇
+
+#логістика #логіст #роботаупольщі #українціупольщі #новапрофесія #змінапрофесії #міжнародналогістика #роботазноутбука</div>
+  <div class="acts">
+    <button class="btn ghost copy" type="button" data-copy="cap1">Скопіювати підпис</button>
+    <button class="btn done-btn" type="button">Знято</button>
+  </div>
+</section>
+
+<section class="reel" data-r="2">
+  <h2><small>Рилс 2</small>«Ваш чоловік — далекобійник?»</h2>
+  <div class="tags"><span class="tag">≈ 33 сек</span><span class="tag kw">кодове слово: тест</span></div>
+  <p class="why">Дружин далекобійників серед українок дуже багато, і з ними ніхто не говорить напряму. Прохання «позначте подругу» дає відмітки й пересилання — так рилс іде в охват.</p>
+  <div class="rows">
+    <div class="row"><span class="t">0–3 с</span><div><p class="say">«Якщо ваш чоловік — далекобійник, ви знаєте про логістику більше, ніж думаєте.»</p><p class="shot">Ближче, телефон у руці, дивишся в камеру.</p></div></div>
+    <div class="row"><span class="t">3–10 с</span><div><p class="say">«Він тижнями в рейсі. Ви чуєте “стою на рампі”, “закінчився час”, “чекаю на завантаження” — і просто переживаєте за нього з телефона.»</p><p class="shot">Далі, в камеру.</p></div></div>
+    <div class="row"><span class="t">10–16 с</span><div><p class="say">«А хто йому дзвонить і каже, куди їхати, де заправитись і коли розвантаження? Логіст. І це може бути жінка вдома за ноутбуком.»</p><p class="shot">Телефон біля вуха, наче дзвониш водію.</p></div></div>
+    <div class="row"><span class="t">16–24 с</span><div><p class="say">«Серед моїх учениць багато дружин водіїв. Вони вже знали слова — а я показала, як ця робота влаштована з іншого боку.»</p><p class="shot">Ближче, в камеру.</p></div></div>
+    <div class="row"><span class="t">24–33 с</span><div><p class="say">«Чи підійде вам ця робота? Напишіть “тест” — надішлю тест на одну хвилину. І позначте подругу, в якої чоловік зараз у рейсі.»</p><p class="shot">Показуєш пальцем вниз.</p></div></div>
+  </div>
+  <div class="box dec"><b>Якщо інакше</b>Якщо дружин водіїв серед учениць небагато — скажи «серед моїх учениць є дружини водіїв».</div>
+  <div class="cap" id="cap2"><b>Підпис під рилс</b>Напишіть «тест» у коментарях — надішлю в директ тест на 1 хвилину: чи підійде вам професія логіста 👇
+
+Якщо ваш чоловік — далекобійник, ви знаєте про логістику більше, ніж думаєте 🚚 «Стою на рампі», «закінчився час», «чекаю на завантаження» — це все ви вже чули. А по той бік телефону сидить логіст.
+
+Позначте подругу, в якої чоловік зараз у рейсі 💙
+
+#далекобійник #дружинадалекобійника #логістика #логіст #українціупольщі #роботаздому #новапрофесія</div>
+  <div class="acts">
+    <button class="btn ghost copy" type="button" data-copy="cap2">Скопіювати підпис</button>
+    <button class="btn done-btn" type="button">Знято</button>
+  </div>
+</section>
+
+<section class="reel" data-r="3">
+  <h2><small>Рилс 3</small>«Кажуть, логістика — чоловіча робота»</h2>
+  <div class="tags"><span class="tag">≈ 33 сек</span><span class="tag kw">кодове слово: тест</span></div>
+  <p class="why">Суперечлива фраза на початку збирає коментарі, а твій шлях від 5 машин до начальниці відділу її спокійно розбиває.</p>
+  <div class="rows">
+    <div class="row"><span class="t">0–3 с</span><div><p class="say">«Кажуть, логістика — чоловіча робота. А я керувала двадцятьма пʼятьма фурами.»</p><p class="shot">Ближче, з легкою усмішкою, в камеру.</p></div></div>
+    <div class="row"><span class="t">3–9 с</span><div><p class="say">«Здається, що тут треба розбиратися в моторах і кричати на водіїв. Ні.»</p><p class="shot">Далі, в камеру.</p></div></div>
+    <div class="row"><span class="t">9–16 с</span><div><p class="say">«Я складала маршрути, шукала заправки, планувала сервіси, була на звʼязку з водієм і клієнтом. Усе — з ноутбука й телефона.»</p><p class="shot">Крупно екран ноутбука з маршрутом на карті.</p></div></div>
+    <div class="row"><span class="t">16–22 с</span><div><p class="say">«Почала з пʼяти машин, потім двадцять пʼять. А через пів року стала начальницею відділу диспетчерів.»</p><p class="shot">Ближче, в камеру.</p></div></div>
+    <div class="row"><span class="t">22–27 с</span><div><p class="say">«Тут виграє той, хто уважний, тримає все в порядку і не панікує. Якщо ви тримаєте в голові все за всіх — ви вже наполовину логіст.»</p><p class="shot">Далі, в камеру.</p></div></div>
+    <div class="row"><span class="t">27–33 с</span><div><p class="say">«Перевірте себе — напишіть “тест”, надішлю тест на хвилину.»</p><p class="shot">Показуєш пальцем вниз.</p></div></div>
+  </div>
+  <div class="cap" id="cap3"><b>Підпис під рилс</b>Напишіть «тест» у коментарях — надішлю в директ тест на 1 хвилину: чи підійде вам професія логіста 👇
+
+«Логістика — чоловіча робота» 🙂 А я керувала 25 фурами. Маршрути, заправки, сервіси, звʼязок з водієм і клієнтом — усе з ноутбука й телефона. Почала з 5 машин, потім 25, а через пів року стала начальницею відділу диспетчерів.
+
+Вам теж казали, що якась робота «не жіноча»? 👇
+
+#логіст #логістика #жінкавлогістиці #диспетчер #міжнародналогістика #українціупольщі #новапрофесія</div>
+  <div class="acts">
+    <button class="btn ghost copy" type="button" data-copy="cap3">Скопіювати підпис</button>
+    <button class="btn done-btn" type="button">Знято</button>
+  </div>
+</section>
+
+<h2 class="sec">Що взяти на зйомку</h2>
+<ul class="check">
+  <li>Стаканчик кави (для першого кадру на вулиці)</li>
+  <li>Ноутбук з картою Європи або маршрутом на екрані</li>
+  <li>Телефон</li>
+  <li>Штатив, світло з вікна, петличку</li>
+</ul>
+
+<p class="ft">Veronika Logistics · внутрішня сторінка, не пересилайте посилання.</p>
+</div>
+
+<div class="pr" id="pr" aria-hidden="true">
+  <div class="pr-bar">
+    <div class="sz"><button class="btn" type="button" data-sz="-4">A−</button><button class="btn" type="button" data-sz="4">A+</button></div>
+    <button class="btn" type="button" id="prClose">Закрити</button>
+  </div>
+  <div class="pr-in" id="prIn"></div>
+</div>
+
+<script>
+(function(){
+  var KEY='vl-rilsy-ohvat';
+  var rs=[].slice.call(document.querySelectorAll('.reel[data-r]')), st={};
+  try{st=JSON.parse(localStorage.getItem(KEY)||'{}')}catch(e){}
+  function upd(){
+    var n=rs.filter(function(r){return r.classList.contains('done')}).length;
+    document.getElementById('bar').style.width=(n/rs.length*100)+'%';
+    document.getElementById('cnt').textContent=n+' з '+rs.length;
+  }
+  rs.forEach(function(r){
+    var id=r.getAttribute('data-r'), b=r.querySelector('.done-btn');
+    if(st[id]){r.classList.add('done');b.textContent='Знято ✓'}
+    b.addEventListener('click',function(){
+      var on=!r.classList.contains('done');
+      r.classList.toggle('done',on); b.textContent=on?'Знято ✓':'Знято';
+      st[id]=on; try{localStorage.setItem(KEY,JSON.stringify(st))}catch(e){}
+      upd();
+    });
+  });
+  [].forEach.call(document.querySelectorAll('.copy'),function(b){
+    b.addEventListener('click',function(){
+      var el=document.getElementById(b.getAttribute('data-copy'));
+      var lb=el.querySelector('b'); var txt=el.innerText.replace(lb?lb.innerText:'','').trim();
+      var done=function(){b.classList.add('ok');b.textContent='Скопійовано ✓';setTimeout(function(){b.classList.remove('ok');b.textContent='Скопіювати підпис'},2000)};
+      if(navigator.clipboard){navigator.clipboard.writeText(txt).then(done,function(){})}
+    });
+  });
+  // суфлер: тільки слова Вероніки
+  var pr=document.getElementById('pr'), inn=document.getElementById('prIn'), size=28;
+  try{size=parseInt(localStorage.getItem(KEY+'-sz'),10)||28}catch(e){}
+  rs.forEach(function(r){
+    var h=document.createElement('h3'); h.textContent=r.querySelector('h2').lastChild.textContent.trim(); inn.appendChild(h);
+    [].forEach.call(r.querySelectorAll('.say'),function(s){var p=document.createElement('p');p.textContent=s.textContent.replace(/^«|»$/g,'');inn.appendChild(p)});
+  });
+  function setSz(){pr.style.setProperty('--pf',size+'px')}
+  setSz();
+  document.getElementById('prOpen').addEventListener('click',function(){pr.classList.add('on');pr.setAttribute('aria-hidden','false');document.body.style.overflow='hidden'});
+  document.getElementById('prClose').addEventListener('click',function(){pr.classList.remove('on');pr.setAttribute('aria-hidden','true');document.body.style.overflow=''});
+  [].forEach.call(pr.querySelectorAll('[data-sz]'),function(b){b.addEventListener('click',function(){size=Math.max(18,Math.min(48,size+parseInt(b.getAttribute('data-sz'),10)));setSz();try{localStorage.setItem(KEY+'-sz',size)}catch(e){}})});
+  upd();
+})();
+</script>
+</body>
+</html>
