@@ -172,6 +172,21 @@ tr.later td{color:var(--later)}
 .fcard li{color:var(--muted)} .fcard li b{color:var(--ink)}
 .rule-all{margin-top:12px;background:var(--vero-soft);color:var(--ink);border-radius:18px;padding:14px 16px;font-size:15px}
 @media (max-width:900px){.fmt{grid-template-columns:1fr}}
+.ctable{overflow-x:auto;margin-top:12px;background:var(--surface);border-radius:22px}
+.ctable table{min-width:480px}
+.tsteps{margin:16px 0 0;padding-left:22px;display:grid;gap:14px}
+.tsteps>li{background:var(--surface);border-radius:20px;padding:14px 16px}
+.tsteps>li::marker{font-weight:800;color:var(--accent)}
+.tsteps>li>b{display:block;font-size:16px}
+.tsteps>li>span{display:block;color:var(--muted);font-size:14.5px;margin-top:3px}
+.opts{display:grid;gap:8px;margin-top:10px}
+.opt{display:flex;gap:12px;align-items:flex-start;background:var(--bg);border-radius:16px;padding:12px 14px}
+.oi{font-size:22px;line-height:1}
+.opt b{display:block;font-size:15px}
+.opt span{display:block;color:var(--muted);font-size:14px;margin-top:2px}
+.opt em{display:inline-block;font-style:normal;font-family:var(--sans);font-size:12px;font-weight:800;padding:3px 9px;border-radius:999px;margin-top:6px}
+.opt em.free{background:var(--free-soft);color:var(--free)}
+.opt em.paidt{background:var(--paid-soft);color:var(--paid)}
 .toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translate(-50%,20px);opacity:0;background:var(--deep);color:var(--deep-ink);padding:11px 18px;border-radius:999px;font-weight:700;font-size:14px;transition:.25s;pointer-events:none}
 .toast.on{opacity:1;transform:translate(-50%,0)}
 
@@ -193,7 +208,7 @@ tr.later td{color:var(--later)}
 <header>
   <div class="eyebrow">Veronika Logistics · для Вероніки · 28.11.2026</div>
   <h1>Як працює наша воронка — <em>від рилса до оплати</em></h1>
-  <p class="lede">Тут усе: хто до нас приходить, куди веде кожна кнопка, що тобі приходить у Telegram і що робиш ти. Позначки <span class="st-ok">✅ працює</span> — це вже на сайті, <span class="st-build">🛠 робимо</span> — готуємо зараз. Головне правило: безкоштовно — тільки те, що не забирає твій час (тест, відеоурок, рилси). Будь-яка розмова з тобою — платна консультація.</p>
+  <p class="lede">Тут усе: хто до нас приходить, куди веде кожна кнопка, що тобі приходить у Telegram і що робиш ти. Позначки <span class="st-ok">✅ працює</span> — це вже на сайті, <span class="st-build">🛠 робимо</span> — готуємо зараз. Головне правило: безкоштовно — тільки те, що не забирає твій час (тест, відеоурок, рилси, коротке питання в Direct). Усі дзвінки й консультації — платні.</p>
   <div class="legend">
     <span class="chip c-free"><i></i>Безкоштовно, без тебе</span>
     <span class="chip c-step"><i></i>Сторінка / крок на сайті</span>
@@ -202,13 +217,13 @@ tr.later td{color:var(--later)}
     <span class="chip c-later"><i></i>Пізніше</span>
   </div>
   <nav class="toc" aria-label="Зміст">
-    <a href="#formaty">Формати роботи</a><a href="#dorogy">Три дороги</a><a href="#oplata">Оплата</a><a href="#konsultatsiia">Консультація</a><a href="#tsiny">Ціни</a><a href="#status">Що готово</a><a href="#vid-tebe">Що потрібно від тебе</a>
+    <a href="#formaty">Формати роботи</a><a href="#taryfy">Сторінка тарифів</a><a href="#dorogy">Три дороги</a><a href="#oplata">Оплата</a><a href="#konsultatsiia">Консультація</a><a href="#tsiny">Ціни</a><a href="#status">Що готово</a><a href="#vid-tebe">Що потрібно від тебе</a>
   </nav>
 </header>
 
 <section class="block" id="formaty">
   <h2>Формати <em>роботи</em></h2>
-  <p class="sub">У нас два формати: навчання і платні консультації. Консультації бувають трьох видів. Безкоштовних консультацій немає.</p>
+  <p class="sub">У нас два формати: навчання і платні консультації. <b>Усі дзвінки й консультації — платні.</b> Безкоштовно — тільки коротке питання в Direct.</p>
   <div class="fmt">
     <div class="fcard main">
       <div class="fk">Формат 1</div>
@@ -220,29 +235,49 @@ tr.later td{color:var(--later)}
       </ul>
     </div>
     <div class="fcard">
-      <div class="fk">Формат 2 · вид А</div>
-      <h3>Консультація для тих, хто хоче на навчання</h3>
-      <p>Консультація-знайомство: познайомитись, відповісти на питання, підібрати формат навчання.</p>
+      <div class="fk">Формат 2</div>
+      <h3>Платні консультації — два види</h3>
       <ul>
-        <li><b>Новачки з нуля:</b> чи підходить професія, з чого почати, який пакет.</li>
-        <li><b>Ті, хто вже щось знає або працює:</b> яких тем бракує, які модулі потрібні.</li>
-        <li><b>Вартість консультації в будь-якому разі зараховується у навчання.</b></li>
+        <li><b>Консультація-знайомство перед навчанням.</b> Для новачків з нуля і для тих, хто вже щось знає й кому потрібні окремі модулі. Знайомство, питання, план, який пакет.</li>
+        <li><b>Консультація «Ваше питання».</b> Для практиків: логіст, диспетчер, власна фірма чи бус. Вирішуємо конкретний запит — ставки, біржі, документи, водії, клієнти.</li>
       </ul>
     </div>
-    <div class="fcard">
-      <div class="fk">Формат 2 · вид Б</div>
-      <h3>Консультація для практиків — вирішити своє питання</h3>
-      <p>Для тих, хто вже працює: логіст, диспетчер, власна фірма чи бус. Не про навчання, а про конкретну ситуацію: ставки, біржі, документи, водії, клієнти.</p>
-      <ul><li>Якщо після неї людина йде на навчання — вартість теж зараховується.</li></ul>
-    </div>
-    <div class="fcard">
-      <div class="fk">Формат 2 · вид В</div>
-      <h3>Термінова консультація</h3>
-      <p>Будь-яка з консультацій вище, але поза чергою — того ж дня або якнайшвидше.</p>
-    </div>
   </div>
-  <div class="rule-all"><b>Для всіх консультацій однаково:</b> 1 година онлайн · тільки після оплати · після оплати людина одразу отримує подарунки — гайд «7 помилок, на яких логіст втрачає гроші» і словник логіста.</div>
+
+  <div class="ctable">
+    <table>
+      <thead><tr><th></th><th>За записом</th><th>Термінова (швидка)</th></tr></thead>
+      <tbody>
+        <tr><td><b>Знайомство перед навчанням</b><span class="s">новачки і ті, кому потрібні модулі</span></td><td><b>35 €</b> до 31.12<span class="s">потім 50 €</span></td><td><b>70 €</b> до 31.12<span class="s">потім 100 €</span></td></tr>
+        <tr><td><b>«Ваше питання»</b><span class="s">практики, свій запит</span></td><td><b>35 €</b> до 31.12<span class="s">потім 50 €</span></td><td><b>70 €</b> до 31.12<span class="s">потім 100 €</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="fmt">
+    <div class="fcard"><div class="fk">За записом</div><p>Ти пропонуєш час у найближчі дні.</p></div>
+    <div class="fcard"><div class="fk">Термінова</div><p>Поза чергою — протягом 24 годин.</p></div>
+  </div>
+  <div class="rule-all"><b>Для всіх консультацій однаково:</b> 1 година онлайн · тільки після оплати · одразу після оплати — подарунки: гайд «7 помилок, на яких логіст втрачає гроші» і словник логіста · <b>якщо після будь-якої консультації людина йде на навчання — вартість консультації зараховується.</b></div>
 </section>
+
+<section class="block" id="taryfy">
+  <h2>Сторінка тарифів <em>«Умови курсу»</em> <span class="st-build">🛠 робимо</span></h2>
+  <p class="sub">Що буде на сторінці, зверху вниз.</p>
+  <ol class="tsteps">
+    <li><b>Два пакети</b><span>Пакет 1 «Курс + групові дзвінки» і Пакет 2 «Курс + я поруч»: ціна, частинами, що всередині, кнопка «Забронювати місце».</span></li>
+    <li><b>«Не знаєте, який пакет обрати?»</b><span>Три варіанти — від найлегшого до платного:</span>
+      <div class="opts">
+        <div class="opt"><div class="oi">💬</div><div><b>Задати питання в Direct</b><span>Коротке питання: «який пакет мені», «чи можна частинами». Відповідаєш текстом або голосовим.</span><em class="free">безкоштовно</em></div></div>
+        <div class="opt"><div class="oi">🧭</div><div><b>Підібрати пакет за 2 хвилини</b><span>Квіз, який уже є, — підказує пакет.</span><em class="free">безкоштовно</em></div></div>
+        <div class="opt"><div class="oi">📞</div><div><b>Консультація-знайомство</b><span>1 година: знайомство, питання, план, який пакет. Вартість зараховується у навчання, подарунки — гайд і словник.</span><em class="paidt">35 € до 31.12 · потім 50 €</em></div></div>
+      </div>
+    </li>
+    <li><b>«Вже працюєте в логістиці і маєте своє питання?»</b><span>Консультація «Ваше питання» — 35 € (термінова 70 €) до 31.12.</span></li>
+    <li><b>Рядок унизу, великими літерами</b><span>«Усі дзвінки й консультації — платні. Коротке питання в Direct — безкоштовно».</span></li>
+  </ol>
+  <div class="rule-all"><b>Межа для Direct:</b> одне коротке питання — безкоштовно. Якщо людина починає розписувати свою ситуацію і витягувати подробиці — ввічливо пропонуєш консультацію: «Це вже питання для консультації — там розберемо детально». Так безкоштовне питання не перетворюється на безкоштовну консультацію.</div>
+</section>
+
 
 <section class="block" id="dorogy">
   <h2>Три типи клієнтів — <em>три дороги</em></h2>
@@ -262,7 +297,7 @@ tr.later td{color:var(--later)}
         <li class="st paid"><span class="dot"></span><b>Сторінка оплати <span class="st-build">🛠</span></b><span class="d">Реквізити + кнопка «Надіслати скрін»</span><span class="tag">пакет 1 · 400 € / пакет 2 · 700 €</span></li>
         <li class="st vero"><span class="dot"></span><b>Ти відкриваєш доступ</b><span class="d">Отримала скрін → доступ до платформи → вітальне повідомлення</span></li>
       </ol>
-      <div class="alt"><b>Не знає, який пакет обрати?</b> Кнопка «Не знаю, який пакет» → короткий квіз <span class="st-ok">✅</span>, 4–6 питань → він підказує пакет. Хто після квізу все ще сумнівається — на консультацію-знайомство (дорога 🤔), її вартість зараховується в навчання.</div>
+      <div class="alt"><b>Не знає, який пакет обрати?</b> На сторінці тарифів три варіанти: коротке питання в Direct (безкоштовно), квіз «Підібрати пакет» <span class="st-ok">✅</span> (безкоштовно) або консультація-знайомство за 35 € — її вартість зараховується у навчання.</div>
     </article>
 
     <article class="lane" id="l2" role="tabpanel" aria-labelledby="t2">
@@ -271,7 +306,7 @@ tr.later td{color:var(--later)}
         <li class="st step"><span class="dot"></span><b>Рилс → слово «логістика» або «тест» у коментарях</b><span class="d">ManyChat перевіряє підписку і надсилає посилання</span></li>
         <li class="st free"><span class="dot"></span><b>Тест «Чи підходить вам професія логіста» <span class="st-ok">✅</span></b><span class="d">Гра на 5 питань, 1 хвилина. Тест лишається — він добре працює для сумнівних</span><span class="tag">безкоштовно</span></li>
         <li class="st free"><span class="dot"></span><b>VSL-урок «Як стати логістом з нуля» <span class="st-build">🛠 знімаємо</span></b><span class="d">Користь, шлях з 5 кроків, реальний рейс з твого екрана, історії учнів</span><span class="tag">безкоштовно · без тебе</span></li>
-        <li class="st step"><span class="dot"></span><b>Під відео дві кнопки</b><span class="d">«Умови курсу» (→ дорога 🌱) і «Консультація-знайомство» (вид А)</span></li>
+        <li class="st step"><span class="dot"></span><b>Під відео дві кнопки</b><span class="d">«Умови курсу» (→ дорога 🌱) і «Консультація-знайомство»</span></li>
         <li class="st paid"><span class="dot"></span><b>Оплата консультації наперед</b><span class="d">Та сама сторінка оплати. Запис підтверджується тільки після оплати</span><span class="tag">35 € до 31.12, потім 50 €</span></li>
         <li class="st free"><span class="dot"></span><b>Одразу після оплати — подарунки</b><span class="d">Гайд «7 помилок, на яких логіст втрачає гроші» + словник логіста. Посилання приходять тобі в заявці — просто перешли</span></li>
         <li class="st vero"><span class="dot"></span><b>Консультація, 1 година</b><span class="d">Знайомство, відповіді на питання, чи підходить професія, план входу, який пакет</span></li>
@@ -284,7 +319,7 @@ tr.later td{color:var(--later)}
       <div class="lane-h"><div class="who">🚛 Вже працює</div><p>Логіст, диспетчер, власна фірма чи бус. Курс з нуля не потрібен — або своє питання, або окремі теми.</p></div>
       <ol class="flow">
         <li class="st step"><span class="dot"></span><b>Сайт / шапка Instagram → «Консультація»</b><span class="d">Або пише тобі в Direct</span></li>
-        <li class="st step"><span class="dot"></span><b>Обирає вид консультації</b><span class="d">Вирішити своє питання (вид Б) або підібрати модулі навчання (вид А)</span></li>
+        <li class="st step"><span class="dot"></span><b>Обирає вид консультації</b><span class="d">«Ваше питання» — вирішити свій запит, або знайомство перед навчанням — підібрати модулі. Звичайна чи термінова</span></li>
         <li class="st paid"><span class="dot"></span><b>Оплата наперед</b><span class="d">Та сама сторінка оплати</span><span class="tag">35 € · термінова 70 € до 31.12</span></li>
         <li class="st free"><span class="dot"></span><b>Подарунки після оплати</b><span class="d">Гайд і словник</span></li>
         <li class="st vero"><span class="dot"></span><b>Консультація, 1 година</b><span class="d">Розбираєте його ситуацію або які модулі йому потрібні</span></li>
@@ -302,7 +337,7 @@ tr.later td{color:var(--later)}
       <p>Оплату карткою прямо на сайті поки не підключаємо: для цього потрібна фірма. Тому робимо одну приховану сторінку з твоїми реквізитами. На неї ведуть усі кнопки «Оплатити» — з сайту, з ManyChat і з Telegram-бота. Якщо реквізити зміняться, міняємо в одному місці.</p>
     </div>
     <ol>
-      <li><b>Кнопка знає, що купують.</b> Наприклад <code>?p=konsult</code>, <code>?p=terminova</code>, <code>?p=kurs1</code>, <code>?p=kurs2</code> — на сторінці одразу потрібна сума.</li>
+      <li><b>Кнопка знає, що купують.</b> Наприклад <code>?p=znayomstvo</code>, <code>?p=pytannia</code>, <code>?p=terminova</code>, <code>?p=kurs1</code>, <code>?p=kurs2</code> — на сторінці одразу потрібна сума.</li>
       <li><b>Реквізити</b> (вже є) з кнопкою «Скопіювати».</li>
       <li><b>«Я оплатив(ла) — надіслати скрін»</b> → відкривається чат з тобою з готовим текстом: що оплачено і скільки.</li>
       <li><b>Ти перевіряєш надходження</b> → доступ до курсу (місце заброньоване) або час консультації + подарунки.</li>
@@ -317,7 +352,7 @@ tr.later td{color:var(--later)}
   <p class="sub">Пропозиція, як розподілити годину, щоб у кінці була природна пропозиція курсу. Змінюй під себе.</p>
   <div class="plan">
     <div class="plan-row"><div class="t">0–5 хв</div><div><b>Знайомство</b><span>Хто людина, де живе, чим займається зараз, звідки дізналась про тебе.</span></div></div>
-    <div class="plan-row"><div class="t">5–25 хв</div><div><b>Її ситуація</b><span>Навіщо їй логістика, що лякає, скільки часу є, яка мова (польська, англійська). Для практика (вид Б) — одразу його конкретне питання, і далі план під нього.</span></div></div>
+    <div class="plan-row"><div class="t">5–25 хв</div><div><b>Її ситуація</b><span>Навіщо їй логістика, що лякає, скільки часу є, яка мова (польська, англійська). На консультації «Ваше питання» — одразу його запит, і далі вся година під нього.</span></div></div>
     <div class="plan-row"><div class="t">25–45 хв</div><div><b>Чи підходить і план входу</b><span>Чесно: чи це її. Що треба вивчити, скільки часу до першої роботи, з чого почати саме їй.</span></div></div>
     <div class="plan-row"><div class="t">45–55 хв</div><div><b>Курс зсередини і пакет</b><span>Покажи платформу, поясни різницю пакетів, порадь один. Нагадай, що вартість консультації зараховується у навчання.</span></div></div>
     <div class="plan-row"><div class="t">55–60 хв</div><div><b>Питання і наступний крок</b><span>Відповідаєш на питання, домовляєтесь про наступний крок — бронювання місця.</span></div></div>
@@ -332,9 +367,9 @@ tr.later td{color:var(--later)}
       <tbody>
         <tr><td><b>Пакет 1 · Курс + групові дзвінки</b><span class="s">8 модулів, 6 тижнів, 2 групові розбори, доступ на рік · бронювання місця = оплата</span></td><td>🌱 вміє вчитися сам</td><td><b>350 €</b> до 5.12<span class="s">2 × 175 €</span></td><td>400 €<span class="s">частинами</span></td></tr>
         <tr><td><b>Пакет 2 · Курс + я поруч</b><span class="s">усе з пакета 1 + 6 особистих дзвінків, перевірка домашніх, резюме, пробна співбесіда</span></td><td>🌱 з нуля, хоче на роботу швидше</td><td><b>600 €</b> до 5.12<span class="s">3 × 200 €</span></td><td>700 €<span class="s">частинами</span></td></tr>
-        <tr><td><b>Консультація для навчання (вид А)</b><span class="s">знайомство · 1 година · 🎁 гайд + словник · вартість зараховується у навчання</span></td><td>🤔 новачки і 🚛 кому потрібні модулі</td><td><b>35 €</b> до 31.12</td><td>50 €</td></tr>
-        <tr><td><b>Консультація для практиків (вид Б)</b><span class="s">вирішити своє питання · 1 година · 🎁 гайд + словник</span></td><td>🚛</td><td><b>35 €</b> до 31.12</td><td>50 €</td></tr>
-        <tr><td><b>Термінова консультація (вид В)</b><span class="s">будь-яка з консультацій, поза чергою</span></td><td>усі</td><td><b>70 €</b> до 31.12</td><td>100 €</td></tr>
+        <tr><td><b>Консультація-знайомство перед навчанням</b><span class="s">1 година · 🎁 гайд + словник · вартість зараховується у навчання</span></td><td>🤔 новачки і 🚛 кому потрібні модулі</td><td><b>35 €</b> · термінова <b>70 €</b><span class="s">до 31.12</span></td><td>50 € · термінова 100 €</td></tr>
+        <tr><td><b>Консультація «Ваше питання»</b><span class="s">свій запит · 1 година · 🎁 гайд + словник</span></td><td>🚛 практики</td><td><b>35 €</b> · термінова <b>70 €</b><span class="s">до 31.12</span></td><td>50 € · термінова 100 €</td></tr>
+        <tr><td><b>Коротке питання в Direct</b><span class="s">текстом або голосовим, без дзвінка</span></td><td>усі</td><td>безкоштовно</td><td>безкоштовно</td></tr>
         <tr class="later"><td><b>Модулі для практиків (05 + 07)</b><span class="s">поки не продаємо</span></td><td>🚛</td><td>—</td><td>пізніше</td></tr>
       </tbody>
     </table>
