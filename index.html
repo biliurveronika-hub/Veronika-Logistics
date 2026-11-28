@@ -449,6 +449,14 @@ body.no-ask .ask-tab,body.no-test .game-tab{display:none}
 .g-res .q-list div{animation:optIn .5s var(--ease) both;animation-delay:calc(.5s + var(--i)*.15s)}
 .g-res p{color:var(--muted);margin:18px auto 24px;max-width:460px}
 .g-res .acts{display:flex;flex-wrap:wrap;gap:10px;justify-content:center}
+.g-ask{max-width:460px;margin:-6px auto 22px;padding:16px 18px;border-radius:20px;background:#F3F6F4;border:1px solid rgba(0,0,0,.06);text-align:left;font-size:15px;line-height:1.45}
+.g-ask p{margin:0 0 8px!important;color:var(--ink)!important;max-width:none!important}
+.g-ask p:last-of-type{margin-bottom:12px!important}
+.g-ask s{opacity:.55}
+.g-ask .ask-acts{display:flex;flex-wrap:wrap;gap:8px}
+.g-ask .ask-acts a{flex:1 1 150px;display:inline-flex;align-items:center;justify-content:center;gap:6px;padding:11px 12px;border-radius:999px;font-weight:700;font-size:14px;text-decoration:none;border:1.5px solid var(--forest-d);color:var(--forest-d);background:#fff;text-align:center}
+.g-ask .ask-acts a.pay{background:var(--forest-d);color:#fff}
+.g-res.tm .g-ask{margin:0 auto 14px}
 /* режим із директу (?test=1): відповіді проявляються повільніше, кнопка на квіз прилипає до низу екрана */
 .g-res.tm .q-list div{animation-delay:calc(.5s + var(--i)*.4s)}
 .g-res.tm p{margin:16px auto 12px}
@@ -2133,7 +2141,7 @@ setTimeout(function () {
   });
   function resultG(){
     haptic([40, 60, 40, 60, 90]);
-    stage.innerHTML = `<div class="g-card g-res${TEST_MODE ? ' tm' : ''}"><div class="g-badge"><div>🏆</div></div><span class="lvl">Логіст · рівень 1 · ${xp} XP</span><h3>Професія логіста вам підходить!</h3><div class="q-list">${picks.map((p, i) => `<div style="--i:${i}">${p}<i class="tg sm" data-tgi="${i}"></i></div>`).join('')}</div><p>${TEST_MODE ? 'Освоїти логістику може кожен, хто поставив собі таку ціль. Ще чотири питання — і я підкажу, з чого почати саме вам.' : 'Освоїти логістику може кожен, хто поставив собі таку ціль. Я покажу шлях від нуля до першого вантажу — за 6 тижнів.'}</p><div class="acts">${TEST_MODE ? `<a href="/kviz/${location.search}" class="btn btn-green">Дізнатися, з чого почати <span class="arr">${ARR}</span></a><small class="tm-cd" id="tmCd" aria-live="polite">Перейдемо автоматично за 7 с</small>` :`<a href="#join" class="btn btn-green" data-pick="course" data-close>Записатися на курс <span class="arr">${ARR}</span></a><a href="#lesson" class="btn btn-ghost" data-close>Перший урок</a>`}<button type="button" class="btn btn-ghost" data-restart>Зіграти ще</button></div></div>`;
+    stage.innerHTML = `<div class="g-card g-res${TEST_MODE ? ' tm' : ''}"><div class="g-badge"><div>🏆</div></div><span class="lvl">Логіст · рівень 1 · ${xp} XP</span><h3>Професія логіста вам підходить!</h3><div class="q-list">${picks.map((p, i) => `<div style="--i:${i}">${p}<i class="tg sm" data-tgi="${i}"></i></div>`).join('')}</div><p>${TEST_MODE ? 'Освоїти логістику може кожен, хто поставив собі таку ціль. Ще чотири питання — і я підкажу, з чого почати саме вам.' : 'Освоїти логістику може кожен, хто поставив собі таку ціль. Я покажу шлях від нуля до першого вантажу — за 6 тижнів.'}</p><div class="g-ask"><p>💬 <b>Коротке питання про навчання?</b> Напишіть мені в Direct — відповім голосовим.</p><p>📋 <b>Детально розібрати вашу ситуацію</b> — це вже особиста консультація. Вона платна: 1 година онлайн, <s>50 €</s> <b>35 € до 31 грудня</b>.</p><div class="ask-acts"><a href="https://ig.me/m/veronika_logistics" target="_blank" rel="noopener">Задати питання</a><a href="#join" class="pay" data-pick="consult" data-close>Консультація · 35 €</a></div></div><div class="acts">${TEST_MODE ? `<a href="/kviz/${location.search}" class="btn btn-green">Дізнатися, з чого почати <span class="arr">${ARR}</span></a><small class="tm-cd" id="tmCd" aria-live="polite">Перейдемо автоматично за 7 с</small>` :`<a href="#join" class="btn btn-green" data-pick="course" data-close>Записатися на курс <span class="arr">${ARR}</span></a><a href="#lesson" class="btn btn-ghost" data-close>Перший урок</a>`}<button type="button" class="btn btn-ghost" data-restart>Зіграти ще</button></div></div>`;
     /* у режимі з директу галочки зʼявляються повільніше — щоб встигли прочитати */
     const tgStep = TEST_MODE ? 400 : 150;
     stage.querySelectorAll('[data-tgi]').forEach((t, i) => setTimeout(() => t.classList.add('on'), 800 + i * tgStep));
