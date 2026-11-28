@@ -1861,10 +1861,10 @@ setTimeout(function () {
     <p class="tm-sub" id="thSub">Вероніка звʼяжеться з вами найближчим часом.</p>
     <div class="tm-when" id="thWhen"></div>
     <div class="tm-acts">
-      <button type="button" class="btn btn-green" data-thclose>Зрозуміло <span class="arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M7 17 17 7M8 7h9v9"/></svg></span></button>
+      <a id="thTg" href="https://t.me/biliur2121" target="_blank" rel="noopener" class="btn btn-green">Отримати реквізити в Telegram <span class="arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M7 17 17 7M8 7h9v9"/></svg></span></a>
       <a href="https://www.instagram.com/veronika_logistics/" target="_blank" rel="noopener" class="btn btn-ghost">Instagram ↗</a>
     </div>
-    <p class="tm-foot">Якщо раптом не буде відповіді — напишіть в Instagram, відповім там.</p>
+    <p class="tm-foot" id="thCd">Відкриваємо чат з Веронікою…</p>
   </div>
 </div>
 
@@ -2684,6 +2684,24 @@ setTimeout(function () {
     const box = document.getElementById('thWhen');
     box.textContent = '';
     chips.forEach(c => { const el = document.createElement('span'); el.textContent = c; box.appendChild(el); });
+    /* одразу в особистий чат з Веронікою: там вона надсилає реквізити */
+    const isC = want() === 'consult';
+    const P2 = PKG[pkg()];
+    const tgText = isC
+      ? 'Вітаю! Я залишив(ла) заявку на консультацію (' + (kind() === 'urgent' ? 'термінова, 70 €' : 'за записом, 35 €') + '). Надішліть, будь ласка, реквізити 🙌'
+      : 'Вітаю! Я бронюю місце на курсі: ' + P2.name + ' — ' + P2.v + ' €. Надішліть, будь ласка, реквізити 🙌';
+    const tgUrl = 'https://t.me/biliur2121?text=' + encodeURIComponent(tgText);
+    document.getElementById('thTg').href = tgUrl;
+    document.getElementById('thSub').textContent = 'Напишіть Вероніці в Telegram — вона одразу надішле реквізити для оплати' + (isC ? '. Запис підтверджується після оплати.' : '. Після оплати місце за вами.');
+    const cd = document.getElementById('thCd');
+    let left = 4; cd.textContent = 'Відкриємо чат з Веронікою за ' + left + ' с…';
+    clearInterval(openThanks.t);
+    openThanks.t = setInterval(() => {
+      if (!thanks.classList.contains('open')) { clearInterval(openThanks.t); return; }
+      left--;
+      if (left <= 0) { clearInterval(openThanks.t); cd.textContent = 'Якщо чат не відкрився — натисніть кнопку вище.'; location.href = tgUrl; return; }
+      cd.textContent = 'Відкриємо чат з Веронікою за ' + left + ' с…';
+    }, 1000);
     thanks.classList.add('open'); body.classList.add('game-open');
     setTimeout(() => document.getElementById('thClose').focus({ preventScroll: true }), 420);
     if (!reduce) setTimeout(() => {
