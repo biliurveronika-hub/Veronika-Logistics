@@ -645,6 +645,18 @@ input[type=range]::-moz-range-thumb{width:28px;height:28px;border-radius:50%;bac
 .tf-card .btn{width:100%;justify-content:center}
 .tf-help{text-align:center;color:var(--muted);margin-top:18px;font-size:15.5px}
 .tf-help a{color:var(--blue);font-weight:700}
+/* пакет 1 — сіра плашка, пакет 2 — головний */
+.tf-card:not(.hl){background:#E4E9EE;box-shadow:none}
+.tf-card:not(.hl) li::before{background:#fff}
+.tf-card.hl{background:linear-gradient(160deg,#1F4256 0%,#17313F 60%,#122733 100%);color:#fff;border-color:transparent;box-shadow:0 30px 60px -28px rgba(23,49,63,.75);position:relative}
+.tf-card.hl::before{content:"";position:absolute;inset:0;border-radius:inherit;padding:2px;background:linear-gradient(135deg,#9DBBD9,rgba(157,187,217,0) 45%,#CFE0EF);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none}
+.tf-card.hl .tf-tag{background:#CFE0EF;color:#17313F}
+.tf-card.hl h3{color:#fff}
+.tf-card.hl .tf-price s,.tf-card.hl .tf-parts{color:#9FB3C3}
+.tf-card.hl li{color:#E6EEF4}
+.tf-card.hl li::before{background:rgba(157,187,217,.25)}
+.tf-card.hl li::after{border-color:#CFE0EF}
+.tf-card.hl .btn-green{background:#CFE0EF;color:#17313F}
 @media (max-width:760px){.tf-grid{grid-template-columns:1fr}.tf-card{padding:24px 20px}}
 form.lead-form:not(.is-consult) .ckind.only-course{display:grid}
 form.lead-form.is-consult .only-course{display:none}
