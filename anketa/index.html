@@ -457,13 +457,13 @@ a{color:var(--blue)}
       ? `<section class="card"><span class="kicker">Вам підходить</span><h2>Консультація <em>«Ваше питання»</em></h2>
           <p class="sub">Година онлайн про вашу конкретну ситуацію: ставки, біржі, документи, водії, клієнти. Платна, запис — після оплати.</p>
           <div class="rp"><b>${cons}</b>${CP ? '<s>50 €</s>' : ''}</div><div class="rparts">термінова — ${CP ? '70 €' : '100 €'}</div>
-          <a class="btn" href="/kurs/?pick=vp">Записатися на консультацію</a>
-          <a class="btn ghost" href="/kurs/" style="margin-top:10px">Подивитися умови курсу</a></section>`
+          <a class="btn" href="/?c=1#konsultaciya">Записатися на консультацію</a>
+          <a class="btn ghost" href="/#taryfy" style="margin-top:10px">Подивитися умови курсу</a></section>`
       : `<section class="card"><span class="kicker">Вам підходить</span><h2>${PK[pk].name.replace(' · ', ' · <em>')}</em></h2>
           <p class="sub">${PK[pk].why}</p>
           ${price(pk)}
-          <a class="btn" href="/kurs/?pick=${pk}">Забронювати місце</a>
-          <a class="btn ghost" href="/kurs/" style="margin-top:10px">Порівняти обидва пакети</a>
+          <a class="btn" href="/?pick=${pk}">Забронювати місце</a>
+          <a class="btn ghost" href="/#taryfy" style="margin-top:10px">Порівняти обидва пакети</a>
           <p class="rnote">Бронювання = оплата повністю або першої частини. Після оплати місце за вами.</p></section>`;
     stage.innerHTML = `<section class="card">
       <span class="kicker">Ваш результат</span>
@@ -471,7 +471,7 @@ a{color:var(--blue)}
       ${planHTML()}
     </section>
     ${top}
-    ${wantsQuestion ? '' : `<section class="card"><h3>Ще сумніваєтесь?</h3><p class="sub">Консультація-знайомство: година онлайн, познайомимось і підберемо формат. Її вартість зараховується в ціну навчання.</p><a class="btn ghost" href="/kurs/?pick=zn">Консультація · ${cons}</a></section>`}
+    ${wantsQuestion ? '' : `<section class="card"><h3>Ще сумніваєтесь?</h3><p class="sub">Консультація-знайомство: година онлайн, познайомимось і підберемо формат. Її вартість зараховується в ціну навчання.</p><a class="btn ghost" href="/?c=1#konsultaciya">Консультація · ${cons}</a></section>`}
     <section class="card">${proofHTML()}</section>
     <button type="button" class="back" data-back>← Змінити відповіді</button>`;
     stage.querySelector('[data-back]').onclick = () => { fromFree = false; go(VQ().length - 1); };
@@ -487,7 +487,7 @@ a{color:var(--blue)}
             name: (LEAD && LEAD.name) || 'Без контакту',
             contact: LEAD && LEAD.phone ? 'Телефон: ' + LEAD.phone : 'контакту немає — показали тарифи',
             interests: ['Квіз → тарифи'],
-            message: '🧭 Квіз пройдено → показали ' + (wantsQuestion ? 'консультацію «Ваше питання»' : PK[pk].name) + ' (кнопка на /kurs/)' + ownerLine() + '\n\n' + answers(),
+            message: '🧭 Квіз пройдено → показали ' + (wantsQuestion ? 'консультацію «Ваше питання»' : PK[pk].name) + '' + ownerLine() + '\n\n' + answers(),
             company: '', source: location.href.split('#')[0], ref: firstVisit.ref, utm: firstVisit.utm,
             t: Date.now() - bornAt, hi: touches
           })

@@ -376,14 +376,14 @@ fbq('track','ViewContent',{content_name:'urok-1'});
     <h2 class="rv">Оберіть <em>формат навчання</em></h2>
     <p class="fm-sub rv"><span id="fmNote">Старт будь-коли, можна частинами.</span> Бронювання місця — це оплата повністю або першої частини.</p>
     <div class="fm-grid">
-      <a class="fm-card rv" href="/kurs/?pick=p1">
+      <a class="fm-card rv" href="/?pick=p1">
         <span class="fm-tag">Пакет 1</span>
         <h3>Курс + групові дзвінки</h3>
         <p>Усі 8 модулів, відео й презентації, домашні, 2 групові розбори, доступ на рік.</p>
         <div class="fm-price"><b data-fp="p1">400 €</b><s data-fo="p1" hidden></s></div>
         <span class="fm-btn">Забронювати місце →</span>
       </a>
-      <a class="fm-card hl rv" href="/kurs/?pick=p2">
+      <a class="fm-card hl rv" href="/?pick=p2">
         <span class="fm-tag">Пакет 2 · з нуля до роботи</span>
         <h3>Курс + я поруч</h3>
         <p>Усе з пакета 1 + 6 особистих дзвінків, перевірка кожного домашнього, розбір резюме і пробна співбесіда.</p>
@@ -397,8 +397,8 @@ fbq('track','ViewContent',{content_name:'urok-1'});
         <p>Консультація-знайомство: година онлайн, познайомимось, відповім на питання і підберемо формат. <b>Її вартість зараховується в ціну навчання, якщо вирішите вчитися.</b></p>
       </div>
       <div class="fm-help-acts">
-        <a class="fm-btn2" href="/kurs/?pick=zn">Консультація · <span id="fmC">35 €</span></a>
-        <a class="fm-link" href="/kurs/">Усі умови й часті питання</a>
+        <a class="fm-btn2" href="/?c=1#konsultaciya">Консультація · <span id="fmC">35 €</span></a>
+        <a class="fm-link" href="/#taryfy">Усі умови на сайті</a>
         <a class="fm-link" href="https://www.instagram.com/veronika_logistics/" target="_blank" rel="noopener">Коротке питання — в Direct, безкоштовно</a>
       </div>
     </div>
@@ -477,7 +477,7 @@ fbq('track','ViewContent',{content_name:'urok-1'});
 
   /* ---------- форма: той самий приймач, що й на головній ---------- */
 
-  /* ціни у блоці «Оберіть формат» — ті самі дати, що й на /kurs/ */
+  /* ціни у блоці «Оберіть формат» — ті самі дати, що й на головній */
   (function(){
     var now = new Date(), BF = now < new Date('2026-12-06T00:00:00+01:00'), CP = now < new Date('2027-01-01T00:00:00+01:00');
     var P = { p1: BF ? [350, 400] : [400], p2: BF ? [600, 700] : [700] };
