@@ -50,6 +50,11 @@ a{color:var(--blue)}
 .rp b{font-size:42px;letter-spacing:-.04em;line-height:1}
 .rp s{color:var(--muted);font-size:19px}
 .rparts{color:var(--muted);font-size:14px;margin-bottom:18px}
+.cons-card{background:#17313F;color:#fff}
+.cons-card h2 em{color:#9DBBD9}
+.cons-card .sub{color:#C9D7E2}
+.cons-l{list-style:none;display:grid;gap:8px;margin:0 0 18px;padding:0}
+.cons-l li{font-size:14.5px;color:#E6EEF4;line-height:1.4}
 .rnote{color:var(--muted);font-size:13.5px;text-align:center;margin-top:12px}
 .kicker{display:inline-block;font-size:12px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--blue);margin-bottom:10px}
 
@@ -470,8 +475,8 @@ a{color:var(--blue)}
       <h2>${need() ? 'Я можу вам <em>допомогти</em>' : 'Логістика вам <em>підходить</em>'}</h2>
       ${planHTML()}
     </section>
-    ${top}
-    ${wantsQuestion ? '' : `<section class="card"><h3>Ще сумніваєтесь?</h3><p class="sub">Консультація-знайомство: година онлайн, познайомимось і підберемо формат. Її вартість зараховується в ціну навчання.</p><a class="btn ghost" href="/?c=1#konsultaciya">Консультація · ${cons}</a></section>`}
+    ${wantsQuestion ? '' : `<section class="card cons-card"><span class="kicker" style="color:#9DBBD9">Наступний крок</span><h2>Консультація <em>зі мною</em></h2><p class="sub">Година онлайн: розберемо вашу ситуацію, з чого почати саме вам і який формат навчання підходить. Консультація платна — ${cons}${CP ? ' замість 50 € до 31 грудня' : ''}.</p><ul class="cons-l"><li>Якщо підете на курс — вартість консультації зараховується</li><li>🎁 Після оплати — гайд «7 помилок, на яких логіст втрачає гроші» і словник логіста</li></ul><a class="btn" href="/?c=1#konsultaciya" style="background:#fff;color:#17313F">Записатися на консультацію</a></section>`}
+    ${top.replace('<span class="kicker">Вам підходить</span>', wantsQuestion ? '<span class="kicker">Вам підходить</span>' : '<span class="kicker">Або одразу на навчання</span>')}
     <section class="card">${proofHTML()}</section>
     <button type="button" class="back" data-back>← Змінити відповіді</button>`;
     stage.querySelector('[data-back]').onclick = () => { fromFree = false; go(VQ().length - 1); };
