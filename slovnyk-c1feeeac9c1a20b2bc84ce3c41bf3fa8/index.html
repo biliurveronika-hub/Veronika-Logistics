@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Словник логіста — Veronika Logistics</title>
+<meta name="description" content="Слова, які логіст чує з першого дня: українською, польською та англійською, з поясненнями простими словами.">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#EEF2F5">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@1,400;1,500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#EEF2F5; --paper:#F8FAFC; --ink:#14232E; --muted:#546473; --line:rgba(20,35,46,.12);
+  --forest-d:#17313F; --blue:#3E6E91; --sky:#9DBBD9; --ice:#E3ECF4; --olive:#5F6F3A;
+  --serif:'Playfair Display',Georgia,serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Manrope',system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.5;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+em{font-family:var(--serif);font-style:italic;font-weight:400;letter-spacing:-.02em}
+a{color:inherit}
+.wrap{max-width:720px;margin:0 auto;padding:0 16px}
+.top{padding:22px 0 0}
+.brand{font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.hero{margin-top:16px;background:var(--forest-d);color:#fff;border-radius:30px;padding:26px 22px}
+.tag{display:inline-flex;align-items:center;gap:8px;padding:7px 13px;border-radius:999px;background:rgba(255,255,255,.12);font-size:13px;font-weight:700}
+.hero h1{font-size:clamp(32px,9vw,46px);line-height:1.05;letter-spacing:-.035em;margin:14px 0 10px;font-weight:800}
+.hero h1 em{color:var(--sky)}
+.hero p{color:#B9CBD9;font-size:15.5px}
+.langs{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+.langs span{font-size:12.5px;font-weight:700;padding:6px 11px;border-radius:999px;background:rgba(255,255,255,.1)}
+
+.bar{position:sticky;top:0;z-index:5;background:rgba(238,242,245,.94);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);margin:0 -16px;padding:12px 16px 10px}
+.search{position:relative}
+.search input{width:100%;height:50px;border-radius:999px;border:1.5px solid var(--line);background:#fff;padding:0 18px 0 46px;font:inherit;font-size:16px;color:var(--ink)}
+.search input:focus{outline:none;border-color:var(--blue)}
+.search svg{position:absolute;left:17px;top:50%;transform:translateY(-50%);color:var(--muted)}
+.cats{display:flex;gap:6px;overflow-x:auto;margin-top:10px;scrollbar-width:none}
+.cats::-webkit-scrollbar{display:none}
+.cats button{flex:none;height:36px;padding:0 14px;border-radius:999px;border:1px solid var(--line);background:#fff;font:inherit;font-weight:700;font-size:13.5px;color:var(--ink);cursor:pointer}
+.cats button.on{background:var(--forest-d);color:#fff;border-color:var(--forest-d)}
+
+.grp{margin-top:18px}
+.grp h2{font-size:13px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--blue);margin:0 4px 8px}
+.term{background:#fff;border-radius:20px;padding:15px 16px;margin-top:8px}
+.term h3{font-size:18px;letter-spacing:-.015em;font-weight:800}
+.tr{display:flex;flex-wrap:wrap;gap:6px;margin-top:7px}
+.tr span{font-size:13px;font-weight:600;padding:4px 9px;border-radius:999px;background:var(--ice);color:var(--forest-d)}
+.tr span b{font-weight:800;color:var(--blue);margin-right:4px;font-size:11px}
+.term p{margin-top:8px;font-size:15px;color:var(--muted)}
+.empty{text-align:center;color:var(--muted);padding:40px 10px;font-size:15px}
+.count{font-size:13px;color:var(--muted);margin:12px 4px 0}
+
+.end{background:var(--forest-d);color:#fff;border-radius:30px;padding:24px 20px;margin:22px 0 14px}
+.end h2{font-size:clamp(22px,6vw,30px);line-height:1.15;letter-spacing:-.03em;font-weight:800}
+.end h2 em{color:var(--sky)}
+.end p{color:#C9D7E2;font-size:15px;margin-top:10px}
+.btns{display:grid;gap:10px;margin-top:16px}
+.btn{display:flex;align-items:center;justify-content:center;min-height:52px;border-radius:999px;font-weight:800;font-size:15.5px;text-decoration:none;border:0;cursor:pointer;font-family:inherit}
+.btn.main{background:#fff;color:var(--forest-d)}
+.btn.ghost{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.35)}
+.note{font-size:12.5px;color:var(--muted);text-align:center;padding:4px 10px 30px}
+
+@media print{
+  body{background:#fff}
+  .bar,.end .btns,.note,.print-btn{display:none}
+  .hero,.end{background:#fff;color:var(--ink);border:1px solid var(--line)}
+  .hero p,.end p,.langs span{color:var(--ink)}
+  .term{break-inside:avoid;border:1px solid var(--line)}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="top">
+    <div class="brand">Veronika Logistics</div>
+    <div class="hero">
+      <span class="tag">🎁 Подарунок до консультації</span>
+      <h1>Словник <em>логіста</em></h1>
+      <p>Слова, які ви почуєте з першого дня роботи. Простими словами — і так, як їх реально кажуть у польських фірмах і на біржах.</p>
+      <div class="langs"><span>🇺🇦 українською</span><span>🇵🇱 польською</span><span>🇬🇧 англійською</span></div>
+    </div>
+  </div>
+
+  <div class="bar">
+    <label class="search"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><input id="q" type="search" placeholder="Знайти слово: CMR, рохля, fracht…" autocomplete="off" aria-label="Пошук слова"></label>
+    <div class="cats" id="cats"></div>
+  </div>
+
+  <p class="count" id="count"></p>
+  <div id="list"></div>
+
+  <section class="end">
+    <h2>Слова знаєте — <em>а що з ними робити?</em></h2>
+    <p>Знати, що таке zlecenie чи тахограф, — це перший крок. Як перевірити замовлення, порахувати ставку чи спланувати рейс під години водія — це вже робота, якої я вчу на курсі, крок за кроком.</p>
+    <div class="btns">
+      <a class="btn main" href="/?utm_source=slovnyk#program">Подивитися програму курсу</a>
+      <a class="btn ghost" href="https://ig.me/m/veronika_logistics" target="_blank" rel="noopener">Написати Вероніці в Direct</a>
+    </div>
+  </section>
+  <p class="note">Словник — для учасників консультації з Веронікою. Будь ласка, не пересилайте посилання.</p>
+</div>
+
+<script>
+/* [група, термін, пояснення, польською, англійською] */
+var T = [
+['Хто є хто','Логіст','Людина, яка організовує перевезення: шукає вантажі, домовляється з клієнтом, планує машини й веде рейс до оплати.','logistyk','logistician'],
+['Хто є хто','Спедитор (експедитор)','Посередник: бере вантаж у клієнта і знаходить під нього перевізника. Власних машин зазвичай не має.','spedytor','freight forwarder'],
+['Хто є хто','Диспетчер','Веде машини конкретного перевізника: де вони, куди їдуть, коли вільні, які години в водія.','dyspozytor','dispatcher'],
+['Хто є хто','Перевізник','Фірма, якій належать машини й водії. Саме вона фізично везе вантаж.','przewoźnik','carrier'],
+['Хто є хто','Клієнт, замовник','Той, хто замовляє перевезення і платить за нього: виробник, склад або інша спедиція.','zleceniodawca, klient','client, shipper'],
+['Хто є хто','Відправник / отримувач','Звідки забирають вантаж і куди його привозять. Не завжди це сам клієнт.','nadawca / odbiorca','consignor / consignee'],
+
+['Машини','Тір (фура)','Великий тягач з напівпричепом: 13,6 метра, до 24 тонн. Основна машина міжнародних перевезень.','ciągnik siodłowy z naczepą, TIR','articulated truck, semi'],
+['Машини','Солувка','Вантажівка без причепа, з кузовом на одній рамі. Від 3 до 10 тонн, від 10 до 20 європалет.','solówka','rigid truck'],
+['Машини','Бус','Малий вантажний бус: 8–10 європалет. Швидкий, для невеликих і термінових вантажів.','bus, dostawczy','van'],
+['Машини','Напівпричіп','Причіпна частина тіра, куди вантажать товар. Тягач її тягне.','naczepa','semi-trailer'],
+['Машини','Тент (пландека)','Кузов із брезентовими стінками. Можна вантажити збоку, ззаду і згори.','plandeka, firanka','curtainsider, tautliner'],
+['Машини','Штивна забудова','Кузов із жорсткими стінками, як коробка. Вантажать тільки ззаду.','zabudowa sztywna, kontener','box body'],
+['Машини','Рефрижератор (холодильник)','Кузов з охолодженням для продуктів, ліків, квітів — усього, що треба везти при певній температурі.','chłodnia','reefer, refrigerated trailer'],
+['Машини','Ладовність','Скільки тонн машина може взяти.','ładowność','payload'],
+['Машини','Винда (ліфт)','Платформа ззаду машини, яка опускає й піднімає палети, коли немає рампи.','winda','tail lift'],
+
+['Вантаж','Вантаж','Те, що треба перевезти. На біржі — оголошення про конкретне перевезення.','ładunek','load, cargo'],
+['Вантаж','Завантаження / розвантаження','Місце й час, де товар кладуть у машину і де його забирають з машини.','załadunek / rozładunek','loading / unloading'],
+['Вантаж','Європалета','Стандартний дерев\'яний піддон 120 × 80 см. За кількістю європалет рахують, скільки вміститься.','europaleta, EPAL','euro pallet'],
+['Вантаж','Повна машина','Вантаж займає всю машину, везуть від одного клієнта до одного отримувача.','całopojazdowy, FTL','full truckload, FTL'],
+['Вантаж','Догруз (збірний вантаж)','Вантаж займає частину машини, і до нього додають інші.','doładunek, LTL','part load, LTL'],
+['Вантаж','Рампа','Платформа на складі на рівні кузова: машина стає задом, і палети завозять усередину.','rampa','loading dock'],
+['Вантаж','Рохля','Ручний візок, яким підвозять палети.','paleciak, wózek paletowy','pallet jack'],
+['Вантаж','Навантажувач','Електричний візок з оператором, який піднімає палети вилами.','wózek widłowy','forklift'],
+['Вантаж','Паси (стяжки)','Ремені, якими кріплять товар, щоб він не їздив у причепі.','pasy','ratchet straps'],
+['Вантаж','Часове вікно','Проміжок часу, коли машина має бути на завантаженні чи розвантаженні.','okno czasowe, awizacja','time slot'],
+['Вантаж','ADR','Небезпечні вантажі. Для них потрібна спеціальна машина й водій з допуском.','ADR, towary niebezpieczne','dangerous goods, ADR'],
+
+['Біржа й угода','Біржа вантажів','Сайт, де фірми викладають вантажі, а логісти шукають їх для своїх машин. Наприклад, TransEU.','giełda transportowa','freight exchange'],
+['Біржа й угода','Ставка (фрахт)','Скільки клієнт платить за перевезення.','stawka, fracht','rate, freight'],
+['Біржа й угода','Ставка за кілометр','Ціна перевезення, поділена на кілометри. Так порівнюють, вигідний вантаж чи ні.','stawka za kilometr','rate per km'],
+['Біржа й угода','Порожній пробіг','Кілометри, які машина їде без вантажу.','pusty przebieg','empty run, deadhead'],
+['Біржа й угода','Акцептувати','Підтвердити клієнту, що ви берете вантаж на погоджених умовах.','akceptować','accept, confirm'],
+['Біржа й угода','Замовлення (zlecenie)','Документ від клієнта: що, звідки, куди, коли і за скільки везти. Головна «угода» на рейс.','zlecenie transportowe','transport order'],
+['Біржа й угода','Простій','Машина стоїть і не заробляє — чекає на вантаж, на розвантаження чи на документи.','postój, przestój','downtime, waiting time'],
+['Біржа й угода','Каботаж','Перевезення всередині іншої країни, ніж та, де зареєстрована машина. Має свої обмеження.','kabotaż','cabotage'],
+
+['Документи й гроші','CMR','Головний документ міжнародного перевезення. Його підписують і відправник, і отримувач.','list przewozowy CMR','CMR consignment note'],
+['Документи й гроші','Фактура','Рахунок клієнту за виконаний рейс.','faktura','invoice'],
+['Документи й гроші','Термін оплати','За скільки днів клієнт має заплатити після отримання фактури й документів.','termin płatności','payment term'],
+['Документи й гроші','Оригінали / скани','Одні клієнти платять після отримання паперових документів поштою, інші — по сканах на мейл.','oryginały / skany','originals / scans'],
+['Документи й гроші','Маржа','Різниця між тим, що заплатив клієнт, і тим, що отримав перевізник. З неї заробляє спедиція.','marża','margin'],
+['Документи й гроші','Страховка вантажу','Поліс, який покриває пошкодження чи втрату товару в дорозі.','ubezpieczenie OCP / OCS','cargo insurance'],
+
+['Дороги','Платні дороги','Оплата за проїзд. У частині країн списується автоматично через бокс у машині.','opłaty drogowe, myto','tolls'],
+['Дороги','Вінʼєта','Наклейка чи електронний дозвіл на проїзд платними дорогами країни на певний час.','winieta','vignette'],
+['Дороги','Заборони руху','Дні й години, коли вантажівкам не можна їхати — зазвичай вихідні та свята. Змінюються, перевіряти треба постійно.','zakazy ruchu','driving bans'],
+['Дороги','Поштовий індекс (PLZ)','Код адреси. Логіст по ньому розуміє регіон завантаження чи розвантаження.','kod pocztowy','postcode, ZIP'],
+['Дороги','Пором','Морська переправа, на яку заїжджає машина. Купується окремо.','prom','ferry'],
+
+['Водій','Тахограф','Прилад у машині, який записує, скільки водій їхав і відпочивав.','tachograf','tachograph'],
+['Водій','Час праці водія','Правила, скільки водій може їхати й коли мусить відпочивати. За порушення — штраф.','czas pracy kierowcy','driving time rules'],
+['Водій','Пауза','Обовʼязкова перерва в дорозі після кількох годин за кермом.','przerwa, pauza','break'],
+['Водій','Добовий відпочинок','Відпочинок водія між робочими днями.','odpoczynek dobowy','daily rest'],
+['Водій','Тижневий відпочинок','Довший відпочинок раз на тиждень.','odpoczynek tygodniowy, pauza weekendowa','weekly rest']
+];
+
+var groups = []; T.forEach(function(t){ if (groups.indexOf(t[0]) < 0) groups.push(t[0]); });
+var cat = 'Усі', q = '';
+var cats = document.getElementById('cats'), list = document.getElementById('list'), count = document.getElementById('count');
+['Усі'].concat(groups).forEach(function(g){
+  var b = document.createElement('button'); b.type = 'button'; b.textContent = g; if (g === cat) b.className = 'on';
+  b.addEventListener('click', function(){ cat = g; cats.querySelectorAll('button').forEach(function(x){ x.classList.toggle('on', x === b); }); render(); });
+  cats.appendChild(b);
+});
+function esc(s){ return s.replace(/[&<>"]/g, function(c){ return { '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;' }[c]; }); }
+function render(){
+  var needle = q.trim().toLowerCase();
+  var shown = T.filter(function(t){
+    if (cat !== 'Усі' && t[0] !== cat) return false;
+    return !needle || (t[1] + ' ' + t[2] + ' ' + t[3] + ' ' + t[4]).toLowerCase().indexOf(needle) >= 0;
+  });
+  var html = '';
+  groups.forEach(function(g){
+    var items = shown.filter(function(t){ return t[0] === g; });
+    if (!items.length) return;
+    html += '<div class="grp"><h2>' + esc(g) + '</h2>' + items.map(function(t){
+      return '<div class="term"><h3>' + esc(t[1]) + '</h3><div class="tr"><span><b>PL</b>' + esc(t[3]) + '</span><span><b>EN</b>' + esc(t[4]) + '</span></div><p>' + esc(t[2]) + '</p></div>';
+    }).join('') + '</div>';
+  });
+  list.innerHTML = html || '<p class="empty">Такого слова поки немає. Напишіть мені — додам 🙂</p>';
+  count.textContent = shown.length === T.length ? T.length + ' слів' : 'Знайдено: ' + shown.length + ' з ' + T.length;
+}
+document.getElementById('q').addEventListener('input', function(e){ q = e.target.value; render(); });
+render();
+</script>
+</body>
+</html>
