@@ -8,7 +8,7 @@
 <meta name="robots" content="noindex, nofollow">
 <meta name="theme-color" content="#EEF2F5">
 <meta property="og:title" content="З чого почати саме вам — квіз">
-<meta property="og:description" content="Чотири питання, хвилина часу. Далі — умови курсу від Вероніки або перший урок.">
+<meta property="og:description" content="Чотири питання, хвилина часу. Далі — пакет, який вам підходить, або перший урок.">
 <meta property="og:image" content="https://veronika-logistics.com/urok/og.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -46,6 +46,11 @@ a{color:var(--blue)}
 .card h3{font-size:17px;font-weight:700;letter-spacing:-.01em;margin-bottom:12px}
 .card .sub{color:var(--muted);font-size:15px;margin-bottom:18px}
 .card p.lead{color:var(--muted);font-size:16px;margin-bottom:22px}
+.rp{display:flex;align-items:baseline;gap:10px;margin:4px 0 2px}
+.rp b{font-size:42px;letter-spacing:-.04em;line-height:1}
+.rp s{color:var(--muted);font-size:19px}
+.rparts{color:var(--muted);font-size:14px;margin-bottom:18px}
+.rnote{color:var(--muted);font-size:13.5px;text-align:center;margin-top:12px}
 .kicker{display:inline-block;font-size:12px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--blue);margin-bottom:10px}
 
 /* Вероніка */
@@ -159,21 +164,21 @@ a{color:var(--blue)}
       ['🎯', MODS, 'Можна взяти лише потрібні модулі: ставки й індекси, біржі, документи'],
       ['❓', 'Розібрати конкретне питання', 'Розберемо вашу ситуацію предметно, з мого практичного досвіду']] },
     { k: 'start', t: 'Коли хочете почати навчання?', o: [
-      ['🚀', 'Уже зараз', 'Найближчий старт і вільні місця — напишу разом з умовами'],
+      ['🚀', 'Уже зараз', 'Старт одразу після бронювання місця'],
       ['📅', 'За 1–2 місяці', 'Якраз встигнемо спокійно підготуватися до старту'],
-      ['👀', 'Поки придивляюся', 'Нормально — умови ні до чого не зобовʼязують']] },
+      ['👀', 'Поки придивляюся', 'Нормально — подивитися ціни ні до чого не зобовʼязує']] },
     { k: 'time', t: 'Скільки годин на тиждень готові приділяти навчанню?', o: [
       ['☕', 'До 5 годин', 'Кожен модуль — відео й презентація, вчитеся коли зручно'],
       ['🕐', '5–10 годин', 'Спокійно пройдете програму за 6 тижнів'],
       ['🔥', 'Понад 10 годин', 'Повне занурення — нова професія за 6 тижнів']] },
     { k: 'invest', t: 'Чи готові інвестувати у навчання від 400 €?', h: 'Повний курс коштує від 400 €, можна частинами. Чесна відповідь допоможе мені запропонувати вам правильний наступний крок.',
       tt: () => need() === MODS ? 'Чи готові інвестувати в навчання окремих модулів?' : need() === 'Розібрати конкретне питання' ? 'Чи готові інвестувати в навчання, якщо воно вам підійде?' : null,
-      hh: () => need() && need() !== 'Повний курс' ? 'Окремі модулі коштують менше за повний курс — точну ціну напишу разом з умовами. Чесна відповідь допоможе запропонувати правильний наступний крок.' : null,
+      hh: () => need() && need() !== 'Повний курс' ? 'Окремі модулі коштують менше за повний курс — точну ціну підкажу на консультації. Чесна відповідь допоможе запропонувати правильний наступний крок.' : null,
       o: [['✅', 'Так'], ['🧩', 'Так, частинами'], ['🎁', 'Поки лише безкоштовне']] },
-    { k: 'decide', t: 'Хто ухвалює рішення про навчання?', if: () => A.invest !== FREE || fromFree, h: 'Так я надішлю умови у зручному вигляді — щоб їх було легко показати тому, з ким вирішуєте.', o: [
+    { k: 'decide', t: 'Хто ухвалює рішення про навчання?', if: () => A.invest !== FREE || fromFree, h: 'Так я підкажу формат, який зручно обговорити разом.', o: [
       ['🙋', SOLO, 'Тоді одразу підберемо формат і старт'],
-      ['👥', 'Разом із партнером / чоловіком чи дружиною', 'Надішлю умови так, щоб їх зручно було показати'],
-      ['🏢', 'Рішення за керівником / компанією', 'Надішлю умови, які зручно переслати керівнику']] }
+      ['👥', 'Разом із партнером / чоловіком чи дружиною', 'Покажу пакети так, щоб їх зручно було обговорити'],
+      ['🏢', 'Рішення за керівником / компанією', 'Покажу пакети, які зручно переслати керівнику']] }
   ];
   const FREE = 'Поки лише безкоштовне';
   const VQ = () => Q.filter(q => !q.if || q.if());   // питання, що показуються при поточних відповідях
@@ -234,7 +239,7 @@ a{color:var(--blue)}
     stage.innerHTML = `<section class="card">
       <div class="who"><img class="ava" src="${AVA}" alt="Вероніка" width="52" height="52"><div><b>Вероніка</b><small>логіст, 2 дипломи з логістики</small></div></div>
       <h1>З чого почати <em>саме вам?</em></h1>
-      <p class="lead">Кілька коротких питань — і я підкажу наступний крок: умови курсу саме під вас або перший урок безкоштовно.</p>
+      <p class="lead">Кілька коротких питань — і я підкажу, який пакет вам підходить, або дам перший урок безкоштовно.</p>
       <div class="chips"><span>⏱ 1 хвилина</span><span>🎓 6 потоків учнів</span><span>🗓 курс — 6 тижнів</span></div>
       <button type="button" class="btn" data-go>Почати</button>
     </section>`;
@@ -356,7 +361,7 @@ a{color:var(--blue)}
       <h2>${name ? esc(name.split(' ')[0]) + ', урок ваш!' : 'Почніть із безкоштовного уроку'}</h2>
       <p class="lead">Перший модуль курсу «Що таке логістика» — повністю й безкоштовно. 7 хвилин, і стане зрозуміло, чим займається логіст, чим він відрізняється від диспетчера і що таке каботаж.</p>
       <div class="acts"><a class="btn" href="/urok/${location.search}">Дивитися урок</a></div>
-      <button type="button" class="link" data-consult>Все ж хочу дізнатися умови курсу →</button>
+      <button type="button" class="link" data-consult>Все ж хочу подивитися пакети й ціни →</button>
       <a class="link" href="/?c=1#konsultaciya" style="display:block;text-align:center;margin-top:6px">Особистий розбір з Веронікою · 1 година, платно →</a>
     </section>
     <section class="card">${proofHTML()}</section>`;
@@ -434,108 +439,61 @@ a{color:var(--blue)}
     };
   }
 
+  /* кінець квізу: одразу пакет з ціною і кнопкою бронювання — без анкети з контактами */
   function booking(){
-    const parts = A.invest === 'Так, частинами';
+    progress(total());
+    const now = new Date(), BF = now < new Date('2026-12-06T00:00:00+01:00'), CP = now < new Date('2027-01-01T00:00:00+01:00');
+    const PR = { p1: BF ? [350, 400, '2 частини по 175 €'] : [400, 0, 'можна частинами'], p2: BF ? [600, 700, '3 частини по 200 €'] : [700, 0, 'можна частинами'] };
+    const NEWBIE = ['Працюю в іншій сфері', 'Декрет / вдома', 'Шукаю роботу'];
+    const wantsQuestion = need() === 'Розібрати конкретне питання';
+    const pk = NEWBIE.includes(A.now) && A.time !== 'Понад 10 годин' ? 'p2' : (NEWBIE.includes(A.now) ? 'p2' : 'p1');
+    const PK = {
+      p1: { name: 'Пакет 1 · Курс + групові дзвінки', why: 'У вас уже є досвід або звичка вчитися самостійно — вистачить програми і двох групових розборів.' },
+      p2: { name: 'Пакет 2 · Курс + я поруч', why: 'Ви починаєте з нуля — я поведу вас особисто: 6 дзвінків, перевірка кожного домашнього, резюме і пробна співбесіда.' }
+    };
+    const price = k => `<div class="rp"><b>${PR[k][0]} €</b>${PR[k][1] ? `<s>${PR[k][1]} €</s>` : ''}</div><div class="rparts">${PR[k][2]}${BF ? ' · ціна Black Friday до 5 грудня' : (CP ? ' · ціна діє до 31 грудня' : '')}</div>`;
+    const cons = CP ? '35 €' : '50 €';
+    const top = wantsQuestion
+      ? `<section class="card"><span class="kicker">Вам підходить</span><h2>Консультація <em>«Ваше питання»</em></h2>
+          <p class="sub">Година онлайн про вашу конкретну ситуацію: ставки, біржі, документи, водії, клієнти. Платна, запис — після оплати.</p>
+          <div class="rp"><b>${cons}</b>${CP ? '<s>50 €</s>' : ''}</div><div class="rparts">термінова — ${CP ? '70 €' : '100 €'}</div>
+          <a class="btn" href="/kurs/?pick=vp">Записатися на консультацію</a>
+          <a class="btn ghost" href="/kurs/" style="margin-top:10px">Подивитися умови курсу</a></section>`
+      : `<section class="card"><span class="kicker">Вам підходить</span><h2>${PK[pk].name.replace(' · ', ' · <em>')}</em></h2>
+          <p class="sub">${PK[pk].why}</p>
+          ${price(pk)}
+          <a class="btn" href="/kurs/?pick=${pk}">Забронювати місце</a>
+          <a class="btn ghost" href="/kurs/" style="margin-top:10px">Порівняти обидва пакети</a>
+          <p class="rnote">Бронювання = оплата повністю або першої частини. Після оплати місце за вами.</p></section>`;
     stage.innerHTML = `<section class="card">
       <span class="kicker">Ваш результат</span>
       <h2>${need() ? 'Я можу вам <em>допомогти</em>' : 'Логістика вам <em>підходить</em>'}</h2>
-      <p class="sub">${fromFree ? 'Добре, що вирішили дізнатися умови — це ні до чого не зобовʼязує.' : 'По відповідях бачу: курс вам підходить. Надішлю умови особисто.'}</p>
       ${planHTML()}
     </section>
-    <section class="card">
-      <div class="who"><img class="ava" src="${AVA}" alt="Вероніка" width="52" height="52"><div><b>Умови курсу</b><small>від Вероніки особисто</small></div></div>
-      <p class="sub">Напишу вам, який формат підійде саме вам, пакети й ціни${parts ? ' та як оплатити частинами' : ''}.</p>
-      ${together() ? `<div class="bubble" style="margin:0 0 16px">👥 Рішення ви ухвалюєте не самі — надішлю умови так, щоб їх було зручно показати <b>${A.decide.startsWith('Разом') ? 'партнеру' : 'тому, хто ухвалює рішення'}</b>.</div>` : ''}
-      <form id="f" novalidate>
-        <div class="field"><label for="nm">Ваше імʼя</label><input id="nm" name="name" type="text" autocomplete="given-name" maxlength="100"></div>
-        <div class="field">
-          <label for="ph">Номер телефону</label>
-          <input id="ph" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="+380 67 123 45 67" maxlength="20">
-          <div class="ct" role="radiogroup" aria-label="Де зручніше">
-            ${Object.keys(CT).map((k, i) => `<label><input type="radio" name="ct" value="${k}"${i ? '' : ' checked'}><span>${CT_LABEL[k]}</span></label>`).join('')}
-          </div>
-          <div class="hint" id="hint"></div>
-        </div>
-        <div class="field"><label for="tm">Коли вам зручно на звʼязок</label>
-          <select id="tm" name="preferred">${TIMES.map(t => `<option>${t}</option>`).join('')}</select>
-        </div>
-        <div class="hp" aria-hidden="true"><input name="company" tabindex="-1" autocomplete="off"></div>
-        <button type="submit" class="btn" id="sb">Отримати умови курсу</button>
-        <p class="privacy" style="font-size:12.5px;opacity:.7;margin-top:12px;text-align:center">Натискаючи кнопку, ви погоджуєтесь з <a href="../privacy/" style="color:inherit">політикою конфіденційності</a> та <a href="../oferta/" style="color:inherit">умовами оферти</a>.</p>
-        <div class="err" id="err" hidden>Не вдалося надіслати. Напишіть мені, будь ласка, в <a href="https://ig.me/m/veronika_logistics">Direct</a> — відповім там.</div>
-        <ol class="next"><li><b>1</b>Я пишу вам</li><li><b>2</b>Надсилаю пакети й ціни</li><li><b>3</b>Обираєте формат і старт</li></ol>
-      </form>
-      <button type="button" class="back" data-back>← Змінити відповіді</button>
-    </section>
-    <section class="card">${proofHTML()}</section>`;
-    const f = stage.querySelector('#f'), ph = f.phone, hint = stage.querySelector('#hint'), err = stage.querySelector('#err'), sb = stage.querySelector('#sb');
-    const ct = () => f.querySelector('input[name=ct]:checked').value;
-    const setHint = bad => { hint.textContent = bad ? PHONE_BAD : CT[ct()]; hint.classList.toggle('bad', !!bad); ph.classList.toggle('bad', !!bad); };
-    if (LEAD) { if (!f.name.value) f.name.value = LEAD.name || ''; if (!ph.value) ph.value = LEAD.phone || ''; }
-    setHint(false);
-    f.querySelectorAll('input[name=ct]').forEach(r => r.onchange = () => { if (!hint.classList.contains('bad')) setHint(false); });
-    ph.addEventListener('focus', () => { if (!ph.value) ph.value = '+'; });
-    ph.addEventListener('input', () => { if (hint.classList.contains('bad')) setHint(false); });
-    ph.addEventListener('blur', () => { const v = ph.value.trim(); if (!v || v === '+') return; ph.value = normPhone(v); setHint(!phoneOk(ph.value)); });
+    ${top}
+    ${wantsQuestion ? '' : `<section class="card"><h3>Ще сумніваєтесь?</h3><p class="sub">Консультація-знайомство: година онлайн, познайомимось і підберемо формат. Її вартість зараховується в ціну навчання.</p><a class="btn ghost" href="/kurs/?pick=zn">Консультація · ${cons}</a></section>`}
+    <section class="card">${proofHTML()}</section>
+    <button type="button" class="back" data-back>← Змінити відповіді</button>`;
     stage.querySelector('[data-back]').onclick = () => { fromFree = false; go(VQ().length - 1); };
-
-    f.onsubmit = async e => {
-      e.preventDefault();
-      if (f.company.value) return;
-      const name = f.name.value.trim();
-      f.name.classList.toggle('bad', !name);
-      ph.value = normPhone(ph.value.trim());
-      const okPhone = phoneOk(ph.value);
-      if (!okPhone) setHint(true);
-      const both = f.querySelector('#both');
-      if (both) f.querySelector('#bothHint').hidden = both.checked;
-      if (!name) { f.name.focus(); return; }
-      if (!okPhone) { ph.focus(); return; }
-      if (both && !both.checked) { both.focus(); return; }
-
-      const message = (fromFree ? '🔥 Хоче умови курсу · квіз (спершу обрали безкоштовне, потім передумали)' : '🔥 Хоче умови курсу · квіз') +
-        (together() ? '\n👥 Рішення не сам(а) — умови покаже ' + (A.decide.startsWith('Разом') ? 'партнеру' : 'керівнику') : '') +
-        (need() === MODS ? '\n🎯 Досвідчений — потрібні лише окремі модулі' : '') +
-        ownerLine() +
-        '\n\n' + answers();
-
-      err.hidden = true; sb.disabled = true;
-      sb.innerHTML = 'Надсилаю… <span class="spin"></span>';
-      const ac = new AbortController(); const killer = setTimeout(() => ac.abort(), 12000);
-      try {
-        const res = await fetch(LEAD_ENDPOINT, {
-          method: 'POST', headers: { 'Content-Type': 'application/json' }, signal: ac.signal,
+    window.scrollTo(0, 0);
+    track('ViewContent', { content_name: 'kviz_paket_' + (wantsQuestion ? 'vp' : pk) });
+    /* відповіді — Вероніці в групу як інформація (без контакту), один раз */
+    try {
+      if (!sessionStorage.getItem('vl_kviz_sent')) {
+        sessionStorage.setItem('vl_kviz_sent', '1');
+        fetch(LEAD_ENDPOINT, {
+          method: 'POST', headers: { 'Content-Type': 'application/json' }, keepalive: true,
           body: JSON.stringify({
-            name: name.slice(0, 200),
-            contact: (CT_LABEL[ct()] + ': ' + ph.value).slice(0, 200),
-            contact_type: ct(), contact_value: ph.value.slice(0, 100),
-            preferred: f.preferred.value,
-            interests: ['Курс'],
-            message,
-            company: f.company.value,
-            source: location.href.split('#')[0],
-            ref: firstVisit.ref, utm: firstVisit.utm,
+            name: (LEAD && LEAD.name) || 'Без контакту',
+            contact: LEAD && LEAD.phone ? 'Телефон: ' + LEAD.phone : 'контакту немає — показали тарифи',
+            interests: ['Квіз → тарифи'],
+            message: '🧭 Квіз пройдено → показали ' + (wantsQuestion ? 'консультацію «Ваше питання»' : PK[pk].name) + ' (кнопка на /kurs/)' + ownerLine() + '\n\n' + answers(),
+            company: '', source: location.href.split('#')[0], ref: firstVisit.ref, utm: firstVisit.utm,
             t: Date.now() - bornAt, hi: touches
           })
-        });
-        const out = await res.json().catch(() => ({}));
-        if (!res.ok || out.ok === false) throw new Error('HTTP ' + res.status);
-        track('Lead', { content_name: 'kviz_umovy' });
-        try { sessionStorage.removeItem(KEY); } catch (x) {}
-        booked(f.preferred.value, name);
-      } catch (x) {
-        err.hidden = false; sb.disabled = false; sb.textContent = 'Надіслати ще раз';
-      } finally { clearTimeout(killer); }
-    };
-  }
-
-  function booked(when, name){
-    progress(total()); window.scrollTo(0, 0);
-    stage.innerHTML = `<section class="card done">
-      <img class="ava" src="${AVA}" alt="Вероніка" width="52" height="52" style="width:72px;height:72px;margin:0 auto 14px;display:block">
-      <h2>${esc(name.split(' ')[0])}, заявку отримала!</h2>
-      <p class="lead">Я напишу вам${/Будь-коли/.test(when) ? '' : ' (' + esc(when.toLowerCase()) + ')'}, і надішлю умови курсу й пакети.</p>
-      <div class="acts"><a class="btn ghost" href="/urok/">Поки чекаєте — перший урок</a></div></section>`;
+        }).catch(() => {});
+      }
+    } catch (x) {}
   }
 
   render();
